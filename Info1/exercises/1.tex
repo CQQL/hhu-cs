@@ -1,0 +1,62 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[ngerman]{babel}
+
+\title{Übungsblatt Nr. 1}
+\author{Marten Lienen}
+
+\newtheorem{theorem}{Satz}
+
+\begin{document}
+
+\maketitle
+
+\section{Aufgabe 1}
+
+\subsection{a}
+
+$f$ kann nicht surjektiv sein, weil die Zielmenge $n \in \mathbb{N}$ Zahlen enthält, die sich nicht als Quadrat von Zahlen der Quellmenge darstellen lassen, z.B. kann man $5$ nicht als
+Produkt Quadrat einer natürlichen Zahl darstellen. $f$ ist jedoch injektiv, weil das Quadat von $n$ stets kleiner ist als das Quadat von $n + 1$, sodass keine zwei $n \in \mathbb{N}$
+auf die selbe Zahl abgebildet werden können.
+
+\subsection{b}
+
+$f$ ist nicht surjektiv, weil $f^{-1}$ mindestens ein $n \in \mathbb{R}$ auf zwei Quellobjekte abbildet: $\sqrt{4} = \{2, -2\}$. $f$ ist auch nicht injektiv, weil mindestens zwei
+$n \in \mathbb{R}$ auf das selbe Zielobjekt abgebildet werden: $2^2 = (-2)^2 = 4$
+
+\subsection{c}
+
+$f$ ist bijektiv, weil jedes $n \in \mathbb{R}_{> 0}$ genau ein Urbild in $\mathbb{R}_{> 0}$ hat.
+
+\subsection{d}
+
+$f$ ist nicht surjektiv, weil Elemente von $\mathbb{R}_{< 0}$ kein Urbild in $\mathbb{R}_{> 0}$ haben: $\sqrt{-4} = \{\}$. $f$ ist jedoch injektiv, weil alle $n \in \mathbb{R}_{> 0}$
+eine eindeutige Abbildung haben. Dies muss stimmen, da es keine Elemente gibt, die Gleichung (1) erfüllen.
+
+\begin{equation}
+\begin{aligned}
+ &n, y \in \mathbb{R}_{> 0}\\
+ &n \ne y \land n^2 = y^2
+\end{aligned}
+\end{equation}
+
+\section{Aufgabe 2}
+
+\begin{theorem}
+ Eine Abbildung $f: A \rightarrow A$ auf einer endlichen Menge $A$ ist genau dann injektiv, wenn sie surjektiv ist.
+\end{theorem}
+
+\begin{proof}
+ ``$\Rightarrow$'': Wenn $f$ injektiv ist, ist jedem Element der Quellmenge ein Objekt der Zielmenge eindeutig zugeordnet. Da die Größe der Quell- und Zielmenge gleich ist, ist jedes Element
+ der Zielmenge Bild genau eines Objekts der Quellmenge. $f$ ist also auch surjektiv.
+ 
+ ``$\Leftarrow$'': Wenn $f$ surjektiv ist, ist jedes Element der Zielmenge Bild mindestens eines Elements der Quellmenge. Da die Größe der Quell- und Zielmenge gleich ist, bildet f also jedes
+ Element von $A$ auf genau ein anderes Element von $A$ ab. $f$ ist somit auch injektiv.
+\end{proof}
+
+Daraus folgt dann offensichtlich, dass Abbildungen wie $f$, die surjektiv/injektiv sind, auch immer bijektiv sind.
+
+\end{document}
