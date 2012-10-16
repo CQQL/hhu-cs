@@ -1,0 +1,136 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[german]{babel}
+
+\title{Übungsblatt 1}
+\author{Marten Lienen (2126759), Gruppe 1}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+Zu zeigen
+\begin{equation}
+ M = N \Leftrightarrow M \cup N = M \cap N
+\end{equation}
+
+\begin{proof}
+ \begin{align}
+  M = N & \Rightarrow ((x \in M) \Leftrightarrow (x \in N))\\
+  & \Rightarrow ((x \in M \lor x \in M) \Leftrightarrow (x \in N \land x \in N))\\
+  & \Rightarrow ((x \in M \lor x \in N) \Leftrightarrow (x \in M \land x \in N))\\
+  & \Rightarrow M \cup N = M \cap N
+ \end{align}
+ 
+ \begin{align}
+  M \cup N = M \cap N & \Rightarrow M = N
+ \end{align}
+ 
+ Es gibt drei Arten wie $M$ und $N$ zueinander in Beziehung stehen können:
+ \begin{itemize}
+  \item $M \supset N$: $M = \{0, 1, 2\}, N = \{0, 1\}$.
+   \begin{align}
+    \{0, 1, 2\} \cup \{0, 1\} & = \{0, 1, 2\} \cap \{0, 1\}\\
+    \{0, 1, 2\} & = \{0, 1\} \qquad \text{Widerspruch!}
+   \end{align}
+  \item $M \subset N$: Das gleiche wie der erste Fall, weil $\cup$ und $\cap$ symmetrisch sind.
+  \item $M = N$: Als letzte verbleibende Möglichkeit muss diese zutreffen.
+ \end{itemize}
+\end{proof}
+
+\section*{Übung 2}
+
+Zu zeigen
+\begin{equation}
+ M \cup N = N \cap O \Rightarrow M \subset N \subset O
+\end{equation}
+
+\begin{proof}
+ Alle Elemente aus $M$ und $N$ sind auch in $N$ und $O$ enthalten. $M$ muss also eine Untermenge von $N$ und $O$ sein, weil $M$ sonst Elemente enthalten könnte, die nicht in $N$ und $O$ zu finden sind.
+ Aus dem gleichen Grund muss auch $N$ eine Untermenge von $N$ und $O$ sein.
+\end{proof}
+
+\section*{Übung 3}
+
+\begin{align}
+ M = \{x_0, \dots, x_n, y_0, \dots, y_k\}\\
+ N = \{x_0, \dots, x_n, z_0, \dots, z_p\}
+\end{align}
+
+\subsection*{1}
+
+\begin{align}
+ \mathfrak{P}(M \cap N) = \mathfrak{P}(\{x_0, \dots, x_n\})
+\end{align}
+
+Die Potenzmengen von $M$ und $N$ teilen sich genau die Untermengen, die nur die Elemente von $x_0, \dots, x_n$ enthalten.
+Es gilt also:
+\begin{equation}
+ \mathfrak{P}(M \cap N) = \mathfrak{P}(M) \cap \mathfrak{P}(N)
+\end{equation}
+
+\subsection*{2}
+
+Die rechte Seite muss eine Untermenge der linken Seite sein, weil die Potenzmenge von $M \cup N$ auch Teilmengen enthält, die Elemente aus $\{y_0, \dots, y_k\}$ und $\{x_0, \dots, x_p\}$ enthalten, wobei das auf der rechten Seite nicht möglich ist, weil die Potenzmengen von $M$ und $N$ alleine keine solchen Untermengen enthalten.
+
+Es gilt die Gleicheit, wenn $M \subset N$ oder $M \supset N$. 
+
+\section*{Übung 4}
+
+\subsection*{1}
+
+Zu zeigen
+\begin{equation}
+ f(n) := 0^2 + 1^2 + 2^2 + \dots + n^2 = \frac{n(n + 1)(2n + 1)}{6}
+\end{equation}
+
+Ich werde es mit vollständiger Induktion beweisen, wobei Gleichung (1) die Aussage P darstellt.
+
+$P(0)$ ist wahr, weil $f(0) = 0^2 = \frac{0 * (0 + 1)(2 * 0 + 1)}{6}$.
+
+Wenn $P$ für $n$ gilt, dann gilt auch
+\begin{align}
+ 0^2 + 1^2 + 2^2 + \dots + n^2 + (n + 1)^2 & = \frac{n(n + 1)(2n + 1)}{6} + (n + 1)^2\\
+ & = \frac{n(n + 1)(2n + 1) + 6 * (n + 1)^2}{6}\\
+ & = \frac{(n + 1)(n(2n + 1) + 6(n + 1))}{6}\\
+ & = \frac{(n + 1)(2n^2 + 7n + 6)}{6}\\
+ & = \frac{(n + 1)((n + 2)(2n + 3)}{6}\\
+ & = \frac{(n + 1)((n + 1) + 1)(2(n + 1) + 1)}{6}\\
+ & = f(n + 1)
+\end{align}
+
+\subsection*{2}
+
+Zu zeigen
+\begin{equation}
+ f(n) := 0^3 + 1^3 + 2^3 + \dots + n^3 = \frac{n^2(n + 1)^2}{4}
+\end{equation}
+
+\begin{equation}
+ P(n) := f(n) \text{ ist richtig}
+\end{equation}
+
+$P(0)$ ist wahr, weil $f(0) = 0^3 = \frac{0^2(0 + 1)^2}{4} = 0$.
+
+Angenommen $P(n)$ ist wahr, dann ist auch auch $P(n + 1)$ wahr.
+
+\begin{proof}
+ \begin{align}
+  0^3 + 1^3 + 2^3 + \dots + n^3 + (n + 1)^3 & = \frac{n^2(n + 1)^2}{4} + (n + 1)^3\\
+  & = \frac{n^2(n + 1)^2 + 4(n + 1)^3}{4}\\
+  & = \frac{(n^2 + 4(n + 1))(n + 1)^2}{4}\\
+  & = \frac{(n^2 + 4n + 4)(n + 1)^2}{4}\\
+  & = \frac{(n + 2)^2(n + 1)^2}{4}\\
+  & = \frac{(n + 1)^2((n + 1) + 1)^2}{4}\\
+  & = f(n + 1)
+ \end{align}
+\end{proof}
+
+$f$ ist also die korrekte Funktionsvorschrift, bewiesen mit vollständiger Induktion.
+
+\end{document}
