@@ -1,0 +1,125 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[german]{babel}
+
+\title{Übungsblatt 2, LinA1}
+\author{Marten Lienen (2126759), Übungsgruppe 1}
+
+\newtheorem*{claim}{Behauptung}
+\newtheorem*{explanation}{Begründung}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+
+
+\section*{Übung 2}
+
+\subsection*{$R_1$}
+
+\begin{itemize}
+ \item nicht reflexiv: $x \not< x$
+ \item nicht symmetrisch: $x \le y \Rightarrow y \nleq x$
+ \item transitiv: $x < y \land y < z \Rightarrow x < z$
+\end{itemize}
+
+\subsection*{$R_2$}
+
+\begin{itemize}
+ \item reflexiv: $x \le x$
+ \item anti-symmetrisch: $x \le y \land y \le x \Rightarrow x = y$
+ \item transitiv: $x \le y \land y \le z \Rightarrow x \le z$
+\end{itemize}
+
+\subsection*{$R_3$}
+
+\begin{itemize}
+ \item nicht reflexiv: $x + x = 15 \Leftrightarrow x = \{\}$
+ \item symmetrisch: $x + y = y + x = 15$
+ \item $x + y = 15 \land y + z = 15 \Rightarrow x + y = y + z \Rightarrow x = z$. Da $R_3$ nicht reflexiv ist, ist es auch nicht transitiv.
+\end{itemize}
+
+\subsection*{$R_4$}
+
+\begin{itemize}
+ \item reflexiv: $x \text{ ist eine Primzahl} \Leftrightarrow x \text{ ist eine Primzahl}$
+ \item symmetrisch, weil die Bedingung beide Elemente einzeln untersucht und daher unabhängig von der Reihenfolge ist
+ \item transitiv, weil wenn $x$, $y$ und $z$ Primzahlen sind, sind auch $x$ und $z$ Primzahlen
+\end{itemize}
+
+\subsection*{$R_5$}
+
+\begin{itemize}
+ \item reflexiv: $x = x$
+ \item nicht symmetrisch, weil $7 \ne 5 \land (7,5) \ne (5,7) \Rightarrow 5 \sim_{R_5} 7 \land 7 \not\sim_{R_5} 5$
+ \item transitiv: $x = y = z$ oder $(x,y) = (5,7) \Rightarrow z = 7$ oder $(y,z) = (5,7) \Rightarrow x = 5$
+\end{itemize}
+
+\subsection*{$R_6$}
+
+\begin{itemize}
+ \item reflexiv: $x = x$
+ \item symmetrisch: $x = y = x \lor xy = yx = 72$
+ \item transitiv: $x = y = z \lor xy = yz = 72 \Rightarrow x = z$
+\end{itemize}
+
+\subsection*{$R_7$}
+
+\begin{itemize}
+ \item reflexiv: $x - x = 0 = 0 * 2$
+ \item symmetrisch: $\exists n \in \mathbb{Z} (x - y = 2n) \Rightarrow y - x = 2 * (-n)$
+ \item transitiv: $\exists n \in \mathbb{Z} (x - y = 2n) \land \exists k \in \mathbb{Z} (y - z = 2k) \Rightarrow x - z = 2 * (n + k)$
+\end{itemize}
+
+\subsection*{$R_8$}
+
+\begin{itemize}
+ \item reflexiv: $x = 1x$
+ \item anti-symmetrisch: $y = n_0 * x \land x = \frac{1}{n_0} * y \Rightarrow y = x$
+ \item transitiv: $y = n_0 * x \land z = n_1 * y \Rightarrow z = n_0 * n_1 * x$
+\end{itemize}
+
+\section*{Übung 3}
+
+Es gilt immer $n \in \mathbb{Z}$.
+
+\subsection*{1}
+
+R ist \dots
+\begin{itemize}
+ \item reflexiv: $x - x = 0 = 0 * 5$
+ \item symmetrisch: $x - y = n * 5 \Rightarrow y - x = (-n) * 5$
+ \item transitiv: $x - y = 5n_0 \land y - z = 5n_1 \Rightarrow x - z = 5(n_0 + n_1)$
+\end{itemize}
+
+\subsection*{2}
+
+\begin{equation*}
+ [0]_{\sim_{R}} = \{x \in \mathbb{Z} \mid x = 5n\} = \{0, 5, -5, 10, -10, \dots\}
+\end{equation*}
+
+\subsection*{3}
+
+\begin{claim}
+ Es gibt $5$ Äquivalenzklassen in $M\diagup R$.
+\end{claim}
+
+\begin{proof}
+ Wir schreiben jede Äquivalenzklasse als $[x + p]$.
+ Wir schreiben $p$ als $5k + p - 5k$, wobei $k \in \mathbb{Z}$ so gewählt ist, dass $5k \le p < 5(k + 1)$, i.e. $p - 5k \in \{0, 1, 2, 3, 4\}$.
+ Es gilt 
+ \begin{align*}
+  [x + 5k + p - 5k] = [x + p - 5k] & \Leftrightarrow x + 5k + p - 5k \sim_R x + p - 5k\\
+  & \Leftrightarrow x + 5k + p - 5k - (x + p - 5k) = 5n\\
+  & \Leftrightarrow 5k = 5n \quad \text{wahr, weil nur gilt } k, n \in \mathbb{Z}
+ \end{align*}
+ Jede Äquivalenzklasse ist also in einer der Äquivalenzklassen $[x + 0], [x + 1], [x + 2], [x + 3], [x + 4]$ enthalten.
+\end{proof}
+
+\end{document}
