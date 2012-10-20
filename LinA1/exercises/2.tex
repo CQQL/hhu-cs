@@ -17,7 +17,103 @@
 
 \section*{Übung 1}
 
+\subsection*{1}
 
+\begin{description}
+ \item[``$\subset$'']
+ \begin{align*}
+  & \forall x \in f(A_1 \cup A_2) \exists y \in (A_1 \cup A_2) f(y) = x\\
+  & \Rightarrow y \in A_1 \lor y \in A_2\\
+  & \Rightarrow x \in f(A_1) \lor x \in f(A_2)\\
+  & \Rightarrow x \in (f(A_1) \cup f(A_2))
+ \end{align*}
+
+ \item[``$\supset$'']
+ \begin{align*}
+  & \forall x \in (f(A_1) \cup f(A_2)) \exists y (y \in A_1 \lor y \in A_2) (f(y) = x)\\
+  & \Rightarrow y \in (A_1 \cup A_2)\\
+  & \Rightarrow x \in f(A_1 \cup A_2)
+ \end{align*}
+\end{description}
+
+\subsection*{2}
+
+\begin{description}
+ \item[``$\subset$'']
+ \begin{align*}
+  & \forall x \in f(A_1 \cap A_2) \exists y (y \in A_1 \cap y \in A_2) f(y) = x\\
+  & \Rightarrow y \in A_1 \land y \in A_2\\
+  & \Rightarrow x \in f(A_1) \land f(A_2)\\
+  & \Rightarrow x \in f(A_1) \cap f(A_2)
+ \end{align*}
+\end{description}
+
+\subsection*{3}
+
+\begin{description}
+ \item[``$\subset$'']
+ \begin{align*}
+  & \forall x \in f^{-1}(B_1 \cup B_2) \exists y \in (B_1 \cup B_2) f^{-1}(y) = x\\
+  & \Rightarrow y \in B_1 \lor y \in B_2\\
+  & \Rightarrow x \in f^{-1}(B_1) \lor x \in f^{-1}(B_2)\\
+  & \Rightarrow x \in (f^{-1}(B_1) \cup f^{-1}(B_2))
+ \end{align*}
+ 
+ \item[``$\supset$'']
+ \begin{align*}
+  & \forall x \in (f^{-1}(B_1) \cup f^{-1}(B_2)) \exists y (y \in B_1 \lor y \in B_2) (f^{-1}(y) = x)\\
+  & \Rightarrow y \in (B_1 \cup B_2)\\
+  & \Rightarrow x \in f^{-1}(B_1 \cup B_2)
+ \end{align*}
+\end{description}
+
+\subsection*{4}
+
+\begin{description}
+ \item[``$\subset$'']
+ \begin{align*}
+  & \forall x \in f^{-1}(B_1 \cap B_2) \exists y (y \in B_1 \cap y \in B_2) f^{-1}(y) = x\\
+  & \Rightarrow y \in B_1 \land y \in B_2\\
+  & \Rightarrow x \in f^{-1}(B_1) \land f^{-1}(B_2)\\
+  & \Rightarrow x \in f^{-1}(B_1) \cap f^{-1}(B_2)
+ \end{align*}
+ 
+ \item[``$\supset$'']
+ \begin{align*}
+  & \forall x \in (f^{-1}(B_1) \cap f^{-1}(B_2)) \exists y (y \in B_1 \land y \in B_2) f(y) = x\\
+  & \Rightarrow y \in B_1 \cap B_2\\
+  & \Rightarrow x \in f^{-1}(B_1 \cap B_2)
+ \end{align*}
+\end{description}
+
+\subsection*{5}
+
+\begin{description}
+ \item[``$\subset$'']
+ \begin{align*}
+  & \forall x \in (f(A_1) \backslash f(A_2)) ((\exists y \in A_1 f(y) = x) \land (\forall z \in A_2 f(z) \ne x))\\
+  & \Rightarrow (y \in A_1 \backslash A_2 \Rightarrow f(y) = x)\\
+  & \Rightarrow x \in f(A_1 \backslash A_2)
+ \end{align*}
+\end{description}
+
+\subsection*{6}
+
+\begin{description}
+ \item[``$\subset$'']
+ \begin{align*}
+  & \forall x \in f^{-1}(B_1 \backslash B_2) \exists y \in B_1 \backslash B_2 f(y) = x\\
+  & \Rightarrow y \in B_1 \land (\forall z \in B_2 f^{-1}(z) \ne x)\\
+  & \Rightarrow x \in f^{-1}(B_1) \backslash f^{-1}(B_2)
+ \end{align*}
+ 
+ \item[``$\supset$'']
+ \begin{align*}
+  & \forall x \in (f^{-1}(B_1) \backslash f^{-1}(B_2)) ((\exists y \in B_1 f^{-1}(y) = x) \land (\forall z \in B_2 f^{-1}(z) \ne x))\\
+  & \Rightarrow (y \in B_1 \backslash B_2 \Rightarrow f^{-1}(y) = x)\\
+  & \Rightarrow x \in f^{-1}(B_1 \backslash B_2)
+ \end{align*}
+\end{description}
 
 \section*{Übung 2}
 
@@ -110,16 +206,18 @@ R ist \dots
  Es gibt $5$ Äquivalenzklassen in $M\diagup R$.
 \end{claim}
 
+Der Beweis setzt auf dem Lemma aus der Vorlesung auf, nach dem $[x] = [y] \Leftrightarrow x \sim_R y$ gilt.
+
 \begin{proof}
- Wir schreiben jede Äquivalenzklasse als $[x + p]$.
+ Wir schreiben jede Äquivalenzklasse als $[p]$.
  Wir schreiben $p$ als $5k + p - 5k$, wobei $k \in \mathbb{Z}$ so gewählt ist, dass $5k \le p < 5(k + 1)$, i.e. $p - 5k \in \{0, 1, 2, 3, 4\}$.
  Es gilt 
  \begin{align*}
-  [x + 5k + p - 5k] = [x + p - 5k] & \Leftrightarrow x + 5k + p - 5k \sim_R x + p - 5k\\
-  & \Leftrightarrow x + 5k + p - 5k - (x + p - 5k) = 5n\\
+  [5k + p - 5k] = [p - 5k] & \Leftrightarrow 5k + p - 5k \sim_R p - 5k\\
+  & \Leftrightarrow 5k + p - 5k - (p - 5k) = 5n\\
   & \Leftrightarrow 5k = 5n \quad \text{wahr, weil nur gilt } k, n \in \mathbb{Z}
  \end{align*}
- Jede Äquivalenzklasse ist also in einer der Äquivalenzklassen $[x + 0], [x + 1], [x + 2], [x + 3], [x + 4]$ enthalten.
+ Jede Äquivalenzklasse ist also gleich einer der Äquivalenzklassen $[0]$, $[1]$, $[2]$, $[3]$, $[4]$.
 \end{proof}
 
 \end{document}
