@@ -1,0 +1,97 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[german]{babel}
+
+\title{Übungsblatt 2}
+\author{Marten Lienen (2126759)}
+
+\newtheorem*{claim}{Behauptung}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+\subsection*{a}
+
+\begin{claim}
+ \begin{equation*}
+  a, b, n, p , q, x \in \mathbb{N} \Rightarrow (a = nx \Rightarrow (b = px \Leftrightarrow b \bmod a = qx))
+ \end{equation*}
+\end{claim}
+
+\begin{proof}
+ \begin{description}
+  \item[``$\Rightarrow$'']
+  Entweder ist $a > b$. Dann ist $b \bmod a = b = px$.
+  Ansonsten muss $a \le b$ gelten.
+  Dann wäre $b \bmod a = 0 = 0 * x$.
+  
+  \item[``$\Leftarrow$'']
+  Wenn $b \bmod a = qx$, dann $b = ka + qx = knx + qx = (kn + q)x = px$.
+ \end{description}
+\end{proof}
+
+\subsection*{b}
+
+\begin{description}
+ \item[Eingabe] Zwei natürliche Zahlen $a$, $b$ mit $a \le b$
+ \item[Ausgabe] Eine natürliche Zahl $x$
+\end{description}
+
+\begin{description}
+ \item[Schritt 1] Wenn $b = 0$, setze $x := a$ und beende die Rechnung, sonst führe Schritt 2 aus.
+ \item[Schritt 2] Führe Schritt 1 aus mit $a := b \bmod a$ und $b := a$.
+\end{description}
+
+
+\section*{Aufgabe 2}
+
+\subsection*{a}
+
+\begin{claim}
+ \begin{equation}
+  P(n): f(n) := \sum_{j = 1}^{n} j = \frac{n(n + 1)}{2}
+ \end{equation}
+
+\end{claim}
+
+\begin{proof}
+ \begin{equation*}
+  P(0): f(0) = \frac{0(0 + 1)}{2} = 0
+ \end{equation*}
+ 
+ Wenn $P(n)$ gilt, dann ist die Formel für $n + 1$:
+ \begin{equation*}
+  \sum_{j = 1}^{n + 1} j = \frac{n(n + 1)}{2} + (n + 1)
+ \end{equation*}
+ 
+ \begin{align*}
+  \frac{n(n + 1)}{2} + (n + 1) & = \frac{n(n + 1) + 2(n + 1)}{2}
+  & = \frac{(2 + n)(n + 1)}{2}
+  & = \frac{(n + 1)((n + 1) + 1)}{2} = f(n + 1)
+ \end{align*}
+
+ Es gilt also auch $P(n + 1)$.
+\end{proof}
+
+\subsection*{b}
+
+Man stelle sich vor, die Zahlen $1\dots n$ wären an einer Kette aufgereiht.
+Nun knickt man die Kette so, dass immer zwei Zahlen nebeneinander liegen.
+Diese Zahlen zählt man dann paarweise zusammen, was jedes mal $n + 1$ ergibt.
+Dann addiert man alle Zwischenwerte auf.
+Da die Kette halbiert wurde, gibt es nur $\frac{n}{2}$ Zwischenwerte.
+Die Summe aller Zahlen ist also $\frac{n}{2} * (n + 1)$.
+
+\subsection*{c}
+
+Die Anzahl der Verbindungen ist die Summe der Zahlen von $0$ bis $n - 1$, weil der erste Rechner $n - 1$ Verbindungen braucht, nämlich zu jedem Rechner außer sich selbst $1$.
+Der nächste Rechner benötigt $n - 2$, weil er zum ersten Rechner bereits eine Verbindung hat.
+Der letzte Rechner benötigt schließlich keine weitere Verbindung mehr, weil er bereits mit jedem verbunden ist.
+
+\end{document}
