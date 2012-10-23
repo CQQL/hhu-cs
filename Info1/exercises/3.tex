@@ -1,0 +1,100 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage[german]{babel}
+
+\title{Übungsblatt 3, Info1}
+\author{Marten Lienen (2126759)}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+\subsection*{a}
+
+Man wähle für $I_1$ die $\frac{n - 1}{2}$ Indizes, deren zugeordnete Werte am kleinsten sind.
+Für $I_2$ wähle man die $\frac{n - 1}{2}$ Indizes, deren zugeordnete Werte am größten sind.
+$m$ weise man den verbliebenen Index zu.
+Dann haben $I_1$ und $I_2$ gleich viele Elemente.
+Nach Art der Aufteilung wurde jeder Index gewählt und die Anzahl der gewählten Indizes ist $\frac{n - 1}{2} * 2 + 1 = n$.
+Punkt 1 gilt demnach auch.
+Nach der Weise wie die Indizes gewählt wurden, gilt auch Punkt 2.
+
+\subsection*{b}
+
+Man nehme die Liste $1, 5, 5, 5, 6$ mit den Indizes beginnend bei 1.
+Dann könnte man $m$ aus $\{2, 3, 4\}$, $I_1 = \{1, m \in \{2, 3, 4\}\}$ und $I_1 = \{m \in \{2, 3, 4\}, 5\}$ wählen.
+Für jedes Element gibt es also eine Auswahl, aber trotzdem gelten immer die Bedingungen aus a.
+
+Um den Median zu berechnen, entferne man die $\frac{n - 1}{2}$ kleinsten Elemente aus der Menge.
+Das kleinste Element der Restmenge ist dann der Median.
+
+\subsection*{c}
+
+Ein Vorteil ist, dass der Median wirklich als Element in der Menge vorkommt.
+
+Ein Nachteil ist, dass die Abweichung zum arithmetischen Mittel sehr groß sein kann.
+
+\section*{Aufgabe 2}
+
+\begin{proof}
+ \begin{equation*}
+  P(n): f(n) = 2^n
+ \end{equation*}
+
+ $P(0)$ ist wahr, weil $f(0) = 1$ und die leere Menge hat genau eine Teilmenge, die leere Menge selbst.
+ Nun gilt es zu zeigen, dass $P(n + 1)$ gilt, wenn $P(n)$ gilt.
+ Wenn wir eine Menge $M$ um 1 Element erweitern ($N$ bezeichnet die erweiterte Menge), sind alle Teilmengen von $M$ auch Teilmenge von $N$.
+ Dazu kommt dann noch jede Teilmenge mit dem zusätzlichen Element erweitert.
+ Die Anzahl der Teilmengen verdoppelt sich also für jedes Element, dass man hinzufügt.
+
+ \begin{equation*}
+  2^n * 2 = 2^{n + 1} = P(n + 1)
+ \end{equation*}
+\end{proof}
+
+\section*{Aufgabe 3}
+
+\subsection*{a}
+
+\begin{align*}
+ & 0 \le g(n) \le c * f(n)
+ \overset{c := 1}{\Rightarrow} 0 \le n^p \le n^q
+ \Leftrightarrow -\infty \le p \le q\\
+ & p \le q \Rightarrow g \in O(f)
+\end{align*}
+
+\subsection*{b}
+
+\begin{align*}
+ & 0 \le g(n) \le c * f(n)
+ \Leftrightarrow 0 \le a * n^p \le c * n^q
+ \overset{c := a}{\Rightarrow} 0 \le n^p \le n^q
+ \Leftrightarrow -\infty \le p \le q\\
+ & p \le q \Rightarrow g \in O(f)
+\end{align*}
+
+\subsection*{c}
+
+\begin{align*}
+ & 0 \le g(n) \le c * f(n)
+ \Leftrightarrow 0 \le n^p + b \le c * n^q\\
+ TODO
+ & p \le q \Rightarrow g \in O(f)
+\end{align*}
+
+\subsection*{d}
+
+\begin{align*}
+ & 0 \le g(n) \le c * f(n)
+ \Leftrightarrow 0 \le n^p + n^q \le c * n^q
+ \Leftrightarrow 0 \le n^p \le (c - 1) * n^q\\
+ & \overset{c := 2}{\Rightarrow} 0 \le n^p \le n^q
+ \Leftrightarrow -\infty \le p \le q\\
+ & p \le q \Rightarrow g \in O(f)
+\end{align*}
+
+\end{document}
