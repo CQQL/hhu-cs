@@ -101,22 +101,40 @@ Daraus folgt
 
 \subsection*{a}
 
-\begin{claim}
- \begin{align*}
-  & M_c := \{ x \in \mathbb{R} \mid |x + 1| \le c|x - 1| \}\\
-  & c, c' \in \mathbb{R} \quad (c \le c' \quad (\forall x \in M_c \quad (x \in M_{c'})))
- \end{align*}
-\end{claim}
-
 \begin{proof}
- Man forme die Bedingung der Menge $M_c$ um
- \begin{align*}
-  \begin{cases}
-   x \ge \frac{c + 1}{c - 1} &\text{wenn } x \ge 1\\
-   x \le \frac{c - 1}{c + 1} &\text{wenn } -1 \le x < 1\\
-   x \le \frac{c + 1}{c - 1} &\text{wenn } x < -1
-  \end{cases}
- \end{align*}
+ Es muss gelten $c|x - 1| \le c'|x - 1|$, damit alle $x \in M_c$ auch Element von $M_{c'}$ sind.
+ Wenn $x = 1$, dann ist $0 \le 0$.
+ Wenn $x \ne 1$, dann ist $|x - 1| > 0$ und so vereinfacht sich die Bedingung zu $c \le c'$ durch dividieren durch $|x - 1|$, was unsere Bedingung war und somit wahr ist.
 \end{proof}
+
+\subsection*{b}
+
+Für $c < 0$ und $x \ne 1$ ist $M_c$ die leere Menge, weil dann $|x - 1| > 0$ und deshalb $c|x - 1| < 0$.
+Und $|x| < 0$ ist nach Definition immer falsch.
+Wenn $x = 1$, ist die Bedingung $|2| < c|0|$, was auch immer falsch ist.
+
+Für $c = 0$ enthält $M_c$ das Element $0$, das dann nach (a) auch in allen $M_{c'}$ mit $c' > 0$ enthalten ist.
+
+\begin{equation*}
+ c < 0 \Rightarrow M_c = \emptyset
+\end{equation*}
+
+\subsection*{c}
+
+\begin{equation}
+ c \le 1
+\end{equation}
+
+\subsection*{d}
+
+\begin{equation}
+ c < 1
+\end{equation}
+
+\subsection*{e}
+
+\begin{equation}
+ c < 1
+\end{equation}
 
 \end{document}
