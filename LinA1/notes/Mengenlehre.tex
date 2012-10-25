@@ -1,0 +1,106 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\title{Mengenlehre}
+\author{Marten Lienen}
+
+\begin{document}
+
+\maketitle
+
+\section{Definition}
+
+Eine Menge ist eine Zusammenfassung von Elementen zu einem neuen Objekt.
+
+\section{Axiom 1}
+
+$M = N$ gdw. $m \in M \Longrightarrow m \in N$ und $n \in N \Longrightarrow n \in M$
+
+\section{Notation}
+$\{\}$: Mengenklammern, z.B.: $\{0, 1, 2\}$\\
+$\in$: ist Element von\\
+$\notin$: ist nicht Element von\\
+$\forall$: für jedes Element, z.B.: $\forall n \in N$ gilt $n > 5$\\
+$\exists$: es gibt mindestens ein Element, so dass \dots \\
+$\Longrightarrow$: daraus folgt, dass \dots \\
+
+\section{Definition: Untermenge}
+
+$N \subset M$ gdw. $x \in N \Longrightarrow x \in M$
+
+\section{Axiom: Aussonderungsaxiom}
+
+Zu jeder Menge M und zu jeder Eigenschaft P gibt es eine Teilmenge N, die gerade aus den Elementen von M
+mit dieser Eigenschaft besteht.
+
+\subsection{Beispiel}
+
+Sei P eine Eigenschaft: $P(n) = n > 5$\\
+Dann konstruieren folgende Mengenklammern die Menge aller Zahlen aus $\mathbb{N}$, die die Eigenschaft P
+haben: $\{ n \in \mathbb{N} | P(n) \}$
+
+\section{Leere Menge}
+
+Es gibt eine leere Menge.
+
+\subsection{Beweis}
+
+Angenommen es gibt eine Menge M, dann kann man $\phi$ folgendermaßen als leere Menge definieren:
+\begin{equation}
+ \phi = \{ x \in M | x \ne x \}
+\end{equation}
+
+\subsection{Bemerkung}
+
+Sei M eine Menge, dann gilt $\phi \subset M$, weil $x \in \phi \Longrightarrow x \in M$
+
+\section{Vereinigungsaxiom}
+
+Seien M und N Mengen, dann gibt es eine Menge $M \cup N$ (Die Vereinigung von M und N), sodass
+\begin{equation}
+ \forall m \in M \Longrightarrow m \in (M \cup N)
+ \quad \text{und} \quad
+ \forall n \in N \Longrightarrow n \in (M \cup N)
+\end{equation}
+
+Ist I eine Indexmenge und $(M_i)_{i \in I}$ eine Mengenfamilie, dann gibt es eine Menge $\cup_{i \in I} M_i$,
+die alle Elemente aller Mengen der Mengenfamilie enthält.
+
+\section{Satz}
+
+Seien M undN zwei Mengen, dann gibt es eine Menge $M \cap N$, die genau die Elemente enthält, die in M und N enthalten sind.
+\begin{equation}
+ M \cap N = \{ x \in M \cup N | x \in M \land x \in N \}
+\end{equation}
+
+Ist I eine Indexmenge und $(M_i){i \in I}$ eine Mengenfamilie dann gibt es $\cap_{i \in I}M_i$, die genau die Elemente enthält,
+die in allen Mengen der Mengenfamilie enthalten sind.
+
+\section{Satz}
+
+Seien M, N und O Mengen, dann gilt
+\begin{align}
+ M \cup M & = M & \text{(reflexiv)}\\
+ M \cup N & = N \cup M & \text{(kommutativ)}\\
+ (M \cup N) \cup O & = M \cup (N \cup O) & \text{(assoziativ)}
+\end{align}
+
+\section{Satz: Distributivgesetz}
+
+Seien M, N und O Mengen
+\begin{equation}
+ M \cap (N \cup O) = (M \cap N) \cup (M \cap O)
+\end{equation}
+
+\section{Definition}
+
+Das Komplement von N in M ist 
+\begin{equation}
+ M \setminus N = \{ x \in M | x \notin N \}
+\end{equation}
+
+\section{Satz}
+
+\end{document}

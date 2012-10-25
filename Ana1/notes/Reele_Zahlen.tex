@@ -1,0 +1,215 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{Die reellen Zahlen}
+\author{Marten Lienen}
+
+\begin{document}
+
+\maketitle
+
+\section{Mengenlehre}
+
+Mathematische Objekte (z.B. Zahlen, Funktionen, Punkte, Geraden in der Ebene, \dots) können zu Mengen zusammengefasst werden.
+Ist M eine Menge und a ein mathematisches Objekt, so sagt man, dass a ein Element von M ist, wenn a zu M gehört, und schreibt
+dann $a \in M$. Wenn a allerdings nicht zu M gehört, schreibt man $a \notin M$.
+
+\begin{abstract}
+ Sei M die Menge, die aus den natürlichen Zahlen 1 und 2 besteht. Man schreibt $M = \{1, 2\}$. Es ist $1 \in M$, aber $3 \notin M$.
+\end{abstract}
+
+Sind M und N zwei Mengen und ist jedes Element von N auch ein Element von M, so heißt N eine Teilmenge von M, in Zeichen: $N \subseteq M$.
+
+Die Menge, die keine Elemente enthält, wird mit $\phi$ bezeichnet. Sie heißt leere Menge. Für jede Menge M ist $\phi \subseteq M$.
+
+Zwei Mengen M und N heißen gleich (in Zeichen $M = N$), wenn sie die selben Elemente enthalten, also genau dann, wenn $M \subseteq N \land
+N \subseteq M$.
+
+\section{Regeln, die ich stillschweigend akzeptieren muss}
+
+Die reellen Zahlen sind eine Menge $\mathbb{R}$ zusammen mit zwei Rechenvorschriften, die je zwei Elementen $x, y$ von $\mathbb{R}$
+zwei Elemente $x + y$ und $x * y$ von $\mathbb{R}$ zuordnen, wobei ferner  eine Teilmenge $\mathbb{R}_{> 0}$ gegeben ist, deren
+Elemente positive Zahlen heißen (man schreibt $x > 0$ für $x \in \mathbb{R}_{> 0}$), sodass die folgenden 3 Gruppen von Axiomen gelten.
+
+\subsection{I. Algebraische Axiome}
+
+Statt $\mathbb{R}$ erfüllt die Axiome I.a.-e. sagt man: $\mathbb{R}$ ist ein Körper. Man kann also in $\mathbb{R}$ die 4 Grundrechenarten
+uneingeschränkt ausführen.
+
+\subsubsection{I.a. Kommutativgesetze}
+
+$x + y = y + x$ und $xy = yx$
+
+\subsubsection{I.b. Assoziativgesetze}
+
+$(x + y) + z = x + (y + z)$\\
+$(xy)z = x(yz)$
+
+\subsubsection{I.c. Null und Eins}
+
+Es gibt Elemente $0 \in \mathbb{R}$ und $1 \in \mathbb{R}$ mit $0 \ne 1$, sodass gilt $x + 0 = x$ und $x * 1 = x$ für alle
+$x \in \mathbb{R}$.
+
+\subsubsection{I.d. Inverse Elemente}
+
+Ist $x \in \mathbb{R}$, so gibt es ein $-x \in \mathbb{R}$ mit $x + (-x) = 0$. Ist $x \in \mathbb{R}$ und $x \ne 0$, so gibt es
+ein $x^-1 \in \mathbb{R}$ mit $x * x^-1 = 1$.
+
+\subsubsection{I.e. Distributivgesetz}
+
+$x * (y + z) = (x * y) + (x * z)$ für alle $x, y, z \in \mathbb{R}$
+
+\subsection{II. Anordnungsaxiome}
+
+\subsubsection{II.a.}
+
+Ist $x \in \mathbb{R}$, so gilt genau eine der 3 folgenden Möglichkeiten: $x > 0$ oder $x = 0$ oder $-x > 0$.
+
+\subsubsection{II.b.}
+
+Ist $x > 0$ und $y > 0$, so ist $x + y > 0$ und $x * y > 0$.
+
+\subsection{Folgerungen und Bemerkungen zu I und II}
+
+\subsubsection{1) 1 > 0}
+
+Nach I.c. ist $1 \ne 0$. Nach II.a. ist deswegen $1 > 0$ oder $-1 > 0$. Wäre $-1 > 0$, so wäre $-1 * -1 > 0$ nach II.b.. Aus I folgt
+$-1 * -1 = 1$. Deswegen ist 1 > 0, also gleichzeitig $1 > 0$ und $-1 > 0$, im Widerspruch zu Axiom II.a.
+
+Also ist die Annahme $-1 > 0$ falsch. Daher ist $1 > 0$.
+
+\subsubsection{2)}
+
+Sind $x, y \in \mathbb{R}$, so schreibt man $x > y$ oder $y < x$, falls $x - y > 0$. Es gilt genau eine der folgenden drei Möglichkeiten:
+
+$x > y$ oder $x = y$ oder $x < y$.
+
+Beweis:
+
+$x > y$ ist äquivalent zu $x - y > 0$.
+$x = y$ ist äquivalent zu $x - y = 0$.
+$x < y$ ist äquivalent zu $y - x > 0$ und dies ist äquivalent mit $-(x - y) > 0$.
+
+Wende nun II.a. auf $x - y$ statt $x$ an.
+
+Insbesondere bedeutet $x < 0$, dass das $-x > 0$.
+
+\subsubsection{Wiederholung}
+
+Ist $x \in \mathbb{R}$, so sei $|x| := \cases x, falls x \ge 0; -x. falls x \le 0$.
+
+$|x| \ge 0$.
+
+\subsubsection{15}
+
+$|xy| = |x| * |y|$
+
+\subsubsection{16}
+
+$|x + y| \le |x| + |y|$
+
+Anschaulich gesprochen ist $|x - y|$ der Abstand zwischen $x$ und $y$.
+
+\subsubsection{17}
+
+\begin{equation}
+ ||x| - |y|| \le |x - y|
+\end{equation}
+
+\begin{proof}
+ \begin{equation}
+  |x| = |(x - y) + y| \le |x - y| + |y|\\
+  \Rightarrow |x| - |y| \le |x - y|\\
+ \end{equation}
+ 
+ Ist $|x| - |y| \ge 0$, so ist $||x| - |y|| = |x| - |y|$ und wir sind fertig.
+ Ist $|x| - |y| < 0$, so ist $||x| - |y|| = -(|x| - |y|) = |y| - |y| \le |y - x| = |-(x - y)| = |x - y|$.
+\end{proof}
+
+\subsubsection{18}
+
+Nach (1) und (9) ist $0 < 1 < 1 + 1 = 2 < 1 + 1 + 1 = 3 < \dots$.
+Deswegen sind die Zahlen $1, 2, 3, \dots$ alle voneinander verschieden; Sie heißen die natürlichen Zahlen und bilden die Menge $\mathbb{N}$.
+$\mathbb{N}_0 := \mathbb{N} \cup \{0\}$.
+$\mathbb{Z} := \mathbb{N}_0 \cup \{x \in \mathbb{R} | -x \in \mathbb{N}\}$.
+$\mathbb{Q} := \{\frac{x}{y} | x \in \mathbb{Z}, y \in \mathbb{N} \}$.
+In $\mathbb{Q}$ gelten die Axiome I und II!
+
+Kommentar dazu: Sind M und N zwei Mengen, so sei $M \cup N$ die Menge, die aus allen Elementen besteht, die in M oder in N liegen.
+Sie heißt die Vereinigung von M und N.
+$M \cap N$ sei die Menge, die aus allen Elementen besteht, die in M und gleichzeitig in N liegen.
+Sie heißt Durchschnitt.
+
+\subsubsection{Definition}
+
+Sei $M \subseteq \mathbb{R}$. Eine reele Zahl c heißt eine obere Schranke von $M$, wenn $x \le c \forall x \in M$.
+$M$ heißt nach oben beschränkt, wenn $M$ eine obere Schranke hat.
+Eine reele Zahl $d$ heißt eine untere Schranke von $M$, wenn $x \ge d \forall x \in M$.
+M heißt nach unten beschränkt, wenn es $M$ eine untere Schranke hat.
+M heißt beschränkt, wenn es eine untere und eine obere Schranke hat.
+
+\subsubsection{Definition}
+
+Wenn es eine kleinste obere Schranke $c$ von $M$ gibt, so heißt $c$ das Supremum von $M$, in Zeichen: $c := sup(M)$.
+
+Das $c$ die kleinste obere Schranke von $M$ ist, bedeutet:
+\begin{itemize}
+ \item $c$ ist obere Schranke von M: $x \le c \forall x \in M$
+ \item Ist $c' \le c$, so ist $c'$ keine obere Schranke und das heißt: Es gibt mindestens ein $x \in M$ mit $x > c'$
+\end{itemize}
+
+\subsection{Definition}
+
+Wenn es eine größte, untere Schranke $d$ von $M$ gibt, so heißt $d$ das Infimum von $M$, in Zeichen: $d := inf(M)$.
+
+\subsection{Definition}
+
+Wenn es ein $x_0 \in M$ gibt mit $x \le x_0 \forall x \in M$, so heißt $x_0$ das Maximum von $M$, in Zeichen: $x_0 = max(M)$.
+
+\subsection{Definition}
+
+Wenn es ein $y_0 \in M$ gibt mit $x \ge y_0 \forall x \in M$, so heißt $y_0$ das Minimum von $M$, in Zeichen: $y_0 = min(M)$.
+
+\subsection{Bemerkung}
+
+\begin{itemize}
+ \item Wenn $max(M)$ existiert, so ist $M$ nach oben beschränkt und $sup(M) = max(M)$
+ \item Wenn $sup(M)$ existiert und $sup(M) \in M$, so ist $sup(M) = max(M)$
+\end{itemize}
+
+\subsection{III Das Vollständigkeitsaxiom}
+
+Ist $M$ eine nicht-leere, nach oben beschränkte Teilmenge von $\mathbb{R}$, so existiert das Supremum von $M$.
+Äquivalent dazu ist: Ist $M$ eine nicht-leere, nach unten beschränkte Teilmenge von $\mathbb{R}$, so existiert das Infimum von $M$.
+
+Seien a und b zwei reelle Zahlen, $a < b$.
+
+\begin{equation}
+ [a, b] := {x \in \mathbb{R} | a \le x \le b} \text{ abgeschlossenes Interval}\\
+ ]a, b[ := {x \in \mathbb{R} | a < x < b} \text{ offenes Interval}\\
+ [a, b[ := {x \in \mathbb{R} | a < x \le b} \text{ halboffenes Interval}\\
+ ]a, b] := {x \in \mathbb{R} | a \le x < b} \text{ halboffenes Interval}\\
+ sup([a, b]) = max([a, b]) = b
+ sup(]a, b[) = b\text{, aber ]a, b[ besitzt kein Maximum}
+\end{equation}
+
+\subsection{Satz 1}
+Ist $a$ eine reelle Zahl, so gibt es ein $n \in \mathbb{N}$ mit $n > a$.
+\begin{proof}
+ Andernfalls wäre a eine obere Schranke von $\mathbb{N}$, im Widerspruch zu Bsp. 5.
+\end{proof}
+
+\subsection{Satz 2}
+
+Ist $b \in \mathbb{R}$ und $b > 0$, so gibt es ein $n \in \mathbb{N}$ mit $\frac{1}{n} \le b$.
+
+\begin{proof}
+ Nach Satz 1 gibt es $n \in \mathbb{N}$ mit $n \ge \frac{1}{b}$. Dann ist $\frac{1}{n} \le b$.
+\end{proof}
+
+
+\end{document}
+ 
