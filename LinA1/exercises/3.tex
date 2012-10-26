@@ -1,0 +1,75 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[german]{babel}
+
+\title{}
+\author{}
+
+\newtheorem*{definition}{Definition}
+\newtheorem*{notice}{Bemerkung}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{example}{Beispiel}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 3}
+
+
+
+Zu zeigen ist, dass $(K, +)$ eine Untergruppe von $(\mathbb{R}, +)$ und $(K\backslash\{0\}, \cdot)$ eine Untergruppe von $(\mathbb{R}\backslash\{0\}, \cdot)$ ist.
+
+\begin{proof}
+ Sei $x \in K$.
+ Schreibe $x = a + b\sqrt{2}$.
+ Es gilt $0 + 0\sqrt{0} \in K$, weil $0 \in \mathbb{Q}$.
+ \begin{equation*}
+  a + b\sqrt{2} + 0 + 0\sqrt{2} = (a + 0) + (b + 0)\sqrt{2} = a + b\sqrt{2}
+ \end{equation*}
+ $0 + 0\sqrt{0}$ ist also das neutrale Element von $K$.
+ 
+ Zusätzlich bestimmen wir ein inverses Element $x^{-1}$, sodass $x + x^{-1} = 0$.
+ \begin{equation*}
+  x + x^{-1} = 0 \Leftrightarrow x^{-1} = -x = -(a + b\sqrt{2}) = -a - b\sqrt{2}
+ \end{equation*}
+ Da $\forall y \in \mathbb{Q} \Rightarrow -y \in \mathbb{Q}$, ist das auch $\forall x \in K \Rightarrow -x \in K$.
+ 
+ Seien $x, y, z \in K$.
+ \begin{align*}
+  x + (y + z) & = x_1 + x_2\sqrt{2} + (y_1 + y_2\sqrt{2} + z_1 + z_2\sqrt{2})\\
+  & = x_1 + x_2\sqrt{2} + ((y_1 + z_1) + (y_2 + z_2)\sqrt{2})\\
+  & = (x_1 + y_1 + z_1) + (x_2 + y_2 + z_2)\sqrt{2}\\
+  & = ((x_1 + y_1) + (x_2 + y_2)\sqrt{2}) + z_1 + z_2\sqrt{2}\\
+  & = (x_1 + x_2\sqrt{2} + y_1 + y_2\sqrt{2}) + z_1 + z_2\sqrt{2} = (x + y) + z
+ \end{align*}
+ Also ist $+$ auf $K$ assoziativ.
+ 
+ Für $x, y \in K$ schreiben wir $x = x_1 + x_2\sqrt{2}$ und $y = y_1 + y_2\sqrt{2}$.
+ \begin{align*}
+  x + y & = x_1 + x_2\sqrt{2} + y_1 + y_2\sqrt{2}\\
+  & = (x_1 + y_1) + (x_2 + y_2)\sqrt{2}\\
+  & = (y_1 + x_1) + (y_2 + x_2)\sqrt{2}\\
+  & = y_1 + y_2\sqrt{2} + x_1 + x_2\sqrt{2} = y + x
+ \end{align*}
+ $+$ auf $K$ ist kommutativ.
+ 
+ Wir definieren $*$.
+ \begin{align*}
+  *: K \times K \mapsto K = (x_1 + x_2\sqrt{2}, y_1 + y_2\sqrt{2}) \rightarrow (x_1 + y_1) + (x_2 + y_2)\sqrt{2}
+ \end{align*}
+
+ 
+ Sei $x \in K\backslash\{0\}$.
+ Schreibe $x = x_1 + x_2\sqrt{2}$.
+ Dann gibt es $1 = 1_1 + 1_2\sqrt{2} \in K$, sodass
+ \begin{align*}
+  x * 1 = (
+ \end{align*}
+
+\end{proof}
+
+\end{document}
