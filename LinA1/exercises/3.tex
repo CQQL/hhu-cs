@@ -1,0 +1,79 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[german]{babel}
+
+\title{Übungsblatt 3, LinA1}
+\author{Marten Lienen (2126759), Übungsgruppe 1}
+
+\newtheorem*{claim}{Behauptung}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übungs 1}
+
+\begin{itemize}
+ \item Da $1 \in H$ und $\forall x, y \in H \Rightarrow xy \in H \Rightarrow 1y \in H \Rightarrow 1y = y$, hat $H$ $1$ als neutrales Element
+ \item $\forall x \in H \Rightarrow x^{-1} \in H$ gilt per Definition von Untergruppen
+ \item Assoziativität ist eine Eigenschaft der Verknüpfung, die von $(G, \cdot)$ übernommen wird.
+ Da $\cdot$ für alle $x, y \in H$ definiert ist, gilt diese Eigenschaft auch in $(H, \cdot)$
+\end{itemize}
+
+Somit hat $H$ alle Eigenschaft einer Gruppe.
+
+\section*{Übungs 2}
+
+\begin{equation*}
+ Bild(f) = \{f(g) \mid g \in G\}
+\end{equation*}
+
+\begin{claim}
+ $Bild(f)$ ist eine Untergruppe von $G'$.
+\end{claim}
+
+\begin{proof}
+ Zu zeigen ist, dass $1_{G'} \in Bild(f)$, $\forall x \in Bild(f) \Rightarrow x^{-1} \in Bild(f)$ und $\forall x, y \in Bild(f) \Rightarrow xy \in Bild(f)$.
+ 
+ Nach Satz 2.1.12 gilt $f(1_G) = 1_{G'} \Rightarrow 1_{G'} \in Bild(f)$ für alle Gruppenhomomorphismen.
+ $Bild(f)$ enthält also ein neutrales Element.
+ 
+ Da $G$ eine Gruppe und $f$ ein Gruppenhomomorphismus ist, gilt nach Satz 2.1.12 $\forall g \in G \Rightarrow g^{-1} \in G \Rightarrow f(g) \in Bild(f) \land (f(g^{-1}) \in Bild(f) \Rightarrow f(g)^{-1} \in Bild(f))$.
+ Also gilt $\forall x \in Bild(f) \Rightarrow x^{-1} \in Bild(f)$.
+ 
+ Es gilt ebenfalls $\forall x, y \in Bild(f) \Rightarrow (\exists p, q \in G \Rightarrow xy = f(p) * f(q) = f(pq) \in Bild(f))$.
+ Weil $p$ und $q$ aus der Gruppe $G$ sind, ist auch $pq$ aus $G$.
+ Demnach muss der Gruppenhomomorphismus $f$ auch $pq$ abbilden.
+ Also gilt $\forall x, y \in Bild(f) \Rightarrow xy \in Bild(f)$.
+\end{proof}
+
+\section*{Übungs 3}
+
+\section*{Übungs 4}
+
+
+
+\section*{Übungs 5}
+
+\subsection*{1}
+
+\begin{claim}
+ $(\mathbb{Z}, +)$ ist eine kommutative Gruppe.
+\end{claim}
+
+\begin{proof}
+ Zu zeigen ist, dass $\exists 0 \in \mathbb{Z} \Rightarrow 0 + x = x + 0 = x$, $\forall x \in \mathbb{Z} \Rightarrow \exists x^{-1} \in \mathbb{Z} \Rightarrow x + x^{-1} = 0$, $\forall x, y, z \in \mathbb{Z} \Rightarrow x + (y + z) = (x + y) + z$ und $\forall x, y \in \mathbb{Z} \Rightarrow x + y = y + x$.
+ 
+ Als neutrales Element nehmen wir $0_{\mathbb{Z}}$, sodass gilt $\exists 0 \in \mathbb{Z} \Rightarrow 0 + x = x + 0 = x$.
+\end{proof}
+
+\subsection*{2}
+
+\subsection*{3}
+
+\subsection*{4}
+
+\end{document}
