@@ -1,0 +1,83 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[german]{babel}
+
+\title{Übungsblatt 2, Ana1}
+\author{Marten Lienen (2126759), Gruppe 8}
+
+\newtheorem*{claim}{Behauptung}
+\newtheorem*{lemma}{Lemma}
+
+\begin{document}
+
+\maketitle
+
+\section*{1.}
+
+\subsection*{a}
+
+\subsection*{b}
+
+\section*{2.}
+
+\subsection*{a}
+
+\subsection*{b}
+
+\subsection*{c}
+
+Für $a = 1, b = 1$ ist $3 = 3 * 1 * 1 > 1^2 + 1^2 = 2$, was im Widerspruch zur Behauptung steht.
+
+\section*{3.}
+
+\begin{lemma}
+ \begin{equation*}
+  x \le y \land -x \le y \Leftrightarrow |x| \le y
+ \end{equation*}
+\end{lemma}
+
+\begin{proof}
+ Angenommen $x \le y$ und $-x \le y$.
+ \begin{align*}
+  & x < 0 \Rightarrow |x| = -x \Rightarrow |x| \le y\\
+  & x \ge 0 \Rightarrow |x| = x \Rightarrow |x| \le y
+ \end{align*}
+
+ Andersherum angenommen $|x| \le y$. Es gilt $x \le |x|$ und $-x \le |x|$. So gilt
+ \begin{equation*}
+  |x| \le y \Rightarrow x \le y \land -x \le y
+ \end{equation*}
+\end{proof}
+
+\begin{claim}
+ \begin{equation*}
+  [a - \varepsilon, a + \varepsilon] = \{x \in \mathbb{R} \mid |x - a| \le \varepsilon\}
+ \end{equation*}
+\end{claim}
+
+\begin{proof}
+ \begin{align*}
+  & [a - \varepsilon, a + \varepsilon] = \{x \in \mathbb{R} \mid a - \varepsilon \le x \le a + \varepsilon\}\\
+  = & \{x \in \mathbb{R} \mid (a - \varepsilon \le x) \land (x \le a + \varepsilon)\}\\
+  = & \{x \in \mathbb{R} \mid (-\varepsilon \le x - a) \land (x - a \le \varepsilon)\}\\
+  = & \{x \in \mathbb{R} \mid (-(x - a) \le \varepsilon) \land (x - a \le \varepsilon)\}\\
+  = & \{x \in \mathbb{R} \mid |x - a| \le \varepsilon\}
+ \end{align*}
+\end{proof}
+
+\section*{4.}
+
+\subsection*{a}
+
+\subsection*{b}
+
+\section*{5.}
+
+\subsection*{a}
+
+\subsection*{b}
+
+\end{document}
