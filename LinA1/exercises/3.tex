@@ -27,7 +27,7 @@
  Da $\cdot$ für alle $x, y \in H$ definiert ist, gilt diese Eigenschaft auch in $(H, \cdot)$
 \end{itemize}
 
-Somit hat $H$ alle Eigenschaft einer Gruppe.
+Somit hat $H$ alle Eigenschaften einer Gruppe.
 
 \section*{Übung 2}
 
@@ -56,22 +56,26 @@ Somit hat $H$ alle Eigenschaft einer Gruppe.
 
 \section*{Übung 3}
 
+Für jedes $x \in K$ werde ich seinen Wert auch als $x_1 + x_2\sqrt{2}$ schreiben.
+Außerdem sind sie beiden Verknüpfungen auf $K$ definiert als
+\begin{description}
+ \item[$+: K \times K \mapsto K$] $(x, y) \rightarrow (x_1 + y_1) + (x_2 + y_2)\sqrt{2}$
+ \item[$*: K \times K \mapsto K$] $(x, y) \rightarrow (x_1y_1 + 2x_2y_2) + (x_2y_1 + x_1y_2)\sqrt{2}$
+\end{description}
 
-
-Zu zeigen ist, dass $(K, +)$ eine Untergruppe von $(\mathbb{R}, +)$ und $(K\backslash\{0\}, \cdot)$ eine Untergruppe von $(\mathbb{R}\backslash\{0\}, \cdot)$ ist.
+Zu zeigen ist, dass $(K, +)$ eine Untergruppe von $(\mathbb{R}, +)$ und $(K^\times, *)$ eine Untergruppe von $(\mathbb{R}^\times, *)$ ist.
 
 \begin{proof}
+ Zuerst zeigen wir, dass $(K, +)$ eine Untergruppe von $(\mathbb{R}, +)$.
  Sei $x \in K$.
- Schreibe $x = a + b\sqrt{2}$.
- Es gilt $0 + 0\sqrt{0} \in K$, weil $0 \in \mathbb{Q}$.
+ Dann gibt es das neutrale Element $0_K \in K = 0 + 0\sqrt{2}$, weil $0 \in \mathbb{Q}$.
  \begin{equation*}
-  a + b\sqrt{2} + 0 + 0\sqrt{2} = (a + 0) + (b + 0)\sqrt{2} = a + b\sqrt{2}
+  x + 0_K = (x_1 + 0) + (x_2 + 0)\sqrt{2} = (0 + x_1) + (0 + x_2)\sqrt{2} = 0_K + x = x
  \end{equation*}
- $0 + 0\sqrt{0}$ ist also das neutrale Element von $K$.
  
  Zusätzlich bestimmen wir ein inverses Element $x^{-1}$, sodass $x + x^{-1} = 0$.
  \begin{equation*}
-  x + x^{-1} = 0 \Leftrightarrow x^{-1} = -x = -(a + b\sqrt{2}) = -a - b\sqrt{2}
+  x + x^{-1} = 0 \Leftrightarrow x^{-1} = -x = -(x_1 + x_2\sqrt{2}) = (-x_1) + (-x_2)\sqrt{2}
  \end{equation*}
  Da $\forall y \in \mathbb{Q} \Rightarrow -y \in \mathbb{Q}$, ist das auch $\forall x \in K \Rightarrow -x \in K$.
  
@@ -85,7 +89,7 @@ Zu zeigen ist, dass $(K, +)$ eine Untergruppe von $(\mathbb{R}, +)$ und $(K\back
  \end{align*}
  Also ist $+$ auf $K$ assoziativ.
  
- Für $x, y \in K$ schreiben wir $x = x_1 + x_2\sqrt{2}$ und $y = y_1 + y_2\sqrt{2}$.
+ Sei $x, y \in K$.
  \begin{align*}
   x + y & = x_1 + x_2\sqrt{2} + y_1 + y_2\sqrt{2}\\
   & = (x_1 + y_1) + (x_2 + y_2)\sqrt{2}\\
@@ -94,24 +98,62 @@ Zu zeigen ist, dass $(K, +)$ eine Untergruppe von $(\mathbb{R}, +)$ und $(K\back
  \end{align*}
  $+$ auf $K$ ist kommutativ.
  
- Wir definieren $*$.
+ Sei $x \in K^\times$.
+ Dann gibt es das neutrale Element $1 = 1 + 0\sqrt{2} \in K^\times$, sodass
  \begin{align*}
-  *: K \times K \mapsto K = (x_1 + x_2\sqrt{2}, y_1 + y_2\sqrt{2}) \rightarrow (x_1 + y_1) + (x_2 + y_2)\sqrt{2}
+  1x & = (1x_1 + 2 * 0 * x_2) + (0x_1 + 1x_2)\sqrt{2}\\
+  & = (1x_1 + 2 * 0 * x_2) + (0x_1 + 1x_2)\sqrt{2}\\
+  & = (x_11 + 2 * x_2 * 0) + (x_1 * 0 + x_2 * 1)\sqrt{2} = x1\\
+  & = x_1 + x_2\sqrt{2} = x
+ \end{align*}
+ 
+ Dann bestimmen wir das inverse Element $k^{-1}$, sodass $xk^{-1} = 1$.
+ \begin{align*}
+  xk^{-1} = (x_1k^{-1}_1 + 2x_2k^{-1}_2) + (x_2k^{-1}_1 + x_1k^{-1}_2)\sqrt{2} = 1 + 0\sqrt{2} = 1
+ \end{align*}
+ Es muss also gelten
+ \begin{align*}
+  1 = x_1k^{-1}_1 + 2x_2k^{-1}_2 \land 0 = x_2k^{-1}_1 + x_1k^{-1}_2
  \end{align*}
 
  
- Sei $x \in K\backslash\{0\}$.
- Schreibe $x = x_1 + x_2\sqrt{2}$.
- Dann gibt es $1 = 1_1 + 1_2\sqrt{2} \in K$, sodass
+ Es gilt auch die Assoziativität von $*$ auf $K$.
+ Seien $x, y, z \in K$.
  \begin{align*}
-  x * 1 = (
+  x(yz) & = x((y_1z_1 + 2y_2z_2) + (y_2z_1 + y_1z_2)\sqrt{2})\\
+  & = (x_1(y_1z_1 + 2y_2z_2) + 2x_2(y_2z_1 + y_1z_2)) + (x_2(y_1z_1 + 2y_2z_2) + x_1(y_2z_1 + y_1z_2))\sqrt{2}\\
+  & = ((x_1y_1z_1 + 2x_1y_2z_2) + 2(x_2y_2z_1 + x_2y_1z_2)) + ((x_2y_1z_1 + 2x_2y_2z_2) + (x_1y_2z_1 + x_1y_1z_2))\sqrt{2}\\
+  & = ((x_1y_1 + 2x_2y_2)z_1 + 2(x_2y_1 + x_1y_2)z_2) + ((x_2y_1 + x_1y_2)z_1 + (x_1y_1 + 2x_2y_2)z_2)\sqrt{2}\\
+  & = ((x_1y_1 + 2x_2y_2) + (x_2y_1 + x_1y_2)\sqrt{2})z = (xy)z
  \end{align*}
-
+ 
+ Dazu ist $*$ auch kommutativ.
+ Seien $x, y \in K^\times$.
+ \begin{align*}
+  xy & = (x_1y_1 + 2x_2y_2) + (x_2y_1 + x_1y_2)\sqrt{2}\\
+  & = (y_1x_1 + 2y_2x_2) + (y_1x_2 + y_2x_1)\sqrt{2} = yx
+ \end{align*}
 \end{proof}
 
 \section*{Übung 4}
 
-
+\begin{proof}
+ Zu zeigen ist, dass $f$ für $+$ und $*$ auf $\mathbb{C}$ jeweils ein Gruppenhomomorphismus ist.
+ Seien $x, y \in \mathbb{C}$.
+ 
+ \begin{align*}
+  f(x) + f(y) & = \overline{x} + \overline{y}\\
+  & = (x_1 - x_2i) + (y_1 - y_2i)\\
+  & = (x_1 + y_1) - (x_2 + y_2)i = \overline{(x_1 + y_1) + (x_2 + y_2)i} = f(x + y)
+ \end{align*}
+ 
+ \begin{align*}
+  f(x) * f(y) & = \overline{x} * \overline{y}\\
+  & = (x_1 + (-x_2)i) * (y_1 + (-y_2)i)\\
+  & = (x_1y_1 - x_2y_2) + ((-x_1y_2) + (-x_2y_1))i\\
+  & = (x_1y_1 - x_2y_2) - (x_1y_2 + x_2y_1)i = \overline{(x_1y_1 - x_2y_2) + (x_1y_2 + x_2y_1)i} = f(xy)
+ \end{align*}
+\end{proof}
 
 \section*{Übung 5}
 
@@ -125,12 +167,50 @@ Zu zeigen ist, dass $(K, +)$ eine Untergruppe von $(\mathbb{R}, +)$ und $(K\back
  Zu zeigen ist, dass $\exists 0 \in \mathbb{Z} \Rightarrow 0 + x = x + 0 = x$, $\forall x \in \mathbb{Z} \Rightarrow \exists x^{-1} \in \mathbb{Z} \Rightarrow x + x^{-1} = 0$, $\forall x, y, z \in \mathbb{Z} \Rightarrow x + (y + z) = (x + y) + z$ und $\forall x, y \in \mathbb{Z} \Rightarrow x + y = y + x$.
  
  Als neutrales Element nehmen wir $0_{\mathbb{Z}}$, sodass gilt $\exists 0 \in \mathbb{Z} \Rightarrow 0 + x = x + 0 = x$.
+ Nach Definition von $\mathbb{Z}$ enthält es $\forall x \in \mathbb{Z}$ ein $-x \in \mathbb{Z}$, sodass $x + (-x) = 0$.
+ Der $+$-Operator ist auf 
 \end{proof}
 
 \subsection*{2}
 
 \subsection*{3}
 
+\begin{claim}
+ $K = (Bij(M), \circ)$ ist eine Gruppe.
+\end{claim}
+
+\begin{proof}
+ Zu zeigen ist, dass $K$ ein neutrales Element und zu jedem $x \in K$ ein inverses Element hat und die Verknüpfung assoziativ ist.
+ 
+ Das neutrale Element ist $id_M$.
+ Sei $f \in K$.
+ \begin{equation*}
+  f \circ id_M = f(id_M(x)) = f(x) = id_M(f(x)) = id_M \circ f = f
+ \end{equation*}
+
+ Nach der Voraussetzung, dass $f$ eine Bijektion ist, gibt es $g \in K$ als inverses Element, sodass $f \circ g = id_M$.
+ 
+ $K$ ist auch assoziativ.
+ Seien $f, g, h \in K$.
+ \begin{align*}
+  f \circ (g \circ h) = f \circ g(h(x)) = f(g(h(x))) = f(g(x)) \circ h = (f \circ g) \circ h
+ \end{align*}
+\end{proof}
+
 \subsection*{4}
+
+\begin{claim}
+ $(Bij(M), \circ)$ ist nicht kommutativ, wenn $M$ mindestens drei paarweise verschiedene Elemente enthält.
+\end{claim}
+
+\begin{proof}
+ Nach der Definition muss $\forall f, g \in Bij(M) \Rightarrow f \circ g = g \circ f$ gelten, damit die Gruppe kommutativ ist.
+ Demnach reicht es also ein Gegenbeispiel zu finden.
+ Seien $a, b, c \in M$ paarweise verschieden und seien weiterhin $f, g \in Bij(M)$.
+ $f$ sei definiert als $f(a) = b, f(b) = c, f(c) = a$ und $g$ sei definiert als $g(a) = a, g(b) = c, g(c) = b$.
+ \begin{equation*}
+  f(g(a)) = f(a) = a \ne c = g(b) = g(f(a))
+ \end{equation*}
+\end{proof}
 
 \end{document}

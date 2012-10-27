@@ -19,6 +19,8 @@
 
 \subsection*{a}
 
+
+
 \subsection*{b}
 
 \section*{2.}
@@ -72,7 +74,39 @@ Für $a = 1, b = 1$ ist $3 = 3 * 1 * 1 > 1^2 + 1^2 = 2$, was im Widerspruch zur 
 
 \subsection*{a}
 
+\begin{claim}
+ \begin{equation*}
+  P(n) := x, y > 0 \land x < y \Rightarrow x^n < y^n
+ \end{equation*}
+\end{claim}
+
+\begin{proof}
+ $P$ gilt für $1$: $x^1 = x < y = y^1$.
+ 
+ Wenn $0 < x < y$ und gilt, dass $x^n < y^n$, dann
+ \begin{equation*}
+  x^{n + 1} = xx^n < yx^n < yy^n = y^{n + 1}
+ \end{equation*}
+ Somit gilt $P$ auch für $n + 1$.
+\end{proof}
+
 \subsection*{b}
+
+\begin{claim}
+ Sei $n = 2k - 1$ mit $k \in \mathbb{N}$ und $x, y \in \mathbb{R}$.
+ Dann ist $x < y \Leftrightarrow x^n < y^n$.
+\end{claim}
+
+\begin{proof}
+ Ich beweise es mit vollständiger Induktion über $k$.
+ 
+ Die Aussage ist wahr für $k = 1$: $x < y \Leftrightarrow x^1 < y^1$.
+ 
+ ``$\Rightarrow$'': Wenn $x < y \Rightarrow x^{2k - 1} < y^{2k - 1}$ gilt, dann gilt auch:
+ \begin{equation*}
+  x < y \Rightarrow 
+ \end{equation*}
+\end{proof}
 
 \section*{5.}
 
