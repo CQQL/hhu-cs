@@ -19,15 +19,60 @@
 
 \subsection*{a}
 
+\begin{lemma}
+ $c$ ist genau dann obere Schranke von $M \cup N$, wenn es obere Schranke von $M$ und $N$ ist.
+\end{lemma}
 
+\begin{proof}
+ \begin{align*}
+  \forall x \in M \cup N (x \le c) & \Leftrightarrow \forall x \in \{d \mid d \in M \lor d \in N\} (x \le c)\\
+  & \Leftrightarrow (\forall m \in M (m \le c)) \land (\forall n \in N (n \le c))
+ \end{align*}
+\end{proof}
+
+\begin{proof}
+ Sei $c$ das Supremum von $M \cup N$.
+ $c$ ist also auch obere Schranke von $M$ und $N$ und $\forall c' < c \exists x \in M \cup N (x > c')$.
+ Wäre $c < max \{sup(M), sup(N)\}$, dann wäre $c < sup(M) \lor c < sup(N)$, könnte also nicht obere Schranke von $M$ oder $N$ sein, was im Widerspruch zur Vorraussetzung steht.
+ Wäre $c > max \{sup(M), sup(N)\}$, so gäbe es die obere Schranke $max \{sup(M), sup(N)\} < d < c$ von $M$ und $N$, die auch obere Schranke von $M \cup N$ ist.
+ Sie kann jedoch nicht existieren, da $c$ die kleinste obere Schranke von $M \cup N$ ist.
+\end{proof}
 
 \subsection*{b}
+
+\begin{proof}
+ Seien $c = sup(M \cap N)$, $d = sup(M)$ und $e = sup(N)$.
+ Da $M \cap N \subseteq M$ und $M \cap N \subseteq N$ sind $d$ und $e$ auch obere Schranken von $M \cap N$, sodass gilt $c \le d \le c \le e \Rightarrow c \le min \{d, e\}$.
+\end{proof}
+
+Das nicht immer Gleichheit gilt, sieht man an folgendem Beispiel
+\begin{align*}
+ & M = \{1, 2\}\\
+ & N = \{1, 3\}\\
+ & sup(M \cap N) = 1 < 2 = min \{2, 3\} = min \{sup(M), sup(N)\}
+\end{align*}
 
 \section*{2.}
 
 \subsection*{a}
 
+\begin{proof}
+ Nach Satz 4 gilt
+ \begin{equation*}
+  \forall x \in \mathbb{R} x^2 \ge 0
+ \end{equation*}
+
+ \begin{align*}
+  2ab \le a^2 + b^2 \Leftrightarrow (a^2 + b^2) - 2ab = a^2 + b^2 - 2ab = (a - b)^2 \ge 0
+ \end{align*}
+\end{proof}
+
 \subsection*{b}
+
+\begin{proof}
+ Wenn $ab \ge 0$, gilt $ab < 2ab \le a^2 + b^2$.
+ Wenn $ab < 0$, gilt $ab < 0 < a^2 + b^2$, weil für $x \ne 0 \in \mathbb{R} x^2 > 0$ gilt.
+\end{proof}
 
 \subsection*{c}
 
@@ -75,15 +120,16 @@ Für $a = 1, b = 1$ ist $3 = 3 * 1 * 1 > 1^2 + 1^2 = 2$, was im Widerspruch zur 
 \subsection*{a}
 
 \begin{claim}
- \begin{equation*}
-  P(n) := x, y > 0 \land x < y \Rightarrow x^n < y^n
- \end{equation*}
+ \begin{align*}
+  & x, y > 0\\
+  & P(n) := x < y \Leftrightarrow x^n < y^n
+ \end{align*}
 \end{claim}
 
 \begin{proof}
  $P$ gilt für $1$: $x^1 = x < y = y^1$.
  
- Wenn $0 < x < y$ und gilt, dass $x^n < y^n$, dann
+ Wenn $x < y$ und $x^n < y^n$ gilt, dann
  \begin{equation*}
   x^{n + 1} = xx^n < yx^n < yy^n = y^{n + 1}
  \end{equation*}
@@ -97,20 +143,30 @@ Für $a = 1, b = 1$ ist $3 = 3 * 1 * 1 > 1^2 + 1^2 = 2$, was im Widerspruch zur 
  Dann ist $x < y \Leftrightarrow x^n < y^n$.
 \end{claim}
 
+\begin{equation*}
+ x^n = x^{2k}x^{-1} = (x^2)^kx^{-1}
+\end{equation*}
+\begin{equation*}
+ y^n = y^{2k}y^{-1} = (y^2)^ky^{-1}
+\end{equation*}
+
 \begin{proof}
- Ich beweise es mit vollständiger Induktion über $k$.
+ Ich beweise es mit Induktion über $k$.
+ Für $k = 1$ gilt die Behauptung: $x = x^1 < y^1 = y$.
  
- Die Aussage ist wahr für $k = 1$: $x < y \Leftrightarrow x^1 < y^1$.
- 
- ``$\Rightarrow$'': Wenn $x < y \Rightarrow x^{2k - 1} < y^{2k - 1}$ gilt, dann gilt auch:
- \begin{equation*}
-  x < y \Rightarrow 
- \end{equation*}
+ Wenn $x < y$ und $x^{2k - 1} < y^{2k - 1}$ gelten, gilt auch
+ \begin{align*}
+  x^{2(k + 1) - 1} = x^{2k - 1 + 2} = x^{2k - 1}x^2 < y^{2k - 1}y^2 = y^{2k - 1 + 2} = y^{2(k + 1) - 1}
+ \end{align*}
+ Somit gilt die Behauptung auch für $k + 1$.
 \end{proof}
 
 \section*{5.}
 
 \subsection*{a}
+
+Sei $\varepsilon > 0$.
+Dann gibt es ein $N \in \mathbb{N}$, sodass $|a_n| < \varepsilon \forall n \ge N$.
 
 \subsection*{b}
 

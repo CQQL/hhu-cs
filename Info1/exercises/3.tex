@@ -1,6 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage[german]{babel}
 
@@ -60,41 +61,39 @@ Ein Nachteil ist, dass die Abweichung zum arithmetischen Mittel sehr groß sein 
 
 \subsection*{a}
 
+\begin{equation*}
+ p \le q \Rightarrow g \in O(f)
+\end{equation*}
+
 \begin{align*}
  & 0 \le g(n) \le c * f(n)
  \overset{c := 1}{\Rightarrow} 0 \le n^p \le n^q
- \Leftrightarrow -\infty \le p \le q\\
- & p \le q \Rightarrow g \in O(f)
+ \Leftrightarrow -\infty \le p \le q
 \end{align*}
 
 \subsection*{b}
+
+\begin{equation*}
+ p \le q \Rightarrow g \in O(f)
+\end{equation*}
 
 \begin{align*}
  & 0 \le g(n) \le c * f(n)
  \Leftrightarrow 0 \le a * n^p \le c * n^q
  \overset{c := a}{\Rightarrow} 0 \le n^p \le n^q
- \Leftrightarrow -\infty \le p \le q\\
- & p \le q \Rightarrow g \in O(f)
+ \Leftrightarrow -\infty \le p \le q
 \end{align*}
 
 \subsection*{c}
 
-\begin{align*}
- & 0 \le g(n) \le c * f(n)
- \Leftrightarrow 0 \le n^p + b \le c * n^q\\
- TODO
- & p \le q \Rightarrow g \in O(f)
-\end{align*}
+\begin{equation*}
+ p \le q \Rightarrow g \in O(f)
+\end{equation*}
 
 \subsection*{d}
 
-\begin{align*}
- & 0 \le g(n) \le c * f(n)
- \Leftrightarrow 0 \le n^p + n^q \le c * n^q
- \Leftrightarrow 0 \le n^p \le (c - 1) * n^q\\
- & \overset{c := 2}{\Rightarrow} 0 \le n^p \le n^q
- \Leftrightarrow -\infty \le p \le q\\
- & p \le q \Rightarrow g \in O(f)
-\end{align*}
+\begin{equation*}
+ p < q \Rightarrow g \in O(f)
+\end{equation*}
 
 \end{document}
