@@ -12,6 +12,8 @@
 \newtheorem*{notice}{Bemerkung}
 \newtheorem*{lemma}{Lemma}
 \newtheorem*{example}{Beispiel}
+\newtheorem*{vorbemerkung}{Vorbemerkung zur Notation}
+\newtheorem*{satz}{Satz}
 
 \begin{document}
 
@@ -178,5 +180,120 @@ Für $|a| > 1$ divergiert die Folge $(a^n)$. Für $|a| < 1$ ist $(a^n)$ eine Nul
 
 Sei $(a_n)$ eine beschränkte und monoton wachsende Folge.
 Dann ist ist $(a_n)$ konvergent und der $\lim_{n \rightarrow \infty} a_n = sup\{a_n \mid n \in \mathbb{N}\}$.
+
+\begin{proof}
+ Sei $a := sup\{a_n \mid n \in \mathbb{N}\}$.
+ Dann ist $a$ die kleinste obere Schranke.
+ Sei $\varepsilon > 0$.
+ Dann ist $a - \varepsilon$ keine obere Schranke, das heißt, es gibt ein $N \in \mathbb{N}$ mit $a_N > a - \varepsilon$.
+ Weil $(a_n)$ monoton wachsend ist, ist $a_n > a - \varepsilon \forall n \ge N$.
+ Weil $a$ eine obere Schranke ist, gilt: $a_n \le a \forall n \in \mathbb{N}$.
+ Für $n \ge N$ gilt insgesamt, $a_n \in ]a - \varepsilon, a] \subseteq ]a-\varepsilon, a + \varepsilon[$.
+\end{proof}
+
+\begin{example}
+ Wie man Satz 8 benutzt, um Grenzwerte auszurechnen:
+ Sei $0 < x < 1$ und $a_n := x^n$.
+ Dann ist die Folge $(a_n)$ monoton fallend und durch $0$ nach unten beschränkt.
+ Nach Satz 8 konvergiert $(a_n)$.
+ Sei $a = \lim_{n \rightarrow \infty} a_n$.
+ Es ist $a_{n + 1} = x * a_n$.
+ Durch Übergang zum Limes folgt: $a = x * a \Rightarrow (1 - x)a = 0 \Rightarrow a = 0$.
+\end{example}
+
+\section*{Teilfolgen}
+
+Wenn man aus einer Folge $a_1, a_2, \dots$ endlich oder unendlich viele Glieder streicht, sodass aber noch unendlich viele übrig bleiben, so sagt man, dass die verbleibenden Glieder eine Teilfolge der Ausgangfolge $(a_n)$ sind.
+
+\begin{vorbemerkung}
+ Statt ``die Abbildung $f: X \rightarrow Y$'' sagt man oft: ``die Abbildung $x \mapsto f(x)$ von $X$ in $Y$''.
+ Das erspart manchmal, der Abbildung einen Namen geben zu müssen, z.B. sagt man: ``Die Abbildung $x \mapsto x^2$ von $\mathbb{R}$ in $\mathbb{R}$''.
+\end{vorbemerkung}
+
+\begin{definition}
+ Ist $(a_n)$ eine Folge und ist $(n_k)_{k \ge 1}$ eine streng monoton wachsende Folge in $\mathbb{N}$, so erhält man durch $k \mapsto a_{n_k}$ eine Folge, die man mit $(a_{n_k})$ bezeichnet und die eine Teilfolge von $(a_n)$ heißt.
+\end{definition}
+
+\begin{notice}
+ Jede Teilfolge einer beschränkten Folge ist beschränkt.
+\end{notice}
+
+\begin{notice}
+ Ist eine Folge konvergent mit Grenzwert $a$, so ist auch jede Teilfolge konvergent mit Grenzwert $a$.
+\end{notice}
+
+\begin{satz}
+ Sei $(a_n)$ eine Folge reeller Zahlen.
+ Dann besitzt  $(a_n)$ eine monotone (wachsende/fallende) Teilfolge.
+\end{satz}
+
+\begin{proof}
+ Man nennt eine Zahl eine natürliche Zahl $n$ eine Gipfelstelle von $(a_n)$, wenn $a_m < a_n \forall m > n$.
+ Sei $G$ die Menge aller Gipfelstellen von $(a_n)$.
+ 
+ 1. Fall: Sei $G$ eine unendliche Menge, $G = \{m_1, m_2, \dots\}$ mit $m_1 < m_2 < \dots$.
+ Dann ist $a_{m_1} > a_{m_2} > a_{m_3} > \dots$.
+ Deswegen ist $(a_{m_k})$ eine monoton fallende Teilfolge von $(a_n)$.
+ 
+ 2. Fall: Sei $G$ eine endliche Menge.
+ Dann gibt es eine Zahl $n1 \in \mathbb{N}$, sodass $n_1$ größer als jedes Element von $G$ ist.
+ Insbesondere ist $n_1$ keine Gipfelstelle, das heißt es gibt $n_2 > n_1$ mit $a_{n_2} \ge a_{n_1}$.
+ Dann ist auch $n_2$ keine Gipfelstelle, das heißt es gibt $n_3 > n_2$ mit $a_{n_3} \ge a_{n_2}$, usw.
+ Und man erhält eine Teilfolge $(a_{n_k})$, die monoton wachsend ist.
+\end{proof}
+
+\begin{satz}
+ Satz von Bolzano-Weierstraß.
+ 
+ Jede beschränkte Folge $(a_n)$ enthält eine konvergente Teilfolge.
+\end{satz}
+
+\begin{proof}
+ Folgt direkt aus den zwei vorigen Sätzen (8, 9).
+\end{proof}
+
+\begin{example}
+ Sei $a_n := (-1)^n * \frac{1}{n}$.
+ 
+ Die Folge $(a_n)$ ist konvergent mit Grenzwert $0$; sie ist weder monton fallend noch monoton wachsend.
+ Teilfolgen von $(a_n)$ sind z.B. $(a_{2k})_{k \ge 1}$.
+ Das ist eine monton fallende Teilfolge.
+ $(a_{2k - 1})_{k \ge 1}$: Das ist eine monton wachsende Folge.
+ Die Gipfelstellen von $(a_n)$ sind alle gerade Zahlen $n$.
+\end{example}
+
+\begin{satz}
+ Konvergenzkriterium von Cauchy
+ 
+ Sei $(a_n)$ eine Folge.
+ Dann sind äquivalent:
+ \begin{itemize}
+  \item Die Folge $(a_n)$ ist konvergent.
+  \item Für jedes $\varepsilon > 0$ gibt es ein $N \in \mathbb{N}$, sodass $|a_n - a_m| < \varepsilon$ für alle $n, m \ge N$.
+ \end{itemize}
+\end{satz}
+
+\begin{proof}
+ ``$\Rightarrow$'': Sei $a := \lim_{n \rightarrow \infty} a_n$.
+ Sei $\varepsilon > 0$.
+ Es gibt ein $N \in \mathbb{N}$ mit der $|a_n - a| < \frac{\varepsilon}{2} \forall n \ge N$.
+ Sind $n, m \ge N$, so ist $|a_n - a_m| = |(a_n - a) - (a_m - a)| \le |a_n - a| + |a_m - a| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$.
+ 
+ ``$\Leftarrow$'': 1. Wir zeigen, dass $(a_n)$ beschränkt ist:
+ Es gibt ein $N \in \mathbb{N}$, sodass $|a_n - a_m| < 1$ für alle $n, m \ge N$.
+ Insbesondere ist $|a_n - a_N| < 1$ für alle $n \ge N$.
+ Für alle $n \ge N$ folgt, $|a_n| = |a_n - a_N + a_N| \le |a_n - a_N| + |a_N| \le 1 + |a_N|$.
+ Sei $M := max \{1 + |a_n|, |a_1|, |a_2|, \dots, |a_{N - 1}|\}$.
+ Dann ist $|a_n| \le M \forall n \in \mathbb{N}$.
+ 
+ 2. Wir zeigen, dass $(a_n)$ konvergent ist:
+ Nach Bolzano-Weierstraß besitzt $(a_n)$ eine konvergente Teilfolge $(a_{n_k})$.
+ Sei $a := \lim_{k \rightarrow \infty} a_{n_k}$.
+ Wir zeigen, dass $(a_n)$ gegen $a$ konvergiert.
+ Sei $\varepsilon > 0$.
+ Es gibt ein $N \in \mathbb{N}$ mit $|a_n - a_m| < \frac{\varepsilon}{2} \forall n, m \ge N$.
+ Weil $(a_{n_k})$ gegen $a$ konvergiert, gibt es ein $k$ mit $|a_{n_k} - a| < \frac{\varepsilon}{2}$ und $n_k \ge N$.
+ Ist $n \ge N$, so ist $|a_n - a| = |(a_n - a_{n_k}) - (a + a_{n_k})| \le |a_n - a_{n_k}| + |a_{n_k} - a| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$.
+\end{proof}
 
 \end{document}
