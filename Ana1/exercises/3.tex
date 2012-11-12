@@ -1,0 +1,150 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[german]{babel}
+
+\title{Ana1, Übungsblatt 3}
+\author{Marten Lienen (2126759), Gruppe 8}
+
+\newtheorem*{claim}{Behauptung}
+\newtheorem*{definition}{Definition}
+\newtheorem*{notice}{Bemerkung}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{example}{Beispiel}
+
+\begin{document}
+
+\maketitle
+
+\section*{9}
+
+\subsection*{a}
+
+\begin{align*}
+ \lim_{n \rightarrow \infty} \frac{n^2 - n + 1}{2n^3 + n + 1} = \lim_{n \rightarrow \infty} \frac{\frac{1}{n} - \frac{1}{n^2} + \frac{1}{n^3}}{2 + \frac{1}{n^2} + \frac{1}{n^3}} = \frac{0}{2} = 0
+\end{align*}
+
+\subsection*{b}
+
+\begin{align*}
+ \lim_{n \rightarrow \infty} \frac{n^2 - n + 1}{8n^2 - 3} = \lim_{n \rightarrow \infty} \frac{1 - \frac{1}{n} + \frac{1}{n^2}}{8 - \frac{3}{n^2}} = \frac{1}{8}
+\end{align*}
+
+\subsection*{c}
+
+\begin{align*}
+ \lim_{n \rightarrow \infty} \frac{n^3 - 17n + 1}{412n^2 + 13} = \lim_{n \rightarrow \infty} \frac{1 - \frac{17}{n^2} + \frac{1}{n^3}}{\frac{412}{n} + \frac{13}{x^3}}
+\end{align*}
+
+Es konvergiert nicht, weil $\frac{412}{n} + \frac{13}{x^3}$ den Grenzwert $0$ hat.
+
+\subsection*{Regeln}
+
+Man scheint folgende Regel erkennen zu können
+
+\begin{description}
+ \item[Grad(Zähler) $<$ Grad(Nenner)] Grenzwert ist $0$
+ \item[Grad(Zähler) $=$ Grad(Nenner)] Grenzwert ist eine Zahl aus $\mathbb{Q}$
+ \item[Grad(Zähler) $>$ Grad(Nenner)] Konvergiert nicht
+\end{description}
+
+\section*{10}
+
+\subsection*{a}
+
+\begin{proof}
+ \begin{align*}
+  a_n \rightarrow 0\\
+  \sqrt{a_n}\sqrt{a_n} \rightarrow 0
+ \end{align*}
+
+ Nach Satz 3 muss mindestens einer der Faktoren eine Nullfolge sein.
+ Da hier beide gleich sind, folgt, dass $(\sqrt{a_n})$ eine Nullfolge sein muss.
+\end{proof}
+
+\subsection*{b}
+
+\begin{proof}
+ Angenommen $a < 0$.
+ $(a_n)$ müsste kleiner sein als $0$ für fast alle $n \in \mathbb{N}$, was ein Widerspruch dazu ist, dass $(a_n)$ eine Folge nicht-negativer, reeller Zahlen ist.
+ 
+ \begin{equation*}
+  a_n = \sqrt{a_n}^2 \rightarrow a = \sqrt{a}^2
+ \end{equation*}
+ 
+ Nach der Rechenregel für Grenzwerte $a_nb_n \rightarrow ab$ folgt:
+ \begin{equation*}
+  \sqrt{a_n}\sqrt{a_n} \rightarrow \sqrt{a}\sqrt{a} \Rightarrow \sqrt{a_n} \rightarrow \sqrt{a}
+ \end{equation*}
+\end{proof}
+
+\section*{11}
+
+\subsection*{a}
+
+
+
+\subsection*{b}
+
+Da $n > \sqrt{n}$ für alle $n \in \mathbb{N}$ und $|n - \sqrt{2}|$ streng monoton wächst, muss $b_n < 1$ sein und streng monoton fallen.
+
+\subsection*{c}
+
+\begin{align*}
+ a_n := n^{\frac{1}{2n}} = \sqrt[2n]{n}\\
+ 1 \rightarrow 1\\
+ (b_n) \rightarrow 0
+\end{align*}
+ 
+Nach den Rechenregeln für Grenzwerte folgt aus $a_n = 1 + b_n$, dass $\sqrt[2n]{n}~\rightarrow~1$.
+
+\section*{12}
+
+\subsection*{a}
+
+\begin{proof}
+ \begin{equation*}
+  a_1 = \sqrt{2} < 2
+ \end{equation*}
+
+ Es bleibt zu zeigen, dass $a_{n + 1} < 2$, wenn $a_n < 2$.
+ 
+ \begin{align*}
+  a_n < 2 \Leftrightarrow 2 + a_n < 4 \Leftrightarrow \sqrt{2 + a_n}^2 < 2^2 \Rightarrow \sqrt{2 + a_n} < 2 \Leftrightarrow a_{n + 1} < 2
+ \end{align*}
+\end{proof}
+
+\subsection*{b}
+
+\begin{proof}
+ \begin{equation*}
+  a_1 < a_2 \Leftrightarrow \sqrt{2} < \sqrt{2 + \sqrt{2}}
+ \end{equation*}
+
+ Es bleibt zu zeigen, dass $a_{n + 1} < a_{n + 2}$, wenn $a_n < a_{n + 1}$.
+ 
+ \begin{align*}
+  a_n < a_{n + 1} & \Leftrightarrow 2 + a_n < 2 + a_{n + 1}\\
+  & \Leftrightarrow \sqrt{2 + a_n} < \sqrt{2 + a_{n + 1}}\\
+  & \Leftrightarrow a_{n + 1} < a_{n + 2}
+ \end{align*}
+\end{proof}
+
+\subsection*{c}
+
+Nach Satz 8 konvergiert die Folge $(a_n)$, weil sie streng monoton wachsend und nach oben beschränkt ist.
+Sei $a = \lim_{n \rightarrow \infty} a_n$.
+Es ist $a_{n + 1} = \sqrt{2 + a_n}$.
+Durch Übergang zum Limes wie im Beispiel zu Satz 8 erhält man:
+
+\begin{align*}
+ a = \sqrt{2 + a} \Leftrightarrow a^2 = 2 + a \Leftrightarrow a^2 - a = 2
+\end{align*}
+
+Durch Einsetzen von $2$ erhält man $2^2 - 2 = 2$.
+$a = 2$ löst also obige Gleichung.
+Da wir wissen, dass $(a_n)$ genau einen Grenzwert hat, ist somit gezeigt, dass $\lim_{n \rightarrow \infty} a_n = 2$.
+
+\end{document}

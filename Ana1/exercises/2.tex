@@ -165,8 +165,15 @@ Für $a = 1, b = 1$ ist $3 = 3 * 1 * 1 > 1^2 + 1^2 = 2$, was im Widerspruch zur 
 
 \subsection*{a}
 
-Sei $\varepsilon > 0$.
-Dann gibt es ein $N \in \mathbb{N}$, sodass $|a_n| < \varepsilon \forall n \ge N$.
+\begin{proof}
+ Wenn man die Folge auflöst entsteht
+ \begin{equation*}
+  1 \cdot \frac{1}{n} \cdot 2 \cdot \frac{2}{n} \cdots (n - 1) \cdot \frac{1}{n} \cdot 1
+ \end{equation*}
+ In der Vorlesung wurde gezeigt, dass $(\frac{1}{n})$ eine Nullfolge ist.
+ Es wird also immer paarweise eine beschränkte (konstante) Folge mit einer Nullfolge multipliziert, was wiederum eine Nullfolge ergibt.
+ Das Produkt dieser $n - 1$ Nullfolgen ergibt nach den Rechenregeln für Grenzwerte wieder eine Nullfolge.
+\end{proof}
 
 \subsection*{b}
 

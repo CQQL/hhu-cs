@@ -1,0 +1,119 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\title{Übungsblatt 5}
+\author{Marten Lienen (2126759)}
+
+\newtheorem*{claim}{Behauptung}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+\subsection*{a}
+
+\begin{align*}
+ 10_{10} = 1010_2\\
+ 171_{10} = 10101011_2\\
+ 255_{10} = 11111111_2\\
+ 256_{10} = 100000000_2
+\end{align*}
+
+\subsection*{b}
+
+\begin{align*}
+ 32_{10} = 20_{16}\\
+ 171_{10} = AB_{16}\\
+ 255_{10} = FF_{16}\\
+ 256_{10} = 100_{16}\\
+ 65535_{10} = FFFF_{16}
+\end{align*}
+
+\subsection*{c}
+
+\begin{align*}
+ FA_{16} = 250_{10}\\
+ 32_{16} = 50_{10}\\
+ 7FFF_{16} = 32767_{10}\\
+ 8000_{16} = 32768_{10}
+\end{align*}
+
+\subsection*{d}
+
+Man fasse immer 4-Bits zu jeweils einer Hexadezimalziffer zusammen, da beide Darstellungen den gleichen Wertebereich abdecken, zum Beispiel:
+\begin{equation*}
+ {\underbrace{10}_2\underbrace{0111_{2}}_7} = 27_{16}
+\end{equation*}
+
+\subsection*{e}
+
+$\hat{x}$ bezeichnet die invertierte Dualdarstellung von $x$.
+
+\begin{claim}
+ \begin{equation*}
+  \hat{x} = 2^n - 1 - x
+ \end{equation*}
+\end{claim}
+
+\begin{proof}
+ (Beweis mit vollständiger Induktion über die Länge $n$ der Dualdarstellung von $x$)
+ 
+ Sei $x \in \{0, \dots, 2^{n - 1}\}$.
+ Wenn $n = 1$, gilt
+ \begin{align*}
+  x = 0 \Rightarrow \hat{x} = 1 = 2^1 - 1 - 0 = 2^n - 1 - x \\
+  x = 1 \Rightarrow \hat{x} = 0 = 2^1 - 1 - 1 = 2^n - 1 - x \\
+ \end{align*}
+ 
+ Angenommen es sei schon gezeigt, dass $\hat{x} = 2^n - 1 - x$.
+ Sei $a$ ein Bit, das wir vorne an $x$ anfügen.
+ Die konkatenierte Zahl nennen wir $y = ax$.
+ $y$ hat die Länge $length(y) = length(a) + length(x) = 1 + n$.
+ \begin{equation*}
+  \hat{y} = \hat{a}\hat{x} = (2^n - 1 - x)
+ \end{equation*}
+\end{proof}
+
+\section*{Aufgabe 2}
+
+\subsection*{a}
+
+\begin{description}
+ \item[Multiplikation] UND
+ \item[Addition mod 2] EXOR
+ \item[Minimum] UND
+ \item[Maximum] ODER
+\end{description}
+
+\subsection*{b}
+
+Das Verfahren ist sicher, weil der Schlüsselraum sehr groß ist.
+Da der Schlüssel für jedes Bit ein Schlüsselbit enthält, könnte man mit verschiedenen Schlüsseln jeden beliebigen Klartext mit Länge des Schlüssels erzeugen ohne Wissen zu können, welcher der ursprüngliche Klartext ist.
+
+In der Praxis ist es problematisch, dass jeder Schlüssel nur genau ein mal verwendet werden darf.
+Beide Kommunikationspartner müssen also große Mengen an Schlüsseln vorrätig halten, wenn sie wirklich kommunizieren möchten.
+
+\subsection*{c}
+
+Zur Entschlüsselung ``verschlüsselt'' man den verschlüsselten Text nochmals mit dem selben Schlüssel, wobei die ursprüngliche Bitfolge entsteht, wie man im folgenden sieht.
+\begin{align*}
+ 0 \oplus 0 \oplus 0 = 0\\
+ 1 \oplus 0 \oplus 0 = 1\\
+ 0 \oplus 1 \oplus 1 = 0\\
+ 1 \oplus 1 \oplus 1 = 1
+\end{align*}
+Das erste Bit ist das Klartextbit, das zwei mal mit dem Schlüsselbit verbunden wird.
+
+Man sollte Schlüssel vermeiden, die ausschließlich aus Nullen bestehen, weil $XOR(n, 0) = n$.
+Der Klartext wäre also gleich dem verschlüsselten Text.
+
+Diese Verschlüsselung ist sehr unsicher, weil es nur $2^8$ verschiedene Schlüssel gibt, sodass es ein leichtes ist alle durchzuprobieren und zur Not auch mit dem menschlichen Auge zu kontrollieren, bei welchem Schlüssel ein korrekter Klartext entsteht.
+
+Aufgrund der geringen Anzahl möglicher Schlüssel ist es durchaus sinnvoll eine einfache Brute-Force-Attacke, wie im vorigen Satz beschrieben, durchzuführen.
+
+\end{document}
