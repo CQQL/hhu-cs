@@ -54,6 +54,12 @@ Man fasse immer 4-Bits zu jeweils einer Hexadezimalziffer zusammen, da beide Dar
 
 $\hat{x}$ bezeichnet die invertierte Dualdarstellung von $x$.
 
+Nach der Definition von $\hat{x}$, gilt
+\begin{equation*}
+ x + \hat{x} = (\sum_{k = 0}^{n - 1} 2^k)
+\end{equation*}
+weil die eine Zahl immer genau dann eine 1 an der n-ten Stelle stehen hat, wenn die andere dort eine 0 stehen hat.
+
 \begin{claim}
  \begin{equation*}
   \hat{x} = 2^n - 1 - x
@@ -62,21 +68,30 @@ $\hat{x}$ bezeichnet die invertierte Dualdarstellung von $x$.
 
 \begin{proof}
  (Beweis mit vollständiger Induktion über die Länge $n$ der Dualdarstellung von $x$)
- 
  Sei $x \in \{0, \dots, 2^{n - 1}\}$.
+ Ich zeige zuerst, dass 
+ \begin{equation*}
+  x + \hat{x} + 1 = (\sum_{k = 0}^{n - 1} 2^k) + 1 = 2^n
+ \end{equation*}
+ 
  Wenn $n = 1$, gilt
  \begin{align*}
-  x = 0 \Rightarrow \hat{x} = 1 = 2^1 - 1 - 0 = 2^n - 1 - x \\
-  x = 1 \Rightarrow \hat{x} = 0 = 2^1 - 1 - 1 = 2^n - 1 - x \\
+  x = 0 \Rightarrow 0 + 1 + 1 = 2 = 2^1 = 2^n\\
+  x = 1 \Rightarrow 1 + 0 + 1 = 2 = 2^1 = 2^n
  \end{align*}
  
- Angenommen es sei schon gezeigt, dass $\hat{x} = 2^n - 1 - x$.
- Sei $a$ ein Bit, das wir vorne an $x$ anfügen.
- Die konkatenierte Zahl nennen wir $y = ax$.
- $y$ hat die Länge $length(y) = length(a) + length(x) = 1 + n$.
- \begin{equation*}
-  \hat{y} = \hat{a}\hat{x} = (2^n - 1 - x)
- \end{equation*}
+ Angenommen es sei schon gezeigt, dass $x + \hat{x} + 1 = 2^n$.
+ Sei $y$ eine die Zahl $x$ in Dualdarstellung, die wir vorne mit einem Bit erweitert haben, ihre Länge ist $n + 1$.
+ Es gilt also $y + \hat{y} = x + \hat{x} + 2^n$.
+ \begin{align*}
+  & (\sum_{k = 0}^{n - 1} 2^k) + 1 = 2^n\\
+  \Leftrightarrow & (\sum_{k = 0}^{n} 2^k) + 1 = (\sum_{k = 0}^{n - 1} 2^k) + 1 + 2^n = 2^n + 2^n = 2 * 2^n = 2^{n + 1}
+ \end{align*}
+ 
+ Nun können wir die ursprüngliche Gleichung umstellen:
+ \begin{align*}
+  x + \hat{x} + 1 = 2^n \Leftrightarrow \hat{x} = 2^n - 1 - x
+ \end{align*}
 \end{proof}
 
 \section*{Aufgabe 2}
