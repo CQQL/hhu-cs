@@ -297,4 +297,121 @@ Dann sei $\sum_{n \in M} a_n := 0$.
  \end{equation*}
 \end{proof}
 
+\section*{$exp(x) * exp(y) = exp(x + y)$}
+
+Da $exp(x + y) = \sum_{n = 0}^\infty \frac{1}{n!} (x + y)^n$ benötigen wir eine Formel für $(x + y)^n$, die die binomische Formel $(x + y)^2 = x^2 + 2xy + y^2$ verallgemeinert.
+
+Wir definieren für $n, k \in \mathbb{Z}$ mit $n \ge 0$ und $0 \ge k \ge n$ den Binomialkoeffizienten $(n\\k) = \frac{n!}{k!(n - k)!}$ (Daher $0! = 1$).
+
+\begin{notice}
+ \begin{align*}
+  (n 0) = 1\\
+  (n n) 1\\
+  (n k) = (n n-k)
+ \end{align*}
+ 
+ Für $k > 0$ ist 
+ \begin{align*}
+  (n k) = \frac{n * (n - 1) * (n - 2) * \dots * (n - k + 1)}{1 * 2 * 3 * \dots * k}
+ \end{align*}
+ 
+ \begin{align*}
+  (n 1) = n\\
+  (n 2) = \frac{n(n - 1)}{2}
+ \end{align*}
+ 
+ Für alle $n, k$ mit $0 < k \le n$ gilt
+ \begin{align*}
+  (n+1 k) = (n k) + (n k-1)
+ \end{align*}
+\end{notice}
+
+\begin{proof}
+ \begin{align*}
+  (n k) + (n k+1) = \frac{n * (n - 1) * \dots * (n - k + 1)}{k!} + \frac{n * (n - 1) * \dots * (n - k + 2)}{(k - 1)!} =\\
+  \frac{n * (n - 1) * \dots * (n - k + 1) + n * (n - 1) * \dots * (n - k + 2) * k}{k!} =\\
+  \frac{n * (n - 1) * \dots (n - k + 2) * ((n -k + 1 + k)}{k!} =\\
+  \frac{(n + 1) * n * (n - 1) * \dots ((n + 1) - k + 1)}{k!} = (n+1 k)
+ \end{align*}
+\end{proof}
+
+\begin{notice}
+ Mit Hilfe der Beispiele erhalten wir: 
+\end{notice}
+
+\begin{satz}
+ (Binomischer Lehrsatz)
+ 
+ Für $n \ge 0$ und $x, y \in \mathbb{R}$ gilt
+ \begin{equation*}
+  (x + y)^n = \sum_{k = 0}^n (n k) * x^k * y^(n - k)
+ \end{equation*}
+ (gilt in jedem Körper).
+\end{satz}
+
+\begin{proof}
+ Induktionsanfang: $n = 0$.
+ \begin{align*}
+  (x + y)^0 = 1 =
+ \end{align*}
+
+ Sei bereits $(x + y)^n = \sum_{k = 0}^n (n k) x^k y^{n - k}$ für ein $n \ge 0$ gezeigt.
+ Dann
+ \begin{align*}
+  (x + y)^{n + 1} & = (x + y)(x + y)^n = (x + y) \sum_{k = 0}^n (n k) x^k y^{n - k}\\
+  & = \sum_{k = 0}^n (n k) x^{k + 1} y^{n - k} + \sum_{k = 0}^n (n k) x^k y^{n - k + 1}\\
+  & = \sum_{k = 1}^{n + 1} (n k-1) x^k y^{n - k + 1} + \sum_{k = 0}^n (n k) x^k y^{n - k + 1}\\
+  & = (\sum_{k = 1}^n (n k-1) + (n k)) * x^k * y^{n - k + 1} + (n n) x^{n + 1} + (n 0) y^{n + 1}\\
+  & = \sum_{k = 0}^{n + 1} (n+1 k) x^k y^{n + 1 - k}
+ \end{align*}
+\end{proof}
+
+\begin{definition}
+ Für $x \in \mathbb{R}$ sei $\lfloor x \rfloor = max \{k \in \mathbb{Z} \mid k \le x\}$.
+\end{definition}
+
+\begin{align*}
+ exp(x + y) & = \sum_{n = 0}^\infty \frac{1}{n!} (x + y)^n\\
+ & = \sum_{n = 0}^\infty \frac{1}{n!} \sum_{k = 0}^n (n k) x^k y^{n - k}\\
+ & = \sum_{n = 0}^\infty \sum_{k = 0}^n \frac{1}{n!} \frac{n!}{k!(n - k)!} x^k y^{n - k}\\
+ & = \sum_{n = 0}^\infty \sum_{k = 0}^n \frac{x^k}{k!} \frac{y^{n -k}}{(n - k)!}\\
+\end{align*}
+Nun folgt $exp(x + y) = exp(x) * exp(y)$ durch Anwenden des folgenden Satzes mit $a_n = \frac{x^n}{n!}$, $b_n = \frac{y^n}{n!}$ und $c_n = \sum_{k = 0}^n a_kb_{n - k}$.
+
+\begin{satz}
+ Seien $\sum_{n = 0}^\infty a_n$ und $\sum_{n = 0}^\infty b_n$ zwei absolut konvergente Reihen und $c_n = \sum_{k = 0}^n a_kb_{n - k}$.
+ Dann ist auch $\sum_{n = 0}^\infty c_n$ absolut konvergent und
+ \begin{align*}
+  \sum_{n = 0}^\infty c_n = (\sum_{n = 0}^\infty a_n) * (\sum_{n = 0}^\infty b_n)
+ \end{align*}
+\end{satz}
+
+\begin{proof}
+ Für $N \in \mathbb{N}$ sei $A_N := \sum_{n = 0}^N a_n$, $B_N := \sum_{n = 0}^N b_n$, $C_N := \sum_{n = 0}^N c_n$ und $A^*_N := \sum_{n = 0}^N |a_n|$, $B^*_N := \sum_{n = 0}^N |b_n|$, $C^*_N := \sum_{n = 0}^N |c_n|$.
+ Es ist $\sum_{n = 0}^\infty a_n * \sum_{n = 0}^\infty b_n = \lim_{N \rightarrow \infty} A_N * \lim_{N \rightarrow \infty} B_N = \lim_{N \rightarrow \infty} A_N * B_N$ und ebenso $\sum_{n = 0}^\infty |a_n| * \sum_{n = 0}^\infty |b_n| = \lim_{N \rightarrow \infty} A^*_N * \lim_{N \rightarrow \infty} B^*_N = \lim_{N \rightarrow \infty} A^*_N * B^*_N$.
+ 
+ Wir müssen zeigen: $\lim_{N \rightarrow \infty} A_NB_N - C_N = 0$ und die Folge $(C^*_N)_N$ konvergiert absolut.
+ 
+ Sei $Q_N := \{(k, l) \in \mathbb{Z}^2 \mid 0 \le k, l \le N\}$, $\Delta_N := \{(k, l) \in \mathbb{Q}_N \mid k + l \le N\}$.
+ Dann $A_N * B_N = \sum_{(k, l) \in \mathbb{Q}_N} a_k b_l$.
+ $A^*_N * B^*_N = \sum_{(k, l) \in \mathbb{Q}_N} |a_k| |b_l|$.
+ $C_N = \sum_{(k, l) \in \Delta_N} a_k b_l$.
+ 
+ Also $|A_NB_N - C_N| = \sum_{(k, l) \in \mathbb{Q}_N \backslash \Delta_N} a_k b_l \le \sum_{(k, l) \in \mathbb{Q}_N \backslash \Delta_N} |a_k b_l| \le \sum_{(k, l) \in \mathbb{Q}_N \backslash \mathbb{Q}_{\lfloor \frac{N}{2} \rfloor}} |a_k b_l| = A^*N B^*_N - A^*_{\lfloor \frac{N}{2} \rfloor}B^*_{\lfloor \frac{N}{2} \rfloor} \rightarrow 0$ für $N \rightarrow \infty$.
+ Also gilt (1).
+ 
+ Wendet man diese Schritte auf $\sum_{n = 0}^\infty |a_n|$ und $\sum_{n = 0}^\infty |b_n|$ an, so sieht man, dass die Reihe $\sum_{n = 0}^\infty \sum_{k = 0}^n |a_n| |b_{n - k}|$ konvergiert.
+ Sie ist eine Majorante von $\sum_{n = 0}^\infty |c_n|$, also gilt (2).
+\end{proof}
+
+\begin{satz}
+ (Additionstheorem für Exponentialfunktion)
+ 
+ \begin{equation*}
+  exp(x + y) = exp(x) * exp(y) \forall x, y \in \mathbb{R}
+ \end{equation*}
+\end{satz}
+
+
+
 \end{document}
