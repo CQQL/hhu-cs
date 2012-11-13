@@ -1,0 +1,217 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+
+\title{LinA1, Übungsblatt 5}
+\author{Marten Lienen (2126759), Gruppe 1}
+
+\newtheorem*{claim}{Behauptung}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+\begin{proof}
+ $\Rightarrow$: Angenommen $f^{-1}(w)$ sei ein Unterraum von $V$.
+ Es gibt also $v_1, \dots, v_n \in V$ mit $f(v_k) = w \forall k \in [1, n]$.
+ Da $f^{-1}(w)$ ein Unterraum ist, muss eines seiner Elemente das neutrale Element $0$ sein.
+ Nach Satz 2.1.12 wird das neutrale Element auf das neutrale Element der Zielmenge abgebildet.
+ Es folgt $w = 0$, weil es mindestens ein Element in $f^{-1}(w)$ gibt, dass auf $0$ abgebildet wird und nach Definition alle auf das gleiche abgebildet werden.
+ 
+ $\Leftarrow$: Angenommen $w = 0$.
+ $(f^{-1}(w), +)$ muss eine Untergruppe von $(V, +)$ sein.
+ Dazu muss
+ \begin{itemize}
+  \item es ein neutrales Element haben\\
+  Da das neutrale Element auf das neutrale Element abgebildet wird, enthält $f^{-1}(w)$ das neutrale Element $0 \in V$.
+  \item es für jedes Element ein Inverses haben\\
+  Sei $v \in f^{-1}(w)$ und $v^{-1}$ sein inverses Element.
+  \begin{equation*}
+   v + v^{-1} = 0 \Leftrightarrow v^{-1} = 0 - v \Leftrightarrow f(v^{-1}) = f(0 - v) = f(0) - f(v) = 0 - 0 = 0
+  \end{equation*}
+  $v^{-1}$ wird also ebenfalls auf $0$ abgebildet und ist somit auch in $f^{-1}(w)$ enthalten.
+  \item $p + q \in f^{-1}(w)$ für alle $p, q \in f^{-1}(w)$ sein\\
+  Seien $p, q \in f^{-1}(w)$.
+  \begin{equation*}
+   f(p + q) = f(p) + f(q) = 0 + 0 = 0
+  \end{equation*}
+  $p + q$ wird auch auf $0$ abgebildet und ist somit auch in $f^{-1}(w)$ enthalten.
+ \end{itemize}
+ Sei $x \in K$ und $v \in f^{-1}(w)$.
+ \begin{equation*}
+  f(xv) = xf(v) = x0 = 0
+ \end{equation*}
+ $xv$ ist auch in $f^{-1}(w)$ enthalten.
+ 
+ $f^{-1}(w)$ ist ein Unterraum von $V$.
+\end{proof}
+
+\section*{Übung 2}
+
+\begin{proof}
+ $\Rightarrow$: Angenommen $W_x$ ist ein Unterraum von $V$.
+ Dann muss $W_x$ zu jedem $v \in W_x$ ein Inverses haben.
+ \begin{equation*}
+  0 = v + v^{-1} = \begin{pmatrix}x + x\\v_2 + v^{-1}_2\end{pmatrix} = \begin{pmatrix}0\\0\end{pmatrix}
+ \end{equation*}
+ Es muss also gelten
+ \begin{equation*}
+  x + x = 2x = 0 \Rightarrow x = 0
+ \end{equation*}
+
+ $\Leftarrow$: Angenommen $x = 0$.
+ Damit $(W_x, +)$ eine Untergruppe von $(K^2, +)$ ist, muss
+ \begin{itemize}
+  \item es ein neutrales Element haben\\
+  Sei $k \in W_x$.
+  \begin{equation*}
+   k = k + 0_{W_x} \Leftrightarrow 0_{W_x} = k - k = \begin{pmatrix}0\\k_2 - k_2\end{pmatrix} = \begin{pmatrix}0\\0\end{pmatrix}
+  \end{equation*}
+  Da $K$ ein Körper ist, ist $0 \in K$ und somit auch $0_{W_x} \in W_x$.
+  \item es für jedes Element ein Inverses haben\\
+  Sei $k \in W_x$.
+  \begin{equation*}
+   0 = k + k^{-1} \Leftrightarrow k^{-1} = 0 - k = \begin{pmatrix}0\\0\end{pmatrix} - \begin{pmatrix}0\\k_2\end{pmatrix} = \begin{pmatrix}0\\-k_2\end{pmatrix}
+  \end{equation*}
+  Da $K$ ein Körper ist, ist auch $-k_2 \in K$ und $k^{-1} \in W_x$.
+  \item $y + z \in W_x$ für alle $y, z \in W_x$ sein\\
+  Seien $y, z \in W_x$.
+  \begin{equation*}
+   y + z = \begin{pmatrix}0\\y_2\end{pmatrix} + \begin{pmatrix}0\\z_2\end{pmatrix} = \begin{pmatrix}0\\y_2 + z_2\end{pmatrix}
+  \end{equation*}
+  $y_2 + z_2 \in K$, weil $K$ ein Körper ist, und somit auch $y + z \in W_x$.
+ \end{itemize}
+
+ Damit $W_x$ ein Unterraum von $K^2$ ist, muss noch jedes Produkt einer Skalarmultiplikation in $W_x$ ebenfalls in $W_x$ liegen.
+ Sei $k \in K$ und $y \in W_x$.
+ \begin{equation}
+  ky = k\begin{pmatrix}0\\y_2\end{pmatrix} = \begin{pmatrix}0\\ky_2\end{pmatrix}
+ \end{equation}
+ $ky_2 \in K$, weil $K$ ein Körper ist, und somit ist $ky \in W_x$.
+ 
+ $W_x$ ist ein Unterraum von $K^2$, wenn $x = 0$.
+\end{proof}
+
+\section*{Übung 3}
+
+\begin{proof}
+ Sei $d \in V$.
+ $d_n$ bezeichne den $n$-ten Skalar in $d$.
+ Es gibt Skalare $x_k = d_k$ für alle $1 \le k \le n$, sodass
+ \begin{align*}
+  \sum_{k = 1}^n x_ke_k & = \begin{pmatrix}1x_1\\0x_1\\\vdots\\0x_1\end{pmatrix} + \begin{pmatrix}0x_2\\1x_2\\\vdots\\0x_2\end{pmatrix} + \dots + \begin{pmatrix}0x_n\\0x_n\\\vdots\\1x_n\end{pmatrix}\\
+  & = \begin{pmatrix}x_1\\0\\\vdots\\0\end{pmatrix} + \begin{pmatrix}0\\x_2\\\vdots\\0\end{pmatrix} + \dots + \begin{pmatrix}0\\0\\\vdots\\x_n\end{pmatrix} = \begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix} = \begin{pmatrix}d_1\\d_2\\\vdots\\d_n\end{pmatrix} = d
+ \end{align*}
+ $d$ ist also eine Linearkombination des Systems $(e_1, \dots, e_n)$ und das System somit ein EZS.
+ 
+ Seien $x_k$ mit $1 \le k \le n$ Skalare.
+ Bildet man wie oben eine Linearkombination $d \in <e_1, \dots, e_n>$, so gilt
+ \begin{equation*}
+  d = \sum_{k = 1}^n x_ke_k = \begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix}
+ \end{equation*}
+ Für die Darstellung von $0$ gilt also
+ \begin{equation*}
+  \begin{pmatrix}x_1\\x_2\\\vdots\\x_n\end{pmatrix} = \begin{pmatrix}0\\0\\\vdots\\0\end{pmatrix} \Rightarrow x_k = 0 \forall 1 \le k \le n
+ \end{equation*}
+ Das System $(e_1, \dots, e_n)$ ist linear unabhängig.
+ 
+ Da es ein linear unabhängiges EZS von $V$ ist, ist es eine Basis von $V$.
+\end{proof}
+
+\section*{Übung 4}
+
+\begin{proof}
+ Angenommen $(1, \sqrt{2})$ sei linear abhängig.
+ Es gäbe also $x, y \in \mathbb{Q}$ mit
+ \begin{equation*}
+  1x + y\sqrt{2} = 0
+ \end{equation*}
+ mit mindestens $x \ne 0$ oder $y \ne 0$.
+ \begin{align*}
+  & y = 0 \Rightarrow x = 0 \lightning\\
+  & y \ne 0 \Rightarrow \sqrt{2} = -\frac{x}{y} \lightning \text{weil $\sqrt{2}$ nicht rational ist}
+ \end{align*}
+ $(1, \sqrt{2})$ ist also linear unabhängig.
+ 
+ Sei $v = v_1 + v_2\sqrt{2} \in \mathbb{V}$ mit $v_1, v_2 \in \mathbb{Q}$.
+ \begin{equation*}
+  v_1\begin{pmatrix}1\\0\end{pmatrix} + v_1\begin{pmatrix}0\\\sqrt{2}\end{pmatrix} = (v_1 + 0\sqrt{2}) + (0 + v_2\sqrt{2}) = v_1 + v_2\sqrt{2} = v
+ \end{equation*}
+ $v$ ist also eine lineare Kombination von $(1, \sqrt{2})$.
+ Somit ist $(1, \sqrt{2})$ ein EZS und letztendlich eine Basis von $V$.
+\end{proof}
+
+\section*{Übung 5}
+
+\subsection*{a}
+
+Angenommen das System sei linear abhängig, sodass es $x_1, x_2, x_3 \in \mathbb{R}$ gibt mit mindestens einem $x_n \ne 0$, sodass
+\begin{equation*}
+ x_1\begin{pmatrix}1\\0\\-1\end{pmatrix} + x_2\begin{pmatrix}1\\2\\1\end{pmatrix} + x_3\begin{pmatrix}0\\-3\\2\end{pmatrix} = 0 = \begin{pmatrix}x_1\\0\\-x_1\end{pmatrix} + \begin{pmatrix}x_2\\2x_2\\x_2\end{pmatrix} + \begin{pmatrix}0\\-3x_3\\2x_3\end{pmatrix}
+\end{equation*}
+Daraus ergibt sich folgendes Gleichungssystem
+\begin{align*}
+ x_1 + x_2 = 0 & \Rightarrow \text{1. } x_1 = -x_2\\
+ x_2 - 3x_3 = 0 & \Rightarrow \text{3. } x_3 = 0\\
+ -x_1 + x_2 + 2x_3 = 0 & \Rightarrow \text{2. } x_2 = -x_3\\
+ & \Rightarrow x_1 = -x_2 = x_3 = 0
+\end{align*}
+Das ist ein Widerspruch und somit ist das System linear unabhängig.
+
+\subsection*{b}
+
+In Übung 3 wurde gezeigt, dass $\mathbb{R}^3$ eine Basis mit 3 Vektoren hat.
+Da alle Basen eines Vektorraums gleich viele Vektoren haben und eine Basis ein maximales, linear unabhängiges System ist, ist dieses System mit 4 Vektoren linear abhängig.
+
+\subsection*{c}
+
+Da 0 eine Linearkombination von Vektoren dieses Systems mit Nicht-Null-Koeffizienten ist, ist es linear abhängig.
+\begin{equation}
+ 0 = 2 * \begin{pmatrix}0\\0\\0\end{pmatrix} + 0 * \begin{pmatrix}1\\2\\3\end{pmatrix} + 0 * \begin{pmatrix}2\\3\\4\end{pmatrix}
+\end{equation}
+
+\subsection*{d}
+
+Seien $x_1, x_2 \in \mathbb{R}$.
+Angenommen $x_1 \ne 0$.
+\begin{equation*}
+ x_1\begin{pmatrix}1\\1\\1\end{pmatrix} + x_2\begin{pmatrix}2\\3\\4\end{pmatrix} \Rightarrow \begin{pmatrix}1\\1\\1\end{pmatrix} = -\frac{x_2}{x_1}\begin{pmatrix}2\\3\\4\end{pmatrix} \Rightarrow -\frac{2x_2}{x_1} = 1 = -\frac{3x_2}{x_1} \lightning
+\end{equation*}
+
+Angenommen $x_2 \ne 0$.
+\begin{equation*}
+ x_1\begin{pmatrix}1\\1\\1\end{pmatrix} + x_2\begin{pmatrix}2\\3\\4\end{pmatrix} \Rightarrow \begin{pmatrix}2\\3\\4\end{pmatrix} = -\frac{x_1}{x_2}\begin{pmatrix}1\\1\\1\end{pmatrix} \Rightarrow 2 = -\frac{x_1}{x_2}1 = 3 \lightning
+\end{equation*}
+
+Es gilt also $x_1 = x_2 = 0$ und somit ist das System linear unabhängig.
+
+\subsection*{e}
+
+Seien $x_1, x_2, x_3 \in \mathbb{R}$.
+Aus
+\begin{equation*}
+ x_1 \begin{pmatrix}1\\x\\0\end{pmatrix} + x_2 \begin{pmatrix}x\\1\\0\end{pmatrix} + x_3 \begin{pmatrix}0\\x\\1\end{pmatrix} = 0
+\end{equation*}
+ergeben sich folgende Bedingungen
+\begin{align*}
+ x_1 + xx_2 = 0 & \Rightarrow x_1(1 - x^2) = 0\\
+ xx_1 + x_2 + xx_3 = 0 & \Rightarrow x_2 = -xx_1\\
+ x_3 = 0 & \Rightarrow x_3 = 0\\
+\end{align*}
+\begin{equation*}
+ x_1 = \begin{cases}
+        0 & \text{ wenn } x \ne 1\\
+        \mathbb{R} & \text{ wenn } x = 1
+       \end{cases}
+\end{equation*}
+
+Das System ist genau dann linear unabhängig, wenn $x \ne 1$.
+
+\end{document}

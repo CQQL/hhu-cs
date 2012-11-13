@@ -1,0 +1,205 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[german]{babel}
+
+\title{LinA1, Übungsblatt 4}
+\author{Marten Lienen (2126759), Gruppe 1}
+
+\newtheorem*{claim}{Behauptung}
+\newtheorem*{definition}{Definition}
+\newtheorem*{notice}{Bemerkung}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{example}{Beispiel}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+\subsection*{$(\mathbb{Z}_n, +)$ ist eine kommutative Gruppe}
+
+Sei $x \in \mathbb{Z}_n$.
+\begin{equation*}
+ 0 + x = r_n(0 + x) = r_n(x) = x
+\end{equation*}
+$0$ ist das neutrale Element.
+
+\begin{align*}
+ x + (n - x) = r_n(x + n - x) = r_n(n) = 0
+\end{align*}
+$n - x$ ist also das Inverse von $x \in \mathbb{Z}_n$.
+
+\begin{align*}
+ x + (y + z) = r_n(x + r_n(y + z)) = r_n(x + (y + z - qn)) = x + (y + z - qn) - pn = x + y + z
+\end{align*}
+
+Da $x + y = y + x$ ist auch $r_n(x + y) = r_n(y + x)$.
+
+\subsection*{$(\mathbb{Z}_n, *)$ hat ein neutrales Element}
+
+\begin{equation*}
+ ex = r_n(ex) = r_n(x) \Rightarrow e = 1
+\end{equation*}
+$e = 1 \in \mathbb{Z}_n$, wenn $n \ge 2$.
+Wenn $n = 1$, löst auch $e = 0 \in \mathbb{Z}_n$ die obige Gleichung für alle $x \in \mathbb{Z}_0$.
+
+\subsection*{$*$ ist assoziativ}
+
+Seien $x, y \in \mathbb{Z}_n$.
+\begin{equation*}
+ xy = r_n(xy) = r_n(yx) = yx
+\end{equation*}
+
+\subsection*{Es gilt das Distributivgesetz}
+
+\begin{align*}
+ x(y + z) = r_n(x(y + z)) = r_n(x * r_n(y + z)) = r_n(x * (y + z - qn)) = r_n(xy + xz - xqn) = r_n(xy + xz) = xy + xz
+\end{align*}
+
+\section*{Übung 2}
+
+\subsection*{$(V, +)$ ist eine kommutative Gruppe}
+
+Es gibt einen $0_V$-Vektor mit $n$ 0-Zeilen, sodass
+\begin{equation*}
+ 0_V + v = \begin{pmatrix}x_1 + 0 \\ \vdots \\ x_n + 0\end{pmatrix} = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} = v
+\end{equation*}
+
+Jedes $v$ hat ein Inverses in $V$, das in jeder Spalte jeweils das Inverse in $K$ der entsprechenden Spalte von $v$ hat.
+\begin{equation*}
+ v + v^{-1} = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} + \begin{pmatrix}x_1^{-1} \\ \vdots \\ x_n^{-1}\end{pmatrix} = \begin{pmatrix}x_1 + x_1^{-1} \\ \vdots \\ x_n + x_n^{-1}\end{pmatrix} = \begin{pmatrix}0 \\ \vdots \\ 0\end{pmatrix}
+\end{equation*}
+
+Seien $x, y, z \in V$.
+\begin{equation*}
+ x + (y + z) = \begin{pmatrix}x_1 \\ \vdots \\ x_n\end{pmatrix} + \begin{pmatrix}y_1 + z_1 \\ \vdots \\ y_n + z_n\end{pmatrix} = \begin{pmatrix}x_1 + y_1 + z_1 \\ \vdots \\ x_n + y_n + z_n\end{pmatrix} = \begin{pmatrix}x_1 + y_1 \\ \vdots \\ x_n + y_n\end{pmatrix} + \begin{pmatrix}z_1 \\ \vdots \\ z_n\end{pmatrix} = (x + y) + z
+\end{equation*}
+
+Seien $v, w \in V$.
+\begin{equation*}
+ v + w = \begin{pmatrix}v_1 + w_1 \\ \vdots \\ v_n + w_n \end{pmatrix} = \begin{pmatrix}w_1 + v_1 \\ \vdots \\ w_n + v_n \end{pmatrix} = w + v
+\end{equation*}
+
+\subsection*{Weitere Bedingungen}
+
+Seien $x, y \in K$ und $v \in V$.
+\begin{equation*}
+ x * (y * v) = x * \begin{pmatrix}y * v_1 \\ \vdots \\ y * v_n\end{pmatrix} = \begin{pmatrix} xy * v_1 \\ \vdots \\ xy * v_n\end{pmatrix} = (xy) * v
+\end{equation*}
+
+Das neutrale Element in $K$ ist auch das neutrale Element bezüglich der Skalarmultiplikation.
+\begin{equation*}
+ 1_K * v = \begin{pmatrix}1_K * v_1 \\ \vdots \\ 1_K * v_n\end{pmatrix} = \begin{pmatrix}v_1 \\ \vdots \\ v_n\end{pmatrix} = v
+\end{equation*}
+
+Sei $x \in K$ und $v_1, v_2 \in V$.
+\begin{align*}
+ x * (v_1 + v_2) & = x * \begin{pmatrix}v_{1_1} + v_{2_1} \\ \vdots \\ v_{1_n} + v_{2_n} \end{pmatrix} = \begin{pmatrix}x * (v_{1_1} + v_{2_1}) \\ \vdots \\ x * (v_{1_n} + v_{2_n}) \end{pmatrix} = \begin{pmatrix}xv_{1_1} + xv_{2_1} \\ \vdots \\ xv_{1_n} + xv_{2_n} \end{pmatrix}\\
+ & = \begin{pmatrix}xv_{1_1} \\ \vdots \\ xv_{1_n} \end{pmatrix} + \begin{pmatrix}xv_{2_1} \\ \vdots \\ xv_{2_n} \end{pmatrix} = x * \begin{pmatrix}v_{1_1} \\ \vdots \\ v_{1_n} \end{pmatrix} + x * \begin{pmatrix}v_{2_1} \\ \vdots \\ v_{2_n} \end{pmatrix} = xv_1 + xv_2
+\end{align*}
+
+Seien $x, y \in K$ und $v \in V$.
+\begin{equation*}
+ (x + y) * v = \begin{pmatrix}(x + y) * v_1 \\ \vdots \\ (x + y) * v_n \end{pmatrix} = \begin{pmatrix} xv_1 + yv_1 \\ \vdots \\ xv_n + yv_n \end{pmatrix} = x * \begin{pmatrix}v_1 \\ \vdots \\ v_n \end{pmatrix} + y * \begin{pmatrix}v_1 \\ \vdots \\ v_n \end{pmatrix} = xv + yv
+\end{equation*}
+
+\section*{Übung 3}
+
+\subsection*{$(\mathbb{Q}(\sqrt{2}), +)$ ist eine Untergruppe von $(\mathbb{R}, +)$}
+
+\subsubsection*{$(\mathbb{Q}(\sqrt{2}), +)$ besitzt ein neutrales Element}
+
+Sei $x, e \in \mathbb{Q}(\sqrt{2})$.
+\begin{equation*}
+ x + e = x_1 + e_1 + (x_2 + e_2)\sqrt{2} = x_1 + x_2\sqrt{2} = x \Rightarrow e = 0 + 0\sqrt{2} \in \mathbb{Q}(\sqrt{2})
+\end{equation*}
+$e$ ist das neutrale Element.
+
+\subsubsection*{$x + y \in \mathbb{Q}(\sqrt{2}) \forall x, y \in \mathbb{Q}(\sqrt{2})$}
+
+Seien $x, y \in \mathbb{Q}(\sqrt{2})$.
+\begin{equation*}
+ x + y = (x_1 + y_1) + (x_2 + y_2)\sqrt{2} \in \mathbb{R} \Rightarrow x + y \in \mathbb{Q}(\sqrt{2})
+\end{equation*}
+
+\subsubsection*{$x^{-1} \in \mathbb{Q}(\sqrt{2}) \forall x \in \mathbb{Q}(\sqrt{2})$}
+
+\begin{equation*}
+ x + x^{-1} = (x_1 + x^{-1}_1) + (x_2 + x^{-1}_2)\sqrt{2} = 0 \Rightarrow x^{-1} = -x_1 - x_2\sqrt{2} \in \mathbb{Q}(\sqrt{2})
+\end{equation*}
+
+\subsection*{$xw \in \mathbb{Q}(\sqrt{2})$ für alle $x \in \mathbb{Q}$ und $w \in \mathbb{Q}(\sqrt{2})$}
+
+\begin{equation*}
+ xw = x * (w_1 + w_2\sqrt{2}) = xw_1 + xw_2\sqrt{2} \in \mathbb{R} \Rightarrow xw \in \mathbb{Q}(\sqrt{2})
+\end{equation*}
+
+\section*{Übung 4}
+
+\begin{proof}
+ $\Rightarrow$: Angenommen $f$ ist linear.
+ \begin{align*}
+  f(x_1v_1 + x_2v_2) = f(x_1v_1) + f(x_2v_2) = x_1f(v_1) + x_2f(v_2)
+ \end{align*}
+
+ $\Leftarrow$: Angenommen $f(x_1v_1 + x_2v_2) = x_1f(v_1) + x_2f(v_2)$.
+
+ \begin{description}
+  \item[P] $f(v_1 + v_2) = f(v_1) + f(v_2)$
+  \item[Q] $f(xv) = xf(v)$
+ \end{description}
+
+ Ich schreibe $Q$, wenn $Q$ für alle $v \in V, x \in K$ gilt, und $\neg{Q}$, wenn es $v \in V, x \in K$ gibt, für die $Q$ nicht gilt.
+
+ \subsubsection*{$\neg P \land \neg Q$}
+ 
+ Wenn weder $P$ noch $Q$ gilt, haben wir keine Regeln, um $f(x_1v_1 + x_2v_2)$ oder $x_1f(v_1) + x_2f(v_2)$ umzuformen und es gilt $f(x_1v_1 + x_2v_2) \ne x_1f(v_1) + x_2f(v_2)$ im Widerspruch zur Annahme.
+
+ \subsubsection*{$P \land \neg Q$}
+ 
+ Es gibt $x_1, x_2 \in K, v_1, v_2 \in V$, sodass:
+ \begin{equation*}
+  f(x_1v_1 + x_2v_2) = f(x_1v_1) + f(x_2v_2) \ne x_1f(v_1) + x_2f(v_2)
+ \end{equation*}
+ Widerspruch.
+
+ \subsubsection*{$\neg P \land Q$}
+ 
+ Es gibt $x_1, x_2 \in K, v_1, v_2 \in V$, sodass:
+ \begin{equation*}
+  f(x_1v_1 + x_2v_2) \ne f(x_1v_1) + f(x_2v_2) = x_1f(v_1) + x_2f(v_2)
+ \end{equation*}
+ Widerspruch.
+
+ \subsubsection*{$P \land Q$}
+ 
+ Für alle $x_1, x_2 \in K, v_1, v_2 \in V$ gilt:
+ \begin{equation*}
+  f(x_1v_1 + x_2v_2) = f(x_1v_1) + f(x_2v_2) = x_1f(v_1) + x_2f(v_2)
+ \end{equation*}
+ 
+ Es müssen also $P$ und $Q$ gelten, wenn $f(x_1v_1 + x_2v_2) = x_1f(v_1) + x_2f(v_2)$.
+\end{proof}
+
+\section*{Übung 5}
+
+\begin{proof}
+ Da $f$ bijektiv ist, gilt nach Satz 1.4.11 $f^{-1} \circ f = Id_V$ und $f \circ f^{-1} = Id_W$.
+ Somit ist $f^{-1}$ auch bijektiv.
+ 
+ Es gibt $w_1, w_2 \in W$ mit $f(v_1) = w_1, f(v_2) = w_2$ und $f^{-1}(w_1) = v_1, f^{-1}(w_2) = v_2$.
+ Da $f$ isomorph ist, gilt $f(v_1 + v_2) = f(v_1) + f(v_2) = w_1 + w_2$.
+ Durch Anwenden von $f^{-1}$ erhalten wir $v_1 + v_2 = f^{-1}(w_1 + w_2)$.
+ Durch Ersetzen von $v_1, v_2$ erhalten wir $f^{-1}(w_1 + w_2) = v_1 + v_2 = f^{-1}(w_1) + f^{-1}(w_2)$.
+ 
+ Es gibt $w \in W$ mit $f(v) = w$ und $f^{-1}(w) = v$.
+ Da $f$ isomorph ist, gilt $f(xv) = xw$.
+ Durch Anwenden von $f^{-1}$ kommen wir zu $xv = f^{-1}(xw)$.
+ Durch Ersetzen von $v$ kommen wir zu $f^{-1}(xw) = xv = xf^{-1}(w)$.
+\end{proof}
+
+\end{document}
