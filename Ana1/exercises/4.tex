@@ -1,6 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
+\usepackage{amssymb}
 
 \title{Ana1, Übungsblatt 4}
 \author{Marten Lienen (2126759), Gruppe 8}
@@ -11,19 +12,47 @@
 
 \section*{13}
 
+Ich bezeichne die Grenzwerte mit $a_n \rightarrow a$ und $c_n \rightarrow c$.
+Da $(a_n)$ und $(c_n)$ beide denselben Grenzwert haben, gilt $a = c$.
+Da $(c_n)$ konvergiert, gibt es für jedes $\varepsilon > 0$ ein $N \in \mathbb{N}$, so dass für alle $n \ge N$
+\begin{equation}
+ |a_n - a| < \varepsilon \land |c_n - a| < \varepsilon
+\end{equation}
+\begin{align*}
+ & a_n \le b_n \le c_n\\
+ \Leftrightarrow & a_n - a \le b_n - a \le c_n - a\\
+ \Leftrightarrow & -\varepsilon < a_n - a  \le b_n - a \le c_n - a < \varepsilon\\
+ \Rightarrow & |b_n - a| < \varepsilon
+\end{align*}
+$(b_n)$ konvergiert folglich mit dem Grenzwert $a$.
+
 \section*{14}
 
 \subsection*{a}
 
-Diese Summer konvergiert, weil sie streng monoton fällt und nach unten durch $0$ beschränkt ist.
+Sei $s_k = \sum_{n = 1}^k \frac{1}{\sqrt{n}}$.
+\begin{equation}
+ s_k = \sum_{n = 1}^k \frac{1}{\sqrt{n}} \ge \sum_{n = 1}^k \frac{1}{n}
+\end{equation}
+Da es immer größer als die harmonische Reihe ist, divergiert es.
 
 \subsection*{b}
 
-
+Sei $s_k = \sum_{n = 2}^k \frac{1}{n^2 - 1} = \sum_{n = 1}^{k - 1} \frac{1}{(n + 1)^2 - 1} = \sum_{n = 1}^{k - 1} \frac{1}{n^2 + 2n}$.
+\begin{equation}
+ |s_k| = |\sum_{n = 1}^{k - 1} \frac{1}{n^2 + 2n}| < \sum_{n = 1}^{k - 1} \frac{1}{n^2}
+\end{equation}
+Da es immer kleiner als $\sum_{n = 1}^{k - 1} \frac{1}{n^2}$ ist, konvergiert es nach dem Majorantenkriterium.
 
 \subsection*{c}
 
+Sei $s_k = \sum_{n = 1}^k \frac{n}{n^2 + 1} = \sum_{n = 1}^k (\frac{1}{n} - \frac{1}{n^3 + n}) = \sum_{n = 1}^k \frac{1}{n} - \sum_{n = 1}^k \frac{1}{n^3 + n}$.
+Der Minuent ist die harmonische Reihe, die divergiert, und der Subtrahent konvergiert mit der Majorante $\sum_{n = 1}^k \frac{1}{n^2}$.
+Die Reihe als Differenz divergiert folglich.
+
 \section*{15}
+
+
 
 \section*{16}
 
@@ -34,16 +63,20 @@ Diese Summer konvergiert, weil sie streng monoton fällt und nach unten durch $0
 \end{equation}
 
 Ich betrachte die Folge $a_n := \frac{1}{2n - 1}$.
-Sei $\varepsilon > 0$.
-Wähle $N \in \mathbb{N}$ mit .
-Für alle $n \ge N$ gilt
-\begin{align}
- |a_n| = a_n = < \varepsilon
-\end{align}
+Da $2n - 1 \ge n$ für alle $n \in \mathbb{N}$, ist $\frac{1}{n}$ eine konvergente Abschätzung nach oben von $\frac{1}{2n - 1}$.
 
 Da $(a_n)$ eine Nullfolge ist, ist die Reihe konvergent nach dem Konvergenzkriterium von Leibniz.
 
+\begin{equation}
+ \sum_{n = 1}^\infty |(-1)^{n + 1}\frac{1}{2n - 1}| = \sum_{n = 1}^\infty \frac{1}{2n - 1} = \sum_{n = 1}^\infty \frac{1}{2} * \frac{1}{n} + \frac{1}{4n^2 - 2n}
+\end{equation}
+Die Reihe ist nicht absolut konvergent, weil sie die harmonische Reihe als Summand enthält, die nicht konvergiert.
+
 \subsection*{b}
+
+Die Reihe konvergiert, weil $\sum a_{2n}$ konvergiert nach dem Leibnizkriterium und $\sum a_{2n - 1}$ konvergiert, weil es die geometrische Reihe für $x = \frac{1}{2}$ ist.
+
+Sie ist jedoch nicht absolut konvergent, weil $\sum a_{2n}$ nicht absolut konvergent ist, da $\sum |a_{2n}|$ die harmonische Reihe ist. 
 
 \section*{17}
 
@@ -51,9 +84,19 @@ Da $(a_n)$ eine Nullfolge ist, ist die Reihe konvergent nach dem Konvergenzkrite
 
 Sei $0 < q < 1$.
 \begin{align}
- \frac{(n + 1)x^{n + 1}}{nx^n} = \frac{(n + 1)x}{n} = \frac{nx + x}{n} = x + \frac{x}{n}
+ |\frac{(n + 1)x^{n + 1}}{nx^n}| = |\frac{(n + 1)x}{n}| = |\frac{nx + x}{n}| = |x + \frac{x}{n}| = |x(1 + \frac{1}{n})|
 \end{align}
+Da $x$ gegen $x$ konvergiert und $(1 + \frac{1}{n})$ gegen $1$, wissen wir nach den Rechenregeln für Folgen, dass $x(1 + \frac{1}{n}) \rightarrow 1x = x$.
+Wenn $-1 < x < 1$, können wir $q$ wählen mit $q = 1 - \frac{1 - |x|}{2}$, sodass $|(1 + \frac{1}{n})x| < q < 1$ für fast alle $n \in \mathbb{N}$.
 
 \subsection*{b}
+
+\begin{align}
+ |\frac{\frac{1}{n + 1}x^{n + 1}}{\frac{1}{n}x^n}| = |\frac{n}{n + 1}x| = |\frac{1}{1 + \frac{1}{n}}x|
+\end{align}
+Da $x$ gegen $x$ konvergiert und $\frac{1}{1 + \frac{1}{n}}$ gegen $1$, wissen wir nach den Rechenregeln für Folgen, dass $x(\frac{1}{1 + \frac{1}{n}}) \rightarrow 1x = x$.
+Wenn $-1 < x < 1$, können wir $q$ wählen mit $q = 1 - \frac{1 - |x|}{2}$, sodass $|(\frac{1}{1 + \frac{1}{n}})x| < q < 1$ für fast alle $n \in \mathbb{N}$.
+
+Unter Benutzung des Leibnizkriteriums ergibt sich aber zusätzlich, dass auch $x = -1$ eine gültige Lösung ist, da $\frac{1}{n}$ eine monoton fallende Nullfolge ist und $-1^n$ es in die Form des Leibnizkriteriums bringt.
 
 \end{document}
