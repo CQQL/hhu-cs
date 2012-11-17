@@ -1,0 +1,172 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+
+\title{Info1, Übungsblatt 6}
+\author{Marten Lienen (2126759)}
+
+\newtheorem*{claim}{Behauptung}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+\subsection*{EBNF-Darstellung}
+
+Sei $A$ ein Alphabet, $V = \{<wort>\}, S = <wort>$.
+\begin{lstlisting}
+ <wort> ::= {(a, b, c, ...)}
+\end{lstlisting}
+Die Variable kann durch eine Folge von Terminalsymbolen beliebiger Länge ersetzt werden.
+
+\section*{Aufgabe 2}
+
+Da ich eine kontextfreie Grammatik für die Sprache angeben kann, ist sie kontextfrei.
+
+\subsection*{Grammatik}
+
+\begin{align*}
+ & A = \{a, b\}\\
+ & V = \{S, Q\}\\
+ & P = \{S \rightarrow aQb, S \rightarrow bQa, Q \rightarrow a, Q \rightarrow b, Q \rightarrow QQ\}\\
+ \\
+ & G = (A, V, P, S)
+\end{align*}
+
+\subsection*{BNF}
+
+\begin{align*}
+ & A = \{a, b\}\\
+ & V = \{<Start>, <Wort>\}\\
+ & S = <Start>
+\end{align*}
+
+Die Regeln sind:
+\begin{lstlisting}
+ <Start> ::= a<Wort>b|b<Wort>a
+ <Wort> ::= a|b|<Wort><Wort>
+\end{lstlisting}
+
+\subsection*{EBNF}
+
+\begin{align*}
+ & A = \{a, b\}\\
+ & V = \{<Start>, <Wort>\}\\
+ & S = <Start>
+\end{align*}
+
+Die Regeln sind:
+\begin{lstlisting}
+ <Start> ::= a<Wort>b|b<Wort>a
+ <Wort> ::= {(a|b)}
+\end{lstlisting}
+
+\section*{Aufgabe 3}
+
+\subsection*{a}
+
+\begin{align*}
+ A = \{&0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}\\
+ V = \{&S, R, T\}\\
+ P = \{&S \rightarrow 0, S \rightarrow R, S \rightarrow RT,\\
+ & R \rightarrow 1, R \rightarrow 2, R \rightarrow 3, R \rightarrow 4, R \rightarrow 5, R \rightarrow 6, R \rightarrow 7, R \rightarrow 8, R \rightarrow 9,\\
+ & T \rightarrow TT, T \rightarrow 0, T \rightarrow R\}\\
+ \\
+ & G = (A, V, P, S)
+\end{align*}
+
+\begin{proof}
+ Ich zeige, dass die Dezimaldarstellung jeder nicht negativen, ganzen Zahl in $L(G)$ enthalten ist.
+ Sei $x$ eine nicht negative, ganze Zahl.
+ Wenn $x = 0$, greift die erste Regel, $S \rightarrow 0$.
+ Wenn $x \ne 0$ eine einstellige Dezimalzahl ist, benutzt man die Regeln $S \rightarrow R$ und $R \rightarrow 1 \dots 9$.
+ Wenn $x$ $n \ge 2$ Stellen hat, wendet man $S \rightarrow RT$ an, sodass die erste Stelle wie eine einstellige Dezimalzahl erzeugt wird und benutzt danach $n - 2$ mal $T \rightarrow TT$, sodass man eine Folge von $n - 1$ $T$ hat, die dann durch eine der Ziffern $0$ bis $9$ ersetzt werden.
+
+ Ich zeige, dass jedes Wort in $L(G)$ die Dezimaldarstellung ohne führende Null einer nicht negativen ganzen Zahl ist.
+ Durch Anwendung von $S \rightarrow 0$ erhält man direkt $0$.
+ Wendet man zuerst $S \rightarrow R$ und danach eine Regel $R \rightarrow 1 \dots 9$ an, erhält man eine der restlichen 9 einstelligen, positiven Dezimalzahlen.
+ Durch Anwendung von $S \rightarrow RT$, $R \rightarrow 1 \dots 9$ und der $n$-fachen Anwendung von $T \rightarrow TT$ kann man mittels der restlichen $T$-Regeln jede Zahl erzeugen, die sich darstellen lässt als
+ \begin{equation}
+  x = a * 10^{n + 2} + a_0 * 10^{n + 1} + a_1 * 10^{n} + \dots + a_n * 10^0
+ \end{equation}
+ mit $1 \le a \le 9$, $0 \le k \le n$, $0 \le a_k \le 9$.
+ Dies sind alle nicht negativen, ganzen Zahlen ohne führende Null, die größer als $9$ sind.
+\end{proof}
+
+\subsection*{b}
+
+\subsubsection*{Kontextfreie Grammatik}
+
+\begin{align*}
+ A = \{&0, 1, 2, 3, 4, 5, 6, 7, 8, 9, +, -\}\\
+ V = \{&S, P, Q, R, T\}\\
+ P = \{&S \rightarrow P, S \rightarrow QP,\\
+ & Q \rightarrow +, Q \rightarrow -,\\
+ & P \rightarrow 0, P \rightarrow R, P \rightarrow RT,\\
+ & R \rightarrow 1, R \rightarrow 2, R \rightarrow 3, R \rightarrow 4, R \rightarrow 5, R \rightarrow 6, R \rightarrow 7, R \rightarrow 8, R \rightarrow 9,\\
+ & T \rightarrow TT, T \rightarrow 0, T \rightarrow R\}\\
+ \\
+ & G = (A, V, P, S)
+\end{align*}
+
+\subsubsection*{EBNF}
+\begin{lstlisting}
+ A = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, +, -}
+ V = {<Ganze-Zahl>, <Vorzeichen>, <Zahl> <Ziffer>, <Nichtnull-Ziffer>}
+ S = <Ganze-Zahl>
+\end{lstlisting}
+
+Die Regeln sind:
+\begin{lstlisting}
+ <Ganze-Zahl> ::= [<Vorzeichen>]<Zahl>
+ <Vorzeichen> ::= (+|-)
+ <Zahl> ::= (0|(<Nichtnull-Ziffer>{<Ziffer>}))
+ <Ziffer> ::= (0|<Nichtnull-Ziffer>)
+ <Nichtnull-Ziffer> ::= (1|2|3|4|5|6|7|8|9)
+\end{lstlisting}
+
+\section*{Aufgabe 4}
+
+Der Algorithmus heißt $graycode(n)$.
+
+\begin{description}
+ \item[Eingabe $n$] Die Länge der Wörter
+ \item[Ausgabe] Die geordnete Menge der Wörter
+\end{description}
+
+\begin{lstlisting}
+ wenn n = 1
+   gib zurueck {0, 1}
+ ansonsten
+   erste_haelfte := graycode(n - 1)
+   graycode := {}
+   umgedreht := reverse(erste_haelfte)
+   
+   fuer jedes Wort w in erste_haelfte
+     neues_wort := konkateniert(0, w)
+     
+     fuege neues_wort hinten an graycode an
+   
+   fuer jedes Wort w in umgedreht
+     neues_wort := konkateniert(1, w)
+     
+     fuege neues_wort hinten an graycode an
+   
+   gib zurueck graycode
+\end{lstlisting}
+
+Die erste Schleife erweitert alle Wörter des nächstkleineren Graycodes auf die geforderte Länge und fügt sie dem Ergebnis hinzu.
+Die zweite Schleife fügt den kleineren Graycode umgedreht an, mit 1 konkateniert, an den Graycode an.
+Ich nenne die erste Hälfte, die mit 0 beginnt, 0-Code und die zweite, die mit 1 beginnt, 1-Code.
+Am Übergang vom 0 zum 1-Code liegt eine Änderung von 1 vor, weil beide Elemente sich nur an der ersten Stelle unterscheiden.
+Das gleiche gilt auch am Übergang von 1- zum 0-Code, wenn man die Menge als Ring betrachtet.
+Innerhalb der Hälften unterscheiden sich die Elemente ebenfalls immer nur um eine Operation.
+Dies ist wahr, weil die Elemente alle aus einem Graycode sind, sodass sie sich von ihren Nachbarn immer nur um 1 Operation unterscheiden.
+Das gilt auch noch nach der Konkatenierung, weil alle Wörter innerhalb einer Hälfte mit demselben Symbol erweitert wurden.
+
+\end{document}
