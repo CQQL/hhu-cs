@@ -21,11 +21,90 @@
 
 \section*{Übung 3}
 
+\begin{proof}
+ Sei $(f(v_1), \dots, f(v_n))$ ein linear unabhängiges System.
+ \begin{equation}
+  x_1v_2 + x_2v_2 + \dots + x_nv_n = 0_V
+ \end{equation}
+ Zu zeigen ist, dass $x_k = 0, 1 \le k \le n$.
+ Durch Anwendung von $f$ erhalten wir
+ \begin{align*}
+  & f(x_1v_2 + x_2v_2 + \dots + x_nv_n) = f(0_V)\\
+  \Rightarrow & x_1f(v_2) + x_2f(v_2) + \dots + x_nf(v_n) = 0_W\\
+  \Rightarrow & x_1 = x_2 = \dots = x_n = 0
+ \end{align*}
+\end{proof}
+
 \section*{Übung 4}
 
 \subsection*{1}
 
+\begin{proof}
+ ``$\Rightarrow$'': Sei $f$ injektiv.
+ Wir setzen die Linearkombination von $(f(v_1), \dots, f(v_n)) = 0$.
+ \begin{equation}
+  x_1f(v_1) + \dots + x_nf(v_n) = f(x_1v_1 + \dots + x_nv_n) = 0
+ \end{equation}
+ $(v_1, \dots, v_n)$ ist linear unabhängig.
+ In der Gleichung
+ \begin{equation}
+  y_1v_1 + \dots + y_nv_n = 0
+ \end{equation}
+ sind also alle $y_k = 0$.
+ Da lineare Abbildungen immer $0$ auf $0$ abbilden, wird auch $y_1v_1 + \dots + y_nv_n$ durch $f$ auf $0$ abgebildet.
+ Weil $f$ injektiv ist, gilt
+ \begin{align*}
+  & f(x_1v_1 + \dots + x_nv_n) = 0 = f(y_1v_1 + \dots + y_nv_n)\\
+  \Rightarrow & x_1v_1 + \dots + x_nv_n = y_1v_1 + \dots + y_nv_n = 0
+ \end{align*}
+ Da $(v_1, \dots, v_n)$ linear unabhängig ist, müssen auch $x_1 = x_2 = \dots = x_n = 0$ sein.
+ $(f(v_1), \dots, f(v_n))$ ist also ebenfalls linear unabhängig.
+ 
+ ``$\Leftarrow$'': Sei $(f(v_1), \dots, f(v_n))$ linear unabhängig.
+ Seien $v, w \in V$ mit $f(v) = f(w)$.
+ Weil $(v_1, \dots, v_n)$ eine Basis von $V$ ist, kann man sie schreiben als
+ \begin{align*}
+  & v = x_1v_1 + \dots + x_nv_n\\
+  & w = y_1v_1 + \dots + y_nv_n
+ \end{align*}
+ Daraus folgt
+ \begin{align*}
+  & f(v) = f(w)\\
+  \Rightarrow & x_1f(v_1) + \dots + x_nf(v_n) = y_1f(v_1) + \dots + y_nf(v_n)\\
+  \Rightarrow & (x_1 - y_1)f(v_1) + \dots + (x_n - y_n)f(v_n) = 0
+ \end{align*}
+ Da $(f(v_1), \dots, f(v_n))$ linear unabhängig ist, müssen in der letzten Gleichung alle Koeffizienten $0$ sein, d.h.
+ \begin{equation}
+  (x_k - y_k = 0 \Rightarrow x_k = y_k) \forall 1 \le k \le n
+ \end{equation}
+ Daraus folgt $v = w$ und $f$ ist injektiv.
+\end{proof}
+
 \subsection*{2}
+
+\begin{proof}
+ ``$\Rightarrow$'': Sei $f$ surjektiv.
+ Zu zeigen ist, dass jedes $w \in W$ als Linearkombination von $(f(v_1), \dots, f(v_n))$ dargestellt werden kann.
+ Sei $w \in W$.
+ Weil $f$ surjektiv ist, gibt es ein $v \in V$ mit $f(v) = w$.
+ Da $(v_1, \dots, v_n)$ eine Basis von $V$ ist, ist $v$ eine Linearkombination von $(v_1, \dots, v_n)$.
+ \begin{equation}
+  v = x_1v_1 + \dots + x_nv_n
+ \end{equation}
+ \begin{equation}
+  f(v) = f(x_1v_1 + \dots + x_nv_n) = x_1f(v_1) + \dots + x_nf(v_n) = w
+ \end{equation}
+ $(f(v_1), \dots, f(v_n))$ ist also ein EZS von $W$.
+ 
+ ``$\Leftarrow$'': Sei $(f(v_1), \dots, f(v_n))$ ein EZS von $W$.
+ Sei $w \in W$.
+ Weil $(f(v_1), \dots, f(v_n))$ ein EZS ist, kann man $w$ schreiben als
+ \begin{equation}
+  w = x_1f(v_1) + \dots + x_nf(v_n) = f(x_1v_1 + \dots + x_nv_n)
+ \end{equation}
+ Da $(v_1, \dots, v_n)$ eine Basis von $V$ ist, ist $x_1v_1 + \dots + x_nv_n$ ein Vektor $v$ in $V$ mit $f(v) = w$.
+ Somit ist $f$ surjektiv.
+\end{proof}
 
 \subsection*{3}
 
@@ -40,5 +119,125 @@
 \end{proof}
 
 \section*{Übung 5}
+
+\subsection*{1}
+
+\subsubsection*{$(Hom(V, W), +)$ ist eine kommutative Gruppe}
+
+\begin{proof}
+ Seien $f, g \in Hom(V, W), v \in V$.
+ \begin{equation}
+  (f + g)(v) = f(v) + g(v) = f(v) \Rightarrow g(v) = 0
+ \end{equation}
+ Das neutrale Element ist die Nullabbildung, die linear ist und somit ein Homomorphismus.
+
+ Seien $f, g \in Hom(V, W), v \in V$.
+ \begin{equation}
+  (f + g)(v) = f(v) + g(v) = 0 \Rightarrow g(v) = -f(v)
+ \end{equation}
+ Das inverse Element von $f$ ist die Abbildung, die $v$ auf $-f(v)$ abbildet.
+ Dieser Wert existiert für alle $v \in V$, weil $V$ ein Vektorraum ist.
+ \begin{align*}
+  g(x_1v_1 + x_2v_2) & = -f(x_1v_1 + x_2v_2) = -(x_1f(v_1) + x_2f(v_2))\\
+  & = -x_1f(v_1) - x_2f(v_2) = x_1f(-v_1) + x_2f(-v_2)\\
+  & = x_1g(v_1) + x_2g(v_2)
+ \end{align*}
+ $g$, das Inverse von $f$, ist ein Homomorphismus.
+
+ Seien $f, g, h \in Hom(V, W), v \in V$.
+ \begin{equation}
+  (f + (g + h))(v) = f(v) + g(v) + h(v) = ((f + g) + h)(v)
+ \end{equation}
+ $+$ ist assoziativ.
+
+ Seien $f, g \in Hom(V, W), v \in V$.
+ \begin{equation}
+  (f + g)(v) = f(v) + g(v) = g(v) + f(v) = (g + f)(v)
+ \end{equation}
+ $+$ ist kommutativ.
+ 
+ Seien $f, g, h \in Hom(V, W), v \in V$.
+ \begin{equation}
+  h(v) := (f + g)(v)
+ \end{equation}
+ \begin{align*}
+  h(x_1v_1 + x_2v_2) & = f(x_1v_1 + x_2v_2) + g(x_1v_1 + x_2v_2)\\
+  & = x_1f(v_1) + x_2f(v_2) + x_1g(v_1) + x_2g(v_2)\\
+  & = x_1(f(v_1) + g(v_1)) + x_2(f(v_2) + g(v_2)) = x_1h(v_1) + x_2h(v_2)
+ \end{align*}
+ Die Verknüpfung von $f$ und $g$ ist auch ein Homomorphismus und somit ist $(Hom(V, W), +)$ abgeschlossen.
+\end{proof}
+
+\subsubsection*{$((xy)f)(v) = x((yf)(v))$ für alle $f \in Hom(V, W)$}
+
+\begin{proof}
+ Seien $x, y \in K, f \in Hom(V, W), v \in V$.
+ \begin{equation}
+  ((xy)f)(v) = (xy) * f(v) = x(y * f(v)) = x((yf)(v))
+ \end{equation}
+ Das Assoziativgesetz gilt, weil $f(v) \in W$ und $W$ ein Vektorraum ist.
+\end{proof}
+
+\subsubsection*{$1_K * f = f$ für alle $f \in Hom(V, W)$}
+
+\begin{proof}
+ Seien $1_K \in K, f \in Hom(V, W), v \in V$.
+ \begin{equation}
+  (1_K * f)(v) = 1_K * f(v) = f(v)
+ \end{equation}
+ $1_K * f(v) = f(v)$ gilt, weil $f(v) \in W$ und $W$ ein Vektorraum ist.
+\end{proof}
+
+\subsubsection*{$x * (f + g)(v) = (x * f)(v) + (x * g)(v)$ für alle $f, g \in Hom(V, W)$}
+
+\begin{proof}
+ Seien $x \in K, f, g \in Hom(V, W), v \in V$.
+ \begin{equation}
+  x * (f + g)(v) = x * (f(v) + g(v)) = x * f(v) + x * g(v) = (x * f)(v) + (x * g)(v)
+ \end{equation}
+ Das Distributivgesetz gilt, weil $f(v), g(v) \in W$ und $W$ ein Vektorraum ist.
+\end{proof}
+
+\subsubsection*{$((x + y) * f)(v) = (x * f)(v) + (y * f)(v)$ für alle $f \in Hom(V, W)$}
+
+\begin{proof}
+ Seien $x, y \in K, f \in Hom(V, W), v \in V$.
+ \begin{equation}
+  ((x + y) * f)(v) = (x + y) * f(v) = x * f(v) + y * f(v) = (x * f)(v) + (y * f)(v)
+ \end{equation}
+ Das Distributivgesetz gilt, weil $f(v) \in W$ und $W$ ein Vektorraum ist.
+\end{proof}
+
+\subsubsection*{$Hom(V, W)$ ist abgeschlossen bezüglich der Skalarmultiplikation}
+
+\begin{proof}
+ Seien $x, x_1, x_2 \in K, f, g \in Hom(V, W), v \in V$.
+ \begin{equation}
+  g(v) := (x * f)(v) = x * f(v)
+ \end{equation}
+ \begin{align*}
+  g(x_1v_1 + x_2v_2) & = x * f(x_1v_1 + x_2v_2) = x * (x_1f(v_1) + x_2f(v_2))\\
+  & = xx_1f(v_1) + xx_2f(v_2) = x_1g(v_1) + x_2g(v_2)
+ \end{align*}
+
+\end{proof}
+
+\subsection*{2}
+
+\begin{proof}
+ $f(\langle v_1, \dots, v_n \rangle) \subseteq \langle f(v_1), \dots, f(v_n) \rangle$: Seien $v \in f(\langle v_1, \dots, v_n \rangle)$ und $x_1, \dots, x_n \in K$.
+ Weil $f$ eine lineare Abbildung ist, gilt
+ \begin{equation}
+  v = f(x_1v_1 + \dots x_nv_n) = x_1f(v_1) + \dots + x_nf(v_n)
+ \end{equation}
+ Also ist $v \in \langle f(v_1), \dots, f(v_n) \rangle$.
+ 
+ $f(\langle v_1, \dots, v_n \rangle) \supseteq \langle f(v_1), \dots, f(v_n) \rangle$: Seien $v \in \langle f(v_1), \dots, f(v_n) \rangle$ und $x_1, \dots, x_n \in K$.
+ Weil $f$ eine lineare Abbildung ist, gilt
+ \begin{equation}
+  v = x_1f(v_1) + \dots + x_nf(v_n) = f(x_1v_1 + \dots x_nv_n)
+ \end{equation}
+ Also ist $v \in f(\langle v_1, \dots, v_n \rangle)$.
+\end{proof}
 
 \end{document}
