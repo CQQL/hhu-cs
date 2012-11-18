@@ -17,7 +17,52 @@
 
 \section*{Übung 1}
 
+\begin{proof}
+ 
+\end{proof}
+
 \section*{Übung 2}
+
+\begin{proof}
+ Mit dem Rangsatz können wir folgende Ungleichung aufstellen
+ \begin{align*}
+  & dim W = dim Ker(g) + Rg(g)\\
+  \Leftrightarrow & Rg(g) = dim W - dim Ker(g)\\
+  \Rightarrow & Rg(g) \le dim W
+ \end{align*}
+ Die letzte Umformung ist gültig, da $dim Ker(g) \ge 0$, weil eine Menge und somit eine Basis nicht weniger als $0$ Elemente haben kann.
+ 
+ Wir wissen ebenfalls, dass
+ \begin{equation}
+  dim V = dim Ker(f) + Rg(f)
+ \end{equation}
+ und
+ \begin{equation}
+  dim V = dim Ker(g \circ f) + Rg(g \circ f)
+ \end{equation}
+ Durch Gleichsetzen erhalten wir
+ \begin{align*}
+  & dim Ker(f) + Rg(f) = dim Ker(g \circ f) + Rg(g \circ f)\\
+  \Leftrightarrow & Rg(f) = Rg(g \circ f) + dim Ker(g \circ f) - dim Ker(f)
+ \end{align*}
+ Da $g$ linear ist, bildet es $0$ auf $0$ ab.
+ Jedes Element, das in $Ker(f)$ ist, wird also auf ein Element in $Ker(g)$ abgebildet und somit in $Ker(g \circ f)$.
+ Zusätzlich könnte $Im(f)$ noch weitere Elemente enthalten, die durch $g$ auf $0$ abgebildet werden und deshalb ebenfalls in $Ker(g \circ f)$ sind.
+ Daher gilt
+ \begin{align}
+  & Ker(f) \subseteq Ker(g \circ f)\\
+  \Rightarrow & dim Ker(f) \le dim Ker(g \circ f)
+ \end{align}
+ Wenden wir dies auf $Rg(f) = Rg(g \circ f) + dim Ker(g \circ f) - dim Ker(f)$ an, erhalten wir
+ \begin{equation}
+  Rg(f) \le Rg(g \circ f)
+ \end{equation}
+
+ Aus $Rg(f) \le Rg(g \circ f)$ und $Rg(g) \le dim W$ folgt
+ \begin{equation}
+  Rg(f) + Rg(g) \le Rg(g \circ f) + dim W
+ \end{equation}
+\end{proof}
 
 \section*{Übung 3}
 
