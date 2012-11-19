@@ -67,6 +67,8 @@ Nach dem binomischen Lehrsatz mit $x = 3$ und $y = 1$ gilt
 
 \subsection*{d}
 
+
+
 \section*{Übung 19}
 
 \subsection*{a}
@@ -106,6 +108,28 @@ Da $\sum \frac{n^k}{2^n}$ nach a) konvergiert, folgt aus Satz 1 §3, dass $\frac
 
 \begin{proof}
  Nach Satz 2 und Beispiel 1 und 2 ist $f$ stetig an allen Stellen außer $< 0$ und $> 1$.
+ 
+ Sei $\varepsilon > 0$.
+ Sei $0 < x_0 \le 1$ und $x \ne \frac{1}{n + 1} \forall n \in \mathbb{N}$.
+ Wir suchen ein $\delta$, sodass $|f(x) - f(x_0)| < \varepsilon$ für alle $x$ mit $|x - x_0| < \delta$.
+ Wir wählen $n \in \mathbb{N}$, sodass $\frac{1}{n + 1} < x < \frac{1}{n}$.
+ Wir wählen $\delta = min \{ |x_0 - \frac{1}{n + 1}|, |x_0 - \frac{1}{n}| \}$.
+ \begin{equation}
+  |f(x) - f(x_0)| = |\frac{1}{n} - \frac{1}{n}| = 0 < \varepsilon
+ \end{equation}
+ 
+ Abschließend betrachten wir die Stelle $0$.
+ Sei $\varepsilon > 0$.
+ Wir suchen ein $\delta$, sodass $|f(x) - f(0)| = |f(x)| < \varepsilon$ für alle $x$ mit $|x| < \delta$.
+ Wir wählen $\delta = min \{5, max \{ \{ \frac{1}{n} \mid \frac{1}{n} < \varepsilon \} \backslash \{ max \{ \frac{1}{n} \mid \frac{1}{n} < \varepsilon \} \} \}$.
+ Wenn $x < 0$, gilt
+ \begin{equation}
+  |f(x)| = 0 < \varepsilon
+ \end{equation}
+ Wenn $x > 0$, gilt
+ \begin{equation}
+  |f(x)| < \frac{1}{n + 1} < \varepsilon
+ \end{equation}
 \end{proof}
 
 \section*{Übung 21}
