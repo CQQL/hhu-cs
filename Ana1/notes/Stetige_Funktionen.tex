@@ -208,5 +208,132 @@
  Ein solches $f$ heißt Polynom.
 \end{example}
 
+\begin{example}
+ Sind $m, n \in \mathbb{N}_0$ und $a_0, a_1, \dots, a_m, b_0, b_1, \dots, b_n \in \mathbb{R}$ und ist $D := \{x \in \mathbb{R} \mid b_0 + b_1x + \dots + b_nx^n \ne 0\}$, so erhält man durch
+ \begin{equation}
+  f(x) := \frac{a_0 + a_1x + \dots + a_mx^m}{b_0 + b_1x + \dots + b_nx^n}
+ \end{equation}
+ eine stetige Funktion $f: D \rightarrow \mathbb{R}$.
+ Eine solche Funktion heißt eine gebrochen-rationale Funktion.
+\end{example}
+
+\begin{satz}
+ Für $n \in \mathbb{N}_0$ sei
+ \begin{equation}
+  R_{N + 1}(x) := exp(x) - \sum_{n = 0}^N \frac{1}{n!} x^n = \sum_{n = N + 1}^\infty \frac{1}{n!} x^n
+ \end{equation}
+ Dann ist $|R_{N + 1}(x)| \le 2 \frac{|x|^{N + 1}}{(N + 1)!}$ für alle $x$ mit $|x| \le \frac{N + 2}{2}$.
+\end{satz}
+
+\begin{proof}
+ \begin{align}
+  & R_{N + 1}(x) & = \sum_{n = N + 1}^\infty \frac{1}{n!} x^n = \frac{x^{N + 1}}{(N + 1)!} * (1 + \frac{x}{N + 2} + \frac{x^2}{(N + 2) * (N + 3)} + \dots)\\
+  \Rightarrow & |R_{N + 1}(x)| & \le \frac{|x|^{N + 1}}{(N + 1)!} * (1 + \frac{|x|}{N + 2} + \frac{|x|^2}{(N + 2) * (N + 3)} + \dots)\\
+  & & \le \frac{|x|^{N + 1}}{(N + 1)!} * (1 + \frac{|x|}{N + 2} + \frac{|x|^2}{(N + 2)^2} + \dots)
+ \end{align}
+
+ Ist $|x| \le \frac{N + 2}{2}$, so ist $\frac{|x|}{N + 2} \le \frac{1}{2}$, also $[...] \le 1 + \frac{1}{2} + (\frac{1}{2})^2 + \dots = 2$.
+ 
+ Spezialfall $N = 0$: Ist $|x| \le 1$, so ist $|R_1(x)| \le 2 |x|$.
+\end{proof}
+
+\begin{example}
+ $exp: \mathbb{R} \rightarrow \mathbb{R}$ ist stetig.
+ \begin{equation}
+  exp(x) := \sum_{n = 0}^\infty \frac{1}{n!} x^n
+ \end{equation}
+\end{example}
+
+\begin{proof}
+ Schritt 1: Zeige, dass $exp$ stetig in $0$ ist.
+ Sei $\varepsilon > 0$.
+ Wir suchen ein $\delta > 0$, so dass $|exp(x) - exp(0)| < \varepsilon$ für $|x| < \delta$.
+ \begin{equation}
+  |exp(x) - exp(0)| = |exp(x) - 1| = |R_1(x)|
+ \end{equation}
+ Wähle $\delta := min \{\frac{\varepsilon}{2}, 1\}$.
+ Ist $|x| < \delta$, so ist $|R_1(x)| \le 2|x| < 2\frac{\varepsilon}{2} = \varepsilon$.
+ 
+ Schritt 2: Sei $x_0 \in \mathbb{R}$ beliebig.
+ Zeige die Stetigkeit von $exp$ in $x_0$.
+ \begin{equation}
+  exp(x_0 + h) - exp(x_0) = exp(x_0)exp(h) - exp(x_0) = exp(x_0) * (exp(h) - 1)
+ \end{equation}
+ Nach Schritt 1 gilt: $exp(h) - 1 \rightarrow 0$ für $h \rightarrow 0$.
+ Es folgt: $exp(x_0 + h) - exp(x_0) \rightarrow 0$ für $h \rightarrow 0$.
+ Deswegen ist $exp$ an der Stelle $x_0$ stetig nach Satz 1.
+\end{proof}
+
+\begin{satz}
+ Sind $f$ und $g$ stetig, so ist $g \circ f$ stetig.
+ Präziser: Sind $D, E \subseteq \mathbb{R}$, sind $f: D \rightarrow \mathbb{R}$ und $g: E \rightarrow \mathbb{R}$ stetig und ist $f(D) \subseteq E$, so ist die Abbildung $x \mapsto g(f(x))$ von $D$ in $\mathbb{R}$ stetig.
+\end{satz}
+
+\begin{proof}
+ Sei $x_0 \in D$ und sei $(x_n)$ eine Folge in $D$ mit $x_n \rightarrow x_0$.
+ Weil $f$ stetig ist, gilt: $f(x_n) \rightarrow f(x_0)$.
+ Weil $g$ stetig ist, folgt: $g(f(x_n)) \rightarrow g(f(x_0))$.
+ Deswegen ist $g \circ f$ an der Stelle $x_0$ stetig.
+\end{proof}
+
+\begin{definition}
+ $e := exp(1) = \sum_{N = 0}^\infty \frac{1}{n!}$
+ Aus Satz 3 folgt $|e - \sum_{n = 0}^N \frac{1}{n!}| = |R_{N + 1}(1)| \le \frac{2}{(N + 1)!} \forall n \in \mathbb{N}_0$.
+ Damit kann man die Zahl $e$ schnell mit jeder gewünschten Genauigkeit berechnen.
+\end{definition}
+
+\begin{satz}
+ (Zwischenwertsatz)
+ 
+ Seien $a, b \in \mathbb{R}$ mit $a < b$ und sei $f: [a, b] \rightarrow \mathbb{R}$ stetig.
+ Ist $\gamma$ eine reelle Zahl, die zwischen $f(a)$ und $f(b)$ liegt, so gibt es ein $c \in [a, b]$ mit $f(c) = \gamma$.
+\end{satz}
+
+\begin{proof}
+ Wir können o.B.d.A. annehmen, dass $f(a) < \gamma < f(b)$.
+ \begin{equation}
+  X := \{x \in [a, b] \mid f(x) < \gamma\}
+ \end{equation}
+ Sei $c := sup X$.
+ Wir wollen zeigen, dass $f(c) = \gamma$.
+ Wäre $f(c) < \gamma$, so wäre $f(x) < \gamma$ für alle $x$, die nahe bei $c$ liegen im Widerspruch zur Tatsache, dass $c$ eine obere Schranke von $X$ ist.
+ Wäre $f(c) > \gamma$, so wäre $f(x) > \gamma$ für alle $x$, die nahe bei $c$ liegen im Widerspruch zur Tatsache, dass $c$ die kleinste obere Schranke von $X$ ist.
+ 
+ Bez.: Außer den abgeschlossenen, offenen und halboffenen Intervallen $[a, b], ]a, b[, [a, b[, ]a, b]$, die wir als eigentliche Intervalle bezeichnen wollen, betrachten wir auch uneigentliche Intervalle,  nämlich: 
+ \begin{description}
+  \item[$[a, \infty[$] $\mathbb{R}_{\ge a} := \{x \in \mathbb{R} \mid x \ge a\}$
+  \item[$]-\infty, b]$] $\mathbb{R}_{\le b} := \{x \in \mathbb{R} \mid x \le a\}$
+  \item[$]a, \infty[$] $\mathbb{R}_{> a} := \{x \in \mathbb{R} \mid x > a\}$
+  \item[$]-\infty, b[$] $\mathbb{R}_{< b} := \{x \in \mathbb{R} \mid x < b\}$
+ \end{description}
+ Unter Intervall verstehen wir ein eigentliches oder uneigentliches Intervall.
+ 
+ Ein eigentliches, abgeschlossenes Intervall $[a, b]$ heißt ein kompaktes Intervall.
+\end{proof}
+
+\begin{satz}
+ Ist $I$ ein Intervall und $f: I \rightarrow \mathbb{R}$ eine stetige, nicht-konstante Funktion, so ist $f(I)$ ein Intervall.
+\end{satz}
+
+\begin{satz}
+ Sei $I$ ein kompaktes Intervall und $f: I \rightarrow \mathbb{R}$ stetig.
+ Dann nimmt $f$ sein Maximum und sein Minimum an.
+ (Das heißt: Es gibt $\xi_1, \xi_2 \in I$ mit $f(\xi_1) \le f(x) \le f(\xi_2) \forall x \in I$).
+\end{satz}
+
+\begin{proof}
+ Schritt 1: Zeige, dass $f(I)$ nach oben beschränkt ist:
+ Andernfalls gäbe es für jedes $n \in \mathbb{N}$ ein $x_n \in I$ mit $f(x_n) > n$.
+ Nach Bolzano-Weierstraß besitzt $(x_n)$ eine konvergente Teilfolge $(x_{n_k})$.
+ Sei $x_0$ ihr Grenzwert.
+ Weil $f$ stetig ist, ist $f(x_0) = \lim_{k} f(x_{n_k})$, aber $f(x_{n_k}) > n_k \ge k$, Widerspruch.
+ 
+ Schritt 2: Sei $y := sup f(I)$.
+ Zu zeigen: Es gibt ein $\xi_2$ mit $f(\xi_2) = y$.
+ Es gibt eine Folge $(x_n)$ in $I$ mit $f(x_n) \rightarrow y$ für $n \rightarrow \infty$.
+ Nach Bolzano-Weierstraß existiert eine konvergente Teilfolge $(x_{n_k})$ von $(x_n)$.
+ Sei $\xi_2 := \lim_k x_{n_k}$.
+ Dann ist $f(\xi_2) = y$, weil $f$ stetig ist.
+\end{proof}
 
 \end{document}
