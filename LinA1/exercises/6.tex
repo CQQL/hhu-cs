@@ -4,12 +4,11 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{stmaryrd}
 
 \title{LinA1, Übungsblatt 6}
 \author{Marten Lienen (2126759), Gruppe 1}
 
-\newtheorem*{claim}{Behauptung}
+\newtheorem{lemma}{Lemma}
 
 \begin{document}
 
@@ -17,8 +16,63 @@
 
 \section*{Übung 1}
 
+\begin{lemma}
+ Die Summe zweier Unterräume ist ebenfalls ein Unterraum.
+\end{lemma}
+
 \begin{proof}
+ Seien $U, V$ Unterräume von $W$.
+ Zu zeigen ist, dass $(U + V, +)$ eine Untergruppe von $(W, +)$ ist und $xp \in U + V$ für alle $x \in K, p \in U + V$.
  
+ Sei $p \in U + V$, sodass $p = u + v$ mit $u \in U, v \in V$.
+ $U + V$ enthält ein neutrales Element $0_{U + V}$, weil $U, V$ Unterräume sind.
+ \begin{equation}
+  0_{U + V} = 0_U + 0_V
+ \end{equation}
+ \begin{equation}
+  p + 0_{U + V} = u + v + 0_U + 0_V = (u + 0_U) + (v + 0_V) = u + v = p
+ \end{equation}
+ 
+ Seien $p, p^{-1} \in U + V$, sodass $p = u + v$ und $p^{-1} = u' + v'$ mit $u, u' \in U, v, v' \in V$.
+ \begin{align}
+  & 0 = p + p^{-1}\\
+  \Leftrightarrow p^{-1} = -p = -(u + v) = (-u) + (-v)
+ \end{align}
+ Da $U$ und $V$ Unterräume sind, sind auch $-u \in U$ und $-v \in V$ und somit ist auch das Inverse $p^{-1} \in U + V$.
+ 
+ Seien $p, q \in U + V$, sodass $p = u + v$ und $q = u' + v'$ mit $u, u' \in U, v, v' \in V$.
+ \begin{equation}
+  p + q = u + v + u' + v' = (u + u') + (v + v')
+ \end{equation}
+ Da $U$ und $V$ Unterräume sind, sind auch $u + u' \in U$ und $v + v' \in V$ und somit $p + q \in U + V$.
+ 
+ $(U + V, +)$ ist eine Untergruppe von $(W, +)$.
+ 
+ Seien $p \in U + V$ und $x \in K$, sodass $p = u + v$ mit $u \in U, v \in V$.
+ Da das Distributivgesetz in $W$ gilt und $u, v \in W$, gilt es auch in
+ \begin{equation}
+  xp = x(u + v) = xu + xv
+ \end{equation}
+ Da $U$ und $V$ Unterräume sind, sind $xu \in U$ und $xv \in V$ und deshalb $xp \in U + V$.
+ 
+ Es gilt also $xp \in U + V$ für alle $x \in K, p \in U + V$.
+\end{proof}
+
+\begin{proof}
+ Da $U_1, U_2, U_3$ Unterräume von $V$ sind, können wir mit ihnen beliebig die Dimensionsformel anwenden.
+ \begin{align}
+  & dim U_1 + dim U_2 = dim(U_1 + U_2) + dim(U_1 \cap U_2)\\
+  \Leftrightarrow & dim(U_1 + U_2) = dim U_1 + dim U_2 - dim(U_1 \cap U_2)
+ \end{align}
+ $U_1 + U_2$ ist nach dem Lemma ebenfalls ein Unterraum von $V$, sodass wir wiederum die Dimensionsformel anwenden können.
+ \begin{equation}
+  dim(U_1 + U_2) + dim U_3 = dim(U_1 + U_2 + U_3) + dim((U_1 + U_2) \cap U_3)
+ \end{equation}
+ Durch Einsetzen von $dim(U_1 + U_2) = dim U_1 + dim U_2 - dim(U_1 \cap U_2)$ erhalten wir
+ \begin{align}
+  & dim U_1 + dim U_2 - dim(U_1 \cap U_2) + dim U_3 = dim(U_1 + U_2 + U_3) + dim((U_1 + U_2) \cap U_3)\\
+  \Leftrightarrow & dim U_1 + dim U_2 + dim U_3 = dim(U_1 + U_2 + U_3) + dim((U_1 + U_2) \cap U_3) + dim(U_1 \cap U_2)
+ \end{align}
 \end{proof}
 
 \section*{Übung 2}
