@@ -1,0 +1,228 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+
+\title{Info1, Übungsblatt 7}
+\author{Marten Lienen (2126759)}
+
+\newtheorem*{claim}{Behauptung}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+\subsection*{a}
+
+\subsubsection*{Zufallszahl}
+
+Eine Zahl, die auf eine nicht vorhersagbare Weise gewählt wurde.
+
+\subsubsection*{Zufallszahlenfolge}
+
+Eine Folge von Zahlen, in der man die aus einer Zahl nicht seinen Nachfolger errechnen kann.
+
+\subsubsection*{Pseudozufallszahl}
+
+Eine Zahl, die theoretisch vorhersagbar ist, was aber sehr aufwändig ist bzw. so aufwändig, dass es nur theoretisch durchführbar ist.
+
+\subsection*{b}
+
+Für mein menschliches Auge sehen die Zahlen, die von nachfolgendem Programm ausgegeben werden zufällig aus.
+Nur wiederholen sie sich periodisch.
+
+\lstset{language=c}
+\begin{lstlisting}
+ #include <stdio.h>
+ #include <stdlib.h>
+
+ typedef unsigned int uint;
+
+ void print_values (uint a, uint c, uint m, uint N, uint x_0) {
+   uint i;
+   uint x[N];
+   x[0] = x_0;
+  
+   printf("%d\n", x[0]);
+  
+   for (i = 1; i < N; i++) {
+     x[i] = (a * x[i - 1] + c) % m;
+    
+     printf("%d\n", x[i]);
+   }
+ }
+
+ int main(int argc, char** argv) {
+   if (argc < 6) {
+     return 1;
+   }
+  
+   uint a, c, m, N, x_0;
+  
+   a = atoi(argv[1]);
+   c = atoi(argv[2]);
+   m = atoi(argv[3]);
+   N = atoi(argv[4]);
+   x_0 = atoi(argv[5]);
+  
+   print_values(a, c, m, N, x_0);
+
+   return 0;
+ }
+\end{lstlisting}
+
+\subsection*{c}
+
+Wenn man die Parameter nach dem Satz von Greenberger wählt, ist die Periodenlänge $m$.
+
+\lstset{language=c}
+\begin{lstlisting}
+ #include <stdio.h>
+ #include <stdlib.h>
+
+ typedef unsigned int uint;
+
+ void print_period_length (uint a, uint c, uint m, uint N, uint x_0) {
+   uint i;
+   uint x[N];
+   x[0] = x_0;
+  
+   for (i = 1; i < N; i++) {
+     x[i] = (a * x[i - 1] + c) % m;
+    
+     if (x[i] == x_0) {
+       printf("Periodenlaenge: %d\n", i);
+      
+       return;
+     }
+   }
+ }
+
+ int main(int argc, char** argv) {
+   if (argc < 6) {
+     return 1;
+   }
+  
+   uint a, c, m, N, x_0;
+  
+   a = atoi(argv[1]);
+   c = atoi(argv[2]);
+   m = atoi(argv[3]);
+   N = atoi(argv[4]);
+   x_0 = atoi(argv[5]);
+  
+   print_period_length(a, c, m, N, x_0);
+
+   return 0;
+ }
+\end{lstlisting}
+
+\section*{Übung 2}
+
+\subsection*{a}
+
+\begin{proof}
+ Zu zeigen ist, dass $G(x)$ sich von $G(x + 1)$ an genau einer Stelle unterscheidet.
+ 
+ Seien $x$ und $y = x + 1$ zwei Zahlen in Binärdarstellung.
+ Weil $G$ jede Stelle $l$ mit der vorhergehenden mit einem $XOR$ verknüpft, ist der Graycode an der Stelle $j$ dann $0$, wenn die Stellen $j$ und $j - 1$ in der Binärzahl gleich sind, ansonsten ist er $1$.
+ Jede zwei aufeinanderfolgende binäre Zahlen gleicher Länge (links mit führenden Nullen) lassen sich von links nach rechts in 3 Teile aufteilen.
+ \begin{itemize}
+  \item In den ersten $n$ Stellen stimmen sie genau überein
+  \item Es folgt eine Stelle $j$, wo die kleinere Zahl eine $0$ und die größere Zahl eine $1$ hat
+  \item Alle weiteren $k$ Stellen sind bei der kleineren Zahl $1$ und bei der größeren $0$
+ \end{itemize}
+ (Beachte: $n$ und $k$ können auch $0$ sein.)
+ Da die Vorschrift $G$ sich an jeder Stelle nur auf Stellen links von dieser bezieht, müssen auch die ersten $n$ Stellen des Graycodes übereinstimmen.
+ Die $j$-te Stelle des Graycodes unterscheidet sich weil $x_{j - 1} = y_{j - 1}$, aber $x_j \ne y_j$.
+ Die $(j + 1)$-te Stelle des Graycodes ist immer eine $1$, weil $x_j = 0, x_{j + 1} = 1, y_j = 1, y_{j + 1} = 0$.
+ Die $k - 1$ verbleibenden Stellen sind alle $0$, weil die letzten $k$ Stellen einer Zahl alle denselben Wert haben.
+ $G(x)$ und $G(y)$ unterscheiden sich also genau an der Stelle, wo sich $x$ und $y$ zum ersten Mal unterscheiden.
+ An allen anderen Stellen sind sie gleich.
+ 
+ Es bleibt noch zu zeigen, dass es auch für $G(0)$ und $G(2^n - 1)$ gilt.
+ $G(0)$ ist immer $0$, weil alle Binärziffern von $0$ gleich sind.
+ $G(2^n - 1)$ ist an allen Stellen $0$ außer der ersten, weil $G$ die erste Stelle ohne Änderung überträgt.
+\end{proof}
+
+\lstset{language=c}
+\begin{lstlisting}
+ #include <stdio.h>
+
+ void byte_to_string (char* string, int length, int x) {
+   int i;
+  
+   for (i = 0; i < length; i++) {
+     if (x & (1 << i)) {
+       string[i] = '1';
+     } else {
+       string[i] = '0';
+     }
+   }
+  
+   string[length] = '\0';
+ }
+
+ int graycode_encode (int x) {
+   return x ^ (x >> 1);
+ }
+
+ void print_graycodes (int n) {
+   int i;
+   char string[n + 1];
+   int upper_bound = 1 << n;
+  
+   for (i = 0; i < upper_bound; i++) {
+     byte_to_string(string, n, graycode_encode(i));
+    
+     printf("%s\n", string);
+   }
+ }
+
+ int main(int argc, char** argv) {
+   int n;
+  
+   scanf("%d", &n);
+  
+   print_graycodes(n);
+
+   return 0;
+ }
+\end{lstlisting}
+
+\subsection*{b}
+
+\begin{proof}
+ Zuerst gucken wir, was die Funktion $decode$ eigentlich tut.
+ Sei $x$ eine Binärzahl der Länge $n$ und $y = G(x)$ ihr Graycode.
+ Die Funktion erzeugt eine Zahl $q$ sodass für jede Stelle von $q$ gilt
+ \begin{equation}
+  q_k = \oplus_{j = 0}^k y_{k - j} = y_k \oplus y_{k - 1} \oplus y_{k - 2} \oplus \dots \oplus y_0
+ \end{equation}
+ Aber
+ \begin{equation}
+  y_k = x_k \oplus x_{k - 1} \Leftrightarrow y_k \oplus x_{k - 1} = x_k \oplus x_{k - 1} \oplus x_{k - 1} = x_k
+ \end{equation}
+ Man muss sich vorstellen, dass die Binärzahlen nach links (zur Seite der kleineren Indexe) mit Nullen aufgefüllt sind.
+ Die $0$ ist das neutrale Element von $\oplus$.
+ Es gilt aber auch
+ \begin{equation}
+  y_{k - 1} = x_{k - 1} \oplus x_{k - 2} \Leftrightarrow y_{k - 1} \oplus x_{k - 2} = x_{k - 1} \oplus x_{k - 2} \oplus x_{k - 2} = x_{k - 1}
+ \end{equation}
+ Daraus folgt
+ \begin{equation}
+  x_k = y_k \oplus x_{k - 1} = y_k \oplus y_{k - 1} \oplus x_{k - 2} = \dots
+ \end{equation}
+ Da aber die Binärzahlen nach links mit $0$, dem neutralen Element von $\oplus$ aufgefüllt sind, gibt es ein ``linkestes'' relevantes Element, also mit kleinsten relevanten Index $p$.
+ Dieser Index ist genau die linkeste Stelle von $y$, da danach alle $0$ sind, also $p = 0$.
+ \begin{equation}
+  x_k = y_k \oplus y_{k - 1} \oplus \dots \oplus y_0 \oplus 0
+ \end{equation}
+ Wenn wir das nun mit der Formel von oben für $q_k$ vergleichen sehen, wir dass $q = x$, weil $q$ und $x$ sich am Ende in jeder Stelle gleichen werden.
+\end{proof}
+
+\end{document}
