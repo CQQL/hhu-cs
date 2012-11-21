@@ -1,0 +1,196 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{LinA1, Übungsblatt 7}
+\author{Marten Lienen (2126759), Gruppe 1}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+ $e_i^\vee$ ist definiert als eine Abbildung von $K^n$ auf den Körper $K$.
+ Wir müssen also noch zeigen, dass es linear ist, damit es in $Hom(K^n, K)$ ist.
+ Seien $x, y \in K$ und $v, w \in K^n$.
+ \begin{equation}
+  e_i^\vee(xv + yw) = e_i^\vee(\begin{pmatrix}xv_1 + yw_1\\ \vdots \\ xv_n + yw_n\end{pmatrix}) = xv_i + yw_i = xe_i^\vee(v) + ye_i^\vee(w)
+ \end{equation}
+\end{proof}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+ Sei $(e_1, \dots, e_n)$ eine Basis von $K^n$.
+ Die Vektoren $e_k, 1 \le k \le n$ sind so definiert, dass alle ihre Elemente $0$ sind außer das $k$-te, das $1$ ist.
+ \begin{equation}
+  e_i^\vee(e_j) = e_{j_i}
+ \end{equation}
+ $e_i^\vee(e_j)$ ist also das $i$-te Element von $e_j$, wobei $e_j$ so definiert ist, dass $e_{j_k} = 0$ für $k \ne j$ und $e_{j_j} = 1$, d.h.
+ \begin{align}
+  & e_k^\vee(e_j) = e_{j_k} = 0 \quad\forall k \ne j\\
+  & e_j^\vee(e_j) = e_{j_j} = 1
+ \end{align}
+\end{proof}
+
+\subsection*{Teil 3}
+
+\begin{proof}
+ Wir müssen zeigen, dass $(e_1^\vee, \dots, e_n^\vee)$ eine Basis von $(K^n)^\vee$ ist, i.e. dass es ein EZS ist und linear unabhängig.
+ 
+ Linearunabhängigkeit: Seien $x_1, \dots, x_n \in K$ und $v \in K^n$.
+ $v \in \langle e_1, \dots, e_n \rangle$, weil $(e_1, \dots, e_n)$ eine Basis von $K^n$ ist.
+ \begin{align}
+  & x_1e_1^\vee(v) + \dots + x_ne_n^\vee(v) = 0\\
+  \Leftrightarrow & e_1^\vee(x_1v) + \dots + e_n^\vee(x_nv) = 0\\
+  \Leftrightarrow & x_1v_1 + \dots + x_nv_n = 0
+ \end{align}
+ Weil $(e_1, \dots, e_n)$ linear unabhängig ist, muss gelten
+ \begin{equation}
+  x_1v_1 = \dots = x_nv_n = 0
+ \end{equation}
+
+\end{proof}
+
+\section*{Übung 2}
+
+\subsection*{Teil 1}
+
+\subsubsection*{$(f + g)^\vee = f^\vee + g^\vee$}
+
+Sei $h \in Hom(W, K)$ und $v \in V$.
+\begin{align}
+ (f + g)^\vee(h)(v) & = (h \circ (f + g))(v) = h((f + g)(v)) = h(f(v) + g(v))\\
+ & = h(f(v)) + h(g(v)) = (h \circ f)(v) + (h \circ g)(v)\\
+ & = f^\vee(h)(v) + g^\vee(h)(v)
+\end{align}
+
+\subsubsection*{$(xf)^\vee = xf^\vee$}
+
+Sei $h \in Hom(W, K)$ und $v \in V$.
+\begin{align}
+ (xf)^\vee(h)(v) = (h \circ xf)(v) = h(xf(v)) = xh(f(v)) = x(h \circ f)(v) = xf^\vee(h)(v)
+\end{align}
+
+\subsection*{Teil 2}
+
+Teil 1 bedeutet, dass $\Phi$ linear ist.
+\begin{equation}
+ \Phi(f + g) = (f + g)^\vee = f^\vee + g^\vee = \Phi(f) + \Phi(g)
+\end{equation}
+\begin{equation}
+ \Phi(xf) = (xf)^\vee = xf^\vee = x\Phi(f)
+\end{equation}
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+ ``$\Rightarrow$'': Sei $\varphi \in (U + W)^\perp$ und $u \in U, w \in W$.
+ Es gilt
+ \begin{equation}
+  u = u + 0_W \in U + W \Rightarrow \varphi(u) = 0 \Rightarrow \varphi(U) = 0 \Rightarrow \varphi \in U^\perp
+ \end{equation}
+ und 
+ \begin{equation}
+  w = 0_U + w \in U + W \Rightarrow \varphi(w) = 0 \Rightarrow \varphi(W) = 0 \Rightarrow \varphi \in W^\perp
+ \end{equation}
+ Da sowohl $\varphi \in U^\perp$ als auch $\varphi \in W^\perp$, ist auch $\varphi \in U^\perp \cap W^\perp$.
+
+ ``$\Leftarrow$'': Sei $\varphi \in U^\perp \cap W^\perp$ und $x \in U + W$ mit $x = u + w$ mit $u \in U, w \in W$.
+ Weil $\varphi \in U^\perp \cap W^\perp$, gilt
+ \begin{equation}
+  \varphi(u) = 0 \quad \forall u \in U
+ \end{equation}
+ und
+ \begin{equation}
+  \varphi(w) = 0 \quad \forall w \in W
+ \end{equation}
+
+ Weil $\varphi$ linear ist, gilt
+ \begin{equation}
+  \varphi(x) = \varphi(u + w) = \varphi(u) + \varphi(w) = 0 + 0 = 0
+ \end{equation}
+ Also ist $\varphi \in (U + W)^\perp$.
+\end{proof}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+ ``$\Rightarrow$'': Sei $u \in (U^\perp)^\perp$.
+ Es gilt
+ \begin{equation}
+  \varphi(u) = 0 \quad \forall \varphi \in U^\perp
+ \end{equation}
+ $U^\perp$ ist jedoch so definiert, dass für alle $\varphi \in U^\perp$ gilt
+ \begin{equation}
+  \varphi(u) = 0 \quad \forall u \in U \Rightarrow \varphi(U) = 0
+ \end{equation}
+ Das heißt
+ \begin{equation}
+  u \in U
+ \end{equation}
+ 
+ ``$\Leftarrow$'': Sei $u \in U$.
+ Weil
+ \begin{equation}
+  \varphi(u) = 0 \quad \forall u \in U
+ \end{equation}
+ gilt
+ \begin{equation}
+  u \in (U^\perp)^\perp
+ \end{equation}
+\end{proof}
+
+\subsection*{Teil 3}
+
+
+
+\subsection*{Teil 4}
+
+\begin{proof}
+ ``$\Rightarrow$'': Sei $\varphi \in (U \cap W)^\perp$.
+ $U^\perp + W^\perp$ ist eine Menge von Funktionen $\xi$ mit
+ \begin{equation}
+  \xi(x) = \delta(x) + \omega(x)
+ \end{equation}
+ mit $\delta \in U^\perp$ und $\omega \in W^\perp$.
+ Weil $\delta: U \rightarrow K$ und $\omega: W \rightarrow K$, ist $\xi$ nur auf der Schnittmenge $U \cap W$ definiert.
+ $\varphi$ bildet nach Definition alle Elemente von $U \cap W$ auf $0$ ab und ist deshalb in $U^\perp + W^\perp$ enthalten.
+ 
+ ``$\Leftarrow$'': Sei $\varphi \in U^\perp + W^\perp$ und $x \in U \cap W$.
+ \begin{equation}
+  (\varphi + \varphi)(x) = \varphi(x) + \varphi(x) = 0 + 0 = 0
+ \end{equation}
+ Folglich gilt $\varphi \in (U \cap W)^\perp$.
+\end{proof}
+
+\section*{Übung 4}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+ ``$\Rightarrow$'': Sei $u \in Ker(f)$.
+ Zu zeigen ist, dass $u \in U \cap W$.
+ Es gilt
+ \begin{equation}
+  f(u) = [0] \Rightarrow 
+ \end{equation}
+
+ 
+ ``$\Leftarrow$'': Sei $u \in U \cap W$.
+ Zu zeigen ist, dass $u \in Ker(f) \Leftrightarrow f(u) = [0$.
+ 
+\end{proof}
+
+\subsection*{Teil 2}
+
+\end{document}
