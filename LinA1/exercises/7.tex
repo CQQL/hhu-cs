@@ -43,13 +43,7 @@
 \subsection*{Teil 3}
 
 \begin{proof}
- Wir müssen zeigen, dass $(e_1^\vee, \dots, e_n^\vee)$ eine Basis von $(K^n)^\vee$ ist, i.e. dass es ein EZS ist und linear unabhängig.
- 
- Linearunabhängigkeit: Seien $x_1, \dots, x_n \in K$ und $v \in K^n$.
- $v \in \langle e_1, \dots, e_n \rangle$, weil $(e_1, \dots, e_n)$ eine Basis von $K^n$ ist.
- \begin{align}
-  & x_1e_1^\vee(v) + \dots + x_ne_n^\vee(v) = 0
- \end{align}
+ Wir müssen zeigen, dass $(e_1^\vee, \dots, e_n^\vee)$ eine Basis von $(K^n)^\vee$ ist, i.e. dass es ein minimales EZS ist.
 
  EZS: Wir müssen zeigen, dass $(K^n)^\vee = \langle e_1^\vee, \dots, e_n^\vee \rangle$.
  
@@ -68,6 +62,25 @@
  \end{equation}
  Da $e_j(x_jk) \in K, 1 \le j \le n$ und $K$ ein Körper ist, ist auch $e_1^\vee(x_1k) + \dots + e_n^\vee(x_nk) \in K$.
  Damit gilt $\varphi: K^n \rightarrow K$ und $\varphi \in (K^n)^\vee$.
+ 
+ Minimales EZS: Sei $e_j^\vee \in \langle e_1^\vee, \dots, \widehat{e_j^\vee}, \dots, e_n^\vee \rangle, 1 \le j \le n$, $x_1, \dots, x_n \in K$ und $v \in V$.
+ Es wäre also
+ \begin{equation}
+  e_j^\vee(v) = v_j = \sum_{i \ne j} x_ie_i^\vee(v)
+ \end{equation}
+ Wenn man die Summe auflöst erhält man
+ \begin{equation}
+  \sum_{i \ne j} x_ie_i^\vee(v) = \sum_{i \ne j} x_iv_i
+ \end{equation}
+ Nun betrachten wir den Vektor $v \in V$ mit $v_j = 1$ und $v_i = 0, i \ne j$.
+ \begin{equation}
+  e_j^\vee(v) = v_j = 1
+ \end{equation}
+ Wenn man $v$ aber als Parameter der Linearkombinationsdarstellung von $e_j^\vee$ einsetzt, erhält man widersprüchlicherweise
+ \begin{equation}
+  \sum_{i \ne j} x_ie_i^\vee(v) = \sum_{i \ne j} x_iv_i = \sum_{i \ne j} x_i0 = 0 \ne e_j^\vee(v)
+ \end{equation}
+ $e_j^\vee$ ist also keine Linearkombination von $\langle e_1^\vee, \dots, \widehat{e_j^\vee}, \dots, e_n^\vee \rangle$ und $(e_1^\vee, \dots, e_n^\vee)$ ein minimales EZS, also eine Basis.
 \end{proof}
 
 \section*{Übung 2}
