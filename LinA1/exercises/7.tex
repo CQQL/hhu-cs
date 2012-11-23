@@ -59,8 +59,14 @@
 
  EZS: Wir müssen zeigen, dass $(K^n)^\vee = \langle e_1^\vee, \dots, e_n^\vee \rangle$.
  
- ``$\Rightarrow$'': Sei $\varphi \in (K^n)^\vee$.
- 
+ ``$\Rightarrow$'': Sei $\varphi \in (K^n)^\vee$ und $k \in K^n$.
+ \begin{align}
+  \varphi(k) & = \varphi(k_1e_1 + \dots + k_ne_n)\\
+  & = k_1\varphi(e_1) + \dots + k_n\varphi(e_n)\\
+  & = e_1^\vee(k)\varphi(e_1) + \dots + e_n^\vee(k)\varphi(e_n)\\
+  & = \varphi(e_1)e_1^\vee(k) + \dots + \varphi(e_n)e_n^\vee(k)
+ \end{align}
+ $\varphi$ ist also eine Linearkombination von $(e_1^\vee, \dots, e_n^\vee)$ mit den Skalaren $\varphi(e_1), \dots, \varphi(e_n)$, dass heißt, dass $\varphi \in \langle e_1^\vee, \dots, e_n^\vee \rangle$.
  
  ``$\Leftarrow$'': Sei $\varphi \in \langle e_1^\vee, \dots, e_n^\vee \rangle$ und $k \in K^n$.
  \begin{equation}
