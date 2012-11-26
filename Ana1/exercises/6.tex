@@ -17,14 +17,50 @@
 \begin{proof}
  Sei $\varepsilon > 0$, $x_0 \in \mathbb{R}$.
  Wir suchen $\delta$, sodass $|x^3 - x_0^3| < \varepsilon$ für alle $x$ mit $|x - x_0| < \delta$.
- Wähle $\delta = \xi$.
- \begin{equation}
-  |x^3 - x_0^3| < \varepsilon
- \end{equation}
-
+ Wir können $x$ schreiben als $x_0 + h$ mit $|h| < \delta$.
+ Wähle $\delta = min \{1, \frac{\varepsilon}{|3x_0^2 + 3|x_0| + 1|} \}$.
+ \begin{align*}
+  |(x_0 + h)^3 - x_0^3| & = |x_0^3 + 3x_0^2h + 3x_0h^2 + h^3 - x_0^3|\\
+  & = |3x_0^2h + 3x_0h^2 + h^3|\\
+  & = |h * (3x_0^2 + 3x_0h + h^2)|\\
+  & \le |h| * |3x_0^2 + 3|x_0||h| + h^2|\\
+  & \le |h| * |3x_0^2 + 3|x_0| + 1|< \varepsilon
+ \end{align*}
 \end{proof}
 
 \section*{Übung 24}
+
+\begin{proof}
+ Sei $\varepsilon > 0$, $x_0 \in D$.
+ Wir suchen $\delta$, sodass $|h(x) - h(x_0)| < \varepsilon$ für alle $x \in D$ mit $|x - x_0| < \delta$.
+ Weil $f$ und $g$ stetig sind, gibt es $\delta_f$ und $\delta_g$, sodass $|f(x) - f(x_0)| < \varepsilon$ für alle $x \in D$ mit $|x - x_0| < \delta_f$ und $|g(x) - g(x_0)| < \varepsilon$ für alle $x \in D$ mit $|x - x_0| < \delta_g$.
+ Wir wählen $\delta = min \{\delta_f, \delta_g\}$.
+ Zu zeigen ist
+ \begin{equation}
+  |h(x) - h(x_0)| < \varepsilon
+ \end{equation}
+ Wenn gilt
+ \begin{align*}
+  & (h(x) = f(x) \land h(x_0) = f(x_0))\\
+  \lor & (h(x) = g(x) \land h(x_0) = g(x_0))
+ \end{align*}
+ ist es bereits gezeigt, weil $f$ und $g$ stetig sind.
+ Wir nehmen nun o.B.d.A. an, dass $h(x) = f(x)$ und $h(x_0) = g(x_0)$.
+ Für den umgekehrten Fall geht der Beweis analog.
+ Zu zeigen ist
+ \begin{equation}
+  |f(x) - g(x_0)| < \varepsilon
+ \end{equation}
+ Es gilt $f(x) > g(x)$ und $g(x_0) > f(x_0)$.
+ Wenn $f(x) > g(x_0)$, gilt
+ \begin{equation}
+  |f(x) - g(x_0)| < |f(x) - f(x_0)| < \varepsilon
+ \end{equation}
+ Wenn $f(x) \le g(x_0)$, gilt
+ \begin{equation}
+  |f(x) - g(x_0)| < |g(x) - g(x_0)| < \varepsilon
+ \end{equation}
+\end{proof}
 
 \section*{Übung 25}
 
