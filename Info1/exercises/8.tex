@@ -1,0 +1,117 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+
+\title{Info1, Übungsblatt 8}
+\author{Marten Lienen (2126759)}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+\subsection*{a}
+
+\subsection*{b}
+
+Mit $j = 0$ wird eine Folge erzeugt, die abwechselnd $0$ und $1$ annimmt.
+
+\subsection*{c}
+
+Es sieht so aus, als wären die Punkte in ``Scheiben'' angeordnet.
+
+\subsection*{g}
+
+$drand48$ gibt Werte im Bereich $[0, 1[$ zurück.
+
+\subsection*{h}
+
+\lstset{language=c}
+\begin{lstlisting}
+ floor(drand48() * n) + 1;
+\end{lstlisting}
+
+\section*{Aufgabe 2}
+
+In den Aufgabenteilen beziehe ich mich auf die Struktur
+\lstset{language=c}
+\begin{lstlisting}
+ typedef struct vector {
+   int x;
+   int y;
+   int z;
+ } vector_t;
+\end{lstlisting}
+und Vektoren als Array mit
+\lstset{language=c}
+\begin{lstlisting}
+ int vector[] = {0, 0, 0};
+\end{lstlisting}
+
+\subsection*{a}
+
+Strukturen führen zu einer besseren Lesbarkeit, weil die einzelnen Elemente mit Namen referenziert werden.
+Außerdem können Strukturen per-value übergeben werden, während Arrays immer als Zeiger übergeben werden.
+Man hat also keinerlei Kontroller zur Compilezeit, ob ein Array auch groß genug ist, um als eine solche Struktur zu dienen.
+In einer Struktur kann man auch verschiedene Typen zusammenfassen, ein Array kann (ohne es mit Typecasts noch unschöner zu machen) immer nur einen Typ von Wert speichern.
+Der Vorteil von Arrays ist, dass man über sie iterieren kann ohne direkt mit Zeigerarithmetik arbeiten zu müssen.
+
+\subsection*{b}
+
+\begin{lstlisting}
+ int scalar_product (vector_t a, vector_t b) {
+   return a.x * b.x + a.y * b.y + a.z * b.z;
+ }
+ 
+ int abs_vector (vector_t a) {
+   return (int)sqrt(pow(a.x, 2) + pow(a.y, 2) + pow(a.z, 2));
+ }
+
+ double angle (vector_t a, vector_t b) {
+   return acos(scalar_product(a, b) / (abs_vector(a) * abs_vector(b)));
+ }
+\end{lstlisting}
+
+\begin{lstlisting}
+ int scalar_product (int a[], int b[]) {
+   return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+ }
+ 
+ int abs_vector (int a[]) {
+   return (int)sqrt(pow(a[0], 2) + pow(a[1], 2) + pow(a[2], 2));
+ }
+
+ double angle (int a[], int b[]) {
+   return acos(scalar_product(a, b) / (abs_vector(a) * abs_vector(b)));
+ }
+\end{lstlisting}
+
+\subsection*{c}
+
+\begin{lstlisting}
+ vector_t cross_product (vector_t a, vector_t b) {
+   vector_t c;
+  
+   c.x = a.y * b.z - a.z * b.y;
+   c.y = a.z * b.x - a.x * b.z;
+   c.z = a.x * b.y - a.y * b.x;
+  
+   return c;
+ }
+\end{lstlisting}
+
+\begin{lstlisting}
+ void cross_product (int a[], int b, int* c) {
+   c[0] = a[1] * b[2] - a[2] * b[1];
+   c[1] = a[2] * b[0] - a[0] * b[2];
+   c[2] = a[0] * b[1] - a[1] * b[0];
+ }
+\end{lstlisting}
+
+PS: Auf meinen vorigen Blättern waren Kommentare zu LaTeX. Ich verwende Kile um LaTeX-Dateien zu erstellen. Es kann also mit LaTeX gar nicht besser aussehen, weil ich nicht Lyx verwende. Es könnte höchstens an Paketen oder am Dokumenttyp liegen. Dies hier ist ein Artikel.
+
+\end{document}
