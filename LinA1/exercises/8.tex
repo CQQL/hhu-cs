@@ -8,6 +8,8 @@
 \title{LinA1, Übungsblatt 8}
 \author{Marten Lienen (2126759), Gruppe 1; Fabian Schmittmann (2083559), Gruppe 5}
 
+\newtheorem{lemma}{Lemma}
+
 \begin{document}
 
 \maketitle
@@ -143,6 +145,51 @@
 
 \section*{Übung 2}
 
+\begin{proof}
+ Seien $x, y \in K$ und $f, g \in Hom(V, W)$.
+ Seien $\mathcal{B}$ und $\mathcal{B}'$ die kanonischen Basen $(v_1, \dots, v_n)$ und $(w_1, \dots, w_n)$ von $V$ und $W$.
+ Wir schreiben $f$ und $g$ als Linearkombinationen der Basis $f_{ij}(v_k) = \delta_{jk} w_i$ mit $1 \le j, k \le n$ und $1 \le i \le m$.
+ \begin{align}
+  & f = \sum_{j = 1}^n \sum_{i = 1}^m x_{ij}f_{ij}\\
+  & g = \sum_{j = 1}^n \sum_{i = 1}^m y_{ij}f_{ij}
+ \end{align}
+ \begin{align*}
+  xf + yg & = x(\sum_{j = 1}^n \sum_{i = 1}^m x_{ij}f_{ij}) + y(\sum_{j = 1}^n \sum_{i = 1}^m y_{ij}f_{ij})\\
+  & = \sum_{j = 1}^n \sum_{i = 1}^m xx_{ij}f_{ij} + \sum_{j = 1}^n \sum_{i = 1}^m yy_{ij}f_{ij}\\
+  & = \sum_{j = 1}^n \sum_{i = 1}^m xx_{ij}f_{ij} + yy_{ij}f_{ij}\\
+  & = \sum_{j = 1}^n \sum_{i = 1}^m (xx_{ij} + yy_{ij})f_{ij}\\
+ \end{align*}
+
+ \begin{align*}
+  \Phi(xf + yg) & = \begin{pmatrix}
+                   xx_{1,1} + yy_{1,1} & \dots & xx_{1,n} + yy_{1,n}\\
+                   \vdots & & \vdots\\
+                   xx_{m,1} + yy_{m,1} & \dots & xx_{m,n} + yy_{m,n}
+                  \end{pmatrix}\\
+              & = \begin{pmatrix}
+                   xx_{1,1} & \dots & xx_{1,n}\\
+                   \vdots & & \vdots\\
+                   xx_{m,1} & \dots & xx_{m,n}
+                  \end{pmatrix}
+                + \begin{pmatrix}
+                   yy_{1,1} & \dots & yy_{1,n}\\
+                   \vdots & & \vdots\\
+                   yy_{m,1} & \dots & yy_{m,n}
+                  \end{pmatrix}\\
+              & = x\begin{pmatrix}
+                   x_{1,1} & \dots & x_{1,n}\\
+                   \vdots & & \vdots\\
+                   x_{m,1} & \dots & x_{m,n}
+                  \end{pmatrix}
+                + y\begin{pmatrix}
+                   y_{1,1} & \dots & y_{1,n}\\
+                   \vdots & & \vdots\\
+                   y_{m,1} & \dots & y_{m,n}
+                  \end{pmatrix}
+ = x\Phi(f) + y\Phi(g)
+ \end{align*}
+\end{proof}
+
 \section*{Übung 3}
 
 \begin{equation}
@@ -162,9 +209,61 @@
 
 \subsection*{Teil 1}
 
+\begin{equation}
+ f(\begin{pmatrix}x\\y\end{pmatrix}) = \begin{pmatrix}-y\\x\end{pmatrix}
+\end{equation}
+
+Seien $a, b \in \mathbb{R}$.
+\begin{align*}
+ f(a\begin{pmatrix}x\\y\end{pmatrix} + b\begin{pmatrix}w\\z\end{pmatrix}) & = f(\begin{pmatrix}ax + bw\\ay + bz\end{pmatrix}) = \begin{pmatrix}-ay - bz\\ax + bw\end{pmatrix} = \begin{pmatrix}-ay\\ax\end{pmatrix} + \begin{pmatrix}-bz\\bw\end{pmatrix}\\
+ & = a\begin{pmatrix}-y\\x\end{pmatrix} + b\begin{pmatrix}-z\\w\end{pmatrix} = af(\begin{pmatrix}x\\y\end{pmatrix}) + bf(\begin{pmatrix}w\\z\end{pmatrix})
+\end{align*}
+
+\begin{equation}
+ Mat_{\mathcal{B}, \mathcal{B}}(f) = \begin{pmatrix}
+                                      0 & -1\\
+                                      1 & 0
+                                     \end{pmatrix}
+\end{equation}
+
 \subsection*{Teil 2}
 
+\begin{equation}
+ f(\begin{pmatrix}x\\y\end{pmatrix}) = \begin{pmatrix}y\\x\end{pmatrix}
+\end{equation}
+
+Seien $a, b \in \mathbb{R}$.
+\begin{align*}
+ f(a\begin{pmatrix}x\\y\end{pmatrix} + b\begin{pmatrix}w\\z\end{pmatrix}) & = f(\begin{pmatrix}ax + bw\\ay + bz\end{pmatrix}) = \begin{pmatrix}ay + bz\\ax + bw\end{pmatrix} = \begin{pmatrix}ay\\ax\end{pmatrix} + \begin{pmatrix}bz\\bw\end{pmatrix}\\
+ & = a\begin{pmatrix}y\\x\end{pmatrix} + b\begin{pmatrix}z\\w\end{pmatrix} = af(\begin{pmatrix}x\\y\end{pmatrix}) + bf(\begin{pmatrix}w\\z\end{pmatrix})
+\end{align*}
+
+\begin{equation}
+ Mat_{\mathcal{B}, \mathcal{B}}(f) = \begin{pmatrix}
+                                      0 & 1\\
+                                      1 & 0
+                                     \end{pmatrix}
+\end{equation}
+
 \subsection*{Teil 3}
+
+\begin{equation}
+ f(\begin{pmatrix}x\\y\end{pmatrix}) = \begin{pmatrix}x\alpha\\y\beta\end{pmatrix}
+\end{equation}
+
+Seien $a, b \in \mathbb{Q}$.
+\begin{align*}
+ f(a\begin{pmatrix}x\\y\end{pmatrix} + b\begin{pmatrix}w\\z\end{pmatrix}) & = f(\begin{pmatrix}ax + bw\\ay + bz\end{pmatrix}) = \begin{pmatrix}\alpha(ax + bw) + 2\beta(ay + bz)\\\alpha(bz + ay) \beta(bw + ax)\end{pmatrix}\\
+ & = \begin{pmatrix}ax\alpha + 2\beta ay + bw\alpha + 2\beta bz\\bz\alpha + bw\beta + ax\beta + ay\alpha\end{pmatrix}\\
+ & = a\begin{pmatrix}x\alpha + 2\beta y\\x\beta + y\alpha\end{pmatrix} + b\begin{pmatrix}w\alpha + 2\beta z\\z\alpha + w\beta\end{pmatrix} = af(\begin{pmatrix}x\\y\end{pmatrix}) + bf(\begin{pmatrix}w\\z\end{pmatrix})
+\end{align*}
+
+\begin{equation}
+ Mat_{\mathcal{B}, \mathcal{B}}(f) = \begin{pmatrix}
+                                      a & 2b\\
+                                      b & a
+                                     \end{pmatrix}
+\end{equation}
 
 \section*{Übung 5}
 
