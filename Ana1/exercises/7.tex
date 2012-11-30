@@ -1,0 +1,185 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{Ana1, Übungsblatt 7}
+\author{Marten Lienen (2126759), Gruppe 8; Fabian Schmittmann (2083559), Gruppe 0}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 27}
+
+\begin{proof}
+ Sei $y_{min} = min f(I)$, $y_{max} = max f(I)$, $x_{min} = min I$ und $x_{max} = max I$.
+ Diese existieren, weil $I$ ein kompaktes Intervall ist und $f$ stetig ist, also $f(I)$ ebenfalls kompakt ist.
+ Wir betrachten $g(x) = f(x) - x$.
+ $g$ ist ebenfalls definiert auf $I$.
+ $g(I)$ enthält aufjedenfall ein Element $y_{min} - x_{min} \le 0$ und ein Element $y_{max} - x_{max} \ge 0$.
+ Weil $g$ ebenfalls stetig ist, werden nach dem Zwischenwertsatz alle Werte zwischen $y_{min} - x_{min}$ und $y_{max} - x_{max}$ angenommen, insbesondere gibt es ein $x$ mit $g(x) = 0$.
+ Das bedeutet
+ \begin{equation}
+  g(x) = f(x) - x = 0 \Leftrightarrow x = f(x)
+ \end{equation}
+\end{proof}
+
+\section*{Übung 28}
+
+\subsection*{a}
+
+\begin{equation}
+ z = \frac{1}{\frac{1}{z}} = \frac{\bar{\frac{1}{z}}}{\frac{1}{z}\bar{\frac{1}{z}}} = \frac{3 - 4i}{(3 + 4i)(3 - 4i)} = \frac{3 - 4i}{25} = \frac{3}{25} - \frac{4}{25}i
+\end{equation}
+\begin{equation}
+ Re(z) = \frac{3}{25}, Im(z) = \frac{4}{25}
+\end{equation}
+
+\subsection*{b}
+
+\begin{align}
+ & z^2 = (x + iy)(x + iy) = x^2 - y^2 + 2ixy = 3 - 4i\\
+ \Rightarrow & x^2 - y^2 = 3 \land 2xy = -4 \Rightarrow \text{$x, y \ne 0$}\\
+ \Rightarrow & x^2 - y^2 = 3 \land x = -\frac{2}{y}\\
+ \Rightarrow & \frac{4}{y^2} - y^2 = 3 \Rightarrow 4 - y^4 = 3y^2 \Rightarrow y^4 + 3y^2 - 4 = 0 \quad \text{Substituiere $p = y^2$}\\
+ \Rightarrow & p^2 + 3p - 4 = 0 \Rightarrow p = -\frac{3}{2} \pm \sqrt{\frac{25}{4}} = -\frac{3}{2} \pm \frac{5}{2}\\
+ \Rightarrow & p = 1 \lor p = -4\\
+ \Rightarrow & y = 1 \lor y = -1 \lor y = 2i \lor y = -2i
+\end{align}
+
+Sei $y = 2i$.
+\begin{align}
+ (2i)^4 + 3(2i)^2 - 4 = 16 - 12 - 4 = 0
+\end{align}
+Sei $y = -2i$.
+\begin{align}
+ (-2i)^4 + 3(-2i)^2 - 4 = 16 - 12 - 4 = 0
+\end{align}
+
+Mögliche Lösungen sind
+\begin{align*}
+ & z = -2 + i \Rightarrow Re(z) = -2 \land Im(z) = 1\\
+ & z = 2 - i \Rightarrow Re(z) = 2 \land Im(z) = -1\\
+ & z = -2 + i \Rightarrow Re(z) = -2 \land Im(z) = 1\\
+ & z = 2 - i \Rightarrow Re(z) = 2 \land Im(z) = -1
+\end{align*}
+
+\subsection*{c}
+
+\begin{align*}
+ & z^3 = (x + iy)^3 = x^3 + 3ix^2y - 3xy^2 - iy^3 = (x^3 - 3xy^2) + i(3x^2y - y^3) = 8\\
+ \Rightarrow & x^3 - 3xy^2 = 8 \land 3x^2y - y^3 = y(3x^2 - y^2) = 0\\
+ \Rightarrow & x^3 - 3xy^2 = 8 \land (y = 0 \lor y^2 = 3x^2)\\
+ \Rightarrow & x^3 - 9x^3 = 8 \lor x^3 = 8 \\
+ \Rightarrow & -8x^3 = 8 \lor x = 2\\
+ \Rightarrow & x = -1
+\end{align*}
+
+Mögliche Lösungen sind
+\begin{align*}
+ & z = 2 \Rightarrow Re(z) = 2 \land Im(z) = 0\\
+ & z = -1 + i\sqrt{3} \Rightarrow Re(z) = -1 \land Im(z) = \sqrt{3}\\
+ & z = -1 - i\sqrt{3} \Rightarrow Re(z) = -1 \land Im(z) = -\sqrt{3}\\
+\end{align*}
+
+\subsection*{d}
+
+\begin{align*}
+ & z^3 = (x + iy)^3 = x^3 + 3ix^2y - 3xy^2 - iy^3 = (x^3 - 3xy^2) + i(3x^2y - y^3) = -8\\
+ \Rightarrow & x^3 - 3xy^2 = -8 \land 3x^2y - y^3 = y(3x^2 - y^2) = 0\\
+ \Rightarrow & x^3 - 3xy^2 = -8 \land (y = 0 \lor y^2 = 3x^2)\\
+ \Rightarrow & x^3 - 9x^3 = -8 \lor x^3 = -8 \\
+ \Rightarrow & -8x^3 = -8 \lor x = -2\\
+ \Rightarrow & x = 1
+\end{align*}
+
+Mögliche Lösungen sind
+\begin{align*}
+ & z = -2 \Rightarrow Re(z) = -2 \land Im(z) = 0\\
+ & z = 1 + i\sqrt{3} \Rightarrow Re(z) = 1 \land Im(z) = \sqrt{3}\\
+ & z = 1 - i\sqrt{3} \Rightarrow Re(z) = 1 \land Im(z) = -\sqrt{3}\\
+\end{align*}
+
+\section*{Übung 29}
+
+\subsection*{a}
+
+\begin{align}
+ sinh^2(z) - cosh^2(z) & = \frac{1}{4}(e^z + e^{-z})^2 - \frac{1}{4}(e^z - e^{-z})^2\\
+ & = \frac{1}{4}((e^2z + 2e^0 + e^{-2z})^2 - (e^2z - 2e^0 + e^{-2z}))\\
+ & = \frac{1}{4}(2 - (-2)) = 1
+\end{align}
+
+\subsection*{b}
+
+\begin{align*}
+ cosh(z + w) & = \frac{1}{2}(e^{z + w} + e^{-z - w})\\
+ & = \frac{1}{4}(2e^{z + w} + 2e^{-z - w})\\
+ & = \frac{1}{4}(e^{z + w} + e^{z - w} + e^{-z + w} + e^{-z - w}) + \frac{1}{4}(e^{z + w} - e^{z - w} - e^{-z + w} + e^{-z -w})\\
+ & = \frac{1}{2}(e^{z} + e^{-z}) * \frac{1}{2}(e^{w} + e^{-w}) + \frac{1}{2}(e^{z} - e^{-z}) * \frac{1}{2}(e^{w} - e^{-w})\\
+ & = cosh(z) * cosh(w) + sinh(z) * sinh(w)
+\end{align*}
+
+\begin{align*}
+ sinh(z + w) & = \frac{1}{2}(e^{z + w} - e^{-z - w})\\
+ & = \frac{1}{4}(2e^{z + w} - 2e^{-z - w})\\
+ & = \frac{1}{4}(e^{z + w} + e^{z - w} - e^{-z + w} - e^{-z - w}) + \frac{1}{4}(e^{z + w} - e^{z - w} + e^{-z + w} - e^{-z -w})\\
+ & = \frac{1}{2}(e^{z} - e^{-z}) * \frac{1}{2}(e^{w} + e^{-w}) + \frac{1}{2}(e^{z} + e^{-z}) * \frac{1}{2}(e^{w} - e^{-w})\\
+ & = sinh(z) * cosh(w) + cosh(z) * sinh(w)
+\end{align*}
+
+\subsection*{c}
+
+\section*{Übung 30}
+
+\subsection*{a}
+
+\subsection*{b}
+
+\section*{Übung 31}
+
+\subsection*{a}
+
+\begin{equation}
+ log(20) \approx 2,99 \land log(21) \approx 3,04 \Rightarrow n = 21
+\end{equation}
+
+\subsection*{b}
+
+Seien $x, y \in \mathbb{R}_{> 1}$ mit $x < y$ und $z = log(x)$ und $q = log(y)$.
+Weil $log$ streng monoton wachsend ist, gilt $z < q$ und deshalb wiederum $log(z) < log(q)$.
+\begin{equation}
+ f(x) = log(log(x)) = log(z) < log(q) = log(log(y)) = f(y)
+\end{equation}
+Wir wissen, dass $log(x) \rightarrow \infty$ für $x \rightarrow \infty$.
+Deshalb gilt $z \rightarrow \infty$.
+Daraus folgt wiederum $log(z) \rightarrow \infty$ und das bedeutet $log(log(x)) \rightarrow \infty$ für $x \rightarrow \infty$.
+
+\subsection*{c}
+
+$log$ hat genau eine Nullstelle an der Stelle $1$.
+$log(log(x))$ ist folglich $0$, wenn $log(x) = 1$.
+\begin{equation}
+ log(x) = 1 \Leftrightarrow x = e
+\end{equation}
+\begin{equation}
+ f(e) = 0
+\end{equation}
+
+\subsection*{d}
+
+\begin{equation}
+ log(log(15)) \approx 0,99 \land log(log(16)) \approx 1,01 \Rightarrow n = 16
+\end{equation}
+
+\subsection*{e}
+
+\begin{align}
+ & f(10^n) = log(log(10^n)) = log(n * log(10)) = log(n) + log(log(10)) \approx log(n) + 0,834 > 3\\
+ \Rightarrow & log(n) > 2,2 \Leftrightarrow n > e^{2,2} \Rightarrow n > 9.05 \Rightarrow n = 10
+\end{align}
+
+\end{document}
