@@ -137,7 +137,36 @@ Mögliche Lösungen sind
 
 \subsection*{a}
 
+\begin{proof}
+ ``$\Rightarrow$'': Sei $(z_n)$ eine Cauchy-Folge.
+ Deshalb gilt
+ \begin{align*}
+  |z_n - z_m| & = |x_n + iy_n - x_m - iy_m| = \sqrt{(x_n - x_m)^2 + (y_n - y_m)^2} < \varepsilon^4\\
+  \Leftrightarrow & (x_n - x_m)^2 + (y_n - y_m)^2 < \varepsilon^2
+ \end{align*}
+ Weil $(x_n - x_m)^2 \ge 0$ und $(y_n - y_m)^2 \ge 0$, sind $(x_n - x_m)^2 < \varepsilon^2$ und $(y_n - y_m)^2 < \varepsilon^2$.
+ Das heißt, dass $|x_n - x_m| < \varepsilon$ und $|y_n - y_m| < \varepsilon$.
+ 
+ ``$\Leftarrow$'': Seien $(x_n)$ und $(y_n)$ Cauchy-Folgen.
+ Sei $N \in \mathbb{N}$, sodass $|x_n - x_m| < \frac{\varepsilon}{2}$ und $|y_n - y_m| < \frac{\varepsilon}{2}$ für alle $n, m \ge N$.
+ \begin{align*}
+  |z_n - z_m| & = |x_n + iy_n - x_m - iy_m| = \sqrt{(x_n - x_m)^2 + (y_n - y_m)^2}\\
+  & < \sqrt{\frac{\varepsilon^2}{2}} = \frac{\varepsilon}{\sqrt{2}} < \varepsilon
+ \end{align*}
+\end{proof}
+
 \subsection*{b}
+
+\begin{proof}
+ ``$\Rightarrow$'': Sei $z = \lim_{n \rightarrow \infty} z_n$.
+ Es gibt also $N \in \mathbb{N}$, sodass $|z_n - z| < \frac{\varepsilon}{2}$ und $|z_m - z| < \frac{\varepsilon}{2}$ für alle $n, m \ge N$.
+ \begin{equation}
+  |z_n - z_m| = |z_n - z + z - z_m| \le |z_n - z| + |z_m - z| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+ \end{equation}
+
+ 
+ ``$\Leftarrow$'':
+\end{proof}
 
 \section*{Übung 31}
 
