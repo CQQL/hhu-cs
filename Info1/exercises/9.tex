@@ -1,0 +1,227 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+
+\title{Info1, Übungsblatt 9}
+\author{Marten Lienen (2126759)}
+
+\begin{document}
+
+\maketitle
+
+\section*{a}
+
+Ist das gleiche wie auf Blatt 6 oder 7.
+Die Vorteile von structs sind, dass man den Code nachher besser lesen kann, weil die einzelnen Komponenten Namen haben, während man über ein Array besser iterieren kann.
+
+\section*{b}
+
+\lstset{language=c}
+\begin{lstlisting}
+ #include <math.h>
+
+ typedef struct {
+   double x;
+   double y;
+ } point_t;
+
+ typedef struct {
+   point_t e1;
+   point_t e2;
+   point_t e3;
+ } triangle_t;
+
+ double distance (point_t a, point_t b) {
+   return sqrt(pow(a.x - b.x, 2) + pow(a.y - b.y, 2));
+ }
+
+ double circumference (triangle_t triangle) {
+   return
+     distance(triangle.e1, triangle.e2)
+     + distance(triangle.e2, triangle.e3)
+     + distance(triangle.e3, triangle.e1);
+ }
+
+ double area (triangle_t triangle) {
+   double s = circumference(triangle) / 2;
+   double a = distance(triangle.e1, triangle.e2);
+   double b = distance(triangle.e2, triangle.e3);
+   double c = distance(triangle.e3, triangle.e1);
+  
+   return sqrt(s * (s - a) * (s - b) * (s - c));
+ }
+\end{lstlisting}
+
+\section*{c}
+
+Man berechnet zuerst den Differenzvektor $v = (p_1 - p_2)$.
+Dann berechnet man die Vektoren $v_1 = xv + p_1$ und $v_2 = yv + p_2$, sodass $v_1$ mit $p$ in der X-Koordinate und $v_2$ mit $p$ in der Y-Koordinate übereinstimmt.
+Wenn $v_1 = v_2$, liegt $p$ auf der Geraden.
+Wenn $x(v_1) > x(v_2)$.
+
+\section*{d}
+
+Folgender Code funktioniert mit allen Dreiecken, die keinen vertikalen Seiten haben:
+
+\begin{lstlisting}
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdbool.h>
+ #include <math.h>
+
+ typedef struct {
+   double x;
+   double y;
+ } point_t;
+
+ typedef struct {
+   point_t e1;
+   point_t e2;
+   point_t e3;
+ } triangle_t;
+
+ typedef struct {
+   point_t base;
+   double slope;
+ } line_t;
+
+ typedef struct {
+   line_t line;
+   point_t a;
+   point_t b;
+ } line_segment_t;
+
+ line_t line_from_points (point_t a, point_t b) {
+   line_t line = {
+     .base = a,
+     .slope = (b.y - a.y) / (b.x - a.x)
+   };
+  
+   return line;
+ }
+
+ line_segment_t line_segment_from_points (point_t a, point_t b) {
+   line_segment_t line_segment = {
+     .line = line_from_points(a, b),
+     .a = a,
+     .b = b
+   };
+  
+   return line_segment;
+ }
+
+ double max (double a, double b) {
+   return a > b ? a : b;
+ }
+
+ double min (double a, double b) {
+   return a > b ? b : a;
+ }
+
+ bool is_point_on_line (point_t point, line_t line) {
+   return point.x == line.base.x + line.slope * (point.y - line.base.y);
+ }
+
+ bool lines_intersect (line_t a, line_t b) {
+   if (a.slope == b.slope) {
+     return is_point_on_line(a.base, b);
+   } else {
+     return true;
+   }
+ }
+
+ point_t intersection_point (line_t a, line_t b) {
+   double factor =
+     (b.slope * (b.base.x - a.base.x) + a.base.y - b.base.y)
+     / (b.slope - a.slope);
+  
+   point_t point = {
+     .x = a.base.x + factor,
+     .y = a.base.y + factor * a.slope
+   };
+  
+   return point;
+ }
+
+ bool is_point_in_rectangle (point_t p, point_t a, point_t b) {
+   return
+     p.x <= max(a.x, b.x)
+     && p.x >= min(a.x, b.x)
+     && p.y <= max(a.y, b.y)
+     && p.y >= min(a.y, b.y);
+ }
+
+ bool line_intersects_segment (line_t line, line_segment_t segment) {
+   if (lines_intersect(line, segment.line)) {
+     return is_point_in_rectangle(
+       intersection_point(line, segment.line),
+       segment.a,
+       segment.b);
+   } else {
+     return false;
+   }
+ }
+
+ bool is_point_on_line_segment (point_t point, line_segment_t line_segment) {
+   return
+     is_point_on_line(point, line_segment.line)
+     && is_point_in_rectangle(point, line_segment.a, line_segment.b);
+ }
+
+ bool is_in_triangle (triangle_t triangle, point_t point) {
+   point_t zero = { .x = 0, .y = 0 };
+   line_segment_t line1 = line_segment_from_points(triangle.e1, triangle.e2);
+   line_segment_t line2 = line_segment_from_points(triangle.e2, triangle.e3);
+   line_segment_t line3 = line_segment_from_points(triangle.e3, triangle.e1);
+   line_t line_to_point = line_from_points(zero, point);
+  
+   bool is_point_on_border = 
+     is_point_on_line_segment(point, line1)
+     || is_point_on_line_segment(point, line2)
+     || is_point_on_line_segment(point, line3);
+  
+   if (is_point_on_border) {
+     return true;
+   } else {
+     bool i1 = line_intersects_segment(line_to_point, line1);
+     bool i2 = line_intersects_segment(line_to_point, line2);
+     bool i3 = line_intersects_segment(line_to_point, line3);
+
+     return
+       (i1 && !i2 && !i3)
+       || (!i1 && i2 && !i3)
+       || (!i1 && !i2 && i3);
+   }
+ }
+
+ int main(int argc, char** argv) {
+   triangle_t t = {
+     .e1 = {
+       .x = 1.1,
+       .y = 0
+     },
+     .e2 = {
+       .x = 1,
+       .y = 1
+     },
+     .e3 = {
+       .x = 2,
+       .y = 0
+     }
+   };
+  
+   point_t p = {
+     .x = 1.5,
+     .y = 0.5,
+   };
+  
+   printf("%d\n", is_in_triangle(t, p));
+
+   return (EXIT_SUCCESS);
+ }
+\end{lstlisting}
+
+\end{document}
