@@ -57,10 +57,14 @@ Die Vorteile von structs sind, dass man den Code nachher besser lesen kann, weil
 
 \section*{c}
 
-Man berechnet zuerst den Differenzvektor $v = (p_1 - p_2)$.
-Dann berechnet man die Vektoren $v_1 = xv + p_1$ und $v_2 = yv + p_2$, sodass $v_1$ mit $p$ in der X-Koordinate und $v_2$ mit $p$ in der Y-Koordinate übereinstimmt.
-Wenn $v_1 = v_2$, liegt $p$ auf der Geraden.
-Wenn $x(v_1) > x(v_2)$.
+Man definiert eine Gerade $g$, die durch $p$ geht und parallel zur X-Achse verläuft.
+Dann betrachtet man die Schnittmenge der Geraden $g$ und der ursprünglichen Geraden.
+Wenn die Menge mehr als 1 Element hat, sind die Geraden identisch und $p$ liegt darauf.
+Wenn die Menge genau 1 Element hat und der Schnittpunkt identisch zu $p$ ist, liegt $p$ ebenfalls auf der Geraden.
+Wenn die Menge genau 1 Element hat und der Schnittpunkt $k$ nicht identisch zu $p$ ist, betrachtet man $q = x(p) - x(k)$.
+Ist $q < 0$, so liegt $p$ ``links'', andernfalls liegt $q$ ``rechts''.
+Wenn die Menge leer ist, sind die Geraden parallel und nicht identisch.
+In diesem Fall kann man das Verfahren analog mit der Y-Achse und den Y-Koordinaten wiederholen.
 
 \section*{d}
 
