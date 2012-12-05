@@ -1,0 +1,207 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+
+\title{LinA1, Übungsblatt 9}
+\author{Marten Lienen (2126759), Gruppe 1; Fabian Schmittmann (2083559), Gruppe 5}
+
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+\begin{equation}
+ Mat_{\mathcal{B}, \mathcal{B}'}(f) =
+   \begin{pmatrix}
+    1 & 5 & -3 & 1\\
+    0 & 1 & 0 & 2\\
+    0 & 2 & 1 & 3
+   \end{pmatrix}
+\end{equation}
+
+\subsection*{Teil 2}
+
+\begin{equation}
+ Basis(Ker(f)) = (\begin{pmatrix}12\\-2\\1\\1\end{pmatrix})
+\end{equation}
+
+Sei $w \in f(\mathbb{R}^4)$.
+Weil $f$ linear ist, gilt
+\begin{align}
+ w & = x_1 * f(v_1) + x_2 * f(v_2) + x_3 * f(v_3) + x_4 * f(v_4)\\
+ & =
+   x_1 * \begin{pmatrix}1\\0\\0\end{pmatrix} +
+   x_2 * \begin{pmatrix}5\\1\\2\end{pmatrix} +
+   x_3 * \begin{pmatrix}-3\\0\\1\end{pmatrix} +
+   x_4 * \begin{pmatrix}1\\2\\3\end{pmatrix}
+\end{align}
+$(f(v_1), f(v_2), f(v_3), f(v_4))$ ist also ein EZS von $f(\mathbb{R}^4)$.
+Es gilt aber
+\begin{equation}
+ \begin{pmatrix}5\\1\\2\end{pmatrix} = 6 * \begin{pmatrix}1\\0\\0\end{pmatrix} + 0,5 * \begin{pmatrix}-3\\0\\1\end{pmatrix} + 0,5 * \begin{pmatrix}1\\2\\3\end{pmatrix}
+\end{equation}
+Da $f(v_2)$ sich als Linearkombination der restlichen Vektoren darstellen lässt, können wir das EZS auf $(f(v_1), f(v_3), f(v_4))$ reduzieren.
+\begin{align*}
+ & x_1 * \begin{pmatrix}1\\0\\0\end{pmatrix} + x_2 * \begin{pmatrix}-3\\0\\1\end{pmatrix} + x_3 * \begin{pmatrix}1\\2\\3\end{pmatrix} = 0\\
+ \Rightarrow & x_1 - 3x_2 + x_3 = 0 \land 2x_3 = 0 \land x_2 + 3x_3 = 0\\
+ \Rightarrow & x_3 = 0 \Rightarrow x_2 = 0 \Rightarrow x_1 = 0
+\end{align*}
+$(f(v_1), f(v_3), f(v_4))$ ist linear unabhängig und somit eine Basis von $f(\mathbb{R}^4)$.
+
+\subsection*{Teil 3}
+
+$v_5$ ist in der Basis vom Kern von $f$.
+Weil $Ker(f) \subset \mathbb{R}^4$, ist $(v_5)$ auf linear unabhängig in $\mathbb{R}^4$.
+Nach dem Basisergänzungssatz können wir $(v_5)$ mit Elementen von $(v_1, v_2, v_3, v_4)$ zu einer Basis von $\mathbb{R}^4$ ergänzen.
+Angenommen $v_5$ sei eine Linearkombination von $(v_1, v_2, v_3)$.
+\begin{equation}
+ \begin{pmatrix}12\\-2\\1\\1\end{pmatrix} = x_1\begin{pmatrix}1\\0\\0\\0\end{pmatrix} + x_2\begin{pmatrix}0\\1\\0\\0\end{pmatrix} + x_3\begin{pmatrix}0\\0\\1\\0\end{pmatrix}
+ \Rightarrow 1 = 0 \lightning
+\end{equation}
+Da $(v_5)$ keine Linearkombination von $(v_1, v_2, v_3)$ ist, können wir $(v_5)$ nacheinander mit $v_1, v_2, v_3$ ergänzen, wobei es aber linear unabhängig bleibt.
+$(v_1, v_2, v_3, v_5)$ ist also eine Basis von $\mathbb{R}^4$.
+
+\subsection*{Teil 4}
+
+\begin{equation}
+ f(v_1) = \begin{pmatrix}1\\0\\0\end{pmatrix},
+ f(v_2) = \begin{pmatrix}5\\1\\2\end{pmatrix},
+ f(v_3) = \begin{pmatrix}-3\\0\\1\end{pmatrix}
+\end{equation}
+
+\begin{align}
+ & \begin{pmatrix}1\\0\\0\end{pmatrix} = 1 * f(v_1) + 0 * f(v_2) + 0 * f(v_3)\\
+ & \begin{pmatrix}0\\1\\0\end{pmatrix} = -11 * f(v_1) + 1 * f(v_2) - 2 * f(v_3)\\
+ & \begin{pmatrix}0\\0\\1\end{pmatrix} = 3 * f(v_1) + 0 * f(v_2) + 1 * f(v_3)
+\end{align}
+
+Weil die Basis $w_1, w_2, w_3 \in \langle f(v_1), f(v_2), f(v_3) \rangle$, ist $(f(v_1), f(v_2), f(v_3))$ ein EZS von $\mathbb{R}^3$.
+
+\begin{align}
+ & x_1\begin{pmatrix}1\\0\\0\end{pmatrix}
+ + x_2\begin{pmatrix}5\\1\\2\end{pmatrix}
+ + x_3 \begin{pmatrix}-3\\0\\1\end{pmatrix} = 0\\
+ \Rightarrow & x_2 = 0 \Rightarrow x_3 = 0 \Rightarrow x_1 = 0
+\end{align}
+
+$(f(v_1), f(v_2), f(v_3))$ ist also auch linear unabhängig und damit eine Basis von $\mathbb{R}^3$.
+
+\subsection*{Teil 5}
+
+\begin{equation}
+ Mat_{\mathcal{B}'', \mathcal{B}'''}(f) =
+   \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0
+   \end{pmatrix}
+\end{equation}
+
+\section*{Übung 2}
+
+\subsection*{Teil 1}
+
+\begin{equation}
+ A^2 = 
+   \begin{pmatrix}
+    3 & -1 & -1\\
+    -1 & 3 & -1\\
+    -1 & -1 & 3
+   \end{pmatrix} = 
+   2\begin{pmatrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & 1
+   \end{pmatrix} +
+   \begin{pmatrix}
+    -1 & 1 & 1\\
+    1 & -1 & 1\\
+    1 & 1 & -1
+   \end{pmatrix} = 2I_3 - A
+\end{equation}
+
+\subsection*{Teil 2}
+
+\begin{equation}
+ A^{-1} =
+   \begin{pmatrix}
+    0 & 0,5 & 0,5\\
+    0,5 & 0 & 0,5\\
+    0,5 & 0,5 & 0
+   \end{pmatrix}
+\end{equation}
+\begin{equation}
+ AA^{-1} =
+   \begin{pmatrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & 1
+   \end{pmatrix} = I_3 = A^{-1}A
+\end{equation}
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+\begin{equation}
+ E_{k,l}A = C
+\end{equation}
+mit $C = (c_{ij})$, wobei
+\begin{equation}
+ c_{ij} = \sum_{q = 1}^n e_{iq}a_{qj} =
+   \begin{cases}
+    0 & \text{wenn $(i,j) \ne (k,l)$}\\
+    a_{lj} & \text{andernfalls}
+   \end{cases}
+\end{equation}
+Es wird also die $l$-te Zeile in die $k$-te Zeile kopiert, während alles andere auf $0$ gesetzt wird.
+
+\begin{equation}
+ AE_{k,l} = D
+\end{equation}
+mit $D = (d_{ij})$, wobei
+\begin{equation}
+ d_{ij} = \sum_{q = 1}^n e_{qj}a_{iq} =
+   \begin{cases}
+    0 & \text{wenn $(i,j) \ne (k,l)$}\\
+    a_{ik} & \text{andernfalls}
+   \end{cases}
+\end{equation}
+Es wird also die $k$-te Spalte in die $l$-te Spalte kopiert, während alles andere auf $0$ gesetzt wird.
+
+\subsection*{Teil 2}
+
+Sei $AB = (c_{ij})$ und $BA = (d_{ij})$.
+Dann muss gelten
+\begin{align}
+ & c_{ij} = \sum_{q = 1}^n a_{iq}b_{qj} = \sum_{q = 1}^n b_{iq}a_{qj} = d_{ij}\\
+ \Leftrightarrow & \sum_{q = 1}^n a_{iq}b_{qj} - b_{iq}a_{qj} = 0
+\end{align}
+Dies ist mindestens wahr für alle $A$ deren $(a_{ij})$ folgende Werte annehmen:
+\begin{equation}
+ a_{ij} =
+   \begin{cases}
+    x \in K & \text{wenn $i = j$}\\
+    0 & \text{andernfalls}
+   \end{cases}
+\end{equation}
+In diesem Fall sind die Summanden nämlich entweder
+\begin{equation}
+ 0b_{qj} - b_{iq}0 = 0
+\end{equation}
+oder
+\begin{equation}
+ a_{ii}b_{ii} - b_{ii}a_{ii} = 0
+\end{equation}
+Es sind also alle $xI_n \in Z(M_n(K))$ mit $x \in K$.
+
+\end{document}
