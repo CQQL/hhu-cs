@@ -194,6 +194,7 @@ Dies ist mindestens wahr für alle $A$ deren $(a_{ij})$ folgende Werte annehmen:
     0 & \text{andernfalls}
    \end{cases}
 \end{equation}
+Zu beachten ist, dass das $x$ bei jedem $i$ verschieden sein darf.
 In diesem Fall sind die Summanden nämlich entweder
 \begin{equation}
  0b_{qj} - b_{iq}0 = 0
@@ -202,6 +203,14 @@ oder
 \begin{equation}
  a_{ii}b_{ii} - b_{ii}a_{ii} = 0
 \end{equation}
-Es sind also alle $xI_n \in Z(M_n(K))$ mit $x \in K$.
+Es sind also alle Matrizen $M \in Z(M_n(K))$, die überall $0$ sind und auf der Links-Oben-Rechts-Unten-Diagonalen beliebige Werte annehmen.
 
+Sei $C \in M_n(K)$ mit beliebigen Werten, aber es gebe $c_{pq} \ne 0$ mit $p \ne q$.
+Sei $E_{pq} \in M_n(K)$ definiert wie in Teil 1.
+Sei $E_{pq}C = F$ und $CE_{pq} = G$.
+Dann ist $f_{qq} = c_{pq}$ und $g_{pp} = c_{pq}$, aber $f_{pp} = 0$ und $g_{qq} = 0$, weil $p \ne q$.
+Also ist $f_{qq} \ne g_{qq}$ und $f_{pp} \ne g_{pp}$, also $F \ne G$.
+Es gibt also für jede Matrix aus $M_n(K)$, die einen Nicht-Null-Wert außerhalb der Links-Oben-Rechts-Unten-Diagonalen hat, mindestens eine Matrix $B$, sodass $AB \ne BA$.
+
+Damit ergibt sich, dass $Z(M_n(K))$ genau die Menge aller Matrizen ist, die überall $0$ sind und auf der Links-Oben-Rechts-Unten-Diagonalen beliebige Werte annehmen.
 \end{document}
