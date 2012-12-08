@@ -1,0 +1,197 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{stmaryrd}
+
+\title{Ana1, Übungsblatt 8}
+\author{Marten Lienen (2126759), Gruppe 8; Fabian Schmittmann (2083559), Gruppe 0}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 33}
+
+\subsection*{a}
+
+\begin{align*}
+ \sin{2x} & = \frac{1}{2i}(e^{2ix} - e^{-2ix}) = 2\frac{1}{2i}(e^{ix} - e^{-ix})\frac{1}{2}(e^{ix} + e^{-ix}) = 2\sin{x}\cos{x}
+\end{align*}
+
+\subsection*{b}
+
+\begin{align*}
+ \cos{2x} & = \frac{1}{2}(e^{2ix} + e^{-2ix}) = \frac{1}{4}(e^{2ix} + 2 + e^{-2ix}) + \frac{1}{4}(e^{2ix} - 2 + e^{-2ix}) \\
+ & = \frac{1}{4}(e^{ix} + e^{-ix})^2 + \frac{1}{4}(e^{ix} - e^{-ix})^2 = \cos^2 x - \sin^2 x
+\end{align*}
+
+\subsection*{c}
+
+\begin{align*}
+ \sin^2 x & = -\frac{1}{4}(e^{ix} - e^{-ix})^2 = -\frac{1}{4}(e^{2ix} - 2 + e^{-2ix})\\
+ & = \frac{1}{2} - \frac{1}{4}(e^{2ix} + e^{-2ix})= \frac{1}{2}(1 - \cos 2x)
+\end{align*}
+
+\subsection*{d}
+
+\begin{align*}
+ \cos^2 x & = \frac{1}{4}(e^{ix} + e^{-ix})^2 = \frac{1}{4}(e^{2ix} + 2 + e^{-2ix})\\
+ & = \frac{1}{2} + \frac{1}{4}(e^{2ix} + e^{-2ix}) = \frac{1}{2}(1 + \cos 2x)
+\end{align*}
+
+\subsection*{e}
+
+\begin{align*}
+ \sin x \cos y & = \frac{1}{4i}(e^{ix} - e^{-ix})(e^{iy} + e^{-iy})\\
+ & = \frac{1}{4i}(e^{i(x + y)} + e^{i(x - y)} - e^{-i(x - y)} - e^{-i(x + y)})\\
+ & = \frac{1}{4i}(e^{i(x - y)} - e^{-i(x - y)} + e^{i(x + y)} - e^{-i(x + y)})\\
+ & = \frac{1}{2}(\frac{1}{2i}(e^{i(x - y)} - e^{-i(x - y)}) + \frac{1}{2i}(e^{i(x + y)} - e^{-i(x + y)}))\\
+ & = \frac{1}{2}(\sin(x - y) + \sin(x + y))
+\end{align*}
+
+\section*{Übung 34}
+
+\subsection*{a}
+
+\begin{align*}
+ \sin^3 x & = -\frac{1}{8i}(e^{ix} - e^{-ix})^3\\
+ & = -\frac{1}{8i}(e^{3ix} - 3e^{2ix}e^{-ix} + 3e^{ix}e^{-2ix} - e^{-3ix})\\
+ & = -\frac{1}{8i}(-3e^{ix} + 3e^{-ix} + e^{3ix} - e^{-3ix})\\
+ & = \frac{1}{4}(\frac{3}{2i}(e^{ix} - e^{-ix}) - \frac{1}{2i}(e^{3ix} - e^{-3ix})) = \frac{1}{4}(3\sin x - \sin 3x)
+\end{align*}
+
+\subsection*{b}
+
+\begin{proof}
+\begin{align*}
+  \sin^{2n + 1} x & = -\frac{1}{2^{2n + 1}i}(e^{ix} - e^{-ix})^{2n + 1}\\
+  & = -\frac{1}{2^{2n + 1}i} \sum_{k = 0}^{2n + 1} \begin{pmatrix}2n + 1\\k\end{pmatrix} e^{ikx}(-e^{ix})^{2n + 1 - k}\\
+  & = -\frac{1}{2^{2n + 1}i} \sum_{k = 0}^{2n + 1} (-1)^{2n + 1 - k} \begin{pmatrix}2n + 1\\k\end{pmatrix} e^{ikx}e^{-ix(2n + 1 - k)}\\
+  & = -\frac{1}{2^{2n + 1}i} \sum_{k = 0}^{2n + 1} (-1)^{2n + 1 - k} \begin{pmatrix}2n + 1\\k\end{pmatrix} e^{-ix(2n + 1 - 2k)}\\
+  & = -\frac{1}{2^{2n + 1}i} \left(\sum_{k = 0}^{n} (-1)^{2n + 1 - k} \begin{pmatrix}2n + 1\\k\end{pmatrix} e^{-ix(2n + 1 - 2k)} + \sum_{k = n + 1}^{2n + 1} (-1)^{2n + 1 - k} \begin{pmatrix}2n + 1\\k\end{pmatrix} e^{-ix(2n + 1 - 2k)}\right)\\
+  & = -\frac{1}{2^{2n + 1}i} \left(\sum_{k = 0}^{n} (-1)^{2n + 1 - k} \begin{pmatrix}2n + 1\\k\end{pmatrix} e^{-ix(2n + 1 - 2k)} + \sum_{k = 0}^{n} (-1)^{n - k} \begin{pmatrix}2n + 1\\k + n + 1\end{pmatrix} e^{-ix(-1 - 2k)}\right)\\
+  & = -\frac{1}{2^{2n + 1}i} \left(\sum_{k = 0}^{n} (-1)^{n + 1 + k} \begin{pmatrix}2n + 1\\n - k\end{pmatrix} e^{-ix(1 + 2k)} + \sum_{k = 0}^{n} (-1)^{n - k} \begin{pmatrix}2n + 1\\k + n + 1\end{pmatrix} e^{-ix(-1 - 2k)}\right)\\
+  & = -\frac{1}{2^{2n + 1}i} \left(\sum_{k = 0}^{n} \begin{pmatrix}2n + 1\\n - k\end{pmatrix} \cdot \left( (-1)^{n + 1 + k}e^{-ix(1 + 2k)} + (-1)^{n - k}e^{-ix(-1 - 2k)} \right)\right)\\
+  & = -\frac{1}{2^{2n + 1}i} \left(\sum_{k = 0}^{n} (-1)^{n + k} \begin{pmatrix}2n + 1\\n - k\end{pmatrix} \cdot \left( -e^{-ix(1 + 2k)} + e^{-ix(-1 - 2k)} \right)\right)\\
+  & = -\frac{1}{2^{2n + 1}i} \left(\sum_{k = 0}^{n} (-1)^{n + k} \begin{pmatrix}2n + 1\\n - k\end{pmatrix} \cdot \left( e^{-ix(-1 - 2k)} - e^{-ix(1 + 2k)} \right)\right)\\
+  & = -\frac{1}{2^{2n + 1}i} \left(\sum_{k = 0}^{n} (-1)^{n + k} \begin{pmatrix}2n + 1\\n - k\end{pmatrix} \cdot \left( e^{ix(1 + 2k)} - e^{-ix(1 + 2k)} \right)\right)\\
+  & = \left(\sum_{k = 0}^{n} -\frac{(-1)^{n + k}}{2^{2n}} \begin{pmatrix}2n + 1\\n - k\end{pmatrix} \cdot \sin x(2k + 1) \right)\\
+ \end{align*}
+\end{proof}
+
+\subsection*{c}
+
+\begin{proof}
+ Wir schreiben jeden Sinus als
+ \begin{equation}
+  \sin^{2k + 1} x = a_{2k + 1, 1} \sin x + a_{2k + 1, 3} \sin 3x + \dots + a_{2k + 1, 2k + 1} \sin x(2k + 1)
+ \end{equation}
+ Wir wählen $b_{2n + 1}$ mit
+ \begin{equation}
+  b_{2n + 1} = -\frac{1}{a_{2n + 1, 2n + 1}}
+ \end{equation}
+ sodass
+ \begin{equation}
+  b_{2n + 1}\sin^{2n + 1} x = b_{2n + 1}a_{2k + 1, 1} \sin x + b_{2n + 1}a_{2k + 1, 3} \sin 3x + \dots + \sin x(2n + 1)
+ \end{equation}
+ Wir wählen $b_k$ mit
+ \begin{equation}
+  b_k = -\frac{1}{a_{k,k}} \cdot \sum_{q = 0}^{2n - k - 1} a_{2q + k + 2, k}b_{2q + k + 2}
+ \end{equation}
+ Dann gilt
+ \begin{equation}
+  b_1 \sin x + b_3 \sin^3 x + \dots + b_{2n + 1} \sin^{2n + 1} x = \sin x(2n + 1)
+ \end{equation}
+ weil alle Summanden außer $\sin x(2n + 1)$ $0$ sind, was wir noch mit vollständiger Induktion beweisen.
+ 
+ Sei $p$ die Anzahl der $\sin^{2k + 1} x$, deren Ersetzung den Summand $ $ enthält.
+\end{proof}
+
+\section*{Übung 35}
+
+\subsection*{a}
+
+Dies ist eine Form der geometrischen Reihe, die konvergiert, wenn $\left|\frac{z}{1 - z}\right| < 1$ ist.
+\begin{align}
+ & \left|\frac{z}{1 - z}\right| < 1\\
+ \Leftrightarrow & |z| < |1 - z|\\
+ \Leftrightarrow & Re(z)^2 + Im(z)^2 < Re(1 - z)^2 + Im(1 - z)^2 = Re(1 - z)^2 + Im(z)^2\\
+ \Leftrightarrow & Re(z)^2 < Re(1 - z)^2\\
+ \Leftrightarrow & |Re(z)| < |Re(1 - z)|\\
+ \Leftrightarrow & |\frac{1}{2}(z + \bar{z})| < |\frac{1}{2}(1 - z + \overline{1 - z})|\\
+ \Leftrightarrow & |a| < |1 - a|\\
+ \Leftrightarrow & a^2 < (1 - a)^2\\
+ \Leftrightarrow & a^2 < 1 - 2a + a^2\\
+ \Leftrightarrow & 0 < 1 - 2a\\
+ \Leftrightarrow & a < 0,5
+\end{align}
+\begin{equation}
+ D = \{z \in \mathbb{C} \mid a < 0,5\}
+\end{equation}
+
+\subsection*{b}
+
+\begin{equation}
+ f(z) = \sum_{n = 0}^\infty \left(\frac{z}{1 - z}\right)^n = \frac{1}{1 - \frac{z}{1 - z}} = \frac{1 - z}{1 - 2z}
+\end{equation}
+
+$f$ ist eine gebrochen-rationale Funktion, die überall stetig sind, wo sie definiert sind.
+Da die Nullstelle des Nenners $0,5$ nicht in $D$ liegt, ist $f$ überall stetig.
+
+\section*{Übung 36}
+
+\subsection*{a}
+
+\begin{equation}
+ \cos z = \frac{1}{2}(e^{iz} + e^{-iz}) = \cosh iz
+\end{equation}
+
+\begin{equation}
+ \sin z = \frac{1}{2i}(e^{iz} - e^{-iz}) = -i\frac{1}{2}(e^{iz} - e^{-iz}) = -i \sinh iz
+\end{equation}
+
+\subsection*{b}
+
+Sei $w \in \mathbb{C}$.
+Wir suchen ein $x \in \mathbb{C} \backslash \{0\}$, sodass $w = \frac{1}{2}(x + \frac{1}{x})$.
+\begin{align}
+ & w = \frac{1}{2}(x + \frac{1}{x})\\
+ \Leftrightarrow & \frac{1}{2}x^2 - wx - \frac{1}{2} = 0\\
+ \Leftrightarrow & x^2 - 2wx + 1 = 0\\
+ \Leftrightarrow & x_1 = w + \sqrt{w^2 - 1} \land x_2 = w - \sqrt{w^2 - 1}
+\end{align}
+
+\begin{equation}
+ x_1 = 0 \Leftrightarrow w = -\sqrt{w^2 - 1} \Leftrightarrow a^2 + b^2 + 2iab = -(a^2 + b^2 + 2iab - 1) \Leftrightarrow 0 = 1 \lightning
+\end{equation}
+\begin{equation}
+ x_2 = 0 \Leftrightarrow w = \sqrt{w^2 - 1} \Leftrightarrow a^2 + b^2 + 2iab = a^2 + b^2 + 2iab - 1 \Leftrightarrow 0 = -1 \lightning
+\end{equation}
+
+Das bedeutet $x_1, x_2 \in \mathbb{C} \backslash \{0\}$.
+
+\subsection*{c}
+
+Sei $w \in \mathbb{C}$.
+Wir suchen ein $z \in \mathbb{C}$ mit $w = \cos z$.
+\begin{align}
+ & w = \cos z = \frac{1}{2}(e^{iz} + e^{-iz})\\
+ \Leftrightarrow & e^{iz} + \frac{1}{e^{iz}} = 2w\\
+ \Leftrightarrow & \frac{e^{2iz} + 1}{e^{iz}} = 2w\\
+ \Leftrightarrow & e^{2iz} + 1 = 2we^{iz}\\
+ \Leftrightarrow & e^{2iz} - 2we^{iz} + 1 = 0\\
+ \Leftrightarrow & e^{iz}_1 = w + \sqrt{w^2 - 1} \land e^{iz}_2 = w - \sqrt{w^2 - 1}
+\end{align}
+
+\begin{equation}
+ e^{iz} = w + \sqrt{w^2 - 1} \Leftrightarrow iz = \log (w + \sqrt{w^2 - 1}) \Leftrightarrow z = \frac{1}{i}\log (w + \sqrt{w^2 - 1})
+\end{equation}
+\begin{equation}
+ e^{iz} = w - \sqrt{w^2 - 1} \Leftrightarrow iz = \log (w - \sqrt{w^2 - 1}) \Leftrightarrow z = \frac{1}{i}\log (w - \sqrt{w^2 - 1})
+\end{equation}
+
+\end{document}
