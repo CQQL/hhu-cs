@@ -1,0 +1,179 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+
+\title{Info1, Übungsblatt 10}
+\author{Marten Lienen (2126759)}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+\subsection*{a}
+
+Die Anzahl aller Waggons sei $n$, wobei die Waggons von hinten nach vorne aufsteigend mit den Zahlen $1..n$ identifiziert werden.
+Wenn $i = j$ gilt, ist die Reihenfolge bereits richtig.
+O.b.d.A. nehme ich an, dass $i < j$.
+Dann führe man folgenden Algorithmus aus
+\begin{lstlisting}
+ Waggons [j + 1, n] -> Gleis 2
+ Waggon j -> Gleis 3
+ Waggons [i, j - 1] -> Gleis 2
+ Waggon j -> Gleis 1
+ Waggon i -> Gleis 3
+ Waggons [i + 1, j - 1] -> Gleis 1
+ Waggon i -> Gleis 1
+ Waggons [j + 1, n] -> Gleis 1
+\end{lstlisting}
+
+\subsection*{b}
+
+Da man 2 beliebige Waggons miteinander vertauschen kann, kann man jede Reihenfolge erzeugen.
+
+\subsection*{c}
+
+Die Gleise können als Stapel aufgefasst werden, deren ``oben'' zur Verbindung zeigt.
+Sei $W$ die Menge aller Waggons und $S = W^*$ die Menge aller Gleise.
+Man kann jedes $s \in S$ schreiben als $s = w_1w_2\dots w_n$.
+Die Probleme lauten:
+\begin{enumerate}
+ \item Gibt es eine Methode $switch: S \times [1, n] \times [1, n] \rightarrow S$, sodass
+  \begin{equation}
+   switch(s, i, j) = w_1 \dots w_{i - 1} w_j w_{i + 1} \dots w_{j - 1} w_i w_{j + 1} \dots w_n
+  \end{equation}
+ \item Gibt es eine Methode $permutate: S \times P$, sodass
+  \begin{equation}
+   permutate(s, a_n) = w_{a_1}w_{a_2} \dots w_{a_n}
+  \end{equation}
+  wobei $P$ die Menge aller Folgen mit $n$ Gliedern ist, deren Elemente zwischen $1$ und $n$ liegen und die jede dieser Zahlen genau einmal enthalten.
+\end{enumerate}
+Da Waggons nicht einfach hinundher gehoben werden können, müsste man bei der Durchführung in der physikalischen Welt diese beiden Extragleise zur Verfügung haben.
+Ich weiß nicht, welche Eigenschaft hier sonst gemeint sein sollte.
+
+\section*{Übung 2}
+
+In dieser Implementierung wird eine Einfach-verkettete Liste verwendet, wobei Elemente so eingefügt werden, dass sie nach Priotität abwärts sortiert in der Liste stehen.
+\begin{lstlisting}
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <stdbool.h>
+
+ typedef struct queue_item {
+   struct queue_item* next;
+   int priority;
+   int object;
+ } queue_item_t;
+
+ typedef struct {
+   queue_item_t* top;
+ } priority_queue_t;
+
+ queue_item_t* create_queue_item (int object, int priority) {
+   queue_item_t* queue_item = (queue_item_t*)malloc(sizeof(queue_item_t));
+   queue_item->next = NULL;
+   queue_item->priority = priority;
+   queue_item->object = object;
+   
+   return queue_item;
+ }
+
+ void destroy_queue_item (queue_item_t* queue_item) {
+   if (queue_item->next != NULL) {
+     destroy_queue_item(queue_item->next);
+   }
+   
+   free(queue_item);
+ }
+
+ priority_queue_t* create_queue () {
+   priority_queue_t* queue =
+     (priority_queue_t*)malloc(sizeof(priority_queue_t));
+   queue->top = NULL;
+   
+   return queue;
+ }
+
+ void destroy_queue (priority_queue_t* queue) {
+   destroy_queue_item(queue->top);
+   
+   free(queue);
+ }
+
+ void insert_into_queue (queue_item_t* queue_item_list,
+			 queue_item_t* queue_item) {
+   if (queue_item_list->next == NULL) {
+     queue_item_list->next = queue_item;
+   } else if (queue_item_list->next->priority < queue_item->priority) {
+     queue_item->next = queue_item_list->next;
+     queue_item_list->next = queue_item;
+   } else {
+     insert_into_queue(queue_item_list->next, queue_item);
+   }
+ }
+
+ void enqueue (priority_queue_t* queue, int object, int priority) {
+   queue_item_t* queue_item = create_queue_item(object, priority);
+   
+   if (queue->top == NULL) {
+     queue->top = queue_item;
+   } else if (queue->top->priority < priority) {
+     queue_item->next = queue->top;
+     queue->top = queue_item;
+   } else {
+     insert_into_queue(queue->top, queue_item);
+   }
+ }
+
+ void dequeue (priority_queue_t* queue) {
+   queue_item_t* top = queue->top;
+   
+   queue->top = top->next;
+   
+   top->next = NULL;
+   
+   destroy_queue_item(top);
+ }
+
+ int front (priority_queue_t* queue) {
+   return queue->top->object;
+ }
+
+ bool is_empty (priority_queue_t* queue) {
+   return queue->top == NULL;
+ }
+
+ void print_queue (priority_queue_t* queue) {
+   while (!is_empty(queue)) {
+     printf("%d\n", front(queue));
+     dequeue(queue);
+   }
+ }
+
+ int main(int argc, char** argv) {
+   priority_queue_t* queue = create_queue();
+   
+   enqueue(queue, 5, 1);
+   enqueue(queue, 5, 3);
+   enqueue(queue, 1, 2);
+   enqueue(queue, 1, 2);
+   enqueue(queue, 4, 10);
+   
+   print_queue(queue);
+
+   return (EXIT_SUCCESS);
+ }
+\end{lstlisting}
+Es gilt
+\begin{align*}
+ enqueue & \in \mathcal{O}(n)\\
+ dequeue & \in \mathcal{O}(1)\\
+ front & \in \mathcal{O}(1)\\
+\end{align*}
+weil $front$ und $dequeue$ immer nur ein einzelnes Element betrachten und $enqueue$ maximal $n$ Elemente, falls das neue Element die niedrigste Priotität haben sollte.
+
+\end{document}
