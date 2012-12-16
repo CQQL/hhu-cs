@@ -183,6 +183,38 @@ Folglich ist $T_{1,3}(1)T_{2,3}(-2)T_{1,2}(-2)T_{3,2}(6)T_{2,2}(-\frac{4}{3})T_{
 
 \subsection*{Teil 1}
 
+\begin{align*}
+ & \begin{cases}
+  3x + 2y + 6z = a\\
+  4x + 5y + 12z = b\\
+  2x + 2y + 5z = c
+ \end{cases}\\
+ \Leftrightarrow & 
+ \begin{cases}
+  x = \frac{1}{3}a - \frac{2}{3}y - 2z\\
+  y = \frac{1}{5}b - \frac{4}{5}x - \frac{12}{5}z\\
+  z = \frac{1}{5}c - \frac{2}{5}x - \frac{2}{5}y
+ \end{cases}\\
+ \Leftrightarrow & 
+ \begin{cases}
+  x = \frac{1}{3}a - \frac{2}{3}y - 2z\\
+  y = \frac{1}{5}b - \frac{4}{15}a + \frac{8}{15}y - \frac{4}{5}z \Leftrightarrow y = \frac{3}{7}b - \frac{4}{5}a - \frac{4}{5}z\\
+  z = \frac{1}{5}c - \frac{2}{5}x - \frac{2}{5}y
+ \end{cases}\\
+ \Leftrightarrow & 
+ \begin{cases}
+  x = \frac{13}{15}a - \frac{2}{7}b - \frac{22}{15}z\\
+  y = \frac{3}{7}b - \frac{4}{5}a - \frac{4}{5}z\\
+  z = \frac{1}{5}c - \frac{2}{5}x - \frac{6}{35}b + \frac{8}{35}a \Leftrightarrow z = \frac{7}{27}c - \frac{14}{27}x - \frac{6}{27}b + \frac{8}{27}a
+ \end{cases}\\
+ \Leftrightarrow & 
+ \begin{cases}
+  x = \frac{329}{495}a - \frac{31}{231}b - \frac{35}{198}c + \frac{35}{99}x \Leftrightarrow \frac{64}{99}x = \frac{329}{495}a - \frac{31}{231}b - \frac{35}{198}c\\
+  y = \frac{3}{7}b - \frac{4}{5}a - \frac{4}{5}z\\
+  z = \frac{7}{27}c - \frac{14}{27}x - \frac{6}{27}b + \frac{8}{27}a
+ \end{cases}\\
+\end{align*}
+
 \subsection*{Teil 2}
 
 \begin{align*}
@@ -224,12 +256,12 @@ Folglich ist $T_{1,3}(1)T_{2,3}(-2)T_{1,2}(-2)T_{3,2}(6)T_{2,2}(-\frac{4}{3})T_{
 \begin{align*}
  R_\alpha R_\beta & =
  \begin{pmatrix}
-  \cos(\alpha)\cos(\beta) + \sin(\alpha)\sin(\beta) & \cos(\alpha)\sin(\beta) + \sin(\alpha)\cos(\beta)\\
+  \cos(\alpha)\cos(\beta) + \sin(\alpha)\sin(\beta) & -\cos(\alpha)\sin(\beta) - \sin(\alpha)\cos(\beta)\\
   \sin(\alpha)\cos(\beta) + \cos(\alpha)\sin(\beta) & \sin(\alpha)\sin(\beta) + \cos(\alpha)\cos(\beta)
  \end{pmatrix}\\
  & =
  \begin{pmatrix}
-  \cos(\alpha + \beta) & \sin(\alpha + \beta)\\
+  \cos(\alpha + \beta) & -\sin(\alpha + \beta)\\
   \sin(\alpha + \beta) & \cos(\alpha + \beta)
  \end{pmatrix}
  = R_{\alpha + \beta}
@@ -270,27 +302,40 @@ oder
  \end{pmatrix} = R_\alpha^{-1}
 \end{equation}
 
-Wenn $\cos \alpha \ne 0$ und $\sin \alpha \ne 0$, substituieren wir $\cos \alpha$ mit $c$ und $\sin \alpha$ mit $\sqrt{1 - c^2}$ und es gilt
+Wenn $\cos \alpha \ne 0$ und $\sin \alpha \ne 0$, betrachten wir
 \begin{equation}
- T_{1,2}(-\frac{\sqrt{1 - c^2}}{c})T_{2,2}(c - 1)T_{2,1}(-\sqrt{1 - c^2})T_{1,1}(\frac{1}{c} - 1)R_\alpha =
+ \begin{pmatrix}
+  \cos \alpha & -\sin \alpha\\
+  \sin \alpha & \cos \alpha\\
+ \end{pmatrix}
+ \begin{pmatrix}
+  a & b\\
+  c & d\\
+ \end{pmatrix} =
  \begin{pmatrix}
   1 & 0\\
   0 & 1\\
  \end{pmatrix}
 \end{equation}
-Dann ist der Vorfaktor von $R_\alpha$ das Inverse von $R_\alpha$ und es gilt
-\begin{equation}
- T_{1,2}(-\frac{\sqrt{1 - c^2}}{c})T_{2,2}(c - 1)T_{2,1}(-\sqrt{1 - c^2})T_{1,1}(\frac{1}{c} - 1) = 
- \begin{pmatrix}
-  \frac{2 - \cos^2 \alpha}{\cos \alpha} & -\sin \alpha\\
-  -\sin \alpha & \cos \alpha
- \end{pmatrix}
-\end{equation}
-
+und es ergibt sich
+\begin{align*}
+ a & = \frac{\cos \alpha}{\cos^2 \alpha + \sin^2 \alpha}\\
+ b & = \frac{\sin \alpha}{\cos^2 \alpha + \sin^2 \alpha}\\
+ c & = -\frac{\sin \alpha}{\cos^2 \alpha + \sin^2 \alpha}\\
+ d & = \frac{\sin \alpha - \sin^2 \alpha}{\cos^3 \alpha + \cos \alpha \sin^2 \alpha}
+\end{align*}
+Weil das Inverse existiert, ist $R_\alpha$ invertierbar.
 
 \section*{Übung 5}
 
 \subsection*{Teil 1}
+
+Seien $A, B \in M_n(K)$ und $x, y \in K$.
+\begin{align*}
+ Tr(xA + yB) & = \sum_{k = 1}^n xa_{k,k} + yb_{k,k}\\
+ & = \sum_{k = 1}^n xa_{k,k} + \sum_{k = 1}^n yb_{k,k}\\
+ & = x\sum_{k = 1}^n a_{k,k} + y\sum_{k = 1}^n b_{k,k} = xTr(A) + yTr(B)
+\end{align*}
 
 \subsection*{Teil 2}
 

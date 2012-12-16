@@ -1,0 +1,125 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+
+\title{Ana1, Übungsblatt 9}
+\author{Marten Lienen (2126759), Gruppe 8; Fabian Schmittmann (2083559), Gruppe 0}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 37}
+
+\subsection*{a}
+
+Mit den Regeln 2.a, der Kettenregel und verschiedenen Beispielen aus der Vorlesung ergibt sich
+\begin{align*}
+ f'(x) & = \frac{2x}{(x^2 + 1)^2} + \frac{2x}{(x^2 + 1)} + \frac{2x}{(x^2 + 1)^2}\frac{1}{\frac{1}{(x^2 + 1)^2} + 1}\\
+ & = \frac{2x}{(x^2 + 1)^2} + \frac{2x}{(x^2 + 1)} + \frac{2x}{(x^2 + 1)^2 + 1}
+\end{align*}
+
+\subsection*{b}
+
+Mit den Regeln 2.a, 2.b und dem Beispiel aus der Vorlesung zu $\log'$ ergibt sich
+\begin{equation}
+ f'(x) = \log x
+\end{equation}
+
+\subsection*{c}
+
+\begin{equation}
+ f(x) = a^x = \exp(x \cdot \log a)
+\end{equation}
+
+Mit der Regel 2.b, der Kettenregel und dem Beispiel aus der Vorlesung zu $\log'$ ergibt sich
+\begin{equation}
+ f'(x) = \log a \cdot \exp(x \cdot \log a) = \log a \cdot a^x
+\end{equation}
+
+\section*{Übung 38}
+
+\begin{equation}
+ f'(x) = 2\cos (2x) - 2\sin x
+\end{equation}
+
+\begin{align*}
+ f'(x) = 0 \Leftrightarrow & 2\cos (2x) = 2\sin x\\
+ \Leftrightarrow & \cos (2x) = \sin x\\
+ \Leftrightarrow & \cos(2x) - \sin x = 0\\
+ \Leftrightarrow & \cos^2 x - \sin^2 x - \sin x = 0\\
+ \Leftrightarrow & 1 - \sin^2 x - \sin^2 x - \sin x = 0\\
+ \Leftrightarrow & \sin^2 x + \frac{1}{2}\sin x - \frac{1}{2} = 0\\
+ \Leftrightarrow & \sin x = -\frac{1}{4} \pm \sqrt{\frac{1}{16} + \frac{1}{2}} = -\frac{1}{4} \pm \frac{3}{4}\\
+ \Leftrightarrow & \sin x = \frac{1}{2} \lor \sin x = -1\\
+ \Leftrightarrow & x = \arcsin \frac{1}{2} = \lor x = \arcsin -1
+\end{align*}
+
+$f'$ hat in $[0, 2\pi]$ 3 Nullstellen: $\frac{3}{2}\pi$, $\frac{1}{6}\pi$ und $\frac{5}{6}\pi$.
+
+\begin{equation}
+ f''(x) = -4 \sin (2x) - 2 \cos x
+\end{equation}
+\begin{align*}
+ f''(\frac{1}{6}\pi) < 0\\
+ f''(\frac{5}{6}\pi) > 0\\
+ f''(\frac{3}{2}\pi) = 0
+\end{align*}
+
+Nach dem Satz aus der Vorlesung hat $f$ an $\frac{1}{6}\pi$ ein lokales Maximum, an $\frac{5}{6}\pi$ ein lokales Minimum und bei $\frac{3}{2}\pi$ kann der Satz nicht angewendet werden.
+Die nächste kritische Stelle der Ableitung ist $\frac{13}{6}\pi$, die wegen der Periodenlänge von $2\pi$ ebenfalls ein Maximum von $f$ ist.
+Nach der Definition ist $f'$ rechts von $\frac{1}{6}\pi$ positiv und links von $\frac{13}{6}\pi$ negativ.
+Wenn $\frac{3}{2}\pi$ ein Maximum wäre, so wäre $f'$ rechts von $\frac{3}{2}\pi$ negativ und es müsste zwischen $\frac{3}{2}\pi$ und $\frac{13}{6}\pi$ eine weiter kritische Stelle in $f'$ geben, gibt es aber nicht.
+Wenn $\frac{3}{2}\pi$ ein Minimum wäre, so wäre $f'$ links von $\frac{3}{2}\pi$ negativ und es müsste zwischen $\frac{3}{2}\pi$ und $\frac{1}{6}\pi$ eine weiter kritische Stelle in $f'$ geben, gibt es aber nicht.
+
+\section*{Übung 39}
+
+\begin{align*}
+ \lim_{x \searrow 0} x^x & = \lim_{x \searrow 0} \exp(x \cdot \log x)\\
+ & = \exp\left(\lim_{x \searrow 0} (x \cdot \log x)\right) \text{substituiere $x = \frac{1}{t}$}\\
+ & = \exp\left(\lim_{t \nearrow \infty} (\frac{1}{t} \cdot \log \frac{1}{t})\right)\\
+ & = \exp\left(\lim_{t \nearrow \infty} (-\frac{\log t}{t})\right) = exp(0) = 1\\
+\end{align*}
+
+\begin{align*}
+ f'(x) = \left(exp(x \log x)\right)' = (1 + \log x) \cdot exp(x \log x) = (1 + \log x) \cdot x^x
+\end{align*}
+
+\begin{align*}
+ \lim_{x \searrow 0} f'(x) & = \lim_{x \searrow 0} \left( (1 + \log x) \cdot x^x \right)\\
+ & = \lim_{x \searrow 0} (1 + \log x) \cdot \lim_{x \searrow 0} x^x\\
+ & = \lim_{x \searrow 0} (1 + \log x) \cdot 1\\
+ & = \lim_{x \searrow 0} (1 + \log x) = -\infty
+\end{align*}
+
+\section*{Übung 40}
+
+\subsection*{a}
+
+\begin{equation}
+ \lim_{x \searrow 0} \frac{x}{x} = 1 \ne -1 = \lim_{x \nearrow 0} \frac{-x}{x}
+\end{equation}
+
+\subsection*{b}
+
+$\sqrt[3]{x}$ ist definiert auf $\mathbb{R}_{\ge 0}$.
+Da $0$ aber der untere Rand von $\mathbb{R}_{\ge 0}$ ist, ist $\mathbb{R}_{\ge 0}$ nicht offen und deshalb ist $\sqrt[3]{x}$ in $0$ nicht differenzierbar.
+
+\section*{Übung 41}
+
+Nach den Bedingungen kann man $g$ ganz allgemein definieren als
+\begin{equation}
+ g(x) = 
+  \begin{cases}
+   0 & \text{wenn $x = 0$}\\
+   \frac{x}{f(x)} & \text{andernfalls}
+  \end{cases}
+\end{equation}
+Wenn $f$ nicht differenzierbar wäre, könnte die Bedingung gar nicht mehr eingehalten werden, dass $f$ und $g$ differenzierbar sind.
+Sei also $f$ differenzierbar.
+
+\end{document}
