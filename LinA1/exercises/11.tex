@@ -1,0 +1,152 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+
+\title{LinA1, Übungsblatt 11}
+\author{Marten Lienen (2126759), Gruppe 1; Fabian Schmittmann (2083559), Gruppe 5}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+\begin{equation}
+ f \begin{pmatrix}1\\0\\0\end{pmatrix} = \begin{pmatrix}1\\0\\0\end{pmatrix}
+ \qquad f \begin{pmatrix}0\\1\\0\end{pmatrix} = \begin{pmatrix}2\\4\\0\end{pmatrix}
+ \qquad f \begin{pmatrix}0\\0\\1\end{pmatrix} = \begin{pmatrix}3\\5\\6\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+ A = 
+  \begin{pmatrix}
+   1 & 2 & 3\\
+   0 & 4 & 5\\
+   0 & 0 & 6
+  \end{pmatrix}
+\end{equation}
+
+\subsection*{Teil 2}
+
+\begin{equation}
+ f\begin{pmatrix}
+   x\\
+   y\\
+   z
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+   0\\
+   0\\
+   0
+  \end{pmatrix}
+ \Leftrightarrow
+ x = y = z = 0 \Rightarrow Basis(Ker(f)) = \emptyset
+\end{equation}
+Weil die Basis des Kerns von Dimension $0$ ist, folgt nach dem Rangsatz, dass $Rg(f) = 3$.
+Weil die gesamte Zielmenge $\mathbb{R}^3$ ebenfalls von Dimension $3$ ist, ist $Im(f) = \mathbb{R}^3$.
+Deshalb ist die kanonische Basis von $\mathbb{R}^3$ eine Basis von $Im(f)$.
+
+\subsection*{Teil 3}
+
+Weil $\mathcal{B}$ eine Basis ist, ist $(e_2, e_3)$ linear unabhängig.
+\begin{equation}
+ \begin{pmatrix}
+  1\\
+  1\\
+  0
+ \end{pmatrix}
+ =
+ x
+ \begin{pmatrix}
+  0\\
+  1\\
+  0
+ \end{pmatrix}
+ + y
+ \begin{pmatrix}
+  0\\
+  0\\
+  1
+ \end{pmatrix}
+ \Rightarrow
+ 1 = 0 \lightning
+\end{equation}
+$e_1 + e_2$ ist keine lineare Kombination von $e_2$ und $e_3$.
+$(e_2, e_1 + e_2, e_3)$ ist also linear unabhängig, mit $dim \mathbb{R}^3$ Vektoren und somit eine Basis von $\mathbb{R}^3$.
+
+\subsection*{Teil 4}
+
+\begin{align*}
+ id_{\mathbb{R}^3}\begin{pmatrix}1\\0\\0\end{pmatrix} & = (-1) * e_2 + 1 * (e_1 + e_2) + 0 * e_3\\
+ id_{\mathbb{R}^3}\begin{pmatrix}0\\1\\0\end{pmatrix} & = 1 * e_2 + 0 * (e_1 + e_2) + 0 * e_3\\
+ id_{\mathbb{R}^3}\begin{pmatrix}0\\0\\1\end{pmatrix} & = 0 * e_2 + 0 * (e_1 + e_2) + 1 * e_3\\
+\end{align*}
+
+\begin{equation}
+ Mat_{\mathcal{B},\mathcal{B}'}(id_{\mathbb{R}^3}) =
+  \begin{pmatrix}
+   -1 & 1 & 0\\
+   1 & 0 & 0\\
+   0 & 0 & 1
+  \end{pmatrix}
+\end{equation}
+
+\subsection*{Teil 5}
+
+\begin{align*}
+ id_{\mathbb{R}^3}\begin{pmatrix}0\\1\\0\end{pmatrix} & = 0 * e_1 + 1 * e_2 + 0 * e_3\\
+ id_{\mathbb{R}^3}\begin{pmatrix}1\\1\\0\end{pmatrix} & = 1 * e_1 + 1 * e_2 + 0 * e_3\\
+ id_{\mathbb{R}^3}\begin{pmatrix}0\\0\\1\end{pmatrix} & = 0 * e_1 + 0 * e_2 + 1 * e_3\\
+\end{align*}
+
+\begin{equation}
+ Mat_{\mathcal{B}',\mathcal{B}}(id_{\mathbb{R}^3}) =
+  \begin{pmatrix}
+   0 & 1 & 0\\
+   1 & 1 & 0\\
+   0 & 0 & 1
+  \end{pmatrix}
+\end{equation}
+
+\subsection*{Teil 6}
+
+\begin{equation}
+ B = Mat_{\mathcal{B},\mathcal{B}'}(id_{\mathbb{R}^3})AMat_{\mathcal{B}',\mathcal{B}}(id_{\mathbb{R}^3}) = 
+  \begin{pmatrix}
+   2 & 1 & 2\\
+   2 & 3 & 3\\
+   0 & 0 & 6
+  \end{pmatrix}
+\end{equation}
+
+\section*{Übung 2}
+
+\subsection*{Teil 1}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\subsection*{Teil 4}
+
+\subsection*{Teil 5}
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\subsection*{Teil 4}
+
+\section*{Übung 4}
+
+\end{document}
