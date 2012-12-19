@@ -1,0 +1,81 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{listings}
+
+\title{Info1, Übungsblatt 11}
+\author{Marten Lienen (2126759)}
+
+\begin{document}
+
+\maketitle
+
+\section*{a}
+
+\begin{proof}
+ Sei $a$ ein korrekter Klammerausdruck der Länge $n$, die nach der BNF-Beschreibung immer gerade ist.	
+ 
+ Sei $a \in A^*$, sodass der K-Akzeptor ``korrekt'' ausgibt.
+\end{proof}
+
+\section*{b}
+
+\begin{lstlisting}
+ import java.util.Stack;
+
+ public class Klammern {
+   public static boolean linke_klammer (char c) {
+     return c == '(' || c == '{' || c == '<' || c == '[';
+   }
+
+   public static boolean passen (char a, char b) {
+     return
+       (a == '(' && b == ')') ||
+       (a == '{' && b == '}') ||
+       (a == '<' && b == '>') ||
+       (a == '[' && b == ']');
+   }
+
+   public static boolean k_akzeptor (String ausdruck) {
+     Stack<Character> klammerstack = new Stack<Character>();
+
+     for (char c : ausdruck.toCharArray()) {
+       if (linke_klammer(c)) {
+	 klammerstack.push(c);
+       } else {
+	 if (klammerstack.empty()) {
+	   return false;
+	 } else if (!passen(klammerstack.pop(), c)) {
+	   return false;
+	 }
+       }
+     }
+
+     return klammerstack.empty();
+   }
+
+   public static void main (String[] args) {
+     boolean gueltig = k_akzeptor(args[0]);
+
+     if (gueltig) {
+       System.out.println("korrekt");
+     } else {
+       System.out.println("inkorrekt");
+     }
+   }
+ }
+\end{lstlisting}
+
+\section*{c}
+
+\begin{proof}
+ Sei $a$ ein korrekter Klammerausdruck.
+ Nach Definition enthält $a$ genausoviele linke wie rechte Klammern.
+ Da Klammern immer nur paarweise mit der linken Klammer auf der linken Seite hinzugefügt werden können, enthält jedes Anfangsstück $a_j$ höchstens so viele rechte Klammern wie linke.
+ 
+ Sei $a \in A^*$ mit genausovielen linken wie rechten Klammern und jedes Anfangsstück $a_j$ enthalte höchstens so viele rechte wie linke Klammern. 
+\end{proof}
+
+\end{document}
