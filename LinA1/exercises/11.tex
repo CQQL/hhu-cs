@@ -142,25 +142,327 @@ $(e_2, e_1 + e_2, e_3)$ ist also linear unabhängig, mit $dim \mathbb{R}^3$ Vekt
 
 Weil $\mathbb{R}^3$ von Dimension $3$ ist, reicht es zu zeigen, dass $(v_1, v_2, v_3)$ linear unabhängig ist.
 Seien $x, y, z \in \mathbb{R}$.
-\begin{equation}
- xv_1 + yv_2 + zv_3 = 0
-\end{equation}
+\begin{align*}
+ & xv_1 + yv_2 + zv_3 = 0\\
+ \Leftrightarrow &
+  \begin{cases}
+   x + 4y + 2z & = 0\\
+   x + 3y - 3z & = 0\\
+   x - 2y + 2z & = 0
+  \end{cases}\\
+ \Leftrightarrow &
+  \begin{cases}
+   x + 4y + 2z & = 0\\
+   y - 5z & = 0\\
+   y & = 0
+  \end{cases}\\
+ \Leftrightarrow &
+  \begin{cases}
+   x + 4y + 2z & = 0\\
+   z & = 0\\
+   y & = 0
+  \end{cases}\\
+  \Leftrightarrow &
+  \begin{cases}
+   x & = 0\\
+   z & = 0\\
+   y & = 0
+  \end{cases}\\
+\end{align*}
+$(v_1, v_2, v_3)$ ist also eine Basis von $\mathbb{R}^3$.
 
 \subsection*{Teil 3}
 
+\begin{align*}
+ A v_1 =
+  \begin{pmatrix}
+   1\\
+   1\\
+   1
+  \end{pmatrix} =
+  1v_1 + 0v_2 + 0v_3\\
+ A v_2 =
+  \begin{pmatrix}
+   8\\
+   6\\
+   -4
+  \end{pmatrix} =
+  0v_1 + 2v_2 + 0v_3\\
+ A v_3 =
+  \begin{pmatrix}
+   -8\\
+   12\\
+   -8
+  \end{pmatrix} =
+  0v_1 + 0v_2 + -4v_3\\
+\end{align*}
+
+\begin{equation}
+ B =
+  \begin{pmatrix}
+   1 & 0 & 0\\
+   0 & 2 & 0\\
+   0 & 0 & -4
+  \end{pmatrix}
+\end{equation}
+
 \subsection*{Teil 4}
 
+\begin{proof}
+ Wir behaupten
+ \begin{equation}
+  B^n = 
+   \begin{pmatrix}
+    1^n & 0 & 0\\
+    0 & 2^n & 0\\
+    0 & 0 & -4^n
+   \end{pmatrix}
+ \end{equation}
+
+ Wir beweisen es mit Induktion über den Exponent $n$.
+ Für $n = 1$, wissen wir, dass es stimmt.
+ 
+ \begin{align*}
+  B^{n + 1} = B^n B & = 
+   \begin{pmatrix}
+    1^n * 1 & 0 & 0\\
+    0 & 2^n * 2 & 0\\
+    0 & 0 & -4^n * (-4)
+   \end{pmatrix}\\
+   & = 
+   \begin{pmatrix}
+    1^{n + 1} & 0 & 0\\
+    0 & 2^{n + 1} & 0\\
+    0 & 0 & -4^{n + 1}
+   \end{pmatrix}
+ \end{align*}
+\end{proof}
+
 \subsection*{Teil 5}
+
+Wir bestimmen $A^n$, indem wir $A$ zur Basis $\mathcal{B}$ wechseln und dann wieder zurück.
+\begin{equation}
+ c_\mathcal{B} =
+  \begin{pmatrix}
+   1 & 4 & 2\\
+   1 & 3 & -3\\
+   1 & -2 & 2
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+ c_\mathcal{B}^{-1} =
+  \begin{pmatrix}
+   1 & 4 & 2\\
+   1 & 3 & -3\\
+   1 & -2 & 2
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+ A^n = c_\mathcal{B} B^n c_\mathcal{B}^{-1}
+\end{equation}
 
 \section*{Übung 3}
 
 \subsection*{Teil 1}
 
+\begin{equation}
+ f(e_1) = 
+  \begin{pmatrix}
+   0\\
+   0\\
+   0\\
+   0
+  \end{pmatrix}
+ \qquad
+ f(e_2) = 
+  \begin{pmatrix}
+   1\\
+   1\\
+   0\\
+   1
+  \end{pmatrix}
+ \qquad
+ f(e_3) = 
+  \begin{pmatrix}
+   -1\\
+   1\\
+   -1\\
+   0
+  \end{pmatrix}
+\end{equation}
+
+
+\begin{equation}
+ A = 
+  \begin{pmatrix}
+   0 & 1 & -1\\
+   0 & 1 & 1\\
+   0 & 0 & -1\\
+   0 & 1 & 0
+  \end{pmatrix}
+\end{equation}
+
 \subsection*{Teil 2}
+
+\begin{equation}
+ Basis(ker(f)) = Basis(Ker(A)) =
+  \begin{pmatrix}
+   1\\
+   0\\
+   0
+  \end{pmatrix}
+\end{equation}
+
+\begin{equation}
+ Basis(Im(A)) =
+  \left\langle
+   \begin{pmatrix}
+    1\\
+    1\\
+    0\\
+    1
+   \end{pmatrix},
+   \begin{pmatrix}
+    -1\\
+    1\\
+    -1\\
+    0
+   \end{pmatrix}
+  \right\rangle
+\end{equation}
 
 \subsection*{Teil 3}
 
+Nach Satz 8.9.2 muss man hier die transponierte Matrix A bestimmen.
+
+\begin{equation}
+ A^T = 
+  \begin{pmatrix}
+   0 & 0 & 0 & 0\\
+   1 & 1 & 0 & 1\\
+   -1 & 1 & -1 & 0
+  \end{pmatrix}
+\end{equation}
+
 \subsection*{Teil 4}
+
+Sei $v \in B'^\vee$.
+\begin{align}
+ & A^T \cdot v = 
+  \begin{pmatrix}
+   0\\
+   v_1 + v_2 + v_4\\
+   -v_1 + v_2 - v_3
+  \end{pmatrix} = 0\\
+ \Leftrightarrow & 
+  \begin{pmatrix}
+   v_1 + v_2 + v_4 = 0\\
+   -v_1 + v_2 - v_3 = 0
+  \end{pmatrix}
+ \Leftrightarrow
+  \begin{pmatrix}
+   v_4 = -v_1 - v_2\\
+   v_3 = v_1 - v_2
+  \end{pmatrix}
+\end{align}
+Alle Vektoren in $Ker(A^T)$ sind also von der folgenden Form
+\begin{equation}
+ \begin{pmatrix}
+  v_1\\
+  v_2\\
+  v_1 - v_2\\
+  -v_1 - v_2
+ \end{pmatrix} =
+ \begin{pmatrix}
+  v_1\\
+  0\\
+  v_1\\
+  -v_1
+ \end{pmatrix} + 
+ \begin{pmatrix}
+  0\\
+  v_2\\
+  -v_2\\
+  -v_2
+ \end{pmatrix} = 
+ v_1
+ \begin{pmatrix}
+  1\\
+  0\\
+  1\\
+  -1
+ \end{pmatrix} + 
+ v_2
+ \begin{pmatrix}
+  0\\
+  1\\
+  -1\\
+  -1
+ \end{pmatrix}
+\end{equation}
+\begin{equation}
+ Basis(Ker(A)) = \left(
+  \begin{pmatrix}
+   1\\
+   0\\
+   1\\
+   -1
+  \end{pmatrix},
+  \begin{pmatrix}
+   0\\
+   1\\
+   -1\\
+   -1
+  \end{pmatrix}
+ \right)
+\end{equation}
+
+\begin{equation*}
+ A^T e_1 =
+  \begin{pmatrix}
+   0\\
+   1\\
+   -1
+  \end{pmatrix}
+ \qquad
+ A^T e_2 =
+  \begin{pmatrix}
+   0\\
+   1\\
+   1
+  \end{pmatrix}
+ \qquad
+ A^T e_3 =
+  \begin{pmatrix}
+   0\\
+   0\\
+   -1
+  \end{pmatrix}
+ \qquad
+ A^T e_4 =
+  \begin{pmatrix}
+   0\\
+   1\\
+   0
+  \end{pmatrix}
+\end{equation*}
+
+Weil nach dem Rangsatz $dim(Im(A^T)) = 2$ sein muss und $A^T e_1$ und $A^T e_2$ Linearkombinationen von $A^T e_3$ und $A^T e_4$ sind, muss
+\begin{equation}
+ Basis(Im(A)) = \left(
+  \begin{pmatrix}
+   0\\
+   1\\
+   0
+  \end{pmatrix},
+  \begin{pmatrix}
+   0\\
+   0\\
+   -1
+  \end{pmatrix}
+ \right)
+\end{equation}
+sein.
 
 \section*{Übung 4}
 

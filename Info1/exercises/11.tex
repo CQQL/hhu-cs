@@ -15,9 +15,19 @@
 \section*{a}
 
 \begin{proof}
- Sei $a$ ein korrekter Klammerausdruck der Länge $n$, die nach der BNF-Beschreibung immer gerade ist.	
+ Sei $a$ ein korrekter Klammerausdruck.
+ Wenn der K-Akzeptor auf einen Klammerausdruck angewendet wird, der ohne Regeln 3 erzeugt wurde, ist der Stapel am Ende leer, weil zuerst jede linke Klammer auf den Stapel kommt und danach die rechten Klammern in umgekehrter Reihenfolge gefunden werden, sodass der Stapel wieder komplett geleert wird.
+ Da ein leerer Stapel die Anfangsbedingung ist, gibt der K-Akzeptor ebenfalls ``korrekt'' aus, wenn mehrere solcher vereinfachten Klammerausdrücke hintereinander durchlaufen werden.
+ Enthalte $a$ nun an Position $l$ eine linke Klammer und an Position $r$ die dazugehörige rechte Klammer, sodass zwischen $l$ und $r$ eine Aneinanderreihung von Klammerausdrücken steht, nach deren Verarbeitung der Stapel leer ist.
+ Dann liegt zuerst $l$ ganz oben auf dem Stapel, aber wenn der K-Akzeptor bei $r$ ankommt, sind alle nachfolgenden linken Klammern wieder entfernt worden, weil ein K-Akzeptor solche Ausdrücke, wie vorrausgesetzt, akzeptiert.
+ Folglich liegt die Klammer an Position $l$ wieder oben, die dann durch die rechte Klammer an Position $r$ eliminiert wird.
+ Nun hat der Stapel wieder den Zustand, den er hatte, bevor der K-Akzeptor bei $l$ angekommen war.
+ Das bedeutet, dass der Bereich von $l + 1$ bis $r - 1$ auch Klammerausdrücke enthalten kann, die durch Regel 3 erzeugt wurden.
+ Der K-Akzeptor akzeptiert also jede mögliche Verschachtelung, die diese Grammatik erzeugen kann.
  
  Sei $a \in A^*$, sodass der K-Akzeptor ``korrekt'' ausgibt.
+ Dann ist jedes Zeichen in $a$ entweder eine linke Klammer oder die rechte Klammer, die zu der letzten linken Klammer passt, für die noch kein Gegenstück gefunden wurde.
+ $a$ lässt sich also durch die gegebene Grammatik erzeugen und ist ein gültiger Klammerausdruck.
 \end{proof}
 
 \section*{b}
@@ -75,7 +85,22 @@
  Nach Definition enthält $a$ genausoviele linke wie rechte Klammern.
  Da Klammern immer nur paarweise mit der linken Klammer auf der linken Seite hinzugefügt werden können, enthält jedes Anfangsstück $a_j$ höchstens so viele rechte Klammern wie linke.
  
- Sei $a \in A^*$ mit genausovielen linken wie rechten Klammern und jedes Anfangsstück $a_j$ enthalte höchstens so viele rechte wie linke Klammern. 
+ Sei $a \in A^*$ mit genausovielen linken wie rechten Klammern und jedes Anfangsstück $a_j$ enthalte höchstens so viele rechte wie linke Klammern.
+ $a$ habe Länge $n$.
+ Wenn wir einen K-Akzeptor auf $a$ anwenden, wird er am Ende ``korrekt'' ausgeben.
+ Damit er an Position $1 \le j < n$ ``inkorrekt'' ausgibt, müsste er eine rechte Klammer vorfinden, die nicht zu der obersten linken Klammer auf dem Stapel passt.
+ Sei $l_j$ die Anzahl der linken Klammer bis zur Position $j$ und $r_j$ die Anzahl der rechten Klammern bis zur Position $j$.
+ Da es nur einen Klammertyp gibt, passt jede linke zu jeder rechten Klammer in $a$.
+ Der Stapel müsste also folglich an Position $j$ leer sein, damit es zu ``inkorrekt'' kommt.
+ Es müsste also $r_{j - 1} \ge l_j$ gelten, was ein Widerspruch dazu ist, dass $a$ gleichviele linke und rechte Klammern enthält und $j < n$.
+ Es bleibt Position $n$ zu betrachten.
+ Wir wissen, dass $r_{n - 2} \le l_{n - 1} = l_n$.
+ Da nur $r_j$ nur wachsen kann, unterscheiden wir zwei Fälle: $r_{n - 1} = l_n$ und $r_{n - 1} < l_n$.
+ Wir wissen, dass $l_n = r_n$ und dass die letzte Klammer eine rechte Klammer sein muss, also $r_{n - 1} = r_n - 1$.
+ $r_{n - 1} = l_n$ ist also nicht wahr.
+ Folglich muss $r_{n - 1} < l_n$ gelten.
+ Da $l_n = r_n$, gilt $r_{n - 1} = r_n - 1$.
+ Nach der letzten Klammer ist also der Stapel leer und der K-Akzeptor gibt ``korrekt'' aus.
 \end{proof}
 
 \end{document}
