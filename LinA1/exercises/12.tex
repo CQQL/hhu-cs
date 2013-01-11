@@ -1,0 +1,122 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+
+\title{LinA1, Übungsblatt 12}
+\author{Marten Lienen (2126759), Gruppe 1; Fabian Schmittmann (2083559), Gruppe 5}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+\subsection*{Teil 2}
+
+\section*{Übung 2}
+
+\subsection*{Teil 1}
+
+Seien $q, p \in V$ und $x, y \in K$.
+\begin{equation}
+ f_v(x q + y p) = (v, xq + yp) = x(v, q) + y(v, p) = x f_v(q) + y f_v(p)
+\end{equation}
+
+\subsection*{Teil 2}
+
+Seien $q, p, v \in V$ und $x, y \in K$.
+\begin{align*}
+ F(xq + yp)(v) & = f_{xq + yp}(v) = (xf_q + yf_p)(v) = xf_q(v) + yf_p(v)\\
+ & = xF(q)(v) + yF(p)(v) = (xF(q) + yF(p))(v)
+\end{align*}
+
+\subsection*{Teil 3}
+
+\begin{equation}
+ F^{-1}(f_v) = v
+\end{equation}
+\begin{equation}
+ F^{-1}(F(v)) = F^{-1}(f_v) = v \Rightarrow F^{-1} \circ F = id_V
+\end{equation}
+\begin{equation}
+ F(F^{-1}(f_v)) = F(v) = f_v \Rightarrow F \circ F^{-1} = id_{V^\vee}
+\end{equation}
+
+\subsection*{Teil 4}
+
+Sei $v \in M^\perp$.
+Weil $(v, w) = 0 \quad \forall w \in M$ ist, gilt $F(v)(w) = 0 \quad \forall w \in M$ und $F(v) \in M^T$, also $F(M^\perp) \subset M^T$.
+
+Sei $f \in M^T$.
+Wir definieren $f$ mithilfe der kanonischen Dualbasis $(e_1^\vee, \dots, e_n^\vee)$, sodass
+\begin{equation}
+ f(v) = (\sum_{k = 1}^n x_k e_k^\vee)(v) =
+  \left( \begin{pmatrix}
+   x_1\\
+   \vdots\\
+   x_n
+  \end{pmatrix}, v\right) = 0
+\end{equation}
+Also ist $f \in F(M^\perp)$ und $M^T \subset F(M^\perp)$ und letztendlich $F(M^\perp) = M^T$.
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+Da $V = \langle f, g, h \rangle$, ist $(f, g, h)$ ein EZS von $V$.
+Es bleibt zu zeigen, dass $(f, g, h)$ linear unabhängig ist.
+Sei $x \in [0, 1]$.
+\begin{align}
+ & af(x) + bg(x) + ch(x) = 0\\
+ \Leftrightarrow &
+ a + bx + cx^2 = 0
+\end{align}
+Wenn $c \ne 0$, hat die Gleichung maximal 2 Lösungen, sodass sie für maximal für 2 Werte aus $[0, 1]$ gelöst werden kann.
+Folglich muss $a = b = c = 0$ sein.
+$(f, g, h)$ ist also eine Basis von $V$.
+
+\subsection*{Teil 2}
+
+\begin{proof}
+ Seien $f, g, h \in V$.
+ 
+ \begin{equation}
+  (f, g) = \int_0^1 f(t) g(t) dt = \int_0^1 g(t) f(t) dt = (g, f)
+ \end{equation}
+ 
+ \begin{equation}
+  (f, f) = \int_0^1 f(t) f(t) dt = \int_0^1 f(t)^2 dt \ge 0
+ \end{equation}
+ 
+ Seien $x, y \in \mathbb{R}$.
+ \begin{align*}
+  (f, xg + yh) & = \int_0^1 f(t) (xg + yh)(t) dt\\
+  & = \int_0^1 f(t)xg(t) + f(t)yh(t) dt\\
+  & = \int_0^1 f(t)xg(t) + \int_0^1 f(t)yh(t) dt\\
+  & = x\int_0^1 f(t)g(t) dt + y\int_0^1 f(t)h(t) dt\\
+  & = x(f, g) + y(f, h)
+ \end{align*}
+ Aus der Symmetrie folgt, dass es auch für das erste Argument linear ist.
+
+ $(,)$ ist also symmetrisch, positiv definit, bilinear und somit ein Skalarprodukt.
+\end{proof}
+
+\subsection*{Teil 3}
+
+
+
+\section*{Übung 4}
+
+\subsection*{Teil 1}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\end{document}

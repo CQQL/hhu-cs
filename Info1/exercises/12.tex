@@ -1,0 +1,97 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{listings}
+\lstset{
+ language=java,                % choose the language of the code
+ basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+ numbers=left,                   % where to put the line-numbers
+ numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+ stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+ numbersep=5pt,                  % how far the line-numbers are from the code
+ backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+ showspaces=false,               % show spaces adding particular underscores
+ showstringspaces=false,         % underline spaces within strings
+ showtabs=false,                 % show tabs within strings adding particular underscores
+ tabsize=2,          % sets default tabsize to 2 spaces
+ captionpos=b,           % sets the caption-position to bottom
+ breaklines=true,        % sets automatic line breaking
+ breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+ escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
+
+\title{Info1, Übungsblatt 12}
+\author{Marten Lienen (2126759)}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+\subsection*{a}
+
+\begin{proof}
+ Da jede Kante $\{u, v\}$ in einem ungerichteten Graphen den sowohl den Grad von $u$ als auch von $v$ um eins erhöht, erhöht sie also die Summe aller Grade um $2$.
+ Da es $|E|$ Kanten gibt, geschieht dies genau $|E|$ mal und es gilt
+ \begin{equation}
+  \sum_{v \in V} degree(v) = 2|E|
+ \end{equation}
+\end{proof}
+
+\subsection*{b}
+
+\begin{proof}
+ Sei $G$ ein ungerichteter Graph und seine $n$ Knoten seien $v_j$ mit $1 \le j \le n$.
+ Ich zeige es mit Induktion über $n$.
+ Für $n = 1$, ist die Aussage offensichtlich wahr: $|E| = 0 \ge 0 = |V| - 1$.
+ Nehmen wir an, dass $n \ge 2$ und $G$ sei zusammenhängend.
+ Sei $G'$ ein neuer Graph mit $V' = V \cap \{ v_{n + 1} \}$ und $E' = E \cap \{ \{v_{n + 1}, v_j\} \}$.
+ Dann ist $G'$ ebenfalls zusammenhängend und es gilt
+ \begin{equation}
+  |E'| = |E| + 1 \ge |V| = |V'| - 1
+ \end{equation}
+\end{proof}
+
+\subsection*{c}
+
+\begin{proof}
+ Sei $u$ ein Knoten von ungeradem Grad.
+ 
+\end{proof}
+
+\subsection*{d}
+
+\subsection*{e}
+
+\section*{Aufgabe 2}
+
+Das besondere an diesem Code ist, dass Autoboxing verwendet wird.
+Der Vergleichsoperator vergleicht also die Instanzen der Integer-Objekte und nicht den Wert, den sie repräsentieren.
+Um das Verhalten einer int-Variable zu erhalten, muss man hier mit equals vergleichen.
+Schaut man sich den Bytecode an, sieht man, dass dieses Beispiel eigentlich folgendermaßen aussieht.
+\begin{lstlisting}
+ public class Autoboxing {
+   public static void main (String[] args) {
+     Integer a = Integer.valueOf(127);
+     Integer b = Integer.valueOf(127);
+
+     System.out.println(a == b);
+
+     a = Integer.valueOf(a.intValue() + 1);
+     b = Integer.valueOf(b.intValue() + 1);
+
+     System.out.println(a == b);
+   }
+ }
+\end{lstlisting}
+Man sieht nun, dass die Ausgabe so ist wie sie ist, weil die Instanzen in Zeile 6 gleich und in Zeile 11 ungleich sind.
+Jetzt ergibt sich aber noch die Frage, warum Zeile 6 und 11 nicht beide $false$ oder beide $true$ sind, wo $a$ und $b$ doch beides Mal den Rückgabewert von $Integer.valueOf$ mit dem jeweils gleichen Argument enthalten.
+Die Antwort ist, dass $Integer.valueOf$ für Zahlen bis $127$ Instance-Caching anwendet, um die Performanz zu verbessern, für Zahlen über 127 jedoch jedes mal eine neue Instanz erzeugt.
+
+Meine Aussage gilt nur für OpenJDK-6.
+
+\end{document}

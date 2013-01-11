@@ -1,0 +1,168 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{stmaryrd}
+
+\title{Ana1, Übungsblatt 10; Tutoriumsblatt}
+\author{Marten Lienen (2126759), Gruppe 8; Fabian Schmittmann (2083559), Gruppe 0}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 47}
+
+\subsection*{Teil a}
+
+Sei $x \ne 0$.
+\begin{equation}
+ f'(x) = \frac{2}{x^3} e^{-\frac{1}{x^2}}
+\end{equation}
+\begin{equation}
+ f''(x) = \frac{2}{x^3} \frac{2}{x^3} e^{-\frac{1}{x^2}} + \frac{-6}{x^4} e^{-\frac{1}{x^2}} = (\frac{4}{x^6} - \frac{6}{x^4}) e^{-\frac{1}{x^2}}
+\end{equation}
+
+\subsection*{Teil b}
+
+\begin{proof}
+ Wir zeigen es durch Induktion über $n$.
+ Für $n = 0$ ist $p_0 = 1$.
+ Für $n > 0$ nehmen wir an, dass wir bereits ein Polynom $p_{n - 1}$ vom Grad $3n - 3$ haben und dass $f^{(n - 1)}$ die geforderte Form hat.
+ \begin{align*}
+  f^{(n)} & = p_{n - 1}(\frac{1}{x}) f'(x) + p_{n - 1}'(\frac{1}{x}) f(x)\\
+  & = \frac{2}{x^3} p_{n - 1}(\frac{1}{x}) f(x) + p_{n - 1}'(\frac{1}{x}) f(x)\\
+  & = \left( \frac{2}{x^3} p_{n - 1}(\frac{1}{x}) + p_{n - 1}'(\frac{1}{x}) \right) f(x)
+ \end{align*}
+ Wir haben also ein Polynom $p_n = \frac{2}{x^3} p_{n - 1}(\frac{1}{x}) + p_{n - 1}'(\frac{1}{x})$ gefunden.
+ Wegen $\frac{2}{x^3} p_{n - 1}$ und dass $p_{n - 1}$ Grad $3n - 3$ hat, hat $p_n$ Grad $3n$.
+\end{proof}
+
+\subsection*{Teil c}
+
+\begin{proof}
+ Wir zeigen $f^{(n)}(0) = 0$ durch Induktion über $n$.
+ Für $n = 0$ ist es per Definition wahr.
+ Für $n > 0$ nehmen wir an, dass $f^{(n - 1)}(0) = 0$.
+ Sei $x_n$ eine Nullfolge mit $x_k \ne 0$ und $y_n = -x_n$.
+ \begin{align*}
+  \lim_{k \rightarrow \infty} \frac{f^{(n - 1)}(x_k) - f^{(n - 1)}(0)}{x_k - 0} & = \lim_{k \rightarrow \infty} \frac{f^{(n - 1)}(x_k)}{x_k}
+ \end{align*}
+
+\end{proof}
+
+\subsection*{Teil d}
+
+$f'$ hat genau eine Nullstelle, $0$, wie in $c$ gezeigt, weil weder $\frac{2}{x^3}$ noch $e^{-\frac{1}{x^2}}$ eine Nullstelle haben.
+Da $e^k > 0 \quad k \in \mathbb{R}$ und $\frac{2}{x^3} < 0 \quad \forall x \in \mathbb{R}_{< 0}$ und $\frac{2}{x^3} > 0 \quad \forall x \in \mathbb{R}_{> 0}$, ist $f'(\mathbb{R}_{< 0}) < 0$ und $f'(\mathbb{R}_{> 0}) > 0$.
+Also hat $f$ an der Stelle $0$ ein Minimum.
+
+\subsection*{Teil e}
+
+Sei $x \ne 0$.
+\begin{align*}
+ & f''(x) = (\frac{4}{x^6} - \frac{6}{x^4}) e^{-\frac{1}{x^2}} \ge 0\\
+ \Leftrightarrow & (\frac{4}{x^6} - \frac{6}{x^4}) \ge 0\\
+ \Leftrightarrow & -\frac{6}{x^6}(x^2 - \frac{2}{3}) \ge 0\\
+ \Leftrightarrow & x^2 - \frac{2}{3} \le 0\\
+ \Leftrightarrow & x^2 \le \frac{2}{3}\\
+ \Leftrightarrow & |x| \le \sqrt{\frac{2}{3}}\\
+\end{align*}
+Wegen $f''(0) = 0$, liegt auch $0$ in der Lösungsmenge und $f$ ist nach Satz 8.7 konvex in $[-\sqrt{\frac{2}{3}}, \sqrt{\frac{2}{3}}]$.
+
+\section*{Aufgabe 48}
+
+\subsection*{Teil a}
+
+Weil $f$ eine Treppenfunktion ist, deren Stufen alle Höhe $0$ haben, ist sie integrierbar und
+\begin{equation}
+ \int_0^1 f(x) dx = 0
+\end{equation}
+
+\subsection*{Teil b}
+
+Weil $f$ eine Treppenfunktion ist, deren Stufen alle Höhe $0$ haben, ist sie integrierbar und
+\begin{equation}
+ \int_0^1 f(x) dx = 0
+\end{equation}
+
+\subsection*{Teil c}
+
+Weil $f$ auch eine Treppenfunktion ist, ist sie auch integrierbar.
+\begin{align*}
+ \int_0^1 f(x) dx & = \sum_{k = 0}^\infty \frac{1}{2^k} \cdot \left( \frac{1}{2^k} - \frac{1}{2^{k + 1}} \right)\\
+ & = \sum_{k = 0}^\infty \frac{1}{2^k} \cdot \frac{2 - 1}{2^{k + 1}}\\
+ & = \sum_{k = 0}^\infty \frac{1}{2^{2k + 1}}\\
+ & = \frac{1}{2} \cdot \sum_{k = 0}^\infty \frac{1}{2^{2k}}\\
+ & = \frac{1}{2} \cdot \sum_{k = 0}^\infty \frac{1}{4^k}\\
+ & = \frac{2}{3}
+\end{align*}
+
+\subsection*{Teil d}
+
+$f$ ist eine Treppenfunktion mit schrägen Stufen.
+\begin{align*}
+ \int_0^1 f(x) dx & = \sum_{k = 0}^\infty \frac{1}{2} \cdot \left( \frac{1}{2^k} - \frac{1}{2^{k + 1}} \right)\\
+ & = \sum_{k = 0}^\infty \frac{1}{2^{k + 2}}\\
+ & = \frac{1}{4} \sum_{k = 0}^\infty \frac{1}{2^k}\\
+ & = \frac{1}{2}
+\end{align*}
+
+\section*{Aufgabe 49}
+
+\begin{equation}
+ h(x) = f(x) - g(x)
+\end{equation}
+\begin{equation}
+ h'(x) = e^x - 2x + 1
+\end{equation}
+\begin{equation}
+ h''(x) = e^x - 2
+\end{equation}
+\begin{equation}
+ h'''(x) = e^x
+\end{equation}
+Wir suchen nun das globale Minimum von $h'$.
+\begin{equation}
+ h''(x) = 0 \Leftrightarrow x = \log 2
+\end{equation}
+\begin{equation}
+ h'''(\mathbb{R}) > 0
+\end{equation}
+$h'$ hat also ein lokales Minimum bei $\log 2$, das auch ein globales ist, weil $h''$ immer positiv ist.
+\begin{equation}
+ h'(\log 2) = 2 - 2\log 2 + 1 = 3 - 2 \log 2 > 0
+\end{equation}
+Da $h'(\mathbb{R}) > 0$, ist $h$ streng monoton steigend.
+\begin{equation}
+ h(0) = -1
+\end{equation}
+\begin{equation}
+ h(3) = e^3 - 2 + 3^2 - 3 \approx 2
+\end{equation}
+Da $h$ streng monoton wachsend ist und $h(0) < 0$ und $h(3) > 0$ gibt es genau eine Stelle $\xi$ mit $h(\xi) = 0$, also $f(\xi) = g(\xi)$.
+
+\section*{Aufgabe 50}
+
+\subsection*{Teil a}
+
+Sei $f'$ beschränkt durch $M$.
+Wähle $\delta = \frac{\varepsilon}{M}$.
+Seien $x, x' \in D$ mit $|x - x'| < \delta$.
+\begin{equation}
+ |f(x) - f(x')| \le M \cdot |x - x'| < M \cdot \frac{\varepsilon}{M} = \varepsilon
+\end{equation}
+
+\subsection*{Teil b}
+
+Wähle $\delta = $.
+Seien $x, x' \in D$ mit $|x - x'| < \delta$.
+\begin{equation}
+ |f(x) - f(x')|  = \varepsilon
+\end{equation}
+
+\subsection*{Teil c}
+
+\end{document}
