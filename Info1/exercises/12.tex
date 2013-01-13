@@ -59,11 +59,28 @@
 \subsection*{c}
 
 \begin{proof}
- Sei $u$ ein Knoten von ungeradem Grad.
- 
+ Wir wissen aus $a$, dass die Summe aller Grade eine gerade Zahl ist.
+ Nun partitionieren wir $V$ in $V_g$, die Menge aller Knoten mit geradem Grad, und $V_u$, die Menge aller Knoten mit ungeradem Grad.
+ Dann gilt
+ \begin{equation}
+  \sum_{v \in V} degree(v) = \sum_{v \in V_g} degree(v) + \sum_{v \in V_u} degree(v)
+ \end{equation}
+ $\sum_{v \in V_g} degree(v)$ ist immer eine gerade Zahl.
+ Wenn wir annehmen, dass $V_u$ eine ungerade Anzahl von Elementen enthalten würde, wäre $\sum_{v \in V_u} degree(v)$ ungerade, was zur Folge hätte, dass $\sum_{v \in V} degree(v)$ im Widerspruch zu $a$ ebenfalls ungerade wäre.
+ $|V_u|$ ist also gerade.
 \end{proof}
 
 \subsection*{d}
+
+\begin{proof}
+ Der maximale Grad eines Knotens in einem ungerichteten Graphen mit $n$ Knoten ist $n - 1$, weil jeder Knoten maximal eine Kante zu jedem anderen Knoten haben kann.
+ Es gibt also $n$ verschiedene, mögliche Grade von $0$ bis $n - 1$.
+ Angenommen $G$ sei ein Graph mit $n \ge 2$ Knoten, sodass keine zwei Knoten denselben Grad haben.
+ Da es $n$ Knoten gibt und $n$ mögliche Grade, muss jeder Grad von $0$ bis $n - 1$ vergeben werden.
+ Insbesondere gibt es einen Knoten $v_n$ mit Grad $n - 1$, der also mit jedem anderen Knoten im Graphen verbunden ist.
+ Es gibt aber auch einen Knoten $v_1$ mit Grad $0$, der mit keinem anderen Knoten im Graphen verbunden ist.
+ Folglich müssen also entweder $v_1$ oder $v_n$ einen anderen Grad haben und es gibt mindestens einen Grad doppelt.
+\end{proof}
 
 \subsection*{e}
 
