@@ -1,0 +1,114 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{listings}
+\lstset{
+ language=java,                % choose the language of the code
+ basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+ numbers=left,                   % where to put the line-numbers
+ numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+ stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+ numbersep=5pt,                  % how far the line-numbers are from the code
+ backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+ showspaces=false,               % show spaces adding particular underscores
+ showstringspaces=false,         % underline spaces within strings
+ showtabs=false,                 % show tabs within strings adding particular underscores
+ tabsize=2,          % sets default tabsize to 2 spaces
+ captionpos=b,           % sets the caption-position to bottom
+ breaklines=true,        % sets automatic line breaking
+ breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+ escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
+
+\newtheorem{lemma*}{Lemma}
+
+\title{Info1, Übungsblatt 13}
+\author{Marten Lienen (2126759)}
+
+\begin{document}
+
+\maketitle
+
+\section*{Aufgabe 1}
+
+\subsection*{Teil a}
+
+\subsection*{Teil b}
+
+\section*{Aufgabe 2}
+
+\subsection*{Teil a}
+
+\begin{proof}
+ Da ein Baum nur höchtens eine Wurzel haben kann, gibt es höchtens $1 = 2^t$ Knoten mit Höhe $t = 0$.
+ 
+ Nehmen wir an $(B, w)$ sei ein binärer Baum mit Höhe $t$, der höchtens $2^t$ Knoten der Höhe $t$ enthält.
+ Ein binärer Baum $(B', w)$, in dem alle Knoten aus $B$ noch weitere Kindknoten enthalten, kann höchtens $2 \cdot 2^t = 2^{t + 1}$ Knoten der Höhe $t + 1$ haben, weil jeder der Knoten mit Höhe $2^t$ höchtens $2$ Kinder haben kann.
+\end{proof}
+
+\subsection*{Teil b}
+
+\begin{lemma*}
+ \begin{equation}
+  \sum_{k = 0}^h 2^k = 2^{h + 1} - 1
+ \end{equation}
+\end{lemma*}
+
+\begin{proof}
+ Sei $h = 0$.
+ \begin{equation}
+  \sum_{k = 0}^0 2^k = 2^0 = 2^{h + 1} - 1
+ \end{equation}
+ 
+ Angenommen es gelte
+ \begin{equation}
+  \sum_{k = 0}^h 2^k = 2^{h + 1} - 1
+ \end{equation}
+ Dann gilt auch
+ \begin{equation}
+  \sum_{k = 0}^{h + 1} 2^k = 2^{h + 1} + \sum_{k = 0}^h 2^k = 2^{h + 1} + 2^{h + 1} - 1 = 2 \cdot 2^{h + 1} - 1 = 2^{h + 2} - 1
+ \end{equation}
+\end{proof}
+
+\begin{proof}
+ Aus Teil $a$ wissen wir, dass jede Ebene $t$ eines binären Baums $B$ der Höhe $h$ höchtens $2^t$ Knoten enthalten kann.
+ Wir erhalten also die Kapazität eines Baums, wenn wir die Kapazitäten aller Ebenen aufaddieren.
+ \begin{equation}
+  Kapazitaet(B) = \sum_{k = 0}^h 2^k = 2^{h + 1} - 1
+ \end{equation}
+\end{proof}
+
+\subsection*{Teil c}
+
+Wenn $h = n - 1$ gilt, bedeutet das, dass der längste Weg im Baum die Länge $n - 1$ hat.
+Da der Baum nur $n$ Knoten hat und der Weg zu jedem Knoten eindeutig ist, ist der Baum einfach eine lange Kette.
+
+\begin{proof}
+ Da Wege in einem Baum eindeutig bestimmt und kreisfrei sind, ist der längst mögliche Weg und damit die größtmögliche Tiefe zu erreichen, indem man alle $n$ Knoten mit $n - 1$ Kanten zu einer Kette verbindet.
+ Folglich gilt
+ \begin{equation}
+  h \le n - 1
+ \end{equation}
+
+ Wenn man die Formel für die maximale Anzahl an Knoten in einem binären Baum aus Teil $b$ umformt, erhält man
+ \begin{align*}
+  & n = 2^{h + 1} - 1\\
+  \Leftrightarrow & n + 1 = 2^{h + 1}\\
+  \Leftrightarrow & \log_2 (n + 1) = h + 1\\
+  \Leftrightarrow & \lfloor \log_2 n \rfloor = \log_2 (n + 1) - 1 = h\\
+ \end{align*}
+ Die letzte Gleichung gilt, weil $\log_2 (n + 1)$ immer eine ganze Zahl ergibt.
+ Weil $n$ aber auch nicht maximal sein kann, gilt
+ \begin{equation}
+  \lfloor \log_2 n \rfloor \le h
+ \end{equation}
+ und wenn man beide Ergebnisse zusammensetzt, kommt heraus
+ \begin{equation}
+  \lfloor \log_2 n \rfloor \le h \le n - 1
+ \end{equation}
+\end{proof}
+
+\end{document}
