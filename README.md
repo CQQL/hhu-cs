@@ -1,4 +1,4 @@
-Meine Mitschriften für Info1 an der HHU
+Scripts and solutions for my CS studies
 =======================================
 
-Die Mitschriften werden mit LaTeX gemacht.
+
