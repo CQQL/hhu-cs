@@ -1,0 +1,284 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+\title{Ana2, Übungsblatt 1}
+\author{Marten Lienen (2126759)}
+
+\begin{document}
+
+\maketitle
+
+\section*{Übung 1}
+
+\subsection*{a}
+
+\begin{equation}
+||v||_{1} = 6
+\end{equation}
+
+\begin{equation}
+||v||_{2} = \sqrt{14}
+\end{equation}
+
+\begin{equation}
+||v||_{\infty} = 3
+\end{equation}
+
+\subsection*{b}
+
+\begin{equation}
+\{ (x,y) \mid x = 0 \lor y = 0 \}
+\end{equation}
+
+\subsection*{c}
+
+\begin{equation}
+\{ (x,y) \mid x = 0 \lor y = 0 \}
+\end{equation}
+
+\section*{Übung 2}
+
+\subsection*{a}
+
+Sei $v \in V$ und $\lambda \in \mathbb{R}_{> 0}$.
+Dann ist $||v||' \ge 0$, weil $\lambda > 0$ und $||.||$ eine Norm ist.
+Außerdem ist $||v||' = 0$, wenn $v = 0$, weil $\lambda > 0$ und $||.||$ eine Norm ist.
+
+Sei weiterhin $\epsilon \in \mathbb{R}$.
+\begin{equation}
+||\epsilon v||' = \lambda ||\epsilon v|| = \lambda |\epsilon| ||v||
+\end{equation}
+
+Sei $w \in V$.
+\begin{equation}
+||v + w||' = \lambda ||v + w|| \le \lambda (||v|| + ||w||) = \lambda ||v|| + \lambda ||w|| = ||v||' + ||w||'
+\end{equation}
+Also ist $||.||'$ auch eine Norm.
+
+Sei $W \subseteq V$ offen bezüglich $||.||$ und $w \in W$.
+Es gibt also $B_{r}(w, ||.||) \subseteq W$ für ein $r > 0$.
+Wählen wir $\rho = \frac{r}{\lambda}$, so gilt $B_{r}(w, ||.||) = B_{\rho}(w, ||.||')$, weil
+\begin{equation}
+||w||' < \frac{r}{\lambda} \Leftrightarrow \lambda ||w|| < \frac{r}{\lambda} \Leftrightarrow ||w|| < r
+\end{equation}
+$W$ ist also auch offen bezüglich $||.||'$.
+
+Sei $W \subseteq V$ stattdessen offen bezüglich $||.||'$ und $w \in W$.
+Es gibt also $B_{r}(w, ||.||') \subseteq W$ für ein $r > 0$.
+Wählen wir $\rho = \frac{r}{\lambda}$, so gilt $B_{r}(w, ||.||') = B_{\rho}(w, ||.||)$, weil
+\begin{equation}
+||w||' < r \Leftrightarrow \lambda ||w|| < r \Leftrightarrow ||w|| < \frac{r}{\lambda}
+\end{equation}
+$W$ ist also auch offen bezüglich $||.||$.
+
+\subsection*{b}
+
+Weil $||.||'$ und $||.||''$ Normen sind, gilt
+\begin{equation}
+||v|| = ||v||' + ||v||'' \ge 0
+\end{equation}
+\begin{equation}
+||v|| = 0 \Leftrightarrow ||v||' = 0 \land ||v||'' = 0 \Leftrightarrow v = 0
+\end{equation}
+\begin{equation}
+||\lambda v|| = ||\lambda v||' + ||\lambda v||'' = |\lambda| \cdot (||v||' + ||v||''|) = |\lambda| \cdot ||v||
+\end{equation}
+
+Seien $v, w \in V$.
+
+\begin{align}
+||v + w||&  = ||v + w||' + ||v + w||''\\
+& \le ||v||' + ||w||' + ||v||'' + ||w||''\\
+& = ||v||' + ||v||'' + ||w||' + ||w||''\\
+& = ||v|| + ||w||
+\end{align}
+
+$||.||$ ist also eine Norm auf $V$.
+
+\section*{Übung 3}
+
+\subsection*{a}
+
+\begin{proof}
+Sei $f \in C[0,1]$ und nehme sein Maximum/Minimum bei $y \in [0, 1]$ an, sodass $||f||_{\infty} = |f(y)|$.
+
+\begin{equation}
+||f||_{\infty} \ge 0 \Leftrightarrow |f(y)| \ge 0 \qquad \textit{was nach Definition von $|.|$ gilt}
+\end{equation}
+\begin{equation}
+||f||_{\infty} = 0 \Leftrightarrow |f(y)| = 0 \Leftrightarrow f(y) = 0 \quad \textit{Nach Definition von $|.|$}
+\end{equation}
+\begin{equation}
+||\lambda f||_{\infty} = |\lambda f(y)| = |\lambda| \cdot |f(y)| = |\lambda| \cdot ||f||_{\infty}
+\end{equation}
+
+Sei weiterhin $g \in C[0, 1]$ und nehme sein Maximum bei $z \in [0, 1]$ an.
+Also $||g||_{\infty} = |g(z)|$.
+$f + g$ nehme sein Maximum bei $w \in [0, 1]$ an.
+\begin{align}
+||f + g||_{\infty} & = |(f + g)(w)|\\
+& = |f(w) + g(w)|\\
+& \le |f(w)| + |g(w)|\\
+& \le |f(y)| + |g(z)| = ||f||_{\infty} + ||g||_{\infty}
+\end{align}
+\end{proof}
+
+\subsection*{b}
+
+\begin{proof}
+Sei $f \in C[0, 1]$.
+\begin{equation}
+||f||_{1} = \int_{0}^{1} |f(x)| dx \ge \int_{0}^{1} 0 \quad dx = 0
+\end{equation}
+
+Sei $y$ die Stelle, an der $|f(x)|$ maximal wird.
+Dann gilt
+\begin{equation}
+||f||_{1} = \int_{0}^{1} |f(x)| dx \le f(y)
+\end{equation}
+Also
+\begin{equation}
+||f||_{1} = 0 \Leftrightarrow f(y) = 0 \Leftrightarrow f = 0 \quad \textit{$f$ ist die Nullfunktion}
+\end{equation}
+
+Sei $\lambda \in \mathbb{R}$.
+\begin{equation}
+||\lambda f||_{1} = \int_{0}^{1} |\lambda f(x)| dx = |\lambda| \cdot \int_{0}^{1} |f(x)| dx = |\lambda| \cdot ||f||_{1}
+\end{equation}
+
+Sei weiterhin $g \in C[0, 1]$.
+
+\begin{align}
+||f + g||_{1} & = \int_{0}^{1} |(f + g)(x)| dx\\
+& = \int_{0}^{1} |f(x) + g(x)| dx\\
+& \le \int_{0}^{1} |f(x)| + |g(x)| dx\\
+& = \int_{0}^{1} |f(x)| dx + \int_{0}^{1} |g(x)| dx\\
+& = ||f||_{1} + ||g||_{1}
+\end{align}
+\end{proof}
+
+\subsection*{c}
+
+\begin{proof}
+Sei $f \in C[0, 1]$ und nehme sein Maximum/Minimum bei $y \in [0, 1]$ an, sodass $||f||_{\infty} = |f(y)|$
+Wir definieren $g(x) = |f(y)|$.
+Es gilt nun
+\begin{equation}
+f(x) \le g(x) \forall x \in [0, 1]
+\end{equation}
+Daraus folgt
+\begin{equation}
+||f||_{1} \le ||g||_{1} = \int_{0}^{1} |g(x)| dx = 1 \cdot |f(y)| = ||f||_{\infty}
+\end{equation}
+\end{proof}
+
+\subsection*{d}
+
+\begin{proof}
+Sei $\varepsilon > 0$.
+Sei $f$ definiert durch
+\begin{equation}
+f(x) =
+\begin{cases}
+1 \quad \textit{$x \le \varepsilon$}\\
+0 \quad \textit{sonst}
+\end{cases}
+\end{equation}
+
+Da $\varepsilon > 0$, ist $f(0) = 1$ und somit $||f||_{\infty} = 1$.
+Außerdem gilt
+\begin{equation}
+||f||_{1} = \int_{0}^{1} |f(x)| dx = 1 \cdot \varepsilon + 0 \cdot (1 - \varepsilon) = \varepsilon
+\end{equation}
+\end{proof}
+
+\section*{Übung 4}
+
+\subsection*{a}
+
+\begin{proof}
+Sei $y \in [0, 2\pi]$, sodass $|f(y)|$ maximal ist.
+
+\begin{equation}
+||f|| = |f(y)| \ge 0 \qquad \textit{Nach der Definition des Betrags}
+\end{equation}
+\begin{equation}
+||f|| = |f(y)| = 0 \Leftrightarrow f(y) = 0 \Leftrightarrow f = 0 \quad \textit{$f$ ist die Nullfunktion}
+\end{equation}
+
+Sei $\lambda \in \mathbb{R}$.
+\begin{equation}
+||\lambda f|| = |\lambda f(y)| = |\lambda| \cdot |f(y)| = |\lambda| \cdot ||f||
+\end{equation}
+
+Sei weiterhin $g$ gleichermaßen definiert wird $f$ und $|g|$ nehme sein Maximum bei $z \in [0, 2\pi]$ an.
+Außerdem nehme $|f + g|$ sein Maximum bei $w \in [0, 2\pi]$ an.
+\begin{align}
+||f + g|| & = |(f + g)(w)|\\
+& = |f(w) + g(w)|\\
+& \le |f(w)| + g(w)|\\
+& \le |f(y)| + |g(z)|\\
+& = ||f|| + ||g||
+\end{align}
+
+$||.||$ ist also eine Norm auf $V$.
+\end{proof}
+
+\subsection*{b}
+
+$||.||'$ erfüllt die erste Eigenschaft, weil $f$ stetig differenzierbar ist und $f'$ deshalb ein Maximum in $[0, 2\pi]$ hat und $||f'||$ aufgrund des Betrags immer positiv ist.
+
+$||.||'$ erfüllt die zweite Eigenschaft nicht, weil $||f||$ immer $0$ ist, wenn $f'$ die Nullfunktion ist, also für alle $f = c, c \in \mathbb{R}$, insbesondere $f(x) = 1 \ne 0$.
+
+$||.||'$ erfüllt die dritte Eigenschaft, weil Faktoren beim Differenzieren erhalten bleiben und $||.||$ eine Norm ist.
+\begin{equation}
+||\lambda f||' = ||(\lambda f)'|| = ||\lambda (f')||
+\end{equation}
+
+$||.||'$ erfüllt die vierte Eigenschaft, weil Summanden getrennt differenziert werden und $||.||$ eine Norm ist.
+Sei $g$ definiert wie $f$.
+\begin{equation}
+||f + g||' = ||(f + g)'|| = ||f' + g'|| \le ||f'|| + ||g'||
+\end{equation}
+
+\subsection*{c}
+
+\begin{proof}
+Weil $||.||$ eine Norm ist, also $||f|| \ge 0$ und $||f'|| \ge 0$, ist auch $|f| \ge 0$.
+
+\begin{align}
+& |f| = ||f|| + ||f'|| = 0\\
+\Leftrightarrow & ||f|| = 0 \land ||f'|| = 0 \qquad \textit{weil $||.||$ eine Norm ist}\\
+\Leftrightarrow & f = 0 \land f' = 0\\
+\Leftrightarrow & f = 0 \land f = c\\
+\Leftrightarrow & f = 0
+\end{align}
+
+Sei $\lambda \in \mathbb{R}$.
+\begin{equation}
+|\lambda f| = ||\lambda f|| + ||(\lambda f)'|| = |\lambda| \cdot \left( ||f|| + ||f'|| \right) = |\lambda| \cdot |f|
+\end{equation}
+
+Sei $g$ definiert wie $f$.
+\begin{align}
+|f + g| & = ||f + g|| + ||(f + g)'||\\
+& \le ||f|| + ||g|| + ||f'|| + ||g'||\\
+& = ||f|| + ||f'|| + ||g|| + ||g'|| = |f| + |g|
+\end{align}
+\end{proof}
+
+\subsection*{d}
+
+\begin{proof}
+Sei $\varepsilon \ge 1$.
+Dann wähle $f = 1$ und somit $f' = 0$.
+
+Sei also $\varepsilon \in [0, 1[$.
+\end{proof}
+
+\end{document}
