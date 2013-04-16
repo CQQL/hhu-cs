@@ -301,7 +301,70 @@ A_{4} \approx A_{6}
 
 \subsection*{1}
 
+\begin{proof}
+Seien $P, Q \in V$ und $a, b \in K$.
+\begin{align}
+f(aP + bQ)(X) & = (aP + bQ)(X) + (1 - X)(aP + bQ)'(X)\\
+& = (aP + bQ)(X) + (1 - X)(aP' + bQ')(X)\\
+& = aP(X) + bQ(X) + (1 - X) \left( aP'(X) + bQ'(X) \right)\\
+& = a \left( P(X) + (1 - X)P'(X) \right) + b \left( Q(X) + (1 - X)bQ'(X) \right)\\
+& = a \cdot f(P)(X) + b \cdot f(Q)(X)
+\end{align}
+\end{proof}
+
 \subsection*{2}
+
+\begin{proof}
+\begin{align*}
+f \left( (X - 1)^{j} \right) & = (X - 1)^{j} + (1 - X) \cdot j \cdot (X - 1)^{j - 1}\\
+& = (X - 1)^{j} - (X - 1) \cdot j \cdot (X - 1)^{j - 1}\\
+& = (X - 1)^{j} - j \cdot (X - 1)^{j}\\
+& = (1 - j) \cdot (X - 1)^{j}\\
+\end{align*}
+Es gibt also Eigenvektoren $(X - 1)^{j}$ in $V$ für jedes $j \in [0, n]$ mit Eigenwert $1 - j$.
+Da ihre Eigenwerte alle paarweise verschieden sind, ist $f$ diagonalisierbar.
+Diese $n + 1$ genannten Eigenvektoren, bilden auch gleich meine Basis aus Eigenvektoren.
+
+Ich werde zeigen, dass sie linear unabhängig und ein EZS sind.
+Dazu fasse ich die Polynome als Vektoren im $K^{n + 1}$ auf.
+
+Seien $\lambda_{k}, k \in [0, n]$ Skalare und $v_{j} = (X - 1)^{j}, j \in [0, n]$ die Eigenvektoren.
+\begin{equation}
+\sum_{k = 0}^{n} \lambda_{k} \cdot v_{k} = 0
+\end{equation}
+Da jeder Eigenvektor $v_{j}$ ein normiertes Polynom von Grad $j$ ist, bleibt in der untersten Zeile dieser Gleichung von Vektoren nur folgendes übrig
+\begin{equation}
+\lambda_{n} \cdot v_{n} = \lambda_{n} = 0
+\end{equation}
+Induktiv schließt man, dass alle $\lambda_{k}$ $0$ sind, weil für jedes $k \in [0, n]$ sind nur die Vektoren $v_{j}, j \in [k, n]$ nicht $0$ an der $k$-ten Stelle, aber die Skalare $\lambda_{q}, q \in [k + 1, n]$ sind alle $0$.
+Das System ist also linear unabhängig.
+
+Sei $q \in V$ und $q_{k}$ sein $k$-ter Koeffizient.
+Per Induktion über den Index des Koeffizienten $k$ zeige ich, dass man jeden Koeffizienten von $q$ als Linearkombination der Eigenvektoren darstellen kann.
+
+Sei $k = n$.
+Da es nur einen Vektor $v_{n}$ gibt, der an der $n$-ten Stelle nicht $0$ ist, wählen wir als $\lambda_{n}$ einfach $q_{n}$.
+
+Sei $k < n$ und wir nehmen an, dass wir bereits eine Konfiguration $\lambda_{j}, j \in [k + 1, n]$ gefunden haben, sodass die Koeffizienten $k + 1$ bis $n$ von $q$ korrekt als Linearkombination der Eigenvektoren dargestellt werden.
+Wir wählen
+\begin{equation}
+\lambda_{k} = -\left( \sum_{j = k + 1}^{n} \lambda_{j} \cdot v_{j_{k}} \right) + q_{k}
+\end{equation}
+Damit ergibt sich für den $k$-ten Koeffizienten der Wert
+\begin{align}
+\sum_{j = 0}^{n} \lambda_{j} \cdot v_{j_{k}} & = \sum_{j = k}^{n} \lambda_{j} \cdot v_{j_{k}}\\
+& = \left( \sum_{j = k + 1}^{n} \lambda_{j} \cdot v_{j_{k}} \right) + \lambda_{k} \cdot v_{k_{k}}\\
+& = \left( \sum_{j = k + 1}^{n} \lambda_{j} \cdot v_{j_{k}} \right) + \lambda_{k}\\
+& = \left( \sum_{j = k + 1}^{n} \lambda_{j} \cdot v_{j_{k}} \right) + \left( -\left( \sum_{j = k + 1}^{n} \lambda_{j} \cdot v_{j_{k}} \right) + q_{k} \right)\\
+& = q_{k}
+\end{align}
+Wenn wir bei $k = 0$ angekommen sind, haben wir eine vollständige Konfiguration, sodass
+\begin{equation}
+\sum_{j = 0}^{n} \lambda_{j} \cdot v_{j} = q
+\end{equation}
+
+Die Eigenvektoren bilden also ein EZS und sind somit eine Basis von $V$.
+\end{proof}
 
 \section*{Übung 3}
 
