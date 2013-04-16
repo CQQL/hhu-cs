@@ -277,8 +277,18 @@ Sei $g$ definiert wie $f$.
 \begin{proof}
 Sei $\varepsilon \ge 1$.
 Dann wähle $f = 1$ und somit $f' = 0$.
+Somit ist die Bedingung erfüllt.
 
 Sei also $\varepsilon \in [0, 1[$.
+Wir wählen
+\begin{equation}
+f(x) = \varepsilon \cdot \sin \left( (\frac{1}{\varepsilon} - 1) x \right)
+\end{equation}
+Dann ergibt sich
+\begin{equation}
+f'(x) = -\varepsilon \cdot (\frac{1}{\varepsilon} - 1) \cdot \cos \left( (\frac{1}{\varepsilon} - 1) x \right) = -(1 - \varepsilon) \cdot \cos \left( (\frac{1}{\varepsilon} - 1) x \right)
+\end{equation}
+Dieses $f$ erfüllt die Bedingungen, außer dass es nicht immer periodisch mit Periodenlänge $2\pi$ ist.
 \end{proof}
 
 \end{document}
