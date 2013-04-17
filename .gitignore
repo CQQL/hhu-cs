@@ -1,5 +1,6 @@
 # Ignore all files except the ones ending on .tex
 *
 !*/
+!*.md
 !*.tex
 !**/script.pdf
