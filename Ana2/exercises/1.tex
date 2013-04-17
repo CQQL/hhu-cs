@@ -289,6 +289,20 @@ Dann ergibt sich
 f'(x) = -\varepsilon \cdot (\frac{1}{\varepsilon} - 1) \cdot \cos \left( (\frac{1}{\varepsilon} - 1) x \right) = -(1 - \varepsilon) \cdot \cos \left( (\frac{1}{\varepsilon} - 1) x \right)
 \end{equation}
 Dieses $f$ erfüllt die Bedingungen, außer dass es nicht immer periodisch mit Periodenlänge $2\pi$ ist.
+Wir ersetzen nun $\varepsilon$ mit einem $\delta$, das kleiner ist als $\varepsilon$.
+Dazu wählen wir ein $n \in \mathbb{N}$ so, dass
+\begin{equation}
+\delta = \frac{1}{n} \le \varepsilon
+\end{equation}
+und $\frac{1}{\delta} - 1$ natürliche Zahl ist.
+Dann ergibt sich
+\begin{equation}
+||f|| = \delta \le \varepsilon
+\end{equation}
+und
+\begin{equation}
+|f| = \delta + (1 - \delta) = 1
+\end{equation}
 \end{proof}
 
 \end{document}
