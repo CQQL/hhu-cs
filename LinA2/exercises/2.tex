@@ -1,0 +1,174 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Übung 1}
+
+\subsection*{1}
+
+\subsection*{2}
+
+\subsubsection*{a}
+
+\subsubsection*{b}
+
+\subsubsection*{c}
+
+\subsubsection*{d}
+
+\section*{Übung 2}
+
+\subsection*{1}
+
+Ich schreibe Polynome hier als Vektoren ihrer Koeffizienten.
+Als Basis von $V$ wähle ich die kanonische Basis.
+Sei $v_{k}$ der Vektor der kanonischen Basis, der an der $k$-ten Stelle eine $1$ hat und sonst überall $0$ ist.
+Dabei steht an der $k$-ten Stelle der Koeffizient von $x^{k}$.
+Nach den normalen Ableitungsregeln bildet $f$ also wie folgt ab
+\begin{equation}
+f(v_{k}) = w
+\end{equation}
+wobei $w$ überall $0$ ist, und nur in der $k - 1$-ten Zeile den Wert $k$ hat.
+Sei $A = Mat(f)$.
+Dann steht in der $k$-ten Spalte der Wert $k$ in der $k - 1$-ten Zeile.
+Da $k - 1 < k$, liegt dieser Wert immer oberhalb der Diagonalen und $A$ ist eine obere Dreiecksmatrix.
+Dann ist auch $XI_{n + 1} - A$ eine obere Dreiecksmatrix und es ist
+\begin{equation}
+\chi_{f} = det(XI_{n + 1} - A) = X^{n + 1}
+\end{equation}
+So folgt, dass $f$ nur den Eigenwert $0$ hat.
+Wenn $n = 0$, ist $f$ diagonalisierbar, weil es dann $dim V = 1$ Eigenwerte gibt.
+Wenn $n > 0$, zerfällt $\mu_{f}$ zwar in Linearfaktoren, aber die Vielfachheit ist immer größer als $1$, weil $A \ne 0$ und $\mu_{f}$ deshalb nicht $X$ sein kann.
+Also ist $f$ in diesem Fall nicht diagonalisierbar.
+
+\subsection*{2}
+
+
+
+\section*{Übung 3}
+
+\subsection*{1}
+
+\subsection*{2}
+
+\section*{Übung 4}
+
+\subsection*{$A_{1}$}
+
+\begin{equation}
+\chi_{A_{1}} = x^{3}
+\end{equation}
+\begin{equation}
+H(A_{1}, 0) = Ker \left( (0I_{3} - A_{1})^{3} \right) = \langle
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}
+\rangle
+\end{equation}
+
+\subsection*{$A_{2}$}
+
+\begin{equation}
+\chi_{A_{2}} = x^{3}
+\end{equation}
+\begin{equation}
+H(A_{2}, 0) = Ker \left( (0I_{3} - A_{2})^{3} \right) = \langle
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}
+\rangle
+\end{equation}
+
+\subsection*{$A_{3}$}
+
+\begin{equation}
+\chi_{A_{3}} = x^{3}
+\end{equation}
+\begin{equation}
+H(A_{3}, 0) = Ker \left( (0I_{3} - A_{3})^{3} \right) = \langle
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}
+\rangle
+\end{equation}
+
+\subsection*{$A_{4}$}
+
+\begin{equation}
+\chi_{A_{4}} = (x - 1)(x - 2)^{2}
+\end{equation}
+\begin{equation}
+H(A_{4}, 1) = Ker \left( (I_{3} - A_{4}) \right) = \langle
+\begin{pmatrix}
+-1\\-1\\1
+\end{pmatrix}
+\rangle
+\end{equation}
+\begin{equation}
+H(A_{4}, 2) = Ker \left( (2I_{3} - A_{4})^{2} \right) = \langle
+\begin{pmatrix}
+1\\0\\1
+\end{pmatrix},
+\begin{pmatrix}
+0\\2\\-\frac{3}{2}
+\end{pmatrix}
+\rangle
+\end{equation}
+
+\section*{Übung 5}
+
+Alle Haupträume sind A-invariant.
+
+\begin{equation}
+\chi_{A} = X(X-2)(X-3)
+\end{equation}
+\begin{equation}
+H(A,0) = \langle
+\begin{pmatrix}
+1\\1\\0
+\end{pmatrix}
+\rangle
+\end{equation}
+\begin{equation}
+H(A,2) = \langle
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}
+\rangle
+\end{equation}
+\begin{equation}
+H(A,3) = \langle
+\begin{pmatrix}
+1\\-2\\0
+\end{pmatrix}
+\rangle
+\end{equation}
+
+Außerdem sind auch alle Vereinigungen der Haupträume A-invariant.
+Natürlich sind auch $\emptyset$ und $\mathbb{R}^{3}$ A-invariant.
+
+\end{document}
