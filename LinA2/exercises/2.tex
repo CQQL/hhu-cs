@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \begin{document}
@@ -49,13 +50,62 @@ Also ist $f$ in diesem Fall nicht diagonalisierbar.
 
 \subsection*{2}
 
+Ich zeige
+\begin{equation}
+E_{k}(f, 0) = \langle v_{1}, \dots, v_{k} \rangle \quad \forall k \in [1, n + 1]
+\end{equation}
 
+\begin{proof}
+Sei $k = 1$.
+Wegen $f(v_1) = 0$ und $f(v_{j}) = j \cdot v_{j - 1} \ne 0$ für $j \in [2, n + 1]$, ist es wahr.
+
+Sei $1 < k \le n + 1$ und $E_{k - 1}(f, 0) = \langle v_{1}, \dots, v_{k - 1} \rangle$.
+\begin{align}
+& f(v_{k}) = k \cdot v_{k - 1} \in E_{k - 1}(f, 0)\\
+\Leftrightarrow & f^{k - 1}(f(v_{k})) = 0\\
+\Leftrightarrow & f^{k}(v_{k}) = 0\\
+\Leftrightarrow & v_{k} \in E_{k}(f, 0)\\
+\Leftrightarrow & E_{k}(f, 0) = \langle v_{1}, \dots, v_{k} \rangle \quad \textit{weil $v_{k}$ linear unabhängig von $v_{1}, \dots, v_{k - 1}$ ist}
+\end{align}
+Für $j > k$ gilt außerdem
+\begin{equation}
+f(v_{j}) = j \cdot v_{j - 1} \notin E_{k - 1}(f, 0) \Rightarrow v_{j} \notin E_{k}(f, 0)
+\end{equation}
+\end{proof}
+
+$E_{k}(f, 0)$ für $k \in [0, n + 1]$ sind also alle verallgemeinerten Unterräume, wobei $E_{0}(f, 0) = 0$ und $E_{n + 1}(f, 0) = V = H(f, 0)$ ist.
 
 \section*{Übung 3}
 
 \subsection*{1}
 
+\begin{equation}
+A = 
+\begin{pmatrix}
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0\\
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+\chi_{f} = X^{4}
+\end{equation}
+\begin{equation}
+A^{2} = 0 \Rightarrow \mu_{f} = X^{2}
+\end{equation}
+$A$ ist nicht diagonalisierbar, weil die Vielfachheit der Nullstelle $0$ im Minimalpolynom größer als $1$ ist.
+
 \subsection*{2}
+
+Sei $e_{1}, e_{2}, e_{3}, e_{4}$ die kanonische Basis von $V$.
+\begin{equation}
+E(A, 0) = Ker(A) = \langle e_{2}, e_{4} \rangle
+\end{equation}
+\begin{equation}
+E_{2}(A, 0) = Ker(A^{2}) = Ker(0) = \langle e_{1}, e_{2}, e_{3}, e_{4} \rangle = H(A, 0)
+\end{equation}
+$E_{2}(A, 0)$ ist der Hauptraum von $A$, weil $E_{2}(A, 0) = V$.
 
 \section*{Übung 4}
 
