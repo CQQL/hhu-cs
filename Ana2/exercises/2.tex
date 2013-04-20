@@ -1,0 +1,172 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 5}
+
+\subsection*{a}
+
+\begin{align}
+|d(x, z) - d(y, z)| \le |d(x, y) + d(y, z) - d(y, z)| = |d(x, y)| = d(x, y)
+\end{align}
+
+\subsection*{b}
+
+Sei $a \in A$.
+Nach Teil a) gilt
+\begin{equation}
+|d(x, A) - d(y, A)| \le |d(x, a) - d(y, a)| \le d(x, y)
+\end{equation}
+
+\subsection*{c}
+
+\begin{equation}
+d((0, 0), A) = 0
+\end{equation}
+\begin{equation}
+d((3, 0), A) = 1
+\end{equation}
+\begin{equation}
+d((0, 1), A) = \sqrt{2} - 1
+\end{equation}
+
+\section*{Aufgabe 6}
+
+\begin{equation}
+\mathring{A} = A - \{(x, y) \in A \mid x^{2} + y^{2} = 1\}
+\end{equation}
+\begin{equation}
+\overline{A} = A + \{0\}
+\end{equation}
+\begin{equation}
+\partial A = \{(x, y) \in A \mid x^{2} + y^{2} = 1\}
+\end{equation}
+
+\section*{Aufgabe 7}
+
+\subsection*{$A_{1}$}
+
+Sei $(x, y) \in A_{1}$, $r = \min \{|x|, y\}$ und $(a, b) \in B_{r}((x, y))$.
+Dann gilt
+\begin{align*}
+d((a, b), (x, y)) = |(a - x, b - y)| = & \sqrt{|a - x|^{2} + |b - y|^{2}} < r\\
+\Rightarrow & |a - x|^{2} + |b - y|^{2} < r^{2}\\
+\Rightarrow & |b - y|^{2} < r^{2} - |a - x|^{2} < r^{2}\\
+\Rightarrow & |b - y| < r\\
+\Rightarrow & b \in ]y - r, y + r[\\
+\Rightarrow & b > 0
+\end{align*}
+Also $B_{r}((x, y)) \in A_{1}$ für alle $(x, y) \in A_{1}$ und $A_{1}$ ist offen in $X$.
+
+Sei $q = (1, 0)$, $0 < r < 1$ und $y = \frac{r}{2} > 0$.
+Dann ist $(1, y) \in A_{1}$ und $(1, y) \in B_{r}(q)$.
+\begin{equation}
+d((1, y), (1, 0)) = y < r
+\end{equation}
+Das heißt, dass $q$ ein Berührpunkt von $A_{1}$ ist, aber $q \notin A_{1}$. 
+$A_{1}$ ist also nicht abgeschlossen in $X$.
+
+\subsection*{$A_{2}$}
+
+Sei $y = (1, 0)$ und $0 < r < 1$.
+Dann ist $y \in A_{2}$.
+\begin{equation}
+d(y, (1, -\frac{r}{2})) = \frac{r}{2} < r \Rightarrow (1, -\frac{r}{2}) \in B_{r}(y)
+\end{equation}
+Aber es gilt auch
+\begin{equation}
+-\frac{r}{2} < 0 \Rightarrow (1, -\frac{r}{2}) \notin A_{2} \Rightarrow B_{r}(y) \nsubseteq A_{2}
+\end{equation}
+$A_{2}$ ist also nicht offen in $X$.
+
+Sei $(x, y)$ ein Berührpunkt von $A_{2}$.
+
+$A_{2}$ ist geschlossen in $X$.
+
+\subsection*{$A_{3}$}
+
+Sei $(x, y) \in A_{3}$ und $(a, b) \in B_{x}((x, y))$.
+\begin{align}
+d((x, y), (a, b)) = & \sqrt{|x - a|^{2} + |y - b|^{2}} < x\\
+\Rightarrow & |x - a|^{2} + |y - b|^{2} < x^{2}\\
+\Rightarrow & |x - a|^{2} < x^{2} - |y - b|^{2} \le x^{2}\\
+\Rightarrow & |x - a| < x\\
+\Rightarrow & a \in ]0, 2x[ \Rightarrow a > 0
+\end{align}
+$A_{3}$ ist also Umgebung aller seiner Punkte und offen in $X$.
+
+$A_{3}$ ist auch geschlossen in $X$.
+
+\subsection*{$A_{4}$}
+
+\section*{Aufgabe 8}
+
+\subsection*{a}
+
+\begin{proof}
+Seien $x, y \in B_{r}(0)$.
+\begin{align}
+|\lambda y + (1 - \lambda)x| & \le |\lambda y| + |(1 - \lambda) x|\\
+& = \lambda |y| + (1 - \lambda) |x|\\
+& < \lambda r + (1 - \lambda) r = r\\
+& \Rightarrow |\lambda y + (1 - \lambda)x| \in B_{r}(0)\\
+\end{align}
+
+Seien $x, y \in \overline{B}_{r}(0)$.
+\begin{align}
+|\lambda y + (1 - \lambda)x| & \le |\lambda y| + |(1 - \lambda) x|\\
+& = \lambda |y| + (1 - \lambda) |x|\\
+& \le \lambda r + (1 - \lambda) r = r\\
+& \Rightarrow |\lambda y + (1 - \lambda)x| \in \overline{B}_{r}(0)\\
+\end{align}
+\end{proof}
+
+\subsection*{b}
+
+\begin{proof}
+Seien $x, y \in B_{r}(a)$ und $0 \le \lambda \le 1$.
+\begin{align}
+d(\lambda y + (1 - \lambda)x, a) & = |\lambda y + (1 - \lambda)x - a|\\
+& = |\lambda y + (1 - \lambda)x - (\lambda + (1 - \lambda))a|\\
+& = |\lambda y - \lambda a + (1 - \lambda)x - (1 - \lambda)a|\\
+& \le |\lambda y - \lambda a| + |(1 - \lambda)x - (1 - \lambda)a|\\
+& = \lambda |y - a| + (1 - \lambda) |x - a|\\
+& = \lambda d(y, a) + (1 - \lambda) d(x, a)\\
+& < \lambda r + (1 - \lambda) r = r\\
+& \Rightarrow \lambda y + (1 - \lambda)x \in B_{r}(a)
+\end{align}
+
+Seien $x, y \in \overline{B}_{r}(a)$ und $0 \le \lambda \le 1$.
+\begin{align}
+d(\lambda y + (1 - \lambda)x, a) & = |\lambda y + (1 - \lambda)x - a|\\
+& = |\lambda y + (1 - \lambda)x - (\lambda + (1 - \lambda))a|\\
+& = |\lambda y - \lambda a + (1 - \lambda)x - (1 - \lambda)a|\\
+& \le |\lambda y - \lambda a| + |(1 - \lambda)x - (1 - \lambda)a|\\
+& = \lambda |y - a| + (1 - \lambda) |x - a|\\
+& = \lambda d(y, a) + (1 - \lambda) d(x, a)\\
+& \le \lambda r + (1 - \lambda) r = r\\
+& \Rightarrow \lambda y + (1 - \lambda)x \in \overline{B}_{r}(a)
+\end{align}
+\end{proof}
+
+\subsection*{c}
+
+Seien $n \ge 2$, $0 < p < 1$ und $v, w \in \mathbb{R}^{n}$ mit $v = (1, 0, 0, \dots, 0)$ und $w = (0, 1, 0, \dots, 0)$.
+\begin{align}
+||v + w||_{p} & = (1^{p} + 1^{p})^{\frac{1}{p}}\\
+& = 2^{\frac{1}{p}}\\
+& > 2\\
+& = 1 + 1\\
+& = (1^{p})^{\frac{1}{p}} + (1^{p})^{\frac{1}{p}}\\
+& = ||v||_{p} + ||w||_{p}
+\end{align}
+Es gibt also mindestens ein Gegenbeispiel zur Dreiecksungleichung, wenn $0 < p < 1$, sodass $||.||_{p}$ keine Norm ist.
+
+\end{document}
