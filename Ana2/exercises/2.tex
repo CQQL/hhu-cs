@@ -42,12 +42,50 @@ d((0, 1), A) = \sqrt{2} - 1
 \begin{equation}
 \mathring{A} = A - \{(x, y) \in A \mid x^{2} + y^{2} = 1\}
 \end{equation}
+Sei $x \in \mathring{A}$ und $0 < r < 1$.
+Dann ist $v = (1 - \frac{r}{2}) \cdot x \in B_{r}(x)$.
+\begin{align}
+d(v, x) & = \sqrt{((1 - (\frac{r}{2}))x - x)^{2} + ((1 - (\frac{r}{2}))y - y)^{2}}\\
+& = \sqrt{(\frac{r}{2})^{2}x^2 + (\frac{r}{2})^2 y^2}\\
+& = \sqrt{(x^2 + y^2)(\frac{r}{2})^2}\\
+& \le \sqrt{(\frac{r}{2})^2} = \frac{r}{2} < r
+\end{align}
+$\mathring{A}$ ist also eine Umgebung von $x$ und $x$ ist innerer Punkt von $A$.
+
 \begin{equation}
 \overline{A} = A + \{0\}
 \end{equation}
+Sei $x \in \overline{A}$ und $0 < r < 1$.
+Dann ist $v = (1 - \frac{r}{2}) \cdot x \in B_{r}(x)$.
+\begin{align}
+d(v, x) & = \sqrt{((1 - (\frac{r}{2}))x - x)^{2} + ((1 - (\frac{r}{2}))y - y)^{2}}\\
+& = \sqrt{(\frac{r}{2})^{2}x^2 + (\frac{r}{2})^2 y^2}\\
+& = \sqrt{(x^2 + y^2)(\frac{r}{2})^2}\\
+& \le \sqrt{(\frac{r}{2})^2} = \frac{r}{2} < r
+\end{align}
+$\overline{A}$ ist also eine Umgebung von $x$ und $x$ ist innerer Punkt von $A$.
+
 \begin{equation}
 \partial A = \{(x, y) \in A \mid x^{2} + y^{2} = 1\}
 \end{equation}
+Sei $x \in \partial A$ und $0 < r < 1$.
+Sei $v = (1 + \frac{r}{2}) \cdot x$ und $w = (1 - \frac{r}{2}) \cdot x$.
+Dann sind $v, w \in B_{r}(x)$.
+\begin{equation}
+d(v, x) = d(w, x) = \frac{r}{2} < r
+\end{equation}
+wegen
+\begin{equation}
+|x| = \sqrt{x^{2} + y^{2}} = \sqrt{1} = 1
+\end{equation}
+Außerdem gilt
+\begin{equation}
+v \in X \setminus A \land x \notin A
+\end{equation}
+\begin{equation}
+w \in A \land w \not X \setminus A
+\end{equation}
+$x$ ist also Berührpunkt von $A$ und $X \setminus A$ und liegt auf dem Rand.
 
 \section*{Aufgabe 7}
 
@@ -105,6 +143,20 @@ $A_{3}$ ist also Umgebung aller seiner Punkte und offen in $X$.
 $A_{3}$ ist auch geschlossen in $X$.
 
 \subsection*{$A_{4}$}
+
+Sei $0 < r < 1$.
+$(1, 1)$ ist in $A$, weil $1 \le 1^{2}$.
+Sei $x = (1 - \frac{r}{2}, 1)$.
+Dann ist $x \in B_{r}((1, 1))$, aber $x \notin A$.
+\begin{equation}
+d(x, (1, 1)) = \frac{r}{2} < r
+\end{equation}
+\begin{equation}
+x_{x}^{2} = (1 - r)^{2} < 1 = x_{y}
+\end{equation}
+Deshalb ist $A_{4}$ nicht offen in $X$.
+
+$A_{4}$ ist auch geschlossen in $X$.
 
 \section*{Aufgabe 8}
 
