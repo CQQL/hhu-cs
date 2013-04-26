@@ -3,5 +3,6 @@
 !*/
 !*.md
 !*.tex
+!*.rb
 !**/script.pdf
 !**/cover_sheet.pdf

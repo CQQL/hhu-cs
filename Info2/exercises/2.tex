@@ -1,0 +1,613 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 2.1}
+
+\subsection*{Teil 1}
+
+\begin{align*}
+237 / 2 = 118 \quad \textit{Rest $1$}\\
+118 / 2 = 59 \quad \textit{Rest $0$}\\
+59 / 2 = 29 \quad \textit{Rest $1$}\\
+29 / 2 = 14 \quad \textit{Rest $1$}\\
+14 / 2 = 7 \quad \textit{Rest $0$}\\
+7 / 2 = 3 \quad \textit{Rest $1$}\\
+3 / 2 = 1 \quad \textit{Rest $1$}\\
+1 / 2 = 0 \quad \textit{Rest $1$}\\
+\end{align*}
+\begin{equation}
+237_{10} = 11101101_{2}
+\end{equation}
+
+\begin{align*}
+237 / 16 = 14 \quad \textit{Rest $13$}\\
+14 / 16 = 0 \quad \textit{Rest $14$}\\
+\end{align*}
+\begin{equation}
+237_{10} = ED_{16}
+\end{equation}
+
+\subsection*{Teil 2}
+
+\begin{equation}
+111010_{2} = 2 + 8 + 16 + 32 = 58_{10}
+\end{equation}
+
+\begin{equation}
+111010_{2} = 11_{2} * 2^4 + 1010_{2} = 3A_{16}
+\end{equation}
+
+\section*{Aufgabe 2.2}
+
+\subsection*{Teil 1}
+
+Eine $n$-Bit-Zahl kann $2^{n}$ verschiedene Werte darstellen, weil
+\begin{equation}
+\sum_{k = 0}^{n - 1} 2^{k} = 2^n - 1
+\end{equation}
+wie wir in Info1 gezeigt haben.
+
+Daher folgt, dass $7$-Bit-Zahlen $128$ verschiedene Werte von $0$ bis $127$ darstellen können und $8$-Bit-Zahlen $256$ verschiedene Werte von $0$ bis $255$.
+
+\subsection*{Teil 2}
+
+Da in der Zweierkomplementdarstellung das erste Bit für positive Zahlen stets $0$ und für negative Zahlen stets $1$ ist, bleiben noch $7$ Bit, um die eigentliche Zahl darzustellen.
+Es lassen sich also jeweils $128$ positive und negative Werte darstellen, wobei der positive Wertebereich von $0$ bis $127$ geht und der negative von $-128$ bis $-1$.
+
+\subsection*{Teil 3}
+
+Nach meiner Argumentation aus Teil $2$ folgt
+\begin{equation}
+Wertebereich(n) = [-2^{n - 1}, 2^{n - 1} - 1]
+\end{equation}
+
+\subsection*{Teil 4}
+
+\begin{equation}
+87_{10} = 01010111_{2}
+\end{equation}
+\begin{equation}
+2_{10} = 00000010_{2} \Rightarrow -2_{10} = 11111110_{2}
+\end{equation}
+\begin{equation}
+17_{10} = 00010001_{2} \Rightarrow -17_{10} = 11101111_{2}
+\end{equation}
+
+\subsection*{Teil 5}
+
+\subsubsection*{(a)}
+
+\begin{equation}
+14_{10} + (-22)_{10} = 00001110_{2} + 11101010_{2} = 11111000_{2} = -6_{10}
+\end{equation}
+
+Hier wird das OF nicht gesetzt, weil kein Übertrag an die höchstwertige Stelle erfolgt ist.
+
+\subsubsection*{(b)}
+
+\begin{equation}
+103_{10} + 28_{10} = 01100111_{2} + 00011100_{2} = 10000011_{2} = -123_{10}
+\end{equation}
+
+Hier wird das OF gesetzt, weil ein Übertrag an die höchstwertige Stelle erfolgt ist.
+Die Aussage des gesetzten OF ist dabei, dass das Ergebnis der Addition nicht in den Wertebereich passt und unwillkürlich das Vorzeichen invertiert wurde.
+
+\section*{Aufgabe 2.3}
+
+\begin{lstlisting}
+#### Teil 1 ####
+
+TAG 16, LINE 0, WORD 0, BYTE 0
+
+16m, 72m, 20m, 9m, 183m, 60m, 19m, 12m, 148m, 22m, 8m, 125m, 183h, 34m, 47m, 60h
+
+------------------------------------------
+| Line | Valid | Tag | Bereich | Adresse |
+------------------------------------------
+|    1 |     0 |     |         |         |
+|    1 |     1 |  16 |  16- 16 |      16 |
+------------------------------------------
+|    2 |     0 |     |         |         |
+|    2 |     1 |  72 |  72- 72 |      72 |
+------------------------------------------
+|    3 |     0 |     |         |         |
+|    3 |     1 |  20 |  20- 20 |      20 |
+------------------------------------------
+|    4 |     0 |     |         |         |
+|    4 |     1 |   9 |   9-  9 |       9 |
+------------------------------------------
+|    5 |     0 |     |         |         |
+|    5 |     1 | 183 | 183-183 |     183 |
+|    5 |     1 | 183 | 183-183 |     183 |
+------------------------------------------
+|    6 |     0 |     |         |         |
+|    6 |     1 |  60 |  60- 60 |      60 |
+|    6 |     1 |  60 |  60- 60 |      60 |
+------------------------------------------
+|    7 |     0 |     |         |         |
+|    7 |     1 |  19 |  19- 19 |      19 |
+------------------------------------------
+|    8 |     0 |     |         |         |
+|    8 |     1 |  12 |  12- 12 |      12 |
+------------------------------------------
+|    9 |     0 |     |         |         |
+|    9 |     1 | 148 | 148-148 |     148 |
+------------------------------------------
+|   10 |     0 |     |         |         |
+|   10 |     1 |  22 |  22- 22 |      22 |
+------------------------------------------
+|   11 |     0 |     |         |         |
+|   11 |     1 |   8 |   8-  8 |       8 |
+------------------------------------------
+|   12 |     0 |     |         |         |
+|   12 |     1 | 125 | 125-125 |     125 |
+------------------------------------------
+|   13 |     0 |     |         |         |
+|   13 |     1 |  34 |  34- 34 |      34 |
+------------------------------------------
+|   14 |     0 |     |         |         |
+|   14 |     1 |  47 |  47- 47 |      47 |
+------------------------------------------
+|   15 |     0 |     |         |         |
+------------------------------------------
+|   16 |     0 |     |         |         |
+------------------------------------------
+
+
+
+#### Teil 2 ####
+
+TAG 13, LINE 0, WORD 1, BYTE 2
+
+16m, 72m, 20h, 9m, 183m, 60m, 19h, 12h, 148m, 22h, 8h, 125m, 183h, 34m, 47m, 60h
+
+------------------------------------------
+| Line | Valid | Tag | Bereich | Adresse |
+------------------------------------------
+|    1 |     0 |     |         |         |
+|    1 |     1 |   2 |  16- 23 |      16 |
+|    1 |     1 |   2 |  16- 23 |      20 |
+|    1 |     1 |   2 |  16- 23 |      19 |
+|    1 |     1 |   2 |  16- 23 |      22 |
+------------------------------------------
+|    2 |     0 |     |         |         |
+|    2 |     1 |   9 |  72- 79 |      72 |
+|    2 |     1 |   5 |  40- 47 |      47 |
+------------------------------------------
+|    3 |     0 |     |         |         |
+|    3 |     1 |   1 |   8- 15 |       9 |
+|    3 |     1 |   1 |   8- 15 |      12 |
+|    3 |     1 |   1 |   8- 15 |       8 |
+------------------------------------------
+|    4 |     0 |     |         |         |
+|    4 |     1 |  22 | 176-183 |     183 |
+|    4 |     1 |  22 | 176-183 |     183 |
+------------------------------------------
+|    5 |     0 |     |         |         |
+|    5 |     1 |   7 |  56- 63 |      60 |
+|    5 |     1 |   7 |  56- 63 |      60 |
+------------------------------------------
+|    6 |     0 |     |         |         |
+|    6 |     1 |  18 | 144-151 |     148 |
+------------------------------------------
+|    7 |     0 |     |         |         |
+|    7 |     1 |  15 | 120-127 |     125 |
+------------------------------------------
+|    8 |     0 |     |         |         |
+|    8 |     1 |   4 |  32- 39 |      34 |
+------------------------------------------
+
+
+
+#### Teil 3 ####
+
+TAG 7, LINE 3, WORD 2, BYTE 2
+
+16m, 72m, 20h, 9m, 183m, 60m, 19h, 12h, 148m, 22m, 8h, 125m, 183m, 34m, 47h, 60m
+
+------------------------------------------
+| Line | Valid | Tag | Bereich | Adresse |
+------------------------------------------
+|    0 |     0 |     |         |         |
+|    0 |     1 |   0 |   0- 15 |       9 |
+|    0 |     1 |   0 |   0- 15 |      12 |
+|    0 |     1 |   0 |   0- 15 |       8 |
+------------------------------------------
+|    1 |     0 |     |         |         |
+|    1 |     1 |   0 |  16- 31 |      16 |
+|    1 |     1 |   0 |  16- 31 |      20 |
+|    1 |     1 |   0 |  16- 31 |      19 |
+|    1 |     1 |   1 | 144-159 |     148 |
+|    1 |     1 |   0 |  16- 31 |      22 |
+------------------------------------------
+|    2 |     0 |     |         |         |
+|    2 |     1 |   0 |  32- 47 |      34 |
+|    2 |     1 |   0 |  32- 47 |      47 |
+------------------------------------------
+|    3 |     0 |     |         |         |
+|    3 |     1 |   1 | 176-191 |     183 |
+|    3 |     1 |   0 |  48- 63 |      60 |
+|    3 |     1 |   1 | 176-191 |     183 |
+|    3 |     1 |   0 |  48- 63 |      60 |
+------------------------------------------
+|    4 |     0 |     |         |         |
+|    4 |     1 |   0 |  64- 79 |      72 |
+------------------------------------------
+|    5 |     0 |     |         |         |
+------------------------------------------
+|    6 |     0 |     |         |         |
+------------------------------------------
+|    7 |     0 |     |         |         |
+|    7 |     1 |   0 | 112-127 |     125 |
+------------------------------------------
+
+
+
+#### Teil 4 ####
+
+TAG 9, LINE 2, WORD 1, BYTE 2
+
+16m, 72m, 20h, 9m, 183m, 60m, 19h, 12h, 148m, 22h, 8h, 125m, 183m, 34m, 47m, 60h
+
+----------------------------------------------------------------------------
+| Line | Valid | Tag | Bereich | Adresse | Valid | Tag | Bereich | Adresse |
+----------------------------------------------------------------------------
+|    0 |     0 |     |         |         |     0 |     |         |         |
+|    0 |     1 |   1 |  32- 39 |      34 |     0 |     |         |         |
+----------------------------------------------------------------------------
+|    1 |     0 |     |         |         |     0 |     |         |         |
+|    1 |     1 |   2 |  72- 79 |      72 |     0 |     |         |         |
+|    1 |     1 |   2 |  72- 79 |      72 |     1 |   0 |   8- 15 |       9 |
+|    1 |     1 |   2 |  72- 79 |      72 |     1 |   0 |   8- 15 |      12 |
+|    1 |     1 |   2 |  72- 79 |      72 |     1 |   0 |   8- 15 |       8 |
+|    1 |     1 |   1 |  40- 47 |      47 |     1 |   0 |   8- 15 |       8 |
+----------------------------------------------------------------------------
+|    2 |     0 |     |         |         |     0 |     |         |         |
+|    2 |     1 |   0 |  16- 23 |      16 |     0 |     |         |         |
+|    2 |     1 |   0 |  16- 23 |      20 |     0 |     |         |         |
+|    2 |     1 |   0 |  16- 23 |      20 |     1 |   5 | 176-183 |     183 |
+|    2 |     1 |   0 |  16- 23 |      19 |     1 |   5 | 176-183 |     183 |
+|    2 |     1 |   0 |  16- 23 |      19 |     1 |   4 | 144-151 |     148 |
+|    2 |     1 |   0 |  16- 23 |      22 |     1 |   4 | 144-151 |     148 |
+|    2 |     1 |   0 |  16- 23 |      22 |     1 |   5 | 176-183 |     183 |
+----------------------------------------------------------------------------
+|    3 |     0 |     |         |         |     0 |     |         |         |
+|    3 |     1 |   1 |  56- 63 |      60 |     0 |     |         |         |
+|    3 |     1 |   1 |  56- 63 |      60 |     1 |   3 | 120-127 |     125 |
+|    3 |     1 |   1 |  56- 63 |      60 |     1 |   3 | 120-127 |     125 |
+----------------------------------------------------------------------------
+\end{lstlisting}
+
+Erstellt habe ich die Tabellen mit folgendem Ruby-Programm
+\lstset{
+language=ruby,                % choose the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,           % adds a frame around the code
+tabsize=2,          % sets default tabsize to 2 spaces
+captionpos=b,           % sets the caption-position to bottom
+breaklines=true,        % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
+\begin{lstlisting}
+class LRU
+  def initialize
+    @list = []
+  end
+
+  def front
+    @list.first
+  end
+
+  def send_back value
+    @list.delete value
+    @list << value
+  end
+end
+
+class Cache
+  WORD_LENGTH = 4
+
+  def initialize capacity, line_length, tag_width, line_width, word_width, byte_width
+    @capacity = capacity
+    @line_length = line_length
+    @lines = capacity / line_length
+    @tag_width = tag_width
+    @line_width = line_width
+    @word_width = word_width
+    @byte_width = byte_width
+
+    @hit_list = []
+
+    @cache = (1..@lines).map { |line| [{ valid: 0, tag: nil, address: nil }] }
+  end
+
+  def line_info
+    "TAG #{@tag_width}, LINE #{@line_width}, WORD #{@word_width}, BYTE #{@byte_width}"
+  end
+
+  def hit address, hit
+    @hit_list << { address: address, hit: hit }
+  end
+
+  def tag address
+    (address & (0xFFFF << tag_offset)) >> tag_offset
+  end
+
+  def word_offset
+    @byte_width
+  end
+
+  def line_offset
+    word_offset + @word_width
+  end
+
+  def tag_offset
+    line_offset + @line_width
+  end
+
+  def hit_list
+    @hit_list.map { |info| "#{info[:address]}#{info[:hit] ? "h" : "m"}" }.join ", "
+  end
+
+  def range line, number = 0
+    if line[:tag]
+      start = (line[:tag] << tag_offset) + (number << line_offset)
+
+      range = (start..start + @line_length - 1)
+
+      "#{range.min.to_s.rjust 3}-#{range.max.to_s.rjust 3}"
+    else
+      " " * 7
+    end
+  end
+end
+
+class FullyAssociativeCache < Cache
+  def initialize capacity, line_length, tag_width, line_width, word_width, byte_width
+    super
+
+    @lru = LRU.new
+  end
+
+  def read address
+    tag = tag address
+
+    (0...@lines).map do |i|
+      if @cache[i].last[:tag] == tag && @cache[i].last[:valid]
+        @cache[i] << { valid: 1, tag: tag, address: address }
+
+        hit address, true
+
+        @lru.send_back i
+
+        return
+      elsif @cache[i].last[:valid] == 0
+        @cache[i] << { valid: 1, tag: tag, address: address }
+
+        hit address, false
+
+        @lru.send_back i
+
+        return
+      end
+    end
+
+    lru_line = @lru.front
+
+    @cache[lru_line] << { valid: 1, tag: tag, address: address }
+
+    hit address, false
+
+    @lru.send_back lru_line
+  end
+
+  def to_table
+    header = "| Line | Valid | Tag | Bereich | Adresse |"
+    delimiter = "-" * header.length
+    table = []
+
+    table << delimiter
+    table << header
+
+    i = 1
+
+    @cache.each do |line_history|
+      table << delimiter
+
+      line_history.each do |line|
+        table << "| #{i.to_s.rjust 4} | #{line[:valid].to_s.rjust 5} | #{line[:tag].to_s.rjust 3} | #{range(line)} | #{line[:address].to_s.rjust 7} |"
+      end
+
+      i = i + 1
+    end
+
+    table << delimiter
+
+    table
+  end
+end
+
+class OneWayCache < Cache
+  def read address
+    tag = tag address
+    line = line address
+
+    if @cache[line].last[:valid] && @cache[line].last[:tag] == tag
+      hit address, true
+    else
+      hit address, false
+    end
+
+    @cache[line] << { valid: 1, tag: tag, address: address }
+  end
+
+  def line address
+    mask = (0...@line_width).map { |i| 1 << i }.reduce(:+)
+
+    (address & (mask << line_offset)) >> line_offset
+  end
+
+  def to_table
+    header = "| Line | Valid | Tag | Bereich | Adresse |"
+    delimiter = "-" * header.length
+    table = []
+
+    table << delimiter
+    table << header
+
+    i = 0
+
+    @cache.each do |line_history|
+      table << delimiter
+
+      line_history.each do |line|
+        table << "| #{i.to_s.rjust 4} | #{line[:valid].to_s.rjust 5} | #{line[:tag].to_s.rjust 3} | #{range(line, i)} | #{line[:address].to_s.rjust 7} |"
+      end
+
+      i = i + 1
+    end
+
+    table << delimiter
+
+    table
+  end
+end
+
+class TwoWayCache < Cache
+  def initialize capacity, line_length, tag_width, line_width, word_width, byte_width
+    super
+
+    @lines /= 2
+
+    @cache = (1..@lines).map { |line| {lru: LRU.new, data: [[{ valid: 0, tag: nil, address: nil }, { valid: 0, tag: nil, address: nil }]]} }
+  end
+
+  def read address
+    tag = tag address
+    line = line address
+
+    data = @cache[line][:data].last
+    lru = @cache[line][:lru]
+
+    if data[0][:valid] == 1 && data[0][:tag] == tag
+      new_data = [{ valid: 1, tag: tag, address: address }, data[1]]
+
+      lru.send_back 0
+      hit address, true
+    elsif data[1][:valid] == 1 && data[1][:tag] == tag
+      new_data = [data[0], { valid: 1, tag: tag, address: address }]
+
+      lru.send_back 1
+      hit address, true
+    else
+      hit address, false
+
+      if data[0][:valid] == 0
+        new_data = [{ valid: 1, tag: tag, address: address }, data[1]]
+
+        lru.send_back 0
+      elsif data[1][:valid] == 0
+        new_data = [data[0], { valid: 1, tag: tag, address: address }]
+
+        lru.send_back 1
+      else
+        if lru.front == 0
+          new_data = [{ valid: 1, tag: tag, address: address }, data[1]]
+
+          lru.send_back 0
+        else
+          new_data = [data[0], { valid: 1, tag: tag, address: address }]
+
+          lru.send_back 1
+        end
+      end
+    end
+
+    @cache[line][:data] << new_data
+  end
+
+  def line address
+    mask = (0...@line_width).map { |i| 1 << i }.reduce(:+)
+
+    (address & (mask << line_offset)) >> line_offset
+  end
+
+  def to_table
+    header = "| Line |" + " Valid | Tag | Bereich | Adresse |" * 2
+    delimiter = "-" * header.length
+    table = []
+
+    table << delimiter
+    table << header
+
+    i = 0
+
+    @cache.each do |line|
+        table << delimiter
+
+        line[:data].each do |data_history|
+          row = "| #{i.to_s.rjust 4} |"
+
+          data_history.each do |data|
+            row << " #{data[:valid].to_s.rjust 5} | #{data[:tag].to_s.rjust 3} | #{range(data, i)} | #{data[:address].to_s.rjust 7} |"
+          end
+
+          table << row
+        end
+
+        i = i + 1
+    end
+
+    table << delimiter
+
+    table
+  end
+end
+
+addresses = [16, 72, 20, 9, 183, 60, 19, 12, 148, 22, 8, 125, 183, 34, 47, 60]
+caches = []
+caches << FullyAssociativeCache.new(16, 1, 16, 0, 0 ,0)
+caches << FullyAssociativeCache.new(64, 8, 13, 0, 1, 2)
+caches << OneWayCache.new(128, 16, 7, 3, 2, 2)
+caches << TwoWayCache.new(64, 8, 9, 2, 1, 2)
+
+caches.each_with_index do |cache, index|
+  puts "#### Teil #{index + 1} ####"
+  puts
+
+  puts cache.line_info
+  puts
+
+  addresses.each do |address|
+    cache.read address
+  end
+
+  puts cache.hit_list
+  puts
+
+  puts cache.to_table
+  puts
+
+  puts
+  puts
+end
+\end{lstlisting}
+
+\end{document}
