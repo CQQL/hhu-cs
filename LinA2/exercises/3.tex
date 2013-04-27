@@ -1,0 +1,231 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+Sei $(v_{1}, \dots, v_{n})$ die Basis in der $A$ ist.
+Da $A$ der Jordan-Block $J(0, n + 1)$ ist, ist diese Basis eine Jordankette.
+
+\subsection*{Teil 2}
+
+Da $A$ eine obere Dreiecksmatrix ist, ist $XI_{n + 1} - A$ auch eine und $\chi_{A} = x^{n + 1}$.
+
+\subsection*{Teil 3}
+
+Da $A$ der Jordan-Block $J(0, n + 1)$ ist, gilt
+\begin{equation}
+\mu_{A} = x^{n + 1}
+\end{equation}
+Für einen Beweis siehe Übung 5.
+
+\subsection*{Teil 4}
+
+Sei $B = (b_{i,j})$ mit
+\begin{equation}
+b_{i,j} =
+\begin{cases}
+j & \textit{wenn $j = i + 1$}\\
+0 & \textit{sonst}
+\end{cases}
+\end{equation}
+
+Beispiel für $n = 3$
+\begin{equation}
+B = 
+\begin{pmatrix}
+0 & 1 & 0 & 0\\
+0 & 0 & 2 & 0\\
+0 & 0 & 0 & 3\\
+0 & 0 & 0 & 0\\
+\end{pmatrix}
+\end{equation}
+
+\subsection*{Teil 5}
+
+Sei $v \in V$ überall $0$ und nur in der $n + 1$-ten Zeile $1$.
+Dann ist $(B^{n}v, \dots, B^{2}, Bv, v)$ eine Jordankette.
+
+\begin{proof}
+Da $B$ eine obere Dreiecksmatrix ist, ist ihr einziger Eigenwert $\lambda = 0$ und $B - \lambda I_{n + 1} = B$.
+Also ist $E_{k}(B, \lambda) = Ker(B^{k})$. 
+Es ist zuzeigen, dass $v \in E_{n + 1}(B, 0) \setminus E_{n}(B, 0)$ ist, also $B^{n + 1}v = 0$, aber $B^{n}v \ne 0$.
+Ich zeige es mit Induktion über $k$.
+
+Sei $k = 0$.
+Da $v \ne 0$ ist, ist $B^{0}v \ne 0$.
+Außerdem ist $v$ überall $0$ außer in der $n + 1 - k$-ten Zeile.
+
+Sei $0 < k < n + 1$, $w = B^{k - 1}v \ne 0$ und $w$ überall $0$ außer in der $n + 1 - (k - 1)$-ten Zeile.
+Dann ist $x = Bw = (x_{m})$ mit $x_{m} = \sum_{q = 1}^{n + 1} b_{m, q} w_{q}$, aber $w_{q} \ne 0$ nur für $q = n + 1 - (k - 1)$, also $x_{m} = b_{m, n + 1 - (k - 1)} w_{n + 1 - (k - 1)}$.
+Aber $b_{m, q} \ne 0$ nur für $q = m + 1 \Leftrightarrow m = q - 1$, also $x_{m} \ne 0$ nur für $m = q - 1 = n + 1 - k + 1 - 1 = n + 1 - k$.
+Das heißt, $B^{k}v \ne 0$ und $B^{k}v$ ist überall $0$ außer in der $n + 1 - k$-ten Zeile.
+
+Sei $k = n + 1$, $w = B^{n}v \ne 0$ und $w$ sei überall $0$ außer in der $1$-ten Zeile.
+Dann ist $x = Bw = (x_{m})$ mit $x_{m} = \sum_{q = 1}^{n + 1} b_{m, q} w_{q}$, aber $w_{q} \ne 0$ nur für $q = 1$, also $x_{m} = b_{m, 1} w_{1}$.
+Aber $b_{m, q} \ne 0$ nur für $q = m + 1 \Rightarrow m = 0$, aber $b_{0, 1}$ existiert nicht.
+$b_{m, q}$ ist also immer $0$ somit auch $x$ und $BB_{n}v = 0$.
+
+Damit sind alle Eigenschaften erfüllt, damit $(B^{n}v, \dots, B^{2}, Bv, v)$ eine Jordankette ist.
+\end{proof}
+
+\subsection*{Teil 6}
+
+\section*{Übung 2}
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\subsection*{Teil 4}
+
+\subsection*{Teil 5}
+
+\section*{Übung 4}
+
+\subsection*{$A_{1}$}
+
+\begin{equation}
+\chi_{A_{1}} = x^{3} - 9x^{2} + 27x - 27 = (x - 3)^{3}
+\end{equation}
+\begin{equation}
+\sigma(A_{1}) = \{3\}
+\end{equation}
+
+Jordankette zum Eigenwert $3$:
+\begin{equation}
+\left(
+\begin{pmatrix}
+1\\1\\1
+\end{pmatrix},
+\begin{pmatrix}
+2\\0\\1
+\end{pmatrix},
+\begin{pmatrix}
+2\\-1\\0
+\end{pmatrix}
+\right)
+\end{equation}
+
+\subsection*{$A_{2}$}
+
+\begin{equation}
+\chi_{A_{1}} = x^{3}
+\end{equation}
+\begin{equation}
+\sigma(A_{1}) = \{0\}
+\end{equation}
+
+Jordankette zum Eigenwert $0$:
+\begin{equation}
+\left(
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\1
+\end{pmatrix}
+\right)
+\end{equation}
+
+\subsection*{$A_{3}$}
+
+\begin{equation}
+\chi_{A_{1}} = (x - 3)^{3}
+\end{equation}
+\begin{equation}
+\sigma(A_{1}) = \{3\}
+\end{equation}
+
+Jordankette zum Eigenwert $3$:
+\begin{equation}
+\left(
+\begin{pmatrix}
+-1\\1\\0
+\end{pmatrix},
+\begin{pmatrix}
+-1\\0\\0
+\end{pmatrix}
+\right)
+\end{equation}
+
+\subsection*{$A_{4}$}
+
+\begin{equation}
+\chi_{A_{1}} = (x - 2)(x - 3)^{2}
+\end{equation}
+\begin{equation}
+\sigma(A_{1}) = \{2, 3\}
+\end{equation}
+
+Jordankette zum Eigenwert $2$:
+\begin{equation}
+\left(
+\begin{pmatrix}
+1\\1\\1
+\end{pmatrix}
+\right)
+\end{equation}
+
+Jordankette zum Eigenwert $3$:
+\begin{equation}
+\left(
+\begin{pmatrix}
+-1\\1\\0
+\end{pmatrix},
+\begin{pmatrix}
+-1\\0\\0
+\end{pmatrix}
+\right)
+\end{equation}
+
+\section*{Übung 5}
+
+Weil es eine obere Dreiecksmatrix ist, ist auch $XI_{n} - J(\lambda, n)$ eine obere Dreiecksmatrix und es gilt
+\begin{equation}
+\chi_{J(\lambda, n)} = (X - \lambda)^{n}
+\end{equation}
+
+Für das Minimalpolynom gilt
+\begin{equation}
+\mu_{J(\lambda, 1)} = (X - \lambda)^{n}
+\end{equation}
+
+\begin{proof}
+Sei $(v_{1}, \dots, v_{n})$ die Basis von $J(\lambda, n)$.
+Dann ist die Basis eine Jordankette, weil $J(\lambda, n)$ ein Jordanblock ist.
+Das heißt $v_{1}, \dots, v_{n} \in E_{n}(f, \lambda)$, aber $v_{k} \notin E_{n - 1}(f, \lambda)$ für $k \in [1, n]$.
+
+Sei $k \in [1, n - 1]$ und $q \in [k, n - 1]$.
+Dann ist
+\begin{equation}
+(X - \lambda)^{k}(J(\lambda, n))(v_{q}) \ne 0 \Rightarrow (X - \lambda)^{k}(J(\lambda, n)) \ne 0 \Rightarrow \mu_{J(\lambda, n)} \ne (X - \lambda)^{k}
+\end{equation}
+Sei $k = n$.
+Dann gilt
+\begin{equation}
+(X - \lambda)^{k}(J(\lambda, n))(v_{q}) = 0 \quad \forall q \in [1, n] \Rightarrow (X - \lambda)^{k}(J(\lambda, n)) = 0
+\end{equation}
+$deg \mu_{J(\lambda, n)} = n$ ist also der kleinste Grad, sodass $(X - \lambda)^{k}(J(\lambda, n)) = 0$ und es gilt
+\begin{equation}
+\mu_{J(\lambda, n)} = (X - \lambda)^{n}
+\end{equation}
+\end{proof}
+
+\end{document}
