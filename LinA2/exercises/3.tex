@@ -82,9 +82,19 @@ Damit sind alle Eigenschaften erfüllt, damit $(B^{n}v, \dots, B^{2}, Bv, v)$ ei
 
 \section*{Übung 2}
 
+\begin{proof}
+Sei $a \in g(U) \Rightarrow \exists u \in U \quad (a = g(u))$.
+Ich betrachte nun $f(a) = f(g(u)) = f \circ g(u) = g \circ f(u) = g(f(u))$.
+Aber $U$ ist $f$-invariant, also ist $f(u) \in U$ und $f(a) = g(f(u)) \in g(U)$.
+
+Die andere Richtung ist analog.
+\end{proof}
+
 \section*{Übung 3}
 
 \subsection*{Teil 1}
+
+
 
 \subsection*{Teil 2}
 
@@ -210,7 +220,7 @@ Für das Minimalpolynom gilt
 \begin{proof}
 Sei $(v_{1}, \dots, v_{n})$ die Basis von $J(\lambda, n)$.
 Dann ist die Basis eine Jordankette, weil $J(\lambda, n)$ ein Jordanblock ist.
-Das heißt $v_{1}, \dots, v_{n} \in E_{n}(f, \lambda)$, aber $v_{k} \notin E_{n - 1}(f, \lambda)$ für $k \in [1, n]$.
+Das heißt $v_{1}, \dots, v_{n} \in E_{n}(f, \lambda)$, aber $v_{k} \notin E_{k - 1}(f, \lambda)$ für $k \in [1, n]$.
 
 Sei $k \in [1, n - 1]$ und $q \in [k, n - 1]$.
 Dann ist
