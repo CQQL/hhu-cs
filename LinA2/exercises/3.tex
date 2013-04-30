@@ -80,6 +80,8 @@ Damit sind alle Eigenschaften erfüllt, damit $(B^{n}v, \dots, B^{2}, Bv, v)$ ei
 
 \subsection*{Teil 6}
 
+Da die Jordankette aus Teil 5 zum Eigenwert $0$ ist und $n + 1$ Vektoren hat, ist $JNF(B) = J(0, n + 1) = A$ und $A$ und $B$ sind ähnlich.
+
 \section*{Übung 2}
 
 \begin{proof}
@@ -92,9 +94,13 @@ Die andere Richtung ist analog.
 
 \section*{Übung 3}
 
+Sei $A = Mat(f)$.
+
 \subsection*{Teil 1}
 
-
+Da $\mu_{f}(A) = 0$, muss $A^{2} = -I_{n}$.
+Da $A^{2}$ vollen Rang hat, muss auch $A$ vollen Rang haben.
+Somit ist $A$ invertierbar und $f$ ein Isomorphismus.
 
 \subsection*{Teil 2}
 
@@ -102,7 +108,25 @@ Die andere Richtung ist analog.
 
 \subsection*{Teil 4}
 
+Sei $v \in V$ und $a, b \in \mathbb{R}$.
+\begin{equation}
+f(a \cdot v + b \cdot f(v)) = a \cdot f(v) + b \cdot f(f(v)) = a \cdot f(v) - b \cdot v \in \langle v, f(v) \rangle
+\end{equation}
+$f(f(v)) = -v$ gilt nach Teil 1.
+
 \subsection*{Teil 5}
+
+Da $f(v) = 1 \cdot f(v)$ und $f(f(v)) = -1 \cdot v$ ist, sähe die Matrix wie folgt aus
+\begin{equation}
+Mat_{\mathcal{B}}(f) = 
+\begin{pmatrix}
+0 & -1 & 0 & 0 & \cdots\\
+1 & 0 & 0 & 0 & \\
+0 & 0 & 0 & -1 & \\
+0 & 0 & 1 & 0 & \\
+\vdots &  &  &  & \ddots\\
+\end{pmatrix}
+\end{equation}
 
 \section*{Übung 4}
 
