@@ -1,0 +1,138 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Übung 14}
+
+\subsection*{Teil a}
+
+\begin{equation}
+D_{1} f(x) = 1
+\end{equation}
+\begin{equation}
+D_{1} D_{1} f(x) = 0
+\end{equation}
+\begin{equation}
+D_{2} D_{1} f(x) = 0
+\end{equation}
+
+\begin{equation}
+D_{2} f(x) = 3y^{2}
+\end{equation}
+\begin{equation}
+D_{1} D_{2} f(x) = 0
+\end{equation}
+\begin{equation}
+D_{2} D_{2} f(x) = 6y
+\end{equation}
+
+\subsection*{Teil b}
+
+\begin{equation}
+D_{1} f(x) = y^{3}
+\end{equation}
+\begin{equation}
+D_{1} D_{1} f(x) = 0 
+\end{equation}
+\begin{equation}
+D_{2} D_{1} f(x) = 3y^{2}
+\end{equation}
+
+\begin{equation}
+D_{2} f(x) = 3xy^{2}
+\end{equation}
+\begin{equation}
+D_{1} D_{2} f(x) = 3y^{2}
+\end{equation}
+\begin{equation}
+D_{2} D_{2} f(x) = 6xy
+\end{equation}
+
+\subsection*{Teil c}
+
+\begin{equation}
+D_{1} f(x) = \cos (x + y^{3})
+\end{equation}
+\begin{equation}
+D_{1} D_{1} f(x) = -\sin (x + y^{3})
+\end{equation}
+\begin{equation}
+D_{2} D_{1} f(x) = -3y^{2} \sin(x + y^{3})
+\end{equation}
+
+\begin{equation}
+D_{2} f(x) = 3y^{2} \cos(x + y^{3})
+\end{equation}
+\begin{equation}
+D_{1} D_{2} f(x) = -3y^{2} \sin(x + y^{3})
+\end{equation}
+\begin{equation}
+D_{2} D_{2} f(x) = 6y \cos(x + y^{3}) - 9y^{4} \sin (x + y^{3})
+\end{equation}
+
+\subsection*{Teil d}
+
+\begin{equation}
+D_{1} f(x) = y^{3} \cos (xy^{3})
+\end{equation}
+\begin{equation}
+D_{1} D_{1} f(x) = -y^{6} \sin (xy^{3})
+\end{equation}
+\begin{equation}
+D_{2} D_{1} f(x) = 3y^{2} \cos(xy^{3}) - 3xy^{5} \sin(xy^{3})
+\end{equation}
+
+\begin{equation}
+D_{2} f(x) = 3xy^{2} \cos(xy^{3})
+\end{equation}
+\begin{equation}
+D_{1} D_{2} f(x) = 3y^{2} \cos (xy^{3}) - 3xy^{5} \sin(xy^{3})
+\end{equation}
+\begin{equation}
+D_{2} D_{2} f(x) = 6xy \cos(xy^{3}) - 9x^{2}y^{4} \sin(xy^{3})
+\end{equation}
+
+\section*{Übung 15}
+
+\subsection*{Teil a}
+
+\subsection*{Teil b}
+
+\section*{Übung 16}
+
+\section*{Übung 17}
+
+\subsection*{Teil a}
+
+\begin{equation}
+D_{1} f(1, 0) = 1
+\end{equation}
+\begin{equation}
+D_{2} f(1, 0) = 0
+\end{equation}
+
+\subsection*{Teil b}
+
+\begin{proof}
+Ich betrachte $D_{1}f$ im Punkt $(1, 1)$.
+Sei $(x_{n}) \rightarrow 1$ eine Folge mit $0 < x_{n} \le 1$ für alle $n$.
+Sei $h \in \mathbb{R}$ mit $0 < h < 1$.
+Dann ist
+\begin{equation}
+\lim_{h \rightarrow 0} \frac{F_{1}(1 - h) - F_{1}(1)}{h} = \lim_{h \rightarrow 0} \frac{1 - 1}{h} = 0
+\end{equation}
+und
+\begin{equation}
+\lim_{h \rightarrow 0} \frac{F_{1}(1 + h) - F_{1}(1)}{h} = \lim_{h \rightarrow 0} \frac{1 + h - 1}{h} = 1
+\end{equation}
+$F_{1}$ ist also in $(1, 1)$ nicht differenzierbar und somit auch $f$ nicht.
+\end{proof}
+
+\end{document}
