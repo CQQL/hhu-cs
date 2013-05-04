@@ -1,0 +1,362 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+Wenn $f$ nilpotent in der $n$-ten Potenz ist, ist $f^{n}(v) = 0$ für alle $v \in V$.
+Also ist jedes $v \in V$ in $Ker(f - 0 \cdot id)^{n} = Ker(f^{n})$, was bedeutet, dass $v \in H(f, 0) = V$.
+$0$ ist somit der einzige Eigenwert von $f$.
+
+\subsection*{Teil 2}
+
+$f$ kann in $7$ verschiedenen Ähnlichkeitsklassen sein, in Abhängigkeit von $dim E_{k}(f, 0)$ für $k \in [1, 5]$.
+Sei $d(k) = dim(E_{k}(f, 0)) - dim(E_{k - 1}(f, 0))$.
+Dann ist $d(k)$ die Anzahl an Jordanblöcken der Größe $k$, die vorkommen.
+
+$d(1) = 5, d(2) = 0, d(3) = 0, d(4) = 0, d(5) = 0$
+\begin{equation}
+\begin{pmatrix}
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+\end{pmatrix}
+\end{equation}
+
+$d(1) = 3, d(2) = 1, d(3) = 0, d(4) = 0, d(5) = 0$
+\begin{equation}
+\begin{pmatrix}
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+\end{pmatrix}
+\end{equation}
+
+$d(1) = 2, d(2) = 0, d(3) = 1, d(4) = 0, d(5) = 0$
+\begin{equation}
+\begin{pmatrix}
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+\end{pmatrix}
+\end{equation}
+
+$d(1) = 1, d(2) = 2, d(3) = 0, d(4) = 0, d(5) = 0$
+\begin{equation}
+\begin{pmatrix}
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+\end{pmatrix}
+\end{equation}
+
+$d(1) = 1, d(2) = 0, d(3) = 0, d(4) = 1, d(5) = 0$
+\begin{equation}
+\begin{pmatrix}
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+\end{pmatrix}
+\end{equation}
+
+$d(1) = 0, d(2) = 1, d(3) = 1, d(4) = 0, d(5) = 0$
+\begin{equation}
+\begin{pmatrix}
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0\\
+\end{pmatrix}
+\end{equation}
+
+$d(1) = 0, d(2) = 0, d(3) = 0, d(4) = 0, d(5) = 1$
+\begin{equation}
+\begin{pmatrix}
+0 & 1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0 & 0\\
+0 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 1\\
+0 & 0 & 0 & 0 & 0\\
+\end{pmatrix}
+\end{equation}
+
+\section*{Übung 2}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Sei $v \in E_{k}(f, \lambda)$.
+Ich behaupte
+\begin{equation}
+(f - \lambda id)^{k}(g(v)) = g \left( (f - \lambda id)^{k}(v) \right)
+\end{equation}
+Wenn das stimmt, haben wir
+\begin{equation}
+(f - \lambda id)^{k}(g(v)) = g \left( (f - \lambda id)^{k}(v) \right) = g(0) = 0
+\end{equation}
+und $g(v) \in E_{k}(f, \lambda)$ und $E_{k}(f, \lambda)$ ist $g$-invariant.
+
+Ich zeige es mit Induktion über $k$.
+Sei $k = 1$.
+\begin{equation}
+(f - \lambda id)(g(v)) = f(g(v)) - \lambda id(g(v)) = g(f(v)) - \lambda g(v) = g(f(v) - \lambda v) = g((f - \lambda id)(v))
+\end{equation}
+
+Sei $k > 1$ und $(f - \lambda id)^{k - 1}(g(v)) = g \left( (f - \lambda id)^{k - 1}(v) \right)$.
+\begin{align*}
+(f - \lambda id)^{k}(g(v)) & = (f - \lambda id)(f - \lambda id)^{k - 1}(g(v))\\
+& = (f - \lambda id)\left( g \left( (f - \lambda id)^{k - 1}(v) \right) \right)\\
+& = f \left( g \left( (f - \lambda id)^{k - 1}(v) \right) \right) - \lambda id \left( g \left( (f - \lambda id)^{k - 1}(v) \right) \right)\\
+& = g \left( f \left( (f - \lambda id)^{k - 1}(v) \right) \right) - \lambda g \left( (f - \lambda id)^{k - 1}(v) \right)\\
+& = g \left( f \left( (f - \lambda id)^{k - 1}(v) \right) - \lambda \left( (f - \lambda id)^{k - 1}(v) \right) \right)\\
+& = g \left( (f - \lambda id) (f - \lambda id)^{k - 1}(v) \right)\\
+& = g \left( (f - \lambda id)^{k}(v) \right)\\
+\end{align*}
+
+Die andere Richtung geht analog mit $f$ und $g$ vertauscht.
+\end{proof}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\section*{Übung 3}
+
+\newtheorem*{lemma}{Lemma}
+
+\begin{lemma}
+Sei $\sigma \in S_{n}$ und $k \in Supp(\sigma)$.
+Dann ist auch $\sigma(k) \in Supp(\sigma)$.
+\end{lemma}
+
+\begin{proof}
+Angenommen $\sigma(k) \notin Supp(\sigma)$.
+Dann ist $\sigma(\sigma(k)) = \sigma(k)$.
+Dies widerspricht allerdings der Voraussetzung, dass $\sigma$ eine Permutation ist, weil $k \ne \sigma(k)$, weil $k \in Supp(\sigma)$, und somit 2 Werte auf einen abgebildet werden.
+\end{proof}
+
+\begin{proof}
+Sei $k \in [1, n] \setminus (Supp(\sigma) \cup Supp(\tau))$.
+Es ist also $\sigma(k) = k = \tau(k)$ und die Behauptung ist hier offensichtlich richtig.
+
+Sei $k \in Supp(\sigma)$.
+Dann ist $k \notin Supp(\tau)$ und $\tau(k) = k$ und nach dem Lemma ist auch $\sigma(k) \notin Supp(\tau)$ und $\tau(\sigma(k)) = \sigma(k)$.
+\begin{equation}
+\sigma \circ \tau(k) = \sigma(k) = \tau \circ \sigma(k)
+\end{equation}
+
+Sei $k \in Supp(\tau)$.
+Dann ist $k \notin Supp(\sigma)$ und $\sigma(k) = k$ und nach dem Lemma ist auch $\tau(k) \notin Supp(\sigma)$ und $\sigma(\tau(k)) = \tau(k)$.
+\begin{equation}
+\sigma \circ \tau(k) = \tau(k) = \tau \circ \sigma(k)
+\end{equation}
+\end{proof}
+
+\section*{Übung 4}
+
+\subsection*{Teil 1}
+
+Sei $k \in [1, n] \setminus \{i, i + 1\}$
+\begin{equation}
+s_{i}^{2}(k) = s_{i}s_{i}(k) = s_{i}(k) = k
+\end{equation}
+\begin{equation}
+s_{i}^{2}(i) = s_{i}s_{i}(i) = s_{i}(i + 1) = i
+\end{equation}
+\begin{equation}
+s_{i}^{2}(i + 1) = s_{i}s_{i}(i + 1) = s_{i}(i) = i + 1
+\end{equation}
+
+\subsection*{Teil 2}
+
+Sei $k \in [1, n] \setminus \{i, i + 1, i + 2\}$
+\begin{align*}
+(s_{i}s_{i + 1}s_{i})^{2}(k) & = s_{i}s_{i + 1}s_{i}s_{i}s_{i + 1}s_{i}(k)\\
+& = s_{i}s_{i + 1}s_{i}s_{i}s_{i + 1}(k)\\
+& = s_{i}s_{i + 1}s_{i}s_{i}(k)\\
+& = s_{i}s_{i + 1}s_{i}(k)\\
+& = s_{i}s_{i + 1}(k)\\
+& = s_{i}(k) = k
+\end{align*}
+\begin{align*}
+(s_{i}s_{i + 1}s_{i})^{2}(i) & = s_{i}s_{i + 1}s_{i}s_{i}s_{i + 1}s_{i}(i)\\
+& = s_{i}s_{i + 1}s_{i}s_{i}s_{i + 1}(i + 1)\\
+& = s_{i}s_{i + 1}s_{i}s_{i}(i + 2)\\
+& = s_{i}s_{i + 1}s_{i}(i + 2)\\
+& = s_{i}s_{i + 1}(i + 2)\\
+& = s_{i}(i + 1) = i
+\end{align*}
+\begin{align*}
+(s_{i}s_{i + 1}s_{i})^{2}(i + 1) & = s_{i}s_{i + 1}s_{i}s_{i}s_{i + 1}s_{i}(i + 1)\\
+& = s_{i}s_{i + 1}s_{i}s_{i}s_{i + 1}(i)\\
+& = s_{i}s_{i + 1}s_{i}s_{i}(i)\\
+& = s_{i}s_{i + 1}s_{i}(i + 1)\\
+& = s_{i}s_{i + 1}(i)\\
+& = s_{i}(i) = i + 1
+\end{align*}
+\begin{align*}
+(s_{i}s_{i + 1}s_{i})^{2}(i + 2) & = s_{i}s_{i + 1}s_{i}s_{i}s_{i + 1}s_{i}(i + 2)\\
+& = s_{i}s_{i + 1}s_{i}s_{i}s_{i + 1}(i + 2)\\
+& = s_{i}s_{i + 1}s_{i}s_{i}(i + 1)\\
+& = s_{i}s_{i + 1}s_{i}(i)\\
+& = s_{i}s_{i + 1}(i + 1)\\
+& = s_{i}(i + 2) = i + 2
+\end{align*}
+
+\subsection*{Teil 3}
+
+Sei $k \in [1, n] \setminus \{i, i + 1, j, j + 1\}$
+\begin{align*}
+(s_{i}s_{j})^{2}(k) & = s_{i}s_{j}s_{i}s_{j}(k)\\
+& = s_{i}s_{j}s_{i}(k)\\
+& = s_{i}s_{j}(k)\\
+& = s_{i}(k) = k
+\end{align*}
+\begin{align*}
+(s_{i}s_{j})^{2}(i) & = s_{i}s_{j}s_{i}s_{j}(i)\\
+& = s_{i}s_{j}s_{i}(i)\\
+& = s_{i}s_{j}(i + 1)\\
+& = s_{i}(i + 1) = i
+\end{align*}
+\begin{align*}
+(s_{i}s_{j})^{2}(i + 1) & = s_{i}s_{j}s_{i}s_{j}(i + 1)\\
+& = s_{i}s_{j}s_{i}(i + 1)\\
+& = s_{i}s_{j}(i)\\
+& = s_{i}(i) = i + 1
+\end{align*}
+\begin{align*}
+(s_{i}s_{j})^{2}(j) & = s_{i}s_{j}s_{i}s_{j}(j)\\
+& = s_{i}s_{j}s_{i}(j + 1)\\
+& = s_{i}s_{j}(j + 1)\\
+& = s_{i}(j) = j
+\end{align*}
+\begin{align*}
+(s_{i}s_{j})^{2}(j + 1) & = s_{i}s_{j}s_{i}s_{j}(j + 1)\\
+& = s_{i}s_{j}s_{i}(j)\\
+& = s_{i}s_{j}(j)\\
+& = s_{i}(j + 1) = j + 1
+\end{align*}
+
+\section*{Übung 5}
+
+\subsection*{Matrix 1}
+
+\begin{equation}
+\chi_{A} = (x - 1)^{4}
+\end{equation}
+\begin{equation}
+\mu_{A} = (x - 1)^{3}
+\end{equation}
+\begin{equation}
+\mathcal{B} = \left \langle
+\begin{pmatrix}
+1\\1\\-1\\-1
+\end{pmatrix},
+\begin{pmatrix}
+1\\0\\-1\\0
+\end{pmatrix},
+\begin{pmatrix}
+1\\0\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+-1\\0\\0\\1
+\end{pmatrix}
+\right \rangle
+\end{equation}
+
+\subsection*{Matrix 2}
+
+\begin{equation}
+\chi_{A} = (x - 1)^{4}
+\end{equation}
+\begin{equation}
+\mu_{A} = (x - 1)^{2}
+\end{equation}
+\begin{equation}
+\mathcal{B} = \left \langle
+\begin{pmatrix}
+1\\0\\-1\\-1
+\end{pmatrix},
+\begin{pmatrix}
+1\\0\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\1\\0
+\end{pmatrix},
+\begin{pmatrix}
+1\\1\\0\\0
+\end{pmatrix}
+\right \rangle
+\end{equation}
+
+\subsection*{Matrix 3}
+
+\begin{equation}
+\chi_{A} = x^{3}(x - 1)
+\end{equation}
+\begin{equation}
+\mu_{A} = x^{3}(x - 1)
+\end{equation}
+\begin{equation}
+\mathcal{B} = \left \langle
+\begin{pmatrix}
+1\\1\\-3\\1
+\end{pmatrix},
+\begin{pmatrix}
+1\\0\\-2\\1
+\end{pmatrix},
+\begin{pmatrix}
+1\\1\\-2\\1
+\end{pmatrix},
+\begin{pmatrix}
+-1\\0\\1\\0
+\end{pmatrix}
+\right \rangle
+\end{equation}
+
+\subsection*{Matrix 4}
+
+\begin{equation}
+\chi_{A} = (x - 1)^{2}(x + 1)(x - 2)
+\end{equation}
+\begin{equation}
+\mu_{A} = 
+\end{equation}
+\begin{equation}
+\mathcal{B} = \left \langle
+\begin{pmatrix}
+0\\0\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\0\\0
+\end{pmatrix}
+\right \rangle
+\end{equation}
+
+\end{document}
