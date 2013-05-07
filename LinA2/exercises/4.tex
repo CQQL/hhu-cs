@@ -138,7 +138,19 @@ Die andere Richtung geht analog mit $f$ und $g$ vertauscht.
 
 \subsection*{Teil 2}
 
+\begin{proof}
+Weil $g$ diagonalisierbar ist, gibt es eine Basis von $V$, die aus Eigenvektoren von $g$ besteht.
+Da $H(f, \lambda) \subseteq V$, ist diese Basis ein EZS von $H(f, \lambda)$.
+Nach irgendeinem Satz aus LinA1 kann man solange Elemente aus diesem EZS entfernen, bis es eine Basis von $H(f, \lambda)$ ist.
+Da diese Basis aus Eigenvektoren von $g$ besteht, ist $g$ auf $H(f, \lambda)$ ebenfalls diagonalisierbar.
+\end{proof}
+
 \subsection*{Teil 3}
+
+\begin{proof}
+Da es für jeden Hauptraum eine solche Basis $\mathcal{B}_{\lambda}$ gibt und $V$ die direkte Summe seiner Haupträume ist, folgt direkt, dass $\cup_{\lambda} \mathcal{B}_{\lambda}$ eine Basis von $V$ ist.
+Es bleibt zu zeigen, dass $v \in \cup_{\lambda} \mathcal{B}_{\lambda}$ ein Eigenvektor von $f$ ist.
+\end{proof}
 
 \section*{Übung 3}
 
@@ -340,7 +352,7 @@ Sei $k \in [1, n] \setminus \{i, i + 1, j, j + 1\}$
 \chi_{A} = (x - 1)^{2}(x + 1)(x - 2)
 \end{equation}
 \begin{equation}
-\mu_{A} = 
+\mu_{A} = (x - 1)^{2}(x + 1)(x - 2)
 \end{equation}
 \begin{equation}
 \mathcal{B} = \left \langle
