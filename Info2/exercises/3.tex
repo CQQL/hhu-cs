@@ -70,13 +70,11 @@ Zugriff & Seite 1 & Seite 2 & Seite 3 & Seite 4\\
 
 \subsection*{Teil 2}
 
-Ich nehme an, dass $1$ KB $1000$ Byte sind.
-
 Da die Seiten $\{1, 2, 3, 4\}$ am Ende geladen sind, entstehen Page Faults bei Zugriffen auf die Seiten $[0, 7] - [1, 4] = \{0, 5, 6, 7\}$.
 
-Ich nehme weiterhin an, dass die Seite mit $\lfloor adresse / 1000 \rfloor$ berechnet wird, also z.B. $1772$ in Seite $1$ landet.
+Ich nehme an, dass die Seite mit $\lfloor adresse / 1024 \rfloor$ berechnet wird, also z.B. $1772$ in Seite $1$ landet.
 
-Dann ergeben sich Page Faults ganz konkret bei den Adressen $0 - 999$, $5000 - 5999$, $6000 - 6999$ und $7000 - 7999$.
+Dann ergeben sich Page Faults ganz konkret bei den Adressen $0 - 1023$, $5120 - 6143$, $6144 - 7167$ und $7168 - 8191$.
 
 \subsection*{Teil 3}
 
@@ -86,8 +84,8 @@ Dann berechnet sich die physikalische Adresse durch $a + b - c$.
 Damit ergibt sich
 \begin{align}
 1111 & \Rightarrow 1111\\
-2222 & \Rightarrow 3222\\
-3333 & \Rightarrow 3333\\
+2222 & \Rightarrow 3246\\
+3333 & \Rightarrow 2309\\
 4444 & \Rightarrow 444
 \end{align}
 
@@ -137,8 +135,10 @@ Zugriff & Seite 1 & Seite 2 & Seite 3\\
 
 \subsection*{Teil 6}
 
-In Teilaufgabe $4$ treten $10$ und in Teilaufgabe $5$ ebenfalls $10$ Seitenfehler auf.
+In Teilaufgabe $4$ treten $10$ und in Teilaufgabe $5$ $9$ Seitenfehler auf.
 
-Wenn $a$ die Anzahl der Page Faults für LRU, $b$ die Anzahl für FIFO mit 4 Rahmen und $c$ die Anzahl für FIFO mit 3 Rahmen ist, hätte ich erwartet, dass $a \le b \le c$ gilt, was auch wahr ist ($a = 8$), weil ich intuitiv vermute, dass LRU im schlechtesten Fall zu FIFO wird und bei weniger Seitenrahmen öfter Seiten getauscht werden müssen.
+Dies entspricht nicht meiner Erwartung.
+Ich habe erwartet, dass in Teil 5 mehr Seitenfehler auftreten, weil weniger Seitenrahmen vorhanden sind und deshalb wahrscheinlich öfter Seiten ausgetauscht werden müssen.
+Man kann aus diesem konkreten Fall auch nicht auf die Allgemeinheit zurückschließen, aber man sieht, dass es Fälle gibt, in denen verschiedene Strategien besonders gut oder besonders schlecht funktionieren.
 
 \end{document}
