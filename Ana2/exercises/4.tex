@@ -125,6 +125,52 @@ f_{c}(x, y) = \frac{1}{5}x^{5} + \frac{1}{4}x^{4}y + \frac{1}{3}y^{3} + y + c
 
 \section*{Übung 16}
 
+\begin{proof}
+Für $(x, y) \ne (0, 0)$ ist $f$ partiell differenzierbar nach Analysis 1.
+Seien $(x_{n})$ und $(y_{n})$ Nullfolgen.
+Dann ist 
+\begin{equation}
+\lim_{n \rightarrow \infty} \frac{f(x_{n}, 0) - f(0, 0)}{x_{n}} = 0
+\end{equation}
+und \begin{equation}
+\lim_{n \rightarrow \infty} \frac{f(0, y_{n}) - f(0, 0)}{y_{n}} = 0
+\end{equation}
+$f$ ist also auch in $(0, 0)$ partiell differenzierbar.
+
+Konkret ergeben sich
+\begin{align}
+D_{1}f(x, y) & =
+\begin{cases}
+\frac{yx^{4} + 4y^{3}x^{2} - y^{5}}{(x^{2} + y^{2})^{2}} & \textit{$(x, y) \ne (0, 0)$}\\
+0 & \textit{sonst}
+\end{cases}\\
+D_{2}f(x, y) & = 
+\begin{cases}
+-\frac{xy^{4} + 4x^{3}y^{2} - x^{5}}{(x^{2} + y^{2})^{2}} & \textit{$(x, y) \ne (0, 0)$}\\
+0 & \textit{sonst}
+\end{cases}
+\end{align}
+
+Für $(x, y) \ne (0, 0)$ sind $D_{1}f$ und $D_{2}f$ partiell differenzierbar nach Analysis 1.
+Seien $(x_{n})$ und $(y_{n})$ Nullfolgen.
+Dann ist
+\begin{equation}
+\lim_{n \rightarrow \infty} \frac{D_{1}f(x_{n}, 0) - D_{1}f(0, 0)}{x_{n}} = 0
+\end{equation}
+\begin{equation}
+\lim_{n \rightarrow \infty} \frac{D_{2}f(x_{n}, 0) - D_{2}f(0, 0)}{x_{n}} = -1 = D_{1}D_{2}f(0, 0)
+\end{equation}
+\begin{equation}
+\lim_{n \rightarrow \infty} \frac{D_{1}f(0, y_{n}) - D_{1}f(0, 0)}{y_{n}} = 1 = D_{2}D_{1}f(0, 0)
+\end{equation}
+\begin{equation}
+\lim_{n \rightarrow \infty} \frac{D_{2}f(0, y_{n}) - D_{2}f(0, 0)}{y_{n}} = 0
+\end{equation}
+Da alle Grenzwerte existieren, sind $D_{1}f$ und $D_{2}f$ auch in $(0, 0)$ differenzierbar.
+
+Außerdem ist $D_{1}D_{2}f(0, 0) \ne D_{2}D_{1}f(0, 0)$.
+\end{proof}
+
 \section*{Übung 17}
 
 \subsection*{Teil a}
@@ -140,7 +186,6 @@ D_{2} f(1, 0) = 0
 
 \begin{proof}
 Ich betrachte $D_{1}f$ im Punkt $(1, 1)$.
-Sei $(x_{n}) \rightarrow 1$ eine Folge mit $0 < x_{n} \le 1$ für alle $n$.
 Sei $h \in \mathbb{R}$ mit $0 < h < 1$.
 Dann ist
 \begin{equation}
