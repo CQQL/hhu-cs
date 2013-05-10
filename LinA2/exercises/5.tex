@@ -1,0 +1,112 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Übung 1}
+
+\section*{Übung 2}
+
+\subsection*{Teil 1}
+
+Jeder Unterraum von $V$, der die Bedingungen erfüllt, muss mindestens $v$ enthalten und $u$ mit $u = f^{k}(v)$.
+Es muss also ein Unterraum von $U$ sein.
+Sei $W$ ein solcher Unterraum mit $W \subsetneq U$.
+Dann gibt es ein minimales $u \in \mathbb{N}$, sodass $f^{u}(v) \notin W$.
+Wenn $u = 0$, ist $f^{u}(v) = v \notin W$ und $W$ erfüllt die Bedingung nicht mehr.
+Wenn $u > 0$, ist $f^{u - 1}(v) \in W$, aber $f(f^{u - i}(v)) \notin W$ und $W$ wäre nicht $f$-invariant.
+Damit $v \in W$ und $W$ $f$-invariant sein kann, darf also kein solches $u$ existieren und es muss $W = U$ sein.
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Ich zeige es per Induktion über $k$.
+
+Angenommen, $\sigma(1) \ne 1$.
+Dann muss es $j \in [2, n]$ geben mit $\sigma(j) = 1$.
+Aber dann muss $\sigma(j - 1) \ne 1$ sein, also $\sigma(j - 1) > 1 = \sigma(j)$ im Widerspruch zur Annahme.
+
+Angenommen, $1 < k < n - 1$ und $\sigma(j) = j$ für alle $j \in [1, k - 1]$.
+Weiterhin angenommen $\sigma(k) \ne k$, also $\sigma(k) > k$.
+Dann muss es $j \in [k + 1, n]$ geben mit $\sigma(j) = k$.
+Aber $\sigma(j - 1)$ muss $> k$ sein, also $\sigma(j - 1) > k = \sigma(j)$ im Widerspruch zur Annahme.
+
+Angenommen, $k = n - 1$ und $\sigma(j) = j$ für alle $j \in 1, k - 1]$.
+Wenn $\sigma(n - 1) \ne n - 1$, muss $\sigma(n - 1) = n - 2$ und $\sigma(n - 2) = n - 1$ sein im Widerspruch zur Annahme.
+
+Angenommen, $k = n$ und $\sigma(j) = j$ für alle $j \in 1, k - 1]$.
+Dann muss $\sigma(n) = n$ sein.
+
+Insgesamt muss $\sigma(j) = j \quad \forall j \in [1, n]$ und $\sigma = id$ sein.
+\end{proof}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+Sei $(k, p) \in I(\sigma) \setminus \{(i, i + 1)\}$.
+Für $(k, p) \notin [i, i + 1] \times [i, i + 1]$ gilt
+\begin{equation}
+\sigma s_{i}(k) = \sigma(k) > \sigma(p) = \sigma s_{i}(p)
+\end{equation}
+und $(k, p) \in I(\sigma s_{i})$.
+
+Für $(i, i + 1)$ gilt
+\begin{equation}
+\sigma s_{i}(i) = \sigma(i + 1) < \sigma(i) = \sigma s_{i}(i + 1)
+\end{equation}
+also $(i, i + 1) \notin I(\sigma s_{i})$.
+
+Da aber $(i, i + 1) \in I(\sigma)$ nach Annahme, ist $|I(\sigma s_{i})| = |I(\sigma) \setminus \{(i, i + 1)\}| = |I(\sigma)| - 1$, also
+\begin{equation}
+\ell(\sigma) = \ell(\sigma s_{i}) + 1
+\end{equation}
+\end{proof}
+
+\subsection*{Teil 3}
+
+\begin{proof}
+Sei $\ell(\sigma) = 0$.
+Es ist $\varepsilon(\sigma) = \det(I_{n}) = 1 = (-1)^{0} = (-1)^{\ell(\sigma)}$.
+
+Angenommen $\varepsilon(\sigma s_{i}) = (-1)^{\ell(\sigma s_{i})}$, wobei $s_{i}$ wie in Teil 2 gewählt wird, sodass $\ell(\sigma) = \ell(\sigma s_{i}) + 1$.
+Dann ist $\sigma = \sigma s_{i} s_{i}$ und
+\begin{equation}
+\varepsilon(\sigma) = \det(P_{\sigma s_{i} s_{i}}) = \det(E_{i,i + 1}P_{\sigma s_{i}}) = \det(E_{i,i + 1}) \cdot \det(P_{\sigma s_{i}}) = (-1) \cdot (-1)^{\ell(\sigma s_{i})} = (-1)^{\ell(\sigma)}
+\end{equation}
+\end{proof}
+
+\section*{Übung 4}
+
+\subsection*{Teil 1}
+
+\begin{equation}
+\sigma = s_{3}s_{2}s_{1}s_{3}s_{2}s_{4}s_{3}
+\end{equation}
+\begin{equation}
+\ell(\sigma) = 7
+\end{equation}
+\begin{equation}
+\varepsilon(\sigma) = (-1)^{7} = -1
+\end{equation}
+
+\subsection*{Teil 2}
+
+\section*{Übung 5}
+
+\subsection*{Teil 1}
+
+\subsection*{Teil 2}
+
+\end{document}
