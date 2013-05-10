@@ -1,0 +1,386 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 4.1}
+
+Der Prozess hat also $2 * 128MB = 256MB = 256 * 1024KB = 262144KB$ Speicher belegt.
+
+\section*{Aufgabe 4.2}
+
+Die physikalische Adresse zu $1:12$ ist $5012$.
+Die physikalische Adresse zu $2:2048$ existiert nicht, weil Segment $2$ eine Länge von $2048$ hat und damit die höchste Adresse $2047$ ist.
+Die physikalische Adresse zu $2:2048$ existiert nicht, weil Segment $3$ aktuell nicht im physischen Speicher vorhanden ist.
+Die physikalische Adresse zu $4:97$ ist $98$.
+
+\section*{Aufgabe 4.3}
+
+Ich schreibe den Speicher immer als Spalte, da es sonst nicht auf die Seite passen würde.
+
+\subsection*{Teil 3}
+
+\lstset{
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+}
+\begin{lstlisting}
+13
+24
+
+
+
+
+
+
+
+
+
+
+
+
+
+7
+
+3E  <- q
+7A
+7C
+FF
+9A
+B3
+C0
+6
+0
+FF  <- p
+89
+28
+8D
+42
+E2
+\end{lstlisting}
+
+\subsection*{Teil 4}
+
+\lstset{
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+}
+\begin{lstlisting}
+9   # Freien Speicher reduzieren
+24
+
+
+
+
+
+
+
+
+
+2
+
+BE  <- r
+EF
+7
+
+3E  <- q
+7A
+7C
+FF
+9A
+B3
+C0
+6
+0
+FF  <- p
+89
+28
+8D
+42
+E2
+\end{lstlisting}
+
+\subsection*{Teil 5}
+
+\lstset{
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+}
+\begin{lstlisting}
+9
+15  # Zeiger auf den naechsten freien Block anpassen
+
+
+
+
+
+
+
+
+
+2
+
+BE  <- r
+EF
+15  # Laenge des freien Speichers. Hier wird der letzte Block mit zusammengefasst
+0   # Zeiger auf den naechsten freien Block
+3E  <- q
+7A
+7C
+FF
+9A
+B3
+C0
+6
+0
+FF  <- p
+89
+28
+8D
+42
+E2
+\end{lstlisting}
+
+\subsection*{Teil 6}
+
+\lstset{
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+}
+\begin{lstlisting}
+9
+15
+
+
+
+
+
+
+
+
+
+2
+
+BE  <- r
+EF
+1   # Freien Speicher reduzieren
+0
+3E  <- q
+12  # Header einfuegen und belegten Speicher eintragen
+    # 
+A7  <- s
+AF
+C4
+7F
+03
+90
+CD  <- p
+13
+A0
+F5
+49
+00
+\end{lstlisting}
+
+\subsection*{Teil 7}
+
+\lstset{
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+}
+\begin{lstlisting}
+9
+15
+
+
+
+
+
+
+
+
+
+2
+
+BE  <- r
+EF
+1
+24  # Adresse des neuen freien Blocks eintragen
+3E  <- q
+12
+
+A7  <- s
+AF
+C4
+7F
+03  # 3 Bytes freigeben
+0   # Adresse des naechsten freien Blocks setzen
+CD  <- p
+13
+A0
+F5
+49
+00
+\end{lstlisting}
+
+\subsection*{Teil 8}
+
+\lstset{
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+}
+\begin{lstlisting}
+9
+15
+
+
+
+
+
+
+
+
+
+2
+
+BE  <- r
+EF
+1
+24
+3E  <- q
+12
+
+8A  <- s # Hier die Daten hinschreiben
+C3
+DF
+56
+0F
+05
+FF  <- p
+10
+6E
+B7
+C4
+00
+\end{lstlisting}
+
+\subsection*{Teil 9}
+
+\lstset{
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+}
+\begin{lstlisting}
+9
+15
+
+
+
+
+
+
+
+
+
+2
+
+BE  <- r
+EF
+1
+24
+3E  <- q
+12
+
+8A  <- s
+C3
+DF
+56
+0F
+05
+4B  <- p <- t # Hier zeigt t hin, weil es hier offensichtlich F=15 Byte freien Speicher gibt
+61
+74
+61
+73
+74  # Der Rest geht wohl entweder verloren oder das Programm wird beendet
+\end{lstlisting}
+
+\section*{Aufgabe 4.4}
+
+\subsection*{Teil 1}
+
+Eine mögliche Ausgabe ist
+
+\begin{lstlisting}
+[cqql@arch linux-ex]$ ./first 
+Enter a number: 50
+Enter another number: 20
+Register Dump # 1
+EAX = 00000046 EBX = 00000046 ECX = 9837D8E6 EDX = FFDBC4D4
+ESI = 00000000 EDI = 00000000 EBP = FFDBC488 ESP = FFDBC468
+EIP = 080484C7 FLAGS = 0202                     
+Memory Dump # 2 Address = 08049AF8
+08049AF0 75 6D 62 65 72 3A 20 00 59 6F 75 20 65 6E 74 65 "umber: ?You ente"
+08049B00 72 65 64 20 00 20 61 6E 64 20 00 2C 20 74 68 65 "red ? and ?, the"
+You entered 50 and 20, the sum of these is 70
+\end{lstlisting}
+
+\subsection*{Teil 2}
+
+\lstset{
+language={[x86masm]Assembler},                % choose the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,           % adds a frame around the code
+tabsize=2,          % sets default tabsize to 2 spaces
+captionpos=b,           % sets the caption-position to bottom
+breaklines=true,        % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
+\begin{lstlisting}
+%include "asm_io.inc"
+
+segment .data
+	name db "Marten Lienen", 0
+
+segment .text
+	global asm_main
+asm_main:
+	enter 0,0
+	pusha
+
+	mov eax, name
+	call print_string
+
+	popa
+	mov eax, 0
+	leave
+	ret
+
+\end{lstlisting}
+
+\section*{Aufgabe 4.5}
+
+Bei meinem Speicher sind niedrige Adressen links und nach rechts wird es immer höher.
+
+Hexadezimaldarstellung des Speichers: $FFF67530$
+
+Ausgabe des Big-Endian-Systems: $-10$ und $30000$.
+Ausgabe des Little-Endian-Systems: $-2305$ und $12405$.
+
+\end{document}
