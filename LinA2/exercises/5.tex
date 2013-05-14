@@ -11,6 +11,24 @@
 
 \section*{Übung 1}
 
+\begin{proof}
+Um zu zeigen, dass $\mu_{f}$ das Minimalpolynom ist, müssen wir zeigen, dass $\mu_{f}(f) = 0$ und $\mu_{f} | P$ für alle $P \in K[X]$ mit $P(f) = 0$.
+
+Wir wissen, dass $V$ die direkte Summe seiner $r$ Haupträume ist, wobei $H(f, \lambda_{i}) = E_{m_{i}}(f, \lambda_{i})$ ist.
+Dann können wir jedes $v \in V$ als $v_{1} + \dots + v_{r}$ darstellen, wobei $v_{i} \in H(f, \lambda_{i})$.
+Wir wissen außerdem, dass die Haupträume $f$-invariant und somit auch $f - \lambda_{i}id$-invariant.
+Also ist $(f - \lambda_{k}id)(v_{j}) \in H(f, \lambda_{j})$ für alle $k \in [1, r]$.
+Deshalb ist $(f - \lambda_{i}id)^{m_{i}}(v_{1} + \dots + v_{r}) = (w_{1} + \dots + w_{i - 1} + 0 + w_{i + 1} + \dots + w_{r})$, wobei $w_{k} \in H(f, \lambda_{k})$.
+Insgesamt ist also $\mu_{f}(f)(v) = 0 \quad \forall v \in V$ und $\mu_{f}(f) = 0$.
+
+Sei $P \in K[X]$ mit $P(f) = 0$.
+Wenn $P = 0$, gilt $\mu_{f} | P$, weil das $0$-Polynom von jedem Polynom geteilt wird.
+Sei also $P \ne 0$.
+Angenommen $P$ enthalte den Linearfaktor $(f - \lambda_{i})^{m_{i}}$ nicht.
+Dann ist $P(f)(v) \ne 0$ für $v \in E_{m_{i}}(f, \lambda_{i}) \setminus E_{m_{i} - 1}(f, \lambda_{i})$ im Widerspruch zur Voraussetzung.
+Also enthält $P$ alle diese Linearfaktoren und $\mu_{f} | P$.
+\end{proof}
+
 \section*{Übung 2}
 
 \subsection*{Teil 1}
