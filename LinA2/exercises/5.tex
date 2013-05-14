@@ -27,6 +27,35 @@ Damit $v \in W$ und $W$ $f$-invariant sein kann, darf also kein solches $u$ exis
 
 \subsection*{Teil 3}
 
+\begin{proof}
+Sei $v = (v_{1}, v_{2}, v_{3}) \in \mathbb{R}^{3}$.
+\begin{equation}
+f(v) = Av = \begin{pmatrix}
+v_{1} + v_{2} - v_{3}\\
+-2v_{1} - 2v_{2} + 2v_{3}\\
+v_{1} + v_{2} - v_{3}
+\end{pmatrix}
+= \begin{pmatrix}
+z\\-2z\\z
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+f(\begin{pmatrix}
+z\\-2z\\z
+\end{pmatrix}) = A\begin{pmatrix}
+z\\-2z\\z
+\end{pmatrix}
+= \begin{pmatrix}
+-2z\\4z\\-2z
+\end{pmatrix}
+= -2 \cdot \begin{pmatrix}
+z\\-2z\\z
+\end{pmatrix}
+\end{equation}
+Also sind für jedes $v \in \mathbb{R}^{3}$ $f^{j}(v)$ und $f^{k}(v)$ für alle $j, k \ge 1$ linear abhängig und $(v, f^{k}(v))$ für ein $k \ge 1$ ist die größtmögliche Basis von $U_{v}$.
+Diese hat aber nur 2 Elemente, sodass $U_{v} \ne \mathbb{R}^{3}$ sein muss.
+\end{proof}
+
 \section*{Übung 3}
 
 \subsection*{Teil 1}
@@ -55,6 +84,9 @@ Insgesamt muss $\sigma(j) = j \quad \forall j \in [1, n]$ und $\sigma = id$ sein
 \subsection*{Teil 2}
 
 \begin{proof}
+Sei $(k, l) \in s_{i}(I(\sigma))$.
+Dann 
+
 Sei $(k, p) \in I(\sigma) \setminus \{(i, i + 1)\}$.
 Für $(k, p) \notin [i, i + 1] \times [i, i + 1]$ gilt
 \begin{equation}
@@ -103,9 +135,38 @@ Dann ist $\sigma = \sigma s_{i} s_{i}$ und
 
 \subsection*{Teil 2}
 
+\begin{align*}
+\varepsilon(\sigma_{1}) = -1\\
+\varepsilon(\sigma_{2}) = 1\\
+\varepsilon(\sigma_{3}) = -1\\
+\varepsilon(\sigma_{4}) = 1
+\end{align*}
+
+\begin{equation}
+\varepsilon(\sigma) = 1 \cdot 1 \cdot (-1) \cdot 1 \cdot 1 \cdot 1 \cdot (-1) \cdot 1 \cdot (-1) \cdot 1 \cdot 1 \cdot 1 \cdot (-1) \cdot 1 = 1
+\end{equation}
+
 \section*{Übung 5}
 
 \subsection*{Teil 1}
+
+\begin{proof}
+Sei $\xi \in K^{(U \times V)}$ und $(w, z) \in U \times V$.
+Dann ist
+\begin{equation}
+\xi(w, z) = \sum_{(u, v) \in U \times V} \xi(u, v) \cdot \varphi_{(u, v)}(w, z) = \xi(w, z) \cdot \varphi_{(w, z)}(w, z) = \xi(w, z)
+\end{equation}
+und $(\varphi_{(u, v)})_{(u, v) \in U \times V}$ ist ein EZS.
+
+Für die lineare Unabhängigkeit betrachten wir
+\begin{align}
+& \sum_{(u, v) \in U \times V} \lambda_{u, v} \cdot \varphi_{(u, v)} = 0\\
+\Leftrightarrow & \sum_{(u, v) \in U \times V} \lambda_{u, v} \cdot \varphi_{(u, v)}(w, z) = 0 \quad \forall (w, z) \in U \times V\\
+\Leftrightarrow & \lambda_{w, z} \cdot \varphi_{(w, z)}(w, z) = 0 \quad \forall (w, z) \in U \times V\\
+\Leftrightarrow & \lambda_{w, z} = 0 \quad \forall (w, z) \in U \times V\\
+\end{align}
+Also ist das System auch linear unabhängig und somit eine Basis.
+\end{proof}
 
 \subsection*{Teil 2}
 
