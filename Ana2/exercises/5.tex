@@ -1,0 +1,95 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 19}
+
+\subsection*{Teil a}
+
+\subsection*{Teil b}
+
+\section*{Aufgabe 20}
+
+\section*{Aufgabe 21}
+
+\begin{proof}
+$f$ ist in $(0, 0)$ partiell differenzierbar, weil alle partiellen Ableitungen existieren
+\begin{equation}
+D_{1}f(x) = F_{1}'(x) = f'(x, 0) = 0
+\end{equation}
+\begin{equation}
+D_{2}f(y) = F_{2}'(y) = f'(0, y) = 0
+\end{equation}
+
+Es ist hingegen nicht differenzierbar, weil, wie wir aus Satz 5 des Paragraphen 5 wissen, für differenzierbare Funktionen gilt
+\begin{equation}
+D_{v}f(x) = <v, \nabla f(x)>
+\end{equation}
+In unserem Fall haben wir jedoch beispielsweise
+\begin{align*}
+D_{(1, 1)}f(0, 0) & = \lim_{t \rightarrow 0} \frac{1}{t} (f((0, 0) + t \cdot (1, 1)) + f(0, 0))\\
+& = \lim_{t \rightarrow 0} \frac{1}{t} f(t, t)\\
+& = \lim_{t \rightarrow 0} \frac{1}{t} \frac{t^{3}}{2t^{2}} = \frac{1}{2}
+\end{align*}
+und
+\begin{equation}
+<(1, 1), \nabla f(0, 0)> = <(1, 1), (0, 0)> = 0
+\end{equation}
+Also ist $D_{(1, 1)}f(0, 0) \ne <(1, 1), \nabla f(0, 0)>$ und $f$ kann in $(0, 0)$ nicht differenzierbar sein.
+\end{proof}
+
+\section*{Aufgabe 22}
+
+\subsection*{Teil a}
+
+Nach dem Satz von Schwartz gilt
+\begin{align*}
+rot \nabla f & = (D_{2}D_{3}f - D_{3}D_{2}f, D_{3}D_{1}f - D_{1}D_{3}f, D_{1}D_{2}f - D_{2}D_{1}f)\\
+& = (D_{2}D_{3}f - D_{2}D_{3}f, D_{3}D_{1}f - D_{3}D_{1}f, D_{1}D_{2}f - D_{1}D_{2}f)\\
+& = (0, 0, 0) = 0\\
+\end{align*}
+weil $f \in C^{2}$.
+
+\subsection*{Teil b}
+
+\begin{align*}
+div\ rot\ g & = div (D_{2}g_{3} - D_{3}g_{2}, D_{3}g_{1} - D_{1}g_{3}, D_{1}g_{2} - D_{2}g_{1})\\
+& = D_{1}(D_{2}g_{3} - D_{3}g_{2}) + D_{2}(D_{3}g_{1} - D_{1}g_{3}) + D_{3}(D_{1}g_{2} - D_{2}g_{1})\\
+& = D_{1}D_{2}g_{3} - D_{1}D_{3}g_{2} + D_{2}D_{3}g_{1} - D_{2}D_{1}g_{3} + D_{3}D_{1}g_{2} - D_{3}D_{2}g_{1}\\
+& = D_{1}D_{2}g_{3} - D_{1}D_{3}g_{2} + D_{2}D_{3}g_{1} - D_{1}D_{2}g_{3} + D_{1}D_{3}g_{2} - D_{2}D_{3}g_{1} = 0\\
+\end{align*}
+
+\section*{Aufgabe 23}
+
+\subsection*{Teil a}
+
+\begin{align*}
+rot\ g & = (D_{2}g_{3} - D_{3}g_{2}, D_{3}g_{1} - D_{1}g_{3}, D_{1}g_{2} - D_{2}g_{1})\\
+& = (D_{2}e^{xy} - D_{3}(xze^{xy}), D_{3}(yze^{xy}) - D_{1}e^{xy}, D_{1}(xze^{xy}) - D_{2}(yze^{xy}))\\
+& = (xe^{xy} - xe^{xy}, ye^{xy} - ye^{xy}, ze^{xy} - ze^{xy})\\
+& = (0, 0, 0) = 0\\
+\end{align*}
+
+\subsection*{Teil b}
+
+\begin{equation}
+f(x, y, z) = z \cdot e^{xy}
+\end{equation}
+\begin{equation}
+D_{1}f(x, y, z) = yze^{xy}
+\end{equation}
+\begin{equation}
+D_{2}f(x, y, z) = xze^{xy}
+\end{equation}
+\begin{equation}
+D_{3}f(x, y, z) = e^{xy}
+\end{equation}
+
+\end{document}
