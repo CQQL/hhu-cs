@@ -13,9 +13,9 @@
 \section*{Aufgabe 4.1}
 
 Da eine Seitentabelle wie ein Direct Mapped Cache funktioniert insofern, dass die Stelle in der Seitentabelle, an der geguckt werden muss, durch Offsetbits bestimmt ist, muss die Seitentabelle für jedes mögliche Offset eine Zeile haben.
-Wir haben 32-Bit-Adressen und $16$ KB = $2^14$ Byte große Seiten.
+Wir haben 32-Bit-Adressen und $16$ KB = $2^{14}$ Byte große Seiten.
 Das heißt, dass die letzten 14 Bit das Offset innerhalb der Seite darstellen, während die verbleibenden $18$ Bit die Zeile in der Seitentabelle bestimmen.
-Wie im Eingangssatz dargelegt, muss die Seitentabelle deshalb $2^{18}$ Einträge haben, die bei $2$ Byte pro Eintrag insgesamt $2^{18} * 2 = 2^19 = 524288$ Byte oder auch $512$ KB belegen.
+Wie im Eingangssatz dargelegt, muss die Seitentabelle deshalb $2^{18}$ Einträge haben, die bei $2$ Byte pro Eintrag insgesamt $2^{18} * 2 = 2^{19} = 524288$ Byte oder auch $512$ KB belegen.
 
 Bei einer zweistufigen Seitentabelle ist die Situation insofern anders, dass es eine Primärtabelle mit $2^{9}$ Einträgen gibt, die auf Sekundärtabellen verweisen, die wiederum $2^{9}$ Einträge haben, aber nur existieren, wenn auf sie schonmal zugegriffen wurde.
 Um die Frage zu beantworten, gehe ich davon aus, dass auf die Speicherbereiche, die gerade nicht alloziert sind auch nocht nicht zugegriffen wurde.
@@ -24,14 +24,14 @@ Dann werden am oberen Ende des Adressraums $128 * 1MB = 2^{7} * 2^{20} = 2^{27}$
 Wenn man dies auf die Seiten der Primärtabelle aufteilt, erhält man $2^{27} / 2^{23} = 2^{4}$ Seiten, also $2^{4}$ Sekundärtabellen, die angelegt worden sind und jeweils $2^{9} * 2 = 2^{10}$ Byte Speicher belegen.
 Da man das ganze am unteren Ende des Adressraums nochmal hat, verdoppeln sich die Sekundärtabellen und belegen insgesamt $2 * 2^{4} * 2^{10} = 2^{15}$ Byte Speicher.
 Dazu addiert man noch den Speicher, der von der Primärtabelle belegt wird.
-Ich nehme nochmal an, dass die Sekundärtabellen geeignet platziert werden (vielleicht immer am Beginn der "großen" Pageframes), sodass man sie ebenfalls mit $2$ Byte adressieren kann.
+Ich nehme nochmal an, dass die Sekundärtabellen geeignet platziert werden (vielleicht immer am Beginn der ''großen`` Pageframes), sodass man sie ebenfalls mit $2$ Byte adressieren kann.
 Dann belegt die Primärtabelle nämlich auch $2^{10}$ Byte und man kommt insgesamt auf $2^{15} + 2^{10} = 33792$ Byte belegten Speicher.
 
 \section*{Aufgabe 4.2}
 
 Die physikalische Adresse zu $1:12$ ist $5012$.
 Die physikalische Adresse zu $2:2048$ existiert nicht, weil Segment $2$ eine Länge von $2048$ hat und damit die höchste Adresse $2047$ ist.
-Die physikalische Adresse zu $2:2048$ existiert nicht, weil Segment $3$ aktuell nicht im physischen Speicher vorhanden ist.
+Die physikalische Adresse zu $3:32$ existiert nicht, weil Segment $3$ aktuell nicht im physischen Speicher vorhanden ist.
 Die physikalische Adresse zu $4:97$ ist $98$.
 
 \section*{Aufgabe 4.3}
