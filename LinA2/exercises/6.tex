@@ -1,0 +1,177 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Image}{Im}
+
+\newtheorem*{lemma}{Lemma}
+
+\begin{document}
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+\begin{equation}
+\id^{1} = \id \Rightarrow \ord(\id) = 1
+\end{equation}
+\begin{equation}
+s_{i}^{2} = \id \Rightarrow \ord(s_{i}) = 2
+\end{equation}
+
+\subsection*{Teil 2}
+
+Mit Teil 1 und dem vorigen Übungsblatt ergibt sich
+\begin{equation}
+(1\ 2\ 3) = \id \Rightarrow \ord(1\ 2\ 3) = 1
+\end{equation}
+\begin{equation}
+(1\ 3\ 2) = s_{2} \Rightarrow \ord(1\ 3\ 2) = 2
+\end{equation}
+\begin{equation}
+(2\ 1\ 3) = s_{1} \Rightarrow \ord(2\ 1\ 3) = 2
+\end{equation}
+\begin{equation}
+(3\ 2\ 1)^{2} = (s_{1}s_{2}s_{1})^{2} = \id \Rightarrow \ord(3\ 2\ 1) = 2
+\end{equation}
+\begin{equation}
+(2\ 3\ 1)^{3} = (s_{2}s_{1})^{3} = \id \Rightarrow \ord(2\ 3\ 1) = 3
+\end{equation}
+\begin{equation}
+(3\ 1\ 2)^{3} = (s_{1}s_{2})^{3} = \id \Rightarrow \ord(3\ 1\ 2) = 3
+\end{equation}
+
+\subsection*{Teil 3}
+
+\begin{equation}
+\ord(\sigma) = n
+\end{equation}
+
+\begin{lemma}
+Sei $k \in [1, n]$.
+Dann ist $\sigma^{n - k + 1}(k) = 1$ und $\sigma^{k - 1}(1) = k$, also $\sigma^{k - 1} \circ \sigma^{n - k + 1}(k) = \sigma^{n}(k) = k$.
+\end{lemma}
+
+\begin{proof}
+Ich zeige es per Induktion.
+\begin{equation}
+\sigma^{1}(n) = \sigma^{n - n + 1}(n) = 1
+\end{equation}
+\begin{equation}
+\sigma^{0}(1) = \sigma^{k - 1}(1) = 1
+\end{equation}
+
+Angenommen $\sigma^{n - k + 1}(k) = 1$ und $\sigma^{k - 1}(1) = k$.
+\begin{equation}
+\sigma^{n - (k - 1) + 1}(k - 1) = \sigma^{n - k + 1} \circ \sigma(k - 1) = \sigma^{n - k + 1}(k) = 1
+\end{equation}
+Dies gilt, weil $k \le n \Rightarrow k - 1 < n$.
+
+Sei $k \le n - 1$.
+\begin{equation}
+\sigma^{k}(1) = \sigma \circ \sigma^{k - 1}(1) = \sigma(k) = k + 1
+\end{equation}
+\end{proof}
+
+\section*{Übung 2}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Seien $A, B \in M_{n}(\mathbb{R})$ und $\lambda, \mu \in \mathbb{R}$.
+\begin{align*}
+\varphi(\lambda A + \mu B) & = \sum_{i = 1}^{n} \sum_{j = 1}^{n} (\lambda a_{i, j} + \mu b_{i, j}) (e_{i} \otimes e_{j})\\
+& = \lambda \cdot \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{i, j} (e_{i} \otimes e_{j}) + \mu \cdot \sum_{i = 1}^{n} \sum_{j = 1}^{n} b_{i, j} (e_{i} \otimes e_{j})\\
+& = \lambda \varphi(A) + \mu \varphi(B)
+\end{align*}
+Also ist $\varphi$ linear.
+
+Sei $v \in \mathbb{R}^{n} \otimes_{\mathbb{R}} \mathbb{R}^{n}$ mit $v = \sum_{i = 1}^{n} \sum_{j = 1}^{n} \lambda_{i, j} (e_{i} \otimes e_{j})$.
+Dann definiere ich $\varphi^{-1}: \mathbb{R}^{n} \otimes_{\mathbb{R}} \mathbb{R}^{n} \rightarrow M_{n}(\mathbb{R})$ durch
+\begin{equation}
+\varphi^{-1}(v) = (a_{i, j})_{i \in [1, n], j \in [1, m]}
+\end{equation}
+mit
+\begin{equation}
+a_{i, j} = \lambda_{i, j}
+\end{equation}
+
+Sei $v$ wie oben.
+\begin{align*}
+\varphi \circ \varphi^{-1}(v) = \varphi((a_{i, j})) = \sum_{i = 1}^{n} \sum_{j = 1}^{n} \lambda_{i, j} (e_{i} \otimes e_{j}) = v
+\end{align*}
+
+Sei $A = (a_{i, j}) \in M_{n}(\mathbb{R})$.
+\begin{align*}
+\varphi^{-1} \circ \varphi(A) = \varphi^{-1}(\sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{i, j} (e_{i} \otimes e_{j})) = A
+\end{align*}
+
+Dann ist $\varphi \circ \varphi^{-1} = \id = \varphi^{-1} \circ \varphi$ und $\varphi$ ist ein Isomorphismus.
+\end{proof}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+\begin{align*}
+\varphi(A) & = \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{i, j} (e_{i} \otimes e_{j})\\
+& = \sum_{j = 1}^{n} \sum_{i = 1}^{n} a_{i, j} (e_{i} \otimes e_{j})\\
+& = \sum_{j = 1}^{n} \left( \sum_{i = 1}^{n} a_{i, j} e_{i} \right) \otimes e_{j} \qquad \textit{weil $\otimes$ bilinear ist}\\
+& = \sum_{j = 1}^{n} S_{j} \otimes e_{j}\\
+\end{align*}
+\end{proof}
+
+\subsection*{Teil 3}
+
+\begin{proof}
+Wenn $Rg(A) = 0$, bedeutet das, dass alle Spalten von $A$ paarweise linear abhängig sind.
+Seien $\mu_{k} \in \mathbb{R}$, sodass $S_{k} = \mu_{k} \cdot S_{j}$ für alle $k \in [1, n]$.
+Sei $S \in \Image(A)$ und $\xi_{k} \in \mathbb{R}$ für alle $k \in [1, n]$.
+Dann ist
+\begin{align*}
+S & = \xi_{1} S_{1} + \dots + \xi_{j} S_{j} + \dots + \xi_{n} S_{n}\\
+& = \xi_{1} \mu_{1} S_{j} + \dots + \xi_{j} \mu_{j} S_{j} + \dots + \xi_{n} \mu_{n} S_{j}\\
+& = \left( \xi_{1} \mu_{1} + \dots + \xi_{n} \mu_{n} \right) S_{j}\\
+& \Rightarrow \lambda_{j} = \left( \xi_{1} \mu_{1} + \dots + \xi_{n} \mu_{n} \right)^{-1}
+\end{align*}
+
+\begin{align*}
+\varphi(A) & = \sum_{j = 1}^{n} S_{j} \otimes e_{j}\\
+& = \sum_{j = 1}^{n} \lambda_{j} S \otimes e_{j}\\
+& = \sum_{j = 1}^{n} S \otimes \lambda_{j} e_{j} \qquad \textit{wegen der Bilinearität}\\
+& = S \otimes \sum_{j = 1}^{n} \lambda_{j} e_{j} \qquad \textit{wegen der Bilinearität}\\
+& = S \otimes v\\
+\end{align*}
+\end{proof}
+
+\subsection*{Teil 4}
+
+\subsection*{Teil 5}
+
+\subsection*{Teil 6}
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\section*{Übung 4}
+
+\subsection*{Teil 1}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\subsection*{Teil 4}
+
+\end{document}
