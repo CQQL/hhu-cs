@@ -1,0 +1,194 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 5.1}
+
+\subsection*{Teil 1}
+
+60%
+
+\subsection*{Teil 2}
+
+Neue Übungsblätter werden immer am Mittwoch Morgen bereitgestellt, Abgabeschluss ist immer der darauffolgende Mittwoch um 8:30 Uhr
+
+\subsection*{Teil 3}
+
+Keine Ahnung. Ist mir auch egal.
+
+\subsection*{Teil 4}
+
+Es steht bei der Abgabe unter dem Dateiuploadfeld.
+
+\subsection*{Teil 5}
+
+Datei entspricht nicht den erlaubten Datentypen!
+
+\subsection*{Teil 6}
+
+Weil die Session auslaufen könnte und man dann unter Umständen die eingegebenen Texte verliert.
+
+\subsection*{Teil 7}
+
+Dann wende ich mich an Norbert Goebel.
+
+\subsection*{Teil 8}
+
+informatik2@uni-duesseldorf.de
+
+\subsection*{Teil 9}
+
+Mo.	13:30–14:30 Uhr		bei Norbert Goebel	 (Raum 25.12.02.41)\\
+Fr.	13:30–14:30 Uhr		bei Matthias Radig	 (Raum 25.12.02.38)
+
+\section*{Aufgabe 5.2}
+
+\subsection*{Teil 1}
+
+Hier hat man ein Speicherleck, weil 10 mal Speicher reserviert, aber am Ende nur der zuletzt reservierte Speicher freigegeben wird.
+Zu lösen wäre es, indem man den Speicher am Ende jedes Schleifendurchlaufs wieder freigibt.
+
+\subsection*{Teil 2}
+
+Zuerst nicht die erfolgreiche Speicherreservierung in $d$ überprüft, sondern in einer unbekannten Variable $i$.
+Außerdem schreibt die zweite Wertzuweisung an eine nicht reservierte Speicherstelle.
+Wahrscheinlich waren hier $0$ und $1$ als Indizes gemeint anstatt $1$ und $2$.
+
+\subsection*{Teil 3}
+
+$i$ ist ein Zeiger auf einen int-Zeiger, aber es wird nur für die erste Stufe Speicher reserviert.
+Ein besserer Ausdruck fällt mir dafür nicht ein und ich gebe einfach eine korrigierte Version an
+\lstset{
+language={C},                % choose the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,           % adds a frame around the code
+tabsize=2,          % sets default tabsize to 2 spaces
+captionpos=b,           % sets the caption-position to bottom
+breaklines=true,        % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
+\begin{lstlisting}
+int** i;
+i = malloc(sizeof(int*));
+
+if (i == NULL) {
+  /* hier ausgelassen: Fehlermeldung, Programm beenden */ 
+}
+
+*i = malloc(sizeof(int));
+
+if (*i == NULL) {
+  /* hier ausgelassen: Fehlermeldung, Programm beenden */ 
+}
+
+**i = 5;
+
+free(*i);
+free(i);
+\end{lstlisting}
+
+\section*{Aufgabe 5.3}
+
+Da es systemabhängig zu sein scheint und ich keine Angabe finden konnte, gehe ich davon aus, dass ein gesetztes PF gerade Parität der unteren 8 Bit anzeigt.
+Und das AF ist zwar in der Tabelle, aber nicht im Index des Buches zu finden.
+Nach Wikipedia nehme ich an, dass das AF gesetzt wird, wenn es einen Übertrag vom 4t-niedrigsten zum 5t-niedrigsten Bit gibt.
+Das DF wird außerdem immer seinen Standardwert behalten, da in keiner Aufgabe CLD oder STD verwendet wird.
+
+\subsection*{Teil 1}
+
+Hier wird zuerst die Hexadezimalzahl $ffffffff$ in das eax-Register geschrieben und dann $1$ addiert.
+Es wird ZF gesetzt, weil das Ergebnis $0$ ist.
+Es wird CF gesetzt, weil es einen Übertrag über das höchste Bit hinaus gibt.
+Es wird PF gesetzt, weil die unteren 8 Bit $0$ sind und somit eine gerade Parität haben.
+Es wird AF gesetzt, weil es einen Übertrag von Bit 4 zu 5 gibt.
+
+\subsection*{Teil 2}
+
+Hier wird zuerst die Hexadezimalzahl $fffffff0$ in das eax-Register geschrieben und dann $1$ addiert.
+Es wird SF gesetzt, weil das höchste Bit $1$ ist.
+
+\subsection*{Teil 3}
+
+Hier wird die Hexadezimalzahl $12345678$ in das eax-Register geschrieben und von da aus nochmal in das ebx-Register kopiert.
+Dann werden die beiden Register verglichen.
+Es wird ZF gesetzt, weil eax und ebx gleich sind und somit die Differenz $0$ ist.
+Es wird PF gesetzt, weil die niedrigsten $8$ Bit der Differenz von eax und ebx gerade Parität aufweisen.
+
+\subsection*{Teil 4}
+
+Hier wird die Hexadezimalzahl $ffffffff$ in das eax- und danach die Hexadezimalzahl $fffffff1$ in das ebx-Register geschrieben.
+Dann wird $eax - ebx$ berechnet.
+Es wird OF gesetzt, weil sich das oberste Bit ändert.
+
+\section*{Aufgabe 5.4}
+
+Ich nehme immer ein Byte, kopiere es nach ecx, verschiebe es an die richtige Stelle, isoliere es mit einem and und füge es dann ebx hinzu mit einem or.
+\lstset{
+language={[x86masm]Assembler},                % choose the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,           % adds a frame around the code
+tabsize=2,          % sets default tabsize to 2 spaces
+captionpos=b,           % sets the caption-position to bottom
+breaklines=true,        % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
+\begin{lstlisting}
+%include "asm_io.inc"
+
+segment .text
+        global asm_main
+asm_main:
+        enter 0,0
+        pusha
+
+        mov eax, 0A0B70807h
+        mov ebx, 0
+        mov ebx, eax
+        shl ebx, 24
+        mov ecx, eax
+        shl ecx, 8
+        and ecx, 000ff0000h
+        or ebx, ecx
+        mov ecx, eax
+        shr ecx, 8
+        and ecx, 00000ff00h
+        or ebx, ecx
+        mov ecx, eax
+        shr ecx, 24
+        and ecx, 0000000ffh
+        or ebx, ecx
+
+        popa
+        mov eax, 0
+        leave
+        ret
+
+\end{lstlisting}
+
+\end{document}
