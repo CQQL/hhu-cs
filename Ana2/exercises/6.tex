@@ -1,0 +1,313 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 24}
+
+\subsection*{Teil a}
+
+Die kritischen Stellen von $f$ sind genau die Stellen, für die $\nabla f = 0$.
+
+\begin{equation}
+\nabla f = \begin{pmatrix}
+2x + y + 1\\
+2y + x + 1
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+2x + y + 1 = 0 \land 2y + x + 1 = 0 \Leftrightarrow x = -\frac{1}{3} \land y = -\frac{1}{3}
+\end{equation}
+
+$(-\frac{1}{3}, -\frac{1}{3})$ ist also eine kritische Stelle von $f$.
+
+\begin{equation}
+Hf(x, y) = \begin{pmatrix}
+2 & 1\\
+1 & 2
+\end{pmatrix} = Hf(-\frac{1}{3}, -\frac{1}{3})
+\end{equation}
+Nach dem Kriterium von Hurwitz ist $Hf(-\frac{1}{3}, -\frac{1}{3})$ positiv definit und $(-\frac{1}{3}, -\frac{1}{3})$ ist ein striktes lokales Minimum von $f$.
+
+\begin{equation}
+f(-\frac{1}{3}, -\frac{1}{3}) = \frac{1}{9} + \frac{1}{9} + \frac{1}{9} - \frac{1}{3} - \frac{1}{3} + 1 = \frac{2}{3}
+\end{equation}
+
+\subsection*{Teil b}
+
+Offensichtlich ist das lokale Minimum aus Teil a in $Q$ enthalten.
+Dann muss man jetzt die Randwerte untersuchen.
+\begin{equation}
+Q_{1} = \{ (-1, t) \mid t \in [-1, 1[ \}
+\end{equation}
+\begin{equation}
+Q_{2} = \{ (1, t) \mid t \in ]-1, 1] \}
+\end{equation}
+\begin{equation}
+Q_{3} = \{ (t, -1) \mid t \in ]-1, 1] \}
+\end{equation}
+\begin{equation}
+Q_{4} = \{ (t, 1) \mid t \in [-1, 1[ \}
+\end{equation}
+$Q_{1}, \dots, Q_{4}$ sind eine Partition von $\partial Q$.
+
+\begin{equation}
+g_{1}(t) = f(-1, t) = 1 - t + t^{2} - 1 + t + 1 = t^{2} + 1
+\end{equation}
+\begin{equation}
+g_{1}'(t) = 2t
+\end{equation}
+\begin{equation}
+g_{1}''(t) = 2
+\end{equation}
+\begin{equation}
+g_{2}(t) = f(1, t) = 1 + t + t^{2} + 1 + t + 1 = t^{2} + 2t + 3
+\end{equation}
+\begin{equation}
+g_{2}'(t) = 2t + 2
+\end{equation}
+\begin{equation}
+g_{2}''(t) = 2
+\end{equation}
+\begin{equation}
+g_{3}(t) = f(t, -1) = t^{2} - t + 1 + t - 1 + 1 = t^{2} + 1
+\end{equation}
+\begin{equation}
+g_{4}(t) = f(t, 1) = t^{2} + t + 1 + t + 1 + 1 = t^{2} + 2t + 3
+\end{equation}
+\begin{equation}
+g_{1}'(t) = 0 \Leftrightarrow t = 0
+\end{equation}
+\begin{equation}
+g_{2}'(t) = 0 \Leftrightarrow t = -1
+\end{equation}
+Für $g_{3}$ und $g_{4}$ gilt es genauso aufgrund von Gleichheit und an den zweiten Ableitungen sieht man, dass beides Minima sind.
+\begin{equation}
+f(0, -1) = 1 > f(-\frac{1}{3}, -\frac{1}{3})
+\end{equation}
+\begin{equation}
+f(1, -1) = 2 > f(-\frac{1}{3}, -\frac{1}{3})
+\end{equation}
+$f(-\frac{1}{3}, -\frac{1}{3}) = \frac{2}{3}$ ist also das globale Minimum auf $Q$.
+Die Maxima von $g_{k}$ sind die Randwerte.
+\begin{equation}
+g_{1}(-1) = 2
+\end{equation}
+\begin{equation}
+g_{1}(1) = 2
+\end{equation}
+\begin{equation}
+g_{2}(-1) = 2
+\end{equation}
+\begin{equation}
+g_{2}(1) = 6
+\end{equation}
+Also ist das globale Maximum von $f$ auf $Q$ $f(1, 1) = 6$.
+
+\section*{Aufgabe 25}
+
+\begin{equation}
+x + y + z = 60 \Leftrightarrow z = 60 - x - y
+\end{equation}
+
+Ich definiere $f: \{ (x, y) \mid x, y \ge 0 \land x + y \le 60 \} \rightarrow \mathbb{R}$ durch
+\begin{equation}
+f(x, y, z) = xyz = xy(60 - x - y) = 60xy - x^{2}y - xy^{2} := f(x, y)
+\end{equation}
+\begin{equation}
+\nabla f = \begin{pmatrix}
+60y - 2yx - y^{2}\\
+60x - x^{2} - 2xy
+\end{pmatrix}
+\end{equation}
+\begin{align*}
+& 60y - 2yx - y^{2} = 0 \land 60x - x^{2} - 2xy = 0\\
+\Leftrightarrow & y(60 - 2x - y) = 0 \land x(60 - x - 2y) = 0\\
+\Leftrightarrow & y = 0 \lor 60 - 2x - y = 0 \land x = 0 \lor 60 - x - 2y = 0\\
+\Leftrightarrow & y = 0 \lor y = 60 - 2x \land x = 0 \lor x = 60 - 2y\\
+\Leftrightarrow & y = 0 \lor y = 60 - 2x \land x = 0 \lor x = 60 \lor x = 60 - 2(60 - 2x)\\
+\Leftrightarrow & y = 0 \lor y = 60 - 2x \land x = 0 \lor x = 60 \lor x = 20\\
+\Leftrightarrow & y = 0 \lor y = 60 \lor y = 20 \land x = 0 \lor x = 60 \lor x = 20\\
+\end{align*}
+Weil $f(x, y, z) = 0$ wenn $x = 0$, $y = 0$ oder $z = 0$ und beide andere Variablen $0$ sein müssen, wenn eine $60$ ist, wegen $x + y + z = 60$, bleibt nur $(20, 20)$ als kritische Stelle, die Sinn ergibt.
+Aus diesem Grund, kann das Maximum auch nicht auf dem Rand liegen.
+
+\begin{equation}
+Hf(x, y) = \begin{pmatrix}
+2y & 60 - 2x - 2y\\
+60 - 2x - 2y & 2x
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+Hf(20, 20) = \begin{pmatrix}
+40 & -20\\
+-20 & 40
+\end{pmatrix}
+\end{equation}
+
+Nach dem Kriterium von Hurwitz ist diese Matrix positiv definit und $(20, 20)$ somit ein Minimum, was aber nicht stimmt.
+
+Das maximale Produkt erhält man mit der Belegung $(20, 20, 20)$.
+
+\section*{Aufgabe 26}
+
+\subsection*{Teil a}
+
+\subsubsection*{Teil i}
+
+\begin{proof}
+\begin{equation}
+\nabla f = \begin{pmatrix}
+-8x^{3} + 6xy\\
+3x^{2} - 2y
+\end{pmatrix}
+\end{equation}
+\begin{align*}
+& -8x^{3} + 6xy = 0 \land 3x^{2} - 2y = 0\\
+\Leftrightarrow & -8x^{3} + 6xy = 0 \land 3x^{2} = 2y\\
+\Leftrightarrow & -8x^{3} + 3x3x^{2} = 0 \land 3x^{2} = 2y\\
+\Leftrightarrow & x^{3} = 0 \land 3x^{2} = 2y\\
+\Leftrightarrow & x = 0 \land 3x^{2} = 2y\\
+\Leftrightarrow & x = 0 \land y = 0
+\end{align*}
+\end{proof}
+
+\subsubsection*{Teil ii}
+
+\begin{proof}
+Sei $v = (x, y) \in \mathbb{R}^{2} \setminus \{0\}$.
+\begin{align*}
+g(t) = f(tv) & = -(ty - t^{2}x^{2})(ty - 2t^{2}x^{2})\\
+& = -2t^{4}x^{4} + 3t^{2}x^{2}ty - t^{2}y^{2}\\
+& = -2x^{4}t^{4} + 3x^{2}yt^{3} - y^{2}t^{2}\\
+\end{align*}
+\begin{equation}
+g'(t) = -8x^{4}t^{3} + 9x^{2}yt^{2} - 2y^{2}t
+\end{equation}
+\begin{align*}
+& g(t) = 0\\
+\Leftrightarrow & t(-8x^{4}t^{2} + 9x^{2}yt - 2y^{2}) = 0\\
+\Leftrightarrow & t = 0 \lor -8x^{4}t^{2} + 9x^{2}yt - 2y^{2} = 0\\
+\end{align*}
+$0$ ist also eine kritische Stelle von $g$.
+
+\begin{equation}
+g''(t) = -24x^{4}t^{2} + 18x^{2}yt - 2y^{2}
+\end{equation}
+\begin{equation}
+g''(0) = -2y^{2} < 0 \qquad \textit{weil $y \ne 0$}
+\end{equation}
+$0$ ist also ein striktes lokales Maximum.
+\end{proof}
+
+\subsubsection*{Teil iii}
+
+\begin{proof}
+\begin{equation}
+Hf(x, y) = \begin{pmatrix}
+-24x^{2} + 6y & 6x\\
+6x & -2
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+Hf(0, 0) = \begin{pmatrix}
+0 & 0\\
+0 & -2
+\end{pmatrix}
+\end{equation}
+\end{proof}
+
+\subsection*{Teil b}
+
+\subsubsection*{Teil i}
+
+\subsubsection*{Teil ii}
+
+\subsubsection*{Teil iii}
+
+\section*{Aufgabe 27}
+
+\begin{equation}
+\nabla f = \begin{pmatrix}
+2x\\
+2y + 1
+\end{pmatrix}
+\end{equation}
+Die kritischen Stellen von $f$ sind $(x, y)$ mit
+\begin{equation}
+2x = 0 \land 2y + 1 = 0 \Leftrightarrow x = 0 \land y = -\frac{1}{2}
+\end{equation}
+\begin{equation}
+Hf(x, y) = \begin{pmatrix}
+2 & 0\\
+0 & 2
+\end{pmatrix} = Hf(0, -\frac{1}{2})
+\end{equation}
+$(0, -\frac{1}{2})$ ist also ein striktes lokales Minimum, weil die Eigenwerte von $Hf(0, \frac{1}{2})$ alle ($2$ und $2$) positiv sind.
+
+Um das globale Minimum und Maximum auf $D$ zu bestimmen, muss man jetzt noch die Randwerte untersuchen.
+Wir wissen, dass $\partial D = \{ \xi \in \mathbb{R}^{2} \mid ||\xi||_{2} = 1 \}$, weil $D = \overline{B}_{1}(0, 0)$.
+Es ist $\partial D = \{ (\sin t, \cos t) \mid t \in [0, 2\pi[ \} =: B$.
+
+\begin{proof}
+Sei $(x, y) \in \partial D$.
+\begin{align*}
+& ||(x, y)||_{2} = 1\\
+\Leftrightarrow & \sqrt{x^{2} + y^{2}} = 1\\
+\Leftrightarrow & x^{2} + y^{2} = 1\\
+\Rightarrow & \exists t \in [0, 2\pi[ \quad \sin(t)^{2} + \cos(t)^{2} = 1 = x^{2} + y^{2}\\
+\Rightarrow & (x, y) \in B \quad \textit{weil es genau eine solche Aufteilung von $1$ gibt}
+\end{align*}
+
+Sei $(\sin t, \cos t) \in B$.
+\begin{equation}
+||(\sin t, \cos t)||_{2} = \sqrt{\sin(t)^{2}, \cos(t)^{2}} = \sqrt{1} = 1 \Rightarrow (\sin t, \cos t) \in \partial D
+\end{equation}
+\end{proof}
+
+Ich definiere $g: \mathbb{R} \rightarrow \mathbb{R}$.
+\begin{equation}
+g(t) = f(\sin t, \cos t) = \sin(t)^{2} + \cos(t)^{2} + \cos(t) = \cos(t) + 1
+\end{equation}
+\begin{equation}
+g'(t) = -\sin(t)
+\end{equation}
+\begin{equation}
+-\sin(t) = 0 \Leftrightarrow \sin(t) = 0 \Leftrightarrow t = 0 \lor t = \frac{1}{2}\pi
+\end{equation}
+$0$ und $\frac{1}{2}\pi$ sind also die kritischen Stellen von $g$.
+\begin{equation}
+g''(t) = -\cos(t)
+\end{equation}
+\begin{equation}
+g''(0) = -1
+\end{equation}
+\begin{equation}
+g''(\frac{1}{2}\pi) = 1
+\end{equation}
+Also ist $0$ ein lokales Maximum und $\frac{1}{2}\pi$ ein lokales Minimum von $g$.
+Dann ist $f(0, -\frac{1}{2})$ ein lokales Minimum von $f$, $g(0)$ der maximale Randwert von $f$ und $g(\frac{1}{2}\pi)$ der minimale Randwert von $f$.
+Ein Vergleich der Werte ergibt
+\begin{equation}
+f(0, -\frac{1}{2}) = -\frac{1}{4}
+\end{equation}
+\begin{equation}
+g(0) = f(0, 1) = 2
+\end{equation}
+\begin{equation}
+g(\frac{1}{2}\pi) = f(1, 0) = 1
+\end{equation}
+Also ist $f(0, -\frac{1}{2})$ das globale Minimum und $f(0, 1)$ das globale Maximum auf $D$.
+
+Das Minimum ist natürlich in $D$.
+\begin{equation}
+||(0, -\frac{1}{2}||_{2} = \frac{1}{2} \le 1
+\end{equation}
+
+\end{document}
