@@ -209,27 +209,46 @@ $0$ ist also ein striktes lokales Maximum.
 \subsubsection*{Teil iii}
 
 \begin{proof}
+Man kann Werte so einsetzen, dass beliebig nah an $(0, 0)$ größere Werte als bei $(0, 0)$ herauskommen.
 \begin{equation}
-Hf(x, y) = \begin{pmatrix}
--24x^{2} + 6y & 6x\\
-6x & -2
-\end{pmatrix}
+f(x, 1.5x^{2}) = -(1.5x^{2} - x^{2})(1.5x^{2} - 2x^{2}) = 0.25x^{2} > f(0, 0) = 0 \quad \forall x \in \mathbb{R}
 \end{equation}
-\begin{equation}
-Hf(0, 0) = \begin{pmatrix}
-0 & 0\\
-0 & -2
-\end{pmatrix}
-\end{equation}
+Also hat $f$ in $(0, 0)$ kein Maximum.
 \end{proof}
 
 \subsection*{Teil b}
 
 \subsubsection*{Teil i}
 
+\begin{proof}
+\begin{equation}
+\nabla g = \begin{pmatrix}
+D_{1}f(x, y) \cdot \exp(f(x, y) - 1) \cdot \frac{1}{\left( \exp(f(x, y) - 1) \right)^{2} + 1}\\
+D_{2}f(x, y) \cdot \exp(f(x, y) - 1) \cdot \frac{1}{\left( \exp(f(x, y) - 1) \right)^{2} + 1}\\
+\end{pmatrix}
+\end{equation}
+Da $\exp$ keine Nullstelle hat, sind die Nullstellen von den beiden Funktionen jeweils die Nullstellen von $D_{1}f$ und $D_{2}f$, sodass $(0, 0)$ die einzige kritische Stelle ist.
+\end{proof}
+
 \subsubsection*{Teil ii}
 
+\begin{proof}
+Sei $v (x, y) \in \mathbb{R}^{2} \setminus \{0\}$ und $f_{v} := g$ aus Teil ii von Teil a.
+\begin{align*}
+h(t) = g(tv) = \arctan(\exp(f_{v}(t) - 1)
+\end{align*}
+\begin{equation}
+h'(t) = f_{v}'(t) \cdot \exp(f_{v}(t) - 1) \cdot \frac{1}{\left( \exp(f_{v}(t) - 1 \right)^{2} + 1}
+\end{equation}
+Da $f_{v}'$, wie in Teil ii von Teil a gesehen, in $0$ eine Nullstelle hat, hat $h'$ dort ebenfalls eine.
+\end{proof}
+
 \subsubsection*{Teil iii}
+
+\begin{proof}
+Da $f$ in $(0, 0)$ kein lokales Maximum hat, gibt es in jeder Umgebung von $(0, 0)$ eine Punkt $(a, b)$, sodass $f(a, b) \ge f(0, 0)$.
+Da $\arctan$ und $\exp$ streng monoton wachsend ist, ist dann auch $g(a, b) \ge g(0, 0)$ und $g$ hat in $(0, 0)$ kein lokales Maximum.
+\end{proof}
 
 \section*{Aufgabe 27}
 
