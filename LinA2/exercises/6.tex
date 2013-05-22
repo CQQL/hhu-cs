@@ -10,6 +10,8 @@
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\id}{id}
 \DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Tr}{Tr}
 
 \newtheorem*{lemma}{Lemma}
 
@@ -160,18 +162,95 @@ S & = \xi_{1} S_{1} + \dots + \xi_{j} S_{j} + \dots + \xi_{n} S_{n}\\
 
 \subsection*{Teil 1}
 
+\begin{proof}
+Sei $v \in V$, $\phi, \psi \in V^{\vee}$, $w, z \in W$ und $a, b \in K$.
+\begin{align*}
+\Phi(a \phi + b \psi, w)(v) & = (a \phi + b \psi)(v) w\\
+& = (a \phi(v) + b \psi(v)) w\\
+& = a \phi(v) w + b \psi(v)w = (a \Phi(\phi, w) + b \Phi(\psi, w))(v)\\
+\end{align*}
+\begin{align*}
+\Phi(\phi, aw + bz)(v) & = \phi(v) (aw + bz)\\
+& = a \phi(v)w + b \phi(v)z = a \Phi(\phi, w) + b \Phi(\phi, z)
+\end{align*}
+
+Weil $\Phi$ von $V^{\vee} \times W$ nach $\Hom_{K}(V, W)$ abbildet und wir wissen, dass das Tensorprodukt existiert, gibt es nach Definition des Tensorprodukts eine Abbildung $\pi: V^{\vee} \times W \rightarrow V^{\vee} \otimes W$ definiert durch $\pi(\phi, w) = \phi \otimes w$, sodass $L_{\Phi} \circ \pi (\phi, w)(v) = \Phi(\phi, w)(v) = \phi(v) w$ ist.
+Durch Auflösen der Komposition erhält man $L_{\Phi}(\phi \otimes w)(v) = \phi(v)w$.
+\end{proof}
+
 \subsection*{Teil 2}
 
+\begin{proof}
+Seien $\varphi, \psi \in V^{\vee}$, $v \in V$ und $a, b \in W$, sodass
+\begin{equation}
+L_{\Phi}(\varphi \otimes a)(v) = \varphi(v) a = \psi(v) b = L_{\Phi}(\psi \otimes b)
+\end{equation}
+Dann muss $\psi(v)$ linear abhängig von $\varphi(v)$ und $b$ von $a$ sein.
+Seien $\lambda_{b}$ und $\lambda_{\psi}$ so, dass
+\begin{equation}
+b = \lambda_{b} a \qquad \land \qquad \psi(v) = \lambda_{\psi} \varphi(v)
+\end{equation}
+Wegen $\varphi(v) a = \psi(v) b = \lambda_{\psi} \varphi(v) \lambda_{b} a$ gilt außerdem $\lambda_{b}\lambda_{\psi} = 1$.
+Durch Einsetzen erhält man
+\begin{align*}
+\psi \otimes b & = (\lambda_{\psi} \varphi) \otimes (\lambda_{b} a)\\
+& = \lambda_{\psi} \lambda_{b} (\varphi \otimes a) \qquad \textit{wegen der Bilinearität}\\
+& = \varphi \otimes a \qquad \textit{wegen $\lambda_{b}\lambda_{\psi} = 1$}\\
+\end{align*}
+Somit ist $L_{\Phi}$ injektiv.
+\end{proof}
+
 \subsection*{Teil 3}
+
+
 
 \section*{Übung 4}
 
 \subsection*{Teil 1}
 
+Nach der Definition des Tensorprodukts ist der Wert in der Spalte $v_{p} \otimes w_{q}$ und Zeile $v_{r} \otimes w_{s}$
+\begin{equation}
+a_{p, r} \cdot b_{q, s}
+\end{equation}
+
 \subsection*{Teil 2}
+
+\begin{proof}
+Nach Teil 1 ist
+\begin{equation}
+\Tr(A \otimes B) = \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{i, i} b_{j, j}
+\end{equation}
+Für die rechte Seite der Gleichung gilt
+\begin{align*}
+\Tr(A)\Tr(B) & = \left( \sum_{i = 1}^{n} a_{i, i} \right) \left( \sum_{j = 1}^{m} b_{j, j} \right)\\
+& = \sum_{i = 1}^{n} \left( a_{i, i} \cdot \left( \sum_{j = 1}^{m} b_{j, j} \right) \right) \\
+& = \sum_{i = 1}^{n} \sum_{j = 1}^{m} a_{i, i} b_{j, j}
+\end{align*}
+
+Also ist
+\begin{equation}
+\Tr(A \otimes B) = \Tr(A)\Tr(B)
+\end{equation}
+\end{proof}
 
 \subsection*{Teil 3}
 
+\begin{proof}
+\begin{equation}
+f \times g(v \otimes w) = f(v) \otimes g(w) = (\lambda v) \otimes (\mu w) = \lambda \mu (v \otimes w)
+\end{equation}
+
+$(v \otimes w)$ ist also ein Eigenvektor zum Eigenwert $\lambda \mu$.
+\end{proof}
+
 \subsection*{Teil 4}
+
+Nach Teil 3 besteht die Basis $B \otimes B'$ aus Eigenvektoren von $f \otimes g$.
+Sie ist deshalb diagonalisierbar und das charakteristische Polynom ist das Produkt der Diagonalwerte von $X I_{mn} - A \otimes B$.
+Die Diagonalwerte von $A \otimes B$ sind wiederum nach Teil 3 $\lambda_{i} \mu_{j} \quad \forall i \in [1, n], j \in [1, m]$.
+Insgesamt ist
+\begin{equation}
+\chi_{A \otimes B} = \prod_{i = 1}^{n} \prod_{j = 1}^{m} (X - \lambda_{i} \mu_{j})
+\end{equation}
 
 \end{document}
