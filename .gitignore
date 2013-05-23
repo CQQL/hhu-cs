@@ -6,3 +6,6 @@
 !*.rb
 !**/script.pdf
 !**/cover_sheet.pdf
+!*.c
+!*.h
+!*.asm
