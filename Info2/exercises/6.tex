@@ -1,0 +1,33 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 6.3}
+
+Da jeder Kern einen eigene Caches hat, können die Inhalte, die bereits auf dem ersten Kern geladen wurden bei der weiteren Ausführung des Programms nicht mehr verwendet werden, wenn es auf einem anderen Kern ausgeführt wird, und müssen neu geladen werden.
+Dadurch hätte man große Performanceeinbußen.
+
+\section*{Aufgabe 6.4}
+
+\subsection*{Teil 1}
+
+Der wichtigste Unterschied ist, dass Threads sich denselben Speicherbereich teilen, während Prozesse getrennte Speicherbereiche haben.
+
+\subsection*{Teil 2}
+
+Durch diesen geteilten Speicher können Probleme entstehen, wenn Threads davon Gebrauch machen.
+Wenn z.B. ein Thread eine Variable während einer Berechnung in einen ungültigen Zustand bringt.
+Im normalen Single-Thread-Betrieb ist das kein Problem, weil der Thread wieder einen gültigen Zustand herstellen kann, bevor er die Kontrolle an den Rest des Programms zurückgibt.
+Bei Multithreading kann der Thread aber jederzeit die Kontrolle verlieren, sodass andere Threads im Shared Memory diesen ungültigen Wert sehen und im schlimmsten Fall auch verwenden können.
+
+\subsection*{Teil 3}
+
+Sinnvoll ist es dann, wenn die Threads sich Speicher teilen müssen oder man einfach Werte an das aufrufende Programm zurückgeben möchte, z.B. wenn man ein Problem in kleine Probleme aufteilt, die dann parallel berechnet werden können.
+
+\end{document}
