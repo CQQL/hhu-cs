@@ -1,0 +1,101 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Übung 28}
+
+\subsection*{Teil a}
+
+Zuerst löse ich die zugehörige homogene DGl
+\begin{equation}
+y' = y
+\end{equation}
+\begin{align*}
+& y' = \frac{dy}{dx} = y\\
+\Leftrightarrow & \frac{1}{y} dy = dx\\
+\Leftrightarrow & \int \frac{1}{y} dy = \int dx\\
+\Leftrightarrow & \log(y) + c_{2} = x + c_{1}\\
+\Leftrightarrow & \log(y) = x + c_{1} - c_{2}\\
+\Leftrightarrow & y = \exp(x + c_{1} - c_{2}) = \exp(c_{1} - c_{2}) \exp(x)\\
+\Leftrightarrow & y = c \cdot \exp(x)\\
+\end{align*}
+Da $c_{1}$ und $c_{2}$ frei wählbare Konstanten sind, ist $\exp(c_{1} - c_{2})$ auch konstant und ich schreibe dafür einfach $c$.
+Die Lösung der homogenen DGl nenne ich $\varphi$.
+
+Sei $\psi$ eine Lösung der DGl und $u$ eine Funktion, sodass $\psi = u \cdot \varphi$.
+\begin{align*}
+\psi' = u' \varphi + u \varphi' = u' \varphi + u \varphi = \psi + u' \varphi
+\end{align*}
+Ich setze $u' \varphi = 1$.
+\begin{equation}
+u' = \frac{1}{\varphi} \Leftrightarrow u = \int \frac{1}{\varphi} dx = \int \frac{1}{c \cdot \exp(x)}dx = \frac{1}{c} \int \exp(-x) dx = \frac{1}{c} \left( -\exp(-x) + d \right)
+\end{equation}
+Durch Einsetzen kann ich nun $\psi$ bestimmen.
+\begin{equation}
+\psi = \frac{1}{c} \left( -\exp(-x) + d \right) \cdot c \cdot \exp(x) = \left( -\exp(-x) + d \right) \cdot \exp(x) = d \exp(x) - \exp(x - x) = d \exp(x) - 1
+\end{equation}
+$\psi$ sind alle Lösungen für alle $d \in \mathbb{R}$.
+
+\subsection*{Teil b}
+
+Ich gehe genauso vor wie in Teil a bis zu dem Punkt, wo ich $u'\varphi = 1$ setze.
+Stattdessen setze ich $u' \varphi = x$.
+\begin{equation}
+u' = \frac{x}{\varphi} \Leftrightarrow u = \int \frac{x}{\varphi} dx = \int \frac{x}{c \cdot \exp(x)} = \frac{1}{c} \int x \cdot \exp(-x) dx = \frac{1}{c} \left[ (-x - 1) \exp(-x) + k \right]\ \ \textit{siehe Nebenrechnung}
+\end{equation}
+Nebenrechnung: Ich setze $f = x$ und $g' = \exp(-x)$ und wende partielle Integration an.
+Es sind $f' = 1$ und $g = d - \exp(-x)$ wie in Teil a.
+\begin{align*}
+\int f \cdot g' dx = fg - \int f' \cdot g dx & = fg - \int d - \exp(-x) dx\\
+& = fg - (dx + e_{1}) + \int \exp(-x) dx\\
+& = fg - (dx + e_{1}) + (e_{2} - \exp(-x))\\
+& = x \cdot (d - \exp(-x)) - (dx + e_{1}) + (e_{2} - \exp(-x))\\
+& = xd - x\exp(-x) - dx - e_{1} + e_{2} - \exp(-x)\\
+& = - x\exp(-x) - \exp(-x) - e_{1} + e_{2} \qquad \textit{Ich definiere $k := - e_{1} + e_{2}$}\\
+& = (-x - 1)\exp(-x) + k\\
+\end{align*}
+
+Wieder bestimme ich $\psi$ durch Einsetzen:
+\begin{align*}
+\psi & = c \cdot \exp(x) \cdot \frac{1}{c} \left[ (-x - 1) \exp(-x) + k \right]\\
+& = \exp(x) \cdot \left[ (-x - 1) \cdot \exp(-x) + k \right]\\
+& = \exp(x) \cdot \left[ \frac{(-x - 1)}{\exp(x)} + k \right]\\
+& = \frac{(-x - 1)}{\exp(x)} \exp(x) + k\exp(x)\\
+& = k\exp(x) + (-x - 1)\\
+& = k\exp(x) - x - 1\\
+\end{align*}
+Dann ist $\psi$ alle Lösungen für alle $k \in \mathbb{R}$.
+
+\section*{Übung 29}
+
+\begin{proof}
+Um die Form von $\varphi$ zu bestimmen, löse ich zunächst die zugehörige homogene DGl $y' = y$.
+Diese wird, wie in Übung 28 gesehen, durch $\psi_{c} = c \cdot \exp(x)$ gelöst.
+Nun wende ich die Methode der Variation der Konstanten an und wähle die Funktion $u$ so, dass $\varphi = u \psi_{c}$.
+\begin{equation}
+\varphi' = u' \psi_{c} + u \psi_{c}' = u'\psi_{c} + u \psi_{c} = \varphi + u' \psi_{c}
+\end{equation}
+Ich setze $u' \psi_{c} = p$.
+\begin{align*}
+u = \int \frac{p}{\psi_{c}} = \int \frac{p}{c \cdot \exp(x)} = \frac{1}{c} \int p \cdot \exp(-x)
+\end{align*}
+\end{proof}
+
+\section*{Übung 30}
+
+\section*{Übung 31}
+
+\subsection*{Teil a}
+
+\subsection*{Teil b}
+
+\section*{Übung 32}
+
+\end{document}
