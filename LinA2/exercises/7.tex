@@ -157,7 +157,31 @@ N(x, y)N(x', y') & = (|x|^{2} + |y|^{2})(|x'|^{2} + |y'|^{2})\\
 
 \subsection*{Teil 8}
 
+\begin{proof}
+Das neutrale Element ist $(1, 0)$.
+Angenommen $(x, y)$ ist invertierbar.
+Dann gibt es $(a, b)$, sodass
+\begin{equation}
+(x, y)(a, b) = (xa - y\overline{b}, y\overline{a} + xb) = (1, 0) \Leftrightarrow xa - y\overline{b} = 1\ \land\ y\overline{a} + xb = 0
+\end{equation}
+Wenn $x = 0 = y$ wäre, so wäre $xa - y\overline{b} = 0 \ne 1$.
+Deshalb muss $(x, y) \ne (0, 0)$ sein und dann ist $N(x, y) \ne 0$.
 
+Wenn $N(x, y) \ne 0$ ist, muss $(x, y) \ne (0, 0)$ sein.
+Wenn $x = 0$ ist, dann ist $a = 0$ und $b = -\overline{y^{-1}}$.
+Wenn $y = 0$ ist, dann ist $a = x^{-1}$ und $b = 0$.
+Wenn $x \ne 0$ und $y \ne 0$, dann ist
+\begin{align*}
+& xa - y\overline{b} = 1\ \land\ y\overline{a} + xb = 0\\
+\Leftrightarrow & xa - y\overline{b} = 1\ \land\ a = -\overline{xby^{-1}}\\
+\Leftrightarrow & -x\overline{xby^{-1}} - y\overline{b} = 1\ \land\ a = -\overline{xby^{-1}}\\
+\Leftrightarrow & -\overline{b}(x\overline{xy^{-1}} + y) = 1\ \land\ a = -\overline{xby^{-1}}\\
+\Leftrightarrow & b = -\overline{(x\overline{xy^{-1}} + y)^{-1}}\ \land\ a = -\overline{xby^{-1}}\\
+\Leftrightarrow & b = -\overline{(x\overline{xy^{-1}} + y)^{-1}}\ \land\ a = -\overline{x(-\overline{(x\overline{xy^{-1}} + y)^{-1}})y^{-1}}\\
+\end{align*}
+
+Dann ist die Menge aller invertierbaren Elemente $\{ (x, y) \in \mathbb{H} \mid (x, y) \ne (0, 0) \}$.
+\end{proof}
 
 \section*{Übung 4}
 
@@ -176,15 +200,5 @@ Wenn wir in Teil 1 $B = A$ wählen, wissen wir schon, dass $f = 0$ oder $f$ inje
 Sei $f \ne 0$.
 Da $f$ ein injektiver Homomorphismus ist und die Dimensionen der Quell- und Zielmenge gleich sind, ist $f$ surjektiv und somit bijektiv.
 \end{proof}
-
-\subsection*{Teil 3}
-
-\begin{proof}
-$f$ muss entweder $0$ oder injektiv sein.
-Wenn $f = 0$, ist $f = 0 \times \Id_{A}$.
-Sei $f \ne 0$ und $\lambda' \ne \lambda$ ein zweiter Eigenwert von $f$.
-\end{proof}
-
-\subsection*{Teil 4}
 
 \end{document}
