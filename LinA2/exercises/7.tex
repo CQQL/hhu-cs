@@ -1,0 +1,190 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Id}{Id}
+
+\begin{document}
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Sei $v \in \Ker(f)$ und $a \in A$.
+\begin{equation}
+f(av) = f(a) \times f(v) = f(a) \times 0 = 0 = 0 \times f(a) = f(v) \times f(a) = f(va)
+\end{equation}
+Also ist $va, av \in \Ker(f)$ und $\Ker(f)$ ist ein Ideal von $A$.
+\end{proof}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+Seien $x, y \in K$ und $a, b \in A$.
+\begin{equation}
+p(xa + yb) = [xa + yb] = a[x] + y[b] = xp(a) + yp(b)
+\end{equation}
+\begin{equation}
+p(ab) = [ab] = [a][b] = p(a) p(b)
+\end{equation}
+\begin{equation}
+p(1) = [1]
+\end{equation}
+\begin{equation}
+[a][1] = [a1] = [a] = [1a] = [1][a]
+\end{equation}
+$[1]$ ist also das neutrale Element von $A/I$.
+\end{proof}
+
+\section*{Übung 2}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Da $K^{2}$ ein Vektorraum ist, sind $+$ und Skalarmultiplikation wie gewohnt.
+
+\end{proof}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\subsection*{Teil 4}
+
+\subsection*{Teil 5}
+
+\subsection*{Teil 6}
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Seien $a, b \in \mathbb{R}$ und $w, z \in \mathbb{C}$.
+\begin{equation}
+\overline{aw + bz} = \overline{aw} + \overline{bz} = a\overline{w} + b\overline{z}
+\end{equation}
+\begin{equation}
+\overline{wz} = \overline{(w_{1} + iw_{2})(z_{1} + iz_{2})} = w_{1}z_{1} - w_{2}z_{2} - i(w_{1}z_{2} + w_{2}z_{1}) = \overline{(w_{1} + iw_{2})} \cdot \overline{(z_{1} + iz_{2})} = \overline{w} \cdot \overline{z}
+\end{equation}
+Das neutrale Element $1$ wird auf das neutrale Element abgebildet.
+\begin{equation}
+\overline{1} = 1
+\end{equation}
+\end{proof}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\begin{proof}
+Nein, weil
+\begin{equation}
+(a + ib)(c - id) = ac - iad + ibc + bd = ac + bd + i(bc - ad)
+\end{equation}
+aber
+\begin{equation}
+(a - ib)(c + id) = ac + iad - ibc + bd = ac + bd + i(ad - bc)
+\end{equation}
+Deshalb ergeben sich beim kommutieren der Faktoren verschiedene Ergebnisse.
+
+Außerdem ist die Verknüpfungstafe in Teil 5 nicht symmetrisch.
+\end{proof}
+
+\subsection*{Teil 4}
+
+\begin{proof}
+Seien $a, b, c, d \in \mathbb{R}$, sodass
+\begin{equation}
+a1 + bi + cj + dk = 0 \Leftrightarrow a + ib = 0\ \land\ c + id = 0
+\end{equation}
+Da $i$ und $1$ linear unabhängig sind, müssen alle Skalare $0$ sein und das System ist linear unabhängig.
+Da es $4$ Vektoren sind und $\mathbb{H}$ als $\mathbb{R}$-Vektorraum von Dimension $4$ ist, ist das System auch eine Basis.
+\end{proof}
+
+\subsection*{Teil 5}
+
+\begin{tabular}{c|c|c|c|c}
+  & 1 & i & j & k\\
+\hline
+1 & 1 & i & j & k\\
+\hline
+i & i & -1 & k & -j\\
+\hline
+j & j & -k & -1 & i\\
+\hline
+k & k & j & -i & 1
+\end{tabular}
+
+\subsection*{Teil 6}
+
+\begin{proof}
+\begin{align*}
+N(x, y)N(x', y') & = (|x|^{2} + |y|^{2})(|x'|^{2} + |y'|^{2})\\
+& = (x\overline{x} + y\overline{y})(x'\overline{x'} + y'\overline{y'})\\
+& = y\overline{y}(x'\overline{x'} + y'\overline{y'}) + x\overline{x}(x'\overline{x'} + y'\overline{y'})\\
+& = y\overline{y}x'\overline{x'} + y\overline{y}y'\overline{y'} + x\overline{x}x'\overline{x'} + x\overline{x}y'\overline{y'}\\
+& = |xx'|^{2} + |yy'|^{2} + |yx'|^{2} + |xy'|^{2}\\
+& = |xx'|^{2} + |yy'|^{2} + |yx'|^{2} + |xy'|^{2} - xx'\overline{y}y' + xx'\overline{y}y' - y\overline{y'}\overline{xx'} + y\overline{y'}\overline{xx'}\\
+& = |xx'|^{2} + |yy'|^{2} + |yx'|^{2} + |xy'|^{2} - xx'\overline{y}y' - y\overline{y'}\overline{xx'} + y\overline{x'}\overline{xy'} + xy'\overline{y}x'\\
+& = |xx'|^{2} - xx'\overline{y}y' - y\overline{y'}\overline{xx'} + |yy'|^{2} + |yx'|^{2} + y\overline{x'}\overline{xy'} + xy'\overline{y}x' + |xy'|^{2}\\
+& = xx'\overline{xx'} - xx'\overline{y}y' - y\overline{y'}\overline{xx'} + y\overline{y'}\overline{y}y' + y\overline{x'}\overline{y}x' + y\overline{x'}\overline{xy'} + xy'\overline{y}x' + xy'\overline{xy'}\\
+& = xx'(\overline{xx'} - \overline{y}y') - y\overline{y'}(\overline{xx'} - \overline{y}y') + y\overline{x'}(\overline{y}x' + \overline{xy'}) + xy'(\overline{y}x' + \overline{xy'})\\
+& = (xx' - y\overline{y'})(\overline{xx'} - \overline{y}y') + (y\overline{x'} + xy')(\overline{y}x' + \overline{xy'})\\
+& = (xx' - y\overline{y'})(\overline{xx' - y\overline{y'}}) + (y\overline{x'} + xy')(\overline{y\overline{x'} + xy'})\\
+& = |xx' - y\overline{y'}|^{2} + |y\overline{x'} + xy'|^{2}\\
+& = N(xx' - y\overline{y'}, y\overline{x'} + xy') = N((x, y) \cdot (x', y'))
+\end{align*}
+\end{proof}
+
+\subsection*{Teil 7}
+
+\begin{proof}
+\begin{align*}
+(x, y) \cdot s(x, y) & = (x, y) \cdot (\overline{x}, -y)\\
+& = (x\overline{x} - y(\overline{-y}), y\overline{\overline{x}} + x(-y))\\
+& = (x\overline{x} + y\overline{y}), yx - xy)\\
+& = (|x|^{2} + |y|^{2}, 0) = (N(x, y), 0)
+\end{align*}
+\end{proof}
+
+\subsection*{Teil 8}
+
+
+
+\section*{Übung 4}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+$\Ker(f)$ ist ein Ideal von $A$, aber Ideale von $A$ sind entweder $0$ oder $A$.
+Wenn $\Ker(f) = A$ ist, ist $f(a) = a\ \forall a \in A \Rightarrow f = 0$.
+Wenn $\Ker(f) = 0$ ist, ist $f$ injektiv, da $0$ das neutrale Element ist.
+\end{proof}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+Wenn wir in Teil 1 $B = A$ wählen, wissen wir schon, dass $f = 0$ oder $f$ injektiv ist.
+Sei $f \ne 0$.
+Da $f$ ein injektiver Homomorphismus ist und die Dimensionen der Quell- und Zielmenge gleich sind, ist $f$ surjektiv und somit bijektiv.
+\end{proof}
+
+\subsection*{Teil 3}
+
+\begin{proof}
+$f$ muss entweder $0$ oder injektiv sein.
+Wenn $f = 0$, ist $f = 0 \times \Id_{A}$.
+Sei $f \ne 0$ und $\lambda' \ne \lambda$ ein zweiter Eigenwert von $f$.
+\end{proof}
+
+\subsection*{Teil 4}
+
+\end{document}
