@@ -1,6 +1,6 @@
-; Ich nehme an, dass 1 Datenwort 1 Byte ist.
+; Ich nehme an, dass 1 Datenwort 2 Byte sind, weil WORD in Assembler 16 Bit sind.
 ; Dann hat der Cache 4 Zeilen mit jeweils 2 Blöcken von jeweils 2 Worten.
-; Die Adressen sind dann unterteilt in 1 Word-Bit, 2 Line-Bits und der Rest ist Tag.
+; Die Adressen sind dann unterteilt in 1 Byte-Bit, 1 Word-Bit, 2 Line-Bits und der Rest ist Tag.
 
 segment .data
   input_format db "%d", 0
@@ -22,15 +22,15 @@ asm_main:
   call scanf
   add esp, 8
 
-  ; Isoliere die ersten 29 Bit (TAG) und lege sie auf den Stack als Argument für printf
+  ; Isoliere die ersten 28 Bit (TAG) und lege sie auf den Stack als Argument für printf
   mov eax, [esp]
-  shr eax, 3
+  shr eax, 4
   push eax
 
-  ; Isoliere Bit 2 und 3 (LINE) und lege sie auf den Stack als Argument für printf
+  ; Isoliere Bit 3 und 4 (LINE) und lege sie auf den Stack als Argument für printf
   mov eax, [esp + 4]
-  and eax, 110b
-  shr eax, 1
+  and eax, 1100b
+  shr eax, 2
   push eax
 
   ; Ergebnisse ausgeben
