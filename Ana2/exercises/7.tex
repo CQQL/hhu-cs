@@ -90,9 +90,50 @@ Dann ist $\psi$ alle Lösungen für alle $k \in \mathbb{R}$.
 \section*{Übung 30}
 
 \begin{proof}
+In der Vorlesung haben wir den Spezialfall mit $\alpha = 1$ und $\beta = 2$ behandelt.
+Nun suchen wir eine Funktion ähnlicher Form mit passenden Werten.
+Seien $a, b \in \mathbb{R}$.
+\begin{equation}
+\varphi = (c - bx)^{-a}
+\end{equation}
+\begin{equation}
+\varphi' = ab(c - bx)^{-a - 1}
+\end{equation}
+Dann setzen wir $\varphi$ und $\varphi'$ in unsere gesuchte Form ein, um $a$ und $b$ zu bestimmen.
 \begin{align*}
-\frac{dP}{dt} = \alpha P^{\beta} \Leftrightarrow P^{-\beta} dP = \alpha dt \Leftrightarrow \int P^{-\beta} dP = \int \alpha dt \Leftrightarrow \int P^{-\beta} dP = \alpha t + c
+\varphi' = \alpha \varphi^{\beta} \Leftrightarrow ab(c - bx)^{-a - 1} = \alpha ((c - bx)^{-a})^{\beta} = \alpha ((c - bx)^{-a\beta})
 \end{align*}
+Wir setzen gleich
+\begin{equation}
+- a - 1 = -a\beta \Leftrightarrow a + 1 = a\beta \Leftrightarrow 1 + \frac{1}{a} = \beta \Leftrightarrow a = \frac{1}{\beta - 1}
+\end{equation}
+\begin{equation}
+ab = \alpha \Leftrightarrow b = \frac{\alpha}{a} \Leftrightarrow b = \alpha(\beta - 1)
+\end{equation}
+Dann ist $\varphi$ eine Lösung und sieht folgendermaßen aus
+\begin{equation}
+\varphi(x) = (c - \alpha(\beta - 1)x)^{\frac{1}{1 - \beta}}
+\end{equation}
+Nun bestimmen wir die konkrete Lösung zu der Anfangsbedingung
+\begin{equation}
+\varphi(0) = P_{0} \Leftrightarrow c^{\frac{1}{1 - \beta}} = P_{0} \Leftrightarrow c = P_{0}^{1 - \beta}
+\end{equation}
+Sie sieht also konkret folgendermaßen aus
+\begin{equation}
+\varphi(x) = (P_{0}^{1 - \beta} - \alpha(\beta - 1)x)^{\frac{1}{1 - \beta}}
+\end{equation}
+$\varphi$ Definitionsbereich ist gegeben durch
+\begin{equation}
+P_{0}^{1 - \beta} - \alpha(\beta - 1)x \ge 0 \Leftrightarrow P_{0}^{1 - \beta} \ge \alpha(\beta - 1)x \Leftrightarrow x \le \frac{P_{0}^{1 - \beta}}{\alpha(\beta - 1)} =: T
+\end{equation}
+Also ist $\varphi$ definiert auf $]-\infty, \frac{P_{0}^{1 - \beta}}{\alpha(\beta - 1)}]$ und somit auch auf dem zugehörigen offenen Intervall.
+
+\begin{align*}
+\lim_{x \rightarrow T} \varphi(x) & = \lim_{x \rightarrow T} (P_{0}^{1 - \beta} - \alpha(\beta - 1)x)^{\frac{1}{1 - \beta}}\\
+& = \lim_{x \rightarrow T} \frac{1}{(P_{0}^{1 - \beta} - \alpha(\beta - 1)x)^{\frac{1}{\beta - 1}}}\\
+& = \lim_{x \rightarrow T} \frac{1}{\sqrt[\beta - 1]{P_{0}^{1 - \beta} - \alpha(\beta - 1)x}} = \infty\\
+\end{align*}
+Weil $\beta - 1 > 0$ und der Term unter der Wurzel gegen $0$ konvergiert, konvergiert der Nenner gegen $0$ und $\varphi$ gegen $\infty$.
 \end{proof}
 
 \section*{Übung 31}
