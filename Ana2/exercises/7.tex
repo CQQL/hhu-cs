@@ -76,26 +76,57 @@ Dann ist $\psi$ alle Lösungen für alle $k \in \mathbb{R}$.
 \section*{Übung 29}
 
 \begin{proof}
-Um die Form von $\varphi$ zu bestimmen, löse ich zunächst die zugehörige homogene DGl $y' = y$.
-Diese wird, wie in Übung 28 gesehen, durch $\psi_{c} = c \cdot \exp(x)$ gelöst.
-Nun wende ich die Methode der Variation der Konstanten an und wähle die Funktion $u$ so, dass $\varphi = u \psi_{c}$.
-\begin{equation}
-\varphi' = u' \psi_{c} + u \psi_{c}' = u'\psi_{c} + u \psi_{c} = \varphi + u' \psi_{c}
-\end{equation}
-Ich setze $u' \psi_{c} = p$.
 \begin{align*}
-u = \int \frac{p}{\psi_{c}} = \int \frac{p}{c \cdot \exp(x)} = \frac{1}{c} \int p \cdot \exp(-x)
+& \varphi' = \varphi + p\\
+\Leftrightarrow & \varphi' + \sum_{i = 1}^{n} p^{(i)} = \varphi + \sum_{i = 0}^{n} p^{(i)} \qquad \textit{Addiere alle Ableitungen}\\
+\Leftrightarrow & \frac{\varphi' + \sum_{i = 1}^{n} p^{(i)}}{\varphi + \sum_{i = 0}^{n} p^{(i)}} = 1\\
+\Leftrightarrow & \int \frac{\varphi' + \sum_{i = 1}^{n} p^{(i)}}{\varphi + \sum_{i = 0}^{n} p^{(i)}} = \int 1\\
+\Leftrightarrow & \log(\varphi + \sum_{i = 0}^{n} p^{(i)}) = x + c\\
+\Leftrightarrow & \varphi + \sum_{i = 0}^{n} p^{(i)} = \exp(x + c)\\
+\Leftrightarrow & \varphi = d \cdot \exp(x) - \sum_{i = 0}^{n} p^{(i)}\\
 \end{align*}
 \end{proof}
 
 \section*{Übung 30}
 
+\begin{proof}
+\begin{align*}
+\frac{dP}{dt} = \alpha P^{\beta} \Leftrightarrow P^{-\beta} dP = \alpha dt \Leftrightarrow \int P^{-\beta} dP = \int \alpha dt \Leftrightarrow \int P^{-\beta} dP = \alpha t + c
+\end{align*}
+\end{proof}
+
 \section*{Übung 31}
 
 \subsection*{Teil a}
 
+\begin{proof}
+\begin{equation}
+K = \{ (x, y) \in \mathbb{R}^{2} \mid y^{2} + x^{2} = r^{2} \} = \{ (x, y) \in \mathbb{R}^{2} \mid y = \pm \sqrt{r^{2} - x^{2}} \}
+\end{equation}
+Seien $f, g$ Funktionen von $]-r, r[$ nach $\mathbb{R}$ mit
+\begin{equation}
+f(x) = \sqrt{r^{2} - x^{2}}
+\end{equation}
+\begin{equation}
+g(x) = -\sqrt{r^{2} - x^{2}}
+\end{equation}
+Dann ist
+\begin{equation}
+f'(x) = -2x \frac{1}{2} \frac{1}{\sqrt{r^{2} - x^{2}}} = -x\frac{1}{\sqrt{r^{2} - x^{2}}} = -\frac{x}{f(x)}
+\end{equation}
+\begin{equation}
+g'(x) = 2x \frac{1}{2} \frac{1}{\sqrt{r^{2} - x^{2}}} = x\frac{1}{--\sqrt{r^{2} - x^{2}}} = -\frac{x}{g(x)}
+\end{equation}
+Das ist die Steigung der Tangente, weil die Ableitung als die Steigung der Tangente in $(x, f(x))$ definiert ist.
+\end{proof}
+
 \subsection*{Teil b}
 
-\section*{Übung 32}
+\begin{equation}
+f(1) = \sqrt{r^{2} - 1} = 1 \Leftrightarrow r^{2} - 1 = 1 \Rightarrow r = \sqrt{2} \Rightarrow f(x) = \sqrt{2 - x^{2}}
+\end{equation}
+\begin{equation}
+f(-1) = \sqrt{r^{2} - 1} = -2 \Leftrightarrow r^{2} - 1 = 2 \Rightarrow r = \sqrt{5} \Rightarrow f(x) = \sqrt{5 - x^{2}}
+\end{equation}
 
 \end{document}
