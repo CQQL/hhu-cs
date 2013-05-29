@@ -1,0 +1,46 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 7.1}
+
+Generell ist Assemblercode schwer zu verstehen, schwer zu schreiben und fehleranfällig.
+Dazu kommt noch, dass die Stärke von Assembler - das direkte Steuern der CPU und ein damit verbundener Geschwindigkeitsvorteil - mittlerweile von den meisten Compilern besser ausgenutzt wird, als es ein Mensch könnte.
+Es gilt also abzuwägen zwischen einem meist relativ geringen Geschwindigkeitsvorteil und einem großen Mehraufwand in der Programmierung.
+Der einzige Punkt, an dem man hier für Assembler argumentieren könnte, ist also der Kompressionsalgorithmus.
+
+\subsection*{Ist es sinnvoll bei ...?}
+\begin{description}
+\item[GUI] Nein, weil eigentlich jede Programmiersprache hier ausreichende Performance bringt
+\item[Datei IO] Nein, weil das eigentlich nur Aufrufe ans OS sind und die Performance hauptsächlich davon abhängt
+\item[Algorithmus] Vielleicht, wenn man so viele riesige Dateien komprimieren möchte, dass die gesparte Zeit den Extraaufwand in der Programmierung aufwiegt
+\end{description}
+
+\section*{Aufgabe 7.2}
+
+\subsection*{Teil 1}
+
+Wird als Extradatei hochgeladen.
+
+\subsection*{Teil 2}
+
+Die Ausgabe ist
+
+\begin{lstlisting}
+$ nasm -f elf 7.2.asm && gcc -m32 -o 7.2 7.2.o driver.c asm_io.o && ./7.2
+Ergebnis : 24
+\end{lstlisting}
+
+\subsection*{Teil 3}
+
+Es zählt die Anzahl der Einsen in der Binärdarstellung von eax.
+
+\end{document}
