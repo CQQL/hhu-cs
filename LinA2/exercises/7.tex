@@ -47,20 +47,73 @@ $[1]$ ist also das neutrale Element von $A/I$.
 
 \subsection*{Teil 1}
 
-\begin{proof}
-Da $K^{2}$ ein Vektorraum ist, sind $+$ und Skalarmultiplikation wie gewohnt.
-
-\end{proof}
-
 \subsection*{Teil 2}
+
+\begin{proof}
+Seien $(u, v), (w, z) \in A_{\alpha, \beta}$ und $a, b \in K$.
+\begin{align*}
+s(au + bw, av + bz) & = (au + bw + \beta av + \beta bz, -av - bz)\\
+& = (au + \beta av, -av) + (bw + \beta bz, -bz)\\
+& = a(u + \beta v, -v) + b(w + \beta z, -z)\\
+& = a \cdot s(u, v) + b \cdot s(w, z)
+\end{align*}
+$s$ ist linear.
+\begin{align*}
+s((u, v) \cdot (w, z)) & = s(uw + \alpha vz, uz + wv + \beta vz)\\
+& = (uw + \alpha vz + \beta (uz + wv + \beta vz), -(uz + wv + \beta vz))\\
+& = (uw + \alpha vz + \beta uz + \beta wv + \beta^{2} vz, -uz - wv - \beta vz)\\
+& = (u + \beta v, -v) \cdot (w + \beta z, -z)\\
+& = s(u, v) \cdot s(w, z)
+\end{align*}
+\begin{equation}
+s(1, 0) = (1, 0)
+\end{equation}
+$s$ ist ein Algebrahomomorphismus.
+
+\begin{equation}
+s(s(x, y)) = s(x + \beta y, -y) = (x + \beta y + \beta(-y), -(-y)) = (x, y)
+\end{equation}
+\end{proof}
 
 \subsection*{Teil 3}
 
+\begin{proof}
+\begin{equation}
+(x, y) + s(x, y) = (x + x + \beta y, y - y) = (2x + \beta y, 0)
+\end{equation}
+Es gibt ein solches $T(x, y)$, weil $2x + \beta y \in K$ ist.
+
+\begin{equation}
+(x, y) \cdot s(x, y) = (x, y) \cdot (x + \beta y, -y) = (x(x + \beta y) + \alpha y (-y), -xy + y(x + \beta y) + \beta y (-y)) = (x^{2} + \beta xy - \alpha y^{2}, 0)
+\end{equation}
+Es gibt ein solches $N(x, y)$, weil $x^{2} + \beta xy - \alpha y^{2} \in K$ ist.
+\end{proof}
+
 \subsection*{Teil 4}
+
+\begin{align*}
+N(x, y) \cdot N(z, t) & = (x^{2} + \beta xy - \alpha y^{2})(z^{2} + \beta zt - \alpha t^{2})\\
+& = (xz)^{2} + \beta x^{2} zt - \alpha x^{2}t^{2} + \beta xyz^{2} + \beta^{2} xyzt - \alpha \beta xyt^{2} - \alpha y^{2} z^{2} - \alpha \beta y^{2} zt + \alpha^{2} y^{2} t^{2}\\
+& = (xz + \alpha yt)^{2} + \beta (xz + \alpha yt)(xt + zy + \beta yt) - \alpha (xt + zy + \beta yt)^{2}\\
+& = N(xz + \alpha yt, xt + zy + \beta yt)\\
+& = N((x, y) \cdot (z, t))
+\end{align*}
 
 \subsection*{Teil 5}
 
 \subsection*{Teil 6}
+
+\begin{proof}
+Mit diesen Werten ist die Vektormultiplikation genau die Multiplikation von komplexen Zahlen.
+Außerdem ist $x + iy$ nur eine ``andere Schreibweise'' für $(x, y)$ und somit ist $\varphi$ eigentlich die Identitätsabbildung von $A_{\alpha, \beta} \rightarrow \mathbb{C}$ und diese ist ein Algebrahomomorphismus, weil $A_{\alpha, \beta}$ eine Algebra ist.
+
+\begin{equation}
+T(x, y) = 2x
+\end{equation}
+\begin{equation}
+N(x, y) = x^{2} + y^{2}
+\end{equation}
+\end{proof}
 
 \section*{Übung 3}
 
