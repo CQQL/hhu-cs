@@ -1,0 +1,192 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\id}{Id}
+
+\begin{document}
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Sei $a \in A$ und $Q \in (P)$.
+Da $P | Q$, ist $Q = RP$.
+Dann teilt $P$ sowohl $aQ = aRP$ als auch $Qa = RPa$.
+Also sind $aQ, Qa \in (P)$ und $(P)$ ist ein Ideal von $A$.
+\end{proof}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+Sei $Q \in (P)$.
+Dann ist $Q = RP$, aber $P \in I$.
+Also ist auch $Q \in I$.
+
+Sei $Q \in I$.
+Wenn $I = A$, ist $P$ eine Konstante und $Q$ ist offensichtlich in $(P)$.
+Sei also $I \ne A$.
+Man kann $Q = RP + S$ schreiben mit $\deg(S) < deg(P)$.
+Da $P$ aber den minimalen Grad aller Polynome in $I$ hat, ist $S \notin I$.
+Sei $T \in A \setminus I$.
+Dann ist $QT = RPT + ST \notin I$, aber $Q$ ist in $I$.
+Also muss $S = 0$ sein und $P | Q$, also $Q \in (P)$.
+\end{proof}
+
+\subsection*{Teil 3}
+
+\begin{proof}
+Sei $P \in K[X]$ invertierbar.
+Es gibt also $P^{-1}$, sodass $PP^{-1} = 1$.
+Dann muss $P \ne 0 \ne P^{-1}$ sein, weil $K[X]$ ein Körper ist.
+Wenn $\deg(P) > 0$ wäre, gäbe es ein $k$, sodass $X^{k}$ in der Summendefinition von $P$ vorkommt.
+Aufgrund unserer ersten Feststellung kann $P^{-1}$ nicht $0$ sein.
+Also käme auch $X^{k + \deg(P^{-1})}$ in $PP^{-1}$ vor, was im Widerspruch zu der Annahme steht, dass $PP^{-1} = 1$ ist.
+Es folgt $\deg(P) = 0$.
+
+Sei $P \in K[X]$ mit $P \ne 0$ und $\deg(P) = 0$.
+Dann ist $P$ konstant und es gibt ein inverses Element $k$ von $P(K)$ in $K$, sodass $kP = 1$, weil $K$ ein Körper ist.
+\end{proof}
+
+\subsection*{Teil 4}
+
+\begin{proof}
+Seien $Q, P \in \mathbb{R}[X]$ mit $QP = X^{2} + 1$.
+Dann muss entweder $\deg(Q) = \deg(P) = 1$ sein, was aber nicht möglich ist, weil $X^{2} + 1$ über $\mathbb{R}$ nicht in Linearfaktoren zerfällt, oder o.B.d.A. $\deg(Q) = 0$ und $\deg(P) = 2$ sein.
+Weil $X^{2} + 1 \ne 0$ ist, muss $Q \ne 0$ sein und ist somit invertierbar und $X^{2} + 1$ irreduzibel.
+
+Es ist $X^{2} - 1 = (X + 1)(X - 1)$.
+Nach Teil 3 ist aber weder $X + 1$ noch $X - 1$ invertierbar.
+Nach Definition ist $X^{2} - 1$ also reduzibel. ($\textit{Kann man das schreiben? Nicht irreduzibel hört sich nicht nach gutem Deutsch an.}$)
+\end{proof}
+
+\subsection*{Teil 5}
+
+\subsection*{Teil 6}
+
+\subsection*{Teil 7}
+
+\section*{Übung 2}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+\begin{equation}
+\tau_{i, j}(v_{1} \otimes \dots \otimes v_{i} \otimes \dots \otimes v_{j} \otimes \dots \otimes v_{n}) = v_{1} \otimes \dots \otimes v_{j} \otimes \dots \otimes v_{i} \otimes \dots \otimes v_{n} = v_{1} \otimes \dots \otimes v_{i} \otimes \dots \otimes v_{j} \otimes \dots \otimes v_{n}
+\end{equation}
+
+
+\end{proof}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+Da $\dim V < n$, ist in einem System $(v_{1}, \dots, v_{n})$ mindestens ein Vektor $v_{k}$ linear abhängig von den anderen.
+\begin{equation}
+v_{k} = \sum_{i \ne k} \lambda_{i} v_{i}
+\end{equation}
+Wegen der Multilinearität des Tensorprodukts, kann man den ``zugehörigen'' Tensor zu dem System umschreiben.
+\begin{align*}
+v_{1} \otimes \dots \otimes v_{k} \otimes \dots \otimes v_{n} = (1 + \lambda_{1})v_{1} \otimes \dots \frac{1 + \lambda_{j}}{2} v_{j} \otimes \dots \otimes \frac{1 + \lambda_{j}}{2} v_{j} \otimes \dots \otimes (1 + \lambda_{n})v_{n}
+\end{align*}
+\end{proof}
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+\begin{align*}
+p^{2} & = \frac{1}{3}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1})\left( \frac{1}{3}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) \right)\\
+& = \frac{1}{3}(\frac{1}{3}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) + s_{1}\left( \frac{1}{3}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) \right) - s_{2}s_{1} \left( \frac{1}{3}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) \right) - s_{1}s_{2}s_{1}\left( \frac{1}{3}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) \right))\\
+& = \frac{1}{9}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1} + s_{1}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) - s_{2}s_{1} (\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) - s_{1}s_{2}s_{1}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}))\\
+& = \frac{1}{9}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1} + s_{1} + s_{1}s_{1} - s_{1}s_{2}s_{1} - s_{1}s_{1}s_{2}s_{1} - s_{2}s_{1} - s_{2}s_{1}s_{1} + s_{2}s_{1}s_{2}s_{1} + s_{2}s_{1}s_{1}s_{2}s_{1} - s_{1}s_{2}s_{1} - s_{1}s_{2}s_{1}s_{1} + s_{1}s_{2}s_{1}s_{2}s_{1} + s_{1}s_{2}s_{1}s_{1}s_{2}s_{1})\\
+& = \frac{1}{9}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1} + s_{1} + \id - s_{1}s_{2}s_{1} - s_{2}s_{1} - s_{2}s_{1} - s_{2} + s_{2}s_{1}s_{2}s_{1} + s_{1} - s_{1}s_{2}s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}s_{2}s_{1} + \id)\\
+& = \frac{1}{9}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1} + s_{1} + \id - s_{1}s_{2}s_{1} - s_{2}s_{1} - s_{2}s_{1} - s_{2} + s_{1}s_{2}s_{1}s_{1} + s_{1} - s_{1}s_{2}s_{1} - s_{1}s_{2} + s_{2}s_{1}s_{2}s_{2}s_{1} + \id)\\
+& = \frac{1}{9}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1} + s_{1} + \id - s_{1}s_{2}s_{1} - s_{2}s_{1} - s_{2}s_{1} - s_{2} + s_{1}s_{2} + s_{1} - s_{1}s_{2}s_{1} - s_{1}s_{2} + s_{2} + \id)\\
+& = \frac{1}{9}(3\id + 3s_{1} - 3s_{2}s_{1} - 3s_{1}s_{2}s_{1})\\
+& = \frac{1}{3}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) = p
+\end{align*}
+
+\begin{align*}
+q^{2} & = \frac{1}{3}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1})\left( \frac{1}{3}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}) \right)\\
+& = \frac{1}{3}(\frac{1}{3}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}) - s_{1}(\frac{1}{3}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1})) - s_{1}s_{2}(\frac{1}{3}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1})) + s_{1}s_{2}s_{1}(\frac{1}{3}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1})))\\
+& = \frac{1}{9}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} - s_{1}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}) - s_{1}s_{2}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}) + s_{1}s_{2}s_{1}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}))\\
+& = \frac{1}{9}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} - s_{1} + s_{1}s_{1} + s_{1}s_{1}s_{2} - s_{1}s_{1}s_{2}s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} + s_{1}s_{2}s_{1}s_{2} - s_{1}s_{2}s_{1}s_{2}s_{1} + s_{1}s_{2}s_{1} - s_{1}s_{2}s_{1}s_{1} - s_{1}s_{2}s_{1}s_{1}s_{2} + s_{1}s_{2}s_{1}s_{1}s_{2}s_{1})\\
+& = \frac{1}{9}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} - s_{1} + \id + s_{2} - s_{2}s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} + s_{1}s_{2}s_{1}s_{2} - s_{1}s_{2}s_{1}s_{2}s_{1} + s_{1}s_{2}s_{1} - s_{1}s_{2} - s_{1} + \id)\\
+& = \frac{1}{9}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} - s_{1} + \id + s_{2} - s_{2}s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} + s_{2}s_{1}s_{2}s_{2} - s_{2}s_{1}s_{2}s_{2}s_{1} + s_{1}s_{2}s_{1} - s_{1}s_{2} - s_{1} + \id)\\
+& = \frac{1}{9}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} - s_{1} + \id + s_{2} - s_{2}s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} + s_{2}s_{1} - s_{2} + s_{1}s_{2}s_{1} - s_{1}s_{2} - s_{1} + \id)\\
+& = \frac{1}{9}(3\id - 3s_{1} - 3s_{1}s_{2} + 3s_{1}s_{2}s_{1})\\
+& = \frac{1}{3}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}) = q
+\end{align*}
+
+\subsection*{Teil 2}
+
+\begin{equation}
+p_{Sym} = \frac{1}{6} ( \id + s_{1} + s_{2} + s_{1}s_{2} + s_{2}s_{1} + s_{1}s_{2}s_{1} )
+\end{equation}
+\begin{equation}
+p_{Alt} = \frac{1}{6} ( \id - s_{1} - s_{2} + s_{1}s_{2} + s_{2}s_{1} - s_{1}s_{2}s_{1} )
+\end{equation}
+\begin{align*}
+p_{Sym} + p_{Alt} + p + q & = \frac{1}{3} (\id + s_{1}s_{2} + s_{2}s_{1}) + \frac{1}{3}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) + \frac{1}{3}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1})\\
+& = \frac{1}{3} (\id + s_{1}s_{2} + s_{2}s_{1} + \id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1} + \id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1})\\
+& = \frac{1}{3} (3\id) = \id\\
+\end{align*}
+
+\subsection*{Teil 3}
+
+\begin{align*}
+\tau p_{Sym} & = \frac{1}{3!} \sum_{\sigma \in S_{3}} \tau \sigma\\
+& = \frac{1}{3!} \sum_{\delta \in S_{3}} \delta \qquad \textit{Ersetze $\delta := \tau \sigma$}\\
+& = p_{Sym}
+\end{align*}
+\begin{align*}
+\tau p_{Alt} & = \frac{1}{3!} \sum_{\sigma \in S_{3}} \varepsilon(\sigma) \tau \sigma\\
+& = \frac{1}{3!} \sum_{\delta \in S_{3}} \varepsilon(\tau^{-1} \delta) \delta \qquad \textit{Ersetze $\delta := \tau \sigma$}\\
+& = \frac{1}{3!} \sum_{\delta \in S_{3}} \varepsilon(\tau^{-1})\varepsilon(\delta) \delta\\
+& = \varepsilon(\tau^{-1}) \frac{1}{3!} \sum_{\delta \in S_{3}} \varepsilon(\delta) \delta\\
+& = \varepsilon(\tau^{-1}) p_{Alt}
+\end{align*}
+
+\subsection*{Teil 4}
+
+\begin{align*}
+pq & = \frac{1}{3}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1})(\frac{1}{3}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}))\\
+& = \frac{1}{9}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1})(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1})\\
+& = \frac{1}{9}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} + s_{1}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}) - s_{2}s_{1}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}) - s_{1}s_{2}s_{1}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1}))\\
+& = \frac{1}{9}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} + s_{1} - s_{1}s_{1} - s_{1}s_{1}s_{2} + s_{1}s_{1}s_{2}s_{1} - s_{2}s_{1} + s_{2}s_{1}s_{1} + s_{2}s_{1}s_{1}s_{2} - s_{2}s_{1}s_{1}s_{2}s_{1} - s_{1}s_{2}s_{1} + s_{1}s_{2}s_{1}s_{1} + s_{1}s_{2}s_{1}s_{1}s_{2} - s_{1}s_{2}s_{1}s_{1}s_{2}s_{1})\\
+& = \frac{1}{9}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1} + s_{1} - \id - s_{2} + s_{2}s_{1} - s_{2}s_{1} + s_{2} + \id - s_{1} - s_{1}s_{2}s_{1} + s_{1}s_{2} + s_{1} - \id) = 0
+\end{align*}
+\begin{align*}
+qp & = \frac{1}{3}(\id - s_{1} - s_{1}s_{2} + s_{1}s_{2}s_{1})(\frac{1}{3}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}))\\
+& = \frac{1}{9}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1} - s_{1}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) - s_{1}s_{2}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}) + s_{1}s_{2}s_{1}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1}))\\
+& = \frac{1}{9}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1} - s_{1} - s_{1}s_{1} + s_{1}s_{2}s_{1} + s_{1}s_{1}s_{2}s_{1} - s_{1}s_{2} - s_{1}s_{2}s_{1} + s_{1}s_{2}s_{2}s_{1} + s_{1}s_{2}s_{1}s_{2}s_{1} + s_{1}s_{2}s_{1} + s_{1}s_{2}s_{1}s_{1} - s_{1}s_{2}s_{1}s_{2}s_{1} - s_{1}s_{2}s_{1}s_{1}s_{2}s_{1})\\
+& = \frac{1}{9}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1} - s_{1} - \id + s_{1}s_{2}s_{1} + s_{2}s_{1} - s_{1}s_{2} - s_{1}s_{2}s_{1} + \id + s_{2}s_{1}s_{2}s_{2}s_{1} + s_{1}s_{2}s_{1} + s_{1}s_{2} - s_{2}s_{1}s_{2}s_{2}s_{1} - \id)\\
+& = \frac{1}{9}(\id + s_{1} - s_{2}s_{1} - s_{1}s_{2}s_{1} - s_{1} - \id + s_{1}s_{2}s_{1} + s_{2}s_{1} - s_{1}s_{2} - s_{1}s_{2}s_{1} + \id + s_{2} + s_{1}s_{2}s_{1} + s_{1}s_{2} - s_{2} - \id) = 0
+\end{align*}
+
+Wegen Teil 3 gilt
+\begin{equation}
+pp_{Sym} = \frac{1}{3}(p_{Sym} + p_{Sym} - p_{Sym} - p_{Sym}) = 0
+\end{equation}
+\begin{equation}
+pp_{Alt} = \frac{1}{3}(p_{Alt} - p_{Alt} - p_{Alt} + p_{Alt}) = 0
+\end{equation}
+\begin{equation}
+qp_{Sym} = \frac{1}{3}(p_{Sym} - p_{Sym} - p_{Sym} + p_{Sym}) = 0
+\end{equation}
+\begin{equation}
+qp_{Alt} = \frac{1}{3}(p_{Alt} + p_{Alt} - p_{Alt} - p_{Alt}) = 0
+\end{equation}
+
+\subsection*{Teil 5}
+
+\subsection*{Teil 6}
+
+\end{document}

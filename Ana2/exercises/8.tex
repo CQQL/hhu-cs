@@ -1,0 +1,121 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\sgn}{sgn}
+
+\begin{document}
+
+\section*{Übung 33}
+
+\subsection*{Teil a}
+
+\subsection*{Teil b}
+
+\subsection*{Teil c}
+
+\subsection*{Teil d}
+
+\section*{Übung 34}
+
+\section*{Übung 35}
+
+\subsection*{Teil a}
+
+Ich verwende die Methode der getrennten Variablen.
+\begin{equation}
+y' = -y \cos x \Leftrightarrow \frac{1}{y} dy = -\cos x dx \Leftrightarrow \int \frac{1}{y} dy = - \int \cos x dx \Leftrightarrow \log(y) + a = -\sin x + b \Leftrightarrow y = e^{-\sin x + b - a} = c \cdot e^{-\sin x}
+\end{equation}
+
+\subsection*{Teil b}
+
+\begin{equation}
+y' + y \cos x = \frac{1}{2} \sin 2x \Leftrightarrow y' = -y \cos x + \frac{1}{2} \sin 2x
+\end{equation}
+Die Lösung der zugehörigen homogenen DGl ist $\varphi = c \cdot e^{-\sin x}$.
+Sei $u$ eine Lösung der inhomogenen DGl.
+Wir setzen $u = \varphi w$.
+\begin{equation}
+u' = \varphi' w + \varphi w' = -\cos(x) \varphi w + \varphi w' = -\cos(x) u + \varphi w'
+\end{equation}
+Wir setzen gleich
+\begin{align*}
+\varphi w' = \frac{1}{2} \sin 2x \Leftrightarrow w' = \frac{\sin 2x}{2 \varphi} \Leftrightarrow w = \int \frac{\sin 2x}{2 \varphi} \Leftrightarrow w & = \int \frac{\sin 2x}{2 c \cdot e^{- \sin x}} dx\\
+& = \frac{1}{2c} \cdot \int \frac{\sin 2x}{e^{- \sin x}} dx\\
+& = \frac{1}{2c} \cdot \int \sin(2x)e^{\sin x} dx\\
+& = \frac{1}{2c} \cdot \int 2\sin(x)\cos(x)e^{\sin x} dx\\
+& = \frac{1}{c} \cdot \int u \cdot e^{u} du \qquad \textit{Ersetze $u := \sin x$}\\
+& = \frac{1}{c} \cdot \left( u \cdot e^{u} - \int e^{u} du \right)\\
+& = \frac{1}{c} \cdot \left( u \cdot e^{u} - e^{u} \right)\\
+& = \frac{e^{u}}{c} \cdot \left( u - 1 \right)\\
+& = \frac{e^{\sin x}}{c} \cdot \left( \sin(x) - 1 \right)\\
+\end{align*}
+
+\begin{equation}
+u = \frac{e^{\sin x}}{c} \cdot \left( \sin(x) - 1 \right) \cdot c \cdot e^{-\sin x} = \sin(x) - 1
+\end{equation}
+
+\subsection*{Teil c}
+
+\section*{Übung 36}
+
+\subsection*{Teil a}
+
+\begin{proof}
+\begin{align*}
+||A|| & = \max \{ ||Ax||_{\infty} \mid x \in \mathbb{R}^{n}\ \land\ ||x||_{\infty} = 1 \}\\
+& = \max \{ \max \begin{pmatrix}
+x_{1}a_{1, 1} + \dots + x_{n}a_{1, n}\\
+\vdots\\
+x_{1}a_{n, 1} + \dots + x_{n}a_{n, n}
+\end{pmatrix} \mid x \in \mathbb{R}^{n}\ \land\ ||x||_{\infty} = 1 \}\\
+& = \max \{ \max_{j \in [1, n]} \sum_{k = 1}^{n} x_{k}a_{j, k} \mid x \in \mathbb{R}^{n}\ \land\ ||x||_{\infty} = 1 \}
+\end{align*}
+
+Nach der Dreiecksungleichung gilt
+\begin{equation}
+\sum_{i = 1}^{n} a_{n} \le \sum_{i = 1}^{n} |a_{n}|
+\end{equation}
+
+Es gibt ein $x_{k} \in \mathbb{R}^{n}$ mit $||x_{k}||_{\infty} = 1$ und
+\begin{equation}
+x_{k} = \begin{pmatrix}
+\sgn a_{k, 1}\\
+\vdots\\
+\sgn a_{k, n}
+\end{pmatrix}
+\end{equation}
+sodass
+\begin{equation}
+\sum_{i = 1}^{n} x_{k_{i}}a_{k, i} = \sum_{i = 1}^{n} |a_{k, i}|
+\end{equation}
+und dies ist maximal nach Dreiecksungleichung.
+
+Also gilt
+\begin{align*}
+||A|| & = \max \{ \max_{j \in [1, n]} \sum_{k = 1}^{n} x_{k}a_{j, k} \mid x \in \mathbb{R}^{n}\ \land\ ||x||_{\infty} = 1 \}\\
+& = \max_{k \in [1, n]} \sum_{i = 1}^{n} |a_{k, i}|
+\end{align*}
+\end{proof}
+
+\subsection*{Teil b}
+
+\begin{proof}
+\begin{equation}
+\max \{ \sum_{i = 1}^{n} x_{i}a_{i} \mid ||x||_{1} = 1 \} \le \max_{i \in [1, n]} a_{i}
+\end{equation}
+
+\begin{align*}
+||A|| & = \max \{ ||Ax||_{1} \mid x \in \mathbb{R}^{n}\ \land\ ||x||_{1} = 1 \}\\
+& = \max \{ \sum_{i = 1}^{n} \sum_{j = 1}^{n} x_{j}a_{i, j} \mid x \in \mathbb{R}^{n}\ \land\ ||x||_{\infty} = 1 \}
+\end{align*}
+\end{proof}
+
+\subsection*{Teil c}
+
+\end{document}
