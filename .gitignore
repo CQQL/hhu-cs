@@ -1,9 +1,5 @@
 *
-!*.md
-!*.tex
-!*.rb
+!.tex
 !**/script.pdf
 !**/cover_sheet.pdf
-!*.c
-!*.h
 !*.asm
