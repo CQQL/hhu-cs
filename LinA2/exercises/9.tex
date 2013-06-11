@@ -1,0 +1,193 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\subsection*{Teil 4}
+
+\section*{Übung 2}
+
+\begin{proof}
+Seien $a, b \in A$, die sich mithilfe des EZS darstellen lassen als
+\begin{equation}
+a = \sum_{i \in I} \lambda_{a, i} a_{i}
+\end{equation}
+\begin{equation}
+b = \sum_{i \in I} \lambda_{b, i} a_{i}
+\end{equation}
+
+\begin{align*}
+f(ab) & = f \left( \left( \sum_{i \in I} \lambda_{a, i} a_{i} \right) \cdot \left( \sum_{i \in I} \lambda_{b, i} a_{i} \right) \right)\\
+& = f \left( \sum_{i \in I} \sum_{j \in I} \lambda_{a, j} a_{j} \lambda_{b, i} a_{i} \right)\\
+& = f \left( \sum_{i \in I} \sum_{j \in I} \lambda_{a, j} \lambda_{b, i} a_{j} a_{i} \right)\\
+& = \sum_{i \in I} \sum_{j \in I} f \left( \lambda_{a, j} \lambda_{b, i} a_{j} a_{i} \right)\\
+& = \sum_{i \in I} \sum_{j \in I} \lambda_{a, j} \lambda_{b, i} f \left( a_{j} a_{i} \right)\\
+& = \sum_{i \in I} \sum_{j \in I} \lambda_{a, j} \lambda_{b, i} f(a_{j}) f(a_{i})\\
+& = \sum_{i \in I} \sum_{j \in I} \lambda_{a, j} f(a_{j}) \lambda_{b, i} f(a_{i})\\
+& = \left( \sum_{j \in I} \lambda_{a, j} f(a_{j}) \right) \cdot \left( \sum_{i \in I} \lambda_{b, i} f(a_{i}) \right)\\
+& = f \left( \sum_{j \in I} \lambda_{a, j} a_{j} \right) \cdot f \left( \sum_{i \in I} \lambda_{b, i} a_{i} \right)\\
+& = f(a) \cdot f(b)
+\end{align*}
+\end{proof}
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Sei $i \in I$ und $a \in A$.
+Weil alle $I_{j}$ Ideale sind, gilt
+\begin{equation}
+i \in I_{j}\ \forall j \in J \Rightarrow ai, ia \in I_{j}\ \forall j \in J \Rightarrow ai, ia \in I
+\end{equation}
+\end{proof}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+Seien $I_{j}$ alle Ideale, die $E$ enthalten.
+Sei $I = \cap_{j} I_{j}$.
+Dann ist $I$ nach Teil $1$ ein Ideal.
+$I$ ist auch minimal, weil es in jedem Ideal $I_{j}$ enthalten ist.
+\end{proof}
+
+\subsection*{Teil 3}
+
+\subsection*{Teil 4}
+
+\subsection*{Teil 5}
+
+\section*{Übung 4}
+
+\subsection*{Teil 1}
+
+Der einzige Basisvektor von $V^{\otimes n}$ ist $v_{1}$ $n$-mal mit sich selbst getensort,
+weil eine Basis eines Tensorprodukts besteht aus den Tensoren, die alle möglichen Kombinationen der Basisvektoren der Faktorräume beinhalten.
+Da $V$ nur einen Basisvektor hat, gibt es auch nur eine solche Kombination.
+\begin{equation}
+V^{\otimes n} = \langle v_{1} \otimes \dots \otimes v_{1} \rangle
+\end{equation}
+\begin{equation}
+\dim_{K} V^{\otimes n} = 1
+\end{equation}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+Sei $v \in T(V)$.
+\begin{equation}
+v = \sum_{n \ge 0} \lambda_{n} v_{1}^{\otimes n}
+\end{equation}
+
+\begin{align*}
+H(v) & = H(\sum_{n \ge 0} \lambda_{n} v_{1}^{\otimes n})\\
+& = \sum_{n \ge 0} \lambda_{n} H(v_{1}^{\otimes n})\\
+& = \sum_{n \ge 0} \lambda_{n} H(v_{1}^{n})\\
+& = \sum_{n \ge 0} \lambda_{n} H(v_{1})^{n}\\
+& = \sum_{n \ge 0} \lambda_{n} X^{n}
+\end{align*}
+
+Also ist $H$ durch diese Vorgaben bereits eindeutig bestimmt für alle $v \in T(V)$.
+Jeder gleichermaßen definierte Algebrahomomorphismus muss also gleich $H$ sein.
+
+Sei $v \in V^{\otimes n}$.
+\begin{equation}
+H(v) = H(\lambda \cdot v_{1}^{\otimes n}) = \lambda \cdot H(v_{1}^{n}) = \lambda \cdot H(v_{1})^{n} = \lambda \cdot X^{n}
+\end{equation}
+Also ist $H$ graduiert.
+\end{proof}
+
+\subsection*{Teil 3}
+
+\begin{proof}
+Sei $P \in K[X]$.
+\begin{equation}
+P = \sum_{n \ge 0} a_{n} X^{n}
+\end{equation}
+\begin{equation}
+H^{-1}(P) := \sum_{n \ge 0} a_{n} v_{1}^{\otimes n}
+\end{equation}
+\begin{align*}
+H \circ H^{-1}(P) & = H(\sum_{n \ge 0} a_{n} v_{1}^{\otimes n})\\
+& = \sum_{n \ge 0} a_{n} H(v_{1}^{\otimes n})\\
+& = \sum_{n \ge 0} a_{n} H(v_{1}^{n})\\
+& = \sum_{n \ge 0} a_{n} H(v_{1})^{n}\\
+& = \sum_{n \ge 0} a_{n} X^{n} = P
+\end{align*}
+
+Sei $v$ wie in Teil 1.
+\begin{align*}
+H^{-1} \circ H(v) & = H^{-1}(H(\sum_{n \ge 0} \lambda_{n} v_{1}^{\otimes n}))\\
+& = H^{-1}(\sum_{n \ge 0} \lambda_{n} H(v_{1}^{\otimes n}))\\
+& = H^{-1}(\sum_{n \ge 0} \lambda_{n} X^{n})\\
+& = \sum_{n \ge 0} \lambda_{n} H^{-1}(X^{n})\\
+& = \sum_{n \ge 0} \lambda_{n} v_{1}^{n}\\
+& = \sum_{n \ge 0} \lambda_{n} v_{1}^{\otimes n} = v\\
+\end{align*}
+
+Es gibt also eine Umkehrfunktion $H^{-1}$ zu $H$ und $H$ ist ein Isomorphismus.
+\end{proof}
+
+\section*{Übung 5}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Sei $a_{n} \in A_{n}$ und $a_{m} \in A_{m}$.
+\begin{equation}
+a_{n} = \sum_{i = 1}^{n} \lambda_{i} X_{1}^{i - 1}X_{2}^{n - i + 1}
+\end{equation}
+\begin{equation}
+a_{m} = \sum_{i = 1}^{m} \lambda_{i} X_{1}^{i - 1}X_{2}^{m - i + 1}
+\end{equation}
+
+\begin{align*}
+a_{n} \cdot a_{m} & = \left( \sum_{i = 0}^{n} \lambda_{i} X_{1}^{i}X_{2}^{n - i} \right) \cdot \left( \sum_{i = 0}^{m} \lambda_{i} X_{1}^{i}X_{2}^{m - i} \right)\\
+& = \sum_{i = 0}^{m} \left( \sum_{j = 0}^{n} \lambda_{j} X_{1}^{j}X_{2}^{n - j} \right) \cdot \lambda_{i} X_{1}^{i}X_{2}^{m - i}\\
+& = \sum_{i = 0}^{m} \sum_{j = 0}^{n} \lambda_{j} X_{1}^{j}X_{2}^{n - j} \cdot \lambda_{i} X_{1}^{i}X_{2}^{m - i}\\
+& = \sum_{i = 0}^{m} \sum_{j = 0}^{n} \lambda_{j}\lambda_{i} X_{1}^{j}X_{2}^{n - j}X_{1}^{i}X_{2}^{m - i}\\
+& = \sum_{i = 0}^{m} \sum_{j = 0}^{n} \lambda_{j}\lambda_{i} X_{1}^{i + j}X_{2}^{m + n - j - i} \in A_{m + n}\\
+\end{align*}
+\end{proof}
+
+\subsection*{Teil 2}
+
+\subsection*{Teil 3}
+
+\begin{proof}
+Sei $P \in K[X_{1}, X_{2}]$.
+\begin{equation}
+P = \sum_{n \ge 0} \sum_{k \ge 0} a_{n, k} X_{1}^{n}X_{2}^{k}
+\end{equation}
+\begin{align*}
+H(\sum_{n \ge 0} \sum_{k \ge 0} a_{n, k} v_{1}^{\otimes n} v_{2}^{\otimes k}) & = \sum_{n \ge 0} \sum_{k \ge 0} a_{n, k} H(v_{1}^{\otimes n} v_{2}^{\otimes k})\\
+& = \sum_{n \ge 0} \sum_{k \ge 0} a_{n, k} H(v_{1}^{\otimes n})H(v_{2}^{\otimes k})\\
+& = \sum_{n \ge 0} \sum_{k \ge 0} a_{n, k} H(v_{1}^{n})H(v_{2}^{k})\\
+& = \sum_{n \ge 0} \sum_{k \ge 0} a_{n, k} H(v_{1})^{n}H(v_{2})^{k}\\
+& = \sum_{n \ge 0} \sum_{k \ge 0} a_{n, k} X_{1}^{n}X_{2}^{k} = P
+\end{align*}
+
+Es gibt also zu jedem $P$ ein Urbild und $H$ ist surjektiv.
+\end{proof}
+
+\subsection*{Teil 4}
+
+\begin{proof}
+$H$ ist nicht injektiv, weil $H(v_{1} \otimes v_{2}) = X_{1}X_{2} = X_{2}X_{1} = H(v_{2} \otimes v_{1})$, aber $v_{1} \otimes v_{2} \ne v_{2} \otimes v_{1}$.
+\end{proof}
+
+\end{document}

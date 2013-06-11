@@ -1,0 +1,110 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 37}
+
+\begin{proof}
+Das Maximum existiert, weil $\{ x \mid x \in K^{n}\ \land\ ||x|| = 1 \}$ abgeschlossen ist.
+Da alle Elemente in $\{ ||Ax|| \mid x \in K^{n}\ \land\ ||x|| = 1 \}$ $\ge 0$ sind, ist auch deren Maximum  größergleich $0$.
+
+\begin{equation}
+||A|| = 0 \Rightarrow ||Ax|| = 0\ \forall x \Rightarrow A = 0\ \textit{weil $x \ne 0$, weil $||x|| = 1$}
+\end{equation}
+
+\begin{align*}
+||\lambda A|| & = \max \{ ||\lambda Ax|| \mid x \in K^{n}\ \land\ ||x|| = 1 \}\\
+& = \max \{ |\lambda| \cdot ||Ax|| \mid x \in K^{n}\ \land\ ||x|| = 1 \}\\
+& = |\lambda| \cdot \max \{ ||Ax|| \mid x \in K^{n}\ \land\ ||x|| = 1 \}\\
+& = |\lambda| \cdot ||A||
+\end{align*}
+
+\begin{align*}
+||A + B|| & = \max \{ ||(A + B)x|| \mid x \in K^{n}\ \land\ ||x|| = 1 \}\\
+& = \max \{ ||Ax + Bx|| \mid x \in K^{n}\ \land\ ||x|| = 1 \}\\
+& \le \max \{ ||Ax|| + ||Bx|| \mid x \in K^{n}\ \land\ ||x|| = 1 \}\\
+& \le \max \{ ||Ax|| \mid x \in K^{n}\ \land\ ||x|| = 1 \} + \max \{ ||Bx|| \mid x \in K^{n}\ \land\ ||x|| = 1 \}\\
+& = ||A|| + ||B||\\
+\end{align*}
+\end{proof}
+
+\section*{Aufgabe 38}
+
+\subsection*{Teil a}
+
+Eine Lösung der zugehörigen homogenen DGl ist
+\begin{equation}
+\varphi(x) = e^{x\begin{pmatrix}
+0 & 1\\
+1 & 0
+\end{pmatrix}
+} y_{0} = \begin{pmatrix}
+\frac{1}{2} & \frac{1}{2}\\
+\frac{1}{2} & -\frac{1}{2}
+\end{pmatrix}
+e^{x \begin{pmatrix}
+1 & 0\\
+0 & -1
+\end{pmatrix}
+}
+\begin{pmatrix}
+1 & 1\\
+1 & -1
+\end{pmatrix}
+= \begin{pmatrix}
+\frac{1}{2} & \frac{1}{2}\\
+\frac{1}{2} & -\frac{1}{2}
+\end{pmatrix}
+\begin{pmatrix}
+e^{x} & 0\\
+0 & -e^{x}
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1\\
+1 & -1
+\end{pmatrix}
+= \begin{pmatrix}
+0 & e^{x}\\
+e^{x} & 0
+\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+u(x) = \int_{x_{0}}^{x} 
+\begin{pmatrix}
+0 & e^{-x}\\
+e^{-x} & 0
+\end{pmatrix}
+\begin{pmatrix}
+e^{x}\\0
+\end{pmatrix}\ dx
+= \begin{pmatrix}
+c_{1}\\x + c_{2}
+\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+\begin{pmatrix}
+\varphi_{1}\\
+\varphi_{2}
+\end{pmatrix}
+= \begin{pmatrix}
+e^{x}(x + c_{2})\\
+c_{1}e^{x}
+\end{pmatrix}
+\end{equation}
+
+\subsection*{Teil b}
+
+\section*{Aufgabe 39}
+
+\section*{Aufgabe 40}
+
+\end{document}
