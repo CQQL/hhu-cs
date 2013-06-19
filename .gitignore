@@ -1,5 +1,13 @@
-*
-!.tex
-!**/script.pdf
-!**/cover_sheet.pdf
-!*.asm
+# LaTeX artifacts
+*.aux
+*.pdf
+*.log
+*.dvi
+*.gz
+
+# Compiler artifacts
+*.o
+*.out
+
+# Executables
+[0-9].[0-9]
