@@ -1,0 +1,148 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\subsection*{Übung 1}
+
+\subsection*{Teil 1}
+
+\begin{equation}
+(1, e_{1}, e_{2}, e_{1} \otimes e_{2})
+\end{equation}
+
+\subsection*{Teil 2}
+
+\begin{tabular}{c|c|c|c|c}
+$\otimes$ & $1$ & $e_{1}$ & $e_{2}$ & $e_{1} \otimes e_{2}$\\
+\hline
+$1$ & 1 & $e_{1}$ & $e_{2}$ & $e_{1} \otimes e_{2}$\\
+\hline
+$e_{1}$ & $e_{1}$ & 0 & $e_{1} \otimes e_{2}$ & 0\\
+\hline
+$e_{2}$ & $e_{2}$ & $-e_{1} \otimes e_{2}$ & 0 & 0\\
+\hline
+$e_{1} \otimes e_{2}$ & $e_{1} \otimes e_{2}$ & 0 & 0 & 0
+\end{tabular}
+
+\subsection*{Teil 3}
+
+Seien $v, w \in \bigwedge(V)$ so, dass $v$ invertierbar und $w$ das Inverse ist.
+\begin{align*}
+v \otimes w & = \left( a + be_{1} + ce_{2} + d(e_{1} \otimes e_{2}) \right) \otimes \left( g + he_{1} + ie_{2} + j(e_{1} \otimes e_{2}) \right)\\
+& = (a  \otimes \left( g + he_{1} + ie_{2} + j(e_{1} \otimes e_{2}) \right)) + (be_{1} \otimes \left( g + he_{1} + ie_{2} + j(e_{1} \otimes e_{2}) \right))\\
+&\ \ \ + (ce_{2} \otimes \left( g + he_{1} + ie_{2} + j(e_{1} \otimes e_{2}) \right)) + (d(e_{1} \otimes e_{2}) \otimes \left( g + he_{1} + ie_{2} + j(e_{1} \otimes e_{2}) \right))\\
+& = (a  \otimes g + a  \otimes he_{1} + a  \otimes ie_{2} + a  \otimes j(e_{1} \otimes e_{2})) + ( be_{1} \otimes g + be_{1} \otimes he_{1} + be_{1} \otimes ie_{2} + be_{1} \otimes j(e_{1} \otimes e_{2}) )\\
+&\ \ \ + (ce_{2} \otimes g + ce_{2} \otimes he_{1} + ce_{2} \otimes ie_{2} + ce_{2} \otimes j(e_{1} \otimes e_{2})) + (d(e_{1} \otimes e_{2}) \otimes g + d(e_{1} \otimes e_{2}) \otimes he_{1} + d(e_{1} \otimes e_{2}) \otimes ie_{2} + d(e_{1} \otimes e_{2}) \otimes j(e_{1} \otimes e_{2}) )\\
+& = (ag + ahe_{1} + aie_{2} + aj(e_{1} \otimes e_{2})) + (bge_{1} + bh(e_{1} \otimes e_{1}) + bi(e_{1} \otimes e_{2}) + bj(e_{1} \otimes e_{1} \otimes e_{2}) )\\
+&\ \ \ + (cge_{2} + ch(e_{2} \otimes e_{1}) + ci(e_{2} \otimes e_{2}) + cj(e_{2} \otimes e_{1} \otimes e_{2})) + (dg(e_{1} \otimes e_{2}) + dh(e_{1} \otimes e_{2} \otimes e_{1}) + di(e_{1} \otimes e_{2} \otimes e_{2}) + dj(e_{1} \otimes e_{2} \otimes e_{1} \otimes e_{2}))\\
+& = ag + ahe_{1} + aie_{2} + aj(e_{1} \otimes e_{2}) + bge_{1} + bi(e_{1} \otimes e_{2}) + cge_{2} - ch(e_{1} \otimes e_{2}) + dg(e_{1} \otimes e_{2})\\
+& = ag + (ah + bg)e_{1} + (ai + cg)e_{2} + (aj + bi - ch + dg)(e_{1} \otimes e_{2}) = 1
+\end{align*}
+Weil beide Terme als Linearkombination einer Basis dargestellt sind, gilt die komponentenweise Gleichheit.
+\begin{align*}
+\begin{cases}
+ag & = 1\\
+ah + bg & = 0\\
+ai + cg & = 0\\
+aj + bi - ch + dg & = 0
+\end{cases}
+\end{align*}
+Weil $V$ auf einem Körper definiert ist und $ag = 1$, sind $a, g \ne 0$.
+\begin{align*}
+& \begin{cases}
+ag & = 1\\
+ah + bg & = 0\\
+ai + cg & = 0\\
+aj + bi - ch + dg & = 0
+\end{cases}\\
+\Leftrightarrow &
+\begin{cases}
+g & = \frac{1}{a}\\
+ah + bg & = 0\\
+ai + cg & = 0\\
+aj + bi - ch + dg & = 0
+\end{cases}\\
+\Leftrightarrow &
+\begin{cases}
+g & = \frac{1}{a}\\
+ah + \frac{b}{a} & = 0\\
+ai + \frac{c}{a} & = 0\\
+aj + bi - ch + \frac{d}{a} & = 0
+\end{cases}\\
+\Leftrightarrow &
+\begin{cases}
+g & = \frac{1}{a}\\
+h & = -\frac{b}{a^{2}}\\
+i & = -\frac{c}{a^{2}}\\
+aj + bi - ch + \frac{d}{a} & = 0
+\end{cases}\\
+\Leftrightarrow &
+\begin{cases}
+g & = \frac{1}{a}\\
+h & = -\frac{b}{a^{2}}\\
+i & = -\frac{c}{a^{2}}\\
+aj - \frac{bc}{a^{2}} + \frac{cb}{a^{2}} + \frac{d}{a} & = 0
+\end{cases}\\
+\Leftrightarrow &
+\begin{cases}
+g & = \frac{1}{a}\\
+h & = -\frac{b}{a^{2}}\\
+i & = -\frac{c}{a^{2}}\\
+j & = \frac{bc}{a^{3}} - \frac{cb}{a^{3}} - \frac{d}{a^{2}}
+\end{cases}\\
+\end{align*}
+Es sind also alle $v \in \bigwedge(V) = a + be_{1} + ce_{2} + d(e_{1} \otimes e_{2})$ mit $a \ne 0$ invertierbar und das Inverse ist $\frac{1}{a} - \frac{b}{a^{2}}e_{1} - \frac{c}{a^{2}}e_{2} + \left( \frac{bc}{a^{3}} - \frac{cb}{a^{3}} - \frac{d}{a^{2}} \right)(e_{1} \otimes e_{2})$.
+
+\subsection*{Übung 2}
+
+\subsection*{Teil 1.1}
+
+\begin{proof}
+\begin{align*}
+v_{1} \wedge v_{2} \wedge v_{3} & = v_{1} \wedge v_{2} \wedge \sum_{i = 1}^{3} a_{i, 3} e_{i}\\
+& = \sum_{i = 1}^{3} a_{i, 3}\ v_{1} \wedge v_{2} \wedge e_{i}\\
+& = \sum_{i = 1}^{3} a_{i, 3}\ v_{1} \wedge \left( \sum_{j = 1}^{3} a_{j, 3} e_{j} \right) \wedge e_{i}\\
+& = \sum_{i = 1}^{3} a_{i, 3}\ \left( \sum_{j = 1}^{3} a_{j, 3} v_{1} \wedge e_{j} \right) \wedge e_{i}\\
+& = \sum_{i = 1}^{3} a_{i, 3}\ \left( \sum_{j = 1}^{3} a_{j, 3} v_{1} \wedge e_{j}  \wedge e_{i}\right)\\
+\end{align*}
+\end{proof}
+
+\subsection*{Teil 1.2}
+
+\subsection*{Teil 1.3}
+
+\subsection*{Teil 1.4}
+
+\subsection*{Teil 2.1}
+
+\subsection*{Teil 2.2}
+
+\subsection*{Teil 3.1}
+
+\subsection*{Teil 3.2}
+
+\subsection*{Teil 3.3}
+
+\subsection*{Übung 3}
+
+\begin{proof}
+$\Rightarrow$: Ein System von einem Vektor ist immer linear unabhängig.
+Also ist auch $(v')$ linear unabhängig.
+Nach Lemma 4.2.1 ist dann $v = 0$.
+Das gleiche gilt für $v$.
+
+$\Leftarrow$: Sei o.B.d.A $v = 0$.
+Dann ist $v = 0 \cdot a$ für ein $a \in V$.
+\begin{equation}
+v \otimes v' = 0a \otimes v' = 0(a \otimes v') = 0
+\end{equation}
+\end{proof}
+
+\end{document}
