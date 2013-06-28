@@ -7,6 +7,8 @@
 \usepackage{amsthm}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
+\DeclareMathOperator{\Mat}{Mat}
+
 \begin{document}
 
 \subsection*{Übung 1}
@@ -116,19 +118,179 @@ v_{1} \wedge v_{2} \wedge v_{3} & = v_{1} \wedge v_{2} \wedge \sum_{i = 1}^{3} a
 
 \subsection*{Teil 1.2}
 
+\begin{proof}
+Sei $v \in \bigwedge^{3}(V)$.
+\end{proof}
+
 \subsection*{Teil 1.3}
+
+\begin{equation}
+\chi_{f} = \det(XI_{3} - Mat(f)) = (x - 2)(x - 1)^{2}
+\end{equation}
+\begin{equation}
+H(f, 2) = \langle \begin{pmatrix}
+2\\1\\1
+\end{pmatrix} \rangle
+\end{equation}
+\begin{equation}
+E_{1}(f, 1) = \langle \begin{pmatrix}
+1\\0\\0
+\end{pmatrix} \rangle
+\end{equation}
+\begin{equation}
+H(f, 1) = \langle
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix}
+\rangle
+\end{equation}
+\begin{equation}
+\mathcal{B}' = \left(
+\begin{pmatrix}
+2\\1\\1
+\end{pmatrix},
+\begin{pmatrix}
+1\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+0\\1\\0
+\end{pmatrix}
+\right)
+\end{equation}
 
 \subsection*{Teil 1.4}
 
 \subsection*{Teil 2.1}
 
+\begin{equation}
+\chi_{f} = \det(XI_{4} - Mat(f)) = (x - 1)^{2}(x - 2)(x - 3)
+\end{equation}
+\begin{equation}
+E_{1}(f, 1) = \langle
+\begin{pmatrix}
+-2\\0\\0\\1
+\end{pmatrix}
+\rangle
+\end{equation}
+\begin{equation}
+H(f, 1) = \langle
+\begin{pmatrix}
+-3\\2\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+-4\\0\\0\\2
+\end{pmatrix}
+\rangle
+\end{equation}
+\begin{equation}
+H(f, 2) = \langle
+\begin{pmatrix}
+2\\1\\1\\-4
+\end{pmatrix}
+\rangle
+\end{equation}
+\begin{equation}
+H(f, 3) = \langle
+\begin{pmatrix}
+0\\0\\0\\1
+\end{pmatrix}
+\rangle
+\end{equation}
+\begin{equation}
+\mathcal{B}' = \left(
+\begin{pmatrix}
+-2\\0\\0\\1
+\end{pmatrix},
+\begin{pmatrix}
+-3\\2\\0\\0
+\end{pmatrix},
+\begin{pmatrix}
+2\\1\\1\\-4
+\end{pmatrix},
+\begin{pmatrix}
+0\\0\\0\\1
+\end{pmatrix}
+\right)
+\end{equation}
+
 \subsection*{Teil 2.2}
+
+Aus der Matrix erhält man
+\begin{equation}
+f(e_{1}) = e_{1} + e_{4} \quad f(e_{2}) = e_{1} + e_{2} + e_{4} \quad f(e_{3}) = e_{1} + e_{2} + 2e_{3} + e_{4} \quad f(e_{4}) = 3e_{4}
+\end{equation}
+Mit der kanonischen Basis erhält man die Basis $\mathcal{B}_{2} = (e_{1} \otimes e_{2}, e_{1} \otimes e_{3}, e_{1} \otimes e_{4}, e_{2} \otimes e_{3}, e_{2} \otimes e_{4}, e_{3} \otimes e_{4})$ von $\bigwedge(V)$.
+\begin{equation}
+\Mat_{\mathcal{B}_{2}}(\bigwedge(f)) = \begin{pmatrix}
+1 & 1 & 0 & 0 & 0 & 0\\
+0 & 2 & 0 & 2 & 0 & 0\\
+0 & 0 & 1 & 0 & 3 & 3\\
+0 & 0 & 0 & 2 & 0 & 0\\
+-1 & -1 & 0 & 0 & 3 & 3\\
+0 & -2 & 0 & -2 & 0 & 6
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+\chi_{\bigwedge(f)} = \det(XI_{6} - \Mat_{\mathcal{B}_{2}}(f)) = (x - 6)(x - 3)(x - 2)^{2}(x - 1)^{2}
+\end{equation}
+\begin{equation}
+H(\bigwedge(f), 6) = \langle
+\begin{pmatrix}
+0\\0\\6\\0\\5\\5
+\end{pmatrix}
+\rangle
+\end{equation}
+\begin{equation}
+H(\bigwedge(f), 3) = \langle
+\begin{pmatrix}
+0\\0\\6\\0\\5\\5
+\end{pmatrix}
+\rangle
+\end{equation}
 
 \subsection*{Teil 3.1}
 
+\begin{equation}
+\chi_{f} = \det(XI_{2} - Mat(f)) = x^{2} - 1 = (x - 1)(x + 1) = \mu_{f}
+\end{equation}
+
 \subsection*{Teil 3.2}
 
+Die Basis $\mathcal{B}_{2}$ von $T^{2}$ ist $e_{1} \otimes e_{1}, e_{1} \otimes e_{2}, e_{2} \otimes e_{1}, e_{2} \otimes e_{2}$.
+Die Abbildung $T(f)$ bildet $v \otimes w$ auf $f(v) \otimes f(w)$ ab.
+Aus der Matrix wissen wir, dass
+\begin{equation}
+f(e_{1}) = e_{2} \quad f(e_{2}) = e_{1}
+\end{equation}
+Damit bestimme ich jetzt
+\begin{equation}
+\Mat_{\mathcal{B}_{2}}(f) = \begin{pmatrix}
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0\\
+0 & 1 & 0 & 0\\
+1 & 0 & 0 & 0
+\end{pmatrix}
+\end{equation}
+Dann ist das charakteristische Polynom
+\begin{equation}
+\chi_{T_{2}(f)} = (x - 1)^{2}(x + 1)^{2}
+\end{equation}
+Das Minimalpolynom bleibt
+\begin{equation}
+\mu_{T_{2}(f)} = (x - 1)(x + 1)
+\end{equation}
+
 \subsection*{Teil 3.3}
+
+\begin{equation}
+\chi_{T_{n}(f)} = (x - 1)^{\frac{2^{n}}{2}}(x + 1)^{\frac{2^{n}}{2}}
+\end{equation}
+\begin{equation}
+\mu_{T_{n}(f)} = (x - 1)(x + 1)
+\end{equation}
 
 \subsection*{Übung 3}
 
@@ -138,7 +300,7 @@ Also ist auch $(v')$ linear unabhängig.
 Nach Lemma 4.2.1 ist dann $v = 0$.
 Das gleiche gilt für $v$.
 
-$\Leftarrow$: Sei o.B.d.A $v = 0$.
+$\Leftarrow$: Sei o.B.d.A. $v = 0$.
 Dann ist $v = 0 \cdot a$ für ein $a \in V$.
 \begin{equation}
 v \otimes v' = 0a \otimes v' = 0(a \otimes v') = 0
