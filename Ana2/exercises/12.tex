@@ -1,0 +1,125 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 49}
+
+\begin{equation}
+a = 1
+\end{equation}
+
+\begin{proof}
+Sei $x \in \mathbb{R}$ mit $|x| \le a$.
+\begin{equation}
+|f(x)| = x^{3} \le 1 \Leftrightarrow x \le 1^{\frac{1}{3}} = 1 = a
+\end{equation}
+
+\begin{equation}
+\lim_{x \rightarrow 1} |f(x) - f(0)| = \lim_{x \rightarrow 1} |f(x)| = \lim_{x \rightarrow 1} |x^{3}| = 1 = |x - y|
+\end{equation}
+$f$ ist also nicht kontrahierend auf $]-1, 1[$, weil es zu jedem $C \in [0, 1[$ ein $x$ gibt, sodass $|f(x) - f(0)| > C|x - 0|$.
+
+Seien $x, y \in [-b, b]$ mit $0 < b < 1$ und $x < y$.
+\begin{align*}
+|f(y) - f(x)| & = |y^{3} - x^{3}|\\
+& = |(y - x)(x^{2} + xy + y^{2})|\\
+& \le |(y - x)((-b)^{2} - bb + b^{2})|\\
+& = |b^{2} - b^{2} + b^{2}| \cdot |(y - x)|\\
+& = b^{2} \cdot |(y - x)|\\
+\end{align*}
+$f$ ist auf $[-b, b]$ kontrahierend mit Kontraktionskonstante $b^{2} < 1$.
+\end{proof}
+
+\section*{Aufgabe 50}
+
+\section*{Aufgabe 51}
+
+\section*{Aufgabe 52}
+
+\subsection*{Teil a}
+
+Diese Menge ist gleichgradig stetig.
+
+\begin{proof}
+Sei $\varepsilon > 0$.
+Sei $\delta = $.
+Seien $x, y \in \mathbb{R}$ mit $|x - y| < \delta$.
+Sei $f_{\alpha} \in M$.
+\begin{align*}
+|f_{\alpha}(x) - f_{\alpha}(y)| & = |\frac{1}{\alpha}\sin(\alpha x) - \frac{1}{\alpha}\sin(\alpha y)|\\
+& = \frac{1}{\alpha}|\sin(\alpha x) - \sin(\alpha y)|\\
+\end{align*}
+\end{proof}
+
+\subsection*{Teil b}
+
+Diese Menge ist nicht gleichgradig stetig.
+
+\begin{proof}
+Sei $\varepsilon > 0$.
+Sei $\delta > 0$.
+Seien $x = 1$ und $y = 1 - \frac{\delta}{2}$.
+Sei $g_{\alpha} \in M$.
+\begin{align*}
+|g_{\alpha}(x) - g_{\alpha}(y)| & = |\frac{\alpha}{1 + x^{2}} - \frac{\alpha}{1 + y^{2}}|\\
+& = \alpha \cdot |\frac{1}{1 + 1^{2}} - \frac{1}{1 + (1 - \frac{\delta}{2})^{2}}|\\
+& = \alpha \cdot |\frac{1}{2} - \frac{1}{2 - \delta + \delta^{2}}|
+\end{align*}
+Es gibt also für jedes $\delta$ Funktionen $g_{\alpha}$, sodass die Werte sich in einer $\frac{\delta}{2}$-Umgebung von $1$ beliebig unterscheiden, also auch um mehr als jedes $\varepsilon$.
+\end{proof}
+
+\subsection*{Teil c}
+
+Diese Menge ist gleichgradig stetig.
+
+\begin{proof}
+Sei $\varepsilon > 0$.
+Sei $\delta = $.
+Seien $x, y \in \mathbb{R}$ mit $|x - y| < \delta$.
+Sei $g_{\alpha} \in M$.
+\begin{align*}
+|g_{\alpha}(x) - g_{\alpha}(y)| & = |\frac{\alpha}{1 + x^{2}} - \frac{\alpha}{1 + y^{2}}|\\
+& = \alpha \cdot |\frac{1}{1 + x^{2}} - \frac{1}{1 + y^{2}}|\\
+& = \alpha \cdot |\frac{1 + y^{2} - 1 - x^{2}}{(1 + x^{2})(1 + y^{2})}|\\
+& = \alpha \cdot |\frac{y^{2} - x^{2}}{(1 + x^{2})(1 + y^{2})}|\\
+& = \alpha \cdot |\frac{(y - x)(y + x)}{(1 + x^{2})(1 + y^{2})}|\\
+& \le \alpha \cdot |(y - x)(y + x)|\\
+& = \alpha \cdot |-(x - y)(y + x)|\\
+& = \alpha \cdot |x - y| \cdot |y + x|\\
+\end{align*}
+\end{proof}
+
+\section*{Aufgabe 53}
+
+\begin{proof}
+Sei $\varepsilon > 0$.
+Sei $N = \max \{ 1, \lceil \frac{1}{\varepsilon} \rceil \}$.
+Seien $n \ge m \ge N$ und $x \in \mathbb{R}$.
+\begin{equation}
+|f_{n}(x) - f_{m}(x)| = |x + \frac{1}{n} - x - \frac{1}{m}| = |\frac{1}{n} - \frac{1}{m}| \le |\frac{1}{n}| \le \varepsilon
+\end{equation}
+$f$ konvergiert also gleichmäßig.
+
+\begin{equation}
+h_{n}(x) := (g \circ f_{n})(x) = x^{2} + \frac{2}{n}x + \frac{1}{n^{2}}
+\end{equation}
+Seien jetzt $\varepsilon > 0$, $N \in \mathbb{N}$, $n \ge m \ge N$ und $x > \frac{\varepsilon \cdot m}{2}$.
+\begin{align*}
+|h_{n}(x) - h_{m}(x)| & = |x^{2} + \frac{2}{n}x + \frac{1}{n^{2}} - x^{2} - \frac{2}{m}x - \frac{1}{m^{2}}|\\
+& = |\frac{2}{n}x + \frac{1}{n^{2}} - \frac{2}{m}x - \frac{1}{m^{2}}|\\
+& = |(\frac{2}{n} - \frac{2}{m})x + \frac{1}{n^{2}} - \frac{1}{m^{2}}|\\
+& \ge |-\frac{2}{m}x - \frac{1}{m^{2}}| \qquad \textit{weil $n \ge m$}\\
+& > |-\frac{2}{m}x| \qquad \textit{weil $m \ge 1$}\\
+& = \frac{2}{m}x > \varepsilon\\
+\end{align*}
+$(g \circ f_{n})_{n}$ konvergiert nicht gleichmäßig, weil es zu jedem $n$ und $m$ ein $x$ gibt, sodass $(g \circ f_{n})(x)$ und $(g \circ f_{m})(x)$ beliebig weit auseinander liegen.
+\end{proof}
+
+\end{document}
