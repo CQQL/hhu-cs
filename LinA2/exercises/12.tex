@@ -19,15 +19,64 @@
 
 \subsection*{Teil 1}
 
+\begin{proof}
+$B$ ist linear im ersten Argument, weil alle $\varphi \in V^{\vee}$ linear sind.
+Seien $\varphi, \psi \in V^{\vee}$, $v \in V$ und $\lambda, \mu \in K$.
+\begin{equation}
+B(v, \lambda \varphi + \mu \psi) = (\lambda \varphi + \mu \psi)(v) = \lambda \varphi(v) + \mu \psi(v) = \lambda B(v, \varphi) + \mu B(v, \psi)
+\end{equation}
+\end{proof}
+
 \subsection*{Teil 2}
 
+\begin{equation}
+B(e_{k}, e_{j}^{\vee}) = \begin{cases}
+1 & \textit{wenn $k = j$}\\
+0 & \textit{sonst}
+\end{cases}
+\end{equation}
+Also ist die Matrix von $B$
+\begin{equation}
+(b_{ij}) = \begin{cases}
+1 & \textit{wenn $i = j$}\\
+0 & \textit{sonst}
+\end{cases}
+= I_{d}
+\end{equation}
+
 \subsection*{Teil 3}
+
+\begin{proof}
+Angenommen $B$ sei ausgeartet.
+Dann gibt es $v \ne 0 \in V$, sodass $B(v, \varphi) = 0$ für alle $\varphi \in V^{\vee}$.
+Sei $\varphi = e_{1}^{\vee} + \dots + e_{d}^{\vee}$.
+\begin{equation}
+B(v, \varphi) = \varphi(v) = (e_{1}^{\vee} + \dots + e_{d}^{\vee})(v) = v_{1} + \dots + v_{d} \ne 0 \quad \textit{weil $v \ne 0$}
+\end{equation}
+Dies ist ein Widerspruch zu der Existenz von $v$ und $B$ ist nicht ausgeartet.
+\end{proof}
 
 \section*{Übung 3}
 
 \subsection*{Teil 1}
 
+\begin{proof}
+\begin{equation}
+M = (m_{i,j})_{i,j} \quad N = (n_{i,j})_{i,j}
+\end{equation}
+\begin{align*}
+\sigma(MN) & = \sigma\left( \sum_{k = 1}^{n} m_{i,k}n_{k,j} \right)_{i,j}\\
+& = \left( \sum_{k = 1}^{n} \sigma(m_{i,k}n_{k,j}) \right)_{i,j}\\
+& = \left( \sum_{k = 1}^{n} \sigma(m_{i,k})\sigma(n_{k,j}) \right)_{i,j}\\
+& = (\sigma(m_{i,j}))_{i,j} \cdot (\sigma(n_{i,j}))_{i,j}\\
+& = \sigma((m_{i,j})_{i,j})\sigma((n_{i,j})_{i,j})\\
+& = \sigma(M)\sigma(N)
+\end{align*}
+\end{proof}
+
 \subsection*{Teil 2}
+
+Die Identitätsfunktion.
 
 \section*{Übung 4}
 
@@ -35,8 +84,42 @@
 
 \subsection*{Teil 1}
 
+\begin{proof}
+Seien $A = \begin{pmatrix}a&b\\c&d\end{pmatrix}$, $C = \begin{pmatrix}e&f\\g&h\end{pmatrix}$, $D = \begin{pmatrix}i&j\\k&l\end{pmatrix}$ und $\lambda, \mu \in \mathbb{R}$.
+\begin{align*}
+B(A, \lambda C + \mu D) & = 
+\end{align*}
+\end{proof}
+
 \subsection*{Teil 2}
 
+\begin{equation}
+B(e_{k}, e_{j}) = \det(e_{k} + e_{j}) - \det(e_{k} - e_{j})
+\end{equation}
+Damit ergibt sich die Matrix
+\begin{equation}
+M_{\mathcal{B}}(B) = \begin{pmatrix}
+0 & 0 & 0 & 2\\
+0 & 0 & -2 & 0\\
+0 & -2 & 0 & 0\\
+2 & 0 & 0 & 0
+\end{pmatrix}
+\end{equation}
+
 \subsection*{Teil 3}
+
+$B$ ist nicht ausgeartet.
+\begin{proof}
+Wenn $B$ ausgeartet wäre, gäbe es ein $v^{T} = (a, b, c, d)$, sodass $B(v, w) = 0$ für alle $w = \begin{pmatrix}
+e\\f\\g\\h
+\end{pmatrix}$, wobei $v, w$ Matrizen in Koordinatenschreibweise sind.
+\begin{equation}
+B(v, w) = v^{T} \cdot M(B) \cdot w = (a, b, c, d) \cdot \begin{pmatrix}
+2h\\-2g\\-2f\\2e
+\end{pmatrix} = 2ha - 2gb - 2fc + 2ed = 2(ha - gb - fc + ed)
+\end{equation}
+Da $v \ne 0$ sind aber nicht $a = b = c = d = 0$.
+Also ist $ha - gb - fc + ed$ mindestens für eine der Basismatrizen nicht $0$, sodass $B(v, e_{x}) \ne 0$, was der Ausgeartetheit von $B$ widerspricht.
+\end{proof}
 
 \end{document}
