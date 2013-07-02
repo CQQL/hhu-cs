@@ -15,9 +15,15 @@
 
 \subsection*{Teil 1}
 
-
-
 \subsection*{Teil 2}
+
+\begin{align*}
+\sum_{i = 0}^{d} \prod_{j = 1}^{n} (i + j) & = \sum_{i = 0}^{d} \frac{(n + i)!}{i!}\\
+& = \sum_{i = 0}^{d} \frac{(n + i)!}{i!n!}n!\\
+& = \sum_{i = 0}^{d} n! \cdot \binom{n + i}{i}\\
+& = n! \cdot \sum_{i = 0}^{d} \binom{n + i}{i}\\
+& = n! \cdot \binom{n + d + 1}{d}\\
+\end{align*}
 
 \section*{Übung 2}
 
