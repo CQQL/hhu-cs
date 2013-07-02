@@ -7,11 +7,15 @@
 \usepackage{amsthm}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
+\DeclareMathOperator{\id}{id}
+
 \begin{document}
 
 \section*{Übung 1}
 
 \subsection*{Teil 1}
+
+
 
 \subsection*{Teil 2}
 
@@ -76,9 +80,80 @@ M = (m_{i,j})_{i,j} \quad N = (n_{i,j})_{i,j}
 
 \subsection*{Teil 2}
 
-Die Identitätsfunktion.
+Die Identitätsfunktion und die folgende Funktion $\overline{x}$
+\begin{equation}
+\overline{a + b\sqrt{2}} \Rightarrow a - b\sqrt{2}
+\end{equation}
+
+\begin{proof}
+Seien $a, b \in \mathbb{Q}\sqrt{2}$.
+\begin{equation}
+\id(1) = 1
+\end{equation}
+\begin{equation}
+\id(a + b) = a + b = \id(a) + \id(b)
+\end{equation}
+\begin{equation}
+\id(ab) = ab = \id(a)\id(b)
+\end{equation}
+
+Seien $a + b\sqrt{2}, c + d\sqrt{2} \in \mathbb{Q}\sqrt{2}$.
+\begin{equation}
+\overline{1} = 1
+\end{equation}
+\begin{equation}
+\overline{a + b\sqrt{2} + c + d\sqrt{2}} = a - b\sqrt{2} + c - d\sqrt{2} = \overline{a + b\sqrt{2}} + \overline{c + d\sqrt{2}}
+\end{equation}
+\begin{equation*}
+\overline{(a + b\sqrt{2}) \cdot (c + d\sqrt{2})} = \overline{ac + 2bd + (ad + bc)\sqrt{2}} = ac + 2bd - (ad + bc)\sqrt{2} = (a - b\sqrt{2}) \cdot (c - d\sqrt{2}) = \overline{a + b\sqrt{2}} \cdot \overline{c + d\sqrt{2}}
+\end{equation*}
+\end{proof}
 
 \section*{Übung 4}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Sei $(e_{1}, \dots, e_{n})$ eine Basis von $V$.
+Sei $M = (m_{ij})$ die Matrix von $B$ in dieser Basis.
+\begin{align*}
+\textit{B ist symmetrisch} & \Leftrightarrow B(x, y) = B(y, x)\ \forall x, y\\
+& \Leftrightarrow B(e_{i}, e_{j}) = B(e_{j}, e_{i})\ \forall i, j \in [1, n]\\
+& \Leftrightarrow m_{ij} = m_{ji}\ \forall i, j \in [1, n]\\
+& \Leftrightarrow \textit{M ist symmetrisch}
+\end{align*}
+\begin{align*}
+\textit{B ist antisymmetrisch} & \Leftrightarrow B(x, y) = -B(y, x)\ \forall x, y\\
+& \Leftrightarrow B(e_{i}, e_{j}) = -B(e_{j}, e_{i})\ \forall i, j \in [1, n]\\
+& \Leftrightarrow m_{ij} = -m_{ji}\ \forall i, j \in [1, n]\\
+& \Leftrightarrow \textit{M ist antisymmetrisch}
+\end{align*}
+\begin{align*}
+\textit{B ist alternierend} & \Leftrightarrow B(x, x) = 0\ \forall x\\
+& \Leftrightarrow B(e_{i}, e_{i}) = 0\ \forall i \in [1, n]\ \land\ B(e_{i}, e_{j}) = -B(e_{i}, e_{j})\ \forall i, j \in [1, n], i \ne j\\
+& \Leftrightarrow m_{ii} = 0 \forall i \in [1, n]\ \land\ m_{ij} = -m_{ji}\ \forall i, j \in [1, n], i \ne j\\
+& \Leftrightarrow \textit{M ist alternierend}
+\end{align*}
+\end{proof}
+
+\subsection*{Teil 2}
+
+\begin{proof}
+Sei $(e_{1}, \dots, e_{n})$ eine Basis von $V$.
+Sei $M = (m_{ij})$ die Matrix von $B$ in dieser Basis.
+\begin{align*}
+\textit{B ist hermitsch} & \Leftrightarrow B(x, y) = \sigma(B(y, x))\\
+& \Leftrightarrow B(e_{i}, e_{j}) = \sigma(B(e_{j}, e_{i}))\\
+& \Leftrightarrow m_{ij} = \sigma(m_{ji})\\
+& \Leftrightarrow \textit{M ist hermitsch}
+\end{align*}
+\begin{align*}
+\textit{B ist antihermitsch} & \Leftrightarrow B(x, y) = -\sigma(B(y, x))\\
+& \Leftrightarrow B(e_{i}, e_{j}) = -\sigma(B(e_{j}, e_{i}))\\
+& \Leftrightarrow m_{ij} = -\sigma(m_{ji})\\
+& \Leftrightarrow \textit{M ist antihermitsch}
+\end{align*}
+\end{proof}
 
 \section*{Übung 5}
 
