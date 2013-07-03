@@ -15,6 +15,19 @@
 
 \subsection*{Teil 1}
 
+\begin{proof}
+Ich zeige es per Induktion über $d$.
+Sei $d = 0$.
+\begin{equation}
+\sum_{k = 0}^{d} \binom{n + k}{k} = \binom{n}{0} = 1 = \binom{n + 1}{0} = \binom{n + d + 1}{d}
+\end{equation}
+
+Sei $d \ge 0$ und $\sum_{k = 0}^{d} \binom{n + k}{k} = \binom{n + d + 1}{d}$.
+\begin{align*}
+\sum_{k = 0}^{d + 1} \binom{n + k}{k} = \sum_{k = 0}^{d} \binom{n + k}{k} + \binom{n + d + 1}{d + 1} = \binom{n + d + 1}{d} + \binom{n + d + 1}{d + 1} = \binom{n + d + 1 + 1}{d + 1}
+\end{align*}
+\end{proof}
+
 \subsection*{Teil 2}
 
 \begin{align*}
