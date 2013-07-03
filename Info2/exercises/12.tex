@@ -1,0 +1,111 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{color}
+\usepackage{listings}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section*{Aufgabe 12.1}
+
+\subsection*{Teil 1}
+
+\begin{equation}
+F0 = 1, F1 = 0, ENA = 0, ENB = 1, INVA = 0
+\end{equation}
+\begin{equation}
+F0 = 1, F1 = 0, ENA = 0, ENB = 1, INVA = 1
+\end{equation}
+\begin{equation}
+F0 = 1, F1 = 0, ENA = 1, ENB = 1, INVA = 0
+\end{equation}
+\begin{equation}
+F0 = 1, F1 = 0, ENA = 1, ENB = 1, INVA = 1
+\end{equation}
+
+\subsection*{Teil 2}
+
+\begin{equation}
+g(A, B) = \overline{A}B
+\end{equation}
+
+\section*{Aufgabe 12.2}
+
+\begin{tabular}{l|l}
+MAR = CPP; rd & Adresse setzen und lesen\\
+MAR = SP & auf Ergebnis warten und Schreibziel setzen\\
+H = MDR & Ergebnis in H speichern, um Rechnung zu ermöglichen\\
+MDR = TOS = TOS - H; wr & Berechnung durchführen und an SP schreiben\\
+ & Auf erfolgreiches Speichern warten\\
+\end{tabular}
+
+\section*{Aufgabe 12.3}
+
+\subsection*{Teil 1}
+
+Ein einfacher Ansatz wäre, 1x um 8 Stellen nach links zu verschieben und dann 7x nach rechts.
+Dabei gehen allerdings die 7 höchstwertigen Bits verloren.
+Die kann man wiederherstellen, indem man das Ergebnis in einem Hilfsregister speichert und dann ein Register mit -1 lädt, 3x8x nach links verschiebt, mit der Ursprungswert per AND verknüpft, 7x nach rechts, 1x nach links schiebt und mit dem ersten Ergebnis per OR verknüpft.
+Der zweite, aufwendige Schritt filtert dabei mit einer Bitmaske die Bits 25-31, die beim ersten Ergebnis fehlen, und lädt sie an die richtige Stelle im Ergebnis.
+
+\subsection*{Teil 2}
+
+Man kann jede Bitmaske erzeugen, indem man ein Register mit 0 lädt und dann 31x nach links verschiebt und dabei an den entsprechenden Stellen noch eine 1 addiert, die dann in der letzten Stelle landet, und im weiteren Verlauf an die vorgesehene Position wandert.
+Bei bestimmten Mustern kann man auch mit $-1$ und der Negation arbeiten, weil dies einem bereits ein Register voller Einsen liefert.
+
+Die Bitmaske für das least significant bit ist die $1$ und für das most significant bit die $2^{31}$.
+
+Least significant bit
+\begin{lstlisting}
+H = 1 ; Bitmaske erzeugen
+\end{lstlisting}
+
+Most significant bit
+\begin{lstlisting}
+H = 1 ; Ein Register mit 0 laden
+H = H << 8 ; * 2^8
+H = H << 8 ; * 2^8
+H = H >> 1 ; * 2^-1
+H = H << 8 ; * 2^8
+H = H << 8 ; * 2^8 => 31x nach links verschieben; fertig
+\end{lstlisting}
+
+\subsection*{Teil 3}
+
+Mit einem numerischen Zähler lädt man die Anzahl der Durchläufe in ein Register und verringert den Wert bei jedem Durchlauf um 1.
+Wenn er bei 0 angekommen ist, springt man aus der Schleife.
+
+Mit einer 1-Bitmaske kann man nur Schleifen umsetzen, die eine Potenz von 2 mal durchlaufen.
+Wenn die Schleife $2^{n}$ mal durchlaufen soll, erstellt man die Bitmaske so, dass die 1 an der n-ten Stelle steht.
+Wenn dann am Ende des Schleifendurchgangs die verANDung der beiden Werte nicht $0$ ist, ist die Schleife vorbei.
+
+\section*{Aufgabe 12.4}
+
+\subsection*{Teil 1}
+
+Wenn der Wert oben auf dem Stack $\le 0$ ist, soll eine $1$ auf den Stack gepusht werden, sonst eine $0$.
+
+\subsection*{Teil 2}
+
+Es funktioniert nicht, weil L1 und L3 dieselbe Speicherstelle belegen müssten, weil Sprungziele von bedingten Sprüngen immer genau $0x100$ auseinander liegen müssen.
+Da beide Bedingungen dasselbe Sprungziel im if-Zweig haben, müssen die unterschiedlichen Anweisungen L1 und L3 beide an Position $Pos(L2) - 0x100$ gespeichert werden.
+
+\subsection*{Teil 3}
+
+Man kann eine weitere Zeile L4 einführen, die genau dasselbe macht wie L2.
+Dann kann man L1-L2 und L3-L4 jeweils $0x100$ auseinander legen, sodass eine Kollision vermieden wird.
+
+\begin{tabular}{l|l}
+ & MAR = SP = SP + 1;\\
+ & N = TOS; if (N) goto L2; else goto L1;\\
+L1 & Z = TOS; if (Z) goto L4; else goto L3;\\
+L2 & TOS = MDR = 1; wr; goto Main1;\\
+L3 & TOS = MDR = 0; wr; goto Main1;\\
+L4 & TOS = MDR = 1; wr; goto Main1;
+\end{tabular}
+
+\end{document}
