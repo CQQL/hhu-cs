@@ -1,0 +1,205 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Mat}{Mat}
+\DeclareMathOperator{\Ima}{Im}
+
+\begin{document}
+
+\section*{Übung 1}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+Sei $U$ ein isotroper Unterraum von größtmöglicher Dimension und $(v_{1}, \dots, v_{d})$ eine Basis von $U$.
+Weil $B$ nicht ausgeartet ist, muss es einen Vektor geben, der nicht in $U$ ist.
+Also ist $U \ne V$ und $d < n$.
+Weil $B$ nicht ausgeartet ist, gibt es zu jedem $v_{j}$ ein $w_{j}$ mit $B(v_{j}, w_{j}) \ne 0$ und $w_{j} \notin U$, weil $U$ isotrop ist.
+
+Seien $\lambda_{1}, \dots, \lambda_{d} \in \mathbb{R}$, sodass
+\begin{equation}
+\lambda_{1} w_{1} + \dots + \lambda_{d} w_{d} = 0
+\end{equation}
+\end{proof}
+
+\subsection*{Teil 2}
+
+Aus Teil 1 wissen wir, dass jeder dieser Unterräume maximal von Dimension $2$ sein kann.
+
+\subsubsection*{$M_{1}$}
+
+Seien $v = ae_{1} + be_{2} + ce_{3} + de_{4} \in \mathbb{R}^{4}$.
+Damit ein Unterraum, der $v$ enthält, isotrop sein kann, muss $v$ auch isotrop sein.
+\begin{align*}
+B(v, v) & = B(ae_{1} + be_{2} + ce_{3} + de_{4}, ae_{1} + be_{2} + ce_{3} + de_{4})\\
+& = aa B(e_{1}, e_{1}) + bb B(e_{2}, e_{2}) + cc B(e_{3}, e_{3}) + dd B(e_{4}, e_{4}) \quad \textit{die restlichen Terme sind alle 0}\\
+& = a^{2} + b^{2} + c^{2} + d^{2}
+\end{align*}
+\begin{equation}
+B(v, v) = 0 \Leftrightarrow a^{2} + b^{2} + c^{2} + d^{2} = 0 \Leftrightarrow v = 0
+\end{equation}
+\begin{equation}
+U = \{ 0 \}
+\end{equation}
+
+\subsubsection*{$M_{2}$}
+
+\begin{equation}
+U = \langle e_{1} + e_{4} \rangle
+\end{equation}
+
+\subsubsection*{$M_{3}$}
+
+\begin{equation}
+U = \langle e_{1} + e_{3}, e_{2} + e_{4} \rangle
+\end{equation}
+
+\section*{Übung 2}
+
+\subsection*{Teil 1.a}
+
+\begin{align*}
+B((x_{1}, x_{2}, x_{3}, x_{4}), (y_{1}, y_{2}, y_{3}, y_{4})) & = x_{1}\overline{y_{1}} + x_{2}\overline{y_{2}} + x_{3}\overline{y_{3}} + x_{4}\overline{y_{4}}\\
+& = \overline{y_{1}\overline{x_{1}} + y_{2}\overline{x_{2}} + y_{3}\overline{x_{3}} + y_{4}\overline{x_{4}}}\\
+& = \overline{B((y_{1}, y_{2}, y_{3}, y_{4}), (x_{1}, x_{2}, x_{3}, x_{4}))}
+\end{align*}
+
+\subsection*{Teil 1.b}
+
+Weil hier $\mathbb{C}^{4}$ als $\mathbb{C}$-Vektorraum betrachtet wird, ist
+\begin{equation}
+M_{\mathcal{B}}(B) = M_{\mathcal{B}}(B)^{-1} = I_{4}
+\end{equation}
+\begin{equation}
+\Mat_{\mathcal{B}}(f^{*}) = \overline{\Mat_{\mathcal{B}}(f)} = \begin{pmatrix}
+1 & -i & 0 & 0\\
+i & 0 & 0 & 0\\
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0
+\end{pmatrix}
+\end{equation}
+
+\subsection*{Teil 1.c}
+
+\begin{proof}
+\begin{equation}
+\chi_{f} = (x - 1)(x + 1)(x - \frac{1 + \sqrt{5}}{2})(x - \frac{1 - \sqrt{5}}{2}) = \chi_{f^{*}}
+\end{equation}
+Also sind beide diagonalisierbar weil jede Nullstelle mit Vielfachkeit 1 vorkommt.
+\end{proof}
+
+\subsection*{Teil 2.a}
+
+\begin{proof}
+\begin{align*}
+B((x_{1}, \dots, x_{n}), (y_{1}, \dots, y_{n})) & = x_{1}\overline{y_{1}} + \dots + x_{n}\overline{y_{n}}\\
+& = \overline{\overline{x_{1}}y_{1} + \dots + \overline{x_{n}}y_{n}}\\
+& = \overline{y_{1}\overline{x_{1}} + \dots + y_{n}\overline{x_{n}}}\\
+& = \overline{B((y_{1}, \dots, y_{n}), (x_{1}, \dots, x_{n}))}
+\end{align*}
+\end{proof}
+
+\subsection*{Teil 2.b}
+
+\begin{proof}
+Sei $a + ib \in \mathbb{C}$.
+\begin{equation}
+(a + ib)\overline{(a + ib)} = (a + ib)(a - ib) = a^{2} - aib + iba + b^{2} = a^{2} + b^{2} \in \mathbb{R}_{\ge 0}
+\end{equation}
+\begin{equation}
+(a + ib)\overline{(a + ib)} = 0 \Leftrightarrow a^{2} + b^{2} = 0 \Leftrightarrow a = 0\ \land\ b = 0
+\end{equation}
+
+\begin{align*}
+B((x_{1}, \dots, x_{n}), (x_{1}, \dots, x_{n})) & = x_{1}\overline{x_{1}} + \dots + x_{n}\overline{x_{n}} \in \mathbb{R}_{\ge 0}
+\end{align*}
+\begin{equation}
+B((x_{1}, \dots, x_{n}), (x_{1}, \dots, x_{n})) = 0 \Leftrightarrow x_{1} = \dots = x_{n} = 0
+\end{equation}
+\end{proof}
+
+\subsection*{Teil 2.c}
+
+\begin{proof}
+$B$ ist eine $\sigma$-Sesquilinearform, wobei $\sigma$ die komplexe Konjugation ist.
+Dann ergibt sich
+\begin{equation*}
+\lambda B(v, v) = B(\lambda v, v) = B(f(v), v) = B(v, f^{*}(v)) = B(v, f(v)) = B(v, \lambda v) = \overline{\lambda} B(v, v) \Leftrightarrow \lambda = \overline{\lambda} \Leftrightarrow \Ima(\lambda) = 0 \Leftrightarrow \lambda \in \mathbb{R}
+\end{equation*}
+\end{proof}
+
+\subsection*{Teil 2.d}
+
+\begin{proof}
+Sei $w \in U$.
+\begin{equation*}
+B(f(w), v) = B(w, f^{*}(v)) = B(w, f(v)) = B(w, \lambda v) = \lambda B(w, v) = \lambda \cdot 0 = 0 \Rightarrow f(w) \in v^{\perp} = U \Rightarrow f(U) \subseteq U
+\end{equation*}
+\end{proof}
+
+\subsection*{Teil 2.e}
+
+\begin{proof}
+Ich zeige es per Induktion nach $n$.
+Sei $n = 1$.
+\end{proof}
+
+\section*{Übung 3}
+
+\subsection*{Teil 1}
+
+\begin{proof}
+$\Rightarrow$:
+\begin{equation}
+f(0) = \sigma(1) f(0) = \sigma(1 + 1) f(0) \Leftrightarrow 1 f(0) = 2 f(0) \Leftrightarrow f(0) = 0 \Leftrightarrow 0 \in \Ker(f)
+\end{equation}
+Sei $v \in Ker(f)$.
+Da $f$ injektiv ist und $f(0)$ schon 0 ist, muss $v = 0$ sein, also $\Ker(f) = 0$.
+\end{proof}
+
+$\Leftarrow$: Seien $v, w \in V$ mit $f(v) = f(w)$.
+\begin{equation}
+f(v - w) = f(v) - f(w) = 0 \Leftrightarrow v - w = 0 \Leftrightarrow v = w
+\end{equation}
+
+\subsection*{Teil 2}
+
+$injektiv \Rightarrow bijektiv$: 
+
+$bijektiv \Rightarrow surjektiv$: Per Definition.
+
+$surjektiv \Rightarrow injektiv$: Seien $v, w \in V$ mit $f(v) = f(w)$.
+
+\subsection*{Teil 3}
+
+\begin{proof}
+Seien $v, w \in V$, $z \in W$ und $\lambda, \mu \in K$.
+\begin{align*}
+\Phi_{B}(\lambda v + \mu w)(z) & = B(\lambda v + \mu w, z)\\
+& = \lambda B(v, z) + \mu B(w, z)\\
+& = \lambda \Phi_{B}(v)(z) + \mu \Phi_{B}(w)(z)\\
+\end{align*}
+
+Seien $v, w \in W$, $z \in V$ und $\lambda, \mu \in K$.
+\begin{align*}
+\Psi_{B}(\lambda v + \mu w)(z) & = B(z, \lambda v + \mu w)\\
+& = \sigma(\lambda) B(z, v) + \sigma(\mu) B(z, w)\\
+& = \sigma(\lambda) \Psi_{B}(v)(z) + \sigma(\mu) \Psi_{B}(w)(z)\\
+\end{align*}
+
+\begin{equation*}
+v \in \Ker \Phi_{B} \Leftrightarrow \Phi_{B}(v) = 0 \Leftrightarrow \Phi_{B}(v)(w) = 0\ \forall w \in W \Leftrightarrow B(v, w) = 0\ \forall w \in W \Leftrightarrow v \in \{ v \in V \mid B(v, w) = 0\ \forall w \in W \}
+\end{equation*}
+\begin{equation}
+w \in \Ker \Psi_{B} \Leftrightarrow \Psi_{B}(w) = 0 \Leftrightarrow \Psi_{B}(w)(v) = 0\ \forall v \in V \Leftrightarrow B(v, w) = 0\ \forall v \in V \Leftrightarrow w \in \{ w \in W \mid B(v, w) = 0\ \forall v \in V \}
+\end{equation}
+\end{proof}
+
+\end{document}
