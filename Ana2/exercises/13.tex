@@ -1,0 +1,126 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\subsection*{Aufgabe 54}
+
+\begin{proof}
+Da $F$ Summe/Produkt von $C^{\infty}$-Funktionen ist, ist es selbst in $C^{\infty}$.
+Seien $x_{0} = 0 = y_{0}$.
+Dann ist $F(x_{0}, y_{0}) = 0$ und $\frac{\partial F}{\partial y}(x, y) = ye^{y} + e^{y} + x$ und $\frac{\partial F}{\partial y}(x_{0}, y_{0}) = 1 \ne 0$.
+Also ist $\frac{\partial F}{\partial y}(x_{0}, y_{0})$ invertierbar.
+Damit sind alle Bedingungen für den Satz über implizite Funktionen erfüllt.
+Es gibt also eine offene Kugel in $\mathbb{R}$ ($]-\varepsilon, \varepsilon[$) um $x_{0} = 0$ und eine eindeutig bestimmte Funktion $f : ]-\varepsilon, \varepsilon[ \rightarrow \mathbb{R}$ mit $f(x_{0}) = f(0) = y_{0} = 0$ und $F(x, f(x)) = 0$ für alle $x \in ]-\varepsilon, \varepsilon[$.
+Weil $F$ in $C^{\infty}$ ist, ist $f$ es ebenfalls.
+
+\begin{equation}
+\frac{\partial F}{\partial x}(x, y) = xe^{x} + e^{x} + y
+\end{equation}
+\begin{equation}
+Df(x_{0}) = f'(x_{0}) = f'(0) = \frac{\partial F}{\partial y}(x_{0}, y_{0})^{-1} \cdot \frac{\partial F}{\partial x}(x_{0}, y_{0}) = 1 \cdot 1 = 1
+\end{equation}
+\end{proof}
+
+\subsection*{Aufgabe 55}
+
+\subsection*{Teil a}
+
+\begin{proof}
+\begin{align*}
+& (x, y) \in L\\
+\Leftrightarrow & \sqrt{(x - 1)^{2} + y^{2}}\sqrt{(x + 1)^{2} + y^{2}} = \sqrt{((x - 1)^{2} + y^{2})((x + 1)^{2} + y^{2})} = 1\\
+\Leftrightarrow & ((x - 1)^{2} + y^{2})((x + 1)^{2} + y^{2}) = 1\\
+\Leftrightarrow & (x - 1)^{2}(x + 1)^{2} + (x - 1)^{2}y^{2} + (x + 1)^{2}y^{2} + y^{4} = 1\\
+\Leftrightarrow & (x^{2} - 2x + 1)(x^{2} + 2x + 1) + (x^{2} - 2x + 1)y^{2} + (x^{2} + 2x + 1)y^{2} + y^{4} = 1\\
+\Leftrightarrow & x^{4} + 2x^{3} + x^{2} - 2x^{3} - 4x^{2} - 2x + x^{2} + 2x + 1 + x^{2}y^{2} - 2xy^{2} + y^{2} + x^{2}y^{2} + 2xy^{2} + y^{2} + y^{4} = 1\\
+\Leftrightarrow & x^{4} + 2x^{2}y^{2} + y^{4} - 2x^{2} + 2y^{2} + 1 = 1\\
+\Leftrightarrow & x^{4} + 2x^{2}y^{2} + y^{4} - 2x^{2} + 2y^{2} = 0\\
+\Leftrightarrow & (x^{2} + y^{2})^{2} - 2(x^{2} - y^{2}) = 0\\
+\Leftrightarrow & F(x, y) = 0\\
+\end{align*}
+\end{proof}
+
+\subsection*{Teil b}
+
+\begin{equation}
+\frac{\partial F}{\partial y}(x, y) = 4x^{2}y + 4y^{3} + 4y
+\end{equation}
+\begin{equation}
+\frac{\partial F}{\partial y}(x, y) = 0 \Leftrightarrow 4x^{2}y + 4y^{3} + 4y = 0 \Leftrightarrow \begin{cases}
+x \in \mathbb{R} & \textit{wenn $y = 0$}\\
+x^{2} = - y^{2} - 1& \textit{wenn $y \ne 0$}
+\end{cases}
+\end{equation}
+Für $y \ne 0$, gibt es also keine Lösung.
+Es bleibt zu bestimmen, welche $(x, 0) \in L$ sind.
+\begin{equation}
+F(x, 0) = 0 \Leftrightarrow x^{4} - 2x^{2} = x^{2}(x^{2} - 2) = 0 \Leftrightarrow x = 0\ \lor\ x = \sqrt{2}\ \lor\ x = -\sqrt{2}
+\end{equation}
+
+\subsection*{Teil c}
+
+\subsection*{Teil d}
+
+Weil $F(x, y) = 0$ für alle $(x, y) \in L$ und die sonstigen Bedingungen auch erfüllt sind für $y \ne 0$, gibt es dort immer eine Funktion $f$, sodass $F(x, f(x)) = 0$ und $f$ nimmt sein Maximum an wegen Teil c.
+\begin{equation}
+f'(x) = 
+\end{equation}
+
+\subsection*{Teil e}
+
+\subsection*{Aufgabe 56}
+
+\subsection*{Teil a}
+
+\begin{equation}
+f(x, y) = \begin{pmatrix}
+x^{2} + y^{2}\\
+2yx
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+Df(x, y) = \begin{pmatrix}
+2x & 2y\\
+2y & 2x
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+Df(x, y)\textit{ ist invertierbar} \Leftrightarrow \det(Df(x, y)) = 4(x^{2} - y^{2}) \ne 0 \Leftrightarrow x \ne y\ \land\ x \ne -y
+\end{equation}
+$Df(x, y)$ ist also für alle Punkte in $\mathbb{R}^{2}$ invertierbar, die nicht auf einer der zwei Hauptdiagonalen liegen.
+
+\subsection*{Teil b}
+
+\begin{proof}
+Da die beiden Komponentenfunktionen stetig sind, ist $f$ ebenfalls stetig.
+
+\end{proof}
+
+\subsection*{Aufgabe 57}
+
+\subsection*{Teil a}
+
+\begin{equation}
+f(a, b) = \begin{pmatrix}
+\sum_{k = 0\ \textit{$k$ gerade}}^{n} \binom{n}{k} (-1)^{\frac{k}{2}} a^{n - k}b^{k}\\
+\sum_{k = 1\ \textit{$k$ ungerade}}^{n} \binom{n}{k} (-1)^{\frac{k - 1}{2}} a^{n - k}b^{k}
+\end{pmatrix}
+\end{equation}
+\begin{equation}
+Df(a, b) = \begin{pmatrix}
+\sum_{k = 0\ \textit{$k$ gerade}}^{n} \binom{n}{k} (-1)^{\frac{k}{2}} (n - k) a^{n - k - 1}b^{k} & \sum_{k = 0\ \textit{$k$ gerade}}^{n} \binom{n}{k} (-1)^{\frac{k}{2}} k a^{n - k}b^{k - 1}\\
+\sum_{k = 1\ \textit{$k$ ungerade}}^{n} \binom{n}{k} (-1)^{\frac{k - 1}{2}} (n - k) a^{n - k - 1}b^{k} &
+\sum_{k = 1\ \textit{$k$ ungerade}}^{n} \binom{n}{k} (-1)^{\frac{k - 1}{2}} k a^{n - k}b^{k - 1}
+\end{pmatrix}
+\end{equation}
+
+\subsection*{Teil b}
+
+\end{document}
