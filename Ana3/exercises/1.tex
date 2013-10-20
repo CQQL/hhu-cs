@@ -1,0 +1,118 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+\subsection{Teil a}
+\subsection{Teil b}
+\subsection{Teil c}
+
+\section{Aufgabe 2}
+\begin{proof}
+  Wenn $P \cap Q = \emptyset$, ist es wahr, weil $\emptyset$ ein Quader ist.
+
+  Sei also $P \cap Q \ne \emptyset$.
+  Sei $P = [a, b[$ und $Q = [c, d[$, wobei die jeder der Vektoren $a, b, c, d$ $n$ nummerierte Komponenten $a_{i}, \dots$ hat.
+  Seien $e$ und $f$ Vektoren mit $n$ Komponenten, wobei $e_{i} = \max(a_{i}, c_{i})$ und $f_{i} = \min(b_{i}, d_{i})$.
+  Dann ist $P \cap Q = [e, f[$ und somit ein Quader:
+  
+  Sei $x \in P \cap Q$.
+  Dann ist $x \in P$ und $x \in Q$, also $a_{i} \le x_{i} < b_{i}$ und $c_{i} \le x_{i} < d_{i}$, also $\max(a_{i}, c_{i}) \le x_{i} < \min(b_{i}, d_{i})$, also $x \in [e, f[$.
+  
+  Sei $x \in [e, f[$.
+  Dann ist $\max(a_{i}, c_{i}) \le x_{i} < \min(b_{i}, d_{i})$, also $a_{i} \le x_{i} < b_{i}$ und $c_{i} \le x_{i} < d_{i}$, also $x \in P$ und $x \in Q$, also $x \in P \cap Q$.
+\end{proof}
+
+\section{Aufgabe 3}
+\begin{proof}
+  
+\end{proof}
+
+\section{Aufgabe 4}
+
+\subsection{Teil a}
+\begin{proof}
+  Sei $r \in R$ und $A = \{ x \in X \mid r(x) = 1 \}$.
+  Dann ist $r = \chi_{A}$ und $A \mapsto \chi_{A}$ ist surjektiv.
+  
+  Seien $A, B \in \mathscr{P}(X)$, so dass $\chi_{A} = \chi_{B}$.
+  Also gilt für alle $x \in X$
+  \begin{equation}
+    (\chi_{A}(x) = 1 \Leftrightarrow \chi_{B}(x) = 1) \Leftrightarrow (x \in A \Leftrightarrow x \in B) \Leftrightarrow A = B
+  \end{equation}
+  Also ist $A \mapsto \chi_{A}$ auch injektiv und somit bijektiv.
+\end{proof}
+
+\subsection{Teil b}
+\begin{proof}
+  Zu zeigen ist, dass $(\mathscr{P}(X), \Delta)$ eine kommutative Gruppe ist, $(\mathscr{P}(X), \cap)$ eine kommutative Halbgruppe mit neutralem Element ist und das Distributivgesetz gilt.
+  
+  $\emptyset$ ist das neutrale Element bezüglich $\Delta$:
+  \begin{equation}
+    A \Delta \emptyset = (A \setminus \emptyset) \cup (\emptyset \setminus A) = A \cup \emptyset = A
+  \end{equation}
+  $A^{-1} = A$ ist das inverse Element bezüglich $\Delta$:
+  \begin{equation}
+    A \Delta A^{-1} = (A \setminus A) \cup (A \setminus A) = \emptyset
+  \end{equation}
+  $\Delta$ ist assoziativ:
+  \begin{align*}
+    (A \Delta B) \Delta C & = (((A \setminus B) \cup (B \setminus A)) \setminus C) \cup (C \setminus ((A \setminus B) \cup (B \setminus A)))\\
+    & = A\\
+    & = (A \setminus ((B \setminus C) \cup (C \setminus B))) \cup (((B \setminus C) \cup (C \setminus B)) \setminus A) = A \Delta (B \Delta C)
+  \end{align*}
+  $\Delta$ ist kommutativ:
+  \begin{equation}
+    A \Delta B = (A \setminus B) \cup (B \setminus A) = (B \setminus A) \cup (A \setminus B) = B \Delta A
+  \end{equation}
+  
+  $\cap$ ist assoziativ:
+  \begin{equation}
+    (A \cap B) \cap C = \{ x \in X \mid x \in A \land x \in B \land x \in C \} = A \cap (B \cap C)
+  \end{equation}
+  $X$ ist das neutrale Element bezüglich $\cap$:
+  \begin{equation}
+    A \cap X = A
+  \end{equation}
+  $\cap$ ist kommutativ:
+  \begin{equation}
+    A \cap B = \{ x \in X \mid x \in A \land x \in B \} = B \cap A
+  \end{equation}
+  
+  \begin{align*}
+    A \cap (B \Delta C) & = A \cap ((B \setminus C) \cup (C \setminus B))\\
+    & = \\
+    & = ((A \setminus B) \cup (B \setminus A)) \cap ((A \setminus@ C) \cup (C \setminus@ A))\\
+    & = (A \Delta B) \cap (A \Delta C)
+  \end{align*}
+\end{proof}
+
+\subsection{Teil c}
+\begin{proof}
+  $\Leftarrow$: Sei $\mathscr{R}$ ein Unterring von $(\mathscr{P}(X), \Delta, \cap)$.
+  Dann enthält $\mathscr{R}$ die leere Menge als neutrales Element bezüglich $\Delta$.
+  Man kann $\cup$ definieren durch:
+  \begin{equation}
+    A \cup B = (((A \setminus B) \cup (B \setminus A)) \setminus (A \cap B)) \cup ((A \cap B) \setminus ((A \setminus B) \cup (B \setminus A))) = (A \Delta B) \Delta (A \cap B)
+  \end{equation}
+  und $\setminus$ durch:
+  \begin{equation}
+    A \setminus B = A \Delta (A \cap B)
+  \end{equation}
+
+  $\Rightarrow$: Sei $\mathscr{R}$ ein Ring von Teilmengen von $X$ im Sinne der Definition aus der Vorlesung.
+  Dann ist $\Delta$ bereits definiert und $\cap$ definiert man durch:
+  \begin{equation}
+    A \cap B = (A \cup B) \setminus ((A \setminus B) \cup (B \setminus A))
+  \end{equation}
+\end{proof}
+
+\end{document}
