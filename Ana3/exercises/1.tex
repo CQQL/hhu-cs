@@ -11,7 +11,18 @@
 \begin{document}
 
 \section{Aufgabe 1}
+
 \subsection{Teil a}
+\begin{proof}
+  Sei $f(x, y) = \sum_{i, j} a_{i, j} x^{i} y^{j}$.
+  \begin{align*}
+    \int_{0}^{1} \int_{0}^{1} \sum_{i, j} a_{i, j} x^{i} y^{j}\ dx\ dy & = \int_{0}^{1} \sum_{i, j} \frac{a_{i, j}}{i + 1} y^{j}\ dy\\
+    & = \sum_{i, j} \frac{a_{i, j}}{(i + 1)(j + 1)} \\
+    & = \int_{0}^{1} \sum_{i, j} \frac{a_{i, f}}{j + 1} x^{i}\\
+    & = \int_{0}^{1} \int_{0}^{1} \sum_{i, j} a_{i, j} x^{i} y^{j}\ dy\ dx
+  \end{align*}
+\end{proof}
+
 \subsection{Teil b}
 \subsection{Teil c}
 
@@ -33,7 +44,40 @@
 
 \section{Aufgabe 3}
 \begin{proof}
+  Wenn $Q \setminus P = Q$, dann ist es wahr, weil $Q$ ein Quader ist.
+
+  Ansonsten sei $Q = [a, b]$ und $P = [c, d[$.
+  \begin{align*}
+    Q \setminus P & = \{ x \in [a, b[ \mid x \notin [c, d[ \}\\
+    & = \{ x \in [a, b[ \mid c \nleq x \lor x \nless d \}\\
+    & = \{ x \in [a, b[ \mid \exists i \in [1, n]: x_{i} < c_{i} \lor x_{i} \geq d_{i} \}\\
+    & = \bigcup F_{i} \cup G_{i}
+  \end{align*}
+  Dabei sind die $F_{i}$ und $G_{i}$ definiert wie folgt:
+  \begin{equation}
+    F_{i} = [a, f_{i}[
+  \end{equation}
+  \begin{equation}
+    G_{i} = [g_{i}, b[
+  \end{equation}
+  wobei
+  \begin{equation}
+    f_{i} = [b_{1}, \dots, c_{i}, \dots, b_{n}]
+  \end{equation}
+  \begin{equation}
+    g_{i} = [a_{1}, \dots, d_{i}, \dots, a_{n}]
+  \end{equation}
   
+  Dabei lässt sich $\bigcup F_{i} \cup G_{i}$ als disjunkte Vereinigung $Y$ darstellen:
+  \begin{equation}
+    Y_{F} = \bigcup_{i = 1}^{n} F_{i} \setminus (\cup_{j = 1}^{i - 1} F_{j}
+  \end{equation}
+  \begin{equation}
+    Y_{G} = \bigcup_{i = 1}^{n} G_{i} \setminus (\cup_{j = 1}^{i - 1} G_{j}
+  \end{equation}
+  \begin{equation}
+    Y = Y_{F} \cup (Y_{G} \setminus Y_{F})
+  \end{equation}
 \end{proof}
 
 \section{Aufgabe 4}
@@ -89,9 +133,9 @@
   
   \begin{align*}
     A \cap (B \Delta C) & = A \cap ((B \setminus C) \cup (C \setminus B))\\
-    & = \\
-    & = ((A \setminus B) \cup (B \setminus A)) \cap ((A \setminus@ C) \cup (C \setminus@ A))\\
-    & = (A \Delta B) \cap (A \Delta C)
+    & = (A \cap (B \setminus C)) \cup (A \cap (C \setminus B))\\
+    & = ((A \cap B) \setminus (A \cap C)) \cup ((A \cap C) \setminus (A \cap B))\\
+    & = (A \cap B) \Delta (A \cap C)
   \end{align*}
 \end{proof}
 
