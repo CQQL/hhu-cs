@@ -1,0 +1,48 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+Die Laufzeit ist $\Theta(n \cdot N)$.
+
+\section{Aufgabe 2}
+Ich werde in allen Teilen Min-Heaps betrachten.
+
+\subsection{Suchen des Maximums}
+
+\subsection{Entfernen des Maximums}
+
+\subsection{Suchen des Minimums}
+
+\subsection{Entfernen des Minimums}
+
+\subsection{Suchen eines beliebigen Elements}
+
+\subsection{Entfernen eines beliebigen Elements}
+
+\section{Aufgabe 3}
+\begin{proof}
+  Sei $j = 0$.
+  \begin{equation}
+    \sum_{k = 1}^{-1} 2^{k - 1} (-k) = 0 = 2^{0} - 1
+  \end{equation}
+  
+  Sei $j > 0 \in \mathbb{N}$ und die Aussage sei wahr für $j - 1$.
+  \begin{align*}
+    \sum_{k = 1}^{j - 1} 2^{k - 1} (j - k) & = 2^{j - 2} (j - j + 1) + \sum_{k = 1}^{j - 2} 2^{k - 1} (j - 1 - k) + \sum_{k = 1}^{j - 2} 2^{k - 1}\\
+    & = 2^{j - 2} + 2^{j - 1} - j + \sum_{k = 1}^{j - 2} 2^{k - 1}\\
+    & = 2^{j - 2} + 2^{j - 1} - j + 2^{j - 2} - 1\\
+    & = 2^{j - 1} + 2^{j - 1} - j - 1\\
+    & = 2^{j} - (j + 1)
+  \end{align*}
+\end{proof}
+
+\end{document}
