@@ -1,0 +1,61 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 5}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\subsection{Teil c}
+
+\subsection{Teil d}
+
+\subsection{Teil e}
+
+\section{Aufgabe 6}
+
+\subsection{Teil a}
+\begin{proof}
+  \begin{equation}
+    |\emptyset| = 0 \Rightarrow \emptyset \in \mathscr{R}
+  \end{equation}
+  
+  Seien $A, B \in \mathscr{R}$.
+  Da $A$ und $B$ endlich sind, sind $k = |A|, n = |B| \in \mathbb{N}$ und $|A \cup B| \le k + n \Rightarrow A \cup B \in \mathscr{R}$.
+  Aus demselben Grund ist $|A \setminus B| \le k \Rightarrow A \setminus B \in \mathscr{R}$.
+\end{proof}
+
+\subsection{Teil b}
+Borrellmengen??
+
+\subsection{Teil c}
+\begin{proof}
+  \begin{equation}
+    |\emptyset| = 0 \Rightarrow \mu(\emptyset) = 0
+  \end{equation}
+  Sei $A \in \mathscr{R}$.
+  Dann ist $A$ endlich und $|A| \in \mathbb{N}_{0}$, also $\mu(A) \ge 0$.
+  
+  Seien $A_{1}, A_{2}, \dots \in \mathscr{R}$ disjunkt.
+  \begin{align*}
+    \mu(\bigcup_{n = 1}^{\infty} A_{n}) & = |\bigcup_{n = 1}^{\infty} A_{n}|\\
+    & = \sum_{n = 1}^{\infty} |A_{n}|\\
+    & = \sum_{n = 1}^{\infty} \mu(A_{n})
+  \end{align*}
+\end{proof}
+
+\section{Aufgabe 7}
+
+\section{Aufgabe 8}
+
+\end{document}
