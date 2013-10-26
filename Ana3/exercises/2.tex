@@ -46,7 +46,7 @@ Borrellmengen??
   Sei $A \in \mathscr{R}$.
   Dann ist $A$ endlich und $|A| \in \mathbb{N}_{0}$, also $\mu(A) \ge 0$.
   
-  Seien $A_{1}, A_{2}, \dots \in \mathscr{R}$ disjunkt.
+  Seien $A_{1}, A_{2}, \dots \in \mathscr{R}$ paarweise disjunkt.
   \begin{align*}
     \mu(\bigcup_{n = 1}^{\infty} A_{n}) & = |\bigcup_{n = 1}^{\infty} A_{n}|\\
     & = \sum_{n = 1}^{\infty} |A_{n}|\\
@@ -55,7 +55,40 @@ Borrellmengen??
 \end{proof}
 
 \section{Aufgabe 7}
+\begin{proof}
+  \begin{equation}
+    x \notin \emptyset \forall x \in X \Rightarrow \epsilon_{x}(\emptyset) = 0
+  \end{equation}
+  \begin{equation}
+    \epsilon_{x}(A) \in \{ 0, 1 \} \forall A \in \mathscr{R} \Rightarrow \epsilon_{x}(A) \ge 0 \forall A \in \mathscr{R}
+  \end{equation}
+  
+  Seien $A_{1}, A_{2}, \dots \in \mathscr{R}$ paarweise disjunkt.
+  Dann ist entweder $x$ in genau einer der Teilmengen von $X$ oder in keiner, also $\epsilon_{x}(\cup_{n = 1}^{\infty} A_{n}) = 1$ oder $\epsilon_{x}(\cup_{n = 1}^{\infty} A_{n}) = 0$.
+  In beiden Fällen gilt
+  \begin{equation}
+    \epsilon_{x}(\bigcup_{n = 1}^{\infty} A_{n}) = \sum_{n = 1}^{\infty} \epsilon_{x}(A_{n})
+  \end{equation}
+  weil die einzelnen Terme der Summe alle 0 oder alle 0 bis auf genau einer sind.
+  Dieser ist dann 1.
+\end{proof}
 
 \section{Aufgabe 8}
+\begin{proof}
+  Angenommen $\mu$ sei ein solches Maß.
+  Da $\mu(X) = 1$ und $\mu$ nur die Werte 0 und 1 annimmt, kann man $X$ in 2 gleichgroße offene Mengen aufteilen, wobei man verbleibende einelementige Teilmengen ignorieren kann, weil diese sowieso ein Volumen von 0 haben.
+  Wegen der $\sigma$-Additivität muss $\mu$ für genau eine der beiden Teilmengen den Wert $1$ und für die andere den Wert $0$ annehmen.
+  Diese beiden Teilmengen kann man dann mit derselben Begründung wiederum aufteilen und das immer so weiter.
+  Sei $A_{1}$ diejenige Hälfte von $X$, für die $\mu$ den Wert 1 annimmt, und $A_{i}$ die Hälfte von $A_{i - 1}$, für die $\mu$ den Wert 1 annimmt.
+  Da wir uns auf einem Ring befinden, können wir den Schnitt $A$ aller dieser Mengen bilden.
+  \begin{equation}
+    A = \bigcap_{n = 1}^{\infty} A_{n}
+  \end{equation}
+  Wenn $A$ mehr als 1 Element hätte, so gäbe es eine Teilmenge von $A$, für die $\mu$ den Wert $0$ annimmt.
+  Aber $A$ ist der Schitt aller Mengen für die $\mu$ den Wert 1 annimmt.
+  Diese Teilmenge müsste somit ``rausgeschnitten'' worden sein.
+  $A$ muss also einelementig sein.
+  Dies führt jedoch zu dem Widerspruch, dass $\mu(A) = 0$.
+\end{proof}
 
 \end{document}
