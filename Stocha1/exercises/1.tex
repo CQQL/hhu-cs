@@ -31,6 +31,14 @@ Die Wahrscheinlichkeit ist in Fall 2 niedriger.
 \subsection{Teil c}
 
 \section{Aufgabe 3}
+\begin{align*}
+  P(A_{1} \cup A_{2} \cup A_{3}) & = P(A_{1}) + P(A_{2} \setminus A_{1}) + P(A_{3} \setminus (A_{1} \cup A_{2}))\\
+  & = P(A_{1}) + P(A_{2}) - P(A_{1} \cap A_{2}) + P(A_{3}) - P(A_{3} \cap (A_{1} \cup A_{2}))\\\
+  & = P(A_{1}) + P(A_{2}) - P(A_{1} \cap A_{2}) + P(A_{3}) - P((A_{3} \cap A_{1}) \cup (A_{3} \cap A_{2}))\\\
+  & = P(A_{1}) + P(A_{2}) - P(A_{1} \cap A_{2}) + P(A_{3}) - (P(A_{1} \cap A_{3}) + P(A_{2} \cap A_{3}) - P(A_{1} \cap A_{3} \cap A_{2} \cap A_{3}))\\\
+  & = P(A_{1}) + P(A_{2}) - P(A_{1} \cap A_{2}) + P(A_{3}) - P(A_{1} \cap A_{3}) - P(A_{2} \cap A_{3}) + P(A_{1} \cap A_{2} \cap A_{3})\\\
+  & = P(A_{1}) + P(A_{2}) + P(A_{3}) - P(A_{1} \cap A_{2}) - P(A_{1} \cap A_{3}) - P(A_{2} \cap A_{3}) + P(A_{1} \cap A_{2} \cap A_{3})
+\end{align*}
 
 \section{Aufgabe 4}
 
