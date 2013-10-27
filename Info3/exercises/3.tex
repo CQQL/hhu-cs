@@ -13,7 +13,12 @@
 \begin{document}
 
 \section{Aufgabe 1}
-Die Laufzeit ist $\Theta(n \cdot N)$.
+Der Worst-Case für das 3-Wege-Split-Verfahren wäre, wenn man erst alle Elemente abtrennt, die 1x vorkommen, dann alle, die 2x vorkommen, und so weiter.
+Dann ist die bildliche Erklärung für die Worst-Case-Laufzeit von $\Theta(N \cdot n)$, dass man bei dem normalen Quicksort eine Rekursionstiefe von $N$ hat, wobei auf der $i$-ten Stufe $N - i$ Vergleiche ausgeführt werden.
+Beim 3-Wege-Split-Verfahren beträgt die Rekursionstiefe nur noch $n$ und auf der $i$-ten Stufe werden maximal $N - i$ Vergleiche ausgeführt.
+Es werden also auf jeden Fall weniger als $N$ Vergleiche pro Stufe durchgeführt, sodass die Worst-Case-Laufzeit in $\mathcal{O}(n \cdot N)$ sein muss.
+Wenn man sich die Summe der Vergleiche pro Stufe als ``Dreieck'' mit nach unten abnehmender Hypotenusensteigung vorstellt, passt dort ein Rechteck mit den Kantenlängen $N / 2$ und $\lceil n / 2 \rceil$ hinein.
+Die Laufzeit ist auch in $\Omega(N \cdot n)$ und somit in $\Theta(N \cdot n)$.
 
 \section{Aufgabe 2}
 Ich werde in allen Teilen Min-Heaps betrachten.
