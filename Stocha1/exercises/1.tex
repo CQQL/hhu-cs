@@ -25,10 +25,29 @@ Die Wahrscheinlichkeit ist in Fall 2 niedriger.
 \section{Aufgabe 2}
 
 \subsection{Teil a}
+\begin{proof}
+  \begin{align*}
+    \sum_{k = 0}^{n} p(k) & = \sum_{k = 0}^{n} \binom{n}{k} p^{k} (1 - p)^{n - k}\\
+    & = (p + 1 - p)^{n} = 1^{n} = 1
+  \end{align*}
+\end{proof}
 
 \subsection{Teil b}
+\begin{proof}
+  \begin{align*}
+    \sum_{k = 0}^{\infty} p(k) & = \sum_{k = 0}^{\infty} \frac{\lambda^{k}}{k!} e^{-\lambda}\\
+    & = e^{-\lambda} \sum_{k = 0}^{\infty} \frac{\lambda^{k}}{k!}\\
+    & = e^{-\lambda} e^{\lambda} = e^{\lambda - \lambda} = e^{0} = 1
+  \end{align*}
+\end{proof}
 
 \subsection{Teil c}
+\begin{proof}
+  \begin{align*}
+    \sum_{k = 1}^{\infty} p(k) & = \sum_{k = 1}^{\infty} -\frac{p^{k}}{k \cdot \log(1 - p)} \\
+    & = 1
+  \end{align*}
+\end{proof}
 
 \section{Aufgabe 3}
 \begin{align*}
@@ -41,5 +60,8 @@ Die Wahrscheinlichkeit ist in Fall 2 niedriger.
 \end{align*}
 
 \section{Aufgabe 4}
+\begin{proof}
+  
+\end{proof}
 
 \end{document}
