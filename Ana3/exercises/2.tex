@@ -36,7 +36,12 @@
 \end{proof}
 
 \subsection{Teil b}
-Borrellmengen??
+Für endliche Mengen $X$.
+\begin{proof}
+  Wenn $X$ nicht endlich wäre, so wäre $X \not\subset \mathscr{R}$, sodass $\mathscr{R}$ keine $\sigma$-Algebra sein kann.
+  
+  Wenn $X$ jedoch endlich ist, ist $\mathscr{R} = \mathscr{P}(X)$, was eine $\sigma$-Algebra ist.
+\end{proof}
 
 \subsection{Teil c}
 \begin{proof}
@@ -84,11 +89,20 @@ Borrellmengen??
   \begin{equation}
     A = \bigcap_{n = 1}^{\infty} A_{n}
   \end{equation}
-  Wenn $A$ mehr als 1 Element hätte, so gäbe es eine Teilmenge von $A$, für die $\mu$ den Wert $0$ annimmt.
-  Aber $A$ ist der Schitt aller Mengen für die $\mu$ den Wert 1 annimmt.
-  Diese Teilmenge müsste somit ``rausgeschnitten'' worden sein.
-  $A$ muss also einelementig sein.
-  Dies führt jedoch zu dem Widerspruch, dass $\mu(A) = 0$.
+  Dann ist $\mu(A) = 1$, weil $\mu(\cap_{k = 1}^{n} A_{k}) = \mu(A_{k}) = 1$ und somit $\lim_{n \rightarrow \infty} \mu(\cap_{k = 1}^{n} A_{k}) = \lim_{n \rightarrow \infty} 1 = 1$.
+
+  $A$ kann nicht leer sein, weil $A_{i} \in A_{i - 1}$ und $A_{i} \neq \emptyset$.
+  
+  Es gibt also mindestens ein Element $a \in A$, als ist $a \in A_{k}\ \forall k$.
+
+  Angenommen es gäbe ein zweites Element $b \neq a \in A$.
+  Dann müsste $b$ ebenfalls in jedem $A_{k}$ enthalten sein.
+  Aber jedes $A_{j} = ]a_{j}, b_{j}[$.
+  Und da wir immer halbieren ist $|a_{j} - b_{j}| = \frac{1}{2^{n}}$.
+  Dies konvergiert jedoch gegen $0$, sodass die $A_{k}$ beliebig klein werden und es ein $N$ gibt, sodass $|a_{k} - b_{k}| < |a - b|$ für alle $k \ge N$.
+  Da $a \in A_{N}$, ist $b \notin A_{N} \Rightarrow b \notin A$.
+
+  Also ist $A = \{ a \}$ und $\mu(A) = 0$, Widerspruch.
 \end{proof}
 
 \end{document}
