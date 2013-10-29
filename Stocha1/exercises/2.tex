@@ -55,8 +55,16 @@
 \section{Aufgabe 6}
 
 \subsection{Teil a}
+Dieses Experiment lässt sich durch ein Ziehen von $n$ Kugeln ohne Zurücklegen und ohne Berücksichtigung der Reihenfolge modellieren, also als Kombinationen ohne Wiederholung.
 
 \subsection{Teil b}
+\begin{proof}
+  Wenn man im $k$-ten Versuch ist, hat man bereits $k - 1$ Schlüssel ausprobiert und es verbleiben noch $n - (k - 1)$ Schlüssel.
+  Dann ist $\frac{n!}{(n - (k - 1))!}$ die Anzahl der Kombinationen, wie man die ersten $k - 1$ Schlüssel ziehen konnte, und $\frac{(n - 1)!}{(n - k)!}$ die Anzahl der Kombinationen, wie man $k - 1$ mal den falschen Schlüssel ziehen konnte.
+  \begin{equation}
+    P(A_{k}) = \frac{\frac{n!}{(n - (n - 1))!}}{\frac{(n - 1)!}{(n - k)!}} \cdot \frac{1}{n - (k - 1)} = \frac{(n - 1)!(n - (k - 1))!}{n!(n - k)!} \cdot \frac{1}{n - (k - 1)} = \frac{1}{n}
+  \end{equation}
+\end{proof}
 
 \section{Aufgabe 7}
 
