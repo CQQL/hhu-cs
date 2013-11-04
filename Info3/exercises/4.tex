@@ -1,0 +1,73 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+Gegeben ist eine indizierte Folge von Objekten $o_{1}, \dots, o_{n}$, die einen Schlüssel $k(o_{i})$ haben, derer zwei mit einem binären Operator $<$ verglichen werden können.
+Gesucht ist eine Permutation $i_{1}, \dots, i_{n}$ der Indexfolge $1, \dots, n$, sodass $k(o_{i_{1}}) < k(o_{i_{2}}) < \dots < k(o_{i_{n}})$.
+
+Radixsort nutzt aus, dass es nur eine endliche Anzahl an möglichen Schlüsseln gibt und dass Schlüssel auf eine bestimmte Art aufgebaut sind (als Zahl).
+
+\section{Aufgabe 2}
+In Pseudocode
+\begin{lstlisting}
+sort (z, n)
+  buckets = Array[0..99] with every field initialized to 0
+
+  for i in (0..n - 1)
+    buckets[z[i]] = buckets[z[i]] + 1
+
+  list = empty list
+
+  for i in (99..0)
+    buckets[i] times do
+      list.prepend(i)
+
+  return list
+\end{lstlisting}
+Und wenn man das mit einer verketteten Liste implementiert, kann man die prepend Operation in konstanter Zeit durchführen, sodass das gesamte Verfahren linear in $n$ ist.
+
+\section{Aufgabe 4}
+
+\subsection{Teil 1}
+\begin{equation}
+  F = 6\ 1\ 2\ 3\ 4\ 5
+\end{equation}
+
+\subsection{Teil 2}
+\begin{equation}
+  F = 4\ 5\ 6\ 1\ 2\ 3
+\end{equation}
+
+\subsection{Teil 3}
+\begin{equation}
+  F = 1\ 2\ 3\ 4\ 5\ 6
+\end{equation}
+
+\subsection{Teil 4}
+Wenn gleiche Schlüssel erlaubt sind,
+\begin{equation}
+  F = 1\ 2\ 3\ 4\ 5\ 5
+\end{equation}
+Ansonsten gibt es solch eine Folge nicht, weil für jedes Element, das nicht in der längsten Kette enthalten ist, mindestens eine Inversion existieren muss, weil es sonst in der Kette enthalten sein müsste.
+
+\subsection{Teil 5}
+\begin{equation}
+  F = 6\ 1\ 2\ 3\ 4\ 5
+\end{equation}
+
+\subsection{Teil 6}
+\begin{equation}
+  F = 1\ 2\ 3\ 4\ 5\ 6
+\end{equation}
+
+\end{document}
