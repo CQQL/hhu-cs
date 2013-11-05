@@ -1,0 +1,155 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 9}
+\begin{proof}
+  \begin{equation}
+    f^{-1}(\emptyset) = \emptyset \in \mathscr{A} \Rightarrow \emptyset \in \mathscr{A}_{f}
+  \end{equation}
+  Seien $A, B \in \mathscr{A}_{f}$.
+  \begin{equation}
+    f^{-1}(A \setminus B) \subset f^{-1}(A) \in \mathscr{A} \Rightarrow A \setminus B \in \mathscr{A}_{f}
+  \end{equation}
+
+  \begin{equation}
+    f^{-1}(Y) = X \in \mathscr{A} \Rightarrow Y \in \mathscr{A}_{f}
+  \end{equation}
+
+  Seien $A_{1}, A_{2}, \dots \in \mathscr{A}_{f}$.
+  Dann ist $f^{-1}(A_{i}) \in \mathscr{A}$.
+  Weil $\mathscr{A}$ eine $\sigma$-Algebra ist, ist $\cup_{i} f^{-1}(A_{i}) \in \mathscr{A}$.
+  \begin{equation}
+    f^{-1}(\cup_{i} A_{i}) = \cup_{i} f^{-1}(A_{i}) \in \mathscr{A} \Rightarrow \cup_{i} A_{i} \in \mathscr{A}_{f}
+  \end{equation}
+\end{proof}
+
+\section{Aufgabe 10}
+
+\subsection{Teil a}
+4
+\begin{equation}
+  \{ \emptyset, A, \overline{A}, X \}
+\end{equation}
+
+\subsection{Teil b}
+
+\section{Aufgabe 11}
+
+\subsection{Teil a}
+\begin{proof}
+  Seien $B_{1}, B_{2}, \dots \in \mathscr{N}$ und $D_{1}, D_{2}, \dots$ die in $\mathscr{A}$, sodass $B_{i} \subset D_{i}$ und $\mu(D_{i}) = 0$.
+  Dann ist
+  \begin{equation}
+    \mu(\cup_{m = 1}^{\infty} D_{m}) \le \sum_{m = 1}^{\infty} \mu(D_{m}) = 0
+  \end{equation}
+  \begin{equation}
+    \bigcup_{m = 1}^{\infty} B_{m} \subset \bigcup_{m = 1}^{\infty} D_{m}
+  \end{equation}
+  Also ist
+  \begin{equation}
+    \bigcup_{m = 1}^{\infty} B_{m} \in \mathscr{N}
+  \end{equation}
+  Und man kann Elemente aus $\mathscr{N}$ beliebig vereinigen.
+\end{proof}
+\begin{proof}
+  Als Vereinigung $\emptyset = \emptyset \cup \emptyset$ ist $\emptyset \in \widehat{\mathscr{A}}$.
+
+  Seien $A = A_{i} \cup A_{2}, B = B_{1} \cup B_{2} \in \widehat{\mathscr{A}}$ mit $A_{1}, B_{1} \in \mathscr{A}$ und $A_{2}, B_{2} \in \mathscr{N}$.
+  \begin{equation}
+    A \cup B = A_{1} \cup A_{2} \bigcup B_{1} \cup B_{2} = A_{1} \cup B_{1} \bigcup A_{2} \cup B_{2} \in \widehat{\mathscr{A}}
+  \end{equation}
+  \begin{equation}
+    A \setminus B = (A_{1} \cup A_{2}) \setminus (B_{1} \cup B_{2}) = A_{1} \setminus (B_{1} \cup B_{2}) \bigcup A_{2} \setminus (B_{1} \cup B_{2}) \in \widehat{\mathscr{A}}
+  \end{equation}
+  
+  Als Vereinigung $X = X \cup \emptyset$ ist $X \in \widehat{\mathscr{A}}$.
+
+  Seien $A_{1}, A_{2}, \dots \in \widehat{\mathscr{A}}$ mit $A_{i} = B_{i} \cup C_{i}$ mit $B_{i} \in \mathscr{A}$ und $C_{i} \in \mathscr{N}$.
+  \begin{equation}
+    \bigcup_{m = 1}^{\infty} A_{m} = \bigcup_{m = 1}^{\infty} B_{m} \cup C_{m} = \cup_{m = 1}^{\infty} B_{m} \bigcup \cup_{m = 1}^{\infty} C_{m} \Rightarrow \bigcup_{m = 1}^{\infty} A_{m} \in \widehat{\mathscr{A}}
+  \end{equation}
+\end{proof}
+
+\subsection{Teil b}
+\begin{proof}
+  Seien $C = A \cup B$ und $C = D \cup E$ 2 Darstellungen von $C$, sodass $A, D \in \mathscr{A}$ und $B, E \in \mathscr{N}$.
+  Dann sind die beiden Darstellungen äquivalent zu den disjunkten Vereinigungen
+  \begin{equation}
+    A \cup B = A \cup (B \setminus A)
+  \end{equation}
+  \begin{equation}
+    D \cup E = D \cup (E \setminus D)
+  \end{equation}
+  Da $\mu(B) = 0$ und $\mu(E) = 0$ und $B \setminus A \subset B$ und $E \setminus D \subset E$, ist $\mu(B \setminus A) = \mu(E \setminus D) = 0$.
+  Es gilt also
+  \begin{equation}
+    \widehat{\mu}(C) = \mu(A) = \mu(A) + 0 = \mu(A) + \mu(B \setminus A) = \mu(A \cup B) = \mu(C) = \mu(D \cup E) = \mu(D) + \mu(E \setminus D) = \mu(D) + 0 = \mu(D) = \widehat{\mu}(C)
+  \end{equation}
+  Also $\widehat{\mu}$ nicht von der konkreten Aufteilung abhängig und somit wohldefiniert.
+\end{proof}
+
+\subsection{Teil c}
+\begin{proof}
+  \begin{equation}
+    \widehat{\mu}(\emptyset) = \mu(\emptyset) = 0
+  \end{equation}
+  Sei $C = A \cup B \in \widehat{\mathscr{A}}$ mit $A \in \mathscr{A}$ und $B \in \mathscr{N}$.
+  \begin{equation}
+    \widehat{\mu}(C) = \mu(A) \ge 0
+  \end{equation}
+
+  Seien $C_{i} = A_{i} \cup B_{i} \in \widehat{\mathscr{A}}$ für $i \ge 1$ disjunkt mit $A_{i} \in \mathscr{A}$ und $B_{i} \in \mathscr{N}$.
+  \begin{equation}
+    \widehat{\mu}(\cup_{m = 1}^{\infty} C_{m}) = \mu(\cup_{m = 1}^{\infty} A_{m}) = \sum_{m = 1}^{\infty} \mu(A_{m}) = \sum_{m = 1}^{\infty} \widehat{\mu}(C_{m})
+  \end{equation}
+  Bei der ersten Gleichung wurde ausgenutzt, dass $\cup_{i} C_{i}$ ein Element von $\widehat{\mathscr{A}}$ ist, dessen $\mathscr{A}$-Teil $\cup_{i} A_{i}$ ist, wie in Teil a gezeigt.
+\end{proof}
+
+\subsection{Teil d}
+\begin{proof}
+  Sei $C = A \cup B \in \widehat{\mathscr{A}}$ mit $A \in \mathscr{A}$ und $B \in \mathscr{N}$, sodass $\widehat{\mu}(C) = 0$.
+  Sei außerdem $D \subset C$.
+  Dann ist $D = A' \cup B'$ mit $A' \subset A$ und $B' \subset B$.
+  Dann ist $B'$ offensichtlich auch in $\mathscr{N}$.
+  Da $A' \subset A$ und $\mu(A) = \widehat{\mu}(C) = 0$, ist $A' \in \mathscr{N}$.
+  Da man Elemente von $\mathscr{N}$, wie anfangs gezeigt, vereinigen kann, ist $D$ somit die Vereinigung von $\emptyset \in \mathscr{A}$ und $A' \cup B' \in \mathscr{N}$, also $D \in \widehat{\mathscr{A}}$.
+\end{proof}
+
+\section{Aufgabe 12}
+
+\subsection{Teil a}
+\begin{proof}
+  Sei $A \subset X$ mit $\mu^{*}(A) = 0$.
+  Sei $Q \in \mathscr{P}(X)$.
+  Dann ist $Q \cap A \subset A$ und wegen der Monotonie von $\mu^{*}$ ist $\mu^{*}(Q \cap A) = 0$.
+  Man kann $Q$ als disjunke Vereinigung von $Q \setminus (A \cap Q)$ und $A \cap Q$ darstellen.
+  \begin{equation}
+    \mu^{*}(Q) = \mu^{*}(Q \setminus (A \cap Q)) + \mu^{*}(A \cap Q) \Leftrightarrow \mu^{*}(Q \setminus (Q \cap A)) = \mu^{*}(Q) - \mu^{*}(Q \cap A)
+  \end{equation}
+  
+  Insgesamt ergibt sich
+  \begin{equation}
+    \mu^{*}(Q \cap A) + \mu^{*}(Q \setminus A) = \mu^{*}(Q \cap A) + \mu^{*}(Q \setminus (Q \cap A)) = \mu^{*}(Q) - \mu^{*}(A \cap Q) + 0 = \mu^{*}(Q)
+  \end{equation}
+  dass $A$ $\mu^{*}$-messbar ist.
+\end{proof}
+
+\subsection{Teil b}
+\begin{proof}
+  Sei $A \in \mathscr{R}^{*}$ mit $\mu^{*}(A) = 0$.
+  Sei $B \subset A$.
+  Wegen $B \subset A \in \mathscr{R}^{*} \subset \mathscr{P}(X)$ ist $B \subset X$.
+  Aus der Monotonie von $\mu^{*}$ und $\mu^{*}(A) = 0$ folgt $\mu^{*}(B) = 0$.
+  Dann folgt aus Teil a $B \in \mathscr{R}^{*}$ und der Maßraum ist vollständig.
+\end{proof}
+
+\end{document}
