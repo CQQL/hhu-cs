@@ -14,14 +14,70 @@
 
 \subsection{Teil 1}
 
+Als Median einer Folge mit gerader Länge benutze ich, wie im Skript, den Obermedian.
+
+Wenn wir Gruppen der Länge $k$ bilden, erhalten wir $\lfloor \frac{N}{k} \rfloor$ volle Gruppen und maximal eine Gruppe mit $1$ bis $k - 1$ Elementen.
+Sei $v$ der Median der Mediane dieser Gruppen.
+Dann gibt es genau $\lfloor \frac{1}{2} \lfloor \frac{N}{k} \rfloor \rfloor$ volle Gruppen, deren Median echt kleiner als $v$ ist.
+Die Anzahl der Schlüssel, die echt kleiner als $v$ sind, beträgt also mindestens
+\begin{equation}
+  (\lfloor \frac{k}{2} \rfloor + 1) \cdot \lfloor \frac{1}{2} \lfloor \frac{N}{k} \rfloor \rfloor \ge \lceil \frac{k}{2} \rceil \cdot (\lceil \frac{1}{2} \lfloor \frac{N}{k} \rfloor \rceil - 1)
+\end{equation}
+Analog dazu gibt es genau $\lceil \frac{1}{2} \lfloor \frac{N}{k} \rfloor \rceil - 1$ volle Gruppen, deren Median echt größer als $v$ ist.
+Die Anzahl der Schlüssel, die echt größer als $v$ sind, ist also mindestens
+\begin{equation}
+  \lceil \frac{k}{2} \rceil \cdot (\lceil \frac{1}{2} \lfloor \frac{N}{k} \rfloor \rceil - 1) \ge \lceil \frac{k}{2} \rceil \cdot (\lceil \frac{1}{2} \lceil \frac{N}{k} \rceil - \frac{1}{2} \rceil - 1) \ge \frac{k}{2} \cdot \left( \frac{N}{2k} - \frac{3}{2} \right) = \frac{N}{4} - \frac{3k}{4}
+\end{equation}
+Unabhängig davon, ob das gesuchte Element nun vor oder hinter der Position von $v$ liegt, müssen im nächsten Schritt also maximal
+\begin{equation}
+  N - (\frac{N}{4} - \frac{3k}{4}) = \frac{3}{4}N + \frac{3}{4}k = \frac{3}{4} \cdot (N + k)
+\end{equation}
+Elemente untersucht werden.
+
 \subsubsection{Fall 1}
 \begin{equation}
-  T(N) \le T(\lceil \frac{N}{3} \rceil) + T(\lceil  \rceil)
+  T(N) \le T(\lceil \frac{N}{3} \rceil) + T(\lceil \frac{3}{4}N + \frac{9}{4} \rceil) + a \cdot N
 \end{equation}
 
 \subsubsection{Fall 2}
+\begin{equation}
+  T(N) \le T(\lceil \frac{N}{7} \rceil) + T(\lceil \frac{3}{4}N + \frac{21}{4} \rceil) + a \cdot N
+\end{equation}
 
 \subsection{Teil 2}
+\begin{proof}
+  Damit es terminiert müssen die Folgen immer kürzer werden, also
+  \begin{equation}
+    \lceil \frac{N}{7} \rceil \le \frac{N}{7} + 1 < N \Leftrightarrow N < 7N - 7 \Leftrightarrow N > \frac{7}{6}
+  \end{equation}
+  und
+  \begin{equation}
+    \lceil \frac{3}{4}N + \frac{21}{4} \rceil \le \frac{3}{4}N + \frac{25}{4} < N \Leftrightarrow \frac{1}{4}N > \frac{25}{4} \Leftrightarrow N > 25
+  \end{equation}
+
+  Nehmen wir also an, dass der Algorithmus für hinreichend kleine N, insbesondere $N < 25$, in linearer Zeit terminiert, z.B. indem man es naiv bestimmt.
+
+  Nehmen wir dann weiterhin an, dass es bereits bewiesen sei für alle $M < N$ und $N > 25$.
+  Dann ergibt sich aus der Rekursionsgleichung das Folgende:
+  \begin{align*}
+    T(N) & \le c \cdot \lceil \frac{N}{7} \rceil + c \cdot \lceil \frac{3}{4}N + \frac{21}{4} \rceil + a \cdot N\\
+    & \le c \cdot \frac{N}{7} + c + c \cdot \left( \frac{3}{4}N + \frac{25}{4} \right) + a \cdot N\\
+    & = c \cdot \left( \frac{25}{28}N + \frac{29}{4} \right) + a \cdot N\\
+    & = \frac{25c}{28}N + \frac{29c}{4} + a \cdot N
+  \end{align*}
+  Nun untersuchen wir noch, wann dieser letzte Ausdruck wirklich durch $c \cdot N$ beschränkt ist.
+  Setze $c = p \cdot a$.
+  \begin{align*}
+    & \frac{25c}{28}N + \frac{29}{4}c + aN < cN\\
+    \Leftrightarrow & \frac{25}{28}paN + \frac{29}{4}pa + aN < paN \textit{ Man kann $a$ kürzen, weil $a \ge 1$}\\
+    \Leftrightarrow & \frac{25}{28}pN + \frac{29}{4}p + N < pN\\
+    \Leftrightarrow & \frac{29}{4}p < (p - 1 - \frac{25}{28}p)N\\
+    \Leftrightarrow & \frac{29}{4}p < \frac{3p - 28}{28}N \textit{ Um hier teilen zu können, muss $\frac{3p - 28}{28} > 1 \Leftrightarrow p > \frac{56}{3}$}\\
+    \Leftrightarrow & N > \frac{29 \cdot 28}{12p - 112}p
+  \end{align*}
+  Wählen wir für $p$ z.B. den Wert $19$, so gilt die obere Schranke für alle $N > 133$.
+  Insgesamt ist es damit gezeigt, weil wir die Werte für die ersten 133 Werte in konstanter Zeit bestimmen können.
+\end{proof}
 
 \subsection{Teil 3}
 
