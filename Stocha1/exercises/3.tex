@@ -10,7 +10,22 @@
 
 \begin{document}
 
+Stochastik 1, Blatt 3\\
+Gruppe 1\\
+Marten Lienen (2126759)\\
+Fabian Schmittmann (2083559)
+
 \section{Aufgabe 9}
+Es gibt die vier verschiedenen Kombinationen $(0, 0), (0, 1), (1, 0), (1, 1)$ von zwei aufeinanderfolgenden Bits.
+Die Wahrscheinlichkeit, dass zwei aufeinanderfolgende Bits gleich sind, ist also $0,5$, ebenso wie die Gegenwahrscheinlichkeit.
+Da unterschiedliche, aufeinanderfolgende Bits einen neuen Run starten, besitzt dies dieselbe Wahrscheinlichkeit.
+Und weil das Verhältnis aufeinanderfolgender Bits nicht von den restlichen Bits abhängt, ist die Wahrscheinlichkeit binomialverteilt.
+Genau $l$ Runs treten also mit der Wahrscheinlichkeit
+\begin{equation}
+  p(l) = B_{n - 1, 0,5}(l - 1)
+\end{equation}
+auf.
+Das ist die Wahrscheinlichkeit in den $n - 1$ aufeinanderfolgenden Paaren genau $l - 1$ neue Runs zu starten.
 
 \section{Aufgabe 10}
 
