@@ -1,0 +1,70 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 13}
+
+\subsection{Teil a}
+Es gibt also $\binom{n - 2k + 2}{k}$ $k$-elementige Teilmengen dieser Art.
+
+\subsection{Teil b}
+
+\section{Aufgabe 14}
+
+\subsection{Teil a}
+$X$ beschreibt die Anzahl der Versuche, die derjenige brauchte, der zuerst eine Goldforelle gefangen hat.
+
+\subsection{Teil b}
+Die Variablen $X_{1}$ und $X_{2}$ sind $G_{\frac{k}{n}}$ und $G_{\frac{l}{m}}$ verteilt.
+Dann berechnet sich die Verteilung von $X$ mithilfe des Satzes von Sylvester als
+\begin{align*}
+  p_{d} & = p(X_{1} = d) + p(X_{2} = d) - p(X_{1} = d\ \land\ X_{2} = d)\\
+  & = G_{\frac{k}{n}}(d - 1) + G_{\frac{l}{m}}(d - 1) - G_{\frac{k}{n}}(d - 1) \cdot G_{\frac{l}{m}}(d - 1)\\
+  & = (1 - \frac{k}{n})^{d - 1} \cdot \frac{k}{n} + (1 - \frac{l}{m})^{d - 1} \cdot \frac{l}{m} - (1 - \frac{k}{n})^{d - 1} \cdot \frac{k}{n} \cdot (1 - \frac{l}{m})^{d - 1} \cdot \frac{l}{m}
+\end{align*}
+
+\section{Aufgabe 15}
+
+\subsection{Teil a}
+Da $0$ nicht-negativ ist und $3$ die Basis der Potenzen ist, sind alle Werte von $f$ nicht-negativ.
+\begin{align*}
+  \sum_{j = 1}^{\infty} \left( \sum_{k = 1}^{j - 1} 3^{-j -k} + 3^{-2j + 1} \right) & = \sum_{j = 1}^{\infty} \left( 3^{-j - 1} \left( \sum_{k = 0}^{j - 2} 3^{-k} \right) + 3^{-2j + 1} \right)\\
+  & = \sum_{j = 1}^{\infty} \left( 3^{-j - 1} \frac{3}{2} \left( 1 - \frac{1}{3}^{j - 1} \right) + 3^{-2j + 1} \right)\\
+  & = \sum_{j = 1}^{\infty} \left( 3^{-j} \frac{1}{2} \left( 1 - \frac{1}{3}^{j - 1} \right) + 3^{-2j + 1} \right)\\
+  & = \sum_{j = 1}^{\infty} \left( \frac{1}{2} \left( 3^{-j} - \frac{3^{-j}}{3^{j - 1}} \right) + 3^{-2j + 1} \right)\\
+  & = \sum_{j = 1}^{\infty} \left( \frac{1}{2} \left( 3^{-j} - \frac{1}{3^{2j - 1}} \right) + 3^{-2j + 1} \right)\\
+  & = \sum_{j = 1}^{\infty} \left( \frac{1}{2} \left( 3^{-j} - \frac{3}{3^{2^{j}}} \right) + 3^{-2j + 1} \right)\\
+  & = \sum_{j = 1}^{\infty} \left( \frac{1}{2} \left( 3^{-j} - 3 \cdot 9^{-j} \right) + 3^{-2j + 1} \right)\\
+  & = \sum_{j = 1}^{\infty} \left( \frac{1}{2} 9^{-j} \left( 3^{j} - 3 \right) + 3^{-2j + 1} \right)\\
+  & = \sum_{j = 1}^{\infty} \left( \frac{1}{2} 9^{-j} \left( 3^{j} - 3 \right) + 9^{-j} \cdot 3 \right)\\
+  & = \sum_{j = 1}^{\infty} 9^{-j} \left( \frac{1}{2} \left( 3^{j} - 3 \right) + 3 \right)\\
+  & = \frac{1}{2} \sum_{j = 1}^{\infty} 9^{-j} \left( 3^{j} + 3 \right)\\
+  & = \frac{1}{2} \sum_{j = 1}^{\infty} \left( 3^{-j} + 3 \cdot 9^{-j} \right)\\
+  & = \frac{1}{2} \sum_{j = 1}^{\infty} 3^{-j} + \frac{3}{2} \sum_{j = 1}^{\infty} 9^{-j}\\
+  & = \frac{1}{2} \sum_{j = 1}^{\infty} \frac{1}{3}^{j} + \frac{3}{2} \sum_{j = 1}^{\infty} \frac{1}{9}^{j}\\
+  & = \frac{1}{2} \left( \sum_{j = 0}^{\infty} \frac{1}{3}^{j} - 1 \right) + \frac{3}{2} \left( \sum_{j = 0}^{\infty} \frac{1}{9}^{j} - 1\right)\\
+  & = \frac{1}{2} \left( \frac{3}{2} - 1 \right) + \frac{3}{2} \left( \frac{9}{8} - 1\right) = \frac{1}{2} \cdot \frac{1}{2} + \frac{3}{2} \cdot \frac{1}{8} = \frac{1}{4} + \frac{3}{16} = \frac{7}{16}
+\end{align*}
+Mit $c = \frac{16}{7}$ ist diese Summe $1$ und $q(j, k)$ eine Zähldichte.
+
+\subsection{Teil b}
+
+\section{Aufgabe 16}
+
+\subsection{Teil a}
+Hier haben wir ein Urnenmodell mit 4 Sorten und 19 Kugeln, die wir ohne Zurücklegen ziehen.
+Dabei gibt es $K_{1} = 6$, $K_{2} = 5$, $K_{3} = 4$ und $K_{4} = 4$ Kugeln, die jeweils einem Ticket für das $i$-te Abteil entsprechen.
+Wenn die an $k$-ter Stelle gezogene Kugel der $k$-ten Person ein Abteil zuweist, suchen wir also die Anzahl der Permutationen der Länge 19 dieser Kugeln.
+
+
+\subsection{Teil b}
+
+\end{document}
