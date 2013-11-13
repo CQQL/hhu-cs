@@ -63,6 +63,50 @@ Mit $c = \frac{16}{7}$ ist diese Summe $1$ und $q(j, k)$ eine Zähldichte.
 
 \subsection{Teil b}
 
+\subsection{$A_{j}$}
+\begin{align*}
+  \sum_{k = 1}^{\infty} q(j, k) & = \sum_{k = 1}^{\infty} c \cdot f(j, k)\\
+  & = \left( \sum_{k = 1}^{j - 1} c \cdot 3^{-j - k} \right) + c \cdot 3^{-2j + 1}\\
+  & = c \cdot 3^{-j - 1} \cdot \left( \sum_{k = 0}^{j - 2} 3^{-k} \right) + c \cdot 3^{-2j + 1}\\
+  & = c \cdot 3^{-j - 1} \cdot \frac{3}{2} \cdot \left( 1 - \left( \frac{1}{3} \right)^{j - 1} \right) + c \cdot 3^{-2j + 1}\\
+  & = c \cdot 3^{-j - 1} \cdot \frac{3}{2} \cdot \left( 1 - 3^{-j + 1} \right) + c \cdot 3^{-2j + 1}\\
+  & = \frac{c}{2} \cdot 3^{-j} - \frac{c}{2} \cdot 3^{-2j + 1} + c \cdot 3^{-2j + 1}\\
+  & = \frac{c}{2} \left( 3^{-2j + 1} + 3^{-j} \right)\\
+\end{align*}
+
+\subsection{$B_{k}$}
+\begin{align*}
+  \sum_{j = 1}^{\infty} q(j, k) & = \sum_{j = 1}^{\infty} c \cdot f(j, k)\\
+  & = c \cdot \sum_{j = k}^{\infty} f(j, k)\\
+  & = c \cdot \left( \left( \sum_{j = k + 1}^{\infty} 3^{-j - k} \right) + 3^{-2k + 1} \right)\\
+  & = c \cdot \left( \left( \sum_{j = 0}^{\infty} 3^{-j - 2k - 1} \right) + 3^{-2k + 1} \right)\\
+  & = c \cdot \left( 3^{-2k - 1} \cdot \left( \sum_{j = 0}^{\infty} 3^{-j} \right) + 3^{-2k + 1} \right)\\
+  & = c \cdot \left( 3^{-2k - 1} \cdot \frac{3}{2} + 3^{-2k + 1} \right)\\
+  & = c \cdot \left( 3^{-2k} \cdot \frac{1}{2} + 3^{-2k + 1} \right)\\
+  & = c \cdot \left( 3^{-2k + 1} \cdot \frac{1}{6} + 3^{-2k + 1} \right)\\
+  & = \frac{7}{6} \cdot c \cdot 3^{-2k + 1}\\
+\end{align*}
+
+\subsection{$C_{d}$}
+\begin{align*}
+  \sum_{j = d}^{\infty} \sum_{k = 1}^{\infty} q(j, k) & = \sum_{j = d}^{\infty} \frac{c}{2} \left( 3^{-2j + 1} + 3^{-j} \right)\\
+  & = \frac{c}{2} \cdot \left( \sum_{j = d}^{\infty} 3^{-2j + 1} + \sum_{j = d}^{\infty} 3^{-j} \right)\\
+  & = \frac{c}{2} \cdot \left( 3 \cdot \sum_{j = d}^{\infty} 9^{-j} + \sum_{j = d}^{\infty} 3^{-j} \right)\\
+  & = \frac{c}{2} \cdot \left( 3 \cdot \frac{9}{8} \cdot 9^{-d} + \frac{3}{2} \cdot 3^{-d} \right)\\
+  & = \frac{c}{2} \cdot \left( \frac{1}{8} \cdot 3^{3 - 2d} + \frac{3}{2} \cdot 3^{-d} \right)\\
+  & = \frac{c}{4} \cdot \left( \frac{1}{4} \cdot 3^{3 - 2d} + 3^{1 - d} \right)\\
+\end{align*}
+
+\subsection{$D_{d}$}
+\begin{align*}
+  \sum_{j = 1}^{\infty} \sum_{k = d}^{\infty} q(j, k) & = \sum_{k = d}^{\infty} \sum_{j = 1}^{\infty} q(j, k)\\
+  & = \sum_{k = d}^{\infty} \frac{7}{6} \cdot c \cdot 3^{-2k + 1}\\
+  & = \frac{7}{6} \cdot c \cdot \sum_{k = d}^{\infty} 3^{-2k + 1}\\
+  & = \frac{7}{2} \cdot c \cdot \sum_{k = d}^{\infty} 9^{-k}\\
+  & = \frac{7}{2} \cdot c \cdot \frac{9}{8} \cdot 9^{-d}\\
+  & = \frac{63}{16} \cdot c \cdot 9^{-d}\\
+\end{align*}
+
 \section{Aufgabe 16}
 
 \subsection{Teil a}
