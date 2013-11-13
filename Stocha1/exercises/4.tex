@@ -36,7 +36,9 @@ Dann berechnet sich die Verteilung von $X$ mithilfe des Satzes von Sylvester als
 \subsection{Teil a}
 Da $0$ nicht-negativ ist und $3$ die Basis der Potenzen ist, sind alle Werte von $f$ nicht-negativ.
 \begin{align*}
-  \sum_{j = 1}^{\infty} \left( \sum_{k = 1}^{j - 1} 3^{-j -k} + 3^{-2j + 1} \right) & = \sum_{j = 1}^{\infty} \left( 3^{-j - 1} \left( \sum_{k = 0}^{j - 2} 3^{-k} \right) + 3^{-2j + 1} \right)\\
+  \sum_{j = 1}^{\infty} \sum_{k = 1}^{\infty} f(j, k) & = \sum_{j = 1}^{\infty} \left( \sum_{k = 1}^{j} f(j, k) \right)\\
+  & = \sum_{j = 1}^{\infty} \left( \sum_{k = 1}^{j - 1} 3^{-j -k} + 3^{-2j + 1} \right)\\
+  & = \sum_{j = 1}^{\infty} \left( 3^{-j - 1} \left( \sum_{k = 0}^{j - 2} 3^{-k} \right) + 3^{-2j + 1} \right)\\
   & = \sum_{j = 1}^{\infty} \left( 3^{-j - 1} \frac{3}{2} \left( 1 - \frac{1}{3}^{j - 1} \right) + 3^{-2j + 1} \right)\\
   & = \sum_{j = 1}^{\infty} \left( 3^{-j} \frac{1}{2} \left( 1 - \frac{1}{3}^{j - 1} \right) + 3^{-2j + 1} \right)\\
   & = \sum_{j = 1}^{\infty} \left( \frac{1}{2} \left( 3^{-j} - \frac{3^{-j}}{3^{j - 1}} \right) + 3^{-2j + 1} \right)\\
