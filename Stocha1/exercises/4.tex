@@ -13,9 +13,23 @@
 \section{Aufgabe 13}
 
 \subsection{Teil a}
-Es gibt also $\binom{n - 2k + 2}{k}$ $k$-elementige Teilmengen dieser Art.
+Es gibt eine Bijektion $f$, die von der ersten Menge in die zweite Menge abbildet.
+Sei $A \subset [1, n]$ eine aufsteigend sortierte Folge von $k$ Zahlen.
+Dann bildet $f$ die $i$-te Zahl auf $a_{i} - (i - 1) * 2$ ab.
+Die Umkehrabbildung $f^{-1}$ bildet die $i$-te Zahl entsprechend auf $a_{i} + (i - 1) * 2$ ab.
+Dann ist der Zielraum genau $2k - 2$ kleiner als $[1, n]$.
+
+Da es also eine solche Bijektion wie in dem Hinweis gibt und beide Mengen endlich sind, beinhalten sie auch gleich viele Elemente.
+Und die zweite Menge ist die Menge aller $k$-elementigen Teilmengen einer $n - 2k + 2$-elementigen Menge, wovon es $\binom{n - 2k + 2}{k}$ gibt.
+Also ist das auch die Anzahl der ursprünglich gesuchten Teilmengen.
 
 \subsection{Teil b}
+Es gibt $\binom{49 - 12 + 2}{6} = \binom{39}{6}$ Möglichkeiten 6 von 49 Zahlen zu wählen, sodass alle einen Abstand von $3$ oder mehr haben.
+Insgesamt gibt es $\binom{49}{6}$ Möglichkeiten, dies zu tun.
+Damit ist die Wahrscheinlichkeit
+\begin{equation}
+  P = \frac{\binom{39}{6}}{\binom{49}{6}} = \frac{39! \cdot 43!}{33! \cdot 49!} \simeq 0,23
+\end{equation}
 
 \section{Aufgabe 14}
 
