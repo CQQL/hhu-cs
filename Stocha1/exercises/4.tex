@@ -23,12 +23,16 @@ Es gibt also $\binom{n - 2k + 2}{k}$ $k$-elementige Teilmengen dieser Art.
 $X$ beschreibt die Anzahl der Versuche, die derjenige brauchte, der zuerst eine Goldforelle gefangen hat.
 
 \subsection{Teil b}
-Die Variablen $X_{1}$ und $X_{2}$ sind $G_{\frac{k}{n}}$ und $G_{\frac{l}{m}}$ verteilt.
-Dann berechnet sich die Verteilung von $X$ mithilfe des Satzes von Sylvester als
 \begin{align*}
-  p_{d} & = p(X_{1} = d) + p(X_{2} = d) - p(X_{1} = d\ \land\ X_{2} = d)\\
-  & = G_{\frac{k}{n}}(d - 1) + G_{\frac{l}{m}}(d - 1) - G_{\frac{k}{n}}(d - 1) \cdot G_{\frac{l}{m}}(d - 1)\\
-  & = (1 - \frac{k}{n})^{d - 1} \cdot \frac{k}{n} + (1 - \frac{l}{m})^{d - 1} \cdot \frac{l}{m} - (1 - \frac{k}{n})^{d - 1} \cdot \frac{k}{n} \cdot (1 - \frac{l}{m})^{d - 1} \cdot \frac{l}{m}
+  P(X = d) & = P((X_{1} = d \land X_{2} > d) \lor (X_{1} > d \land X_{2} = d) \lor (X_{1} = 1 \land X_{2} = d))\\
+  & = P(X_{1} = d \land X_{2} > d) + P(X_{1} > d \land X_{2} = d) + P(X_{1} = 1 \land X_{2} = d)\\
+  & = G_{\frac{k}{n}}(d - 1) \cdot \left( \sum_{i = d}^{m - 1} G_{\frac{l}{m}}(i) \right) + \left( \sum_{i = d}^{n - 1} G_{\frac{k}{n}}(i) \right) \cdot G_{\frac{l}{m}}(d - 1) + G_{\frac{k}{n}}(d - 1) \cdot G_{\frac{l}{m}}(d - 1)\\
+  & = \frac{n - k}{n}^{d - 1} \cdot \frac{k}{n} \cdot \left( \sum_{i = d}^{m - 1} \frac{m - l}{m}^{i} \cdot \frac{l}{m} \right) + \left( \sum_{i = d}^{n - 1} \frac{n - k}{n}^{i} \cdot \frac{k}{n} \right) \cdot \frac{m - l}{m}^{d - 1} \cdot \frac{l}{m} + \frac{n - k}{n}^{d - 1} \cdot \frac{k}{n} \cdot \frac{m - l}{m}^{d - 1} \cdot \frac{l}{m}\\
+  & = \frac{k}{n} \cdot \frac{l}{m} \cdot \left( \frac{n - k}{n}^{d - 1} \cdot \left( \sum_{i = d}^{m - 1} \frac{m - l}{m}^{i} \right) + \left( \sum_{i = d}^{n - 1} \frac{n - k}{n}^{i} \right) \cdot \frac{m - l}{m}^{d - 1} + \frac{n - k}{n}^{d - 1} \cdot \frac{m - l}{m}^{d - 1} \right)\\
+  & = \frac{k}{n} \cdot \frac{l}{m} \cdot \left( \frac{n - k}{n}^{d - 1} \cdot \frac{m}{l} \cdot \frac{m - l}{m}^{d} \cdot \left(1 - \frac{m - l}{m}^{m - d} \right) + \frac{n}{k} \cdot \frac{n - k}{n}^{d} \cdot \left( 1 - \frac{n - k}{n}^{n - d} \right) \cdot \frac{m - l}{m}^{d - 1} + \frac{n - k}{n}^{d - 1} \cdot \frac{m - l}{m}^{d - 1} \right)\\
+  & = \frac{k}{n} \cdot \frac{l}{m} \cdot \frac{n - k}{n}^{d - 1} \cdot \left( \frac{m}{l} \cdot \frac{m - l}{m}^{d} \cdot \left(1 - \frac{m - l}{m}^{m - d} \right) + \frac{n}{k} \cdot \frac{n - k}{n} \cdot \left( 1 - \frac{n - k}{n}^{n - d} \right) \cdot \frac{m - l}{m}^{d - 1} + \frac{m - l}{m}^{d - 1} \right)\\
+  & = \frac{k}{n} \cdot \frac{l}{m} \cdot \frac{n - k}{n}^{d - 1} \cdot \frac{m - l}{m}^{d - 1} \cdot \left( \frac{m}{l} \cdot \frac{m - l}{m} \cdot \left(1 - \frac{m - l}{m}^{m - d} \right) + \frac{n}{k} \cdot \frac{n - k}{n} \cdot \left( 1 - \frac{n - k}{n}^{n - d} \right) + 1 \right)\\
+  & = \frac{k}{n} \cdot \frac{l}{m} \cdot \frac{n - k}{n}^{d - 1} \cdot \frac{m - l}{m}^{d - 1} \cdot \left( \frac{m - l}{l} \cdot \left(1 - \frac{m - l}{m}^{m - d} \right) + \frac{n - k}{k} \cdot \left( 1 - \frac{n - k}{n}^{n - d} \right) + 1 \right)\\
 \end{align*}
 
 \section{Aufgabe 15}

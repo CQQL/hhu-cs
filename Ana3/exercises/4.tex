@@ -13,12 +13,47 @@
 \section{Aufgabe 13}
 
 \subsection{Teil a}
+\begin{equation}
+  A = \bigcup_{x \in \mathbb{Q}} \{ (x, y) \in \mathbb{R}^{2} \}
+\end{equation}
+Die einzelnen Mengen sind affine Hyperebenen des $\mathbb{R}^{2}$, weil sie als Verschiebung der $1$-dimensionalen y-Achse dargestellt werden können.
+Da $\mathbb{Q}$ abzählbar ist, ist $A$ eine abzählbare Vereinigung von Borel-Mengen (und somit selbst eine), sodass die $\sigma$-Additivität von $\lambda$ gilt und $\lambda^{2}(A) = 0$ ist, weil das Volumen einer affinen Hyperebene $0$.
 
 \subsection{Teil b}
+
 
 \subsection{Teil c}
 
 \section{Aufgabe 14}
+Wir werden die Menge mithilfe einer Matrix $A$ in den 4-dimensionalen Einheitsquader verformen, sodass $\lambda^{4}(P) = \frac{1}{|\det(A)|}$ ist.
+Dabei soll $A$ die 4 aufspannenden Vektoren auf die 4 Einheitsvektoren abbilden.
+Dafür bestimmen wir $A$ über $A^{-1}$, dass die 4 Vektoren aus Spalten hat.
+
+\begin{equation}
+  A^{-1} = 
+  \begin{pmatrix}
+    1 & 1 & 1 & 5\\
+    2 & 2 & 2 & -1\\
+    0 & 3 & 3 & 0\\
+    0 & 0 & 4 & 0
+  \end{pmatrix}
+\end{equation}
+
+Dann ist $A$ nach dem Gauß-Algorithmus
+\begin{equation}
+  A = 
+  \begin{pmatrix}
+    12 & 60 & -44 & 0\\
+    0 & 0 & 44 & -33\\
+    0 & 0 & 0 & -33\\
+    24 & -12 & 0 & 0
+  \end{pmatrix}
+\end{equation}
+
+Damit ergibt sich
+\begin{equation}
+  \lambda^{4}(P) = \frac{1}{|\det(A)|} = \frac{1}{|-\frac{1}{132}|} = 132
+\end{equation}
 
 \section{Aufgabe 15}
 
