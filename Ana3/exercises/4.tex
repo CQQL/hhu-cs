@@ -62,5 +62,30 @@ Damit ergibt sich
 \subsection{Teil b}
 
 \section{Aufgabe 16}
+\begin{proof}
+  $b \Leftrightarrow e$: Sei $x \in X$ und $\alpha \in \mathbb{R}$.
+  Wenn $x \notin \{ x \in X \mid f(x) \ge \alpha \}$, dann $f(x) < \alpha$ und $x \in \{ x \in X \mid f(x) < \alpha \}$.
+  Wenn $x \notin \{ x \in X \mid f(x) < \alpha \}$, dann $f(x) \ge \alpha$ und $x \in \{ x \in X \mid f(x) \ge \alpha \}$.
+  Also ist $X$ die disjunkte Vereinigung von $\{ x \in X \mid f(x) \ge \alpha \}$ und $\{ x \in X \mid f(x) < \alpha \}$.
+  Und da $\sigma$-Algebren bezüglich Komplementbildung abgeschlossen sind, ist die jeweils andere Menge auch in der $\sigma$-Algebra enthalten, wenn die eine Menge enthalten ist.
+
+  $c \Leftrightarrow d$: Analog zu $b \Leftrightarrow e$.
+
+  $d \Rightarrow e$: Sei $\alpha \in \mathbb{R}$, sodass $\{ x \in X \mid f(x) \ge \alpha \} \in \mathscr{A}$.
+  Sei $(a_{n})$ eine Folge in $\mathbb{R}$, die gegen $\alpha$ konvergiert und $a_{n} < \alpha$ für alle $n$.
+  Dann kann man die endliche Vereinigung aller entsprechenden Mengen bilden, die wegen der Abgeschlossenheit einer $\sigma$-Algebra auch wieder in dieser enthalten ist.
+  \begin{equation}
+    \bigcup_{n = 1}^{\infty} \{ x \in X \mid f(x) \le a_{n} \} = \{ x \in X \mid f(x) < \alpha \} \in \mathscr{A}
+  \end{equation}
+
+  $e \Rightarrow d$: Sei $\alpha \in \mathbb{R}$, sodass $\{ x \in X \mid f(x) < \alpha \} \in \mathscr{A}$.
+  Sei $(a_{n})$ eine Folge in $\mathbb{R}$, die gegen $\alpha$ konvergiert und $a_{n} > \alpha$ für alle $n$.
+  Da $\sigma$-Algebren gegenüber endlicher Vereinigung und Komplementbildung abgeschlossen sind, gilt folgendes
+  \begin{align*}
+    \left( \bigcup_{n = 1}^{\infty} \{ x \in X \mid f(x) < a_{n} \}^{C} \right)^{C} & = \left( \bigcup_{n = 1}^{\infty} \{ x \in X \mid f(x) \ge a_{n} \} \right)^{C}\\
+    & = \left( \{ x \in X \mid f(x) > \alpha \} \right)^{C}\\
+    & = \{ x \in X \mid f(x) \le \alpha \} \in \mathscr{A}
+  \end{align*}
+\end{proof}
 
 \end{document}
