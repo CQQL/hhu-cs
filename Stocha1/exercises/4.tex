@@ -130,9 +130,11 @@ Mit $c = \frac{16}{7}$ ist diese Summe $1$ und $q(j, k)$ eine Zähldichte.
 
 \subsection{Teil a}
 Hier haben wir ein Urnenmodell mit 4 Sorten und 19 Kugeln, die wir ohne Zurücklegen ziehen.
-Dabei gibt es $K_{1} = 6$, $K_{2} = 5$, $K_{3} = 4$ und $K_{4} = 4$ Kugeln, die jeweils einem Ticket für das $i$-te Abteil entsprechen.
-Wenn die an $k$-ter Stelle gezogene Kugel der $k$-ten Person ein Abteil zuweist, suchen wir also die Anzahl der Permutationen der Länge 19 dieser Kugeln.
-
+Dabei gibt es $K_{1} = 6$, $K_{2} = 5$, $K_{3} = 4$ und $K_{4} = 4$ ununterscheidbare Kugeln, die jeweils einem Ticket für das $i$-te Abteil entsprechen.
+Dann berechnet sich die Anzahl der Anordnungen und somit die gesuchte Anzahl der Möglichkeiten mittels des Multinomialkoeffizienten
+\begin{equation}
+  \binom{19}{6, 5, 4, 4} = 2444321880
+\end{equation}
 
 \subsection{Teil b}
 
