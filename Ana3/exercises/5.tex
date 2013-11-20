@@ -19,6 +19,19 @@
 \subsection{Teil b}
 
 \subsection{Teil c}
+\begin{proof}
+  $\Rightarrow$: Sei $lim_{n \rightarrow \infty} a_{n} = a$.
+  Nach Definition gibt es für jedes $\epsilon$ ein $n$, sodass $|a_{k} - a| < \frac{\epsilon}{2} \Leftrightarrow -\frac{\epsilon}{2} < a_{k} - a < \frac{\epsilon}{2}$ für alle $k \ge n$.
+  Dann ist
+  \begin{align*}
+    & a - \epsilon < \inf \{ a_{k} \mid k \ge n \} \le \sup \{ a_{k} \mid k \ge n \} < a + \epsilon\\
+    \Leftrightarrow & -\epsilon < \inf \{ a_{k} \mid k \ge n \} - a \le \sup \{ a_{k} \mid k \ge n \} - a < \epsilon\\
+    \Leftrightarrow & -\epsilon < \inf \{ a_{k} \mid k \ge n \} - a \le \sup \{ a_{k} \mid k \ge n \} - a < \epsilon\\
+    \Leftrightarrow & |\inf \{ a_{k} \mid k \ge n \} - a| < \epsilon\ \land\ |\sup \{ a_{k} \mid k \ge n \} - a| < \epsilon\\
+    \Leftrightarrow & \liminf_{n \rightarrow \infty} a_{n} = a = \limsup_{n \rightarrow \infty} a_{n}
+  \end{align*}
+  Die andere Richtung ist einfach rückwärts.
+\end{proof}
 
 \subsection{Teil d}
 
