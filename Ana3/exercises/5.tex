@@ -45,6 +45,35 @@ Eigentlich ist es natürlich an der Y-Achse gespiegelt.
 \subsection{Teil d}
 
 \section{Aufgabe 19}
+Sei
+\begin{equation}
+  f_{n}(x) = 
+  \begin{cases}
+    & 1\textit{ wenn $x = \frac{2 \cdot k - 1}{2^{n}}$ für ein $k \in [1, 2^{n - 1}]$}\\
+    & 0\textit{ sonst}
+  \end{cases}
+\end{equation}
+Dann sind für jedes $n$ alle jeweils Zähler und Nenner der 1-Stellen teilerfremd, weil der Nenner nur durch 2 teilbar ist, der Zähler jedoch nie.
+Also sind die Koordinaten der 1-Stellen nicht kürzbar.
+Das bedeutet, dass keine zwei $f_{p}$ und $f_{q}$ mit $p \ne q$ eine gemeinsame 1-Stelle haben, da sich sonst die Koordinate der einen 1-Stelle zur Koordinate der anderen 1-Stelle kürzen lassen müsste.
+Für jedes $x \in [0, 1]$ gibt es also höchstens ein $f_{n}$ mit $f_{n}(x) = 1$.
+Somit ist die Summe aller $f_{n}$ durch 1 beschränkt.
+Da alle $f_{n}$ nicht negativ sind, konvergiert die Summe deshalb auch.
+Außerdem sind alle $f_{n}$ Riemann-integrierbar, weil sie Treppenfunktionen im riemannschen Sinne sind: Es gibt endlich viele 0-Stufen und ebenfalls nur endlich viele einpunktige Ausnahmen.
+$f$ ist jedoch nicht Riemann-integrierbar, weil die eingrenzenden Treppenfunktionen die 0-Funktion und die 1-Funktion sind (genau genommen nur Stufen mit den Werten 0 und 1 haben können).
+\begin{proof}
+  Da $f$ nur abzählbar viele 1-Stellen hat, kann keine untere Treppenfunktion größer als die 0-Funktion sein.
+
+  Sei $g$ eine obere Treppenfunktion und $]a, b[$ eine Stufe von $g$ auf der $g$ einen Wert kleiner als 1 annimmt.
+  Dann sind $0 \le a < b \le 1$.
+  Dann gibt es ein $n$ für das $f_{n}$ auf $]a, b[$ eine 1-Stelle besitzt und somit auch $f$, sodass $g$ keine obere Treppenfunktion von $f$ sein kann.
+  Da die 1-Stellen von $f_{n}$ einen Abstand von $\frac{2}{2^{n}}$ haben, muss folgendes gelten
+  \begin{equation}
+    \frac{2}{2^{n}} < a - b \Leftrightarrow \frac{2}{a - b} < 2^{n} \Leftrightarrow n > \log_{2}(\frac{2}{a - b})
+  \end{equation}
+  Sei also $n = \lceil \log_{2}(\frac{2}{a - b}) \rceil + 1$.
+  Dann gibt es mindestens ein $x \in ]a, b[$ mit $f_{n}(x) = 1$.
+\end{proof}
 
 \section{Aufgabe 20}
 \begin{proof}
