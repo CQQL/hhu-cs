@@ -47,6 +47,24 @@ Eigentlich ist es natürlich an der Y-Achse gespiegelt.
 \section{Aufgabe 19}
 
 \section{Aufgabe 20}
+\begin{proof}
+  Sei $P = \{ x \in X \mid f(x) = \pm \infty \}$.
+  Um zu zeigen, dass $f$ fast überall endlich ist, ist also zu zeigen, dass $\mu(P) = 0$.
+  Ich beweise es per Widerspruch.
+  Angenommen $\mu(P) > 0$.
+  Da $f$ integrierbar ist, sind $\int f^{+} d\mu$ und $\int f^{-} d\mu$ endlich.
+  Dann ist $P^{+} = \{ x \in X \mid f(x) = +\infty \}$ und $P^{-} = \{ x \in X \mid f(x) = -\infty \}$ eine disjunkte Aufteilung von $P$.
+  Deswegen ist mindestens $\mu(P^{+}) > 0$ oder $\mu(P^{-}) > 0$, vielleicht auch beides.
+  O.b.d.A. nehme ich an, dass $\mu(P^{+}) > 0$.
+  Wenn das nicht der Fall ist, gilt die Argumentation genauso für $P^{-}$ und $f^{-}$.
+  Dann ist $f^{+}(x) = \infty\ \forall x \in P^{+}$.
+  Nach Definition des Integrals gibt es eine wachsende Folge $(g_{n})$ von Treppenfunktionen mit $f^{+} = \sup_{n} g_{n}$.
+  Sei $a_{n}$ das Minimum der Werte, die $g_{n}$ auf $P^{+}$ annimmt.
+  \begin{equation}
+    \int f^{+} d\mu = \sup_{n} \int g_{n} d\mu \ge \sup_{n} a_{n} \cdot \mu(P^{+}) = \mu(P^{+}) \cdot \sup_{n} a_{n} = \mu(P^{+}) \cdot \infty = \infty
+  \end{equation}
+  Aber dies widerspricht der Endlichkeit von $\int f^{+} d\mu$, sodass $\mu(P) = 0$ sein muss.
+\end{proof}
 
 \section{Aufgabe 21}
 \begin{equation}
