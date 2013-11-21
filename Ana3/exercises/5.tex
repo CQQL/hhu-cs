@@ -24,16 +24,26 @@ Eigentlich ist es natürlich an der Y-Achse gespiegelt.
 \section{Aufgabe 18}
 
 \subsection{Teil a}
-
+\begin{proof}
+  \begin{align*}
+    & \limsup_{n \rightarrow \infty} a_{n} = a\\
+    \Leftrightarrow & \inf_{n} \sup_{k \ge n} a_{k} = a\\
+    \Leftrightarrow & (\forall \epsilon > 0\ \exists n : \sup_{k \ge n} a_{k} < a + \epsilon)\ \land\ (\forall n\ \sup_{k \ge n} a_{k} \ge a)\\
+    \Leftrightarrow & (\forall \epsilon > 0\ \exists n : \forall k \ge n : a_{k} < a + \epsilon)\ \land\ (\forall \epsilon > 0, n\ \exists a_{k} : a_{k} > a - \epsilon)\\
+    \Leftrightarrow & \forall \epsilon > 0 : (\textit{Für fast alle $n \in \mathbb{N}$ ist $a_{n} < a + \epsilon$})\ \land\ (\textit{Es gibt unendlich viele $n \in \mathbb{N}$ mit $a_{n} > a - \epsilon$})
+  \end{align*}  
+\end{proof}
 
 \subsection{Teil b}
-\begin{align*}
-  & \limsup_{n \rightarrow \infty} a_{n} = \infty\\
-  \Leftrightarrow & \inf_{n} \sup_{k \ge n} a_{k} = \infty\\
-  \Leftrightarrow & \forall n\ \sup_{k \ge n} a_{k} = \infty\\
-  \Leftrightarrow & \forall n\ \exists k \ge n\ :\ a_{k} = \infty\\
-  \Leftrightarrow & \forall M\ \exists a_{i_{1}}, a_{i_{2}}, \dots : a_{i_{k}} > M\\
-\end{align*}
+\begin{proof}
+  \begin{align*}
+    & \limsup_{n \rightarrow \infty} a_{n} = \infty\\
+    \Leftrightarrow & \inf_{n} \sup_{k \ge n} a_{k} = \infty\\
+    \Leftrightarrow & \forall n\ \sup_{k \ge n} a_{k} = \infty\\
+    \Leftrightarrow & \forall n\ \exists k \ge n\ :\ a_{k} = \infty\\
+    \Leftrightarrow & \forall M\ \exists a_{i_{1}}, a_{i_{2}}, \dots : a_{i_{k}} > M
+  \end{align*}  
+\end{proof}
 
 \subsection{Teil c}
 \begin{proof}
