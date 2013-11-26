@@ -1,0 +1,162 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 22}
+
+\subsection{Teil a}
+
+\subsubsection{Frage 1}
+Ja, weil es eine Treppenfunktion im Riemannschen Sinn ist.
+
+\subsubsection{Frage 2}
+Ja, weil es Riemann-integrierbar ist.
+\begin{equation}
+  \lim_{0}^{1} f(x)\ dx = 0
+\end{equation}
+
+\subsection{Teil b}
+
+\subsubsection{Frage 1}
+Nein, weil es keine Folgen von Ober- und Untertreppenfunktionen von $f$ gibt, die gegeneinander konvergieren.
+
+\subsubsection{Frage 2}
+Ja, weil $f$ nur 2 Werte annimmt.
+\begin{equation}
+  \lim_{0}^{1} f(x)\ dx = 0
+\end{equation}
+weil der Wert 1 nur auf einer Nullmenge angenommen wird.
+
+\subsection{Teil c}
+
+\subsubsection{Frage 1}
+Ja, weil das Infimum der Obertreppenfunktionen gleich der Nullfunktion ist.
+
+\subsubsection{Frage 2}
+Ja, weil es Riemann-integrierbar ist.
+\begin{equation}
+  \lim_{0}^{1} f(x)\ dx = 0
+\end{equation}
+
+\subsection{Teil d}
+
+\subsubsection{Frage 1}
+Nein, weil es nicht beschränkt auf dem kompakten Intervall $[0, 1]$ ist.
+
+\subsubsection{Frage 2}
+Ja, weil die Nichtnullwerte nur auf einer Nullmenge angenommen werden.
+\begin{equation}
+  \lim_{0}^{1} f(x)\ dx = 0
+\end{equation}
+
+\subsection{Teil e}
+
+\subsubsection{Frage 1}
+Nein, weil es nicht beschränkt auf dem kompakten Intervall $[0, 1]$ ist.
+
+\subsubsection{Frage 2}
+Ja, weil $\int |f| < \infty$:
+\begin{equation}
+  \int_{0}^{1} |f(x)|\ dx = \int_{0}^{1} f(x)\ dx = \sum_{n = 1}^{\infty} \frac{1}{2^{n}} \cdot 2^{\frac{n}{2}} = \sum_{n = 1}^{\infty} \left( \frac{1}{2} \right)^{n} = \frac{1}{1 - \frac{1}{2}} - 1 = 1
+\end{equation}
+
+\subsection{Teil f}
+
+\subsubsection{Frage 1}
+Nein, weil es nicht beschränkt auf dem kompakten Intervall $[0, 1]$ ist.
+
+\subsubsection{Frage 2}
+Nein, weil $\int_{0}^{1} |f(x)|\ dx = \infty$.
+\begin{equation}
+  \int_{0}^{1} |f(x)|\ dx = \sum_{n = 1}^{\infty} |- \frac{1}{2^{n}} \cdot \frac{(-2)^{n}}{n}| = \sum_{n = 1}^{\infty} \frac{1}{n} = \infty
+\end{equation}
+Man darf allerdings $\int_{0}^{1} f(x)\ dx = \log 2$ schreiben, weil das uneigentliche Lebesgue-Integral existiert:
+\begin{equation}
+  \lim_{n \rightarrow \infty} \int_{\frac{1}{2^{n}}}^{1} f(x)\ dx = \lim_{n \rightarrow \infty} \sum_{k = 1}^{n} - \frac{1}{2^{k}} \cdot \frac{(-2)^{k}}{k} = \lim_{n \rightarrow \infty} \sum_{k = 1}^{n} \frac{(-1)^{k + 1}}{k}
+\end{equation}
+Dies konvergiert nach dem Leibnizkriterium.
+\begin{equation}
+  \int_{0}^{1} f(x)\ dx = \sum_{n = 1}^{\infty} \frac{(-1)^{n + 1}}{n} = 0 + \sum_{n = 1}^{\infty} \frac{(-1)^{n + 1} \cdot (n - 1)! \cdot \frac{1}{1^{n}}}{n!} \cdot 1^{n} = \sum_{n = 0}^{\infty} \frac{\log^{(n)}(1)}{n!} \cdot (2 - 1)^{n} = \log(2)
+\end{equation}
+Das Ergebnis ist die Taylorentwicklung der Logarithmus an der Stelle 1 angewandt auf $2$.
+
+\section{Aufgabe 23}
+
+\section{Aufgabe 24}
+
+\subsection{Teil a}
+Wir wenden Satz 5 an.
+Sei $p(t, x) = e^{-tx} \cdot \frac{\sin x}{x}$.
+Weil $|\frac{\sin x}{x}| \le 1$ ist, ist $g(x) = e^{-tx}$ eine integrierbare Majorante von $p$.
+Deshalb ist $p$ für jedes $t$ nach $t$ integrierbar nach dem Satz von der majorisierten Konvergenz.
+Die zweite Bedingung ist ebenfalls erfüllt, weil $\frac{\partial p}{\partial t}(t, x) = -e^{-tx} \cdot \sin(x)$.
+Die dritte Bedingung wird auch von der Majoranten $g$ erfüllt.
+Also gilt
+\begin{align*}
+  f'(t) & = \int_{0}^{\infty} -e^{-tx} \cdot \sin(x)\ dx\\
+  & = \int_{0}^{\infty} -e^{-tx} \cdot \frac{1}{2i}(e^{ix} - e^{-ix})\ dx\\
+  & = -\frac{1}{2i} \int_{0}^{\infty} e^{-tx} \cdot(e^{ix} - e^{-ix})\ dx\\
+  & = -\frac{1}{2i} \int_{0}^{\infty} e^{(i - t)x} - e^{(-i - t)x}\ dx\\
+  & = -\frac{1}{2i} \left[ \frac{1}{i - t} e^{(i - t)x} + \frac{1}{i + t} e^{(-i - t)x} \right]_{0}^{\infty}\\
+  & = \frac{1}{2i} \left( \frac{1}{i - t} + \frac{1}{i + t} \right)\\
+  & = \frac{1}{2i} \frac{2i}{-1 - t^{2}} \\
+  & = \frac{1}{-1 - t^{2}} \\
+  & = -\frac{1}{1 + t^{2}} \\
+\end{align*}
+Daraus folgt
+\begin{equation}
+  f(t) = c - \arctan(t)
+\end{equation}
+
+\subsection{Teil b}
+\begin{equation}
+  \lim_{t \rightarrow \infty} f(t) = \lim_{t \rightarrow \infty} c - \arctan(t) = \lim_{t \rightarrow \infty} \int_{0}^{\infty} e^{-tx} \cdot \frac{\sin x}{x}\ dx = 0 \Rightarrow c = \lim_{t \rightarrow \infty} \arctan(t) = \frac{
+\pi}{2}  
+\end{equation}
+
+\subsection{Teil c}
+\begin{equation}
+  f(0) = \int_{0}^{\infty} \frac{\sin x}{x}\ dx = \frac{\pi}{2} - \arctan(0) = \frac{\pi}{2}
+\end{equation}
+
+\section{Aufgabe 25}
+\begin{proof}
+  Sei $f : \mathbb{R} \rightarrow \mathbb{R}$ eine Lebesgue-integrierbare Funktion.
+  Sei $B$ die Menge aller $x$ für die $\lim_{n \rightarrow \infty} |f(x + n)| > 0$.
+  Angenommen $\mu(B) > 0$.
+  Seien $D_{m} \subseteq B$ Teilmengen mit $\lim_{n \rightarrow \infty} |f(x + n)| > \frac{1}{m}$ für alle $x \in D_{m}$.
+  Dann ist $\cup_{m \in \mathbb{N}} D_{m} = B$ und somit wegen der Monotonie eines Maßes $\lim_{m \rightarrow \infty} \mu(D_{m}) = \mu(B)$.
+  Es gibt also ein $M$, sodass $\mu(B) - \mu(D_{m}) < \epsilon$ für alle $m \ge M$ und jedes $\epsilon > 0$.
+  Sei $D_{m}$ eine solche Menge, sodass $\mu(B) - \mu(D_{m}) < \frac{\mu(B)}{2} \Leftrightarrow \mu(D_{m}) > \frac{\mu(B)}{2} > 0$.
+
+  Wegen $\lim_{n \rightarrow \infty} |f(x + n)| > a$ für alle $x \in D_{m}$, gibt es ein $N$, sodass $|f(x + n)| > m - \epsilon$ für jedes $\epsilon > 0$ und alle $n \ge N$.
+  Sei $N \in \mathbb{N}$, sodass $|f(x + n)| > \frac{m}{2}$ für alle $n \ge N$.
+  
+  Dann gibt es eine nicht-negative Treppenfunktion $g$, die den Wert $\frac{m}{2}$ annimmt auf einer Menge $D$ und sonst den Wert 0.
+  Wenn $\mu(D_{m}) = \infty$, sei $D = D_{m}$.
+  Ist $\mu(D_{m})$ jedoch endlich, kann man $D_{m}$ nach der selben Argumentation, wie auch $D_{m}$ selbst konstruiert wurde, mit einer wachsenden Kugel schneiden, bis man $\bar{D}_{m} = D_{m} \cap \bar{B}_{r}$ erhält, sodass $\mu(\bar{D}_{m}) > 0$ ist.
+  Dabei ist $\bar{B}_{r}$ die 1-dimensionale Kugel mit Radius $r$.
+  Dann sind die Mengen $\bar{D}_{m, p} = \{ p \cdot 2 \lceil r \rceil + N + x \mid x \in \bar{D}_{m} \}$ disjunkt für alle $p \in \mathbb{N}$.
+  Wir setzen nun $D = \cup_{p \in \mathbb{N}} \bar{D}_{m, p}$.
+  Da $D \subset \{ n \cdot x \mid n \ge N\ \land\ x \in D \}$, sind die Grenzwerte $\lim_{n \rightarrow \infty} |f(x + n)|$ für alle $x \in D$ ebenfalls durch $\frac{m}{2}$ nach unten beschränkt.
+  Somit ergibt sich $\mu(D) \ge \sum_{p = 1}^{\infty} \frac{m}{2} \cdot \mu(\bar{D}_{m,p}) = \infty$.
+  
+  Dann ist $g \le |f|$.
+  Daraus folgt
+  \begin{equation}
+    \int |f| \ge \int g = \mu(D) \cdot \frac{m}{2} = \infty \cdot \frac{m}{2} = \infty
+  \end{equation}
+  
+  Dies widerspricht jedoch der Lebesgue-Integrierbarkeit von $f$.
+  Also ist $\mu(B) = 0$.
+\end{proof}
+
+\end{document}
