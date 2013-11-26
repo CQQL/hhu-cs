@@ -89,6 +89,20 @@ Dies konvergiert nach dem Leibnizkriterium.
 Das Ergebnis ist die Taylorentwicklung der Logarithmus an der Stelle 1 angewandt auf $2$.
 
 \section{Aufgabe 23}
+\begin{proof}
+  \begin{align*}
+    f_{\alpha}\textit{ ist Lebesgue-integrierbar} & \Leftrightarrow |f_{\alpha}| \textit{ ist integrierbar}\\
+    & \Leftrightarrow \lim_{b \rightarrow \infty} |\int_{1}^{b} x^{\alpha}\ dx| < \infty\\
+    & \Leftrightarrow \lim_{b \rightarrow \infty} |\left[ \frac{x^{\alpha + 1}}{\alpha + 1} \right]_{1}^{b}| < \infty\\
+    & \Leftrightarrow \lim_{b \rightarrow \infty} |\frac{b^{\alpha + 1}}{\alpha + 1} - \frac{1}{\alpha + 1}| < \infty\\
+    & \Leftrightarrow \lim_{b \rightarrow \infty} |\frac{b^{\alpha + 1}}{\alpha + 1}| < \infty\\
+    & \Leftrightarrow \lim_{b \rightarrow \infty} \frac{|b^{\alpha + 1}|}{|\alpha + 1|} < \infty\\
+    & \Leftrightarrow \lim_{b \rightarrow \infty} |b^{\alpha + 1}| < \infty\\
+    & \Leftrightarrow \lim_{b \rightarrow \infty} b^{\alpha + 1} < \infty\\
+    & \alpha + 1 < 0\\
+    & \alpha < -1\\
+  \end{align*}
+\end{proof}
 
 \section{Aufgabe 24}
 
