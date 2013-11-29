@@ -53,6 +53,17 @@ Die Belegungen sind danach wie folgt, wobei die erste Zeile die Adresse des Feld
 \end{tabular}
 
 \section{Aufgabe 3}
+Im schlechtesten Fall werden alle Schlüssel auf denselben Hashwert abgebildet.
+Wenn man neue Schlüssel immer am Ende der Liste anhängt, muss man für jeden vorher eingefügten Schlüssel ein Listenelement weitergehen, bis man es anhängen kann.
+Dies verwende ich als einen Schritt.
+Die Rechenoperation zur Bestimmung des Hashwertes sind konstant und ich ignoriere die mal.
+Also ist der Aufwand um $n$ solche Schlüssel einzufügen $\sum_{i = 0}^{n - 1} i = \frac{n \cdot (n - 1)}{2} \in O(n^{2})$.
+Der Aufwand, alle diese Schlüssel jeweils einmal zu suchen, ist derselbe, weil der Schlüssel, der als $i$-tes eingefügt wurde, $i - 1$ Schlüssel vor sich hat, mit denen der gesucht immer verglichen werden muss.
+
+Für den mittleren Fall nehme ich an, dass alle $n$ Schlüssel zufällig, gleichverteilt und unabhängig voneinander gewählt wurden.
+Da wir mit einer universellen Hashfunktion arbeiten, ist die Wahrscheinlichkeit, dass zwei Schlüssel auf denselben Hashwert abgebildet werden, $\frac{1}{M}$.
+Wenn man den $i$-ten Schlüssel einfügt, ist die Wahrscheinlichkeit, dass bereits einer der $i - 1$ vorherigen Schlüssel auf denselben Hashwert abgebildet wurde, $\frac{1}{M}$.
+
 
 \section{Aufgabe 4}
 \begin{proof}
@@ -64,7 +75,8 @@ Die Belegungen sind danach wie folgt, wobei die erste Zeile die Adresse des Feld
   In diesem konkreten Fall ist $|H| = 100$ und $M = 10$.
   Es darf also maximal 10 Kollisionen pro Schlüsselpaar geben.
   Jetzt betrachte man allerdings die Schlüssel $2$ und $8$.
-  Da $2^{i} \mod 10 = 8^{i} \mod 10$ für $i \in \{ 2, 4, 6, 8, 10 \}$, gibt es hier 50 Kollisionen, nämlich für jedes $i$ 10 Stück für jedes mögliche $j$.
+  Da $2^{i} \mod 10 = 8^{i} \mod 10$ für $i \in \{ 2, 4, 6, 8, 10 \}$, gibt es hier 50 Kollisionen, nämlich für jedes $i$ 10 Stück.
+  Genau eine für jedes mögliche $j$, weil $a = b \Leftrightarrow a + j = b + j$.
 \end{proof}
 
 \end{document}
