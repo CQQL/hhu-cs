@@ -57,17 +57,29 @@ Im schlechtesten Fall werden alle Schlüssel auf denselben Hashwert abgebildet.
 Wenn man neue Schlüssel immer am Ende der Liste anhängt, muss man für jeden vorher eingefügten Schlüssel ein Listenelement weitergehen, bis man es anhängen kann.
 Dies verwende ich als einen Schritt.
 Die Rechenoperation zur Bestimmung des Hashwertes sind konstant und ich ignoriere die mal.
-Also ist der Aufwand um $n$ solche Schlüssel einzufügen $\sum_{i = 0}^{n - 1} i = \frac{n \cdot (n - 1)}{2} \in O(n^{2})$.
+Also ist der Aufwand um $n$ solche Schlüssel einzufügen $\sum_{i = 0}^{n - 1} i = \frac{n \cdot (n - 1)}{2} \in \mathcal{O}(n^{2})$.
 Der Aufwand, alle diese Schlüssel jeweils einmal zu suchen, ist derselbe, weil der Schlüssel, der als $i$-tes eingefügt wurde, $i - 1$ Schlüssel vor sich hat, mit denen der gesucht immer verglichen werden muss.
 
+Ich runde mal alle Erwartungswerte auf, weil Elemente ja nicht teilweise in einer Liste sein können und der Unterschied höchstens linear in $n$ ist, was die Ergebnisse aber nicht beeinflusst.
 Für den mittleren Fall nehme ich an, dass alle $n$ Schlüssel zufällig, gleichverteilt und unabhängig voneinander gewählt wurden.
 Da wir mit einer universellen Hashfunktion arbeiten, ist die Wahrscheinlichkeit, dass zwei Schlüssel auf denselben Hashwert abgebildet werden, $\frac{1}{M}$.
-Wenn man den $i$-ten Schlüssel einfügt, ist die Wahrscheinlichkeit, dass bereits einer der $i - 1$ vorherigen Schlüssel auf denselben Hashwert abgebildet wurde, $\frac{1}{M}$.
+Wenn man den $i$-ten Schlüssel einfügt, ist die Wahrscheinlichkeit, dass bereits einer der $i - 1$ vorherigen Schlüssel auf denselben Hashwert abgebildet wurde, für jeden dieser vorherigen Schlüssel $\frac{1}{M}$.
+Also ist der Erwartungswert, dass $\lceil \frac{i - 1}{M} \rceil$ Schlüssel bereits auf denselben Wert abgebildet und somit schon in die Liste eingefügt wurden.
+Das bedeutet, dass man beim Einfügen des $i$-ten Schlüssels $\lceil \frac{i - 1}{M} \rceil$ Schritte machen muss.
+Fügt man $n$ Schlüssel ein, ergibt sich die Anzahl der Schritte als
+\begin{equation}
+  \sum_{i = 0}^{n - 1} \lceil \frac{i}{M} \rceil \le \frac{1}{M} \cdot \sum_{i = 0}^{n - 1} (i - 1) = \frac{n \cdot (n - 1)}{2M} - n \in \mathcal{O}(n^{2})
+\end{equation}
+Wenn alle Werte einfügt sind, ist die erwartete Länge jeder Liste $\lceil \frac{n}{M} \rceil$.
+Da man alle Schlüssel sucht, werden also auch alle Schlüssel in allen Listen genau einmal gefunden.
+Um alle Schlüssel in einer Liste zu finden, braucht man $\sum_{i = 1}^{\lceil \frac{n}{M} \rceil} i - 1 = \frac{\lceil \frac{n}{M} \rceil \cdot (\lceil \frac{n}{M} \rceil + 1)}{2} - \lceil \frac{n}{M} \rceil$ Schritte.
+Der Aufwand, alle Schlüssel in $M$ Listen zu finden, ist somit $M \cdot (\frac{\lceil \frac{n}{M} \rceil \cdot (\lceil \frac{n}{M} \rceil + 1)}{2} - \lceil \frac{n}{M} \rceil) \le M \cdot (\frac{n^{2}}{2M^{2}} + \frac{3n}{2M} + 1) \in \mathcal{O}(n^{2})$.
 
+Das der Aufwand im durchschnittlichen Fall ebenfalls dem einer verketteten Liste entspricht, ist anschaulich ja ganz klar, da man hier ja nur $M$ verkettete Listen gleichzeitig verwendet, die asymptotisch natürlich das Verhalten einer verketteten Liste aufweisen.
 
 \section{Aufgabe 4}
+Nein, es ist keine universelle Menge von Hashfunktionen.
 \begin{proof}
-  Nein, es ist keine universelle Menge von Hashfunktionen.
   Wenn es eine wäre, müsste folgendes gelten für alle unterschiedlichen Schlüssel $x, y \in [0, 9]$.
   \begin{equation}
     |\{ h_{i,j} \in H \mid h_{i,j}(x) = h_{i,j}(y) \}| \le \lceil \frac{|H|}{M} \rceil
@@ -75,7 +87,7 @@ Wenn man den $i$-ten Schlüssel einfügt, ist die Wahrscheinlichkeit, dass berei
   In diesem konkreten Fall ist $|H| = 100$ und $M = 10$.
   Es darf also maximal 10 Kollisionen pro Schlüsselpaar geben.
   Jetzt betrachte man allerdings die Schlüssel $2$ und $8$.
-  Da $2^{i} \mod 10 = 8^{i} \mod 10$ für $i \in \{ 2, 4, 6, 8, 10 \}$, gibt es hier 50 Kollisionen, nämlich für jedes $i$ 10 Stück.
+  Da $2^{i} \mod 10 = 8^{i} \mod 10$ für $i \in \{ 2, 4, 6, 8, 10 \}$, gibt es hier mindestens 50 Kollisionen, nämlich für jedes $i$ 10 Stück.
   Genau eine für jedes mögliche $j$, weil $a = b \Leftrightarrow a + j = b + j$.
 \end{proof}
 
