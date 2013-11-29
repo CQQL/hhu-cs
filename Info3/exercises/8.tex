@@ -55,5 +55,16 @@ Die Belegungen sind danach wie folgt, wobei die erste Zeile die Adresse des Feld
 \section{Aufgabe 3}
 
 \section{Aufgabe 4}
+\begin{proof}
+  Nein, es ist keine universelle Menge von Hashfunktionen.
+  Wenn es eine wäre, müsste folgendes gelten für alle unterschiedlichen Schlüssel $x, y \in [0, 9]$.
+  \begin{equation}
+    |\{ h_{i,j} \in H \mid h_{i,j}(x) = h_{i,j}(y) \}| \le \lceil \frac{|H|}{M} \rceil
+  \end{equation}
+  In diesem konkreten Fall ist $|H| = 100$ und $M = 10$.
+  Es darf also maximal 10 Kollisionen pro Schlüsselpaar geben.
+  Jetzt betrachte man allerdings die Schlüssel $2$ und $8$.
+  Da $2^{i} \mod 10 = 8^{i} \mod 10$ für $i \in \{ 2, 4, 6, 8, 10 \}$, gibt es hier 50 Kollisionen, nämlich für jedes $i$ 10 Stück für jedes mögliche $j$.
+\end{proof}
 
 \end{document}
