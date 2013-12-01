@@ -42,21 +42,24 @@ Wir definieren die folgenden Ereignisse
 \item[B] Ein Mensch macht sich zu schaffen
 \item[C] Heiner ist am Werk
 \end{description}
+Aber B und C sind das selbe, weil Heiner der einzige Mensch ist, der von den Kois weiß.
 Dann kennen wir die folgenden Wahrscheinlichkeiten
 \begin{equation}
-  P(A \mid B) = 0.99
+  P(A \mid C) = 0.99
 \end{equation}
 \begin{equation}
-  P(A \mid B^{C}) = 0.02
+  P(A \mid C^{C}) = 0.02
 \end{equation}
 \begin{equation}
   P(C) = 0.001
 \end{equation}
 Gesucht ist $P(C \mid A)$.
-\begin{align*}
-  P(C \mid A) & = \frac{P(C \cap A)}{P(A)}\\
-  & =
-\end{align*}
+\begin{equation}
+  P(A) = P(A \cap C) + P(A \cap C^{C}) = P(A \mid C) \cdot P(C) + P(A \cap C^{C}) \cdot P(C^{C}) = 0.99 \cdot 0.001 + 0.02 \cdot (1 - 0.001) = 0.02097
+\end{equation}
+\begin{equation}
+  P(C \mid A) = \frac{P(A \mid C) \cdot P(C)}{P(A)} = \frac{0.99 \cdot 0.001}{0.02097} = 0.0472103004292
+\end{equation}
 
 \section{Aufgabe 23}
 
@@ -67,7 +70,6 @@ Gesucht ist $P(C \mid A)$.
 \section{Aufgabe 24}
 
 \subsection{Teil a}
-
 
 \subsection{Teil b}
 
