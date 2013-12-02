@@ -21,12 +21,26 @@
 \section{Aufgabe 26}
 
 \subsection{Teil a}
+\begin{equation}
+  P(A_{k}) = \sum_{n = 1}^{\infty} P(\{kn\}) = \sum_{n = 1}^{\infty} \frac{1}{a k^{2} n^{2}} = \frac{1}{ak^{2}} \cdot \sum_{n = 1}^{\infty} \frac{1}{n^{2}} = \frac{1}{ak^{2}} \cdot \frac{\pi^{2}}{6} = \frac{1}{k^{2}}
+\end{equation}
 
 \subsection{Teil b}
+Sei $J$ eine endliche Teilmenge von $\mathbb{N}$.
+\begin{align*}
+  P(\bigcap_{j \in J} A_{p_{j}}) & = \sum_{n = 1}^{\infty} P(\{ n \cdot \prod_{j \in J} p_{j} \})\\
+  & = \sum_{n = 1}^{\infty} \frac{1}{an^{2} \cdot \prod_{j \in J} p_{j}^{2}}\\
+  & = \frac{1}{a \cdot \prod_{j \in J} p_{j}^{2}} \cdot \sum_{n = 1}^{\infty} \frac{1}{n^{2}}\\
+  & = \frac{1}{a \cdot \prod_{j \in J} p_{j}^{2}} \cdot \frac{\pi^{2}}{6}\\
+  & = \prod_{j \in J} \frac{1}{p_{j}^{2}}\\
+  & = \prod_{j \in J} P(A_{p_{j}})
+\end{align*}
 
 \subsection{Teil c}
+Ja, weil alle endlichen Teilmengen stochastisch unabhängig sind, siehe Definition 7.2.
 
 \subsection{Teil d}
+
 
 \section{Aufgabe 27}
 
