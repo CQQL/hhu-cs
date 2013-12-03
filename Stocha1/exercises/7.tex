@@ -45,16 +45,35 @@ Ja, weil alle endlichen Teilmengen stochastisch unabhängig sind, siehe Definiti
 \section{Aufgabe 27}
 
 \subsection{Teil a}
+Man kann die Wahrscheinlichkeit hier geometrisch bestimmen.
+Die Länge von $[0, 1]$ ist $1$ und da die einzelnen Teilmengen eines $A_{n}$ disjunkt sind, kann man einfach die Länge dieser aufaddieren, um die Länge von $A_{n}$ zu bestimmen.
+\begin{equation}
+  P(A_{n}) = \frac{\textit{Länge}(A_{n})}{1} = 2^{n - 1} \cdot \frac{2i - 2i + 1}{2^{n}} = \frac{1}{2}
+\end{equation}
 
 \subsection{Teil b}
+Sei o.B.d.A. $n_{1} < n_{2}$.
+Dann ist die Länge von $A_{n_{1}} \cap A_{n_{2}}$ die Hälfte der Länge von $A_{n_{1}}$.
+\begin{proof}
+  Sei $n_{2} = n_{1} + 1$.
+
+\end{proof}
+Damit ergibt sich
+\begin{align*}
+  P(A_{n_{1}} \cap A_{n_{2}}) & = \frac{1}{2} \cdot P(A_{n_{1}})\\
+  & = \frac{1}{2} \cdot \frac{1}{2}\\
+  & = P(A_{n_{1}}) \cdot P(A_{n_{2}})
+\end{align*}
 
 \section{Aufgabe 28}
 
 \subsection{Teil a}
 
 \subsubsection{Method i}
+Da jede Probe untersucht wird, ist die erwartete Anzahl gleich der Gesamtanzahl $n$.
 
 \subsubsection{Method ii}
+Die Wahrscheinlichkeit, dass von $k$ Fischen mindestens
 
 \subsection{Teil b}
 
