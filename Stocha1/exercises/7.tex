@@ -11,12 +11,47 @@
 \begin{document}
 
 \section{Aufgabe 25}
+Seien $G$ und $B$ zwei Zufallsvariablen.
+Dann bildet $G$ männliche Studenten auf $M$ und weibliche auf $W$ ab, und $B$ Hauptfachstudierende auf $H$ und Nebenfächler auf $N$.
 
 \subsection{Teil a}
+Die Verteilungen sind eindeutig durch ihre Werte bestimmt.
+\begin{equation}
+  P_{G}(M) = P(G^{-1}(M)) = \frac{0.6 \cdot 240}{240} = \frac{3}{5}
+\end{equation}
+\begin{equation}
+  P_{G}(W) = P(G^{-1}(W)) = 1 - P_{G}(M) = \frac{2}{5}
+\end{equation}
+\begin{equation}
+  P_{B}(H) = P(B^{-1}(H)) = \frac{180}{240} = \frac{3}{4}
+\end{equation}
+\begin{equation}
+  P_{B}(N) = P(B^{-1}(N)) = 1 - P_{B}(H) = \frac{1}{4}
+\end{equation}
+\begin{equation}
+  P_{G,B}(W, N) = P(G^{-1}(W) \cap B^{-1}(N)) = \frac{30}{240} = \frac{1}{8}
+\end{equation}
+\begin{equation}
+  P_{G,B}(M, N) = P(G^{-1}(M) \cap B^{-1}(N)) = \frac{30}{240} = \frac{1}{8}
+\end{equation}
+\begin{equation}
+  P_{G,B}(M, H) = P(G^{-1}(M) \cap B^{-1}(H)) = \frac{114}{240} = \frac{19}{40}
+\end{equation}
+\begin{equation}
+  P_{G,B}(W, H) = P(G^{-1}(W) \cap B^{-1}(H)) = \frac{66}{240} = \frac{11}{40}
+\end{equation}
 
 \subsection{Teil b}
+Nein.
+\begin{equation}
+  P_{G,B}(W, H) = \frac{11}{40} \neq \frac{3}{10} = P_{G}(W) \cdot P_{B}(H)
+\end{equation}
 
 \subsection{Teil c}
+Sei $P$ die gesuchte Wahrscheinlichkeit.
+\begin{equation}
+  P = \frac{P_{G,B}(M, N)}{P_{B}(N)} = \frac{\frac{1}{8}}{\frac{1}{4}} = \frac{1}{2}
+\end{equation}
 
 \section{Aufgabe 26}
 
@@ -37,10 +72,29 @@ Sei $J$ eine endliche Teilmenge von $\mathbb{N}$.
 \end{align*}
 
 \subsection{Teil c}
-Ja, weil alle endlichen Teilmengen stochastisch unabhängig sind, siehe Definition 7.2.
+Nein.
+Man betrachte $A_{4}$ und $A_{8}$.
+\begin{equation}
+  P(A_{4} \cap A_{8}) = P(A_{8}) = \frac{1}{64} \ge \frac{1}{1024} = \frac{1}{4^{2}} \cdot \frac{1}{8^{2}} = P(A_{4}) \cdot P(A_{8})
+\end{equation}
 
 \subsection{Teil d}
+Es gilt
+\begin{equation}
+  P_{X_{i}}(1) = P(X_{i}^{-1}(1)) = P(A_{p_{i}}) = \frac{1}{p_{i}^{2}}
+\end{equation}
+und entsprechend
+\begin{equation}
+  P_{X_{i}}(0) = 1 - P_{X_{i}}(1) = \frac{p_{i}^{2} - 1}{p_{i}^{2}}
+\end{equation}
 
+Sei $\omega \in \{ 0, 1 \}^{n}$.
+\begin{align*}
+  P(\omega) & = P \left( \cap_{i = 1}^{n} X_{i}^{-1}(\omega_{i}) \right)\\
+  & = \prod_{i = 1}^{n} P \left( X_{i}^{-1}(\omega_{i}) \right)\\
+  & = \prod_{i = 1}^{n} P_{X_{i}}(\omega_{i})\\
+  & = \frac{\prod_{i = 1, \omega_{i} = 0}^{n} (p_{i}^{2} - 1)}{\left( \prod_{i = 1}^{n} p_{i} \right)^{2}}
+\end{align*}
 
 \section{Aufgabe 27}
 
