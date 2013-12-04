@@ -85,6 +85,7 @@ und
   & = m + k \cdot \sum_{i = 1}^{m} \left( 1 - (1 - p)^{k} \right)\\
   & = m + k \cdot m \cdot \left( 1 - (1 - p)^{k} \right)\\
   & = m \cdot \left( 1 + k \cdot \left( 1 - (1 - p)^{k} \right) \right)\\
+  & = \frac{n}{k} \cdot \left( 1 + k \cdot \left( 1 - (1 - p)^{k} \right) \right)\\
 \end{align*}
 
 \subsection{Teil b}
@@ -105,10 +106,23 @@ Die zweite Methode ist vorzuziehen, wenn der Erwartungswert geringer ist.
   E(X) = \frac{1000}{k} \cdot \left( 1 + k \cdot \left( 1 - 0.99^{k} \right) \right)
 \end{equation}
 \begin{align*}
-  E'(X) & = -\frac{1000}{k^{2}} \cdot \left( 1 + k \cdot \left( 1 - 0.99^{k} \right) \right) + \frac{1000}{k} \cdot ((1 - 0.99^{k}) - k \cdot \log(0.99) \cdot 0.99^{k})\\
+  \frac{\partial E(X)}{\partial k} & = -\frac{1000}{k^{2}} \cdot \left( 1 + k \cdot \left( 1 - 0.99^{k} \right) \right) + \frac{1000}{k} \cdot ((1 - 0.99^{k}) - k \cdot \log(0.99) \cdot 0.99^{k})\\
   & = \frac{1000}{k} \cdot \left( 1 - 0.99^{k} - k \cdot \log(0.99) \cdot 0.99^{k} - \frac{1}{k} - 1 + 0.99^{k} \right)\\
   & = \frac{1000}{k} \cdot \left( k \cdot \log(0.99) \cdot 0.99^{k} - \frac{1}{k} \right)\\
-  & = 1000 \cdot \left( \log(0.99) \cdot 0.99^{k} - \frac{1}{k^{2}} \right)\\
+  & = 1000 \cdot \left( \log(0.99) \cdot 0.99^{k} - \frac{1}{k^{2}} \right)
 \end{align*}
+Diese Ableitung sollte eine Nullstelle irgendwo zwischen 10 und 11 haben, aber irgendwie kommt da nur Unsinn raus.
+Mein Ergebnis sieht man, wenn man sich $E(X)$ plotten lässt.
+
+$k = 11$ ergibt die niedrigste erwartete Anzahl an Untersuchungen.
+\begin{equation}
+  E(X) \simeq 195.617 \textit{ wenn $k = 10$}
+\end{equation}
+\begin{equation}
+  E(X) \simeq 195.571 \textit{ wenn $k = 11$}
+\end{equation}
+\begin{equation}
+  E(X) \simeq 196.949 \textit{ wenn $k = 12$}
+\end{equation}
 
 \end{document}
