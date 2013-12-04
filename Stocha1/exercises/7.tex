@@ -53,11 +53,7 @@ Die Länge von $[0, 1]$ ist $1$ und da die einzelnen Teilmengen eines $A_{n}$ di
 
 \subsection{Teil b}
 Sei o.B.d.A. $n_{1} < n_{2}$.
-Dann ist die Länge von $A_{n_{1}} \cap A_{n_{2}}$ die Hälfte der Länge von $A_{n_{1}}$.
-\begin{proof}
-  Sei $n_{2} = n_{1} + 1$.
-
-\end{proof}
+Dann ist die Länge von $A_{n_{1}} \cap A_{n_{2}}$ die Hälfte der Länge von $A_{n_{1}}$, weil $A_{n_{1}} \cap A_{n_{2}} \subset A_{n_{1}}$ und jedes der disjunkten Teilintervalle von $A_{n_{1}}$ beim Schneiden mit $A_{n_{2}}$ in $2^{n_{2} - n_{1}}$ Teilintervalle aufgeteilt wird, von denen jedes zweite verworfen wird.
 Damit ergibt sich
 \begin{align*}
   P(A_{n_{1}} \cap A_{n_{2}}) & = \frac{1}{2} \cdot P(A_{n_{1}})\\
@@ -74,9 +70,45 @@ Da jede Probe untersucht wird, ist die erwartete Anzahl gleich der Gesamtanzahl 
 
 \subsubsection{Method ii}
 Die Wahrscheinlichkeit, dass von $k$ Fischen mindestens
+Sei $X$ die Anzahl an Untersuchungen.
+Sei $Y_{i}$ $1$, wenn die $i$-te Gruppe eine Infektion aufweist, sonst $0$, für alle Gruppen $1 \le i \le m$.
+Dann ist
+\begin{equation}
+  X = m + \sum_{i = 1}^{m} k \cdot Y_{i}
+\end{equation}
+und
+\begin{align*}
+  E(X) & = E(m + \sum_{i = 1}^{m} k \cdot Y_{i})\\
+  & = m + E(\sum_{i = 1}^{m} k \cdot Y_{i})\\
+  & = m + k \cdot E(\sum_{i = 1}^{m} Y_{i})\\
+  & = m + k \cdot \sum_{i = 1}^{m} E(Y_{i})\\
+  & = m + k \cdot \sum_{i = 1}^{m} \left( 1 - (1 - p)^{k} \right)\\
+  & = m + k \cdot m \cdot \left( 1 - (1 - p)^{k} \right)\\
+  & = m \cdot \left( 1 + k \cdot \left( 1 - (1 - p)^{k} \right) \right)\\
+\end{align*}
 
 \subsection{Teil b}
+Die zweite Methode ist vorzuziehen, wenn der Erwartungswert geringer ist.
+\begin{align*}
+  E(X) = & m \cdot \left( 1 + k \cdot \left( 1 - (1 - p)^{k} \right) \right) < n\\
+  \Leftrightarrow & 1 + k \cdot \left( 1 - (1 - p)^{k} \right) < \frac{n}{m}\\
+  \Leftrightarrow & 1 + k \cdot \left( 1 - (1 - p)^{k} \right) < \frac{n}{\frac{n}{k}}\\
+  \Leftrightarrow & 1 + k \cdot \left( 1 - (1 - p)^{k} \right) < k\\
+  \Leftrightarrow & \frac{1}{k} + \left( 1 - (1 - p)^{k} \right) < 1\\
+  \Leftrightarrow & \frac{1}{k} - (1 - p)^{k} < 0\\
+  \Leftrightarrow & \frac{1}{k} < (1 - p)^{k}\\
+  \Leftrightarrow & 1 < k \cdot (1 - p)^{k}\\
+\end{align*}
 
 \subsection{Teil c}
+\begin{equation}
+  E(X) = \frac{1000}{k} \cdot \left( 1 + k \cdot \left( 1 - 0.99^{k} \right) \right)
+\end{equation}
+\begin{align*}
+  E'(X) & = -\frac{1000}{k^{2}} \cdot \left( 1 + k \cdot \left( 1 - 0.99^{k} \right) \right) + \frac{1000}{k} \cdot ((1 - 0.99^{k}) - k \cdot \log(0.99) \cdot 0.99^{k})\\
+  & = \frac{1000}{k} \cdot \left( 1 - 0.99^{k} - k \cdot \log(0.99) \cdot 0.99^{k} - \frac{1}{k} - 1 + 0.99^{k} \right)\\
+  & = \frac{1000}{k} \cdot \left( k \cdot \log(0.99) \cdot 0.99^{k} - \frac{1}{k} \right)\\
+  & = 1000 \cdot \left( \log(0.99) \cdot 0.99^{k} - \frac{1}{k^{2}} \right)\\
+\end{align*}
 
 \end{document}
