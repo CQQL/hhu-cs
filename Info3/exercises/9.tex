@@ -1,0 +1,58 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+
+\section{Aufgabe 2}
+Man führe eine normale Suche nach $x$ durch, wobei man jedoch stets den letzten Schlüssel mitführt, der kleiner als $x$ war.
+Wenn die normale Suche an einem Knoten endet, dessen Schlüssel kleiner oder gleich $x$ ist, ist dieser Schlüssel der gesuchte.
+Wenn man jedoch an einem Knoten endet, dessen Schlüssel größer als $x$ ist, ist der letzte Schlüssel, der kleiner als $x$ war, der gesuchte.
+\begin{proof}
+  Man betrachte die Situation, in der die normale Suche abgeschlossen ist, und man an einem Knoten $r$ angekommen ist, dessen Schlüssel größer als der von $x$ ist.
+  Dann sei $p_{1}, \dots, p_{k} = r$ der Weg, den man von der Wurzel bis nach $r$ genommen hat, und $p_{i}$ der letzte Schlüssel auf diesem Weg, der kleiner als $x$ war.
+  Dabei sind $p_{1}, \dots, p_{k}$ eindeutig bestimmt, weil wir in einem Baum sind.
+  Angenommen es gäbe einen Schlüssel $q$ im Baum, der noch näher von unten an $x$ läge.
+  Weiterhin angenommen $q$ läge nicht auf diesem Weg.
+  Dann haben $r$ und $q$ einen gemeinsamen Vater $p_{j}$, für den entweder $x < p_{j} < q$ oder $q < p_{j} < x$, was aber ein Widerspruch dazu ist, dass $q < x$ bzw. dass $q$ der größte Knoten im Baum ist, der kleiner als $x$ ist.
+  $q$ liegt also auf dem Weg.
+  Sei $q = p_{l}$.
+  Wäre $l > i$, so wäre $p_{i} < q < x$, aber $p_{i}$ ist der letzte Knoten auf dem Weg, der kleiner als $x$ ist.
+  Wäre hingegen $l < i$, so wäre $p_{i}$ im linken Teilbaum von $q$ wegen der Suchbaumeigenschaft.
+  Da aber $x > q$, hätte die Suche jedoch im rechten Teilbaum weitergesucht, was im Widerspruch dazu steht, dass $p_{i}$ im Pfad enthalten ist.
+  Es folgt also, dass $i = j$ und somit $p_{i} = q$.
+\end{proof}
+Es folgt der Algorithmus in Pseudocode.
+\begin{lstlisting}
+  def find<= (p, x, max = NULL)
+    if k(p) == x
+      return k(p)
+    else if k(p) < x
+      if empty?(right(p))
+        return k(p)
+      else
+        return find<=(right(p), x, k(p))
+    else
+      if empty?(left(p))
+        return max
+      else
+        return find<=(left(p), x, max)
+\end{lstlisting}
+Dann rufe man $find<=$ mit der Wurzel und dem gesuchten $x$ als Argument auf.
+
+Da man nur einmal den Baum hinabsteigt und an jedem Knoten nur einen konstanten Aufwand betreibt, ist die Laufzeit proportional zur Länge des längsten Weges im Baum, also zur Höhe.
+
+\section{Aufgabe 3}
+
+\section{Aufgabe 4}
+
+\end{document}
