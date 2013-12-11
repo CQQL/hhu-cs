@@ -1,0 +1,113 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 32}
+Sei $S_{r}^{n - 1}$ die $n - 1$-dimensionale Sphäre im $\mathbb{R}^{n}$ mit Radius $r$.
+Dann ist $\lambda^{n}(S_{r}^{n - 1}) = 0$.
+\begin{proof}
+  Sei $n - 1 = 0$.
+  Dann ist $S_{r}^{n - 1} = \{ \pm r \}$ und $\lambda^{1}(S_{r}^{n - 1}) = 0$.
+
+  Sei $n - 1 > 0$ und die Behauptung wahr für alle $m < n - 1$.
+  Sei $E_{x} = \{ y \in \mathbb{R}^{n - 1} \mid (y, x) \in S_{r}^{n - 1} \}$ mit $x \in \mathbb{R}$.
+  Dann gilt
+  \begin{equation}
+     y \in E_{x} \Leftrightarrow \sum_{i = 1}^{n - 1} y_{i}^{2} + x^{2} = r^{2} \Leftrightarrow \sum_{i = 1}^{n - 1} y_{i} = r^{2} - x^{2} \Leftrightarrow y \in S_{\sqrt{r^{2} - x^{2}}}^{n - 2}
+  \end{equation}
+  Also ist $E_{x} = S_{\sqrt{r^{2} - x^{2}}}^{n - 2}$.
+  Das bedeutet
+  \begin{equation}
+    \lambda^{n}(S_{r}^{n - 1}) = \int_{\mathbb{R}} \lambda^{n - 1}(E_{x})\ d\lambda^{1}(x) = \int_{\mathbb{R}} \lambda^{n - 1}(S_{\sqrt{r^{2} - x^{2}}}^{n - 2})\ d\lambda^{1}(x) = \int_{\mathbb{R}} 0\ d\lambda^{1}(x) = 0
+  \end{equation}
+\end{proof}
+Die ursprüngliche Behauptung ergibt sich als Spezialfall für $r = 1$.
+
+\section{Aufgabe 33}
+\begin{proof}
+  $\mathscr{L}^{1}(\mathbb{R}) \not\subset \mathscr{L}^{2}(\mathbb{R})$: Definiere $f: \mathbb{R} \rightarrow \mathbb{R}$ durch
+  \begin{equation}
+    f(x) =
+    \begin{cases}
+      \frac{1}{\sqrt{x}} & \textit{wenn $0 < x \le 1$}\\
+      0 & \textit{sonst}
+    \end{cases}
+  \end{equation}
+  \begin{equation}
+    ||f||_{1} = \int_{\mathbb{R}} |f|\ d\lambda = \int_{0}^{1} \frac{1}{\sqrt{x}}\ dx = 2\sqrt{x} \mid_{0}^{1} = 2
+  \end{equation}
+  \begin{equation}
+    ||f||_{2} = \left( \int_{\mathbb{R}} |f|^{2}\ d\lambda \right)^{\frac{1}{2}} = \sqrt{\int_{0}^{1} \frac{1}{x}\ d\lambda} = \sqrt{\log(1) - \log(0)} = \infty
+  \end{equation}
+
+  $\mathscr{L}^{2}(\mathbb{R}) \not\subset \mathscr{L}^{1}(\mathbb{R})$: Definiere $f: \mathbb{R} \rightarrow \mathbb{R}$ durch
+  \begin{equation}
+    f(x) =
+    \begin{cases}
+      \frac{1}{x} & \textit{wenn $x > 1$}\\
+      0 & \textit{0}
+    \end{cases}
+  \end{equation}
+  \begin{equation}
+    ||f||_{1} = \int_{\mathbb{R}} |f|\ d\lambda = \int_{1}^{\infty} \frac{1}{x}\ dx = \int_{1}^{\infty} \log(x)\ dx = \infty
+  \end{equation}
+  \begin{equation}
+    ||f||_{2} = \left( \int_{\mathbb{R}} |f|^{2}\ d\lambda \right)^{\frac{1}{2}} = \sqrt{\int_{1}^{\infty} \frac{1}{x^{2}}\ d\lambda} = \sqrt{1} = 1
+  \end{equation}
+\end{proof}
+
+\section{Aufgabe 34}
+
+\subsection{Teil a}
+\begin{proof}
+  Statt $\varphi$ betrachte man die Einschränkung von $\varphi$ auf $U =\ ]0, \infty[ \times ]0, 2\pi[ \times \mathbb{R}$.
+  Dann bildet $\varphi$ bijektiv auf $V = \mathbb{R}^{3} \setminus \{ x \in \mathbb{R}^{3} \mid x_{1} \ge 0\ \land\ x_{2} = 0 \}$ ab.
+  Und statt $f$ betrachte man die Einschränkung von $f$ auf $V$.
+  Weil man die Abbildungen nur auf einer Nullmenge abgeändert hat, ändert dies nichts an den Integralen.
+  Dann sind $U, V$ offen in $\mathbb{R}^{3}$ und $\varphi$ und $f$ nach der Transformationsformel integrierbar.
+  Deshalb ist dann auch $(r, t, z) \rightarrow |\det D\varphi| \cdot (f \circ \varphi) = f(\varphi(r, t, z)) \cdot r$ integrierbar.
+  Weil das alles integrierbar ist, kann man auch den Satz von Fubini anwenden und es ergibt sich
+  \begin{align*}
+    \int_{\mathbb{R}^{3}} f(x)\ dx & = \int_{V} f(x)\ dx\\
+    & = \int_{U} f(\varphi(x)) \cdot r\ dx\\
+    & = \int_{]0, \infty[ \times ]0, 2\pi[ \times \mathbb{R}} f(\varphi(x)) \cdot r\ dx\\
+    & = \int_{\mathbb{R}^{3}} f(\varphi(x)) \cdot r \cdot \chi_{]0, \infty[}(x_{1}) \cdot \chi_{]0, 2\pi[}(x_{2})\ dx\\
+    & = \int_{\mathbb{R}} \int_{\mathbb{R}} \int_{\mathbb{R}} f(\varphi(x_{1}, x_{2}, x_{3})) \cdot r \cdot \chi_{]0, \infty[}(x_{1}) \cdot \chi_{]0, 2\pi[}(x_{2})\ dx_{3}\ dx_{2}\ dx_{1}\\
+    & = \int_{\mathbb{R}} \int_{\mathbb{R}} \int_{\mathbb{R}} f(\varphi(x_{1}, x_{2}, x_{3})) \cdot r \cdot \chi_{]0, \infty[}(x_{1}) \cdot \chi_{]0, 2\pi[}(x_{2})\ dx_{1}\ dx_{2}\ dx_{3}\\
+    & = \int_{-\infty}^{\infty} \int_{0}^{2\pi} \int_{0}^{\infty} f(\varphi(x_{1}, x_{2}, x_{3})) \cdot r\ dx_{1}\ dx_{2}\ dx_{3}\\
+    & = \int_{-\infty}^{\infty} \int_{0}^{2\pi} \int_{0}^{\infty} f(\varphi(r, t, z)) \cdot r\ dr\ dt\ dz\\
+  \end{align*}
+\end{proof}
+
+\subsection{Teil b}
+\begin{proof}
+  Wie oben schränkt man $\varphi$ und $f$ ein auf
+  \begin{equation}
+    U =\ ]0, \infty[ \times ]0, \pi[ \times ]0, 2\pi[
+  \end{equation}
+  und
+  \begin{equation}
+    V = \mathbb{R}^{3} \setminus \{ x \in \mathbb{R}^{3} \mid x_{1} = 0\ \land\ x_{2} = 0 \}
+  \end{equation}
+\end{proof}
+
+\section{Aufgabe 35}
+Durch Einsetzen von $t = 0$ folgt aus der linken Gleichung
+\begin{equation}
+  F(0)^{2} = G(0)^{2}
+\end{equation}
+Daraus folgt $F(0) = G(0)$, weil $F(0) = -G(0)$ bedeuten würde, dass $2F(0)G(0) \le 0 < \frac{\pi}{4}$, was der rechten Gleichung widerspräche.
+Also
+\begin{equation}
+  2F(0)^{2} = 2G(0)^{2} = \frac{\pi}{4} \Leftrightarrow F(0) = G(0) = \sqrt{\frac{\pi}{8}} \Rightarrow \int_{0}^{\infty} \cos(x^{2})\ dx = \int_{0}^{\infty} \sin(x^{2})\ dx = \sqrt{\frac{\pi}{8}}
+\end{equation}
+
+\end{document}
