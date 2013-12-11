@@ -13,16 +13,72 @@
 \section{Aufgabe 1}
 
 \subsection{$1 \Rightarrow 2$}
+\begin{proof}
+  Da $G$ ein Baum ist, ist $G$ kreisfrei.
+  Gäbe es zwischen zwei Knoten $u$ und $v$ mehr als einen Weg, die nicht identisch sind, gäbe es zwei Knoten $i$ und $j$ auf diesen Wegen, sodass es zwei komplett knotendisjunkte Wege zwischen ihnen gäbe.
+  Diese würden jedoch einen Kreis bilden.
+\end{proof}
 
 \subsection{$2 \Rightarrow 3$}
+\begin{proof}
+  Dass $G$ zusammenhängt, folgt direkt, weil es zwischen jedem Knotenpaar einen Weg gibt.
+  Sei $e = \{u, v\}$.
+  Dann ist $e$ nach Vorraussetzung der einzige einfache Weg zwischen $u$ und $v$.
+  Entfernt man diesen gibt es keinen Weg in $G$ mehr von $u$ nach $v$ und $G$ ist nicht mehr zusammenhängend.
+\end{proof}
 
 \subsection{$3 \Rightarrow 1$}
+\begin{proof}
+  Es ist nur zu zeigen, dass $G$ kreisfrei ist.
+  Sei $p_{1}, \dots, p_{k}$ ein Kreis in $G$ und $u, v$ zwei adjazente Knoten darauf mit $u = p_{i}$ und $v = p_{j}$, sodass $i < j$.
+  Nun betrachte man $G$ ohne die Kante $\{u, v\}$.
+  Dann gibt es immer noch einen Weg von $u$ nach $v$: $p_{i}, p_{i - 1}, \dots, p_{1}, p_{k}, \dots p_{j + 1}, p_{j}$.
+  Alle Wege, die die entfernte Kante enthielten können umgeschrieben werden, indem $u$ und $v$ durch den Weg zwischen ihnen ersetzt werden.
+  $G$ ist also weiterhin zusammenhängend, was jedoch der Annahme widerspricht.
+  Demnach gibt es keinen solchen Kreis in $G$ und $G$ ist kreisfrei.
+\end{proof}
 
 \section{Aufgabe 2}
 
 \section{Aufgabe 3}
 
 \section{Aufgabe 4}
+Die Adjazenzmatrix $A$ sieht folgermaßen aus
+\setcounter{MaxMatrixCols}{20}
+\begin{equation}
+  A =
+  \begin{pmatrix}
+    0 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1\\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+    0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0\\
+    1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\
+    0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 0
+  \end{pmatrix}
+\end{equation}
+
+Dann fügt der Algorithmus die folgenden Kanten ein:
+\begin{equation}
+  Trans(A) =
+  \begin{pmatrix}
+    1 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1\\
+    0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
+    0 & 0 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0\\
+    1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0\\
+    0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 0\\
+    0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0\\
+    0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\
+    0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1
+  \end{pmatrix}
+\end{equation}
 
 \section{Aufgabe 5}
 
