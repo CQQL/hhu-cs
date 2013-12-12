@@ -77,12 +77,12 @@ Die ursprüngliche Behauptung ergibt sich als Spezialfall für $r = 1$.
   Weil das alles integrierbar ist, kann man auch den Satz von Fubini anwenden und es ergibt sich
   \begin{align*}
     \int_{\mathbb{R}^{3}} f(x)\ dx & = \int_{V} f(x)\ dx\\
-    & = \int_{U} f(\varphi(x)) \cdot r\ dx\\
-    & = \int_{]0, \infty[ \times ]0, 2\pi[ \times \mathbb{R}} f(\varphi(x)) \cdot r\ dx\\
-    & = \int_{\mathbb{R}^{3}} f(\varphi(x)) \cdot r \cdot \chi_{]0, \infty[}(x_{1}) \cdot \chi_{]0, 2\pi[}(x_{2})\ dx\\
-    & = \int_{\mathbb{R}} \int_{\mathbb{R}} \int_{\mathbb{R}} f(\varphi(x_{1}, x_{2}, x_{3})) \cdot r \cdot \chi_{]0, \infty[}(x_{1}) \cdot \chi_{]0, 2\pi[}(x_{2})\ dx_{3}\ dx_{2}\ dx_{1}\\
-    & = \int_{\mathbb{R}} \int_{\mathbb{R}} \int_{\mathbb{R}} f(\varphi(x_{1}, x_{2}, x_{3})) \cdot r \cdot \chi_{]0, \infty[}(x_{1}) \cdot \chi_{]0, 2\pi[}(x_{2})\ dx_{1}\ dx_{2}\ dx_{3}\\
-    & = \int_{-\infty}^{\infty} \int_{0}^{2\pi} \int_{0}^{\infty} f(\varphi(x_{1}, x_{2}, x_{3})) \cdot r\ dx_{1}\ dx_{2}\ dx_{3}\\
+    & = \int_{U} f(\varphi(x)) \cdot x_{1}\ dx\\
+    & = \int_{]0, \infty[ \times ]0, 2\pi[ \times \mathbb{R}} f(\varphi(x)) \cdot x_{1}\ dx\\
+    & = \int_{\mathbb{R}^{3}} f(\varphi(x)) \cdot x_{1} \cdot \chi_{]0, \infty[}(x_{1}) \cdot \chi_{]0, 2\pi[}(x_{2})\ dx\\
+    & = \int_{\mathbb{R}} \int_{\mathbb{R}} \int_{\mathbb{R}} f(\varphi(x_{1}, x_{2}, x_{3})) \cdot x_{1} \cdot \chi_{]0, \infty[}(x_{1}) \cdot \chi_{]0, 2\pi[}(x_{2})\ dx_{3}\ dx_{2}\ dx_{1}\\
+    & = \int_{\mathbb{R}} \int_{\mathbb{R}} \int_{\mathbb{R}} f(\varphi(x_{1}, x_{2}, x_{3})) \cdot x_{1} \cdot \chi_{]0, \infty[}(x_{1}) \cdot \chi_{]0, 2\pi[}(x_{2})\ dx_{1}\ dx_{2}\ dx_{3}\\
+    & = \int_{-\infty}^{\infty} \int_{0}^{2\pi} \int_{0}^{\infty} f(\varphi(x_{1}, x_{2}, x_{3})) \cdot x_{1}\ dx_{1}\ dx_{2}\ dx_{3}\\
     & = \int_{-\infty}^{\infty} \int_{0}^{2\pi} \int_{0}^{\infty} f(\varphi(r, t, z)) \cdot r\ dr\ dt\ dz\\
   \end{align*}
 \end{proof}
@@ -97,6 +97,30 @@ Die ursprüngliche Behauptung ergibt sich als Spezialfall für $r = 1$.
   \begin{equation}
     V = \mathbb{R}^{3} \setminus \{ x \in \mathbb{R}^{3} \mid x_{1} = 0\ \land\ x_{2} = 0 \}
   \end{equation}
+
+  Dann ist
+  \begin{align*}
+    |\det D\varphi(r, \vartheta, \varphi)| & = \left|
+      \begin{pmatrix}
+        \sin(\vartheta) \cos(\varphi) & r \cos(\vartheta) \cos(\varphi) & -r \sin(\vartheta) \sin(\varphi)\\
+        \sin(\vartheta) \sin(\varphi) & r \cos(\vartheta) \sin(\varphi) & r \sin(\vartheta) \cos(\varphi)\\
+        \cos(\vartheta) & -r \sin(\vartheta) & 0
+      \end{pmatrix}
+    \right|\\
+    & = r^{2} \cos(\vartheta) \left( \cos(\vartheta) \sin(\vartheta) \cos(\varphi)^{2} + \cos(\vartheta) \sin(\vartheta) \sin(\varphi)^{2} \right)\\
+    & + r^{2} \sin(\vartheta) \left( \sin(\vartheta)^{2} \cos(varphi)^{2} + \sin(\vartheta)^{2} \sin(\varphi)^{2} \right)\\
+    & = r^{2} \cdot \left( \cos(\vartheta)^{2} \sin(\vartheta) + \sin(\vartheta)^{3} \right)\\
+    & = r^{2} \cdot \left( (1 - \sin(\vartheta)^{2}) \sin(\vartheta) + \sin(\vartheta)^{3} \right) = r^{2} \cdot \sin(\vartheta)
+  \end{align*}
+
+  Also gilt das alles wieder genauso wie in a und es folgt
+  \begin{align*}
+    \int_{\mathbb{R}^{3}} f(x)\ dx & = \int_{V} f(x)\ dx\\
+    & = \int_{U} f(\varphi(x)) \cdot x_{1}^{2} \cdot \sin(x_{2})\ dx\\
+    & = \int_{]0, \infty[ \times ]0, \pi[ \times ]0, 2\pi[} f(\varphi(x)) \cdot x_{1}^{2} \cdot \sin(x_{2})\ dx\\
+    & = \int_{0}^{\infty} \int_{0}^{\pi} \int_{0}^{2\pi} f(\varphi(x_{1}, x_{2}, x_{3})) \cdot x_{1}^{2} \cdot \sin(x_{2})\ dx_{3}\ dx_{2}\ dx_{1}\\
+    & = \int_{0}^{\infty} \int_{0}^{\pi} \int_{0}^{2\pi} f(\varphi(r, \vartheta, \varphi)) \cdot r^{2} \cdot \sin(\vartheta)\ d\varphi\ d\vartheta\ dr
+  \end{align*}
 \end{proof}
 
 \section{Aufgabe 35}
