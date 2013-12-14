@@ -39,6 +39,14 @@
 \end{proof}
 
 \section{Aufgabe 2}
+Ich nummeriere die Knoten von links nach rechts und oben nach unten mit den Nummern $1$ bis $7$ durch.
+Dann ist die Reihenfolge der Knoten $1, 2, 6, 7$ bereits eindeutig vorgegeben, während die Knoten $3, 4, 5$ untereinander beliebig sortiert werden können.
+Dies ergibt eine Anzahl von $3 \cdot 2 \cdot 1 = 6$ verschiedenen topologischen Sortierungen von $H$.
+
+Eine dieser Sortierungen, wie der Algorithmus sie auch erzeugen könnte, ist
+\begin{equation}
+  1, 2, 3, 4, 5, 6, 7
+\end{equation}
 
 \section{Aufgabe 3}
 
@@ -62,24 +70,43 @@ Die Adjazenzmatrix $A$ sieht folgermaßen aus
   \end{pmatrix}
 \end{equation}
 
-Dann fügt der Algorithmus die folgenden Kanten ein:
+Dann fügt der Algorithmus die folgenden Kanten ein (jede Zeile ist ein Durchlauf, wobei die erste Zeile der Durchlauf der allerersten Schleife ist):
+\begin{align*}
+  & (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (10, 10), (11, 11)\\
+  k = 1\ & (4, 5), (4, 11)\\
+  k = 2\ & \\
+  k = 3\ & (9, 6), (9, 7), (9, 8)\\
+  k = 4\ & (9, 1), (9, 2), (9, 11), (11, 1), (11, 2)\\
+  k = 5\ & (1, 7), (4, 7), (8, 7), (10, 7), (11, 7)\\
+  k = 6\ & \\
+  k = 7\ & (1, 6), (1, 8), (4, 6), (4, 8), (5, 6), (5, 8), (8, 6), (10, 6), (10, 8), (11, 6), (11, 8)\\
+  k = 8\ & (1, 10), (3, 5), (3, 10), (4, 10), (5, 10), (6, 5), (6, 7), (6, 10), (7, 5), (7, 10), (9, 10)\\
+  k = 9\ &\\
+  k = 10\ & \\
+  k = 11\ & (1, 4), (2, 1), (2, 4), (2, 5), (2, 6), (2, 7), (2, 8), (2, 10)
+\end{align*}
 \begin{equation}
   Trans(A) =
   \begin{pmatrix}
-    1 & 1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1\\
-    0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\
-    0 & 0 & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0\\
-    1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-    0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0\\
-    0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0\\
-    0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 0 & 0 & 0\\
-    0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 & 0\\
-    0 & 0 & 1 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0\\
-    0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\
-    0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 1 & 1
+    1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1\\
+    1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1\\
+    0 & 0 & 1 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0\\
+    1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1\\
+    0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0\\
+    0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0\\
+    0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0\\
+    0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0\\
+    1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\
+    0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 0 & 1 & 0\\
+    1 & 1 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 1
   \end{pmatrix}
 \end{equation}
 
 \section{Aufgabe 5}
+In einem solchen Graphen gibt es zwischen jedem möglichen geordneten Paar Knoten einen gerichteten Weg.
+Und aus einer Menge mit $|V|$ Knoten, kann man $\sum_{i = 1}^{|V|} |V| = |V| \cdot (|V| - 1)$ geordnete Paare bilden.
+Also gibt es $|V| \cdot (|V| - 1)$ Kanten im transitiven Abschluss von $G$.
+
+Die Formel für die Anzahl der Paare folgt daraus, dass man, wenn man das $j$-te Element als erstes wählt, noch $|V| - 1$ Möglichkeiten für das zweite Element des Paares hat.
 
 \end{document}
