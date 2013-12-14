@@ -13,14 +13,30 @@
 \section{Aufgabe 29}
 
 \subsection{Teil a}
+\begin{align*}
+  E(X) & = \int_{-\infty}^{\infty} x \lambda e^{-\lambda x} 1_{[0, \infty)}(x)\ dx\\
+  & = \lambda \int_{0}^{\infty} x e^{-\lambda x}\ dx\\
+  & = \lambda \left( \left[ -\frac{1}{\lambda} x e^{-\lambda x} \right]_{0}^{\infty} - \int_{0}^{\infty} -\frac{1}{\lambda} e^{-\lambda x}\ dx \right)\\
+  & = -\left( -\int_{0}^{\infty} e^{-\lambda x}\ dx \right)\\
+  & = \left[ -\frac{1}{\lambda} e^{-\lambda x} \right]_{0}^{\infty}\\
+  & = -\frac{1}{\lambda} \left[ e^{-\lambda x} \right]_{0}^{\infty} = \frac{1}{\lambda}\\
+\end{align*}
 
 \subsection{Teil b}
 
 \subsection{Teil c}
 
 \section{Aufgabe 30}
+Da für beide Variablen der Erwartungswert der Quadrate existiert, existiert auch das 2te absolute Moment und somit auch das erste und der einfache Erwartungswert und alles davon ist endlich.
+Sei $f$ die Dichte von $X$ und $g$ die Dichte von $Y$.
 
 \subsection{Teil a}
+\begin{align*}
+  Var(X) & = E((X - E(X))^{2})\\
+  & = \int_{-\infty}^{\infty} (x - E(X))^{2} \cdot f(x)\ dx\\
+  & = \int_{-\infty}^{\infty} x^{2} \cdot f(x)\ dx - \left( \int_{-\infty}^{\infty} x \cdot f(x)\ dx \right)^{2}\\
+  & = E(X^{2}) - E(X)^{2}
+\end{align*}
 
 \subsection{Teil b}
 
@@ -33,6 +49,25 @@
 \subsection{Teil b}
 
 \subsection{Teil c}
+Wenn $n$ gerade ist, sei $m = \frac{n}{2}$.
+Dann ist
+\begin{equation}
+  P(X \le m) = P(\{ 1, \dots, \frac{n}{2} \}) = \sum_{k = 1}^{\frac{n}{2}} P(\{k\}) = \frac{\frac{n}{2}}{n} = \frac{1}{2}
+\end{equation}
+und
+\begin{equation}
+  P(X \ge m) = P(\{ \frac{n}{2}, \dots, n \}) = \sum_{k = \frac{n}{2}}^{n} P(\{k\}) = \frac{1}{n} \cdot (n - \frac{n}{2} + 1) = \frac{1}{2} + \frac{1}{n} \ge \frac{1}{2}
+\end{equation}
+
+Wenn $n$ ungerade ist, sei $m = \frac{n + 1}{2}$.
+Dann ist
+\begin{equation}
+  P(X \le m) = P(\{ 1, \dots, \frac{n + 1}{2} \}) = \sum_{k = 1}^{\frac{n + 1}{2}} P(\{k\}) = \frac{1}{n} \cdot \frac{n + 1}{2} = \frac{1}{2} + \frac{1}{2n} \ge \frac{1}{2}
+\end{equation}
+und
+\begin{equation}
+  P(x \ge m) = P(\{ \frac{n + 1}{2}, \dots, n \}) = \sum_{k = \frac{n + 1}{2}}^{n} P(\{k\}) = \frac{1}{n} \cdot \left( n - \frac{n + 1}{2} + 1 \right) = \frac{1}{n} \cdot \frac{n + 1}{2} = \frac{1}{2} + \frac{1}{2n} \ge \frac{1}{2}
+\end{equation}
 
 \section{Aufgabe 32}
 
