@@ -6,6 +6,8 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \begin{document}
@@ -49,6 +51,17 @@ Eine dieser Sortierungen, wie der Algorithmus sie auch erzeugen könnte, ist
 \end{equation}
 
 \section{Aufgabe 3}
+\begin{equation}
+  V = \{ 1, 2, 3, 4, 5, 6 \}
+\end{equation}
+\begin{equation}
+  E = \{ (1, 2), (1, 3), (1, 4), (1, 5), (6, 2), (6, 3), (6, 4), (6, 5) \}
+\end{equation}
+Dann ist die Anforderung an eine topologische Anordnung $h$
+\begin{equation}
+  h(1), h(6) < h(2), h(3), h(4), h(5)
+\end{equation}
+Also kann man die Knoten auf der linken Seite und auf der rechten Seite frei anordnen und es ergeben sich $2! \cdot 4! = 48$ mögliche, topologische Sortierungen.
 
 \section{Aufgabe 4}
 Die Adjazenzmatrix $A$ sieht folgermaßen aus
