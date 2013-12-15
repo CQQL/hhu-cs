@@ -34,13 +34,29 @@ Sei $f$ die Dichte von $X$ und $g$ die Dichte von $Y$.
 \begin{align*}
   Var(X) & = E((X - E(X))^{2})\\
   & = \int_{-\infty}^{\infty} (x - E(X))^{2} \cdot f(x)\ dx\\
-  & = \int_{-\infty}^{\infty} x^{2} \cdot f(x)\ dx - \left( \int_{-\infty}^{\infty} x \cdot f(x)\ dx \right)^{2}\\
+  & = \int_{-\infty}^{\infty} (x^{2} - 2xE(X) + E(X)^{2}) \cdot f(x)\ dx\\
+  & = \int_{-\infty}^{\infty} x^{2}f(x) - 2xE(X)f(x) + E(X)^{2}f(x)\ dx\\
+  & = \int_{-\infty}^{\infty} x^{2}f(x)\ dx - \int_{-\infty}^{\infty} 2xE(X)f(x)\ dx + \int_{-\infty}^{\infty} E(X)^{2}f(x)\ dx\\
+  & = \int_{-\infty}^{\infty} x^{2}f(x)\ dx - 2E(X) \int_{-\infty}^{\infty} xf(x)\ dx + E(X)^{2} \int_{-\infty}^{\infty} f(x)\ dx\\
+  & = E(X^{2}) - 2E(X) E(X) + E(X)^{2}\\
   & = E(X^{2}) - E(X)^{2}
 \end{align*}
 
 \subsection{Teil b}
+\begin{align*}
+  Var(aX + b) & = E(a^{2}X^{2} + 2abX + b^{2}) - E(aX + b)^{2}\\
+  & = a^{2} E(X^{2}) + 2abE(X) + b^{2} - \left( a^{2}E(X)^{2} + 2abE(X) + b^{2} \right)\\
+  & = a^{2} (E(X^{2}) - E(X)^{2})\\
+  & = a^{2} Var(X)
+\end{align*}
 
 \subsection{Teil c}
+\begin{align*}
+  Var(X + Y) & = E((X + Y)^{2}) - E(X + Y)^{2}\\
+  & = E(X^{2} + 2XY + Y^{2}) - \left( E(X)^{2} + 2E(X)E(Y) + E(Y)^{2} \right)\\
+  & = E(X^{2}) + 2E(XY) + E(Y^{2}) - E(X)^{2} - 2E(X)E(Y) - E(Y)^{2}\\
+  & = Var(X) + Var(Y) + 2 \left( E(XY) - E(X)E(Y) \right)
+\end{align*}
 
 \section{Aufgabe 31}
 
