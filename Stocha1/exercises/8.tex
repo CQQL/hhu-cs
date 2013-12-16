@@ -21,10 +21,38 @@
   & = \left[ -\frac{1}{\lambda} e^{-\lambda x} \right]_{0}^{\infty}\\
   & = -\frac{1}{\lambda} \left[ e^{-\lambda x} \right]_{0}^{\infty} = \frac{1}{\lambda}\\
 \end{align*}
+\begin{align*}
+  Var(X) & = E(X^{2}) - E(X)^{2}\\
+  & = \lambda \int_{0}^{\infty} x^{2} e^{-\lambda x}\ dx - \frac{1}{\lambda^{2}}\\
+  & = -\left( \left[ x^{2}e^{-\lambda x} \right]_{0}^{\infty} - 2 \int_{0}^{\infty} x e^{-\lambda x} dx \right) - \frac{1}{\lambda^{2}}\\
+  & = 2 \int_{0}^{\infty} x e^{-\lambda x} dx - \frac{1}{\lambda^{2}}\\
+  & = 2 \left( \left[ -\frac{1}{\lambda} x e^{-\lambda x} \right]_{0}^{\infty} - \int_{0}^{\infty} -\frac{1}{\lambda} e^{-\lambda x}\ dx \right) - \frac{1}{\lambda^{2}}\\
+  & = -\frac{2}{\lambda} \left( \left[ x e^{-\lambda x} \right]_{0}^{\infty} - \int_{0}^{\infty} e^{-\lambda x}\ dx \right) - \frac{1}{\lambda^{2}}\\
+  & = \frac{2}{\lambda} \int_{0}^{\infty} e^{-\lambda x}\ dx - \frac{1}{\lambda^{2}}\\
+  & = \frac{2}{\lambda^{2}} - \frac{1}{\lambda^{2}} = \frac{1}{\lambda^{2}}\\
+\end{align*}
 
 \subsection{Teil b}
+\begin{align*}
+  E(X) & = \sum_{k = 0}^{\infty} kp(1 - p)^{k}\\
+  & = p \sum_{k = 0}^{\infty} k(1 - p)^{k}\\
+  & = p \frac{1 - p}{p^{2}}\\
+  & = \frac{1 - p}{p}\\
+\end{align*}
+\begin{align*}
+  Var(X) & =
+\end{align*}
 
 \subsection{Teil c}
+\begin{align*}
+  E(X) & = \int_{0}^{\infty} x \frac{1}{\sqrt{2\pi\sigma^{2}}}\frac{1}{x}\exp \left( -\frac{(\ln(x) - \mu)^{2}}{2\sigma^{2}} \right) dx\\
+  & = \frac{1}{\sqrt{2\pi\sigma^{2}}} \int_{0}^{\infty} \exp \left( -\frac{(\ln(x) - \mu)^{2}}{2\sigma^{2}} \right) dx\\
+  & = \frac{1}{\sqrt{2\pi\sigma^{2}}} \int_{0}^{\infty} \exp \left( -\frac{1}{2\sigma^{2}}\ln(x)^{2} + \frac{2\mu}{2\sigma^{2}}\ln(x) - \frac{\mu^{2}}{2\sigma^{2}} \right) dx\\
+  & = \frac{1}{\sqrt{2\pi\sigma^{2}}} \int_{0}^{\infty} \exp \left( -\frac{1}{2\sigma^{2}}\ln(x)^{2} \right) \exp \left( \frac{\mu}{\sigma^{2}}\ln(x) \right) \exp \left( -\frac{\mu^{2}}{2\sigma^{2}} \right) dx\\
+  & = \frac{1}{\sqrt{2\pi\sigma^{2}}} \int_{0}^{\infty} x^{-\frac{1}{2\sigma^{2}}\ln(x)} x^{\frac{\mu}{\sigma^{2}}} \exp \left( -\frac{\mu^{2}}{2\sigma^{2}} \right) dx\\
+  & = \frac{1}{\sqrt{2\pi\sigma^{2}}} \int_{0}^{\infty} x^{-\frac{1}{2\sigma^{2}}\ln(x) + \frac{\mu}{\sigma^{2}}} \exp \left( -\frac{\mu^{2}}{2\sigma^{2}} \right) dx\\
+  & = \frac{1}{\sqrt{2\pi\sigma^{2}}} \int_{0}^{\infty} x^{\frac{1}{\sigma^{2}} \left( \mu - \frac{1}{2\sigma^{2}}\ln(x) \right)} \exp \left( -\frac{\mu^{2}}{2\sigma^{2}} \right) dx\\
+\end{align*}
 
 \section{Aufgabe 30}
 Da für beide Variablen der Erwartungswert der Quadrate existiert, existiert auch das 2te absolute Moment und somit auch das erste und der einfache Erwartungswert und alles davon ist endlich.
