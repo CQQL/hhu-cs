@@ -13,12 +13,58 @@
 \section{Aufgabe 36}
 
 \subsection{Teil a}
+\begin{proof}
+  Da $A$ beschränkt ist, ist $|x_{j}| < m_{j}$ für ein $m_{j} \in \mathbb{R}$ und alle $x \in A$.
+  \begin{align*}
+    \int_{\mathbb{R}^{n}} x_{j} \chi_{A}(x)\ d\lambda = \int_{A} x_{j}\ d\mu < \int_{A} m_{j}\ d\lambda = \lambda^{n}(A) \cdot m_{j} \le m_{j} \cdot \prod_{i = 1}^{n} m_{i} < \infty
+  \end{align*}
+\end{proof}
 
 \subsection{Teil b}
+\begin{align*}
+  S(\varphi(A)) & = \frac{1}{\lambda^{n}(\varphi(A))} \int_{\varphi(A)} x\ dx\\
+  & = \frac{1}{\lambda^{n}(a + TA)} \int_{\varphi(A)} x\ dx\\
+  & = \frac{1}{|\det T| \cdot \lambda^{n}(A)} \int_{\varphi(A)} x\ dx\\
+  & = \frac{1}{|\det T| \cdot \lambda^{n}(A)} \int_{\varphi^{-1}(\varphi(A))} \varphi(x) \cdot |\det D\varphi(x)|\ dx\\
+  & = \frac{|\det D\varphi(x)|}{|\det T| \cdot \lambda^{n}(A)} \int_{\varphi^{-1}(\varphi(A))} \varphi(x)\ dx\\
+  & = \frac{|\det T|}{|\det T| \cdot \lambda^{n}(A)} \int_{\varphi^{-1}(\varphi(A))} \varphi(x)\ dx\\
+  & = \frac{1}{\lambda^{n}(A)} \int_{A} \varphi(x)\ dx\\
+  & = \frac{1}{\lambda^{n}(A)} \int_{A} a\ dx + \frac{1}{\lambda^{n}(A)} \int_{A} Tx\ dx\\
+  & = \frac{1}{\lambda^{n}(A)} \cdot a \cdot \lambda^{n}(A) + T \cdot \frac{1}{\lambda^{n}(A)} \int_{A} x\ dx\\
+  & = a + T \cdot \frac{1}{\lambda^{n}(A)} \int_{A} x\ dx\\
+  & = \varphi \left(\frac{1}{\lambda^{n}(A)} \int_{A} x\ dx \right) = \varphi(S)
+\end{align*}
 
 \subsection{Teil c}
+Wie in Teil b gezeigt, kann man die Körper beliebig drehen und verschieben, sodass wir eine Kugel mit Mittelpunkt $0$, eine Halbkugel, die die obere Hälfte dieser ganzen Kugel ist, und einen Volltorus mit Mittelpunkt $0$ betrachten.
+\begin{equation}
+  A = \textit{Kugel mit Radius $r$}
+\end{equation}
+\begin{align*}
+  S(A) & = \frac{1}{\lambda^{3}(A)} \int_{A} x\ dx = \frac{1}{\lambda^{3}(A)} \cdot 0 = 0 = (0, 0, 0)
+\end{align*}
+
+\begin{equation}
+  B = \textit{Halbkugel $(x, y, z)$ mit $z > 0$ und Grundfläche mit Radius $r$}
+\end{equation}
+Dann sind die $x$ und $y$-Koordinaten des Schwerpunkts $0$ aus Symmetriegründen.
+Die $z$-Koordinate ist
+\begin{align*}
+  \frac{1}{\lambda^{3}(B)} \cdot \int_{A} x_{3}\ dx & = \frac{1}{\lambda^{3}(B)} \cdot \int_{]0, r[} x_{3} \cdot \int_{B_{\sqrt{r^{2} - x_{3}^{2}}}}\ dx\ dx_{3}\\
+  & = \frac{1}{\lambda^{3}(B)} \cdot \int_{]0, r[} x_{3} \cdot (\pi \cdot (r^{2} - x_{3}^{2}))\ dx_{3}\\
+  & = \frac{\pi}{\lambda^{3}(B)} \cdot \int_{]0, r[} x_{3} \cdot (r^{2} - x_{3}^{2})\ dx_{3}\\
+  & = \frac{\pi}{\lambda^{3}(B)} \cdot \left( r^{2} \cdot \int_{]0, r[} x_{3}\ dx_{3} -  \int_{]0, r[} x_{3}^{3}\ dx_{3} \right)\\
+  & = \frac{\pi}{\lambda^{3}(B)} \cdot \left( \frac{r^{4}}{2} - \frac{r^{4}}{4} \right)\\
+  & = \frac{\pi}{\lambda^{3}(B)} \cdot \frac{r^{4}}{4}\\
+  & = \frac{\pi}{\frac{1}{2} \cdot \frac{4}{3} \pi r^{3}} \cdot \frac{r^{4}}{4}\\
+  & = \frac{1}{\frac{1}{2} \cdot \frac{4}{3}} \cdot \frac{r}{4} = \frac{3}{8}r\\
+\end{align*}
+Also ist $S(B) = (0, 0, \frac{3}{8}r)$.
+
+Aus Symmetriegründen ist der Schwerpunkt eines Volltorus $0$.
 
 \section{Aufgabe 37}
+
 
 \section{Aufgabe 38}
 \begin{proof}
@@ -65,7 +111,16 @@ Dann gibt es um den Punkt $(\frac{1}{2^{n}}, 0, \dots)$ eine offene Kugel mit de
 \section{Aufgabe 40}
 \begin{proof}
   Sei $a$ der Grenzwert der konvergenten Teilfolge $(a_{i_{n}})_{n}$.
+  Sei $\varepsilon > 0$.
+  Dann gibt es ein $N \in \mathbb{N}$, sodass $|a_{m} - a_{n}| < \frac{\varepsilon}{2}$ für alle $m, n > N$.
+  Es gibt ebenfalls ein $M \in \mathbb{N}$, sodass $|a_{i_{m}} - a| < \frac{\varepsilon}{2}$ für alle $m > M$.
 
+  Sei $Q = \max(M, N)$.
+  Dann gilt für alle $m, n > Q$
+  \begin{equation}
+    |a_{m} - a| = |a_{m} + a_{i_{n}} - a_{i_{n}} - a| \le |a_{m} - a_{i_{n}}| + |a_{i_{n}} - a| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+  \end{equation}
+  Also konvergiert $(a_n)$ gegen $a$.
 \end{proof}
 
 \end{document}
