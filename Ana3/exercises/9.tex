@@ -21,14 +21,46 @@
 \section{Aufgabe 37}
 
 \section{Aufgabe 38}
+\begin{proof}
+  Sei $f \in \mathscr{L}^{p}(X)$.
+  Dann ist
+  \begin{equation}
+    ||f||_{p} = \left( \int_{X} |f|^{p}\ d\mu \right)^{\frac{1}{p}} < \infty
+  \end{equation}
+  Also ist auch
+  \begin{equation}
+    \int_{X} |f|^{p}\ d\mu < \infty
+  \end{equation}
+  Wenn $|f(x)|^{p} < 1$, ist $|f(x)|^{p} < |f(x)|^{q} < 1$, und wenn $|f(x)|^{p} \ge 1$, ist $1 \le |f(x)|^{q} < |f(x)|^{p}$.
+  Also können wir $|f|^{q}$ an den Stellen, wo es kleiner als $1$ ist, durch $1$ und an den restlichen Stellen durch $|f|^{p}$ abschätzen.
+  \begin{equation}
+    \int_{X} |f|^{q}\ d\mu \le 1 \cdot \mu(X) + \int_{X} |f|^{p}\ d\mu < \infty \Rightarrow f \in \mathscr{L}^{q}(X)
+  \end{equation}
+\end{proof}
 
 \section{Aufgabe 39}
 
 \subsection{Teil a}
+\begin{equation}
+  A = \{ (\frac{1}{2^{n}}, 0, \dots, 0) \in \mathbb{R}^{N} \mid n \in \mathbb{N} \}
+\end{equation}
+Dann gibt es um den Punkt $(\frac{1}{2^{n}}, 0, \dots)$ eine offene Kugel mit dem Radius $\frac{1}{2^{n + 1000}}$.
 
 \subsection{Teil b}
+\begin{equation}
+  A = \{ (q, 0, \dots, 0) \in \mathbb{R}^{N} \mid q \in \mathbb{Q} \}
+\end{equation}
 
 \subsection{Teil c}
+\begin{proof}
+  Sei $d$ die euklidische Metrik auf $\mathbb{R}^N$.
+  Sei $A$ eine diskrete Teilmenge von $\mathbb{R}^{N}$.
+  Sei $p \in A$.
+  Dann gibt es eine offene Kugel um $p$ mit Radius $r$, in der sich kein weiterer Punkt aus $A$ befindet.
+  Sei $q_{p}$ ein Punkt aus $B_{\frac{r}{2}}(p)$ mit nur rationalen Koordinaten.
+  Dann ist $d(q_{p}, p) < d(q_{p}, s)$ für alle $s \in A$ und $q_{p}$ kann in keiner weiteren solchen Kugel mit halbiertem Radius eines weiteren Punktes aus $A$ sein.
+  Also ist die Abbildung $p \rightarrow q_{p}$ injektiv auf $\mathbb{Q}^{N}$, sodass $A$ höchstens abzählbar sein kann.
+\end{proof}
 
 \section{Aufgabe 40}
 \begin{proof}
