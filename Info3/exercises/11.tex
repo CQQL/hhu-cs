@@ -1,0 +1,52 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+Die starken Zusammenhangskomponenten sind
+\begin{align*}
+  & (9)\\
+  & (3, 6, 8, 10, 5, 7)\\
+  & (4, 2, 1, 11)
+\end{align*}
+
+\section{Aufgabe 2}
+\begin{tabular}{c|c|c}
+Knoten & DFS & DFE\\
+\hline
+1 & 9 & 9\\
+2 & 10 & 8\\
+3 & 2 & 6\\
+4 & 8 & 10\\
+5 & 5 & 2\\
+6 & 3 & 5\\
+7 & 6 & 1\\
+8 & 4 & 4\\
+9 & 1 & 11\\
+10 & 7 & 3\\
+11 & 11 & 7
+\end{tabular}
+\\
+\begin{tabular}{c|c}
+  Baumkanten & (9, 3), (3, 6), (6, 8), (8, 5), (5, 7), (8, 10), (9, 4), (4, 1), (1, 2), (2, 11)\\\hline
+  Vorwärtskanten & (9, 5), (3, 7), (3, 8), (4, 2), (1, 11)\\\hline
+  Rückwärtskanten & (7, 6), (7, 8), (11, 4)\\\hline
+  Seitwärtskanten & (10, 5), (1, 5), (11, 5), (11, 10)
+\end{tabular}
+
+\section{Aufgabe 3}
+\begin{equation}
+  9, 3, 4, 5, 6, 7, 8, 1, 2, 10, 11
+\end{equation}
+
+\section{Aufgabe 4}
+
+\end{document}
