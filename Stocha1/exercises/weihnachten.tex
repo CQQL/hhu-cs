@@ -10,6 +10,11 @@
 
 \begin{document}
 
+Stochastik 1, Blatt Weihnachten\\
+Gruppe 1\\
+Marten Lienen (2126759)\\
+Fabian Schmittmann (2083559)
+
 \section{Aufgabe W1}
 
 \subsection{Teil a}
@@ -100,40 +105,50 @@ $P(B | A^{C})$ ist die Wahrscheinlichkeit, dass ein Student die erste Klausur be
 
 \section{Aufgabe W2}
 
-\subsubsection{Teil a}
+\subsection{Teil a}
 \begin{equation}
   \frac{\frac{6!}{2!}}{\frac{42!}{38!}} = \frac{6 \cdot 5 \cdot 4 \cdot 3}{42 \cdot 41 \cdot 40 \cdot 39} = \frac{1}{7462}
 \end{equation}
 
-\subsubsection{Teil b}
+\subsection{Teil b}
 \begin{equation}
   1 - \frac{\frac{36!}{32!}}{\frac{42!}{38!}} = 1 - \frac{561}{1066} = \frac{505}{1066} \simeq 0.47
 \end{equation}
 
-\subsubsection{Teil c}
+\subsection{Teil c}
 \begin{equation}
   \frac{6}{42} \cdot \frac{36}{41} \cdot \frac{5}{40} \cdot \frac{35}{39} = \frac{15}{1066} \simeq 0.01
 \end{equation}
 
-\subsubsection{Teil d}
+\subsection{Teil d}
 Nein, die Wahrscheinlichkeit aus c) ist kleiner, denn das Ereignis d ist eine echte Obermenge des Ereignisses c.
-c ist in d enthalten, aber auch das Ereignis, dass der 1. und 2. Student ein Ei finden, und der 3. und 4. nicht.
+c ist in d enthalten, aber auch das Ereignis, dass der 1. und 2. Student ein Ei finden, und der 3. und 4. nicht (und noch mehr).
 
-\subsubsection{Teil e}
+\subsection{Teil e}
 \begin{equation}
   \frac{4!}{42!} = \frac{1}{111930} \simeq 0
 \end{equation}
 
 \section{Aufgabe W3}
 
-\subsubsection{Teil a}
+\subsection{Teil a}
+$X$ ist negativ-binomialverteilt.
+\begin{equation}
+  P(\{ X = n \}) = \binom{k + n - 1}{n} \cdot p^{k} \cdot (1 - p)^{n}
+\end{equation}
 
-\subsubsection{Teil b}
+\subsection{Teil b}
+\begin{equation}
+  f_{X}(t) = \sum_{n = 0}^{\infty} P(\{ X = n \}) \cdot t^{n} = \sum_{n = 0}^{\infty} \binom{k + n - 1}{n} \cdot p^{k} \cdot (1 - p)^{n} \cdot t^{n}
+\end{equation}
 
-\subsubsection{Teil c}
+\subsection{Teil c}
+\begin{equation}
+  E(X) = \sum_{n = 0}^{\infty} n \cdot \binom{k + n - 1}{n} \cdot p^{k} \cdot (1 - p)^{n}
+\end{equation}
 
-\subsubsection{Teil d}
+\subsection{Teil d}
 
-\subsubsection{Teil e}
+\subsection{Teil e}
 
 \end{document}
