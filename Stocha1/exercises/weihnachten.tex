@@ -49,23 +49,80 @@ Also muss Philipp Berger bei dem Papierkorb mit seinem Vornamen die Nachhilfestu
 
 \subsection{Teil d}
 
+Ich nehme an, dass nur die Studierenden betrachtet werden, die auch auf Blättern stehen/standen.
+
 \subsubsection{Teil i}
+
+\begin{equation}
+  P(A) = 0.8
+\end{equation}
+\begin{equation}
+  P(A^{C}) = 0.2
+\end{equation}
+\begin{equation}
+  P(B | A) = 0.75
+\end{equation}
+\begin{equation}
+  P(B | A^{C}) = 0.1
+\end{equation}
 
 \subsubsection{Teil ii}
 
+\begin{equation}
+  P(B^{C} | A) = 1 - P(B | A) = 0.25
+\end{equation}
+\begin{equation}
+  P(B^{C} | A^{C}) = 1 - P(B | A^{C}) = 0.9
+\end{equation}
+\begin{equation}
+  P(B) = P(B | A) \cdot P(A) + P(B | A^{C}) \cdot P(A^{C}) = 0.75 \cdot 0.8 + 0.1 \cdot 0.2 = 0.62
+\end{equation}
+\begin{equation}
+  P(B^{C}) = 1 - P(B) = 0.38
+\end{equation}
+\begin{equation}
+  P(A | B) = \frac{P(A \cap B)}{P(B)} = \frac{P(B | A) \cdot P(A)}{P(B)} = \frac{0.75 \cdot 0.8}{0.62} = \frac{30}{31} \simeq 0.97
+\end{equation}
+\begin{equation}
+  P(A^{C} | B) = 1 - P(A | B) = \frac{1}{31} \simeq 0.03
+\end{equation}
+\begin{equation}
+  P(A | B^{C}) = \frac{P(A \cap B^{C})}{P(B^{C})} = \frac{P(B^{C} | A) \cdot P(A)}{P(B^{C})} = \frac{0.25 \cdot 0.8}{0.38} = \frac{10}{19} \simeq 0.53
+\end{equation}
+\begin{equation}
+  P(A^{C} | B^{C}) = 1 - P(A | B^{C}) = \frac{9}{19} \simeq 0.47
+\end{equation}
+
 \subsubsection{Teil iii}
+
+$P(B^{C} | A)$ ist die Wahrscheinlichkeit, dass ein Student die erste Klausur nicht besteht, wenn er die Aufgaben selbst bearbeitet hat.
+$P(B | A^{C})$ ist die Wahrscheinlichkeit, dass ein Student die erste Klausur besteht, wenn er die Aufgaben nicht selbst bearbeitet hat.
 
 \section{Aufgabe W2}
 
 \subsubsection{Teil a}
+\begin{equation}
+  \frac{\frac{6!}{2!}}{\frac{42!}{38!}} = \frac{6 \cdot 5 \cdot 4 \cdot 3}{42 \cdot 41 \cdot 40 \cdot 39} = \frac{1}{7462}
+\end{equation}
 
 \subsubsection{Teil b}
+\begin{equation}
+  1 - \frac{\frac{36!}{32!}}{\frac{42!}{38!}} = 1 - \frac{561}{1066} = \frac{505}{1066} \simeq 0.47
+\end{equation}
 
 \subsubsection{Teil c}
+\begin{equation}
+  \frac{6}{42} \cdot \frac{36}{41} \cdot \frac{5}{40} \cdot \frac{35}{39} = \frac{15}{1066} \simeq 0.01
+\end{equation}
 
 \subsubsection{Teil d}
+Nein, die Wahrscheinlichkeit aus c) ist kleiner, denn das Ereignis d ist eine echte Obermenge des Ereignisses c.
+c ist in d enthalten, aber auch das Ereignis, dass der 1. und 2. Student ein Ei finden, und der 3. und 4. nicht.
 
 \subsubsection{Teil e}
+\begin{equation}
+  \frac{4!}{42!} = \frac{1}{111930} \simeq 0
+\end{equation}
 
 \section{Aufgabe W3}
 
