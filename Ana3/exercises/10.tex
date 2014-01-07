@@ -1,0 +1,152 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 41}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\section{Aufgabe 42}
+
+\subsection{Teil a}
+\begin{proof}
+  Sei $a = (a_{m}, a_{n}) \in M \times N$.
+  Dann gibt es eine Umgebung $U_{m}$ von $a_{m}$ und $U_{n}$ von $a_{n}$ in $\mathbb{R}^{m}$ bzw. $\mathbb{R}^{n}$ mit jeweils einer Submersion $g_{m} : U_{m} \rightarrow \mathbb{R}^{m - k}$ und $g_{n} : U_{n} \rightarrow \mathbb{R}^{n - h}$ der Klasse $C^{\infty}$, sodass
+  \begin{equation}
+    M \cap U_{m} = \{ x \in U_{m} \mid g_{m}(x) = 0 \}
+  \end{equation}
+  bzw.
+  \begin{equation}
+    N \cap U_{n} = \{ x \in U_{n} \mid g_{n}(x) = 0 \}
+  \end{equation}
+
+  Dann ist $U = U_{m} \times U_{n}$ eine offene Umgebung von $a$ in $\mathbb{R}^{m + n}$.
+  Sei $g : U \rightarrow \mathbb{R}^{(m + n) - (k + h)}$ definiert durch
+  \begin{equation}
+    g(x_{m}, x_{n}) = g_{m}(x_{m}) \times g_{n}(x_{n})
+  \end{equation}
+  Dann ist $g$ aus $C^{\infty}$.
+  Außerdem ist
+  \begin{equation}
+    Dg(x_{m}, x_{n}) = \begin{pmatrix}
+      Dg_{m}(x_{m}) & 0\\
+      0 & Dg_{n}(x_{n})
+    \end{pmatrix}
+  \end{equation}
+  Dann ist $Rg Dg(x_{m}, x_{n}) = Rg Dg_{m}(x_{m}) + Rg Dg_{n}(x_{n}) = (m + n) - (k + h)$.
+  \begin{align*}
+    (M \times N) \cap U & = (M \cap U_{m}) \times (N \cap U_{n})\\
+    & = \{ x \in U_{m} \mid g_{m}(x) = 0 \} \times \{ x \in U_{n} \mid g_{n}(x) = 0 \}\\
+    & = \{ x \in U \mid g_{m}(x_{m}) = 0\ \land\ g_{n}(x_{n}) = 0 \}\\
+    & = \{ x \in U \mid g(x) = 0 \}
+  \end{align*}
+  Also ist $M \times N$ eine $k + h$-dimensionale Untermannigfaltigkeit des $\mathbb{R}^{m + n}$.
+\end{proof}
+
+\subsection{Teil b}
+\begin{proof}
+  Sei $a = (a_{m}, a_{n}) \in M \times N$.
+  Es existiert eine offene Umgebung $V_{m}$ von $a_{m}$ in $M$, eine offene Teilmenge $W_{m}$ in $\mathbb{R}^{k}$ und eine Immersion $\varphi_{m} : W_{m} \rightarrow \mathbb{R}^{m}$ der Klasse $C^{\infty}$, die $W_{m}$ homöomorph auf $V_{m}$ abbildet.
+  Es existiert eine offene Umgebung $V_{n}$ von $a_{n}$ in $N$, eine offene Teilmenge $W_{n}$ in $\mathbb{R}^{h}$ und eine Immersion $\varphi_{n} : W_{n} \rightarrow \mathbb{R}^{n}$ der Klasse $C^{\infty}$, die $W_{n}$ homöomorph auf $V_{n}$ abbildet.
+  Dann ist $V = V_{m} \times V_{n}$ offene Umgebung von $a$ in $M \times N$ und $W = W_{m} \times W_{n}$ offen in $\mathbb{R}^{k + h}$.
+  Sei $\varphi : W \rightarrow \mathbb{R}^{m + n}$ definiert durch
+  \begin{equation}
+    \varphi(x_{m}, x_{n}) = \varphi_{m}(x_{m}) \times \varphi_{n}(x_{n})
+  \end{equation}
+  Dann ist $\varphi$ ebenfalls von der Klasse $C^{\infty}$ und homöomorph.
+  Dabei ist
+  \begin{equation}
+    \varphi(W) = \varphi(W_{m} \times W_{n}) = \varphi_{m}(W_{m}) \times \varphi(W_{n}) = V_{m} \times V_{n} = V
+  \end{equation}
+  Außerdem ist
+  \begin{equation}
+    D\varphi(x_{m}, x_{n}) = \begin{pmatrix}
+      D\varphi_{m}(x_{m}) & 0\\
+      0 & D\varphi_{n}(x_{n})
+    \end{pmatrix}
+  \end{equation}
+  Also ist $Rg D\varphi(x_{m}, x_{n}) = Rg D\varphi_{m}(x_{m}) + Rg D\varphi_{n}(x_{n}) = k + h$ und $\varphi$ ist eine Immersion.
+
+  Insgesamt ist $\varphi$ also eine Karte von $M \times N$.
+\end{proof}
+
+\subsection{Teil c}
+\begin{proof}
+
+\end{proof}
+
+\section{Aufgabe 43}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\subsection{Teil c}
+\begin{proof}
+  Da $M$ eine $n$-dimensionale Untermannigfaltigkeit des $\mathbb{R}^{N}$ ist, gelten die Bedingungen an einer Untermannigfaltigkeit natürlich für jeden Punkt von $M$.
+  Wenn man eine Zusammenhangskomponente von $M$ betrachtet, gelten diese Bedingungen dann auch für alle Punkte dieser Komponente, weil sie offen ist und somit die geforderte offene Umgebung auch vollständig in der Komponente enthalten ist.
+  Das macht die Zusammenhangskomponente ebenfalls zu einer $n$-dimensionalen Untermannigfaltigkeit des $\mathbb{R}^{N}$.
+\end{proof}
+
+\section{Aufgabe 44}
+
+\subsection{Teil a}
+\begin{proof}
+  Seien $x, y \in Y$ und o.b.d.A. $x < y$.
+  Sei $w : [0, 1] \rightarrow Y$ definiert durch
+  \begin{equation}
+    w(t) = \begin{pmatrix}
+      x + t \cdot (y - x)\\
+      \sin(\frac{1}{x + t \cdot (y - x)})
+    \end{pmatrix}
+  \end{equation}
+  Dann ist $w$ stetig und $w(0) = x$ und $w(1) = y$.
+\end{proof}
+
+\subsection{Teil b}
+\begin{proof}
+  Weil $Y$ wegzusammenhängend ist, ist es auch zusammenhängend und keine Teilmenge von $X$ außer $\emptyset$ und $Y$, die nicht den Nullpunkt enthält, ist gleichzeitig offen und abgeschlossen in $Y$.
+  Deshalb kann keine echte Teilmenge von $Y$ offen und abgeschlossen in $X$ sein.
+  Sei $M$ eine beliebige Teilmenge von $X$, die den Nullpunkt enthält und nicht $X$ ist.
+  Da $M \ne X$, ist $M \cap Y \ne Y$.
+  Angenomment $M$ sei offen.
+  Dann gäbe es einen Rand von $M$ in $Y$, der nicht zu $M$ gehört.
+  Somit wäre $M$ nicht abgeschlossen.
+  Angenommen $M$ sei abgeschlossen.
+  Dann könnte aus demselben Grund das Komplement nicht abgeschlossen sein $M$ nicht offen.
+  Angenommen $M$ sei nur der Nullpunkt.
+  Dann ist $M$ abgeschlossen, jedoch nicht offen, weil es nach einem ähnlichen Argument wie in Teil c in jeder Umgebung von $0$ einen Punkt aus $X$ gäbe, der nicht zu $M$ gehört.
+  $Y$ kann auch nicht gleichzeitig offen und abgeschlossen sein, da sein Komplement $\{ (0, 0) \}$ es nicht ist.
+
+  Somit sind alle Mengen außer $\emptyset$ und $X$ ausgeschlossen.
+\end{proof}
+
+\subsection{Teil c}
+\begin{proof}
+  Angenommen es gäbe einen Weg $w$ von $(0, 0)$ nach $x \in X \setminus \{ (0, 0) \}$.
+  Dann gäbe es für jedes $\varepsilon > 0$ ein $T$, sodass $w(t) \in B_{\varepsilon}(0)$ enthalten ist für alle $0 \le t < T$.
+  Sei $\varepsilon = \frac{1}{2}$ und $T$ entsprechend.
+  Die Folge $\left( \frac{2}{(1 + 4n) \cdot \pi} \right)_{n}$ konvergiert gegen 0.
+  Folglich gibt es ein $n$, sodass $\frac{2}{(1 + 4n) \cdot \pi} < T$.
+  Aber
+  \begin{equation}
+    \sin\left( \frac{2}{(1 + 4n) \cdot \pi} \right) = \sin\left( \frac{1 + 4n}{2} \cdot \pi \right) = 1
+  \end{equation}
+  jedoch
+  \begin{equation}
+    |(\frac{2}{(1 + 4n) \cdot \pi}, w(\frac{2}{(1 + 4n) \cdot \pi})) - 0| \ge 1 > \frac{1}{2}
+  \end{equation}
+  Also liegt dieser Punkt nicht in der offenen Kugel mit Radius $\frac{1}{2}$ um den Nullpunkt und $w$ existiert nicht.
+\end{proof}
+
+\end{document}
