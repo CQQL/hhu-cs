@@ -13,8 +13,14 @@
 \section{Aufgabe 41}
 
 \subsection{Teil a}
+\begin{proof}
+
+\end{proof}
 
 \subsection{Teil b}
+\begin{proof}
+
+\end{proof}
 
 \section{Aufgabe 42}
 
@@ -88,6 +94,44 @@
 \section{Aufgabe 43}
 
 \subsection{Teil a}
+\begin{proof}
+  $\Leftarrow$: Wegzusammenhängende Mengen sind auch zusammenhängend.
+
+  $\Rightarrow$: Sei $M$ zusammenhängend und $x_{0} \in M$.
+  Sei $A = \{ x \in M \mid \textit{Es gibt einen Weg von $x_0$ nach $x$} \}$.
+  Dann ist $A$ nicht leer, weil es mindestens $x_{0}$ enthält.
+  Sei $x \in A$ und $w_{x}$ der Weg von $x_{0}$ nach $x$.
+  Es gibt eine Karte $\varphi : W \rightarrow \mathbb{R}^{N}$ von $M$ um $x$ und eine offene Umgebung $V$ von $x$ in $M$, wobei $W \subset \mathbb{R}^{n}$ und $\varphi(W) = V$.
+  Sei $y \in V$.
+  Sei $w_{y} : [0, 1] \rightarrow M$ definiert durch
+  \begin{equation}
+    w_{y}(t) = \varphi(\varphi^{-1}(x) + t \cdot (\varphi^{-1}(y) - \varphi^{-1}(x)))
+  \end{equation}
+  Dann ist $w_{y}$ stetig und $w_{y}(0) = x$ und $w_{y}(1) = y$.
+  Also ist $w_{y}$ ein Weg von $x$ nach $y$.
+  Definiere $w : [0, 1] \rightarrow M$ durch
+  \begin{equation}
+    w(t) = \begin{cases}
+      w(2t) & \textit{wenn $0 \le t < \frac{1}{2}$}\\
+      w(2t - 1) & \textit{wenn $\frac{1}{2} \le t \le 1$}
+    \end{cases}
+  \end{equation}
+  Dann ist $w$ ebenfalls stetig und ein Weg von $x_{0}$ nach $y$.
+  Das bedeutet, dass $y \in A$, also $V \subset A$.
+  Also ist $A$ offen in $M$.
+
+  Sei $x \in A^{C}$.
+  Es gibt also keinen Weg von $x_{0}$ nach $x$.
+  Dann gibt es wie im ersten Teil eine Karte mit einer offenen Umgebung $V$ von $x$ in $M$.
+  Sei $y \ne x \in V$.
+  Angenommen es gäbe einen Weg von $x_{0}$ nach $y$.
+  Dann könnte man auf dieselbe Weise wie im ersten Teil einen Weg von $y$ nach $x$ und somit von $x_{0}$ nach $x$ erstellen.
+  Dies widerspricht also der Annahme und es gibt keinen Weg von $x_{0}$ nach $y$.
+  Es folgt, dass auch $A^{C}$ offen in $M$ ist.
+  Dies bedeutet wiederum, dass $A$ in $M$ auch abgeschlossen ist.
+
+  Da $A$ sowohl offen, abgeschlossen als auch nicht-leer ist, gilt $A = M$, weil $M$ zusammenhängend ist, und $M$ ist wegzusammenhängend.
+\end{proof}
 
 \subsection{Teil b}
 
