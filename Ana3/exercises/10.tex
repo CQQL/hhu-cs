@@ -128,17 +128,25 @@
   Dann könnte man auf dieselbe Weise wie im ersten Teil einen Weg von $y$ nach $x$ und somit von $x_{0}$ nach $x$ erstellen.
   Dies widerspricht also der Annahme und es gibt keinen Weg von $x_{0}$ nach $y$.
   Es folgt, dass auch $A^{C}$ offen in $M$ ist.
-  Dies bedeutet wiederum, dass $A$ in $M$ auch abgeschlossen ist.
+  Dies bedeutet wiederum, dass $A$ in $M$ abgeschlossen ist.
 
-  Da $A$ sowohl offen, abgeschlossen als auch nicht-leer ist, gilt $A = M$, weil $M$ zusammenhängend ist, und $M$ ist wegzusammenhängend.
+  Da $A$ sowohl offen, abgeschlossen als auch nicht-leer ist, gilt $A = M$, weil $M$ zusammenhängend ist.
+  Somit ist $M$ wegzusammenhängend.
 \end{proof}
 
 \subsection{Teil b}
+\begin{proof}
+  Sei $x \in M$ und $C(x)$ seine Zusammenhangskomponente.
+  Wenn $C(x) = M$, ist $C(x)$ offensichtlich offen in $M$.
+  Sei also $C(x) \ne M$.
+
+\end{proof}
 
 \subsection{Teil c}
 \begin{proof}
   Da $M$ eine $n$-dimensionale Untermannigfaltigkeit des $\mathbb{R}^{N}$ ist, gelten die Bedingungen an einer Untermannigfaltigkeit natürlich für jeden Punkt von $M$.
-  Wenn man eine Zusammenhangskomponente von $M$ betrachtet, gelten diese Bedingungen dann auch für alle Punkte dieser Komponente, weil sie offen ist und somit die geforderte offene Umgebung auch vollständig in der Komponente enthalten ist.
+  Wenn man eine Zusammenhangskomponente von $M$ betrachtet, gelten diese Bedingungen ebenfalls für alle Punkte dieser Komponente, weil sie offen ist und eine offene Umgebung jeder ihrer Punkte enthält.
+  Falls die geforderte offene Umgebung nicht vollständig in der Komponente enthalten ist, kann man sie einfach ausreichend verkleinern.
   Das macht die Zusammenhangskomponente ebenfalls zu einer $n$-dimensionalen Untermannigfaltigkeit des $\mathbb{R}^{N}$.
 \end{proof}
 
