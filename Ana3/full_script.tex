@@ -1,0 +1,91 @@
+\documentclass[10pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\title{Analysis III, Wintersemester 2013-2014, Prof. Dr. Singhof}
+\author{Marten Lienen}
+
+\newtheorem{defi*}{Definition}
+\newtheorem{satz}{Satz}
+\newtheorem{example*}{Beispiel}
+
+\begin{document}
+
+\maketitle
+
+\chapter{Maß- und Integrationstheorie}
+
+\section{Quader und Figuren}
+
+\section{$\sigma$-Algebren und Maße}
+
+\section{Das Lebesgue-Maß}
+
+\section{Messbare Funktionen}
+
+\section{Integrationstheorie}
+
+\section{Vertauschbarkeit des Integrals mit Grenzprozessen}
+
+\section{Der Satz von Fubini}
+
+\section{Die Transformationsformel}
+
+\section{Die Räume $L^{p}$}
+
+\chapter{Vektoranalysis}
+
+\section{Untermannigfaltigkeiten des $\mathbb{R}^{n}$}
+
+\section{Zusammenhängende metrische Räume}
+
+\section{Kompakte metrische Räume}
+
+\section{Tangentialräume und Orientierungen}
+
+\begin{defi*}
+  Sei $M$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{n}$ und $a \in M$.
+  Ein Element $v \in \mathbb{R}^{n}$ heißt \underline{Tangentialvektor} an $M$ im Punkt $a$, wenn es ein offenes Intervall $I$ in $\mathbb{R}$ mit $0 \in I$ und eine $C^{1}$-Abbildung $\psi : I \rightarrow \mathbb{R}^{n}$ gibt mit:
+  \begin{enumerate}
+    \item $\psi(I) \in M$
+    \item $\psi(0) = a$
+    \item $\psi'(0) = 0$
+  \end{enumerate}
+  Mit $T_{a}(M)$ bezeichnet man die Menge aller Tangentialvektoren an $M$ im Punkt $a$ und nennt $T_{a}(M)$ den \underline{Tangentialraum} an $M$ in $a$.
+\end{defi*}
+
+\begin{satz}
+  Sei $M$ eine $n$-dimensionaler linearer Teilraum von $\mathbb{R}^{n}$.
+  \begin{enumerate}
+    \item $T_{a}(M)$ ist en $n$-dimensionaler linearer Teilraum von $\mathbb{R}^{n}$
+    \item Sei $\varphi : W \rightarrow V$ eine Karte von $M$ und $a \in V$. Sei $b \in W$ mit $\varphi(b) = a$. Dann ist $T_{a}(M) = Bild(D\varphi(b)) = \{ D\varphi(b) \cdot u \mid u \in \mathbb{R}^{n} \}$
+    \item Sei $U$ eine offene Umgebung von $a$ in $\mathbb{R}^{n}$ und sei $g : U \rightarrow \mathbb{R}^{N - n}$ eine Submersion mit $M \cap U = \{ x \in U \mid g(x) = 0 \}$.
+      Dann ist:
+      \begin{equation}
+        T_{a}(M) = Kern(Dg(a)) = \{ v \in \mathbb{R}^{n} \mid Dg(a) \cdot = 0 \}
+      \end{equation}
+  \end{enumerate}
+\end{satz}
+
+\begin{proof}
+  Analysis II, §16, Satz 5
+\end{proof}
+
+\begin{example*}
+  \begin{equation}
+    M = S^{N - 1}
+  \end{equation}
+  Sei $U = \{ x \in \mathbb{R}^{N} \mid x \ne 0 \}$ und $g : U \rightarrow \mathbb{R}$ gegeben durch $g(x) = x_{1}^{2} + \dots + x_{N}^{2} - 1$.
+  Dann ist $S^{N - 1} = \{ x \in U \mid g(x) = 0 \}$.
+  \begin{equation}
+    Dg(x) = 2x^{T}
+  \end{equation}
+  Nach Satz 1c) ist $T_{a}(S^{N - 1}) = \{ v \in \mathbb{R}^{n} \mid 2a^{T}v = 0 \} = a^{T}$.
+\end{example*}
+
+\end{document}
