@@ -50,6 +50,27 @@
 
 \section{Zusammenhängende metrische Räume}
 
+\begin{proof}
+  Beweisskizee als Hilfestellung für Übung:
+  \begin{enumerate}[label={\alph*)}]
+  \item Sei $M$ zusammenhängend.
+    Sei $x_{0} \in M$.
+    Sei $A := \{ x \in M \mid \textit{es gibt einen Weg $w : [0, 1] \rightarrow M$ mit $w(0) = x_0$ und $w(1) = x$} \}$.
+    Zu zeigen: $A = M$.
+    Dann ist $A \ne \emptyset$, denn $x_{0} \in A$.
+    \begin{enumerate}
+    \item[$A$ ist offen in $M$] Sei $a \in A$.
+      Nach der Folgerung aus Satz 1 von §10 besitzt $a$ eine Umgebung $U$ in $M$, die homöomorph zu $\mathbb{R}^{n}$ ist.
+      Ist $x \in U$, so gibt es einen Weg $w$ in $U$ mit $w(0) = a$, $w(1) = x$.
+      Es gibt einen Weg $v$ von $x_{0}$ nach $a$.
+      Deshalb gibt es auch einen Weg von $x_{0}$ nach $x$.
+      \item[$A$ ist abgeschlossen in $M$] Weil $M$ zusammenhängend ist, folgt $A = M$.
+    \end{enumerate}
+  \item Ähnlich
+  \item folgt direkt aus b)
+  \end{enumerate}
+\end{proof}
+
 \section{Kompakte metrische Räume}
 
 \begin{defi}
@@ -66,7 +87,152 @@
   Ist $\{ A_{i} \mid i \in \Lambda \}$ eine offene Überdeckung von $X$, so gibt es $n \in \mathbb{N}$ und $i_{1}, \dots, i_{n} \in \Lambda$ mit $X = A_{i_{1}} \cup \dots \cup A_{i_{n}}$.
 \end{defi}
 
+\begin{remark}
+  Eine Teilmenge $A$ eines metrischen Raumes $X$ ist genau dann kompakt, wenn gilt:
+  Sind $A_{i} (i \in \Lambda)$ offene Teilmengen von $X$ mit $A \subseteq \cup_{i \in \Lambda} A_{i}$, so gibt es ein $n \in \mathbb{N}$ und $i_{1}, \dots, i_{n} \in \Lambda$ mit $A \subseteq A_{i_{1}} \cup \dots \cup A_{i_{n}}$.
+\end{remark}
 
+\begin{satz}
+  Seien $X, Y$ metrische Räume und sei $f : X \rightarrow Y$ stetig.
+  Ist K eine kompakte Teilmenge von $X$, so ist $f(K)$ kompakt.
+\end{satz}
+
+\begin{proof}
+  Seien $A_{i} (i \in \Lambda))$ offene Teilmengen von $Y$ mit $f(K) \subseteq \cup_{i \in \Lambda} A_{i}$.
+  Weil $f$ stetig ist, ist $f^{-1}(A_{i})$ offen in $X$ $\forall i \in \Lambda$.
+  Es ist $K \subseteq f^{-1}(\cup_{i \in \Lambda}) A_{i} = \cup_{i \in \Lambda} f^{-1}(A_{i})$.
+  Es gibt also ein $n \in \mathbb{N}$ und $i_{1}, \dots, i_{n} \in \Lambda$ mit $K \subseteq f^{-1}(A_{i_{1}}) \cup \dots \cup f^{-1}(A_{i_{n}})$.
+  Daraus folgt
+  \begin{equation}
+    f(K) \subseteq f(f^{-1}(A_{i_{1}}) \cup \dots \cup f^{-1}(A_{i_{n}})) = f(f^{-1}(A_{i_{1}})) \cup \dots \cup f(f^{-1}(A_{i_{n}})) = A_{i_{1}} \cup \dots \cup A_{i_{n}}
+  \end{equation}
+\end{proof}
+
+\begin{satz}
+  Jede abgeschlossene Teilmenge A eines kompakten metrischen Raumes $X$ ist kompakt.
+\end{satz}
+
+\begin{proof}
+  Seien $A_{i} (i \in \Lambda))$ offene Teilmengen von $X$ mit $A \subseteq \cup_{i \in \Lambda} A_{i}$.
+  Die $A_{i}$ zusammen mit $X \setminus A$ bilden eine offene Überdeckung von $X$.
+  Weil $X$ kompakt ist, gibt es eine endliche Teilüberdeckung von $X$, d.h. es gibt ein $n \in \mathbb{N}$ und $i_{1}, \dots, i_{n} \in \Lambda$ mit $X = A_{i_{i}} \cup \dots \cup A_{i_{n}} \cup (X \setminus A) \Rightarrow A \setminus A_{i_{1}} \cup \dots \cup A_{i_{n}}$.
+\end{proof}
+
+\begin{satz}
+  Jede kompakte Teilmenge $A$ eines metrischen Raumes $X$ ist abgeschlossen in $X$.
+\end{satz}
+
+\begin{proof}
+  Zeige $X \setminus A$ ist offen in $X$.
+  Sei $x \in X \setminus A$.
+  Wir wollen zeigen: $X \setminus A$ ist Umgebung von $x$ in $X$.
+  Ist $y \in A$, so ist $y \ne x$; deswegen gibt es offene Teilmengen $U_{y} und V_{y}$ von $X$ mit $x \in U_{y}$, $y \in V_{y}$ und $U_{y} \cap V_{y} = \emptyset$.
+  Dann ist $A \subseteq \cup_{y \in A} V_{y}$.
+  Weil $A$ kompakt ist, gibt es ein $n \in \mathbb{N}$ und Punkte $y_{1}, \dots, y_{n} \in A$ mit $A \subseteq V_{y_{1}} \cup \dots \cup V_{y_{n}} = V$.
+  Sei $U := U_{y_{1}} \cap \dots \cap U_{Y-n}$.
+  Dann ist $U$ eine offene Umgebung von $x$ mit $U \cap V = \emptyset$, also $U \subseteq X \setminus A$.
+\end{proof}
+
+\begin{satz}
+  Seien $X, Y$ metrische Räume; $X$ sei kompakt und $f : X \rightarrow Y$ sei stetig und bijektiv.
+  Dann ist $f^{-1} : Y \rightarrow X$ stetig.
+  Deswegen ist $f$ ein Homöomorphismus.
+\end{satz}
+
+\begin{proof}
+  Wir zeigen: Ist $A$ abgeschlossen in $X$, so ist $f(A) = (f^{-1})^{-1}(A)$ abgeschlossen in $Y$.
+  Nach Satz 2 ist $A$ abgeschlossen $\Rightarrow$ nach Satz 1 ist $f(A)$ kompakt $\Rightarrow$ nach Satz 3 $f(A)$ ist abgeschlossen in $Y$.
+\end{proof}
+
+\begin{defi}
+  Sei $X$ ein metrischer Raum, $(x_{n})$ eine Folge in $X$ und $a \in X$.
+  Dann heißt $a$ ein Häufungspunkt von $(x_{n})$, wenn es eine Teilfolge von $(x_{n})$ gibt, die gegen $a$ konvergiert; äquivalent dazu: Wenn es für jede Umgebung $U$ von $a$ in $X$ unendlich viele $n \in \mathbb{N}$ gibt mit $x_{n} \in U$.
+\end{defi}
+
+\begin{satz}
+  Sei $X$ ein metrischer Raum.
+  Äquivalent sind:
+  \begin{enumerate}[label={\alph*)}]
+  \item $X$ ist kompakt
+  \item Jede Folge in $X$ besitzt eine Häufungspunkt in $X$
+  \item $X$ ist vollständig und für jedes $\varepsilon > 0$ gibt es ein $n \in \mathbb{N}$ und $x_{n}, \dots, x_{n} \in X$ mit $X = \cup_{i = 1}^{n} B_{\varepsilon}(x_{i})$
+  \end{enumerate}
+\end{satz}
+
+\begin{proof}
+  $a) \Rightarrow b)$: Sei $X$ kompakt und $(x_{n})$ eine Folge in $X$.
+  Sei $F_{n}$ der Abschluss der Menge $\{ x_{n}, x_{n + 1}, x_{n + 2}, \dots \}$ in $X$.
+  Wir werden zeigen, dass $\cap_{n = 1}^{\infty} F_{n} \ne \emptyset$.
+  (Ein Element von $\cap_{n = 1}^{\infty} F_{n}$ ist ein Häufungspunkt von $(x_{n})$)
+
+  Angenommen, es sei $\cap_{n = 1}^{\infty} F_{n} = \emptyset$.
+  Sei $A_{n} := X \setminus F_{n}$.
+  Dann ist $A_{n}$ offen in $X$ und $\cap_{n = 1}^{\infty} A_{n} = \cap_{n} (X \setminus F_{n}) = X \setminus \cap_{n} F_{n} = X$.
+  Deswegen bilden die $A_{n}$ mit $n \in \mathbb{N}$ eine offene Überdeckung von $X$.
+  Weil $X$ kompakt ist, gibt es $n_{n}, \dots, n_{k} \in \mathbb{N}$ mit $X = A_{n_{1}} \cup \dots \cup A_{n_{k}}$.
+  Für $n \ge m$ ist $F_{n} \subseteq F_{m}$, also $A_{n} \supseteq A_{m}$.
+  Ist $n_{0} = \max \{ n_{1}, \dots, n_{k} \}$, so ist also $X = A_{n_{0}} \Rightarrow F_{n_{0}} = \emptyset$, Widerspruch, da $x_{n_{0}} \in F_{n_{0}}$.
+
+  $b) \Rightarrow c)$: Sei $(x_{n})$ eine Cauchy-Folge in $X$.
+  Dann besitzt $(x_{n})$ einen Häufungspunkt $a$, d.h. eine Teilfolge von $(x_{n})$ konvergiert gegen $a$.
+  Nach Aufgabe 40 konvergiert $(x_{n})$ gegen $a$.
+  Deswegen ist $X$ vollständig.
+
+  Sei $\varepsilon > 0$.
+  Angenommen $X$ ist nicht die Vereinigung von endlich vielen Kugeln von Radius $\varepsilon$.
+  Dann definiert man induktiv eine Folge $(x_{n})$ in $X$, so dass gilt: Ist $n \ne m$, so ist $d(x_{n}, x_{m}) \ge \varepsilon$.
+  Dann kann $(x_{n})$ keinen Häufungspunkt besitzen, Widerspruch.
+
+  $c) \Rightarrow a)$: Sei $\{ A_{i} \mid i \in \Lambda \}$ offene Überdeckung von $X$.
+  Angenommen, es gäbe keine endliche Teilüberdeckung.
+  Wir werden induktiv eine Folge $(B_{n})$ von Kugeln vom Radius $\frac{1}{2^{n}}$ definieren, von denen jede nicht durch endlich viele $A_{i}$ überdeckt wird:
+  \begin{description}
+  \item[$n = 0$] Nach Vorraussetzung wird $X$ von endlich vielen Kugeln vom Radius $1$ überdeckt.
+    Von diesen kann eine nicht von endlich vielen $A_{i}$ überdeckt werden; nenne sie $B_{0}$.
+  \item[$n - 1 \rightarrow n$] Sei bereits $B_{n - 1}$ konstruiert.
+    Weil $X$ von endlich vielen Kugeln vom Radius $\frac{1}{2^{n}}$ überdeckt wird, gibt es unter diesen eine, die nicht von endlich vielen der $A_{i}$ überdeckt wird und nicht-leeren Schnitt mit $B_{n - 1}$ hat.
+    $B_{n}$ habe den Mittelpunkt $x_{n}$.
+    Wegen $B_{n} \cap B_{n - 1} \ne \emptyset$ ist $d(x_{n}, x_{n - 1}) \le \frac{1}{2^{n}} + \frac{1}{2^{n - 1}} \le \frac{1}{2^{n - 2}}$.
+    Ist also $n \le p < q$, so $d(x_{p}, x_{q}) \le d(x_{p}, x_{p - 1}) + \dots + d(x_{q - 1}, x_{q}) \le \frac{1}{2^{p - 2}} \le \frac{1}{2^{n - 2}}$.
+  \end{description}
+  Deswegen ist $(x_{n})$ eine Cauchy-Folge, konvergiert also gegen ein $a \in X$.
+  Es gibt ein $i_{0} \in \Lambda$ mit $a \in A_{i_{0}}$.
+  Da $A_{i_{0}}$ offen ist, existiert $\varepsilon > 0$ mit $B_{\varepsilon}(a) \subseteq A_{i_{0}}$.
+  Für großes $n$ ist $x_{n} \in B_{\frac{\varepsilon}{2}}(a)$ und $B_{n} \subseteq B_{\varepsilon}(a)$.
+  Daher ist $B_{n}$ für großes $n$ in $A_{i_{0}}$ enthalten, Widerspruch.
+\end{proof}
+
+\begin{satz}[Heine-Borel]
+  Für eine Teilmenge $X$ von $\mathbb{R}^{n}$ sind äquivalent:
+  \begin{enumerate}[label={\alph*)}]
+  \item $X$ ist kompakt
+  \item $X$ ist beschränkt und abgeschlossen in $\mathbb{R}^{n}$
+  \end{enumerate}
+\end{satz}
+
+\begin{proof}
+  $a) \Rightarrow b)$: Ist $X$ kompakt, so ist $X$ abgeschlossen in $\mathbb{R}^{n}$ nach Satz 3.
+  Nach Satz 5 wird $X$ durch endlich viele Kugeln vom Radius $1$ überdeckt, ist also beschränkt.
+
+  $b) \Rightarrow a)$: Weise Bedingung $c)$ vom Satz 5 nach:
+  \begin{itemize}
+  \item $X$ ist vollständig: Sei $(x_{m})$ eine Cauchy-Folge in $X$.
+    Weil $\mathbb{R}^{n}$ vollständig ist, konvergiert $(x_{m})$ gegen ein $a \in \mathbb{R}^{n}$.
+    Weil $X$ abgeschlossen in $\mathbb{R}^{n}$ ist, ist $a \in X$.
+  \item Weil $X$ beschränkt ist, wird $X$ für jedes $\varepsilon > 0$ durch endlich viele $B_{\varepsilon}(x_{i})$ überdeckt.
+  \end{itemize}
+\end{proof}
+
+\begin{defi}
+  Ein metrischer Raum $X$ heißt \underline{lokalkompakt}, wenn jeder Punkt $a \in X$ eine kompakte Umgebung in $X$ besitzt.
+\end{defi}
+
+\begin{example}
+  \begin{itemize}
+  \item $\mathbb{R}^{n}$ ist lokalkompakt, aber nicht kompakt
+  \item Jede Untermannigfaltigkeit des $\mathbb{R}^{n}$ ist lokalkompakt
+  \end{itemize}
+\end{example}
 
 \section{Tangentialräume und Orientierungen}
 
@@ -109,5 +275,64 @@
   \end{equation}
   Nach Satz 1c) ist $T_{a}(S^{N - 1}) = \{ v \in \mathbb{R}^{n} \mid 2a^{T}v = 0 \} = a^{T}$.
 \end{example}
+
+\begin{example}
+  Sei $M$ ein $n$-dimensionaler affiner Teilraum von $\mathbb{R}^{N}$, d.h. es gibt ein $x_{0} \in \mathbb{R}^{N}$ und einen $n$-dimensionalen linearen Teilraum $E$ von $\mathbb{R}^{n}$ mit $M = x_{0} + E$.
+  Dann ist $M$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{N}$: Sei $h : \mathbb{R}^{n} \rightarrow E$ ein linearer Isomorphismus.
+  Sei $\varphi(y) := x_{0} + h(y)$, $\varphi : \mathbb{R}^{n} \rightarrow \mathbb{R}^{N}$.
+  Für $y \in \mathbb{R}^{n}$ ist $D\varphi(y) \cdot u = h(u)$.
+  Deswegen ist $\varphi$ eine Karte von $M$ mit $\varphi(\mathbb{R}^{n}) = M$.
+  Sei $a \in M$ und $b \in \mathbb{R}^{n}$ mit $\varphi(b) = a$.
+  Nach Satz 1b) ist $T_{a}(M) = Bild(D\varphi(b)) = Bild(h) = E$.
+\end{example}
+
+\begin{example}
+  Sei $M$ wie im vorigen Beispiel und sei $U$ offen in $M$.
+  Dann ist $U$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{N}$ und für $a \in U$ ist $T_{a}(u) = E$.
+\end{example}
+
+\begin{defi}
+  Sei $M$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{n}$ und $a \in M$.
+  Ein Element $v \in \mathbb{R}^{N}$ heißt \underline{Normalenvektor} an $M$ in $a$, wenn $\langle v \mid w \rangle = 0 \forall w \in T_{a}(M)$.
+  Die Menge aller Normalenvektoren an $M$ in $a$ wird mit $N_{a}(M)$ bezeichnet und heißt der \underline{Normalenraum} an $M$ in $a$.
+  \begin{equation}
+    N_{a}(M) = T_{a}(M)^{T}
+  \end{equation}
+  Dies ist ein $(N - n)$-dimensionaler Teilraum vom $\mathbb{R}^{n}$.
+\end{defi}
+
+\begin{example}
+  \begin{equation}
+    N_{a}(S^{n - 1}) = \mathbb{R} \cdot a
+  \end{equation}
+\end{example}
+
+\begin{defi}
+  Sei $M$ eine Hyperfläche in $\mathbb{R}^{N}$.
+  Ein \underline{Einheitsnormalenfeld} auf $M$ ist eine stetige Abbildung $\nu : M \rightarrow \mathbb{R}^{N}$ mit $\nu(a) \in N_{a}(M)$ und $||\nu(a)||_{2} = 1 \forall a \in M$.
+\end{defi}
+
+\begin{example}
+  Auf $S^{N - 1}$ gibt es zwei Normalfelder: $\nu_{+}$ und $\nu_{-}$
+  \begin{equation}
+    \nu_{+}(a) := a, \nu_{-}(a) := -a
+  \end{equation}
+\end{example}
+
+\begin{defi}
+  Seien $U, V$ offen in $\mathbb{R}^{n}$ und $\varphi : U \rightarrow V$ ein Diffeomorphismus.
+  $\varphi$ heißt \underline{orientierungserhalten}, wenn $\det(D\varphi(x)) > 0$.
+\end{defi}
+
+\begin{defi}
+  Sei $M$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{N}$ mit $n \ge 1$.
+  \begin{enumerate}[label={\alph*)}]
+  \item Zwei Karten $\varphi_{1} : W_{1} \rightarrow V_{1}$ und $\varphi_{2} : W_{2} \rightarrow V_{2}$ von $M$ heißen \underline{gleichorientiert}, wenn die Parametertransformation $\tau(\varphi_{1}, \varphi_{2})$ orientierungserhalten ist.
+  \item Ein Atlas $\mathscr{A}$ von $M$ heißt \underline{orientiert}, wenn je zwei seiner Karten gleich orientiert sind.
+  \item $M$ heißt orientierbar, wenn $M$ einen orientierten Atlas besitzt.
+  \item Zwei Atlanten $\mathscr{A}$ und $\mathscr{B}$ von $M$ heißen \underline{äquivalent}, wenn jede Karte von $\mathscr{A}$ mit jeder Karte von $\mathscr{B}$ gleichorientiert ist.
+  \item Eine Äquivalenzklasse $\sigma$ orientierter Atlanten von $M$ heißt eine \underline{Orientierung} von $M$. Man nennt dann $(M, \sigma)$ eine \underline{orientierte Untermannigfaltigkeit}.
+  \end{enumerate}
+\end{defi}
 
 \end{document}
