@@ -6,13 +6,19 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{chngcntr}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \title{Analysis III, Wintersemester 2013-2014, Prof. Dr. Singhof}
 \author{Marten Lienen}
 
-\newtheorem{defi*}{Definition}
+\counterwithout{section}{chapter}
+\renewcommand{\thesection}{§\arabic{section}}
+
 \newtheorem{satz}{Satz}
-\newtheorem{example*}{Beispiel}
+\newtheorem*{defi}{Definition}
+\newtheorem*{remark}{Bemerkung}
+\newtheorem*{example}{Beispiel}
 
 \begin{document}
 
@@ -46,22 +52,38 @@
 
 \section{Kompakte metrische Räume}
 
+\begin{defi}
+  Ist $X$ eine Menge und ist $\{ A_{i} \mid i \in \Lambda \}$ eine Menge von Teilmengen von $X$ so heißt $\{ A_{i} \mid i \in \Lambda \}$ eine \underline{Überdeckung} von $X$, wenn $X = \cup_{i \in \Lambda} A_{i}$.
+\end{defi}
+
+\begin{defi}
+  Sei $X$ ein metrischer Raum und $\{ A_{i} \mid i \in \Lambda \}$ eine Überdeckung von X.
+  Dann heißt $\{ A_{i} \mid i \in \Lambda \}$ eine \underline{offene Überdeckung} von $X$, wenn alle $A_{i}$ offen in $X$ sind.
+\end{defi}
+
+\begin{defi}
+  Ein metrischer Raum heißt \underline{kompakt}, wenn jede offene Überdeckung von $X$ eine endliche Teilüberdeckung besitzt, wenn also gilt:
+  Ist $\{ A_{i} \mid i \in \Lambda \}$ eine offene Überdeckung von $X$, so gibt es $n \in \mathbb{N}$ und $i_{1}, \dots, i_{n} \in \Lambda$ mit $X = A_{i_{1}} \cup \dots \cup A_{i_{n}}$.
+\end{defi}
+
+
+
 \section{Tangentialräume und Orientierungen}
 
-\begin{defi*}
+\begin{defi}
   Sei $M$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{n}$ und $a \in M$.
   Ein Element $v \in \mathbb{R}^{n}$ heißt \underline{Tangentialvektor} an $M$ im Punkt $a$, wenn es ein offenes Intervall $I$ in $\mathbb{R}$ mit $0 \in I$ und eine $C^{1}$-Abbildung $\psi : I \rightarrow \mathbb{R}^{n}$ gibt mit:
-  \begin{enumerate}
+  \begin{itemize}
     \item $\psi(I) \in M$
     \item $\psi(0) = a$
     \item $\psi'(0) = 0$
-  \end{enumerate}
+  \end{itemize}
   Mit $T_{a}(M)$ bezeichnet man die Menge aller Tangentialvektoren an $M$ im Punkt $a$ und nennt $T_{a}(M)$ den \underline{Tangentialraum} an $M$ in $a$.
-\end{defi*}
+\end{defi}
 
 \begin{satz}
   Sei $M$ eine $n$-dimensionaler linearer Teilraum von $\mathbb{R}^{n}$.
-  \begin{enumerate}
+  \begin{enumerate}[label={\alph*)}]
     \item $T_{a}(M)$ ist en $n$-dimensionaler linearer Teilraum von $\mathbb{R}^{n}$
     \item Sei $\varphi : W \rightarrow V$ eine Karte von $M$ und $a \in V$. Sei $b \in W$ mit $\varphi(b) = a$. Dann ist $T_{a}(M) = Bild(D\varphi(b)) = \{ D\varphi(b) \cdot u \mid u \in \mathbb{R}^{n} \}$
     \item Sei $U$ eine offene Umgebung von $a$ in $\mathbb{R}^{n}$ und sei $g : U \rightarrow \mathbb{R}^{N - n}$ eine Submersion mit $M \cap U = \{ x \in U \mid g(x) = 0 \}$.
@@ -76,7 +98,7 @@
   Analysis II, §16, Satz 5
 \end{proof}
 
-\begin{example*}
+\begin{example}
   \begin{equation}
     M = S^{N - 1}
   \end{equation}
@@ -86,6 +108,6 @@
     Dg(x) = 2x^{T}
   \end{equation}
   Nach Satz 1c) ist $T_{a}(S^{N - 1}) = \{ v \in \mathbb{R}^{n} \mid 2a^{T}v = 0 \} = a^{T}$.
-\end{example*}
+\end{example}
 
 \end{document}
