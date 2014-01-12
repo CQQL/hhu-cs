@@ -1,0 +1,77 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 33}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\section{Aufgabe 34}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\section{Aufgabe 35}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\subsection{Teil c}
+
+\subsection{Teil d}
+
+\subsection{Teil e}
+
+\section{Aufgabe 36}
+
+\subsection{Teil a}
+
+$Y$ ist $B_{100}, \frac{2}{5}$-verteilt.
+
+\begin{equation}
+  E(Y) = 100 \cdot \frac{2}{5} = 40
+\end{equation}
+
+\begin{equation}
+  V(Y) = 100 \cdot \frac{2}{5} \cdot \frac{3}{5} = 24
+\end{equation}
+
+\subsection{Teil b}
+
+\begin{equation}
+  P(Y \ge 40) \simeq 0.53792
+\end{equation}
+
+\begin{equation}
+  P(Y = 40) = P(Y \ge 40) - P(Y \ge 41) \simeq 0.53792 - 0.45671 = 0.08121
+\end{equation}
+
+\begin{equation}
+  P(30 < Y \le 40) = P(Y \ge 31) - P(Y \ge 41) \simeq 0.97522 - 0.45671 = 0.5185
+\end{equation}
+
+\subsection{Teil c}
+
+\begin{align*}
+  P(30 < Y \le 40) & = P(31 \le Y \le 40)\\
+  & = \Phi\left( \frac{40 + 0.5 - 40}{\sqrt{24}} \right) - \Phi\left( \frac{31 - 0.5 - 40}{\sqrt{24}} \right)\\
+  & = \Phi\left( \frac{0.5}{\sqrt{24}} \right) - \Phi\left( -\frac{9.5}{\sqrt{24}} \right)\\
+  & \simeq \Phi(0.102062072616) - \Phi(-1.9391793797)\\
+  & = \Phi(0.102062072616) - \Phi(-1.9391793797)\\
+  & = \Phi(0.102062072616) - (1 - \Phi(1.9391793797))\\
+  & \simeq 0.539828 - (1 - 0.973197) = 0.513025
+\end{align*}
+
+\end{document}
