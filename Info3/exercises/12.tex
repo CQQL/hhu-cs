@@ -15,7 +15,23 @@
 Fibonacci-Heaps können zu linearen Listen degenerierte Bäume enthalten, deren Länge und somit Höhe in $\mathscr{O}(n)$, nicht aber in $\mathscr{O}(\log(n))$ ist.
 
 \begin{proof}
+  Ich zeige, wie man einen Fibonacci-Heap der Tiefe $n$ mit $n$ Schlüsseln erzeugt.
 
+  Zu Beginn erzeuge man einen Heap, der die drei Schlüssel $n$, $n - 1$ und $n - 2$ enthält.
+  Dann sind diese alle in der Wurzelliste.
+  Wendet man nur $delete-min$ an, wird der Schlüssel $n - 2$ entfernt und in der Wurzelliste verbleibt $n - 1$ mit $n$ als einzigem Sohn.
+  Nun hat man einen Fibonacci-Heap der Höhe $2$ mit $2$ Elementen.
+
+  Wenn man schon einen Fibonacci-Heap der Höhe $k - 1$ mit $k - 1$ Elementen hat, hat dieser nur einen Schlüssel $q$ in der Wurzelliste.
+  $q$ hat genau einen Sohn, sodass der Rang von $q$ $1$ ist.
+  Nun füge man zuerst die drei Schlüssel $q - 1$, $q - 2$ und $q - 3$ hinzu.
+  Ein anschließendes $delete-min$ führt zur Löschung von $q - 3$, wonach zuerst $q - 1$ und $q - 2$ vereinigt werden und dann nochmal $q$ und $q - 2$, weil nun beide den Rang $1$ haben.
+  Zum Abschluss wird $delete(q - 1)$ durchgeführt.
+  Das dabei $q - 2$ markiert wird, ist hierbei nicht von Bedeutung.
+  Es verbleibt $q - 2$ als einziges in der Wurzelliste und sein einziger Sohn ist $q$, ein Heap der Höhe $k - 1$ mit $k - 1$ Schlüsseln.
+  Insgesamt hat der neue Fibonacci-Heap $k$ Schlüssel bei einer Höhe von $k$.
+
+  Man kann also Fibonacci-Heaps erstellen, deren Höhe proportional zu $n$ ist und somit nicht durch $\log(n)$ beschränkt sein kann.
 \end{proof}
 
 \end{document}
