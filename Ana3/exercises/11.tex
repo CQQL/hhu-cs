@@ -24,6 +24,20 @@
 
 \section{Aufgabe 48}
 
+\begin{proof}
+  Sei $f_{n} \in (f_{n})$.
+  Dann ist $||f_{n}|| = 1$, weil $f_{n}(\frac{\pi}{2^{n + 1}}) = 1$, $0 < \frac{\pi}{2^{n + 1}} < 2\pi$ und der Wertebereich des Sinus $[-1, 1]$ ist.
+
+  Angenommen es gäbe eine Cauchy-Teilfolge $(f_{i_{k}})$ für $k \in \mathbb{N}$.
+  Dann gäbe es ein $N \in \mathbb{N}$, sodass $||f_{i_{n}} - f_{i_{m}}|| < 1$ für alle $m, n > N$.
+  O.b.d.A. sei $n > m$.
+  Da jedoch $f_{i_{m}}(\frac{\pi}{2^{i_{m} + 1}}) = 1$ und $f_{i_{n}}(\frac{\pi}{2^{i_{m} + 1}}) = \sin(2^{i_{n} - i_{m} - 1}\pi) = 0$, weil $i_{n} - i_{m} - 1 \in \mathbb{N}_{0}$, ist $||f_{i_{m}} - f_{i_{n}}|| \ge 1$.
+  Somit gibt es keine Cauchy-Teilfolge, also auch keine konvergente Teilfolge.
+
+  Wegen $||f_{n}|| = 1$, ist $(f_{n})$ eine Folge in $B$, die keinen Häufungspunkte besitzt.
+  Nach Satz 5 ist $B$ somit nicht kompakt.
+\end{proof}
+
 \section{Aufgabe 49}
 
 \begin{proof}
