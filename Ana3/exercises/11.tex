@@ -15,30 +15,29 @@
 \subsection{Teil a}
 
 \begin{proof}
-  Sei $a = (a_{1}, a_{2}, a_{3}) \in Z$.
-  Sei $V_{i} = \{ x \in Z \mid x_{1} \ne i \}$ für $i \in \{ 1, -1 \}$.
-  Sei $W = ]0, 2\pi[ \times \mathbb{R}$.
-  Dann ist $V_{i}$ offen in $M$ und $W$ offen in $\mathbb{R}^{2}$.
-  Definiere $\varphi_{i} : W \rightarrow \mathbb{R}^{3}$ durch
+  Sei $a \in Z$.
+  Dann ist $Z$ eine offene Umgebung von $a$.
+  Definiere $g : Z \rightarrow \mathbb{R}$ durch
   \begin{equation}
-    \varphi_{i}(x, y) = \begin{pmatrix}
-      i \cdot \cos(x)\\
-      \sin(x)\\
-      y
-    \end{pmatrix}
+    g(x, y, z) = x^{2} + y^{2} - 1
   \end{equation}
+  $g$ ist eine Submersion:
   \begin{equation}
-    D\varphi_{i}(x, y) = \begin{pmatrix}
-      -i \cdot \sin(x) & 0\\
-      \cos(x) & 0\\
-      0 & 1\\
-    \end{pmatrix}
+    Rang Dg(x, y, z) = Rang \begin{pmatrix}
+      2x + y^{2} - 1 & x^{2} + 2y - 1 & 0
+    \end{pmatrix} = 1 = 3 - 2
   \end{equation}
-  Dann ist der Rang von $D\varphi = 2$ und $\varphi$ stetig.
-
+  Dann ist
+  \begin{equation}
+    Z \cap Z = \{ x \in Z \mid x_{1}^{2} + x_{2}^{2} = 1 \} = \{ x \in Z \mid g(x_{1}, x_{2}, x_{3}) = 0 \}
+  \end{equation}
+  Und somit ist $Z$ eine 2-dimensionale Untermannigfaltigkeit des $\mathbb{R}^{3}$.
 \end{proof}
 
 \subsection{Teil b}
+
+Sei $a \in Z$.
+
 
 \subsection{Teil c}
 
