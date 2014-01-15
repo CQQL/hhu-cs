@@ -14,6 +14,30 @@
 
 \subsection{Teil a}
 
+\begin{proof}
+  Sei $a = (a_{1}, a_{2}, a_{3}) \in Z$.
+  Sei $V_{i} = \{ x \in Z \mid x_{1} \ne i \}$ für $i \in \{ 1, -1 \}$.
+  Sei $W = ]0, 2\pi[ \times \mathbb{R}$.
+  Dann ist $V_{i}$ offen in $M$ und $W$ offen in $\mathbb{R}^{2}$.
+  Definiere $\varphi_{i} : W \rightarrow \mathbb{R}^{3}$ durch
+  \begin{equation}
+    \varphi_{i}(x, y) = \begin{pmatrix}
+      i \cdot \cos(x)\\
+      \sin(x)\\
+      y
+    \end{pmatrix}
+  \end{equation}
+  \begin{equation}
+    D\varphi_{i}(x, y) = \begin{pmatrix}
+      -i \cdot \sin(x) & 0\\
+      \cos(x) & 0\\
+      0 & 1\\
+    \end{pmatrix}
+  \end{equation}
+  Dann ist der Rang von $D\varphi = 2$ und $\varphi$ stetig.
+
+\end{proof}
+
 \subsection{Teil b}
 
 \subsection{Teil c}
@@ -21,6 +45,14 @@
 \section{Aufgabe 46}
 
 \section{Aufgabe 47}
+
+\begin{proof}
+  Sei $Q = \{ A_{i} \mid i \in \Lambda \}$ eine offene Überdeckung von $A \cup B$.
+  Dann ist $Q$ ebenfalls eine offene Überdeckung von $A$ und von $B$.
+  Da $A$ und $B$ kompakt sind, gibt es eine endliche Teilüberdeckung $Q_{A}$ von $A$ und eine weitere endliche Teilüberdeckung $Q_{B}$ von $B$.
+  Die Vereinigung $Q_{A} \cup Q_{B}$ ist immernoch endlich und überdeckt $A \cup B$.
+  Somit ist $A \cup B$ kompakt.
+\end{proof}
 
 \section{Aufgabe 48}
 
@@ -30,6 +62,8 @@
   Sei $Q = \{ A_{i_{k}} \mid k \in \{ 1, 2, \dots, n \}, i_{k} \in \Lambda \}$ eine endliche Teilüberdeckung von $X$.
   Diese existiert, weil $X$ kompakt ist.
   Alle Elemente von $Q$ sind offene Teilmengen von $X$.
+
+  Angenommen es gäbe für jedes $\varepsilon > 0$ eine Kugel $Q$ vom Radius $\varepsilon$ in $X$, die nicht in irgendeinem
 \end{proof}
 
 \end{document}
