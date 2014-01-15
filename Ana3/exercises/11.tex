@@ -72,11 +72,23 @@ Sei $a \in Z$.
 \section{Aufgabe 49}
 
 \begin{proof}
-  Sei $Q = \{ A_{i_{k}} \mid k \in \{ 1, 2, \dots, n \}, i_{k} \in \Lambda \}$ eine endliche Teilüberdeckung von $X$.
-  Diese existiert, weil $X$ kompakt ist.
-  Alle Elemente von $Q$ sind offene Teilmengen von $X$.
+  Angenommen es gäbe für jedes $\varepsilon > 0$ mindestens ein $B_{\varepsilon} \subset X$, sodass $B_{\varepsilon} \notin A_{i}\ \forall i \in \Lambda$.
+  Definiere eine Folge $(x_{n})$ durch: $x_{k} \in X$ mit $B_{\frac{1}{k}}(x_{k}) \not\subset A_{i}\ \forall i \in \Lambda$.
+  Weil $X$ kompakt ist, gibt es eine konvergente Teilfolge $(x_{i_{n}})$, die gegen den Häufungspunkt $x$ konvergiert.
 
-  Angenommen es gäbe für jedes $\varepsilon > 0$ eine Kugel $Q$ vom Radius $\varepsilon$ in $X$, die nicht in irgendeinem
+  Sei $\{ A_{g_{n}} \}$ eine endliche Teilüberdeckung von $X$.
+  Dann ist gibt es ein $A \in \{ A_{g_{n}} \}$, das $x$ enthält, weil $\{ A_{g_{n}} \}$ eine Überdeckung ist.
+  Weil $A$ offen ist, gibt es ein $\delta$ für das $B_{\delta}(x) \subset A$ ist.
+  Da $x$ der Grenzwert der Folge $(x_{i_{n}})$ ist, gibt es ein $N \in \mathbb{N}$, sodass $||x_{i_{n}} - x|| < \frac{\delta}{2}$ gilt für alle $n \ge N$.
+  Außerdem gibt es $m \ge N$, sodass $\frac{1}{m} < \frac{\delta}{4}$.
+  Sei $b \in B_{\frac{1}{m}}(x_{m})$.
+  \begin{equation}
+    ||b - x|| \le ||b - x_{m}|| + ||x_{m} - x|| < \frac{\delta}{4} + \frac{\delta}{2} = \frac{3}{4}\delta
+  \end{equation}
+  Also ist $B_{\frac{1}{m}}(x_{m}) \subset B_{\delta}(x) \subset A$.
+  Dies ist jedoch ein Widerspruch dazu, dass es kein $A_{i}, i \in \Lambda$ gibt mit $B_{\frac{1}{m}}(x_{m}) \subset A_{i}$.
+
+  Also gibt es für mindestens ein $\varepsilon > 0$ kein $B_{\varepsilon} \subset X$, sodass $B_{\varepsilon} \notin A_{i}\ \forall i \in \Lambda$.
 \end{proof}
 
 \end{document}
