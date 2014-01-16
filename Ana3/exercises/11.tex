@@ -66,6 +66,24 @@ Also ist $\nu$ ein Einheitsnormalenfeld.
 
 \section{Aufgabe 46}
 
+\begin{proof}
+  $\subseteq$: Sei $x \in \partial S_{-}^{n - 1}$.
+  Dann ist $x \in S^{n - 1}$ per Definition von $\partial S_{-}^{n - 1}$.
+  Angenommen $x_{n} < 0$.
+  Dann gäbe es eine offene Umgebung um $x$, die vollständig in $S_{-}^{n - 1}$ liegt, also deren Schnitt mit $S^{n - 1} \setminus S_{-}^{n - 1}$ leer ist.
+  Widerspruch.
+
+  Angenommen $x_{n} > 0$.
+  Dann gäbe es eine Umgebung von $x$ in $S^{n - 1}$, in die eine offene Kugel passt, deren Radius höchstens $\frac{x_{n}}{2}$ oder noch kleiner wäre.
+  Der Schnitt dieser Kugel, die auch eine Umgebung von $x$ ist, mit $S_{-}^{n - 1}$ wäre jedoch leer.
+  Widerspruch.
+
+  Also ist $x_{n} = 0$.
+
+  $\supseteq$: Sei $x \in \{ x \in S^{n - 1} \mid x_{n} = 0 \}$ und $U$ eine offene Umgebung von $x$ in $S^{n - 1}$.
+  Da $x_{n} = 0$, ist $S_{-}^{n - 1} \cap U \supset \{ x \} \ne \emptyset$.
+\end{proof}
+
 \section{Aufgabe 47}
 
 \begin{proof}
