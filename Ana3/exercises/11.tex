@@ -24,7 +24,7 @@
   $g$ ist eine Submersion:
   \begin{equation}
     Rang Dg(x, y, z) = Rang \begin{pmatrix}
-      2x + y^{2} - 1 & x^{2} + 2y - 1 & 0
+      2x & 2y & 0
     \end{pmatrix} = 1 = 3 - 2
   \end{equation}
   Dann ist
@@ -36,10 +36,33 @@
 
 \subsection{Teil b}
 
-Sei $a \in Z$.
-
+Sei $a \in Z$ und $g$ aus Teil a.
+\begin{align*}
+  T_{a}(Z) & = \{ v \in \mathbb{R}^{3} \mid Dg(a) \cdot v = 0 \}\\
+  & = \{ v \in \mathbb{R}^{3} \mid 2a_{1} \cdot v_{1} + 2a_{2} \cdot v_{2} = 0 \}\\
+  & = \{ v \in \mathbb{R}^{3} \mid a_{1} \cdot v_{1} + a_{2} \cdot v_{2} = 0 \}\\
+  & = \begin{pmatrix}
+    a_{1}\\a_{2}\\0
+  \end{pmatrix}^{T}
+\end{align*}
 
 \subsection{Teil c}
+
+Definiere $\nu : Z \rightarrow \mathbb{R}^{3}$ durch
+\begin{equation}
+  \nu(x) = \begin{pmatrix}
+    x_{1}\\x_{2}\\0
+  \end{pmatrix}
+\end{equation}
+Sei $a \in Z$.
+\begin{equation}
+  ||\nu(a)||_{2} = \sqrt{a_{1}^{2} + a_{2}^{2} + 0^{2}} = \sqrt{a_{1}^{2} + a_{2}^{2}} = 1
+\end{equation}
+Sei $b \in T_{a}(Z)$.
+\begin{equation}
+  \langle \nu(a) | b \rangle = a_{1}b_{1} + a_{2}b_{2} = 0
+\end{equation}
+Also ist $\nu$ ein Einheitsnormalenfeld.
 
 \section{Aufgabe 46}
 

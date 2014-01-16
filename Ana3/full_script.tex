@@ -12,13 +12,15 @@
 \title{Analysis III, Wintersemester 2013-2014, Prof. Dr. Singhof}
 \author{Marten Lienen}
 
-\counterwithout{section}{chapter}
-\renewcommand{\thesection}{§\arabic{section}}
-
 \newtheorem{satz}{Satz}
 \newtheorem*{defi}{Definition}
 \newtheorem*{remark}{Bemerkung}
 \newtheorem*{example}{Beispiel}
+
+\counterwithout{section}{chapter}
+\renewcommand{\thesection}{§\arabic{section}}
+\counterwithin{satz}{section}
+\renewcommand{\thesatz}{\arabic{satz}}
 
 \begin{document}
 
@@ -255,7 +257,7 @@
     \item Sei $U$ eine offene Umgebung von $a$ in $\mathbb{R}^{n}$ und sei $g : U \rightarrow \mathbb{R}^{N - n}$ eine Submersion mit $M \cap U = \{ x \in U \mid g(x) = 0 \}$.
       Dann ist:
       \begin{equation}
-        T_{a}(M) = Kern(Dg(a)) = \{ v \in \mathbb{R}^{n} \mid Dg(a) \cdot = 0 \}
+        T_{a}(M) = Kern(Dg(a)) = \{ v \in \mathbb{R}^{n} \mid Dg(a) \cdot v = 0 \}
       \end{equation}
   \end{enumerate}
 \end{satz}
