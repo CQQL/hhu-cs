@@ -13,6 +13,7 @@
 \author{Marten Lienen}
 
 \newtheorem{satz}{Satz}
+\newtheorem*{lemma}{Lemma}
 \newtheorem*{defi}{Definition}
 \newtheorem*{remark}{Bemerkung}
 \newtheorem*{example}{Beispiel}
@@ -21,6 +22,8 @@
 \renewcommand{\thesection}{§\arabic{section}}
 \counterwithin{satz}{section}
 \renewcommand{\thesatz}{\arabic{satz}}
+
+\newcommand{\dotcup}{\ensuremath{\mathaccent\cdot\cup}}
 
 \begin{document}
 
@@ -51,6 +54,44 @@
 \section{Untermannigfaltigkeiten des $\mathbb{R}^{n}$}
 
 \section{Zusammenhängende metrische Räume}
+
+\begin{defi}
+  Ein metrischer Raum $X$ heißt \underline{zusammenhängend}, wenn die einzigen Teilmengen von $X$, die sowohl offen als auch abgeschlossen in $X$ sind, $\emptyset$ und $X$ sind.
+\end{defi}
+
+\begin{example}
+  $X = [0, 1] \cup [2, 3]$ ist nicht zusammenhängend, denn $[0, 1]$ und $[2, 3]$ sind offen und abgeschlossen in $X$.
+\end{example}
+
+\begin{remark}
+  Genau dann ist $X$ zusammenhängend, wenn gilt:
+  Sind $A, B$ offene Teilmengen von $X$ mit $X = A \dotcup B$, so ist $A \ne \emptyset$ oder $B \ne \emptyset$.
+\end{remark}
+
+\begin{satz}
+  Sei $X$ eine Teilmenge von $\mathbb{R}$, die mehr als einen Punkt enthält.
+  Genau dann ist $X$ zusammenhängend, wenn $X$ ein (offenes/abgeschlossenes/halboffenes/eigentliches/uneigentliches) Intervall ist.
+\end{satz}
+
+\begin{proof}
+  \begin{itemize}
+  \item Angenommen, $X$ sei kein Intervall.
+    Dann gibt es $x_{1}, x_{2}, \xi \in \mathbb{R}$ mit $x_{1}, x_{2} \in X$ und $x_{1} < \xi < x_{2}$.
+    Sei $A := \{ x \in X \mid x < \xi \}$ und $B := \{ x \in X \mid x > \xi \}$.
+    Dann ist $A \dotcup B = X$ und $A$ und $B$ sind offen in $X$ nach §10 Satz 3.
+  \item Angenommen $X$ sei nicht zusammenhängend.
+    Dann gibt es offene Teilmengen $A, B$ von $X$ mit $A \dotcup B = X$ und $A \ne \emptyset \ne B$.
+    Sei $a \in A$, $b \in B$.
+    O.b.d.A. sei $a < b$.
+    Wäre $X$ ein Intervall, so wäre $[a, b] \subseteq X$.
+    $M := \{ x \in A \mid x < b \}$.
+    Wegen $a \in M$ ist $M \ne \emptyset$.
+    $M$ ist nach oben beschränkt.
+    Sei $c := \sup M \in [a, b] \subseteq X$.
+    Da $A = X \setminus B$ abgeschlossen in $X$, folgt $c \in A$, also $c \notin B$.
+  \end{itemize}
+\end{proof}
+
 
 \begin{proof}
   Beweisskizee als Hilfestellung für Übung:
@@ -421,5 +462,118 @@
   Sei $X$ ein metrischer Raum, $f : X \rightarrow \mathbb{R}$ eine Funktion.
   Mit $Supp(f)$ bezeichnet man den Abschluss der Menge $\{ x \in X \mid f(x) \ne 0 \}$ in $X$ und nennt $Supp(f)$ den \underline{Träger} von $f$.
 \end{defi}
+
+\begin{remark}
+  Ziel: gegeben eine Untermannigfaltigkeit $M$ von $\mathbb{R}^{N}$, ein Atlas $\mathscr{A}$ von $M$ und eine $C^{\infty}$-Abbildung $f : M \rightarrow \mathbb{R}$ (Funktion).
+  Wir wollen $f$ als Summe von $C^{\infty}$-Funktionen $f_{\alpha}$ schreiben, so dass gilt: Für jedes $\alpha$ gibt es eine Karte $\varphi : W \rightarrow V$ in $\mathscr{A}$ mit $Supp(f_{\alpha}) \subseteq V$.
+\end{remark}
+
+\begin{lemma}
+  Definiert man $f : \mathbb{R} \rightarrow \mathbb{R}$ durch
+  \begin{equation}
+    f(x) := \begin{cases}
+      0 & \textit{wenn $x \le 0$}\\
+      \exp(-\frac{1}{x^{2}}) & \textit{wenn $x > 0$}
+    \end{cases}
+  \end{equation}
+  so ist $f$ von der Klsse $C^{\infty}$.
+\end{lemma}
+
+\begin{proof}
+  \begin{equation}
+    \lim_{x \rightarrow 0} f(x) = \lim_{t \rightarrow \infty} exp(t) = 0
+  \end{equation}
+  deswegen ist $f$ stetig in $0$.
+  Für $x > 0$ ist $f'(x) = \frac{2}{x^{3}}\exp(-\frac{1}{x^{2}})$, allgemeiner $f^{(n)}(x) = P_{n}(\frac{1}{x})\exp(-\frac{1}{x^{2}})$, wobei jedes $P_{n}$ ein Polynom ist.
+  Also $\lim_{x \rightarrow 0} f^{(n)}(x) = 0$.
+  Deswegen ist $f$ von der Klasse $C^{\infty}$.
+\end{proof}
+
+\begin{satz}
+  Es gibt eine $C^{\infty}$-Funktion $g : \mathbb{R}^{n} \rightarrow \mathbb{R}$ mit
+  \begin{itemize}
+  \item $g(x) > 0$ für $x \in ]-1, 1[^{n}$
+  \item $Supp(g) = [-1, 1]^{n}$
+  \end{itemize}
+\end{satz}
+
+\begin{proof}
+  Sei $f$ wie im Lemma.
+  Definiere $f_{1} : \mathbb{R} \rightarrow \mathbb{R}$ durch $f_{1}(x) := f(1 + x)f(1 - x)$.
+  Dann ist $f_{1} \ge 0$ und $Supp(f_{1}) = [-1, 1]$.
+  Sei $g(x_{1}, \dots, x_{n}) = f_{1}(x_{1}) \cdot \dots \cdot f_{n}(x_{n})$.
+\end{proof}
+
+\begin{satz}
+  Sei $U$ offen in $\mathbb{R}^{n}$ und $X$ eine kompakte Teilmenge von $\mathbb{R}^{n}$.
+  Seien $A_{1}, \dots, A_{m}$ offene Teilmengen von $U$ mit $X \subseteq A_{1} \cup \dots \cup A_{m}$.
+  Dann gibt es $C^{\infty}$-Funktionen $g_{1}, \dots, g_{m} : U \rightarrow \mathbb{R}$ mit
+  \begin{itemize}
+  \item $g_{j}(x) \ge 0\ \forall x \in U, \forall j$
+  \item $\sum_{j = 1}^{m} g_{j}(x) \le 1\ \forall x \in U$
+  \item $\forall j$ ist $Supp(g_{j})$ kompakt und enthalten in $A_{j}$
+  \item $\forall x \in X$ ist $\sum_{j = 1}^{m} g_{j}(x) = 1$
+  \end{itemize}
+  Man nennt die Menge $g_{1}, \dots, g_{m}$ eine der Überdeckung $\{ a_{1}, \dots, A_{m} \}$ \underline{untergeordnete Zerlegung der Eins} auf $X$.
+\end{satz}
+
+\begin{proof}
+  Nach Satz 1 gibt es eine $C^{\infty}$-Funktion $g : \mathbb{R}^{n} \rightarrow \mathbb{R}$ mit $g(x) > 0\ \forall x \in ]-1, 1[^{n}$ und $Supp(g) = [-1, 1]^{n}$.
+  $\forall x \in X$ wähle ein $k_{x} \in \{ 1, \dots, m \}$ mit $x \in A_{k_{x}}$, ein $r_{x} > 0$ mit $B_{r_{x}}(x) \subseteq A_{k_{x}}$ und einen Diffeomorphismus $\varphi_{x}$ von $B_{r_{x}}(x)$ auf $\mathbb{R}^{n}$ mit $\varphi_{x}(x) = 0$.
+  Definiere $f_{x} : U \rightarrow \mathbb{R}$
+  \begin{equation}
+    f_{x}(y) = \begin{cases}
+      g(\varphi_{x}(y)) & \textit{wenn $y \in B_{r_{x}}(x)$}\\
+      0 & \textit{sonst}
+    \end{cases}
+  \end{equation}
+  Dann ist $f_{x} \ge 0$, glatt, $C^{\infty}$ und $f_{x}(x) > 0$.
+  $Supp(f_{x})$ ist kompakt und $\subseteq A_{k_{x}}$.
+  Sei $C_{x} := \varphi_{x}^{-1}(]-1, 1[^{n})$.
+  Dann ist $C_{x}$ offen mit $x \in C_{x}$.
+  Also bilden die $C_{x}$ mit $x \in X$ eine offene Überdeckung von $X$.
+  Weil $X$ kompakt ist, gibt es eine endliche Teilüberdeckung $(x_{1}, \dots, x_{N}\textit{ mit }X \subseteq C_{x_{1}} \cup \dots C_{x_{N}})$.
+  Für $j = 1, \dots, m$ sei $h_{j} : U \rightarrow \mathbb{R}$ definiert durch
+  \begin{equation}
+    h_{j} = \sum_{i \in [1, \dots, N]\\k_{x_{i}} = j} f_{x_{i}}
+  \end{equation}
+  Dann ist $h_{j}$ glatt; es ist
+  \begin{itemize}
+  \item $h_{j} \ge 0$ auf U
+  \item $Supp(h_{j})$ ist kompakt und $\subseteq A_{j}$
+  \item Für $x \in X$ ist $\sum_{j = 1}^{m} h_{j}(x) > 0$
+  \end{itemize}
+  Sei $h := \sum_{j = 1}^{m} h_{j} : U \rightarrow \mathbb{R}$.
+  Dann ist $h$ aus $C^{\infty}$.
+  Sei $K := Supp(h)$.
+  Dann ist $K$ kompakt und $X \subseteq K$.
+  $\partial K$ ist eine kompakte Teilmenge von $U \setminus X$.
+  Wende das bisher Bewiesene an auf
+  \begin{itemize}
+  \item $U \setminus X$ statt $U$
+  \item $\partial K$ statt $X$
+  \end{itemize}
+  Man erhält (statt $h$) eine glatte Funktion $\tilde{h} : U \setminus X \rightarrow \mathbb{R}$ mit
+  \begin{itemize}
+  \item $\tilde{h} \ge 0$ auf $U \setminus X$
+  \item $\tilde{K} := Supp(\tilde{h})$ ist kompakt und enthalten in $U \setminus X$
+  \item Für $x \in \partial K$ ist $\tilde{h}(x) > 0$
+  \end{itemize}
+  Wir können $\tilde{h}$ auf ganz $U$ fortsetzen zu einer glatten Funktion durch $\tilde{h}(x) := 0\ \forall x \in X$.
+  Definiere $g_{j} : U \rightarrow \mathbb{R}$ durch
+  \begin{equation}
+    g_{j}(x) := \begin{cases}
+      \frac{h_{j}(x)}{h(x) + \tilde{h}(x)} & \textit{falls $h(x) + \tilde{h}(x) \ne 0$}\\
+      0 & \textit{sonst}
+    \end{cases}
+  \end{equation}
+  Dann ist $g_{j}$ glatt, $g_{j} \ge 0$, $\sum_{j = 1}^{m} g_{j}(x) = \frac{h(x)}{h(x) + \tilde{h}(x)} \le 1$, falls $h(x) + \tilde{h}(x) \ne 0$.
+  $Supp(g_{j}) = Supp(h_{j})$ ist kompakt und $\subseteq A_{j}$.
+  Für $x \in X$ ist $h(x) > 0$ und $\tilde{h}(x) = 0$, also $\sum_{j = 1}^{m} g_{j}(x) = \frac{h(x)}{h(x)} = 1$.
+\end{proof}
+
+\section{Alternierende Multilinearformen}
+
+
 
 \end{document}
