@@ -55,6 +55,34 @@
 
 \section{Untermannigfaltigkeiten des $\mathbb{R}^{n}$}
 
+\begin{remark}
+  Sei $I = [a, b] \subset \mathbb{R}$.
+  Dann ist $I$ eine abgeschlossene 1-dimensionale Untermannigfaltigkeit mit Rand von $\mathbb{R}$ und $\partial I = \{ a, b \}$.
+  Ist $f : \mathbb{R} \rightarrow \mathbb{R}$ von der Klasse $C^{1}$, so ist $\int_{I} f'(x)\ dx = f(b) - f(a) = \int_{\partial I} f$ (man muss aufs Vorzeichen achten).
+\end{remark}
+
+\begin{remark}
+  Ist $X$ eine $n$-dimensionale abgeschlossene Untermannigfaltigkeit mit Rand von $M \subseteq \mathbb{R}^{N}$, so ist $\partial X \subseteq X$.
+\end{remark}
+
+\begin{satz}
+  Ist $M$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{N}$ und $X$ eine abgeschlossene $n$-dimensionale Untermannigfaltigkeit mit Rand von $M$, so ist $\partial X$ eine $(n - 1)$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{N}$.
+\end{satz}
+
+\begin{proof}
+  Sei $a \in X$ und $\varphi : V \rightarrow W$ eine randadaptierte Karte von $M$ bezüglich $X$ mit $a \in W$.
+  Sei $W_{0} := \partial X \cap W$, $V_{0} := \{ x \in \mathbb{R}^{n - 1} \mid (0, x) \in V \}$, $\varphi_{0} : V_{0} \rightarrow W_{0}$ definiert durch $\varphi_{0}(x) := \varphi(0, x)$.
+  Dann ist $\varphi_{0}$ eine Karte von $\partial X$ mit $a \in W_{0}$.
+\end{proof}
+
+\begin{remark}
+  Eine Manigfaltigkeit (im bisherigen Sinn) ist auch eine Manigfaltigkeit mit Rand, deren Rand leer ist; $X \setminus \partial X$ ist eine $n$-dimensionale Manigfaltigkeit ohne Rand.
+\end{remark}
+
+\begin{remark}
+  Ist $X$ wie in Satz 5 und $a \in \partial X$, so gibt es eine offene Umgebung $W$ von $a \in X$, die homöomorph zu $\mathbb{R}_{-}^{n}$.
+\end{remark}
+
 \section{Zusammenhängende metrische Räume}
 
 \begin{defi}
@@ -94,9 +122,128 @@
   \end{itemize}
 \end{proof}
 
+\begin{satz}
+  Seien $X, Y$ metrische Räume und sei $f : X \rightarrow Y$ eine stetige, surjektive Abbildung.
+  Ist $X$ zusammenhängend, so auch $Y$.
+\end{satz}
 
 \begin{proof}
-  Beweisskizee als Hilfestellung für Übung:
+  Seien $A, B$ offen in $Y$ mit $Y = A \dotcup B$.
+  Dann ist $X = f^{-1}(A) \dotcup f^{-1}(B)$.
+  Weil $f$ stetig ist, sind $f^{-1}(A)$ und $f^{-1}(B)$ offen in $X$.
+  Weil $X$ zusammenhängend ist, ist $f^{-1}(A) \ne \emptyset$ oder $f^{-1}(B) \ne \emptyset$.
+  Ist etwa $f^{-1}(A) \ne \emptyset$, so ist auch $A \ne \emptyset$, denn, weil $f$ surjektiv ist, ist $A = f(f^{-1}(A))$.
+  Deswegen ist $Y$ zusammenhängend.
+\end{proof}
+
+\begin{remark}
+  Satz 1 und Satz 2 zusammen sind eine weitgehende Verallgemeinerung des Zwischenwertsatzes.
+\end{remark}
+
+\begin{lemma}
+  Sei $X$ ein metrischer Raum, $C$ ein zusammenhängender Teilraum von $X$.
+  Dann ist auch $\bar{C}$ zusammenhängend ($\bar{C}$ ist der Abschluss von $C$ in $X$).
+\end{lemma}
+
+\begin{proof}
+  Seien $A, B$ offene Teilmengen von $\bar{C}$ mit $\bar{C} = A \dotcup B$.
+  Dann gibt es (nach §10 Satz 3) offene Teilmengen $A', B'$ von $X$ mit $A = \bar{C} \cap A'$ und $B = \bar{C} \cap B'$.
+  Nach Satz 3 §10 sind $C \cap A'$ und $C \cap B'$ offen in $C$.
+  Es ist $C \cap A' \subseteq \bar{C} \cap A' = A$, also $C \cap A' = C \cap A$; ebenso ist $C \cap B' = C \cap B$.
+  Deswegen ist $C = (C \cap A') \dotcup (C \cap B')$.
+  Also ist o.B.d.A. $C \cap A' = \emptyset$.
+  Wäre $A'$ nicht leer, so wäre auch $A' \cap C$ nicht leer (gäbe es $x \in A' \cap C$, so wäre $c \in C$ und $A'$ Umgebung von $x$ in $X$).
+\end{proof}
+
+\begin{lemma}
+  Sei $X$ ein metrischer Raum, $X = \cup_{i \in I} X_{i}$.
+  Jedes $X_{i}$ sei zusammenhängend und $\cap_{i} X_{i} \ne \emptyset$.
+  Dann ist $X$ zusammenhängend.
+\end{lemma}
+
+\begin{proof}
+  Seien $A, B$ offen in $X$ mit $X = A \dotcup B$.
+  Angenommen $A \ne \emptyset \ne B$.
+  Es gibt ein $a \in \cap_{i} X_{i}$.
+  Sei o.B.d.A. $a \in A$.
+  Weil $B \ne \emptyset$, gibt es ein $b \in B$.
+  Es gibt ein $i_{0} \in I$ mit $b \in X_{i_{0}}$.
+  $a$ ist insbesondere auch in $X_{i_{0}}$.
+  Deshalb ist $X_{i_{0}}$ die disjunkte Vereinigung der beiden nicht-leeren, offenen Teilräume $X_{i_{0}} \cap A$ und $X_{i_{0}} \cap B$, Widerspruch.
+\end{proof}
+
+\begin{defi}
+  Sei $X$ ein metrischer Raum, $x \in X$.
+  Dann sei $C(x)$ die Vereinigung aller zusammenhängenden Teilräume von $X$, die $x$ enthalten.
+  $C(x)$ heißt die \underline{Zusammenhangskomponente} von $x$ in $X$.
+\end{defi}
+
+\begin{example}
+  \begin{itemize}
+  \item Ist $X = [1, 2] \cup [3, 4] \subset \mathbb{R}$.
+    Dann ist $C(1) = [1, 2]$.
+  \item Ist $X = \mathbb{Q} \subset \mathbb{R}$ und $x \in X$, so ist $C(x) = \{ x \}$.
+  \end{itemize}
+\end{example}
+
+\begin{satz}
+  Sei $X$ ein metrischer Raum, $x, y \in X$.
+  \begin{enumerate}[label={\alph*)}]
+  \item $C(x)$ ist die größte zusammenhängende Teilmenge von $X$, die $x$ enthält
+  \item Entweder ist $C(x) = C(y)$ oder $C(x) \cap C(y) = \emptyset$
+  \item $C(x)$ ist abgeschlossen in $X$
+  \end{enumerate}
+\end{satz}
+
+\begin{proof}
+  \begin{enumerate}[label={\alph*)}]
+  \item Folgt aus Lemma 2
+  \item Sei $C(x) \cap C(y) \ne \emptyset$.
+    Nach Lemma 2 ist $C(x) \cup C(y)$ zusammenhängend.
+    Weil $C(x)$ die größte zusammenhängende Teilmenge von $X$, die $x$ enthält, ist, ist $C(x) = C(x) \cup C(y)$, also $C(y) \subseteq C(x)$.
+    Ebenso $C(x) \subseteq C(y)$.
+  \item Folgt aus a) und Lemma 1
+  \end{enumerate}
+\end{proof}
+
+\begin{remark}
+  Im Allgemeinen ist $C(x)$ \underline{nicht} offen in $X$, wie das Beispiel $X = \mathbb{Q}$ zeigt.
+\end{remark}
+
+\begin{defi}
+  Sei $X$ ein metrischer Raum.
+  $X$ heißt \underline{wegzusammenhängend}, wenn gilt:
+  Sind $a, b \in X$, so gibt es eine stetige Abbildung $w : [0, 1] \rightarrow X$ (einen Weg) mit $w(0) = a$ und $w(1) = b$.
+\end{defi}
+
+\begin{satz}
+  Ein wegzusammenhängender metrischer Raum ist zusammenhängend.
+\end{satz}
+
+\begin{proof}
+  Wähle $x_{0} \in X$.
+  Für jedes $x \in X$ gibt es einen Weg $w_{x} : [0, 1] \rightarrow X$ mit $w(0) = x_{0}$ und $w(1) = x$.
+  Nach Satz 1 ist $[0, 1]$ zusammenhängend.
+  Nach Satz 2 ist $w_{x}([0, 1])$ zusammenhängend.
+  $X = \cup_{x \in X} w_{x}([0, 1])$ und $x_{0} \in \cap_{x} w_{x}([0, 1])$.
+  Nach Lemma 2 ist $X$ zusammenhängend.
+\end{proof}
+
+\begin{remark}
+  Es gibt zusammenhängende metrische Räume, die \underline{nicht} wegzusammenhängend sind, z.B. $\{ (0, y) \mid y \in \mathbb{R} \} \cup \{ (x, \sin(\frac{1}{x})) \mid x > 0 \} \subset \mathbb{R}^{2}$.
+\end{remark}
+
+\begin{satz}
+  Sei $M$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{N}$.
+  \begin{enumerate}[label={\alph*)}]
+  \item $M$ ist genau dann zusammenhängend, wenn $M$ wegzusammenhängend ist
+  \item Die Zusammenhangskomponenten von $M$ sind offen in $M$
+  \item Die Zusammenhangskomponenten von $M$ sind $n$-dimensionale Untermannigfaltigkeiten von $\mathbb{R}^{N}$
+  \end{enumerate}
+  Entsprechendes gilt für Untermannigfaltigkeiten mit Rand.
+\end{satz}
+
+\begin{proof}[Beweisskizee als Hilfestellung für Übung]
   \begin{enumerate}[label={\alph*)}]
   \item Sei $M$ zusammenhängend.
     Sei $x_{0} \in M$.
