@@ -3,6 +3,7 @@
 \usepackage[german]{babel}
 \usepackage{mathrsfs}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
@@ -15,6 +16,7 @@
 \newtheorem{satz}{Satz}
 \newtheorem*{lemma}{Lemma}
 \newtheorem*{defi}{Definition}
+\newtheorem*{name}{Bezeichnung}
 \newtheorem*{remark}{Bemerkung}
 \newtheorem*{example}{Beispiel}
 
@@ -463,8 +465,8 @@
   Mit $Supp(f)$ bezeichnet man den Abschluss der Menge $\{ x \in X \mid f(x) \ne 0 \}$ in $X$ und nennt $Supp(f)$ den \underline{Träger} von $f$.
 \end{defi}
 
-\begin{remark}
-  Ziel: gegeben eine Untermannigfaltigkeit $M$ von $\mathbb{R}^{N}$, ein Atlas $\mathscr{A}$ von $M$ und eine $C^{\infty}$-Abbildung $f : M \rightarrow \mathbb{R}$ (Funktion).
+\begin{remark}[Ziel]
+  Gegeben eine Untermannigfaltigkeit $M$ von $\mathbb{R}^{N}$, ein Atlas $\mathscr{A}$ von $M$ und eine $C^{\infty}$-Abbildung $f : M \rightarrow \mathbb{R}$ (Funktion).
   Wir wollen $f$ als Summe von $C^{\infty}$-Funktionen $f_{\alpha}$ schreiben, so dass gilt: Für jedes $\alpha$ gibt es eine Karte $\varphi : W \rightarrow V$ in $\mathscr{A}$ mit $Supp(f_{\alpha}) \subseteq V$.
 \end{remark}
 
@@ -574,6 +576,97 @@
 
 \section{Alternierende Multilinearformen}
 
+\begin{remark}
+  Sei $U$ offen in $\mathbb{R}^{3}$, sei $C^{\infty}(U)$ die Menge aller $C^{\infty}$-Funktionen $F : U \rightarrow \mathbb{R}$ und sei $\mathfrak{V}$ die Menge der glatten Vektorfelder auf $U$, d.h. der $C^{\infty}$-Abbildungen $F = (f_{1}, f_{2}, f_{3}) : U \rightarrow \mathbb{R}^{3}$.
+  Dann hat man lineare Abbildungen
+  \begin{equation}
+    C^{\infty}(U) \xrightarrow{grad} \mathfrak{V} \xrightarrow{rot} \mathfrak{V} \xrightarrow{div} C^{\infty}(U)
+  \end{equation}
+  definiert durch
+  \begin{equation}
+    grad(f) = \begin{pmatrix}
+      \frac{\partial f}{\partial x_{1}}\\
+      \frac{\partial f}{\partial x_{2}}\\
+      \frac{\partial f}{\partial x_{3}}
+    \end{pmatrix}
+  \end{equation}
+  \begin{equation}
+    rot(f_{1}, f_{2}, f_{3}) = \begin{pmatrix}
+      \frac{\partial f_{3}}{\partial x_{2}} - \frac{\partial f_{2}}{\partial x_{3}}\\
+      \frac{\partial f_{1}}{\partial x_{3}} - \frac{\partial f_{3}}{\partial x_{1}}\\
+      \frac{\partial f_{2}}{\partial x_{1}} - \frac{\partial f_{1}}{\partial x_{2}}
+    \end{pmatrix}
+  \end{equation}
+  \begin{equation}
+    div(f_{1}, f_{2}, f_{3}) = \frac{\partial f_{1}}{\partial x_{1}} + \frac{\partial f_{2}}{\partial x_{2}} + \frac{\partial f_{3}}{\partial x_{3}}
+  \end{equation}
+  Wir wissen $rot \circ grad = 0$, $div \circ rot = 0$.
+  Ist $U$ z.B. konvex, so gilt: Ist $rot(F) = 0$, so $\exists f$ mit $grad(f) = F$ und ist $div(F) = 0$, so $\exists G$ mit $rot(G) = F$.
+\end{remark}
 
+\begin{remark}[Ziel von §15 und §16]
+  Verallgemeinerung dieses Kalküls auf beliebige Dimensionen und auf Untermannigfaltigkeiten des $\mathbb{R}^{n}$.
+\end{remark}
+
+\begin{name}
+  \begin{enumerate}[label={\alph*)}]
+  \item Sei $e_{1}, \dots, e_{n}$ die übliche Basis von $\mathbb{R}^{n}$.
+  \item Sei $(\mathbb{R}^{n})^{*}$ der Dualraum von $\mathbb{R}^{n}$, d.h. der Vektorraum aller linearen Abbildungen $\mathbb{R}^{n} \rightarrow \mathbb{R}$.
+    $(\mathbb{R}^{n})^{*}$ ist ein $n$-dimensionaler $\mathbb{R}$-Vektorraum mit der Basis $\Delta_{1}, \dots, \Delta_{n}$ wobei
+    \begin{equation}
+      \Delta_{i}(e_{j}) = \begin{cases}
+        1 & \textit{wenn $i = j$}\\
+        0 & \textit{sonst}
+      \end{cases}
+    \end{equation}
+  \end{enumerate}
+\item Für $k \in \mathbb{N}$ sei $(\mathbb{R}^{n})^{k}$ der Vektorraum der $n \times k$-Matrizen.
+\end{name}
+
+\begin{defi}
+  Eine \underline{alternierende Multilinearform vom Grad k} auf $\mathbb{R}^{n}$, kurz \underline{alternierende $k$-Form} auf $\mathbb{R}^{n}$, ist eine Abbildung $\omega : (\mathbb{R}^{n})^{*} \rightarrow \mathbb{R}$ mit folgenden Eigenschaften
+  \begin{enumerate}
+  \item $\omega$ ist linear in jedem Argument
+  \item $\omega(\dots, v_{i}, \dots, v_{j}, \dots) = -\omega(\dots, v_{j}, \dots, v_{i}, \dots)$, wenn alle anderen Argumente fest bleiben
+  \end{enumerate}
+\end{defi}
+
+\begin{example}
+  Die Determinante $\det$ ist eine alternierende $n$-Form auf $\mathbb{R}^{n}$.
+\end{example}
+
+\begin{remark}
+  Die alternierenden $k$-Formen auf $\mathbb{R}^{n}$ bilden einen $\mathbb{R}$-Vektorraum, der mit $\Lambda^{k}(\mathbb{R}^{n})^{*}$ bezeichnet wird (für $k \in \mathbb{N}$).
+\end{remark}
+
+\begin{example}
+  \begin{equation}
+    \Lambda^{1}(\mathbb{R}^{n})^{*} = (\mathbb{R}^{n})^{*}
+  \end{equation}
+  \begin{equation}
+    \Lambda^{0}(\mathbb{R}^{n})^{*} = \mathbb{R}
+  \end{equation}
+\end{example}
+
+\begin{remark}
+  Bedingung 2 ist äquivalent zu $\omega(\dots, v, \dots, v, \dots) = 0$.
+\end{remark}
+
+\begin{defi}
+  Sind $\varphi_{1}, \dots, \varphi_{n} \in (\mathbb{R}^{n})^{*}$, so definiere $\varphi_{1} \wedge \dots \wedge \varphi_{n} \in \Lambda^{k}(\mathbb{R}^{n})^{*}$ durch
+  \begin{equation}
+    (\varphi_{1} \wedge \dots \wedge \varphi_{n})(v_{1}, \dots, v_{n}) := \det \begin{pmatrix}
+      \varphi_{1}(v_{1}) & \dots & \varphi_{1}(v_{k})\\
+      \vdots & & \vdots\\
+      \varphi_{k}(v_{1}) & \dots & \varphi_{k}(v_{k})
+    \end{pmatrix}
+  \end{equation}
+\end{defi}
+
+\begin{example}
+  \begin{equation}
+    \Delta_{1} \wedge \dots \wedge \Delta_{n} = \det
+  \end{equation}
+\end{example}
 
 \end{document}
