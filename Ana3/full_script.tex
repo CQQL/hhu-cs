@@ -337,4 +337,89 @@
   \end{enumerate}
 \end{defi}
 
+\begin{remark}
+  Meist sagt man: ``Sei $M$ eine orientierte Manigfaltigkeit.'' statt ``Sei $(M, \sigma)$ eine orientierte Manigfaltigkeit''.
+\end{remark}
+
+\begin{example}
+  \begin{itemize}
+  \item Sei $M$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{N}$.
+    Es gebe eine Karte $\varphi$ von $M$, so dass $M$ das Bild von $\varphi$ ist.
+    Dann ist $\{ \varphi \}$ ein orientierter Atlas von $M$; daher ist $M$ orientierbar.
+  \item Ist insbesondere $U$ offen in $\mathbb{R}^{n}$, so ist $U$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{n}$ mit Atlas $\{ id_{U} \}$.
+    Er definiert eine Orientierung von $U$, die sogenannte \underline{kanonische Orientierung}.
+  \end{itemize}
+\end{example}
+
+\begin{remark}
+  Sei $M$ eine $n$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{N}$ mit $n \ge 1$ und $M$ orientierbar.
+  \begin{enumerate}[label={\alph*)}]
+  \item Es gibt einen orientierten Atlas $\mathscr{A}$ von $M$, so dass alle Karten von $\mathscr{A}$ den Definitionsbereich $\mathbb{R}^{n}$ haben.
+  \item Sei $\mathscr{A}$ ein orientierter Atlas wie in a).
+    Ist $\varphi : \mathbb{R}^{n} \rightarrow V$ eine Karte in $\mathscr{A}$, so definieren wir $\tilde{\varphi} : \mathbb{R}^{n} \rightarrow V$ durch $\tilde{\varphi}(x_{1}, \dots, x_{n}) := \varphi(-x_{1}, x_{2}, \dots, x_{n})$.
+    Dann ist $\tilde{\varphi}$ eine Karte von $M$ und $\varphi$ und $\tilde{\varphi}$ sind nicht gleichorientiert.
+    Sei $\tilde{\mathscr{A}}$ die Menge aller $\tilde{\varphi}$ mit $\varphi \in \mathscr{A}$.
+    Dann ist $\tilde{\mathscr{A}}$ ein orientierter Atlas von $M$ und $\mathscr{A}$ und $\tilde{\mathscr{A}}$ sind nicht äquivalent.
+    Deswegen besitzt $M$ mindestens zwei verschiedene Orientiertungen (falls $M \ne \emptyset$).
+  \item Ist $M$ orientierbar und zusammenhängend, so besitzt $M$ genau zwei Orientiertungen.
+  \end{enumerate}
+\end{remark}
+
+\begin{satz}
+  Sei $M$ eine Hyperfläche in $\mathbb{R}^{N}$.
+  Dann sind äquivalent:
+  \begin{enumerate}[label={\alph*)}]
+  \item $M$ ist orientierbar
+  \item Es gibt ein Einheitsnormalenfeld auf $M$
+  \end{enumerate}
+\end{satz}
+
+\begin{proof}
+  $a) \Rightarrow b)$: Sei $\mathscr{A}$ ein orientierter Atlas von $M$.
+  Sei $a \in M$.
+  Wähle eine Karte $\varphi : W \rightarrow V$ in $\mathscr{A}$ mit $a \in V$ und sei $b \in W$ mit $\varphi(b) = a$.
+  Die lineare Abbildung $D\varphi(b)$ ist injektiv.
+  Ist $e_{1}, \dots, e_{n}$ die Standardbasis von $\mathbb{R}^{n}$, so ist $D\varphi(b)e_{1}, \dots, D\varphi(b)e_{n}$ eine Basis von $T_{a}(M)$ (nach Satz 1).
+  Sei $\nu(a)$ dasjenige der beiden Elemente vom Normalenraum $N_{a}(M)$ mit Norm $1$, für das die Matrix mit den Spalten $D\varphi(b)e_{1}, \dots, D\varphi(b)e_{n}, \nu(a)$ positive Determinante hat.
+  Dann ist $\nu$ ein Einheitsnormalenfeld auf $M$.
+\end{proof}
+
+\begin{example}
+  \begin{itemize}
+  \item $S^{n - 1}$ ist orientierbar, weil es Einheitsnormalenfelder auf $S^{n - 1}$ gibt
+  \item Das Möbiusband ist nicht orientierbar
+  \end{itemize}
+\end{example}
+
+\begin{remark}
+  Der Beweis von Satz 2 liefert für Hyperflächen eine Bijektion von der Menge der Orientierungen auf die Menge der Einheitsnormalenfelder.
+\end{remark}
+
+\begin{satz}
+  Sei $M$ eine $n$-dimensionale orientierte Untermannigfaltigkeit von $\mathbb{R}^{N}$, $n \ge 2$.
+  Sei $X$ eine abgeschlossene $n$-dimensionale Untermannigfaltigkeit mit Rand von $M$.
+  Dann ist die $(n - 1)$-dimensionale Untermannigfaltigkeit $\partial X$ von $\mathbb{R}^{N}$ orientierbar.
+\end{satz}
+
+\begin{proof}
+  Sei $\mathscr{A}$ ein Atlas von $M$, der zur gegebenen Orientierung gehört und folgende Eigenschaften hat:
+  \begin{itemize}
+  \item Ist $\varphi : W \rightarrow V$ eine Karte aus $\mathscr{A}$ mit $V \cap \partial X \ne \emptyset$, so ist $\varphi$ randadaptiert, d.h. $\varphi(\mathbb{R}_{-}^{n} \cap W) = X \cap V$, $\varphi(\partial \mathbb{R}_{-}^{n} \cap W) = \partial X \cap V$, $\mathbb{R}_{-}^{n} := \{ x \in \mathbb{R}^{n} \mid x_{1} \le 0 \}$.
+  \item Wenn man eine Karte $\varphi : W \rightarrow V$ hat, so setzt man $W_{0} := \{ x \in \mathbb{R}^{n - 1} \mid (0, x) \in W \}$, $V_{0} := V \cap \partial X$.
+    $\varphi_{0} : W_{0} \rightarrow V_{o}$ sei gegeben durch $\varphi_{0}(x) := \varphi(0, x)$.
+  \end{itemize}
+  Dann bilden die $\varphi_{0}$ eine orientierten Atlas von $\partial X$.
+\end{proof}
+
+\begin{defi}
+  Ist $\sigma$ eine Orientierung von $M$, so liefert der Beweis von Satz 3 eine Orientierung von $\partial X$, welche die von $\sigma$ \underline{induzierte Orientierung} von $\partial X$ heißt.
+\end{defi}
+
+\section{Glatte Zerlegung der Eins}
+
+\begin{defi}
+  Sei $X$ ein metrischer Raum, $f : X \rightarrow \mathbb{R}$ eine Funktion.
+  Mit $Supp(f)$ bezeichnet man den Abschluss der Menge $\{ x \in X \mid f(x) \ne 0 \}$ in $X$ und nennt $Supp(f)$ den \underline{Träger} von $f$.
+\end{defi}
+
 \end{document}
