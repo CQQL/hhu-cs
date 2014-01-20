@@ -10,6 +10,11 @@
 
 \begin{document}
 
+Stochastik 1, Blatt 10\\
+Gruppe 1\\
+Marten Lienen (2126759)\\
+Fabian Schmittmann (2083559)
+
 \section{Aufgabe 37}
 
 Sei $X$ eine Zufallsvariable für die Anzahl der Kranken $k$.
@@ -20,7 +25,11 @@ Die Likelihood-Funktion ist
 \end{equation}
 Der Übergang zur log-Likelihood liefert
 \begin{equation}
-  L'(n; X) = \log(n!) - \log(k!) - \log((n - k)!) + k \cdot \log(p) + (n - k) \cdot \log(1 - p)
+  \log L(n; X) = \log(n!) - \log(k!) - \log((n - k)!) + k \cdot \log(p) + (n - k) \cdot \log(1 - p)
+\end{equation}
+Und die erste Ableitung nach $n$ ist
+\begin{equation}
+  \frac{\partial}{\partial n} \log L(n; X) = \frac{(n!)'}{n!} - \frac{((n - k)!)'}{(n - k)!} + \log(1 - p)
 \end{equation}
 
 \section{Aufgabe 38}
@@ -36,6 +45,27 @@ Der Übergang zur log-Likelihood liefert
 \section{Aufgabe 39}
 
 \subsection{Teil a}
+
+\begin{align*}
+  L(\sigma; x_{1}, \dots, x_{n}) & = \prod_{i = 1}^{n} \frac{1}{\sqrt{2 \pi} \cdot \sigma} \cdot e^{-\frac{x_{i}^{2}}{2\sigma^{2}}}\\
+\end{align*}
+Log-Likelihood
+\begin{align*}
+  \log L(\sigma; x_{1}, \dots, x_{n}) & = n \cdot \log(\frac{1}{\sqrt{2 \pi} \cdot \sigma}) + \sum_{i = 1}^{n} \log\left( e^{-\frac{x_{i}^{2}}{2\sigma^{2}}} \right)\\
+  & = n \cdot \log(\frac{1}{\sqrt{2 \pi} \cdot \sigma}) - \sum_{i = i}^{n} \frac{x_{i}^{2}}{2\sigma^{2}}\\
+  & = n \cdot \log(\frac{1}{\sqrt{2 \pi} \cdot \sigma}) - \frac{1}{2\sigma^{2}} \cdot \sum_{i = i}^{n} x_{i}^{2}
+\end{align*}
+\begin{align*}
+  \frac{\partial}{\partial \sigma} \log(L(\sigma; x_{1}, \dots, x_{n})) & = n \cdot \frac{\frac{1}{\sqrt{2 \pi}}}{\frac{1}{\sqrt{2 \pi} \cdot \sigma}} + \frac{1}{\sigma^{3}} \cdot \sum_{i = i}^{n} x_{i}^{2}\\
+  & = n \cdot \sigma + \frac{1}{\sigma^{3}} \cdot \sum_{i = i}^{n} x_{i}^{2}
+\end{align*}
+\begin{align*}
+  n \cdot \sigma + \frac{1}{\sigma^{3}} \cdot \sum_{i = i}^{n} x_{i}^{2} & = 0\\
+  \Leftrightarrow n \cdot \sigma & = -\frac{1}{\sigma^{3}} \cdot \sum_{i = i}^{n} x_{i}^{2}\\
+  \Leftrightarrow \sigma^{4} & = -\frac{1}{n} \cdot \sum_{i = i}^{n} x_{i}^{2}\\
+  \Leftrightarrow \sigma^{4} & = -\frac{1}{n} \cdot \sum_{i = i}^{n} x_{i}^{2}\\
+  \Leftrightarrow \sigma & = 0
+\end{align*}
 
 \subsection{Teil b}
 
