@@ -12,7 +12,16 @@
 
 \section{Aufgabe 37}
 
-
+Sei $X$ eine Zufallsvariable für die Anzahl der Kranken $k$.
+Dann ist $X$ $B_{n,p}$ verteilt.
+Die Likelihood-Funktion ist
+\begin{equation}
+  L(n; X) = B_{n, p}(k) = \binom{n}{k} \cdot p^{k} \cdot (1 - p)^{n - k}
+\end{equation}
+Der Übergang zur log-Likelihood liefert
+\begin{equation}
+  L'(n; X) = \log(n!) - \log(k!) - \log((n - k)!) + k \cdot \log(p) + (n - k) \cdot \log(1 - p)
+\end{equation}
 
 \section{Aufgabe 38}
 
