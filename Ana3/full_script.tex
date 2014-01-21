@@ -463,9 +463,9 @@
   Sei $U = \{ x \in \mathbb{R}^{N} \mid x \ne 0 \}$ und $g : U \rightarrow \mathbb{R}$ gegeben durch $g(x) = x_{1}^{2} + \dots + x_{N}^{2} - 1$.
   Dann ist $S^{N - 1} = \{ x \in U \mid g(x) = 0 \}$.
   \begin{equation}
-    Dg(x) = 2x^{T}
+    Dg(x) = 2x^{\perp}
   \end{equation}
-  Nach Satz 1c) ist $T_{a}(S^{N - 1}) = \{ v \in \mathbb{R}^{n} \mid 2a^{T}v = 0 \} = a^{T}$.
+  Nach Satz 1c) ist $T_{a}(S^{N - 1}) = \{ v \in \mathbb{R}^{n} \mid 2a^{\perp}v = 0 \} = a^{\perp}$.
 \end{example}
 
 \begin{example}
@@ -488,7 +488,7 @@
   Ein Element $v \in \mathbb{R}^{N}$ heißt \underline{Normalenvektor} an $M$ in $a$, wenn $\langle v \mid w \rangle = 0 \forall w \in T_{a}(M)$.
   Die Menge aller Normalenvektoren an $M$ in $a$ wird mit $N_{a}(M)$ bezeichnet und heißt der \underline{Normalenraum} an $M$ in $a$.
   \begin{equation}
-    N_{a}(M) = T_{a}(M)^{T}
+    N_{a}(M) = T_{a}(M)^{\perp}
   \end{equation}
   Dies ist ein $(N - n)$-dimensionaler Teilraum vom $\mathbb{R}^{n}$.
 \end{defi}

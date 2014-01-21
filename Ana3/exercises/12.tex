@@ -14,7 +14,43 @@
 
 \subsection{Teil a}
 
+\begin{proof}
+  Sei $a \in M$ und $U = \mathbb{R}^{3}$.
+  Dann ist $U$ eine offene Umgebung von $a$.
+  Definiere $g : U \rightarrow \mathbb{R}^{1}$ durch
+  \begin{equation}
+    g(x, y, z) = y^{2}(y - z)^{2} - x = y^{4} - 2zy^{3} + z^{2}y^{2} - x
+  \end{equation}
+  Dann ist
+  \begin{equation}
+    Dg(x, y, z) = \begin{pmatrix}
+      -1 & 4y^{3} - 6zy^{2} + 2z^{2}y & -2y^{3} + 2y^{2}z
+    \end{pmatrix}
+  \end{equation}
+  und der Rang von $Dg$ ist $1$ für alle $(x, y, z) \in U$ und $g$ ist eine Submersion.
+  \begin{equation}
+    M \cap U = M = \{ (x, y, z) \in \mathbb{R}^{3} \mid y^{2}(y - z)^{2} = x \} = \{ (x, y, z) \in \mathbb{R}^{3} \mid g(x, y, z) = 0 \}
+  \end{equation}
+\end{proof}
+
 \subsection{Teil b}
+
+\begin{equation}
+  T_{x, y, z}(M) = Kern(Dg(x, y, z)) = \langle \begin{pmatrix}
+    4y^{3} - 6zy^{2} + 2z^{2}y\\1\\0
+  \end{pmatrix},
+  \begin{pmatrix}
+    -2y^{3} + 2y^{2}z\\0\\1
+  \end{pmatrix}\rangle
+\end{equation}
+
+\begin{equation}
+  N_{x, y, z}(M) = T_{x, y, z}(M)^{\perp} = \langle
+  \begin{pmatrix}
+    1\\-4y^{3} + 6zy^{2} - 2z^{2}y\\2y^{3} - 2y^{2}z
+  \end{pmatrix}
+  \rangle
+\end{equation}
 
 \subsection{Teil c}
 
@@ -28,12 +64,43 @@
 
 \section{Aufgabe 52}
 
+\begin{proof}
+  Weil $X$ lokalkompakt ist, existiert eine kompakte Umgebung $B$ von $a$ in $X$.
+  Dann gibt es eine Kugel $B_{\varepsilon}(x) \subset U$, weil $U$ eine Umgebung von $x$ ist, und eine Kugel $B_{\delta}(x) \subset B$, weil $B$ auch eine Umgebung von $x$ ist
+  Sei $\varphi = \min \{ \varepsilon, \delta \}$.
+  Dann ist die abgeschlossene Kugel $\bar{B}_{\frac{\varphi}{2}}(x)$ sowohl in $B$ als auch in $U$ enthalten.
+  Satz 2 besagt dann, dass $\bar{B}_{\frac{\varphi}{2}}(x)$ kompakt ist.
+  Offensichtlich ist $\bar{B}_{\frac{\varphi}{2}}(x)$ auch eine Umgebung von $x$.
+\end{proof}
+
 \section{Aufgabe 53}
 
 \subsection{Teil a}
 
+\begin{proof}
+  Sei $x \in p(A)$ und $y \in A$ mit $p(y) = x$.
+  Dann gibt es eine Kugel $B_{\varepsilon}(y) \subset A$.
+  \begin{equation}
+    p(B_{\varepsilon}(y)) = ]x - \varepsilon, x + \varepsilon[
+  \end{equation}
+  Also ist $]x - \varepsilon, x + \varepsilon[$ eine offene Umgebung von $x$ in $p(A)$ und $p(A)$ ist offen.
+\end{proof}
+
 \subsection{Teil b}
 
+\begin{proof}
+  Sei $x \in p(A)$ und $y \in A$ mit $p(y) = x$.
+  Weil $A$ lokalkompakt ist, gibt es eine kompakte Umgebung $B$ von $y$ in $A$.
+  Weil $p$ stetig ist, ist $p(B)$ kompakt nach Satz 1.
+  Weil $y \in B$, ist $x \in p(B)$ und $p(B)$ ist eine kompakte Umgebung von $x$.
+  Deshalb ist $p(A)$ lokalkompakt.
+\end{proof}
+
 \section{Aufgabe 54}
+
+\begin{equation}
+  \mathbb{R}_{< 0}
+\end{equation}
+Das Komplement $\mathbb{R}_{\ge 0}$ ist nicht lokalkompakt, weil es keine Umgebung und somit auch keine kompakte Umgebung von $0$ enthält.
 
 \end{document}
