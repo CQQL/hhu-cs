@@ -36,7 +36,8 @@
 \subsection{Teil b}
 
 \begin{equation}
-  T_{x, y, z}(M) = Kern(Dg(x, y, z)) = \langle \begin{pmatrix}
+  T_{x, y, z}(M) = Kern(Dg(x, y, z)) = \langle
+  \begin{pmatrix}
     4y^{3} - 6zy^{2} + 2z^{2}y\\1\\0
   \end{pmatrix},
   \begin{pmatrix}
@@ -52,13 +53,81 @@
   \rangle
 \end{equation}
 
+\begin{equation}
+  T_{a}(M) = \langle
+  \begin{pmatrix}
+    12\\1\\0
+  \end{pmatrix},
+  \begin{pmatrix}
+    -8\\0\\1
+  \end{pmatrix}
+  \rangle
+\end{equation}
+
+\begin{equation}
+  N_{a}(M) = \langle
+  \begin{pmatrix}
+    1\\-12\\8
+  \end{pmatrix}
+  \rangle
+\end{equation}
+
 \subsection{Teil c}
+
+Für $t < 0$ ist es eine Untermannigfaltigkeit, weil dann $E_{t} \cap M = \emptyset$ und die leere Menge bestimmt eine Untermannigfaltigkeit ist.
+Für $t > 0$ ist es ebenfalls eine, weil man kann für $U = \mathbb{R}^{3} \setminus \{ (x, y, z) \in \mathbb{R}^{3} \mid y = 0 \}$ $g : U \rightarrow \mathbb{R}^{2}$ definieren als
+\begin{equation}
+  g(x, y, z) = \begin{pmatrix}
+    x - t\\
+    y^{2}(y - z)^{2} - t = y^{4} - 2zy^{3} + z^{2}y^{2} - t
+  \end{pmatrix}
+\end{equation}
+Dann ist
+\begin{equation}
+  Dg(y, z) = \begin{pmatrix}
+    1 & 0 & 0\\
+    0 & 4y^{3} - 6zy^{2} + 2z^{2}y & -2y^{3} + 2y^{2}z
+  \end{pmatrix}
+\end{equation}
+und der Rang dieser Matrix ist $2$ für alle $(x, y, z) \in U$.
+$E_{t} \cap M$ ist in $U$ enthalten, weil für $(x, y, z) \in E_{t} \cap M$ mit $y = 0$ wäre $y^{2}(y - z)^{2} = 0 \ne x = t$.
+Deshalb ist
+\begin{equation}
+  E_{t} \cap M \cap U = E_{t} \cap M = \{ (x, y, z) \in \mathbb{R}^{3} \mid x = t\ \land\ y^{2}(y - z)^{2} = t \} = \{ (x, y, z) \in \mathbb{R}^{3} \mid g(x, y, z) = 0 \}
+\end{equation}
+und $E_{t} \cap M$ eine $1$-dimensionale Untermannigfaltigkeit von $\mathbb{R}^{3}$.
 
 \subsection{Teil d}
 
+Definiere $\varphi : \mathbb{R}^{2} \rightarrow \mathbb{R}^{3}$ durch
+\begin{equation}
+  \varphi(y, z) = \begin{pmatrix}
+    y^{2}(y - z)^{2}\\
+    y\\
+    z
+  \end{pmatrix}
+\end{equation}
+Dann ist $\varphi$ stetig und bijektiv mit der Umkehrfunktion $\varphi^{-1}(x, y, z) = (y, z)$.
+\begin{equation}
+  D\varphi(y, z) = \begin{pmatrix}
+    \dots & \dots\\
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+\end{equation}
+Der Rang davon ist natürlich $2$ und $\varphi$ ist eine Immersion.
+\begin{equation}
+  \varphi(\mathbb{R}^{2}) = M
+\end{equation}
+Deshalb ist $\{ \varphi \}$ ein orientierter Atlas von $M$ und $M$ ist orientiert.
+
 \subsection{Teil e}
 
+Da $\varphi$ stetig, bijektiv und somit auch surjektiv und der $\mathbb{R}^{2}$ zusammenhängend ist, ist $M$ ebenfalls zusammenhängend nach §11 Satz 2.
+
 \subsection{Teil f}
+
+Da $M$ mit $\varphi$ isomorph zu dem nicht kompakten $\mathbb{R}^{2}$ ist, ist $M$ ebenfalls nicht kompakt.
 
 \section{Aufgabe 51}
 
