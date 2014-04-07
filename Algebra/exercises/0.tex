@@ -1,0 +1,143 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Übung 1}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  \begin{equation}
+    f(e_{H}) = f(e_{G}) = e_{G'} \Rightarrow e_{G'} \in f(H)
+  \end{equation}
+  Seien $a', b' \in f(H)$.
+  Es existieren $a, b \in H$ mit $f(a) = a'$ und $f(b) = b'$.
+  \begin{equation}
+    ab = f(a)f(b) = f(ab) \in f(H)
+  \end{equation}
+
+  Sei $a' \in f(H)$ und $a \in H$ mit $f(a) = a'$.
+  \begin{equation}
+    a'^{-1} = f(a)^{-1} = f(a^{-1}) \in f(H)
+  \end{equation}
+\end{proof}
+
+\subsection{Teil 2}
+
+\begin{proof}
+  Was ist mit der Abbildung $f(h) = e_{G'}$?
+  Dort lässt sich $f^{-1}(x)$ nicht gut ein Wert zuweisen.
+\end{proof}
+
+\section{Übung 2}
+
+\begin{proof}
+  Definiere $Int^{-1}_{g}$ durch
+  \begin{equation}
+    Int^{-1}_{g}(h) = g^{-1}hg
+  \end{equation}
+  Dann ist
+  \begin{equation}
+    Int^{-1}_{g}(Int_{g}(h)) = Int^{-1}_{g}(ghg^{-1}) = g^{1}ghg^{-1}g = h
+  \end{equation}
+  und
+  \begin{equation}
+    Int_{g}(Int^{-1}_{g}(h)) = Int_{g}(g^{-1}hg) = gg^{1}hgg^{-1} = h
+  \end{equation}
+\end{proof}
+
+\section{Übung 3}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  \begin{enumerate}
+    \item{Reflexiv} Wähle $h = e_{h} \in H$
+    \item{Transitiv} Seien $a, b, c \in G$ mit $a \sim b$ und $b \sim c$, also $b = ah_{1}$ und $c = bh_{2}$.
+      Dann ist
+      \begin{equation}
+        c = bh_{2} = ah_{1}h_{2}
+      \end{equation}
+      mit $h_{1}h_{2} \in H$ und $a \sim c$.
+    \item{Symmetrisch} Seien $a, b \in G$ mit $a \sim b$, also $b = ah$ für ein $h \in H$.
+      \begin{equation}
+        b = ah \Leftrightarrow a = bh^{-1}
+      \end{equation}
+      mit $h^{-1} \in H$ und $b \sim a$.
+  \end{enumerate}
+\end{proof}
+
+\subsection{Teil 2}
+
+\begin{equation}
+  \{ g' \mid g \sim g' \} = \{ gh \in G \mid h \in H \}
+\end{equation}
+
+\begin{proof}
+  $\subset$:
+  Sei $g' \in \{ g' \mid g \sim g' \}$.
+  \begin{equation}
+    \exists h \in H : g' = gh \Rightarrow g' \in \{ gh \in G \mid h \in H \}
+  \end{equation}
+
+  $\supset$:
+  Sei $gh \in \{ gh \in G \mid h \in H \}$.
+  \begin{equation}
+    g = ghe_{H} \Rightarrow gh \sim g \Rightarrow g \sim gh \Rightarrow gh \in \{ g' \mid g \sim g' \}
+  \end{equation}
+\end{proof}
+
+\section{Übung 4}
+
+\begin{proof}
+  Sei $H$ eine Untergruppe von $G$.
+
+  $\Rightarrow$:
+  Sei $H$ Normalteiler.
+  Dann gilt für jedes $g \in G$ und $h \in H$
+  \begin{equation}
+    ghg^{-1} = h \Leftrightarrow gh = hg
+  \end{equation}
+  also $gH = Hg$.
+
+  $\Leftarrow$:
+  Es gelte $gH = Hg$ für alle $g \in G$.
+  Sei $h \in H$.
+  Dann ist $gh \in gH$, aber auch $gh \in Hg$.
+\end{proof}
+
+\section{Übung 5}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  \begin{equation}
+    n \cdot 0 = 0 \in n \mathbb{Z}
+  \end{equation}
+  Seien $a, b \in n \mathbb{Z}$.
+  Dann ist $a = n \cdot a'$ und $b = n \cdot b'$.
+  \begin{equation}
+    a + b = (n \cdot a') + (n \cdot b') = n \cdot (a' + b') \in n \mathbb{Z}
+  \end{equation}
+\end{proof}
+
+\subsection{Teil 2}
+
+\begin{proof}
+  Sei $H$ eine Untergruppe von $(\mathbb{Z}, +)$.
+
+\end{proof}
+
+\subsection{Teil 3}
+
+\subsection{Teil 4}
+
+\end{document}
