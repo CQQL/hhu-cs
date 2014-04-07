@@ -1,0 +1,130 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Übung 1}
+
+\begin{proof}
+  \begin{equation}
+    e_{G} \in H_{i} \forall i \in I \Rightarrow e_{G} \in \cap_{i \in I} H_{i}
+  \end{equation}
+
+  Seien $a, b \in \cap_{i \in I} H_{i}$.
+  \begin{equation}
+    ab^{-1} \in H_{i} \forall i \in I \Rightarrow ab^{-1} \in \cap_{i \in I} H_{i}
+  \end{equation}
+\end{proof}
+
+\section{Übung 2}
+
+\begin{proof}
+  $\Rightarrow$:
+  Sei $\mathbb{Z} / p \mathbb{Z}$ einfach.
+  Wenn $p$ nicht prim wäre, hätte $p$ einen Teiler $k \not\in \{ 1, p \}$.
+  $\{ k \cdot n \mid 0 \le n \le \frac{k}{p} \}$ wäre dann eine weitere Untergruppe und $\mathbb{Z} / p \mathbb{Z}$ wäre nicht einfach.
+
+  $\Leftarrow$:
+  Sei $p$ eine Primzahl und $A := \mathbb{Z} / p \mathbb{Z}$.
+  Dann ist $|A| = p$.
+  Sei $H$ eine Untergruppe von $A$.
+  Nach dem Satz von Lagrange ist $|A| = |H| \cdot (A : H)$.
+  Weil $p$ prim ist, musst also $|H|$ $1$ oder $p$ sein.
+  Wenn $|H| = p$ ist, ist $H = A$.
+  Wenn $|H| = 1$ ist, musst $H = \{ e_{A} \}$ sein, weil andere Elemente alleine keine Untergruppe bilden können (weil dann ja $e_{A}$ nicht enthalten sein kann).
+  Also ist $A$ einfach.
+\end{proof}
+
+\section{Übung 3}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  Offensichtlich ist $Id$ in beiden enthalten.
+
+  $H$:
+  \begin{align*}
+    (123)(123) = (213)(213) & = (123) \in H\\
+    (123)(213) = (213)(123) & = (213) \in H
+  \end{align*}
+
+  $A$:
+  \begin{align*}
+    (123)(123) = (231)(312) = (312)(231) & = (123) \in A\\
+    (123)(231) = (231)(123) = (231)(231) & = (231) \in A\\
+    (123)(312) = (312)(123) = (312)(312) & = (312) \in A
+  \end{align*}
+
+  Also sind in beiden die Inversen enthalten und sie sind abgeschlossen.
+\end{proof}
+
+\subsection{Teil 2}
+
+\subsection{Teil 3}
+
+\subsection{Teil 4}
+
+\section{Übung 4}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  Das neutrale Element ist offensichtlich enthalten.
+
+  Ebenfalls ist für jedes Element ein inverses enthalten.
+  \begin{equation}
+    1 = 1 \cdot 1 = -1 \cdot -1 = K \cdot -K = J \cdot -J = I \cdot -I = -K \cdot K = -J \cdot J = -I \cdot I
+  \end{equation}
+
+  Für die Abgeschlossenheit werde ich nur die Produkte von $I, J, K$ betrachten, weil Produkte mit $1$ auf jeden Fall drin sind und etwaige Vorzeichen davor gezogen werden können.
+  \begin{equation}
+    I \cdot  I = -1
+  \end{equation}
+  \begin{equation}
+    I \cdot  J = K
+  \end{equation}
+  \begin{equation}
+    I \cdot K = -J
+  \end{equation}
+  \begin{equation}
+    J \cdot I = -K
+  \end{equation}
+  \begin{equation}
+    J \cdot J = -1
+  \end{equation}
+  \begin{equation}
+    J \cdot K = I
+  \end{equation}
+  \begin{equation}
+    K \cdot I = J
+  \end{equation}
+  \begin{equation}
+    K \cdot J = -I
+  \end{equation}
+  \begin{equation}
+    K \cdot K = -1
+  \end{equation}
+\end{proof}
+
+\subsection{Teil 2}
+
+Nein, weil
+\begin{equation}
+  I \cdot J = K \ne -K = J \cdot I
+\end{equation}
+
+\subsection{Teil 3}
+
+Es gibt natürlich die triviale Untergruppe und $\mathbb{H}$.
+Dazu gibt es genau eine 2-elementige Untergruppe $\{ 1, -1 \}$, weil die anderen Matrizen ihre Negativen als Inverse erfordern.
+Die 4-Elementigen sind jeweils durch $\{ 1, -1 \}$ und eine weitere Matrix mit ihrem Negativen gegeben: $\{ 1, -1, I, -I \}, \{ 1, -1, J, -J \}, \{ 1, -1, K, -K \}$.
+Nach dem Satz von Lagrange kann es keine Untergruppen anderer Ordnung geben, da die Teiler von 8 $1, 2, 4, 8$ sind.
+
+\end{document}
