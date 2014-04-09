@@ -8,6 +8,8 @@
 \usepackage{amsthm}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
+\DeclareMathOperator{\Ker}{Ker}
+
 \begin{document}
 
 \section{Übung 1}
@@ -57,9 +59,9 @@
 
   $A$:
   \begin{align*}
-    (123)(123) = (231)(312) = (312)(231) & = (123) \in A\\
-    (123)(231) = (231)(123) = (231)(231) & = (231) \in A\\
-    (123)(312) = (312)(123) = (312)(312) & = (312) \in A
+    (123)(123) = (231)(231) = (312)(312) & = (123) \in A\\
+    (123)(231) = (231)(123) = (231)(312) & = (231) \in A\\
+    (123)(312) = (312)(123) = (312)(231) & = (312) \in A
   \end{align*}
 
   Also sind in beiden die Inversen enthalten und sie sind abgeschlossen.
@@ -67,9 +69,94 @@
 
 \subsection{Teil 2}
 
+\begin{proof}
+  Da $G$ 6 Elemente hat, muss $N_{G}(H)$ als Untergruppe von $G$ nach dem Satz von Lagrange 1, 2, 3 oder 6 Elemente haben.
+  Da $H$ wiederum eine Untergruppe von $N_{G}(H)$ ist, muss die Anzahl der Elemente von $N_{G}(H)$ ein Vielfaches von 2 sein.
+  In der Vorlesung haben wir gesehen, dass $H$ nicht Normalteiler von $G$ ist, sodass nur 2 übrig bleibt und $N_{G}(H) = H$ folgt.
+
+  Wir betrachten $(132) \in S_{3}$.
+  \begin{equation}
+    (132)^{-1} = (132)
+  \end{equation}
+  \begin{equation}
+    (132)(123)(132) = (123) \in A_{3}
+  \end{equation}
+  \begin{equation}
+    (132)(231)(132) = (213)(132) = (312) \in A_{3}
+  \end{equation}
+  \begin{equation}
+    (132)(312)(132) = (321)(132) = (231) \in A_{3}
+  \end{equation}
+  Da $A_{3} \subset N_{G}(A_{3})$ und $N_{G}(A_{3}) \subset G$, muss $N_{G}(A_{3})$ mindestens 3 Elemente enthalten und gleichzeitig entweder 1, 2, 3 oder 6.
+  Es enthält aber noch ein weiteres Element $(132)$, das nicht in $A_{3}$ enthalten ist.
+  Somit muss $N_{G}(A_{3})$ 6 Elemente haben und $N_{G}(A_{3}) = G = S_{3}$ sein.
+\end{proof}
+
 \subsection{Teil 3}
 
+\begin{proof}
+
+\end{proof}
+
 \subsection{Teil 4}
+
+Wie aus der Vorlesung bekannt, ist $n \mathbb{Z} \triangleleft \mathbb{Z}$.
+
+\begin{proof}
+  $\{ \pm 1 \}$ ist eine Gruppe mit neutralem Element $1$ und der Verknüpfung Multiplikation $\cdot$.
+
+  Definiere $f : \mathbb{Z} \rightarrow \{ \pm 1 \}$ durch
+  \begin{equation}
+    f(z) := (-1)^{z}
+  \end{equation}
+  \begin{equation}
+    f(0) = (-1)^{0} = 1
+  \end{equation}
+  und für $a, b \in \mathbb{Z}$
+  \begin{equation}
+    f(a + b) = (-1)^{a + b} = (-1)^{a}(-1)^{b} = f(a)f(b)
+  \end{equation}
+  ist $f$ ein Gruppenhomomorphismus.
+
+  Sei $a' = 2a \in 2 \mathbb{Z}$.
+  \begin{equation}
+    f(a') = (-1)^{a'} = (-1)^{2a} = 1^{a} = 1
+  \end{equation}
+  Sei $a \in \Ker(f)$.
+  \begin{equation}
+    1 = f(a) = (-1)^{a} \Leftrightarrow a \in 2 \mathbb{Z}
+  \end{equation}
+  Also ist $\Ker(f) = 2 \mathbb{Z}$.
+
+  \begin{equation}
+    f(0) = 1, f(1) = -1
+  \end{equation}
+  Somit ist $f$ surjektiv.
+
+  Damit ist die Abbildung $\bar{f} : \mathbb{Z} / 2 \mathbb{Z} \rightarrow \{ \pm 1 \}$ definiert durch
+  \begin{equation}
+    \bar{f}([n]) = f(n)
+  \end{equation}
+  nach Satz 1.2.10 ein Gruppenisomorphismus.
+\end{proof}
+
+\begin{proof}
+  Definiere $f : \mathbb{Z} \rightarrow A^{3}$ durch
+  \begin{equation}
+    f(n) := \sigma^{n}
+  \end{equation}
+  \begin{equation}
+    f(0) := \sigma^{0} = (123)
+  \end{equation}
+  Seien $a, b \in \mathbb{Z}$
+  \begin{equation}
+    f(a + b) = \sigma^{a + b} = \sigma^{a} \sigma^{b} = f(a)f(b)
+  \end{equation}
+  Also ist $f$ ein Gruppenhomomorphismus.
+
+  Diese Abbildung kann jedoch kein Isomorphismus sein, da $|\mathbb{Z} / 3 \mathbb{Z}| = 3$, aber $|\bar{f}(\mathbb{Z} / 3 \mathbb{Z})| = 2$.
+  Außerdem ist $\bar{f}$ nicht wohldefiniert, weil $[0] = [3]$, aber $\bar{f}([0]) \ne \bar{f}([3])$.
+\end{proof}
 
 \section{Übung 4}
 
