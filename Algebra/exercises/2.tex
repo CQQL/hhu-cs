@@ -170,8 +170,59 @@ Es bleibt übrig
 
 \subsection{Teil 2}
 
+Damit eine Matrix invertierbar ist, muss ihre Determinante $\ne 0$ sein.
+Sie muss also mindestens 2 Einsen haben, wobei sich in jeder Spalte und in jeder Zeile eine befinden muss.
+Sie darf allerdings auch nicht voll besetzt sein.
+\begin{equation}
+  |GL_{2}(\mathbb{F}_{2})| = 6
+\end{equation}
+\begin{equation}
+  |B| = 2
+\end{equation}
+\begin{equation}
+  |T| = 1
+\end{equation}
+\begin{equation}
+  |U| = 2
+\end{equation}
+
 \subsection{Teil 3}
 
+\begin{proof}
+  Sei $f \in GL_{2}(\mathbb{F})$.
+  Dann ist $\det f \ne 0 \Leftrightarrow f_{1,1}f_{2,2} \ne f_{1,2}f_{2,1}$.
+  Also $f_{1,1}f_{2,2} = 1$ und $f_{1,2}f_{2,1} = 0$ oder andersherum.
+  $f(x_{1})$ entspricht einer Extraktion der ersten Spalte, $f(x_{2})$ einer Extraktion der zweiten Spalte und $f(x_{3})$ einer Summation der Zeilen.
+  Es ist also zu zeigen, dass weder die erste noch die zweite Spalte noch die Summe aller Zeilen $0$ sein kann.
+
+  Die Summe der Zeilen kann nur bei der $0$-Matrix $0$ sein, aber $\det(0) = 0$ und somit $f \ne 0$.
+  Wäre die erste Spalte $0$, so wären $f_{1,1} = f_{1,2} = 0$ und $\det(f) = 0$, was jedoch ein Widerspruch ist.
+  Wäre die zweite Spalte $0$, so wären $f_{2,1} = f_{2,2} = 0$ und $\det(f) = 0$, was jedoch ein Widerspruch ist.
+\end{proof}
+
 \subsection{Teil 4}
+
+\begin{proof}
+  \begin{equation}
+    Bij(X) \simeq S_{3}
+  \end{equation}
+  Also ist $Bij(X)$ schonmal eine Gruppe mit $|S_{3}| = 6$ Elementen.
+  Da ebenfalls $|GL_{2}(\mathbb{F}_{2})| = 6$, reicht es zu zeigen, dass $\varphi$ injektiv ist.
+  Wie schon in Teil 3 gesagt, ist die Anwendung von $\varphi(f)$ auf $x_{1}$ die Abbildung auf die erste Spalte von $f$ und die Anwendung auf $x_{2}$ die Abbildung auf die zweite Spalte von $f$.
+  Seien $f, g \in GL_{2}(\mathbb{F}_{2})$ mit $\varphi(f) = \varphi(g)$.
+  Also auch
+  \begin{equation}
+    \varphi(f)(x_{1}) = \varphi(g)(x_{1})
+  \end{equation}
+  und
+  \begin{equation}
+    \varphi(f)(x_{2}) = \varphi(g)(x_{2})
+  \end{equation}
+  Aber es gilt
+  \begin{equation}
+    f = \left( \varphi(f)(x_{1}), \varphi(f)(x_{2}) \right) = \left( \varphi(g)(x_{1}), \varphi(g)(x_{2}) \right) = g
+  \end{equation}
+  und somit war schon $f = g$ und $\varphi$ ist injektiv.
+\end{proof}
 
 \end{document}
