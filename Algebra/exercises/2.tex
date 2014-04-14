@@ -1,0 +1,177 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\id}{Id}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corolarry}{Korollar}
+
+\begin{document}
+
+\section{Übung 1}
+
+Wenn eine Matrix $m$ in $Z(\mathbb{H})$ ist, ist auch ihr Negatives $-m$ enthalten, weil $mp = pm\ \forall p \in \mathbb{H} \Rightarrow (-m)p = -mp = -pm = p(-m)\ \forall p \in \mathbb{H}$.
+Durch Einsetzung von $-m$ für $m$ erhält man die andere Richtung und dies ist eine gdw. Beziehung.
+Und wenn eine Matrix $m$ mit einer Matrix $p$ kommutiert, so kommutiert sie auch mit $-p$:
+\begin{equation}
+  mp = pm \Rightarrow m(-p) = -(mp) = -(pm) = (-p)m
+\end{equation}
+Wenn man $p$ durch $-p$ ersetzt, erhält man die andere Richtung und dies ist ebenfalls eine gdw. Beziehung.
+
+Es ist auf jeden Fall $\id$ in $Z(\mathbb{H})$ und somit auch $-\id$.
+Nach den obigen Argumenten bleibt also nur zu überprüfen, ob $I$, $J$ und $K$ mit $I$, $J$ und $K$ kommutieren.
+Dabei kam auf Blatt 1 heraus
+\begin{equation}
+  I \cdot  I = -1
+\end{equation}
+\begin{equation}
+  I \cdot  J = K
+\end{equation}
+\begin{equation}
+  I \cdot K = -J
+\end{equation}
+\begin{equation}
+  J \cdot I = -K
+\end{equation}
+\begin{equation}
+  J \cdot J = -1
+\end{equation}
+\begin{equation}
+  J \cdot K = I
+\end{equation}
+\begin{equation}
+  K \cdot I = J
+\end{equation}
+\begin{equation}
+  K \cdot J = -I
+\end{equation}
+\begin{equation}
+  K \cdot K = -1
+\end{equation}
+Wie man sieht, kommutieren diese jedoch alle nur jeweils mit sich selbst.
+Also kommutieren ihre Negativen auch nicht mit allen Elementen von $\mathbb{H}$.
+
+Es bleibt übrig
+\begin{equation}
+  Z(\mathbb{H}) \{ 1, -1 \}
+\end{equation}
+
+\section{Übung 2}
+
+\begin{proof}
+  Wir haben in der Vorlesung gesehen, dass $g^{|\langle g \rangle|} = e_{G}$.
+  Weiterhin ist $\langle g \rangle$ die kleinste Untergruppe, die $g$ enthält, und somit eine Untergruppe von $G$.
+  Nach Korollar 1.1.28 ist $|G|$ ein Vielfaches von $|\langle g \rangle|$, also $|G| = h \cdot |\langle g \rangle|$ für ein $h \in \mathbb{N}$.
+  \begin{equation}
+    g^{|G|} = (g^{|\langle g \rangle|})^{h} = e_{G}^{h} = e_{G}
+  \end{equation}
+\end{proof}
+
+\section{Übung 3}
+
+\section{Übung 4}
+
+\subsection{Teil 1}
+
+\begin{equation}
+  Z(S_{1}) = S_{1}
+\end{equation}
+
+\begin{equation}
+  Z(S_{2}) = S_{2}
+\end{equation}
+
+\subsection{Teil 2}
+
+\begin{equation}
+  \sigma \tau_{i, k}(i) = \sigma(k) \ne j \textit{ weil $k \ne i$}
+\end{equation}
+\begin{equation}
+  \tau_{i, k} \sigma(i) = \tau_{i, k}(j) = j
+\end{equation}
+
+\subsection{Teil 3}
+
+\begin{proof}
+  Sei $\sigma \ne \id \in S_{n}$.
+  Dann gibt es $i, j \in [1, n]$ mit $\sigma(i) = j$ und $i \ne j$, weil sonst $\sigma = \id$ wäre.
+  Also sind die Bedingungen von Teil 2 erfüllt und $\sigma$ kommutiert nicht mit einem solchen $\tau_{i, k}$.
+  Somit ist $Z(S_{n}) = \{ \id \}$, weil $\id$ per Definition mit allem kommutiert.
+\end{proof}
+
+\section{Übung 5}
+
+\subsection{Teil 1}
+
+\begin{lemma}
+  Seien $a = (a_{i, j}), b = (b_{i, j})$ zwei obere $n \times n$ Dreiecksmatrizen.
+  Dann ist die Diagonale von $c := ab$ gegeben durch
+  \begin{equation}
+    c_{i, i} = a_{i, i} \cdot b_{i, i}
+  \end{equation}
+\end{lemma}
+
+\begin{proof}
+  \begin{align*}
+    c_{i, i} & = \sum_{k = 1}^{n} a_{i, k} b_{k, i}\\
+    & = \sum_{k = i}^{n} a_{i, k} b_{k, i}\textit{ denn $a_{i, k} = 0$ für $k < i$}\\
+    & = \sum_{k = i}^{i} a_{i, k} b_{k, i}\textit{ denn $b_{i, k} = 0$ für $k > i$}\\
+    & = a_{i, i} b_{i, i}
+  \end{align*}
+\end{proof}
+
+\begin{corollary}
+  Sei $a = (a_{i, j})$ eine invertierbare, obere $n \times n$ Dreiecksmatrix und $a' = (a'_{i, j})$ ihr Inverses.
+  Dann ist $a'_{i, i} = a_{i, i}^{-1}$ für $i \in [1, n]$.
+\end{corollary}
+
+\begin{proof}
+  Es ist $c := a \cdot a' = 1$.
+  Nach dem vorherigen Lemma gilt
+  \begin{equation}
+    c_{i, i} = a_{i, i} \cdot a'_{i, i} = 1 \Leftrightarrow a'_{i, i} = \frac{1}{a_{i, i}} = a_{i, i}^{-1}
+  \end{equation}
+\end{proof}
+
+\begin{proof}
+  Indizes sind hier immer zwischen 1 und $n$, sofern nicht anders angegeben.
+  Sei $b = (b_{i, j}) \in B$ und $u = (u_{i, j}) \in U$.
+  Sei $b' = (b'_{i, j}) \in B$ das Inverse von $B$.
+  Da die oberen Dreiecksmatrizen eine Untergruppe bilden, ist $b'$ ebenfalls eine obere Dreiecksmatrix.
+  Definiere $q := bub'$.
+  Aus demselben Grund wie bei $b'$ ist auch $q$ eine obere Dreiecksmatrix.
+  Zu zeigen bleibt, dass $q_{i, i} = 1$ für alle $i \in [1, n]$.
+  Durch zweimaliges Anwenden des obigen Lemmas erhält man
+  \begin{equation}
+    q_{i, i} = b_{i, i} \cdot u_{i, i} \cdot b'_{i, i} = b_{i, i} \cdot b'_{i, i} = b_{i, i} \cdot b_{i, i}^{-1} = 1
+  \end{equation}
+  Also ist $bub' \in U$ und $bUb' \subset U$, also $U \triangleleft B$.
+
+  Definiere $diag : B \rightarrow T$ durch die Abbildung einer oberen Dreiecksmatrix auf ihre Hauptdiagonale.
+  Seien $a, b \in B$.
+  Nach obigem Lemma gilt
+  \begin{equation}
+    diag(ab) = diag(a) \cdot diag(b)
+  \end{equation}
+  $T$ ist eine Gruppe mit der Einheitsmatrix als neutralem Element und der Matrixmultiplikation als Verknüpfung.
+  Somit ist $diag$ ein Gruppenhomomorphismus.
+  $diag$ ist auch surjektiv, da $T$ eine Untergruppe von $B$ ist und $diag$ Elemente von $T$ auf sich selbst abbildet.
+
+  Der Kern von $diag$ sind genau die Matrizen, die nur $1$ auf der Diagonalen haben, also $U$.
+
+  Mit Korollar 1.2.11 folgt $B / U \simeq T$.
+\end{proof}
+
+\subsection{Teil 2}
+
+\subsection{Teil 3}
+
+\subsection{Teil 4}
+
+\end{document}
