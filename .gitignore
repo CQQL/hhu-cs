@@ -9,5 +9,10 @@
 *.o
 *.out
 
+# AUCTex preview
+*.fmt
+auto
+_region_.*
+
 # Executables
 [0-9].[0-9]
