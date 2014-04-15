@@ -1,0 +1,232 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1.1}
+
+\subsection{Teil a}
+
+\subsubsection{i}
+
+\begin{equation}
+  \{A, B\}
+\end{equation}
+
+\subsubsection{ii}
+
+\begin{equation}
+  \{A, B, C\}, \{A, B, \neg C\}, \{A, \neg B, C\}, \{A, \neg B, \neg C\}, \{\neg A, \neg B, \neg C\}
+\end{equation}
+
+\subsubsection{iii}
+
+\begin{equation}
+  \{\neg A, B\}, \{ \neg A, \neg B \}
+\end{equation}
+
+\subsection{Teil b}
+
+\subsubsection{i}
+
+\begin{equation}
+  (A \Rightarrow B) \land (C \land \neg A) \equiv (\neg A \lor B) \land C \land (\neg A)
+\end{equation}
+
+\subsubsection{ii}
+
+\begin{align*}
+  (A \Leftrightarrow (B \land \neg C)) \land (\neg B \Rightarrow A) & \equiv ((A \land (B \land \neg C)) \lor (\neg A \land \neg (B \land \neg C))) \land (B \lor A)\\
+  & \equiv ((A \land B \land \neg C) \lor (\neg A \land (\neg B \lor C))) \land (B \lor A)\\
+  & \equiv (((A \land B \land \neg C) \lor \neg A) \land ((A \land B \land \neg C) \lor (\neg B \lor C))) \land (B \lor A)\\
+  & \equiv ((A \lor \neg A) \land (B \lor \neg A) \land (\neg C \lor \neg A) \land ((A \land B \land \neg C) \lor (\neg B \lor C))) \land (B \lor A)\\
+  & \equiv ((A \lor \neg A) \land (B \lor \neg A) \land (\neg C \lor \neg A) \land (A \lor \neg B \lor C) \land (B \lor \neg B \lor C) \land (\neg C \lor \neg B \lor C)) \land (B \lor A)\\
+  & \equiv (A \lor \neg A) \land (B \lor \neg A) \land (\neg C \lor \neg A) \land (A \lor \neg B \lor C) \land (B \lor \neg B \lor C) \land (\neg C \lor \neg B \lor C) \land (B \lor A)\\
+  & \equiv (B \lor \neg A) \land (\neg C \lor \neg A) \land (A \lor \neg B \lor C) \land (B \lor \neg B \lor C) \land (\neg C \lor \neg B \lor C) \land (B \lor A)\\
+\end{align*}
+
+\subsection{Teil c}
+
+\subsubsection{i}
+
+\begin{align*}
+  F & \equiv (A \Leftrightarrow \neg B) \lor (B \Rightarrow A)\\
+  & \equiv (A \land \neg B) \lor (\neg A \land B) \lor \neg B \lor A\\
+  & \equiv (A \land \neg B) \lor (\neg A \lor \neg B) \lor A\\
+  & \equiv (A \land \neg B) \lor \neg B \lor \neg A \lor A\\
+  & \equiv T \equiv A \lor \neg A \equiv G
+\end{align*}
+
+\subsubsection{ii}
+
+$G$ ist weder äquivalent zu $F$ noch eine Schlussfolgerung von $F$, weil $F$ ein Modell ($\{A, \neg B\}$) hat, aber $G$ keins.
+
+\subsubsection{iii}
+
+\begin{align*}
+  F & \equiv A \land \neg A \equiv F \textit{ (false)}\\
+  & \equiv \neg A \land \neg B \land B\\
+  & \equiv (\neg B \land \neg A) \land B\\
+  & \equiv (\neg B \lor A) \land \neg A \land B\\
+  & \equiv (\neg B \lor A) \land (\neg A \land B)\\
+  & \equiv ((\neg B \lor A) \land (\neg A \land B)) \lor (B \land \neg B \land \neg A)\\
+  & \equiv ((\neg B \lor A) \land (\neg A \land B)) \lor (B \land (\neg A \land \neg B))\\
+  & \equiv ((\neg B \lor A) \land (\neg A \land B)) \lor (B \land \neg A \land (A \lor \neg B))\\
+  & \equiv ((\neg B \lor A) \land (\neg A \land B)) \lor (\neg (\neg B \lor A) \land \neg (\neg A \land B))\\
+  & \equiv ((B \Rightarrow A) \land (\neg A \land B)) \lor (\neg (B \Rightarrow A) \land \neg (\neg A \land B))\\
+  & \equiv (B \Rightarrow A) \Leftrightarrow (\neg A \land B) \equiv G
+\end{align*}
+
+\section{Aufgabe 1.2}
+
+Meine Vermutung ist, dass die Studenten schuldig sind, weshalb als Anfrage die Klausel $\neg S$ benutzt wird.
+Die dritte Klausel ist eine abgeschwächte Version von (i), nämlich dass mindestens eine Gruppe schuldig ist.
+Die Klauseln sind
+\begin{equation}
+  \{ \{ \neg T \Rightarrow \neg M \}, \{ \neg S \Rightarrow \neg T \}, \{ T \lor M \lor S \}, \{ \neg S \}\}
+\end{equation}
+In KNF
+\begin{equation}
+  \{ \{ T \lor \neg M \}, \{ S \lor \neg T \}, \{ T \lor M \lor S \}, \{ \neg S \}\}
+\end{equation}
+Resolution mit 2 und 4 ergibt
+\begin{equation}
+  \{ \{ T \lor \neg M \}, \{ S \lor \neg T \}, \{ T \lor M \lor S \}, \{ \neg S \}, \{ \neg T \}\}
+\end{equation}
+Resolution mit 1 und 5 ergibt
+\begin{equation}
+  \{ \{ T \lor \neg M \}, \{ S \lor \neg T \}, \{ T \lor M \lor S \}, \{ \neg S \}, \{ \neg T \}, \{ \neg M \}\}
+\end{equation}
+Resolution 3 mit 4
+\begin{equation}
+  \{ \{ T \lor \neg M \}, \{ S \lor \neg T \}, \{ T \lor M \lor S \}, \{ \neg S \}, \{ \neg T \}, \{ \neg M \}, \{ T \lor M \} \}
+\end{equation}
+Resolution 7 mit 5
+\begin{equation}
+  \{ \{ T \lor \neg M \}, \{ S \lor \neg T \}, \{ T \lor M \lor S \}, \{ \neg S \}, \{ \neg T \}, \{ \neg M \}, \{ T \lor M \}, \{ M \} \}
+\end{equation}
+Resolution 8 mit 6
+\begin{equation}
+  \{ \{ T \lor \neg M \}, \{ S \lor \neg T \}, \{ T \lor M \lor S \}, \{ \neg S \}, \{ \neg T \}, \{ \neg M \}, \{ T \lor M \}, \{ M \}, \{  \} \}
+\end{equation}
+Es wurde ein Widerspruch gefunden und $\neg S$ kann nicht wahr sein.
+Also muss $S$ wahr sein und die Schüler sind schuldig.
+
+\section{Aufgabe 1.3}
+
+\subsection{Teil a}
+
+\begin{equation}
+  \forall r \cdot r \in S \leftrightarrow T \Rightarrow S <\| r = \{ x \mapsto y \mid (x \mapsto y) \in r \land x \in S \}
+\end{equation}
+
+\subsection{Teil b}
+
+\begin{equation}
+  \forall r \cdot r \in S \leftrightarrow T \Rightarrow S <<\| r = \{ x \mapsto y \mid (x \mapsto y) \in r \land x \not\in S \}
+\end{equation}
+
+\subsection{Teil c}
+
+\begin{equation}
+  \forall r \cdot r \in S \leftrightarrow T \Rightarrow r \|> T = \{ x \mapsto y \mid (x \mapsto y) \in r \land y \in T \}
+\end{equation}
+
+\subsection{Teil d}
+
+\begin{equation}
+  \forall r \cdot r \in S \leftrightarrow T \Rightarrow r \|>> T = \{ x \mapsto y \mid (x \mapsto y) \in r \land y \not\in T \}
+\end{equation}
+
+\subsection{Teil e}
+
+\begin{equation}
+  \forall r \cdot r \in S \leftrightarrow T \Rightarrow r[S] = \{ y \mid (x \mapsto y) \in r \land x \in S \}
+\end{equation}
+
+\subsection{Teil f}
+
+\begin{equation}
+  \forall r \cdot r \in S \leftrightarrow T \Rightarrow r\sim = \{ y \mapsto x \mid (x \mapsto y) \in r \}
+\end{equation}
+
+\subsection{Teil g}
+
+\begin{equation}
+  \forall r_{1}, r_{2} \cdot (r_{1}, r_{2}) \in (S \leftrightarrow T)^{2} \Rightarrow r_{1} <+ r_{2} = r_{2} \cup (dom(r_{2}) <<\| r_{1})
+\end{equation}
+
+\section{Aufgabe 1.4}
+
+\subsection{Teil a}
+
+\subsubsection{i}
+
+\begin{equation}
+  \{ ian \} <\| eats = \{ ian \mapsto eggs, ian \mapsto cheese, ian \mapsto pizza \}
+\end{equation}
+
+\subsubsection{ii}
+
+\begin{equation}
+  \{ jim \} <<\| eats = \{ ian \mapsto eggs, ian \mapsto cheese, ian \mapsto pizza, ken \mapsto pizza, lisa \mapsto cheese, lisa \mapsto salad, lisa \mapsto pizza \}
+\end{equation}
+
+\subsubsection{iii}
+
+\begin{equation}
+  dom(eats |> \{ eggs \}) = \{ ian, jim \}
+\end{equation}
+
+\subsubsection{iv}
+
+\begin{equation}
+  eats[\{ ian, lisa \}] = \{ eggs, cheese, pizza, salad \}
+\end{equation}
+
+\subsubsection{v}
+
+\begin{equation}
+  eats\sim[\{ cheese, eggs \}] = \{ ian, jim, lisa \}
+\end{equation}
+
+\subsubsection{vi}
+
+\begin{equation}
+  eats;cost = \{ ian \mapsto cheap, ian \mapsto expensive, jim \mapsto cheap, ken \mapsto expensive, lisa \mapsto cheap, lisa \mapsto expensive \}
+\end{equation}
+
+\subsubsection{vii}
+
+\begin{equation}
+  eats;(cost \|>> \{ expensive \}) = \{ ian \mapsto expensive, ken \mapsto expensive, lisa \mapsto expensive \}
+\end{equation}
+
+\subsubsection{viii}
+
+\begin{equation}
+  eats <+ \{ lisa \mapsto steak \} = \{ ian \mapsto eggs, ian \mapsto cheese, ian \mapsto pizza, jim \mapsto eggs, jim \mapsto salad, ken \mapsto pizza, lisa \mapsto steak \}
+\end{equation}
+
+\subsection{Teil b}
+
+\subsubsection{entweder eggs oder pizza}
+
+\begin{equation}
+  ((eats \|> \{pizza\}) <+ (eats \|> \{eggs\}) \|> \{pizza\}) <+ ((eats \|> \{eggs\}) <+ (eats \|> \{pizza\}) \|> \{eggs\})
+\end{equation}
+
+\subsubsection{cheese und pizza}
+
+\begin{equation}
+  dom(dom(eats \|> \{pizza\}) <\| eats \|> \{cheese\})
+\end{equation}
+
+\end{document}
