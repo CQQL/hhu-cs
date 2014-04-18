@@ -1,0 +1,64 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 4}
+
+\subsection{Teil 1}
+
+\begin{equation}
+  \lim_{h \rightarrow 0} |\frac{2h^{3}}{h^{2}}| = \lim_{h \rightarrow 0} 2h = 0 \Rightarrow 2h^{3} \in \hbox{o}(h^{2})
+\end{equation}
+
+\subsection{Teil 2}
+
+\begin{equation}
+  \lim_{h \rightarrow 0} \frac{\sin h}{h} \le \lim_{h \rightarrow 0} \frac{h}{h} = 1 < \infty \Rightarrow \sin h \in \mathcal{O}(h)
+\end{equation}
+
+\subsection{Teil 3}
+
+\begin{equation}
+  \lim_{h \rightarrow 0} \frac{\sin(h) - h}{h} = \lim_{h \rightarrow 0} \frac{\sin h}{h} - 1 = 1 - 1 = 0 \Rightarrow \sin(h) - h \in o(h) \Rightarrow \sin h = h + o(h)
+\end{equation}
+
+\subsection{Teil 4}
+
+\begin{equation}
+  \lim_{h \rightarrow 0} \frac{\sqrt{h}}{1} = \lim_{h \rightarrow 0} \sqrt{h} = \lim_{h \rightarrow 0} h^{\frac{1}{2}} = \lim_{h \rightarrow 0} \exp(\frac{1}{2} \cdot \log(h)) = 0 < \infty \Rightarrow \sqrt{h} \in \mathcal{O}(1) \land \sqrt{h} \in o(1)
+\end{equation}
+
+\subsection{Teil 5}
+
+Anwendung von L'Hospital liefert
+\begin{equation}
+  \lim_{h \rightarrow 0} \frac{1 - \cos(h)}{h} = \lim_{h \rightarrow 0} \frac{\sin h}{1} = 0 \Rightarrow 1 - \cos(h) \in o(h)
+\end{equation}
+und
+\begin{equation}
+  \lim_{h \rightarrow 0} \frac{1 - \cos(h)}{h^{2}} = \lim_{h \rightarrow 0} \frac{\sin h}{2h} = \frac{1}{2} \cdot \lim_{h \rightarrow 0} \frac{\sin h}{h} = \frac{1}{2} < \infty \Rightarrow 1 - \cos(h) \in \mathcal{O}(h^{2})
+\end{equation}
+
+\subsection{Teil 6}
+
+\begin{equation}
+  \lim_{h \rightarrow 0} \frac{e^{-\frac{1}{h}}}{h^{q}} =
+\end{equation}
+
+\section{Aufgabe 5}
+
+
+
+\section{Aufgabe 6}
+
+
+
+\end{document}
