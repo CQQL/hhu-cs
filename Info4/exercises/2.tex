@@ -1,0 +1,165 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 2.1}
+
+\subsection{Teil a}
+
+\subsubsection{(i)}
+
+Wenn es Kühe gibt und nicht alle Kühe schwarze Flecken haben, gibt es mindestens ein Kuh, die keine schwarzen Flecken hat.
+Sonst hätten ja alle Kühe schwarze Flecken.
+Und wenn es eine Kuh gibt, die keine schwarzen Flecken hat, haben nicht alle Kühe schwarze Flecken.
+
+\subsubsection{(ii)}
+
+Wenn keine Kuh lila Flecken hat, haben alle Kühe keine lila Flecken.
+Wenn alle Kühe keine lila Flecken haben, gibt es keine Kuh, die doch welche hat.
+
+\subsection{Teil b}
+
+\subsection{(i)}
+
+\begin{align*}
+  (\exists x \cdot f(x)) \Rightarrow g(a) & = \neg(\exists x \cdot f(x)) \lor g(a)\\
+  & = \neg(\neg(\forall x \cdot \neg f(x))) \lor g(a)\\
+  & = (\forall x \cdot \neg f(x)) \lor g(a)\\
+  & = \forall x \cdot \neg f(x) \lor g(a)
+\end{align*}
+
+\subsection{(ii)}
+
+\begin{align*}
+(\forall y \cdot g(y, b) \Rightarrow f(y)) \land \neg(\exists x \cdot f(x)) & = (\forall y \cdot \neg g(y, b) \lor f(y)) \land (\forall x \cdot \neg f(x))
+\end{align*}
+
+\subsection{Teil c}
+
+KNF mit negiertem Query
+\begin{align*}
+  \{ kuh(milka), lila(milka), (\forall x \cdot ((kuh(x) \land lila(x)) \Rightarrow werbung(x))), \neg(kuh(milka) \land werbung(milka)) \} & = \{ kuh(milka), lila(milka), (\forall x \cdot (\neg (kuh(x) \land lila(x)) \lor werbung(x))), \neg kuh(milka) \lor \neg werbung(milka) \}\\
+  & = \{ kuh(milka), lila(milka), (\forall x \cdot (\neg kuh(x) \lor \neg lila(x) \lor werbung(x))), \neg kuh(milka) \lor \neg werbung(milka) \}
+\end{align*}
+Resolution von 1 und 4
+\begin{equation}
+  \{ kuh(milka), lila(milka), (\forall x \cdot (\neg kuh(x) \lor \neg lila(x) \lor werbung(x))), \neg kuh(milka) \lor \neg werbung(milka), \neg werbung(milka) \}
+\end{equation}
+Resolution von 3 und 5 mit Einsetzung $\{ x / milka \}$
+\begin{equation}
+  \{ kuh(milka), lila(milka), (\forall x \cdot (\neg kuh(x) \lor \neg lila(x) \lor werbung(x))), \neg kuh(milka) \lor \neg werbung(milka), \neg werbung(milka), \neg kuh(milka) \lor \neg lila(milka) \}
+\end{equation}
+Resolution von 1 und 6
+\begin{equation}
+  \{ kuh(milka), lila(milka), (\forall x \cdot (\neg kuh(x) \lor \neg lila(x) \lor werbung(x))), \neg kuh(milka) \lor \neg werbung(milka), \neg werbung(milka), \neg kuh(milka) \lor \neg lila(milka), \neg lila(milka) \}
+\end{equation}
+Resolution von 2 und 7
+\begin{equation}
+  \{ kuh(milka), lila(milka), (\forall x \cdot (\neg kuh(x) \lor \neg lila(x) \lor werbung(x))), \neg kuh(milka) \lor \neg werbung(milka), \neg werbung(milka), \neg kuh(milka) \lor \neg lila(milka), \neg lila(milka), \{  \} \}
+\end{equation}
+Widerspruch. Also ist der Query und somit die Folgerung wahr.
+
+\section{Aufgabe 2.2}
+
+\subsection{Teil a}
+
+Eine Relation $R$ ist eine Teilmenge von $A_{1} \times \dots \times A_{n}$.
+Dabei stehen $a_{1} \in A_{1}, \dots, a_{n} \in A_{n}$ in Relation, wenn $(a_{1}, \dots, a_{n}) \in R$.
+Ein Beispielt für eine 3er Relation ist die Mutter-Vater-Kind-Relation.
+
+Eine Funktion ist eine binäre Relation $R \subset A \times B$ für die darüber hinaus gilt, dass es für jedes $a \in A$ genau ein Tupel $(a, b) \in R$ gibt.
+
+\subsection{Teil b}
+
+\subsubsection{(i)}
+
+\begin{equation}
+  fun(r) = \{ 4 \mapsto \{ 7, 6 \}, 0 \mapsto \{ 1, 2 \}, 1 \mapsto \{ 1, 5 \}, 3, \mapsto \{ 3 \}, 2 \mapsto \{ 3 \} \}
+\end{equation}
+
+\subsubsection{(ii)}
+
+$fun(r)$ ist eine totale Funktion, weil sie für jedes $s \in S$ definiert ist.
+
+\subsection{Teil c}
+
+\begin{equation}
+  rel(f) = \cup_{x \in dom(f)} \{ x \mapsto y \mid y \in f(x) \}
+\end{equation}
+
+\section{Aufgabe 2.3}
+
+\subsection{Teil a}
+
+\begin{equation}
+  F = \{ \neg A \lor B, \neg A \lor \neg C, \neg A \lor \neg B \lor C, A \lor B \lor \neg C \}, p = \{  \}
+\end{equation}
+Rekursion mit
+\begin{equation}
+  F = \{ B, \neg C, \neg B \lor C, A \lor B \lor \neg C \}, p = \{ A \}
+\end{equation}
+Unit-Propagation
+\begin{equation}
+  F = \{ \{  \} \}, p = \{ A, B, C \}
+\end{equation}
+
+Rekursion mit
+\begin{equation}
+  F = \{ \neg A \lor B, \neg A \lor \neg C, \neg A \lor \neg B \lor C, B \lor \neg C \}, p = \{ \neg A \}
+\end{equation}
+Rekursion mit
+\begin{equation}
+  F = \{ \neg A \lor \neg C, \neg A \lor C \}, p = \{ \neg A, B \}
+\end{equation}
+Rekursion mit
+\begin{equation}
+  F = \{ \neg A, \neg A \lor C \}, p = \{ \neg A, B, C \}
+\end{equation}
+Unit-Propagation
+\begin{equation}
+  F = \{ \}, p = \{ \neg A, B, C \}
+\end{equation}
+Es ist erfüllbar mit dem Modell $\{ \neg A, B, C \}$.
+
+\subsection{Teil b}
+
+Umwandeln in KNF ergibt
+\begin{align*}
+  (A \land B \land C) \Rightarrow (A \land B \land \neg C) & = \neg((A \land B \land C) \land \neg(A \land B \land \neg C))\\
+  & = \neg(A \land B \land C) \lor (A \land B \land \neg C)\\
+  & = \neg A \lor \neg B \lor \neg C \lor (A \land B \land \neg C)\\
+  & = (A \lor \neg A \lor \neg B \lor \neg C) \land (B \lor \neg A \lor \neg B \lor \neg C) \land (\neg C \lor \neg A \lor \neg B \lor \neg C)\\
+  & = \neg C \lor \neg A \lor \neg B
+\end{align*}
+
+\begin{equation}
+  F = \{ \neg C \lor \neg A \lor \neg B \}, p = \{  \}
+\end{equation}
+Rekursion mit
+\begin{equation}
+  F = \{ \neg C \lor \neg B \}, p = \{ A \}
+\end{equation}
+Rekursion mit
+\begin{equation}
+  F = \{ \neg C \}, p = \{ A, B \}
+\end{equation}
+Rekursion mit
+\begin{equation}
+  F = \{ \{  \} \}, p = \{ A, B, C \}
+\end{equation}
+Widerspruch.
+Rekursion mit
+\begin{equation}
+  F = \{ \}, p = \{ A, B, \neg C \}
+\end{equation}
+Es ist erfüllbar und ein Modell lautet $\{ A, B, \neg C \}$.
+
+\end{document}
