@@ -55,10 +55,59 @@ und
 
 \section{Aufgabe 5}
 
+\begin{equation}
+  y_{1} = -\frac{p}{2} + \sqrt{(\frac{p}{2})^{2} - q}
+\end{equation}
+\begin{equation}
+  y_{2} = -\frac{p}{2} - \sqrt{(\frac{p}{2})^{2} - q}
+\end{equation}
+\begin{align*}
+  \frac{\partial y_{1}}{\partial p} & = -\frac{1}{2} + \frac{1}{4}p\frac{1}{\sqrt{(\frac{p}{2})^{2} - q}}\\
+  & = \frac{p}{4}\frac{1}{\sqrt{(\frac{p}{2})^{2} - q}} - \frac{1}{2}\\
+  & = \frac{p}{4 \sqrt{(\frac{p}{2})^{2} - q}} - \frac{1}{2}\\
+  & = \frac{\frac{p}{2} - \sqrt{(\frac{p}{2})^{2} - q}}{2 \sqrt{(\frac{p}{2})^{2} - q}}\\
+  & = \frac{y_{1}}{y_{2} - y_{1}}
+\end{align*}
+\begin{align*}
+  \frac{\partial y_{1}}{\partial q} & = -\frac{1}{2} \cdot \frac{1}{\sqrt{(\frac{p}{2})^{2} - q}}\\
+  & = -\frac{1}{2 \sqrt{(\frac{p}{2})^{2} - q}}\\
+  & = \frac{1}{y_{2} - y_{1}}
+\end{align*}
+\begin{align*}
+  \frac{\partial y_{2}}{\partial p} & = -\frac{1}{2} - \frac{1}{4}p\frac{1}{\sqrt{(\frac{p}{2})^{2} - q}}\\
+  & = -\frac{p}{4\sqrt{(\frac{p}{2})^{2} - q}} - \frac{1}{2}\\
+  & = \frac{-\frac{p}{2} - \sqrt{(\frac{p}{2})^{2} - q}}{2 \sqrt{(\frac{p}{2})^{2} - q}}\\
+  & = \frac{y_{2}}{y_{1} - y_{2}}
+\end{align*}
+\begin{align*}
+  \frac{\partial y_{2}}{\partial q} & = \frac{1}{2 \sqrt{(\frac{p}{2})^{2} - q}}\\
+  & = \frac{1}{y_{1} - y_{2}}
+\end{align*}
 
+\begin{equation}
+  k_{1, 1} = |\frac{\partial y_{1}}{\partial p} \cdot \frac{p}{y_{1}}| = |\frac{p}{y_{2} - y_{1}}|
+\end{equation}
+\begin{equation}
+  k_{1, 2} = |\frac{\partial y_{1}}{\partial q} \cdot \frac{q}{y_{1}}| = |\frac{q}{y_{1}(y_{2} - y_{1})}|
+\end{equation}
+\begin{equation}
+  k_{2, 1} = |\frac{\partial y_{2}}{\partial p} \cdot \frac{p}{y_{2}}| = |\frac{p}{y_{1} - y_{2}}|
+\end{equation}
+\begin{equation}
+  k_{2, 2} = |\frac{\partial y_{2}}{\partial q} \cdot \frac{q}{y_{2}}| = |\frac{q}{y_{2}(y_{1} - y_{2})}|
+\end{equation}
+Für $y_{1} \simeq y_{2}$ werden diese Werte sehr groß.
 
 \section{Aufgabe 6}
 
+Für die Konditionszahl $k_{i}$ für $a_{i}$ sei $x$ fest und ich betrachte $p$ als Funktion in $a_{0}, \dots, a_{n}$
+\begin{equation}
+  k_{i} = |\frac{\partial p(a_{i})}{\partial a_{i}} \cdot \frac{a_{i}}{p(x)}| = |\frac{a_{i} x^{i}}{p(x)}|
+\end{equation}
 
+Sei $k$ die Konditionszahl für $x$
+\begin{equation}
+  k = |\frac{\partial p(x)}{\partial x} \cdot \frac{x}{p(x)}| = |\frac{na_{n}x^{n} + (n - 1)a_{n - 1}x^{n - 1} + \dots + a_{1}x^{1}}{a_{n}x^{n} + a_{n - 1}x^{n - 1} + \dots + a_{0}x^{0}}|
+\end{equation}
 
 \end{document}
