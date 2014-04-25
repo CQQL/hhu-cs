@@ -68,37 +68,6 @@
 
 \subsection{Teil 3}
 
-\section{Übung 2}
-
-\subsection{Teil 1}
-
-\begin{proof}
-  Sei $n = |G|$.
-  Da $G$ zyklisch ist, ist $G$ isomorph zu $\mathbb{Z} / n \mathbb{Z}$.
-  $H = \mathbb{Z} / (n / p) \mathbb{Z}$ ist eine Untergruppe der Ordnung $p$ davon, weil $p$ $n$ teilt.
-  Sei $g$ das Urbild von $n / p$ unter dem Isomorphismus $f$ zwischen $G$ und $\mathbb{Z} / n \mathbb{Z}$.
-  Dann ist $ord(f(g)) = p$, also $ord(g) = p$.
-\end{proof}
-
-\subsection{Teil 2.a}
-
-\begin{proof}
-
-\end{proof}
-
-\subsection{Teil 2.b}
-
-\begin{proof}
-  Sei $n = |G|$.
-
-  Sei $n = 1$.
-  Dann muss $p = 1$ sein und es gibt $e_{G} \in G$ mit $ord(e_{G}) = 1$, was von $p$ geteilt wird.
-
-  Sei $n > 1$ und die Behauptung für kleinere $n$ bereits gezeigt.
-\end{proof}
-
-\subsection{Teil 2.c}
-
 \begin{proof}
   \begin{equation}
     \Id \in H
@@ -162,6 +131,39 @@
     (4321)(3124) = (2431)
   \end{equation}
   Da hier 12 verschiedene Ergebnisse auftauchen und $A_{4}$ eine Gruppe ist, ist $A_{4} = V_{4}H$ und es ist gezeigt.
+\end{proof}
+
+\section{Übung 2}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  Sei $n = |G|$.
+  Da $G$ zyklisch ist, ist $G$ isomorph zu $\mathbb{Z} / n \mathbb{Z}$.
+  $H = \mathbb{Z} / (n / p) \mathbb{Z}$ ist eine Untergruppe der Ordnung $p$ davon, weil $p$ $n$ teilt.
+  Sei $g$ das Urbild von $n / p$ unter dem Isomorphismus $f$ zwischen $G$ und $\mathbb{Z} / n \mathbb{Z}$.
+  Dann ist $ord(f(g)) = p$, also $ord(g) = p$.
+\end{proof}
+
+\subsection{Teil 2.a}
+
+\subsection{Teil 2.b}
+
+\begin{proof}
+  Sei $n = |G|$.
+
+  Sei $n = 1$.
+  Dann muss $p = 1$ sein und es gibt $e_{G} \in G$ mit $ord(e_{G}) = 1$, was von $p$ geteilt wird.
+
+  Sei $n > 1$ und die Behauptung für kleinere $n$ bereits gezeigt.
+\end{proof}
+
+\subsection{Teil 2.c}
+
+\begin{proof}
+  Wie in Teil 2.b gesehen, gibt es ein $g \in G$ mit $p | ord(g)$.
+  Die endliche Untergruppe, und somit Gruppe, $\langle g \rangle$ ist also zyklisch und $p$ ist ein Primteiler ihrer Ordnung.
+  Also kann man Teil 1 wiederum auf $\langle g \rangle$ anwenden.
 \end{proof}
 
 \section{Übung 3}
