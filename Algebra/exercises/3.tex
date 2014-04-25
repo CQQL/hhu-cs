@@ -8,11 +8,61 @@
 \usepackage{amsthm}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\sig}{sig}
+
 \begin{document}
 
 \section{Übung 1}
 
 \subsection{Teil 1}
+
+\begin{proof}
+  \begin{equation}
+    \Id \in V_{4}
+  \end{equation}
+  \begin{equation}
+    \sig(\Id) = \sig(2143) = \sig(3412) = \sig(4321) = 1 \Rightarrow V_{4} \subset A_{4}
+  \end{equation}
+  \begin{equation}
+    \Id^{-1} = \Id
+  \end{equation}
+  \begin{equation}
+    (2143)(2143) = \Id
+  \end{equation}
+  \begin{equation}
+    (2143)(3412) = (4321)
+  \end{equation}
+  \begin{equation}
+    (2143)(4321) = (3412)
+  \end{equation}
+  \begin{equation}
+    (3412)(2143) = (4321)
+  \end{equation}
+  \begin{equation}
+    (3412)(3412) = \Id
+  \end{equation}
+  \begin{equation}
+    (3412)(4321) = (2143)
+  \end{equation}
+  \begin{equation}
+    (4321)(2143) = (3412)
+  \end{equation}
+  \begin{equation}
+    (4321)(3412) = (2143)
+  \end{equation}
+  \begin{equation}
+    (4321)(4321) = \Id
+  \end{equation}
+  Es ist also auch abgeschlossen und alle Elemente sind ihre eigenen Inversen.
+  Damit ist $V_{4}$ eine Untergruppe von $A_{4}$.
+
+  Sei $a \in A_{4}$ und $s \in S_{4}$.
+  \begin{equation}
+    \sig(sas^{1}) = \sig(s)\sig(a)\sig(s^{-1}) = \sig(s)\sig(s^{-1}) = \sig(ss^{-1}) = \sig(\Id) = 1
+  \end{equation}
+  Also $sas^{-1} \in A_{4}$ und $A_{4} \triangleleft S_{4}$.
+\end{proof}
 
 \subsection{Teil 2}
 
@@ -22,21 +72,173 @@
 
 \subsection{Teil 1}
 
+\begin{proof}
+  Sei $n = |G|$.
+  Da $G$ zyklisch ist, ist $G$ isomorph zu $\mathbb{Z} / n \mathbb{Z}$.
+  $H = \mathbb{Z} / (n / p) \mathbb{Z}$ ist eine Untergruppe der Ordnung $p$ davon, weil $p$ $n$ teilt.
+  Sei $g$ das Urbild von $n / p$ unter dem Isomorphismus $f$ zwischen $G$ und $\mathbb{Z} / n \mathbb{Z}$.
+  Dann ist $ord(f(g)) = p$, also $ord(g) = p$.
+\end{proof}
+
 \subsection{Teil 2.a}
+
+\begin{proof}
+
+\end{proof}
 
 \subsection{Teil 2.b}
 
+\begin{proof}
+  Sei $n = |G|$.
+
+  Sei $n = 1$.
+  Dann muss $p = 1$ sein und es gibt $e_{G} \in G$ mit $ord(e_{G}) = 1$, was von $p$ geteilt wird.
+
+  Sei $n > 1$ und die Behauptung für kleinere $n$ bereits gezeigt.
+\end{proof}
+
 \subsection{Teil 2.c}
+
+\begin{proof}
+  \begin{equation}
+    \Id \in H
+  \end{equation}
+  \begin{equation}
+    (2314)(2314) = (2314)
+  \end{equation}
+  \begin{equation}
+    (2314)(3124) = (1234)
+  \end{equation}
+  \begin{equation}
+    (3124)(2314) = (1234)
+  \end{equation}
+  \begin{equation}
+    (3124)(3124) = (3124)
+  \end{equation}
+  \begin{equation}
+    \sig(\Id) = \sig(2314) = \sig(3124) = 1 \Rightarrow H \subset A_{4}
+  \end{equation}
+  Also ist $H$ eine Untergruppe von $A_{4}$.
+
+  Es ist also gezeigt, dass $A_{4}$ eine Gruppe, $H$ eine Untergruppe von $A_{4}$ und $V_{4}$ ein Normalteiler von $A_{4}$ ist.
+  Außerdem ist $H \cap V_{4} = \{ e_{A_{4}} \}$.
+  Es bleibt zu zeigen, dass $A_{4} = V_{4}H$.
+  Dann liefert Satz 1.7.5 den Isomorphismus.
+
+  \begin{equation}
+    \Id \circ \Id = \Id
+  \end{equation}
+  \begin{equation}
+    \Id \circ (2314) = (2314)
+  \end{equation}
+  \begin{equation}
+    \Id \circ (3124) = (3124)
+  \end{equation}
+  \begin{equation}
+    (2143) \circ \Id = (2143)
+  \end{equation}
+  \begin{equation}
+    (2143)(2314) = (1423)
+  \end{equation}
+  \begin{equation}
+    (2143)(3124) = (4213)
+  \end{equation}
+  \begin{equation}
+    (3412) \circ \Id = (3412)
+  \end{equation}
+  \begin{equation}
+    (3412)(2314) = (4132)
+  \end{equation}
+  \begin{equation}
+    (3412)(3124) = (1342)
+  \end{equation}
+  \begin{equation}
+    (4321) \circ \Id = (4321)
+  \end{equation}
+  \begin{equation}
+    (4321)(2314) = (3241)
+  \end{equation}
+  \begin{equation}
+    (4321)(3124) = (2431)
+  \end{equation}
+  Da hier 12 verschiedene Ergebnisse auftauchen und $A_{4}$ eine Gruppe ist, ist $A_{4} = V_{4}H$ und es ist gezeigt.
+\end{proof}
 
 \section{Übung 3}
 
 \subsection{Teil 1}
 
+\begin{proof}
+  Seien $A, B \in H$.
+  Zu zeigen ist
+  \begin{equation}
+    \Phi_{AB} = \Phi_{A} \circ \Phi_{B}
+  \end{equation}
+  Sei $n \in N$.
+  \begin{equation}
+    \Phi_{AB}(n) = (AB)n = A(Bn) = A(\Phi_{B}(n)) = \Phi_{A} \circ \Phi_{B}(n)
+  \end{equation}
+\end{proof}
+
 \subsection{Teil 2}
+
+\begin{proof}
+  Sei $0 \in N$ der Nullvektor und $I \in H$ die Einheitsmatrix.
+  Dann ist $(0, I) \in G$ das neutrale Element von $G$.
+  Sei $y \in X$.
+  \begin{equation}
+    (0, I) \cdot y = 0 + Iy = y
+  \end{equation}
+
+  Seien $(a, A), (b, B) \in G$ und $y \in X$.
+  \begin{align*}
+    (a, A) \cdot ((b, B) \cdot y) & = (a, A) \cdot (b + By)\\
+    & = a + A(b + By)\\
+    & = a + Ab + ABy\\
+    & = (a + Ab, AB)y\\
+    & = ((a, A)(b, B)) \cdot y
+  \end{align*}
+\end{proof}
 
 \subsection{Teil 3}
 
+Die Operation ist transitiv.
+\begin{proof}
+  Seien $x, y \in X$ und $(y, 0) \in G$ ($0$ ist die Nullmatrix).
+  \begin{equation}
+    (y, 0) \cdot x = y + 0x = y
+  \end{equation}
+\end{proof}
+
+Die Operation ist treu.
+\begin{proof}
+  Sei $(a, A) \in G$ und $(a, A) \cdot x = x$ für alle $x \in X$.o
+  Sei $0 \in N$ der Nullvektor.
+  Dann gilt insbesondere
+  \begin{equation}
+    (a, A) \cdot 0 = a + A(0) = a + 0 = a = 0 \Rightarrow a = 0
+  \end{equation}
+  Somit gilt
+  \begin{equation}
+    (0, A) \cdot x = Ax = x \forall x \in X
+  \end{equation}
+  Insbesondere auch für die Einheitsvektoren und deshalb ist $A = I$.
+  Also ist
+  \begin{equation}
+    (a, A) = (0, I)
+  \end{equation}
+  und die Operation ist treu.
+\end{proof}
+
 \subsection{Teil 4}
+
+Sei $y \in X$.
+\begin{align*}
+  G_{y} & = \{ g \in G \mid g \cdot y = y \}\\
+  & = \{ (a, A) \in G \mid a + Ay = y \}\\
+  & = \{ (a, A) \in G \mid a = y - Ay \}\\
+  & = \{ (y - Ay, A) \in G \}
+\end{align*}
 
 \section{Übung 4}
 
