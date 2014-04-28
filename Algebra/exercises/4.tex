@@ -1,0 +1,212 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\ord}{ord}
+
+\begin{document}
+
+\section{Übung 1}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  $\subset$: Sei $h \in G_{[g]}$.
+  Dann ist
+  \begin{equation}
+    h \cdot [g] = [hg] = [g]
+  \end{equation}
+  Also $hg \sim g$ und es gibt also ein $s \in S$ mit
+  \begin{equation}
+    hg = gs \Leftrightarrow h = gsg^{-1} \Rightarrow h \in gSg^{-1}
+  \end{equation}
+  Somit ist $G_{[g]} \subset gSg^{-1}$.
+
+  $\supset$: Sei $h = gsg^{-1} \in gSg^{-1}$ mit $s \in S$.
+  \begin{equation}
+    h \cdot [g] = [hg] = [gsg^{-1}g] = [gs] = [g][s] = [g][e_{G}] = [g] \Rightarrow h \in G_{[g]}
+  \end{equation}
+  Also $G_{[g]} \supset gSg^{-1}$.
+\end{proof}
+
+\subsection{Teil 2}
+
+\begin{proof}
+  Ich nehme mal an, dass $H$ hier eine Untergruppe von $G$ meint, auch wenn es in der Aufgabenstellung nicht spezifiziert ist.
+  Dann ist $G \cap H = H$.
+  \begin{align*}
+    H_{[g]} & = \{ h \in H \mid h \cdot [g] = [g] \}\\
+    & = \{ h \in G \cap H \mid h \cdot [g] = [g] \}\\
+    & = \{ h \in G \mid h \cdot [g] = [g] \} \cap H\\
+    & = G_{[g]} \cap H\\
+    & = gSg^{-1} \cap H
+  \end{align*}
+\end{proof}
+
+\section{Übung 2}
+
+\begin{proof}
+  Sei $a = \gamma(x_{i})$ für $i \in [1, r]$.
+  \begin{equation}
+    \gamma\sigma\gamma^{-1}(a) = \gamma\sigma\gamma^{-1}(\gamma(x_{i})) = \gamma(\sigma(x_{i}))
+  \end{equation}
+  Also
+  \begin{equation}
+    \gamma\sigma\gamma^{-1}(\gamma(x_{r})) = \gamma(x_{1})
+  \end{equation}
+  und
+  \begin{equation}
+    \gamma\sigma\gamma^{-1}(\gamma(x_{i})) = \gamma(x_{i + 1})
+  \end{equation}
+  für $i \in [1, r - 1]$.
+
+  Es bleibt zu zeigen, dass $\gamma\sigma\gamma^{-1}(i) = i$ für $i \in [1, n] \setminus \{\gamma(x_{1}), \dots, \gamma(x_{r})\}$.
+  Sei $i$ derart.
+  Da $\gamma \in S_{n}$, lässt sich $i$ als $\gamma(a)$ darstellen für ein $a \in [1, n]$.
+  Dann ist $a \not\in \{ x_{1}, \dots, x_{r} \}$, da sonst $i \in \{ \gamma(x_{1}), \dots, \gamma(x_{r}) \}$ wäre, also $\sigma(a) = a$.
+  \begin{equation}
+    \gamma\sigma\gamma^{-1}(i) = \gamma\sigma(a) = \gamma(a) = i
+  \end{equation}
+\end{proof}
+
+\section{Übung 3}
+
+\subsection{Teil 1}
+
+Wie in LA2 gesehen, hat $S_{n}$ $n!$ Elemente.
+\begin{equation}
+  |G| = 5! = 120
+\end{equation}
+Wie in der Vorlesung gesehen, hat $A_{n}$ halb so viele Elemente wie $S_{n}$ (weil $S_{n} / A_{n}$ isomorph zu $\{ 1, -1 \}$ ist).
+\begin{equation}
+  |H| = \frac{120}{2} = 60
+\end{equation}
+
+\subsection{Teil 2}
+
+\subsubsection{Teil a}
+
+\subsubsection{Teil b}
+
+Die Ordnung des Produkts von 2 fremden 2-Zykeln ist $2$.
+\begin{equation}
+  \langle ([a, b][c, d]) \rangle = \{ ([a, b][c, d]), ([b, a][d, c]) \}
+\end{equation}
+
+Die Ordnung eines 3-Zykels $[x, y, z]$ ist $3$.
+\begin{equation}
+  \langle [x, y, z] \rangle = \{ [x, y, z], [z, x, y], [y, z, x] \}
+\end{equation}
+
+Die Ordnung eines 5-Zykels $[a, b, c, d, e]$ ist $5$.
+\begin{equation}
+  \langle [a, b, c, d, e] \rangle = \{ [a, b, c, d, e], [e, a, b, c, d], [d, e, a, b, c], [c, d, e, a, b], [b, c, d, e, a] \}
+\end{equation}
+
+\subsubsection{Teil c}
+
+Ich nehme an, dass Zykel in $S_{5}$ gemeint sind.
+
+...
+
+Es gibt $4! = 24$ 5-Zykel, weil man alle 5-Zykel so umschreiben kann, dass sie mit 1 beginnen und dann hat man 4 Möglichkeiten für die 2te Stelle, 3 für die 3te und 2 für die 4te.
+
+\subsection{Teil 3}
+
+\subsubsection{Teil a}
+
+Sie hat $5$ Elemente, weil ihre Ordnung die höchste Potenz von $5$ ist, die $|S_{5}|$ teilt und
+\begin{equation}
+  |S_{5}| = 120 = 2^{3} \cdot 3 \cdot 5
+\end{equation}
+
+\subsubsection{Teil b}
+
+\begin{proof}
+  Da die Hülle immer eine Untergruppe ist, bleibt zu zeigen, dass $\ord(\sigma) = 5$, was wahr ist, weil die $r$-te Potenz eines $r$-Zykels $\Id$ ist und alle niedrigeren Potenzen ungleich $\Id$.
+\end{proof}
+
+\subsubsection{Teil c}
+
+Da die Hüllen Untergruppen sind und die Ordnung einer $5$-Sylowuntergruppe von $S_{5}$ $5$ ist, sind die Ordnungen der Elemente entweder $1$ oder $5$.
+Dabei ist die Ordnung der Identität wie immer $1$ und die der anderen Elemente $5$, weil deren Hülle mindestens die Identität und sie selbst enthält.
+
+\subsubsection{Teil d}
+
+\begin{proof}
+  Sei $S$ eine $5$-Sylowuntergruppe von $S_{5}$.
+  Dann enthält $S$ mindestens ein Element $\sigma$ dessen Ordnung $5$ ist, weil $|S| = 5$.
+  Es bleibt zu zeigen, dass $\sigma$ ein 5-Zykel ist.
+
+  Definiere die Operation $A_{5} \times [1, 5] \rightarrow [1, 5]$ durch
+  \begin{equation}
+    \phi \cdot x = \sigma(x)
+  \end{equation}
+  $\langle \sigma \rangle$ ist eine Untergruppe von $A_{5}$.
+  Man betrachte die Bahnen $B_{i} = \langle \sigma \rangle \cdot i$ für $i \in [1, 5]$.
+  Wenn $|B_{i}| = 5$ für alle $i \in [1, 5]$, ist $\sigma$ ein 5-Zykel.
+  Die Bahnen können nicht alle 1 lang sein, weil $\sigma \ne \Id$.
+  Sie können auch nicht 2, 3 oder 4 Elemente haben, weil dann $\sigma^{5}(i) \ne i$ wäre.
+  Also sind haben alle Bahnen 5 Elemente und $\sigma$ ist ein 5-Zykel.
+\end{proof}
+
+\subsection{Teil 4}
+
+\subsubsection{Teil a}
+
+\begin{proof}
+  Angenommen $N$ enthalte mindestens einen 3-Zykel $\gamma$.
+  Sei $\sigma$ ein anderer 3-Zykel in $A_{5}$.
+  Dann gibt es in $A_{5}$ ein $\phi$, sodass $\sigma = \phi\gamma\phi^{-1}$.
+  Da $N$ Normalteiler ist, ist dann auch $\sigma \in N$, weil man es als $\phi\gamma\phi^{-1}$ darstellen kann.
+  Also enthält $N$ dann alle 3-Zykel.
+\end{proof}
+
+\subsubsection{Teil b}
+
+\begin{proof}
+  \begin{equation}
+    \gamma\sigma\gamma^{-1}(a') = \gamma\sigma(a) = \gamma(b) = b'
+  \end{equation}
+  \begin{equation}
+    \gamma\sigma\gamma^{-1}(b') = \gamma\sigma(b) = \gamma(a) = a'
+  \end{equation}
+  \begin{equation}
+    \gamma\sigma\gamma^{-1}(e') = \gamma\sigma(e) = \gamma(e) = e'
+  \end{equation}
+  Dann muss $\gamma\sigma\gamma^{-1} = [a', b'][c', d'][e]$ sein, weil $[a', b'][c'][d'][e']$ nicht in $A_{5}$ enthalten ist und $[a', b'][c', d'][e] = [a', b'][d', c'][e]$.
+
+  Da $A_{n}$ $n - 2$-transitiv ist, gibt es für $n = 5$ immer ein $\gamma \in A_{5}$, dass diese 3 Bedingungen für 2 Produkte von zwei fremden Zykeln erfüllt.
+  Also sind alle Produkte von zwei fremden Zykeln in $A_{5}$ zueinander konjugiert.
+\end{proof}
+
+\subsubsection{Teil c}
+
+\begin{proof}
+  Analog zu Teil a.
+\end{proof}
+
+\subsubsection{Teil d}
+
+\begin{proof}
+  Angenommen $N$ enthalte mindestens einen 5-Zykel $\sigma$.
+  Dann enthält $N$ auch die von $\sigma$ erzeugte Untergruppe.
+  Sei $\phi$ ein 5-Zykel, der nicht in dieser Untergruppe enthalten ist.
+  Dann gibt es ein 5-Zykel in $\langle \sigma \rangle$ und $\lange \phi \rangle$, die zueinander konjugiert sind.
+  Und weil $N$ ein Normalteiler ist, ist dann auch $\phi \in N$.
+\end{proof}
+
+\subsection{Teil 5}
+
+\subsubsection{Teil a}
+
+\subsubsection{Teil b}
+
+\end{document}
