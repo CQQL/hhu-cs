@@ -1,0 +1,127 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Übung 4.1}
+
+\subsection{Teil a}
+
+\subsubsection{(i)}
+
+\begin{equation}
+  L(M_{1}) = \{ w \in \Sigma^{*} \mid \textit{$w$ erfüllt den regulären Ausdruck $(0^{*}(1(0(1)^{*}0)1)^{*})^{*}$} \}
+\end{equation}
+
+\subsubsection{(ii)}
+
+\begin{equation}
+  L(M_{2}) = \{ w \in \Sigma^{*} \mid \textit{$w$ erfüllt den regulären Ausdruck $0^{*}(1 (0 + ((01)^{*} 11)) (0 (1)^{*} 0 (1 + ((01)^{*} 00)))^{*} 1)^{*}$} \}
+\end{equation}
+
+\subsection{Teil b}
+
+\subsubsection{(i)}
+
+Worte dieser Sprache sind also beliebig lange Ketten von abwechselnden Nullen und Einsen.
+
+Definiere den Automaten $M$ durch
+\begin{equation}
+  M = (\Sigma, \{ a, b, c, d \}, \delta, a, \{ a, b, c \})
+\end{equation}
+mit der Übergangsfunktion $\delta$
+\\
+\begin{tabular}{c|c|c|c|c}
+  $\delta$ & a & b & c & d\\\hline
+  0 & b & d & b & d\\\hline
+  1 & c & c & d & d\\
+\end{tabular}
+
+\subsubsection{(ii)}
+
+Definiere den Automaten $M$ durch
+\begin{equation}
+  M = (\Sigma, \{ a, b \}, \delta, a, \{ b \})
+\end{equation}
+mit der Übergangsfunktion $\delta$
+\\
+\begin{tabular}{c|c|c|c|c}
+  $\delta$ & a & b\\\hline
+  0 & b & a\\\hline
+  1 & b & a\\
+\end{tabular}
+
+\section{Übung 4.2}
+
+\subsection{Teil a}
+
+\begin{proof}
+  Sei $n$ die Länge von $w$.
+
+  Sei $n = 0$.
+  Dann ist nach der Definition der Übergangsfunktion $\hat{\delta}(z_{i}, w) = z_{i}$.
+
+  Sei $n > 0$ und es für $n - 1$ bereits gezeigt.
+  Dann hat man für $w = aw'$ mit $a \in \Sigma$
+  \begin{equation}
+    \hat{\delta}(z_{i}, aw') = \delta(\hat{\delta}(z_{i}, w'), a) = \delta(z_{i}, a) = z_{i}
+  \end{equation}
+\end{proof}
+
+\subsection{Teil b}
+
+\subsubsection{(i)}
+
+\begin{proof}
+  Sei $n$ die Länge von $w$.
+
+  Sei $n = 1$.
+  Dann ist es nach Vorraussetzung wahr.
+
+  Sei $n > 1$ und es sei bereits gezeigt für $n - 1$.
+  Sei $w = w'a$ mit $a \in \Sigma$.
+  \begin{equation}
+    \hat{\delta}(z_{0}, w) = \hat{\delta}(z_{0}, w'a) = \delta(\hat{\delta}(z_{0}, w'), a) = \delta(\hat{\delta}(z, w'), a) = \hat{\delta}(z, w'a) = \hat{\delta}(z, w)
+  \end{equation}
+\end{proof}
+
+\subsubsection{(ii)}
+
+\begin{proof}
+  Sei $n = 1$.
+  Da $w$ in der Sprache enthalten ist, gilt
+  \begin{equation}
+    \hat{\delta}(z_{0}, w^{1}) = z
+  \end{equation}
+
+  Sei $n > 1$ und es für $n - 1$ bereits gezeigt.
+  \begin{equation}
+    \hat{\delta}(z_{0}, w^{n}) = \hat{\delta}(\hat{\delta}(z_{0}, w^{n - 1}), w) = \hat{\delta}(z, w) = \hat{\delta}(z_{0}, w) = z
+  \end{equation}
+  Und da $z$ ein Finalzustand ist, ist $w^{n} \in L(M)$.
+\end{proof}
+
+\section{Übung 4.3}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\section{Übung 4.4}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\subsubsection{(i)}
+
+\subsubsection{(ii)}
+
+\end{document}
