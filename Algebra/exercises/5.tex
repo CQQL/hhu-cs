@@ -1,0 +1,115 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\id}{id}
+
+\begin{document}
+
+\section{Übung 1}
+
+\begin{equation}
+  |G| = 4! = 24 = 2^{3} \cdot 3
+\end{equation}
+
+\subsection{Teil 1}
+
+Da $3^{1}$ die höchste Potenz von $3$ ist, die $|G|$ teilt, haben 3-Sylowuntergruppen von $G$ die Ordnung 3.
+\begin{equation}
+  H = \langle [143] \rangle = \{ \id, [143], [134] \}
+\end{equation}
+Dies ist eine Untergruppe, weil es die von $[143]$ erzeute Untergruppe ist, und eine 3-Sylowuntergruppe, weil die Ordnung von $[143]$ 3 ist.
+
+\subsection{Teil 2}
+
+Sei $k$ die Anzahl der 3-Sylowuntergruppen.
+Dann teilt $k$ $2^{3}$ und ist $1$ modulo $3$.
+Also ist $k \in \{ 1,4 \}$.
+Da $\langle [142] \rangle$ eine andere Untergruppe der Ordnung $3$ ist, muss $k > 1$, also $k = 4$ sein.
+
+\subsection{Teil 3}
+
+$2$-Sylowuntergruppen von $G$ haben Ordnung $8$.
+
+\subsection{Teil 4}
+
+Sei $k$ die Anzahl der $2$-Sylowuntergruppen.
+Dann ist $k \equiv 1 \pmod{2}$, also ungerade, und teilt 3.
+
+\section{Übung 2}
+
+\begin{proof}
+  \begin{equation}
+    |G| = 63 = 7 \cdot 3^{2}
+  \end{equation}
+  Sei $k$ die Anzahl der $7$-Sylowuntergruppen.
+  Dann ist $k \equiv 1 \pmod{7}$ und $k\ \vert\ 3^{2}$.
+  Also ist $k \in \{ 1, 8 \} \cap \{ 1, 3, 9 \} \Rightarrow k = 1$.
+  Es gibt also genau eine $7$-Sylowuntergruppe und diese ist ein Normalteiler.
+  Sie hat Ordnung $7$ und da $1 < 7 < 63$, ist $G$ nicht einfach.
+\end{proof}
+
+\section{Übung 3}
+
+$\mathbb{H}$ ist auflösbar.
+Ich werde eine Folge von Gruppen angeben, die die Definition von Auflösbarkeit erfüllen.
+
+\begin{equation}
+  G_{0} = \mathbb{H}, G_{1} = \langle I \rangle, G_{2} = \langle -1 \rangle, G_{3} = \{ 1 \}
+\end{equation}
+
+Dies sind alles Gruppen und jeweils Untergruppen von der vorherigen.
+Die Ordnungen sind 8, 4, 2, 1.
+Also sind die jeweiligen Quotienten isomorph zu $\mathbb{Z} / 2 \mathbb{Z}$ und kommutativ.
+Somit ist $\mathbb{H}$ auflösbar.
+
+\section{Übung 4}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  Sei $G = G_{1} \times \dots \times G_{r}$.
+  Dann ist $G$ eine Gruppe mit der elementweisen Verknüpfung der Vektoren als Verknüpfung.
+
+  $\Rightarrow$: Es gibt ein $m \in \mathbb{N}$, sodass $D^{m}(G) = \{ e_{G} \}$.
+  Definiere $f_{i} : G \rightarrow G_{i}$ als Abbildung eines $g \in G$ auf seine $i$-te Komponente.
+  Dies ist offensichtlich ein surjektiver Gruppenhomomorphismus.
+  Nach einem Satz aus der Vorlesung ist dann
+  \begin{equation}
+    \{ e_{G_{i}} \} = f_{i}(\{ e_{G} \}) = f_{i}(D^{m}(G)) = D^{m}(f_{i}(G)) = D^{m}(G_{i})
+  \end{equation}
+  Also ist $G_{i}$ auflösbar.
+
+  $\Leftarrow$: Seien $m_{i}$ so, dass $D^{m_{i}}(G_{i}) = \{ e_{G_{i}} \}$ für $i \in [1, r]$.
+  Sei $m = \max \{ m_{i} \mid i \in [1, r] \}$.
+  Nun kann man den gleichen Gruppenhomomorphismus wie im ersten Teil verwenden und erhält
+  \begin{equation}
+    D^{m}(G) = ???
+  \end{equation}
+\end{proof}
+
+\subsection{Teil 2}
+
+\begin{proof}
+  Sei $\phi$ der Homomorphismus, mit dem das semidirekte Produkt gebildet wurde.
+
+  $\Rightarrow$:
+
+  $\Leftarrow$:
+\end{proof}
+
+\section{Übung 5}
+
+\begin{proof}
+  Da $D^{1}(G)$ von einer kommutativen Gruppe $G$ immer trivial ist, ist es wahr für alle kommutativen Gruppen.
+
+  Sei also $G$ nicht kommutativ.
+\end{proof}
+
+\end{document}
