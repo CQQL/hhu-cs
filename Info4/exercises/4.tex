@@ -149,9 +149,148 @@ Also ist $-0/234 \not\in L(G_{\mathbb{Q}})$.
 
 \subsection{Teil b}
 
+Ich werde die Automaten $M_{i}$ aus der Induktionsvoraussetzung als
+\begin{tikzpicture}[shorten >= 1pt, node distance=3cm, on grid, auto]
+  \node[state,initial] (Z) {$Z_{i}$};
+  \node[state,accepting] (F) [right=of Z] {$F_{i}$};
+  \path[->] (Z) edge node {} (F);
+\end{tikzpicture}
+darstellen, wobei $Z_{i}$ die Menge aller Startzustände und $F_{i}$ die Menge aller Endzustände sind und der einzelne Pfad die Menge aller Übergänge in dem Automaten darstellt.
+
+\subsubsection{$\alpha = \emptyset$}
+
+\begin{tikzpicture}[shorten >= 1pt, node distance=3cm, on grid, auto]
+  \node[state,initial] (x) {$z_{0}$};
+\end{tikzpicture}
+
+\subsubsection{$\alpha = \lambda$}
+
+\begin{tikzpicture}[shorten >= 1pt, node distance=3cm, on grid, auto]
+  \node[state,initial,accepting] (x) {$z_{0}$};
+\end{tikzpicture}
+
+\subsubsection{$\alpha = a \in \Sigma$}
+
+\begin{tikzpicture}[shorten >= 1pt, node distance=2cm, on grid, auto]
+  \node[state,initial] (z0) {$z_{0}$};
+  \node[state,accepting] (z1) [right=of z0] {$z_{1}$};
+  \path[->]
+  (z0) edge node {a} (z1)
+  ;
+\end{tikzpicture}
+
+\subsubsection{$\alpha = \alpha_{1} \alpha_{2}$}
+
+Sei $F'$ die Menge der Zustände im Automaten von $\alpha_{1}$, die einen direkten Übergang in einen finalen Zustand haben.
+
+Kein Automat akzeptiert das leere Wort.\\
+\begin{tikzpicture}[shorten >= 1pt, node distance=2cm, on grid, auto]
+  \node[state,initial] (Z1) {$Z_{1}$};
+  \node[state] (F) [right=of Z1] {$F'$};
+  \node[state] (Z2) [right=of F] {$Z_{2}$};
+  \node[state,accepting] (F2) [right=of Z2] {$F_{2}$};
+  \path[->]
+  (Z1) edge node {} (F)
+  (F) edge node {} (Z2)
+  (Z2) edge node {} (F2)
+  ;
+\end{tikzpicture}
+
+Nur der erste Automat akzeptiert das leere Wort.\\
+\begin{tikzpicture}[shorten >= 1pt, node distance=2cm, on grid, auto]
+  \node[state,initial] (Z1) {$Z_{1}$};
+  \node[state] (F) [below right=of Z1] {$F'$};
+  \node[state,initial] (Z2) [above right=of F] {$Z_{2}$};
+  \node[state,accepting] (F2) [right=of Z2] {$F_{2}$};
+  \path[->]
+  (Z1) edge node {} (F)
+  (F) edge node {} (Z2)
+  (Z2) edge node {} (F2)
+  ;
+\end{tikzpicture}
+
+Nur der zweite Automat akzeptiert das leere Wort.\\
+\begin{tikzpicture}[shorten >= 1pt, node distance=2cm, on grid, auto]
+  \node[state,initial] (Z1) {$Z_{1}$};
+  \node[state] (F) [right=of Z1] {$F'$};
+  \node[state,accepting] (F1) [below right=of F] {$F_{1}$};
+  \node[state] (Z2) [right=of F] {$Z_{2}$};
+  \node[state,accepting] (F2) [right=of Z2] {$F_{2}$};
+  \path[->]
+  (Z1) edge node {} (F)
+  (F) edge node {} (Z2)
+  (F) edge node {} (F1)
+  (Z2) edge node {} (F2)
+  ;
+\end{tikzpicture}
+
+Beide Automaten akzeptieren das leere Wort.\\
+\begin{tikzpicture}[shorten >= 1pt, node distance=2cm, on grid, auto]
+  \node[state,initial] (Z1) {$Z_{1}$};
+  \node[state] (F) [below right=of Z1] {$F'$};
+  \node[state,accepting] (F1) [right=of F] {$F_{1}$};
+  \node[state,initial] (Z2) [above right=of F] {$Z_{2}$};
+  \node[state,accepting] (F2) [right=of Z2] {$F_{2}$};
+  \path[->]
+  (Z1) edge node {} (F)
+  (F) edge node {} (Z2)
+  (F) edge node {} (F1)
+  (Z2) edge node {} (F2)
+  ;
+\end{tikzpicture}
+
+\subsubsection{$\alpha = (\alpha_{1} + \alpha_{2})$}
+
+\begin{tikzpicture}[shorten >= 1pt, node distance=2cm, on grid, auto]
+  \node[state,initial] (Z1) {$Z_{1}$};
+  \node[state,initial] (Z2) [below=of Z1] {$Z_{2}$};
+  \node[state,accepting] (F1) [right=of Z1] {$F_{1}$};
+  \node[state,accepting] (F2) [right=of Z2] {$F_{2}$};
+  \path[->]
+  (Z1) edge node {} (F1)
+  (Z2) edge node {} (F2)
+  ;
+\end{tikzpicture}
+
+\subsubsection{$\alpha = (\alpha_{1})^{*}$}
+
+Sei $F'$ die Menge der Zustände im Automaten von $\alpha_{1}$, die einen direkten Übergang in einen finalen Zustand haben.
+
+\begin{tikzpicture}[shorten >= 1pt, node distance=2cm, on grid, auto]
+  \node[state,initial] (Z1) {$Z_{1}$};
+  \node[state] (F) [right=of Z1] {$F'$};
+  \node[state,accepting] (F1) [right=of F] {$F_{1}$};
+  \path[->]
+  (Z1) edge node {} (F)
+  (F) edge node {} (F1)
+  (F) edge [bend right] node {} (Z1)
+  ;
+\end{tikzpicture}
+
 \section{Übung 4.4}
 
 \subsection{Teil a}
+
+Ich konstruiere den DFA nach Vorlesung.
+
+\begin{tikzpicture}[shorten >= 1pt, node distance=3cm, on grid, auto]
+  \node[state,initial] (z0) {$\{ z_{0} \}$};
+  \node[state] (z2) [above right=of z0] {$\{ z_{2} \}$};
+  \node[state] (em) [right=of z2] {$\{  \}$};
+  \node[state,accepting] (z1z3) [below right=of z0] {$\{ z_{1}, z_{3} \}$};
+  \node[state] (z1) [right=of z1z3] {$\{ z_{1} \}$};
+  \path[->]
+  (z0) edge [bend right] node {a} (z1z3)
+  (z0) edge [bend left] node {b} (z2)
+  (z2) edge node {a} (em)
+  (z2) edge [bend left] node {b} (z1z3)
+  (em) edge [loop above] node {a} (em)
+  (em) edge [loop right] node {b} (em)
+  (z1z3) edge [bend left] node {a} (z2)
+  (z1z3) edge node {b} (z1)
+  (z1) edge [bend right] node {a} (z2)
+  (z1) edge node {b} (em);
+\end{tikzpicture}
 
 \subsection{Teil b}
 
