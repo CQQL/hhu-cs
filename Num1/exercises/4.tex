@@ -86,6 +86,78 @@ Also sind
   f_{t}(x) = \frac{4}{3\sqrt{2} + 1}x + \frac{24 \sqrt{2} - 8}{17 (3 \sqrt{2} - 1)}
 \end{equation}
 
+\begin{equation}
+  f'(x) = \frac{1}{(2 - x)^{2}}
+\end{equation}
+\begin{equation}
+  f''(x) = \frac{2}{(2 - x)^{3}}
+\end{equation}
+\begin{equation}
+  f'''(x) = \frac{6}{(2 - x)^{4}}
+\end{equation}
+\begin{equation}
+  |f''|_{\infty, [0, 1]} = f''(1) = 2 \textit{weil $f'''(x) > 0$ für $x \in [0, 1]$}
+\end{equation}
+
+Die Fehlerabschätzungen sind
+\begin{equation}
+  \max_{x \in [0, 1]} |f(x) - f_{1}(x)| \le \max_{x \in [0, 1]} \frac{2}{2} |x| \cdot |x - 1| = \frac{1}{4}
+\end{equation}
+\begin{align*}
+  \max_{x \in [0, 1]} |f(x) - f_{t}(x)| & \le \max_{x \in [0, 1]} |x - \frac{2 \sqrt{2}}{3 \sqrt{2} + 1}| \cdot |x - \frac{2 \sqrt{2}}{3 \sqrt{2} - 1}|\\
+  & = \max_{x \in [0, 1]} |x^{2} - (\frac{2 \sqrt{2}}{3 \sqrt{2} + 1} + \frac{2 \sqrt{2}}{3 \sqrt{2} - 1})x + \frac{2 \sqrt{2}}{3 \sqrt{2} + 1}\frac{2 \sqrt{2}}{3 \sqrt{2} - 1}|\\
+  & = \max_{x \in [0, 1]} |x^{2} - \frac{24}{17}x + \frac{8}{17}| \textit{ Extremum bei $x = \frac{12}{17}$}\\
+  & = \max_{x \in [0, 1]} \{ \frac{8}{17}, \frac{1}{17}, \frac{52}{289} \} \textit{ Werte für $0$, $1$, $\frac{12}{17}$}\\
+  & = \frac{8}{17}
+\end{align*}
+
+\subsection{Der tatsächliche Fehler im ersten Fall}
+
+\begin{equation}
+  q(x) = f(x) - f_{1}(x) = \frac{1}{2 - x} - \frac{1}{2}x - \frac{1}{2}
+\end{equation}
+\begin{equation}
+  q'(x) = \frac{1}{(2 - x)^{2}} - \frac{1}{2}
+\end{equation}
+\begin{equation}
+  q'(x) = 0 \Leftrightarrow \frac{1}{(2 - x)^{2}} = \frac{1}{2} \Leftrightarrow (2 - x)\frac{1}{\sqrt{2}} = 1 \Leftrightarrow x = 2 - \sqrt{2}
+\end{equation}
+Dies muss betragsmäßig das Maximum sein, weil die Randwerte wegen der Interpolationsbedingung beide $0$ sind.
+\begin{equation}
+  \max_{\infty, [0, 1]} |q(x)| = |\frac{1}{\sqrt{2}} - 1 + \frac{1}{\sqrt{2}} - \frac{1}{2}| = |\frac{2}{\sqrt{2}} - \frac{3}{2}| = |\sqrt{2} - \frac{3}{2}| \approx 0.09
+\end{equation}
+
+\subsection{Der tatsächliche Fehler im zweiten Fall}
+
+\begin{equation}
+  q(x) = f(x) - f_{t}(x) = \frac{1}{2 - x} - \frac{4}{3\sqrt{2} + 1}x - \frac{24 \sqrt{2} - 8}{17 (3 \sqrt{2} - 1)}
+\end{equation}
+\begin{equation}
+  q'(x) = \frac{1}{(2 - x)^{2}} - \frac{4}{3\sqrt{2} + 1}
+\end{equation}
+\begin{align*}
+  q'(x) = 0 \Leftrightarrow & \frac{1}{(2 - x)^{2}} = \frac{4}{3\sqrt{2} + 1}\\
+  \Leftrightarrow & \frac{1}{2 - x} = \frac{2}{\sqrt{3\sqrt{2} + 1}}\\
+  \Leftrightarrow & \frac{2}{\sqrt{3\sqrt{2} + 1}}(2 - x) = 1\\
+  \Leftrightarrow & \frac{4}{\sqrt{3\sqrt{2} + 1}} - \frac{2x}{\sqrt{3\sqrt{2} + 1}} = 1\\
+  \Leftrightarrow & \frac{4}{\sqrt{3\sqrt{2} + 1}} - 1 = \frac{2x}{\sqrt{3\sqrt{2} + 1}}\\
+  \Leftrightarrow & x = \frac{4}{\sqrt{3\sqrt{2} + 1}}\frac{\sqrt{3\sqrt{2} + 1}}{2} - \frac{\sqrt{3\sqrt{2} + 1}}{2} = 2 - \frac{\sqrt{3\sqrt{2} + 1}}{2}
+\end{align*}
+$q$ hat an dieser Stelle den Wert
+\begin{align*}
+  q(2 - \frac{\sqrt{3\sqrt{2} + 1}}{2}) & = \frac{1}{\frac{\sqrt{3\sqrt{2} + 1}}{2}} - \frac{4}{3\sqrt{2} + 1}(2 - \frac{\sqrt{3\sqrt{2} + 1}}{2}) - \frac{24 \sqrt{2} - 8}{17 (3 \sqrt{2} - 1)}\\
+  & = \frac{2}{\sqrt{3\sqrt{2} + 1}} - \frac{8}{3\sqrt{2} + 1} + \frac{2}{\sqrt{3\sqrt{2} + 1}} - \frac{24 \sqrt{2} - 8}{17 (3 \sqrt{2} - 1)}\\
+  & = \frac{4}{\sqrt{3\sqrt{2} + 1}} - \frac{8}{3\sqrt{2} + 1} - \frac{24 \sqrt{2} - 8}{17 (3 \sqrt{2} - 1)}\\
+  & = \frac{4 \sqrt{3\sqrt{2} + 1} - 8}{3\sqrt{2} + 1} - \frac{24 \sqrt{2} - 8}{17 (3 \sqrt{2} - 1)}\\
+  & = \frac{(17 (3 \sqrt{2} - 1))(4 \sqrt{3\sqrt{2} + 1} - 8) - (3\sqrt{2} + 1)(24 \sqrt{2} - 8)}{17^{2}}\\
+  & = \frac{(51 \sqrt{2} - 17)(4 \sqrt{3\sqrt{2} + 1} - 8) - (144 - 24\sqrt{2} + 24 \sqrt{2} - 8)}{17^{2}}\\
+  & = \frac{(204\sqrt{2}\sqrt{3\sqrt{2} + 1} - 408\sqrt{2} - 68\sqrt{3\sqrt{2} + 1} + 136) - 136}{17^{2}}\\
+  & = \frac{204\sqrt{2}\sqrt{3\sqrt{2} + 1} - 408\sqrt{2} - 68\sqrt{3\sqrt{2} + 1}}{17^{2}} \approx -0.25
+\end{align*}
+\begin{align*}
+  \max_{\infty, [0, 1]} |q(x)| = \{ 0.25, |\frac{24 \sqrt{2} - 8}{17 (3 \sqrt{2} - 1)}|, |q(1)| \} \approx \max_{\infty, [0, 1]} |q(x)| = \{ 0.25, \frac{1}{34}, 0.23 \} = 0.25
+\end{align*}
+
 \section{Aufgabe 12}
 
 \section{Aufgabe 13}
