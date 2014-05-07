@@ -7,6 +7,8 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
 
 \begin{document}
 
@@ -112,6 +114,39 @@ mit der Übergangsfunktion $\delta$
 
 \subsection{Teil a}
 
+\begin{align*}
+  \hat{\delta}(z_{0}, -123/45) & = \delta(\delta(\delta(\delta(\delta(\delta(\delta(\{z_{0}\}, -), 1), 2), 3), /), 4), 5)\\
+  & = \delta(\delta(\delta(\delta(\delta(\delta(\{ z_{2} \}, 1), 2), 3), /), 4), 5)\\
+  & = \delta(\delta(\delta(\delta(\delta(\{ z_{3} \}, 2), 3), /), 4), 5)\\
+  & = \delta(\delta(\delta(\delta(\{ z_{3} \}, 3), /), 4), 5)\\
+  & = \delta(\delta(\delta(\{ z_{3} \}, /), 4), 5)\\
+  & = \delta(\delta(\{ z_{5} \}, 4), 5)\\
+  & = \delta(\{ z_{4} \}, 5)\\
+  & = \{ z_{4} \}\\
+\end{align*}
+
+\begin{equation}
+  \{ z_{4} \} \cap \{ z_{4} \} \ne \emptyset
+\end{equation}
+
+Also ist $-123/45 \in L(G_{\mathbb{Q}})$.
+
+\begin{align*}
+  \hat{\delta}(z_{0}, -0/234) & = \delta(\delta(\delta(\delta(\delta(\delta(\{ z_{0} \}, -), 0), /), 2), 3), 4)\\
+  & = \delta(\delta(\delta(\delta(\delta(\{ z_{2} \}, 0), /), 2), 3), 4)\\
+  & = \delta(\delta(\delta(\delta(\{  \}, /), 2), 3), 4)\\
+  & = \delta(\delta(\delta(\{  \}, 2), 3), 4)\\
+  & = \delta(\delta(\{  \}, 3), 4)\\
+  & = \delta(\{  \}, 4)\\
+  & = \{  \}\\
+\end{align*}
+
+\begin{equation}
+  \{  \} \cap \{ z_{4} \} = \emptyset
+\end{equation}
+
+Also ist $-0/234 \not\in L(G_{\mathbb{Q}})$.
+
 \subsection{Teil b}
 
 \section{Übung 4.4}
@@ -122,6 +157,103 @@ mit der Übergangsfunktion $\delta$
 
 \subsubsection{(i)}
 
+\begin{proof}
+  Definiere einen NFA $M = (\{ a, b \}, \{ x, y, z_{1}, \dots, z_{n - 1} \}, \delta, \{ x \}, \{ z_{n - 1} \})$ und seine Übergangsfunktion partiell durch
+  \begin{align*}
+    \delta(x, a) & = \{ x, y \}\\
+    \delta(x, b) & = \{ x \}\\
+    \delta(y, a) & = \{ z_{1} \}\\
+    \delta(y, b) & = \{ z_{1} \}\\
+    \delta(z_{i}, a) & = \{ z_{i + 1} \} \forall i \in [1, n - 2]\\
+    \delta(z_{i}, b) & = \{ z_{i + 1} \} \forall i \in [1, n - 2]
+  \end{align*}
+  Wie direkt zu sehen, hat $M$ $n + 1$ Zustände.
+
+  Sei $w \in L_{n}$.
+  Sei $w = pq$, wobei $p = (a + b)^{*}a$ und $q = (a + b)^{n - 1}$.
+  \begin{equation}
+    \hat{\delta}(\{ x \}, w) = \hat{\delta}(\hat{\delta}(\{ x \}, p), q)
+  \end{equation}
+  Da alle Übergänge von $x$ auch wieder $x$ enthalten, wird $\hat{\delta}(\{ x \}, (a + b)^{*})$ auf jeden Fall $x$ enthalten.
+  Da $p$ auf $a$ endet, enthält $\hat{\delta}(\{ x \}, p)$ $y$.
+  Es bleibt also zu zeigen, dass $\hat{\delta}(\{ y \}, q)$ $z_{n - 1}$ enthält.
+  Da $\hat{\delta}(\{ y \}, (a + b)) = \{ z_{1} \}$ und $\hat{\delta}(\{ z_{i} \}, (a + b)) = z_{i + 1}$ für $i \in [1, n - 2]$, ist es wahr, weil $|q| = n - 1$.
+  Also ist $w \in L(M)$.
+
+  Sei $w \in L(M)$.
+  Sei $w = w_{1}w_{2}\dots w_{m}$ für ein $m \in \mathbb{N}$.
+  Sei $W_{k} = w_{1}w_{2} \dots w_{k}$.
+  Also ist $\hat{\delta}(x, w) = z_{n - 1}$.
+  Also
+  \begin{equation}
+    \delta(\hat{\delta}(x, W_{m - 1}), w_{m}) = z_{n - 1}
+  \end{equation}
+  Also
+  \begin{equation}
+    \hat{\delta}(x, W_{m - 1}) = z_{n - 2}
+  \end{equation}
+  Nach dem gleich Schema erhält man
+  \begin{equation}
+    \hat{\delta}(x, W_{m - n + 1}) = z_{1}
+  \end{equation}
+  \begin{equation}
+    \hat{\delta}(x, W_{m - n}) = y
+  \end{equation}
+  Deshalb muss $w_{m - n} = a$ sein.
+  Der $n$-t letzte Buchstabe ist also ein $a$ und $w \in L_{n}$.
+
+  Also $L_{n} = L(M)$.
+\end{proof}
+
 \subsubsection{(ii)}
+
+\begin{proof}
+  Ich werde es zeigen, indem ich den in (i) beschriebenen NFA konstruiere und dann diesen nach Vorlesung zu einem DFA umwandle.
+
+  \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto]
+    \node[state,initial] (x) {$x$};
+    \node[state] (y) [right=of x] {$y$};
+    \node[state] (z_1) [right=of y] {$z_{1}$};
+    \node[state,accepting] (z_2) [right=of z_1] {$z_{2}$};
+    \path[->]
+    (x) edge [loop above] node {a} (x)
+    (x) edge node {a} (y)
+    (x) edge [loop below] node {b} (x)
+    (y) edge [bend left] node {a} (z_1)
+    (y) edge [bend right] node {b} (z_1)
+    (z_1) edge [bend left] node {a} (z_2)
+    (z_1) edge [bend right] node {b} (z_2);
+  \end{tikzpicture}
+
+  \begin{tikzpicture}[shorten >= 1pt, node distance=3cm, on grid, auto]
+    \node[state,initial] (x) {$\{ x \}$};
+    \node[state] (xy) [right=of x] {$\{ x, y \}$};
+    \node[state] (xz1) [above right=of xy] {$\{ x, z_{1} \}$};
+    \node[state,accepting] (xz2) [left=of xz1] {$\{ x, z_{2} \}$};
+    \node[state] (xyz1) [below right=of xy] {$\{ x, y, z_{1} \}$};
+    \node[state,accepting] (xyz2) [below right=of xz1] {$\{ x, y, z_{2} \}$};
+    \node[state,accepting] (xyz1z2) [below right=of xyz1] {$\{ x, y, z_{1} z_{2} \}$};
+    \node[state,accepting] (xz1z2) [below left=of xyz1] {$\{ x, z_{1} z_{2} \}$};
+    \path[->]
+    (x) edge [loop below] node {b} (x)
+    (x) edge node {a} (xy)
+    (xy) edge node {a} (xyz1)
+    (xy) edge node {b} (xz1)
+    (xz1) edge [bend left] node {a} (xyz2)
+    (xz1) edge node {b} (xz2)
+    (xyz1) edge node {a} (xyz1z2)
+    (xyz1) edge node {b} (xz1z2)
+    (xz2) edge node {a} (xy)
+    (xz2) edge node {b} (x)
+    (xyz2) edge node {a} (xyz1)
+    (xyz2) edge [bend left] node {b} (xz1)
+    (xyz1z2) edge [loop right] node {a} (xyz1z2)
+    (xyz1z2) edge node {b} (xz1z2)
+    (xz1z2) edge [bend left] node {a} (xyz2)
+    (xz1z2) edge [bend left] node {b} (xz2);
+  \end{tikzpicture}
+
+  Dieser DFA ist nach Vorlesung äquivalent und hat 8 Zustände.
+\end{proof}
 
 \end{document}
