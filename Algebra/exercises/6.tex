@@ -1,0 +1,169 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\ker}{Ker}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Aut}{Aut}
+
+\begin{document}
+
+\section{Aufgabe 1}
+
+\subsection{Teil 1}
+
+Da $12 = 2^{2} \cdot 3$ ist $k_{2} \in \{ 1, 3 \}$ und $k_{3} \in \{ 1, 4 \}$ nach dem zweiten Sylowsatz.
+
+\subsection{Teil 2}
+
+Da $1$ die höchste Potenz von $3$ ist, die $12$ teilt, haben $3$-Sylowuntergruppen Ordnung $3$.
+\begin{equation}
+  |H_{1} \cap H_{2}| = 1
+\end{equation}
+Wenn die Ordnung des Schnitts größer als $1$ wäre, wären $H_{1} = H_{2}$, weil sie zyklisch sind und von ihren nicht-neutralen Elementen erzeugt werden (Korollar 1.4.6).
+
+\subsection{Teil 3}
+
+$2$-Sylowuntergruppen haben Ordnung $4$.
+Sei $q = |H_{1} \cap H_{2}|$.
+$q$ kann nicht $4$ sein, weil $H_{1} \ne H_{2}$.
+$q$ kann nicht $3$ sein, weil der Schnitt eine Untergruppe ist, dessen Ordnung nach dem Satz von Lagrange $q$ teilen muss.
+\begin{equation}
+  q \in \{ 1, 2 \}
+\end{equation}
+
+\subsection{Teil 4}
+
+\begin{proof}
+  Der Schnitt einer $3$- und einer $4$-Sylowuntergruppe ist immer $\{ e \}$, weil $ggT(3, 4) = 1$ (Satz von Lagrange).
+  Also zähle man einfach die Elemente.
+  $4$ $3$-Sylowuntergruppen haben $4 \cdot 2$ unterschiedliche Elemente, die nur in jeweils einer Untergruppe enthalten sind.
+  $3$ $2$-Sylowuntergruppen haben mindestens $3 \cdot 2$ unterschiedliche Elemente, die nur in jeweils einer Untergruppe enthalten sind.
+  Man hätte also mindestens $8 + 6 + 1 = 15$ Elemente, aber $|G| = 12$.
+\end{proof}
+
+\section{Aufgabe 2}
+
+\begin{proof}
+  $\Rightarrow$: Sei $a$ Nullteiler.
+  Angenommen $a$ sei invertierbar mit dem Inversen $a^{-1}$.
+  Sei $b \in R$ mit $ab = 0$.
+  Durch Linksmultiplikation mit $a^{-1}$ erhält man $b = 0$ und somit wäre $a$ nicht Nullteiler.
+  Dies ist ein Widerspruch und $a$ ist nicht invertierbar.
+
+  $\Leftarrow$: Sei $b \in R$ mit $ab = 0$.
+  Durch Linksmultiplikation mit $a^{-1}$ erhält man $b = 0$ und somit ist $a$ nicht Nullteiler.
+\end{proof}
+
+\section{Aufgabe 3}
+
+\begin{equation}
+  \ker f =
+\end{equation}
+
+\begin{equation}
+  \im f =
+\end{equation}
+
+\section{Aufgabe 4}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  $\subset$: Sei $[k] \in (\mathbb{Z} / n \mathbb{Z})^{\times}$.
+  Also $kb = 1 + an$ für $a \in \mathbb{N}_{0}$, $b \in \mathbb{N}$.
+  Deshalb ist $ggT(kb, an) = 1$.
+  Aber dann ist $kb$ auch teilerfremd zu den Teilern von $an$, also auch zu $n$, und $n$ wiederum zu $k$.
+
+  $\supset$: Sei $[k] \in \{ [x] \in \mathbb{Z} / n \mathbb{Z} \mid ggT(n, x) = 1 \}$.
+  Nach dem erweiterten euklidischen Algorithmus gibt es $a, b \in \mathbb{N}_{0}$ mit $ak + bn = 1$.
+  Modulo $n$ ist $[ak + bn] = [ak] = [a][k] = 1$, also $[k]^{-1} = [a]$ und $[k]$ ist invertierbar.
+\end{proof}
+
+\subsection{Teil 2}
+
+\begin{proof}
+  $\mathbb{Z} / n \mathbb{Z}$ ist zyklisch und $1$ ist ein Erzeuger.
+  Da $\varphi$ ein Isomorphismus ist, ist $\langle \varphi(1) \rangle$ ebenfalls zyklisch und hat dieselbe Ordnung wie $\langle 1 \rangle$.
+  Also ist $\ord(\varphi(1)) = n$.
+\end{proof}
+
+$\varphi(1)$ muss ein Erzeuger von $\mathbb{Z} / n \mathbb{Z}$ sein.
+Das heißt, es gibt ein $b \in \mathbb{Z} / n \mathbb{Z}$ mit $\varphi(1)b = c$ für $c \in \mathbb{Z} / n \mathbb{Z}$, insbesondere für $[1]$.
+Also $\varphi(1) \in (\mathbb{Z} / n \mathbb{Z})^{\times}$.
+
+\subsection{Teil 3}
+
+\begin{proof}
+  Sei $[x], [y] \in (\mathbb{Z} / n \mathbb{Z})^{\times}$ und $[z] \in \mathbb{Z} / n \mathbb{Z}$.
+  \begin{equation}
+    (\varPhi([x]) \circ  \varPhi([y]))([z]) = \varPhi([x])([y][z]) = [x][y][z] = [xy][z] = \varPhi([xy])([z])
+  \end{equation}
+  Also ist $\varPhi$ ein Gruppenhomomorphismus.
+
+  Sei $[x] \in \ker(\varPhi)$.
+  Das heißt $\varPhi([x]) = \id$ und $\varPhi([x])([z]) = [z]$ für alle $[z] \in \mathbb{Z} / n \mathbb{Z}$.
+  Insbesondere ist $\varPhi([x])([1]) = [x][1] = [x] = [1]$.
+  Somit ist $\varPhi$ injektiv.
+
+  Es bleibt zu zeigen, dass $\varPhi$ surjektiv ist.
+  Sei $\varphi \in \Aut(\mathbb{Z} / n \mathbb{Z})$.
+  Sei $f = \varPhi(\varphi([1]))$.
+  Dies ist definiert wie in Teil 2 gesehen.
+  Es bleibt zu zeigen, dass $f([z]) = \varphi([z])$ für alle $[z] \in \mathbb{Z} / n \mathbb{Z}$.
+  Sei $[z] \in \mathbb{Z} / n \mathbb{Z}$.
+  \begin{equation}
+    f([z]) = \varphi([1])[z] = \sum_{i = 1}^{z} \varphi([1]) = \varphi(\sum_{i = 1}^{z} [1]) = \varphi([z])
+  \end{equation}
+\end{proof}
+
+\subsection{Teil 4}
+
+$8 = 2^{3}$ und $29$ ist eine Primzahl, also sind $8$ und $29$ teilerfremd, $ggT(8, 29) = 1$ und $[8] \in (\mathbb{Z} / n \mathbb{Z})^{\times}$.
+Man bestimme $[8]^{-1}$ mit dem erweiterten euklidischen Algorithmus.
+\begin{equation}
+  29 = 3 \cdot 8 + 5
+\end{equation}
+\begin{equation}
+  8 = 1 \cdot 5 + 3
+\end{equation}
+\begin{equation}
+  5 = 1 \cdot 3 + 2
+\end{equation}
+\begin{equation}
+  3 = 1 \cdot 2 + 1
+\end{equation}
+\begin{equation}
+  2 = 2 \cdot 1 + 0
+\end{equation}
+
+\begin{align*}
+  1 & = 3 - 2 = (8 - 5) - (5 - 3) = 8 - 2 \cdot 5 + 3\\
+  & = 8 - 2 \cdot (29 - 3 \cdot 8) + (8 - 5)\\
+  & = -2 \cdot 29 + 8 \cdot 8 - 5\\
+  & = -2 \cdot 29  + 8 \cdot 8 - 29 + 3 \cdot 8\\
+  & = 11 \cdot 8 - 3 \cdot 29
+\end{align*}
+\begin{equation}
+  [8]^{-1} = [11]
+\end{equation}
+
+Gesucht ist $[b] \in \mathbb{Z} / n \mathbb{Z}$ mit
+\begin{equation}
+  [8][b] = [9]
+\end{equation}
+Linksmultiplikation mit $[11]$ liefert
+\begin{equation}
+  [b] = [11][9] = [99] = [12]
+\end{equation}
+Also $x \in [12]$, z.B. $12, 41, -17$.
+
+\end{document}
