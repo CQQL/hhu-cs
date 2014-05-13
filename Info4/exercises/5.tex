@@ -1,0 +1,217 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\begin{document}
+
+\section{Aufgabe 5.1}
+
+\subsection{Teil a}
+
+Der Automat hat $n$ Zustände, jeweils $1$ pro Klasse in $\mathbb{Z} / n \mathbb{Z}$.
+Die Zustände heißen $[k]$, wobei $[k]$ die Restklasse $[k]$ in $\mathbb{Z} \ n \mathbb{Z}$ ist.
+$[0]$ ist einziger Start- und Endzustand.
+Die Übergangsfunktion $\delta$ ist definiert durch
+\begin{equation}
+  \delta([k], 0) = [2k]
+\end{equation}
+\begin{equation}
+  \delta([k], 1) = [2k + 1]
+\end{equation}
+
+\subsection{Teil b}
+
+\begin{tabular}{c|c|c|c|c|c|c|c}
+    & $[0]$ & $[1]$ & $[2]$ & $[3]$ & $[4]$ & $[5]$ & $[6]$\\\hline
+  0 & $[0]$ & $[2]$ & $[4]$ & $[6]$ & $[1]$ & $[3]$ & $[5]$\\\hline
+  1 & $[1]$ & $[3]$ & $[5]$ & $[0]$ & $[2]$ & $[4]$ & $[6]$\\
+\end{tabular}
+
+\subsection{Teil c}
+
+Da $2$ und $3$ prim sind, sind die Zahlen, die durch $2$ und $3$ teilbar sind, genau diejenigen, die durch $2 \cdot 3 = 6$ teilbar sind.
+Hier ist der DFA, der Binärzahlen akzeptiert, die durch $6$ teilbar sind.
+
+\begin{tabular}{c|c|c|c|c|c|c|c}
+    & $[0]$ & $[1]$ & $[2]$ & $[3]$ & $[4]$ & $[5]$\\\hline
+  0 & $[0]$ & $[2]$ & $[4]$ & $[0]$ & $[2]$ & $[4]$\\\hline
+  1 & $[1]$ & $[3]$ & $[5]$ & $[1]$ & $[3]$ & $[5]$\\
+\end{tabular}
+
+\section{Aufgabe 5.2}
+
+\subsection{Teil a}
+
+\begin{proof}
+  Sei $n$ die untere Schranke aus dem Pumping-Lemma und mindestens $1$.
+  Dann betrachte man das Wort $x = 0^{n}1^{n + 1}$.
+  $x$ ist offensichtlich in $L$.
+  Sei $uvw$ eine Zerlegung mit $|uv| \le n$.
+  Also $uv = 0^{k}$ für ein $k \le n$ und $|v| \ge 1$.
+  Nach dem Lemma kann das Wort nun aufgepumpt werden.
+  Sei $\bar{x} = uv^{2n}w$.
+  Dann ist $|\bar{x}|_{1} = n + 1$, aber $|\bar{x}| \ge 2n \ge n + 1$, also $\bar{x} \not\in L_{1}$.
+  Widerspruch und $L_{1}$ ist nicht regulär.
+\end{proof}
+
+\subsection{Teil b}
+
+\begin{proof}
+  Sei $n$ die untere Schranke aus dem Pumping-Lemma.
+  Betrachte das Wort $x = 1^{n}0^{n + 1}$.
+  Wie direkt zu sehen, ist dies in $L$.
+  Sei $uvw$ eine Zerlegung von $x$ mit $|uv| \le n$ und $|v| \ge 1$.
+  Sei $\bar{x}$ das aufgepumpte Wort $uv^{n + 3}w$.
+  Dann ist $|\bar{x}|_{0} = n + 1$ und $|\bar{x}|_{1} \ge n + 3$, also $\bar{x} \not\in L_{2}$.
+  Widerspruch und $L_{2}$ ist nicht regulär.
+\end{proof}
+
+\subsection{Teil c}
+
+\begin{proof}
+  Sei $n$ die untere Schranke aus dem Pumping-Lemma und mindestens $1$.
+  Betrachte das Wort $x = a^{2^{n}}$.
+  Wie direkt zu sehen, ist dies in $L$.
+  Sei $uvw$ eine Zerlegung von $x$ mit $|uv| \le n$ und $|v| \ge 1$.
+  Sei $y = uv^{2}w$ das aufgepumpte Wort.
+  Es gilt
+  \begin{equation}
+    2^{n} < 2^{n} + 1 \le |y| \le 2^{n} + n < 2^{n} + 2^{n} = 2^{n + 1}
+  \end{equation}
+  $y$ ist also nicht in $L_{3}$ und somit ist $L_{3}$ nicht regulär.
+\end{proof}
+
+\section{Aufgabe 5.3}
+
+\subsection{Teil a}
+
+\subsubsection{(i)}
+
+Die Äquivalenzklassen sind
+\begin{equation}
+  [0] = L_{1}
+\end{equation}
+\begin{equation}
+  [\lambda] = \{ \lambda \}
+\end{equation}
+\begin{equation}
+  [1] = \{ \textit{Worte, die mit einer $1$ beginnen} \}
+\end{equation}
+Dies sind endliche viele Klassen, die $\Sigma^{*}$ zerlegen, also ist $L_{1}$ regulär.
+
+\subsubsection{(ii)}
+
+Die Äquivalenzklassen sind
+\begin{equation}
+  [0] = \{ \textit{Worte, die auf $0$ enden} \}
+\end{equation}
+\begin{equation}
+  [1] = \{ \textit{Worte, die nicht auf $0$ enden} \} = \{ \lambda, 1, 01, 11, \dots \}
+\end{equation}
+Dies sind endliche viele Klassen, die $\Sigma^{*}$ zerlegen, also ist $L_{2}$ regulär.
+
+\subsubsection{(iii)}
+
+Die Äquivalenzklassen sind
+\begin{equation}
+  [\lambda] = \{ w \in \Sigma^{*} \mid |w|_{1} - |w|_{0} \equiv 0 \pmod 2 \} = \{ \lambda, 00, 0011, 11, 1111, 0111, \dots \}
+\end{equation}
+\begin{equation}
+  [0] = \{ w \in \Sigma^{*} \mid |w|_{1} - |w|_{0} \equiv 1 \pmod 2 \} = \{ 0, 011, 000, \dots \}
+\end{equation}
+Dies sind endliche viele Klassen, die $\Sigma^{*}$ zerlegen, also ist $L_{3}$ regulär.
+
+\subsection{Teil b}
+
+Zuerst entfernt man Zustand $z_{3}$, weil er unerreichbar ist.
+
+Die Tabelle von Zustandspaaren sieht dann so aus\\
+\begin{tabular}{c|c|c|c|c|c|c}
+  & $z_{0}$ & $z_{1}$ & $z_{2}$ & $z_{4}$ & $z_{5}$ & $z_{6}$\\\hline
+  $z_{1}$ & x & - & - & - & - & -\\\hline
+  $z_{2}$ & x & x & - & - & - & -\\\hline
+  $z_{4}$ & x & x & x & - & - & -\\\hline
+  $z_{5}$ & x & x & x & x & - & -\\\hline
+  $z_{6}$ & x & x & x & x & x & -\\\hline
+  $z_{7}$ & x &   & x & x & x & x
+\end{tabular}
+\\
+Also verschmilzt man $z_{1}$ und $z_{7}$.
+Der Minimalautomat ist dann
+\\
+\begin{tikzpicture}[shorten >= 1pt, node distance=2cm, on grid, auto]
+  \node[state,initial] (z0) {$z_{0}$};
+  \node[state] (z1) [right=of z0] {$z_{1}$};
+  \node[state,accepting] (z2) [right=of z1] {$z_{2}$};
+  \node[state] (z4) [below=of z0] {$z_{4}$};
+  \node[state] (z5) [right=of z4] {$z_{5}$};
+  \node[state] (z6) [right=of z5] {$z_{6}$};
+  \path[->]
+  (z0) edge node {0} (z1)
+  (z0) edge node {1} (z5)
+  (z1) edge node {0} (z6)
+  (z1) edge node {1} (z2)
+  (z2) edge [bend right] node {0} (z0)
+  (z2) edge [loop above] node {1} (z2)
+  (z4) edge node {0} (z1)
+  (z4) edge node {1} (z5)
+  (z5) edge node {0} (z2)
+  (z5) edge node {1} (z6)
+  (z6) edge [loop below] node {0} (z6)
+  (z6) edge [bend left] node {1} (z4)
+  ;
+\end{tikzpicture}
+
+\section{Aufgabe 5.4}
+
+\subsection{Teil a}
+
+\begin{proof}
+  Sei $L \in REG$.
+  Dann gibt es einen totalen DFA $(\Sigma, Z, \delta, z_{0}, F)$, der $L$ akzeptiert.
+  Der Automat $M = (\Sigma, Z, \delta, z_{0}, Z \setminus F)$ akzeptiert das Komplement $\bar{L} = \Sigma^{*} / L$ von $L$ in $\Sigma^{*}$.
+
+  Sei $w \in L$.
+  Dann ist $\hat{\delta}(z_{0}, w) \in F$.
+  Aber dann ist $\hat{\delta}(z_{0}, w) \not\in \Sigma \setminus F$, also $w \not\in L(M)$.
+
+  Sei $w \in \bar{L}$.
+  Dann ist $\hat{\delta}(z_{0}, w) \in Z$, aber $\hat{\delta}(z_{0}, w) \not\in F$.
+  Also ist $\hat{\delta}(z_{0}, w) \in Z \setminus F$ und $w \in L(M)$.
+
+  Somit ist $\bar{L} = L(M)$ und $\bar{L} \in REG$, weil $M$ ein DFA ist.
+\end{proof}
+
+\subsection{Teil b}
+
+\begin{proof}
+  Es gibt NFAs $M_{1} = (\Sigma, Z_{1}, \delta_{1}, S_{1}, F_{1})$ und $M_{2} = (\Sigma, Z_{2}, \delta_{2}, S_{2}, F_{2})$, die jeweils die Sprachen $L_{1}$ und $L_{2}$ akzeptieren.
+  Man kombiniere die NFAs zu einem NFA $M$, indem man ihre Startzustände kombiniert.
+  Man wandle $M$ mittels das Satzes von Rabin und Scott zu einem DFA $D = (\Sigma, Z_{D}, \delta_{D}, S_{D}, F_{D})$ um.
+  Die Zustände von $D$ sind Teilmengen von $Z_{1} \cap Z_{2}$ und die Finalzustände sind die, die mindestens einen Zustand aus $F_{1}$ oder $F_{2}$ enthalten.
+  Definiere $D'$ als den DFA $(\Sigma, Z_{D}, \delta_{D}, S_{D}, \{ f \in F_{D} \mid f \cap F_{1} \cap F_{2} = \emptyset \})$.
+  Dann akzeptiert $D'$ genau die Wörter $w$, für die $\hat{\delta}_{1}(S_{1}, w) \cap F_{1} \ne \emptyset$ und $\hat{\delta}_{2}(S_{2}, w) \cap F_{2} \ne \emptyset$.
+  Also $L(D') = L_{1} \cap L_{2}$ und $L_{1} \cap L_{2}$ ist regulär.
+\end{proof}
+
+\subsection{Teil c}
+
+\begin{proof}
+  Es gibt NFAs $M_{1} = (\Sigma, Z_{1}, \delta_{1}, S_{1}, F_{1})$ und $M_{2} = (\Sigma, Z_{2}, \delta_{2}, S_{2}, F_{2})$, die jeweils die Sprachen $L_{1}$ und $L_{2}$ akzeptieren.
+  Man kombiniere die NFAs zu einem NFA $M$, indem man ihre Startzustände kombiniert.
+  Man wandle $M$ mittels das Satzes von Rabin und Scott zu einem DFA $D = (\Sigma, Z_{D}, \delta_{D}, S_{D}, F_{D})$ um.
+  Die Zustände von $D$ sind Teilmengen von $Z_{1} \cap Z_{2}$ und die Finalzustände sind die, die mindestens einen Zustand aus $F_{1}$ oder $F_{2}$ enthalten.
+  Definiere $D'$ als den DFA $(\Sigma, Z_{D}, \delta_{D}, S_{D}, \{ f \in F_{D} \mid f \cap F_{2} = \emptyset \})$.
+  Dann akzeptiert $D'$ genau die Wörter $w$, für die $\hat{\delta}_{1}(S_{1}, w) \cap F_{1} \ne \emptyset$ und $\hat{\delta}_{2}(S_{2}, w) \cap F_{2} = \emptyset$.
+  Also $L(D') = L_{1} \setminus L_{2}$ und $L_{1} \setminus L_{2}$ ist regulär.
+\end{proof}
+
+\end{document}
