@@ -1,0 +1,76 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Übung 1}
+
+$0$ und $R$ sind Ideale von $R$.
+Wenn ein Ideal $I$ eine invertierbare Matrix $m$ enthält, ist $I = R$, weil $m(m^{-1}a) = a$ für alle $a \in R$.
+Also können weitere Ideale nur aus nicht-invertierbaren Matrizen bestehen.
+Sei $J \ne \{ 0 \}$ ein Ideal, dass eine nicht-invertierbare Matrix $j$ enthält.
+Durch Links- und Rechtsmultiplikation mit Elementarmatrizen kann man eine Spalte und eine Zeile der Matrix mit $0$ multiplizieren, sodass diese nur noch einen Nichtnullwert $\alpha$ hat.
+Dann multipliziert man diese Zeile mit $\alpha^{-1}$ und vertauscht Zeilen und Spalten, sodass die $1$ auf einer der beiden Diagonalpositionen steht.
+Da Ideale unter Links- und Rechtsmultiplikation abgeschlossen sind, sind alle Zwischenergebnisse wieder in $J$ und man erhält, dass $E_{1,1}$ und $E_{2,2}$ beide in $J$ enthalten sind.
+Dabei ist $E_{i,j}$ die Matrix, die nur an der Stelle $(i, j)$ eine $1$ und sonst überall $0$ hat.
+Durch erneute Addition dieser beiden erhält man $I_{2}$.
+Also enthält $J$ auch eine invertierbare Matrix und somit ist $J = R$.
+Es gibt also keine weiteren Ideale.
+
+\section{Übung 2}
+
+Seien $a, b \in K[X]$ mit $ab = 1$.
+Also gilt
+\begin{equation}
+  a_{0}b_{0} = 1
+\end{equation}
+und
+\begin{equation}
+  \sum_{i = 0}^{k} a_{i}b_{k - i} = 0\ \forall k \ge 1
+\end{equation}
+
+Es ist $a_{k} = 0$ für alle $k \ge 1$ und $(K[X])^{\times} = K^{\times}$.
+
+\begin{proof}
+\end{proof}
+
+\section{Übung 3}
+
+\subsection{Teil 1}
+
+\subsection{Teil 2}
+
+\subsection{Teil 3}
+
+\section{Übung 4}
+
+\subsection{Teil 1}
+
+\subsection{Teil 2}
+
+\begin{proof}
+  Dass $R$ eine Gruppe mit $+$ ist, sieht man direkt.
+  Ebenso sieht man, dass $1 + 0i$ das neutrale Element der Multiplikation ist und $R$ unter Multiplikation abgeschlossen ist, da $\mathbb{Z}$ unter Addition und Multiplikation abgeschlossen ist.
+  $R$ ist kommutativ, da die Addition und Multiplikation der komplexen Zahlen kommutativ ist.
+  $R$ ist auch nicht nur das Nullelement.
+
+  Sei $a + bi \ne 0$.
+  \begin{equation}
+    (a + bi)(c + di) = 0 \Leftrightarrow ac = bd \land ad = -bc
+  \end{equation}
+\end{proof}
+
+\subsection{Teil 3}
+
+\subsection{Teil 4}
+
+\subsection{Teil 5}
+
+\end{document}
