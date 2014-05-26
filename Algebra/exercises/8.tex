@@ -1,0 +1,89 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\rad}{Rad}
+
+\begin{document}
+
+\section{Übung 1}
+
+\section{Übung 2}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  Angenommen es gebe $a_{i} \in I_{i}$ für $i \in [1, n]$ mit $a_{i} \not\in J\ \forall i$.
+  Da das Produktintegral eine Teilmenge von $J$ ist, ist $a_{1} \cdots a_{n} \in J$.
+  Nun nutzt man aus, dass $J$ ein Primideal ist.
+  Da das Produkt in $J$ ist, ist entweder $a_{1} \in J$ oder $a_{2} \cdots a_{n} \in J$.
+  Aber $a_{1} \not\in J$, also $a_{2} \cdots a_{n} \in J$.
+  Induktiv erhält man $a_{i} \in J$ oder $a_{i + 1} \cdots a_{n} \in J$, aber $a_{i} \not\in J$, also $a_{i + 1} \cdots a_{n} \in J$.
+  Für $i = n - 1$ ist entweder $a_{n - 1} \in J$ oder $a_{n} \in J$.
+  Aber dies ist beides nicht wahr, also Widerspruch.
+  Man kann also keine $a_{i} \in I_{i}$ wählen, sodass $a_{i} \not\in J\ \forall i$.
+  Es muss also mindestens ein Ideal $I_{k}$ geben mit $b \in J$ für alle $b \in I_{k}$.
+\end{proof}
+
+\subsection{Teil 2}
+
+\section{Übung 3}
+
+\section{Übung 4}
+
+\subsection{Teil 1}
+
+\subsection{Teil 2}
+
+\section{Übung 5}
+
+\subsection{Teil 1}
+
+\begin{proof}
+  Es ist $0 \in \rad(R)$, weil $0^{1} = 0$.
+  Sei $a \in \rad(R)$ und $n \in \mathbb{N}$ mit $a^{n} = 0$.
+  Dann ist auch $-a \in \rad(R)$, weil $(-a)^{2n} = $.
+  Seien $a, b \in \rad(R)$, $n, m \in \mathbb{N}$ mit $a^{n} = 0$ und $b^{m} = 0$.
+  Dann ist
+  \begin{equation}
+    (a + b)^{n + m} = \sum_{i = 0}^{n + m} \begin{pmatrix}n + m\\i\end{pmatrix} a^{n + m - i}b^{i} = 0
+  \end{equation}
+  weil entweder $n + m - i \ge n$ oder $i \ge m$ und somit die Koeffizienten alle $0$ sind.
+  Demnach ist auch $a + b \in \rad(R)$.
+  Also ist $\rad(R)$ eine Untergruppe von $(R, +)$.
+
+  Seien $a \in \rad(R)$, $b \in R$ und $n \in \mathbb{N}$, sodass $a^{n} = 0$.
+  Weil $R$ kommutativ ist, gilt
+  \begin{equation}
+    (ab)^{n} = a^{n}b^{n} = 0b^{n} = 0
+  \end{equation}
+  Also $ab \in \rad(R)$ und $\rad(R)$ ist ein Ideal von $R$.
+\end{proof}
+
+\subsection{Teil 2}
+
+\begin{proof}
+  Sei $u \in R^{\times}$, $a \in \rad(R)$ und $n \in \mathbb{N}$ mit $a^{n} = 0$.
+\end{proof}
+
+\subsection{Teil 3}
+
+\begin{proof}
+  Sei $a \in \rad(R)$, $n \in \mathbb{N}$ mit $a^{n} = 0$.
+  Dann ist $a^{n} \in I$, weil $I$ eine Untergruppe mit $+$ ist.
+  Weil $I$ ein Primideal ist und $a^{n} = aa^{n - 1}$, ist auch $a \in I$ oder $a^{n - 1} \in I$.
+  Wenn $a \in I$, ist man fertig.
+  Ansonsten sieht man induktiv, dass entweder $a$ oder $a^{n - k}$ in $I$ ist für $k < n$.
+  Für $k = n - 1$ ist dann $a \in I$ oder $a^{n - (n - 1)} = a \in I$, also $a \in I$.
+  Somit ist $\rad(R) \subset I$.
+\end{proof}
+
+\subsection{Teil 4}
+
+\end{document}
