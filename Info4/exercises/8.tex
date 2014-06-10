@@ -1,0 +1,95 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Übung 8.1}
+
+\subsection{Teil a}
+
+\subsubsection{(i)}
+
+\begin{proof}
+  Angenommen $G_{1}$ ist $LL(k)$.
+  Betrachte $a^{k}b$ und $a^{k}c$ mit den Ableitungen
+  \begin{equation}
+    S \vdash aA \vdash^{*} a^{k}b
+  \end{equation}
+  und
+  \begin{equation}
+    S \vdash aB \vdash^{*} a^{k}c
+  \end{equation}
+  mit
+  \begin{equation}
+    P_{1} = P_{1}' = \lambda, X = S, P_{2} = aA, P_{2}' = aB, P_{3} = P_{3}' = \lambda, P_{4} = a^{k}b, P_{4}' = a^{k}c
+  \end{equation}
+  Obwohl $FIRST_{k}(P_{4}) = FIRST_{k}(P_{4}')$, ist $P_{2} \ne P_{2}'$.
+\end{proof}
+
+\subsubsection{(ii)}
+
+\begin{equation}
+  G' = (\{ a, b, c \}, \{ S \}, S, P_{1}')
+\end{equation}
+\begin{align*}
+  P_{1}' = \{ & S \rightarrow aS | b | c \}
+\end{align*}
+Dies ist $LL(1)$, weil wenn man 1 Terminal in das Suffix hineinschaut, ist klar, welche Regel angewandt wurde.
+
+\subsubsection{(iii)}
+
+Es kann keine $LL(0)$-Grammatik geben, weil man dann irgendwo entscheiden müsste, ob das Wort mit einem $b$ oder $c$ endet ohne ``hinzugucken''.
+
+\subsection{Teil b}
+
+\subsubsection{(i)}
+
+Man betrachte die Worte $a = uwxxxxz$ und $b = uwxxz$.
+Dann hat man die Ableitungen
+\begin{equation}
+  S \vdash^{*} uwExz \vdash uwxxz
+\end{equation}
+und
+\begin{equation}
+  S \vdash^{*} uwExz \vdash uwExxz \vdash^{*} uwxxxxz
+\end{equation}
+Dann sind die Bedingungen erfüllt mit
+\begin{equation}
+  P_{1} = uw, P_{2} = x, P_{2}' = Ex, P_{3} = P_{3}' = xz, P_{4} = xxz, P_{4}' = xxxxz
+\end{equation}
+aber $P_{2} \ne P_{2}'$.
+
+\subsubsection{(ii)}
+
+Für keins, weil man im Gegenbeweis von Teil (i) beliebig viele $x$ produzieren kann, sodass kein Lookahead ausreicht, um zu entscheiden, welche Regel angewandt wurde.
+
+\section{Übung 8.2}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\section{Übung 8.3}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\subsection{Teil c}
+
+\section{Übung 8.4}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\subsection{Teil c}
+
+\end{document}

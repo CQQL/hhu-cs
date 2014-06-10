@@ -14,13 +14,15 @@
 
 \subsection{Teil 1.a}
 
-Ist irreduzibel in $\mathbb{Q}[X]$ nach dem Kriterium von Eisenstein, weil $7$ $7$ und $21$ teilt, aber nicht $1$ und $7^{2}$ $21$ nicht teilt.
+Ist irreduzibel in $\mathbb{Q}[X]$ nach dem Kriterium von Eisenstein, weil $7$ $7$ und $21$ teilt, aber nicht $1$, und $7^{2}$ $21$ nicht teilt.
 
 \subsection{Teil 1.b}
 
 
 
 \subsection{Teil 1.c}
+
+Nach dem Beispiel aus der Vorlesung ist das Polynom irreduzibel analog zu Beispiel 2.5.8, weil es $2X^{4} + 20$ in $\mathbb{F}_{200}$ ist, was keine Nullstelle hat.
 
 \subsection{Teil 2}
 
@@ -38,7 +40,7 @@ Ist irreduzibel in $\mathbb{Q}[X]$ nach dem Kriterium von Eisenstein, weil $7$ $
   X^{2} - 2\sqrt[3]{5}X - 2
 \end{equation}
 \begin{equation}
-    (\sqrt[3]{5} + i\sqrt{2})^{2} - 2\sqrt[3]{5}(\sqrt[3]{5} + i\sqrt{2}) + 2 + \sqrt[3]{5} & = \sqrt[3]{5}^{2} + 2i\sqrt{2}\sqrt[3]{5} - 2 - 2\sqrt[3]{5}(\sqrt[3]{5} + i\sqrt{2}) + 2 + \sqrt[3]{5} = 0
+    (\sqrt[3]{5} + i\sqrt{2})^{2} - 2\sqrt[3]{5}(\sqrt[3]{5} + i\sqrt{2}) + 2 + \sqrt[3]{5} = \sqrt[3]{5}^{2} + 2i\sqrt{2}\sqrt[3]{5} - 2 - 2\sqrt[3]{5}(\sqrt[3]{5} + i\sqrt{2}) + 2 + \sqrt[3]{5} = 0
 \end{equation}
 
 \subsection{Teil 3}
@@ -53,10 +55,6 @@ Ist irreduzibel in $\mathbb{Q}[X]$ nach dem Kriterium von Eisenstein, weil $7$ $
 \subsection{Teil 4}
 
 \subsection{Teil 5}
-
-\begin{equation}
-
-\end{equation}
 
 \section{Übung 3}
 
@@ -74,7 +72,9 @@ Ist irreduzibel in $\mathbb{Q}[X]$ nach dem Kriterium von Eisenstein, weil $7$ $
 \begin{proof}
   Da die Bedingungen immer schwächer werden, bilden die $I_{k}$ eine aufsteigende Kette.
   Wenn $\mathcal{H}(\mathbb{C})$ noethersch wäre, gäbe es ein $n \in \mathbb{N}$, sodass $I_{m} = I_{n}$ für alle $m \ge n$.
-  Man betrachte die Funktion $f(z) = \cos(2^{z - n}\pi z)$.
+  Man betrachte die Funktion $f(z) = \sin(2^{z - n - 1}\pi)$.
+  Dann ist $f \in I_{n + 1}$, aber $f \not\in I_{n}$.
+  Also ist $\mathcal{H}(\mathbb{C})$ kein noetherscher Ring.
 \end{proof}
 
 \subsection{Teil 3}
