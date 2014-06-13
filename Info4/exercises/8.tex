@@ -80,16 +80,135 @@ Für keins, weil man im Gegenbeweis von Teil (i) beliebig viele $x$ produzieren 
 
 \subsection{Teil a}
 
+Ich geben die zwei Konfigurationenfolgen an.
+\begin{align*}
+  & z_{0}011\\
+  \vdash & \square z_{1} 11\\
+  \vdash & \square 1 z_{1} 1\\
+  \vdash & \square 11 z_{1} \square\\
+  \vdash & \square 1 z_{2} 1
+\end{align*}
+$011$ wird nicht akzeptiert, weil es keinen Turingbefehl für $(z_{2}, 1)$ gibt.
+
+\begin{align*}
+  & z_{0}01010\\
+  \vdash & \square z_{1} 1010\\
+  \vdash & \square 1 z_{1} 010\\
+  \vdash & \square 10 z_{1} 10\\
+  \vdash & \square 101 z_{1} 0\\
+  \vdash & \square 1010 z_{1} \square\\
+  \vdash & \square 101 z_{2} 0\\
+  \vdash & \square 10 z_{3} 1 \square\\
+  \vdash & \square 1 z_{3} 01 \square\\
+  \vdash & \square z_{3} 101 \square\\
+  \vdash & z_{3} \square 101 \square\\
+  \vdash & \square z_{0} 101 \square\\
+  \vdash & \square \square z_{4} 01 \square\\
+  \vdash & \square \square 0 z_{4} 1 \square\\
+  \vdash & \square \square 01 z_{4} \square\\
+  \vdash & \square \square 0 z_{5} 1 \square\\
+  \vdash & \square \square z_{3} 0 \square \square\\
+  \vdash & \square z_{3} \square 0 \square \square\\
+  \vdash & \square \square z_{0} 0 \square \square\\
+  \vdash & \square \square \square z_{1} \square \square\\
+  \vdash & \square \square z_{2} \square \square \square\\
+  \vdash & \square \square \square z_{6} \square \square
+\end{align*}
+$01010$ wird akzeptiert, weil $z_{6} \in \{ z_{6} \}$.
+
 \subsection{Teil b}
 
+\begin{tabular}{c|c|c}
+  Zustand & Bedeutung & Absicht\\\hline
+  $z_{0}$ & Anfangszustand & Neuer Zyklus\\\hline
+  $z_{1}$ & Zyklus begann mit $0$ & rechten Rand suchen\\\hline
+  $z_{2}$ & rechter Rand erreicht in $0$-er Zyklus erreicht & Test ob Wort mit $0$ endet oder abgearbeitet wurde\\\hline
+  $z_{3}$ & Wort endete mit gleichen Terminal wie es begann & linken Rand suchen und neustarten\\\hline
+  $z_{4}$ & Zyklus begann mit $1$ & rechten Rand suchen\\\hline
+  $z_{5}$ & rechter Rand in $1$-er Zyklus erreicht & Test ob Wort mit $1$ endet oder abgearbeitet wurde\\\hline
+  $z_{6}$ & Wort abgearbeitet & Akzeptieren
+\end{tabular}
+
 \subsection{Teil c}
+
+$.$ ist die Konkatenation und $sp$ die Spiegelung.
+\begin{equation}
+  L(M) = \{ w . x . sp(w) \mid w \in \{ 0, 1 \}^{*}, x \in \{ 0, 1, \lambda \} \}
+\end{equation}
 
 \section{Übung 8.4}
 
 \subsection{Teil a}
 
+Definiere $M = (\{ 0, 1 \}, \{ 0, 1, \square, A \}, \{ z_{0} \}, \delta, z_{0}, \square, \{ z_{5} \})$ mit $\delta$ gegeben durch
+\begin{align*}
+  (z_{0}, 0) & \rightarrow (z_{1}, A, R)\\
+  (z_{0}, A) & \rightarrow (z_{0}, A, R)\\
+  (z_{0}, \square) & \rightarrow (z_{5}, \square, N)\\
+  (z_{1}, 0) & \rightarrow (z_{1}, 0, R)\\
+  (z_{1}, 1) & \rightarrow (z_{2}, A, R)\\
+  (z_{1}, A) & \rightarrow (z_{1}, A, R)\\
+  (z_{2}, 1) & \rightarrow (z_{2}, 1, R)\\
+  (z_{2}, 0) & \rightarrow (z_{3}, A, R)\\
+  (z_{2}, A) & \rightarrow (z_{2}, A, R)\\
+  (z_{3}, 0) & \rightarrow (z_{3}, 0, R)\\
+  (z_{3}, \square) & \rightarrow (z_{4}, \square, L)\\
+  (z_{4}, 0) & \rightarrow (z_{4}, 0, L)\\
+  (z_{4}, 1) & \rightarrow (z_{4}, 1, L)\\
+  (z_{4}, A) & \rightarrow (z_{4}, A, L)\\
+  (z_{4}, \square) & \rightarrow (z_{0}, \square, R)\\
+\end{align*}
+
+\begin{tabular}{c|c|c}
+  Zustand & Bedeutung & Absicht\\\hline
+  $z_{0}$ & Anfangszustand & Neuer Zyklus\\\hline
+  $z_{1}$ & $0$ gemerkt & $1$ finden\\\hline
+  $z_{2}$ & $0$ und $1$ gemerkt & $0$ finden\\\hline
+  $z_{3}$ & $0$, $1$ und $0$ gemerkt & rechten Rand finden\\\hline
+  $z_{4}$ & rechter Rand gefunden & linken Rand finden\\\hline
+  $z_{5}$ & gesamte Eingabe wurde verarbeitet & Akzeptieren
+\end{tabular}
+
 \subsection{Teil b}
 
+\begin{align*}
+  & z_{0} 010\\
+  & A z_{1} 10\\
+  & AA z_{2} 0\\
+  & AAA z_{3} \square\\
+  & AA z_{4} A\\
+  & A z_{4} AA\\
+  & z_{4} AAA\\
+  & z_{4} \square AAA\\
+  & z_{0} AAA\\
+  & A z_{0} AA\\
+  & AA z_{0} A\\
+  & AAA z_{0} \square\\
+  & AAA z_{5} \square\\
+\end{align*}
+
 \subsection{Teil c}
+
+\begin{align*}
+  & z_{0}00110\\
+  \vdash & A z_{1} 0110\\
+  \vdash & A0 z_{1} 110\\
+  \vdash & A0A z_{2} 10\\
+  \vdash & A0A1 z_{2} 0\\
+  \vdash & A0A1A z_{3} \square\\
+  \vdash & A0A1 z_{4} A\\
+  \vdash & A0A z_{4} 1A\\
+  \vdash & A0 z_{4} A1A\\
+  \vdash & A z_{4} 0A1A\\
+  \vdash & z_{4} A0A1A\\
+  \vdash & z_{4} \square A0A1A\\
+  \vdash & z_{0} A0A1A\\
+  \vdash & A z_{0} 0A1A\\
+  \vdash & AA z_{1} A1A\\
+  \vdash & AAA z_{1} 1A\\
+  \vdash & AAAA z_{2} A\\
+  \vdash & AAAAA z_{2} \square\\
+\end{align*}
+Nun gibt es keinen weiteren Turingbefehl mehr und das Wort wird nicht akzeptiert.
 
 \end{document}
