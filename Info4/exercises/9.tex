@@ -1,0 +1,246 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{listings}
+
+\begin{document}
+
+\section{Übung 9.1}
+
+\subsection{Teil a}
+
+Definiere den LBA $M = (\{ 0, 1 \}, \{ 0, 1, A, \square \}, \{ z_{0}, z_{1}, z_{2}, z_{3}, z_{4}, z_{e} \}, \delta, z_{0}, \square, \{ z_{e} \})$ mit $\delta$ gegeben durch
+\begin{align*}
+  (z_{0}, 0) & \rightarrow (z_{2}, A, R)\\
+  (z_{0}, 1) & \rightarrow (z_{1}, 1, R)\\
+  (z_{1}, 1) & \rightarrow (z_{1}, 1, R)\\
+  (z_{1}, A) & \rightarrow (z_{1}, A, R)\\
+  (z_{1}, \square) & \rightarrow (z_{e}, \square, N)\\
+  (z_{2}, 0) & \rightarrow (z_{2}, 0, R)\\
+  (z_{2}, 1) & \rightarrow (z_{3}, A, L)\\
+  (z_{2}, A) & \rightarrow (z_{2}, A, R)\\
+  (z_{3}, 0) & \rightarrow (z_{3}, 0, L)\\
+  (z_{3}, 1) & \rightarrow (z_{3}, 1, L)\\
+  (z_{3}, A) & \rightarrow (z_{3}, A, L)\\
+  (z_{3}, \square) & \rightarrow (z_{4}, \square, R)\\
+  (z_{4}, 0) & \rightarrow (z_{2}, A, R)\\
+  (z_{4}, 1) & \rightarrow (z_{1}, 1, R)\\
+  (z_{4}, A) & \rightarrow (z_{4}, A, R)\\
+  (z_{4}, \square) & \rightarrow (z_{e}, \square, N)\\
+\end{align*}
+
+\subsection{Teil b}
+
+\begin{align*}
+  &\, z_{0}00111\\
+  \vdash &\, Az_{2}0111\\
+  \vdash &\, A0z_{2}111\\
+  \vdash &\, Az_{3}0A11\\
+  \vdash &\, z_{3}A0A11\\
+  \vdash &\, z_{3}\square A0A11\\
+  \vdash &\, z_{4}A0A11\\
+  \vdash &\, Az_{4}0A11\\
+  \vdash &\, AAz_{2}A11\\
+  \vdash &\, AAAz_{2}11\\
+  \vdash &\, AAz_{3}AA1\\
+  \vdash &\, Az_{3}AAA1\\
+  \vdash &\, z_{3}AAAA1\\
+  \vdash &\, z_{3} \square AAAA1\\
+  \vdash &\, z_{4}AAAA1\\
+  \vdash &\, Az_{4}AAA1\\
+  \vdash &\, AAz_{4}AA1\\
+  \vdash &\, AAAz_{4}A1\\
+  \vdash &\, AAAAz_{4}1\\
+  \vdash &\, AAAA1z_{1}\square\\
+  \vdash &\, AAAA1z_{e}\square
+\end{align*}
+
+\begin{align*}
+  &\, z_{0}0011\\
+  \vdash &\, Az_{2}011\\
+  \vdash &\, A0z_{2}11\\
+  \vdash &\, Az_{3}0A1\\
+  \vdash &\, z_{3}A0A1\\
+  \vdash &\, z_{3}\square A0A1\\
+  \vdash &\, z_{4}A0A1\\
+  \vdash &\, Az_{4}0A1\\
+  \vdash &\, AAz_{2}A1\\
+  \vdash &\, AAAz_{2}1\\
+  \vdash &\, AAz_{3}AA\\
+  \vdash &\, Az_{3}AAA\\
+  \vdash &\, z_{3}AAAA\\
+  \vdash &\, z_{3} \square AAAA\\
+  \vdash &\, z_{4}AAAA\\
+  \vdash &\, Az_{4}AAA\\
+  \vdash &\, AAz_{4}AA\\
+  \vdash &\, AAAz_{4}A\\
+  \vdash &\, AAAAz_{4} \square\\
+  \vdash &\, AAAAz_{e} \square
+\end{align*}
+
+\subsection{Teil c}
+
+Wenn $m = 0$, muss auch $n = 0$, und das Wort wäre $\lambda$.
+Aber $\lambda \not\in L'$.
+Da also jedes Wort in $L'$ ebenfalls mindestens 1 $m$ enthält, ist $L = L'$ und der LBA ist derselbe wie in Teil a.
+
+\section{Übung 9.2}
+
+\subsection{Teil a}
+
+\begin{equation}
+  L(M) = \{ aa(aa)^{*} \}
+\end{equation}
+
+\subsection{Teil b}
+
+\begin{equation}
+  \Sigma = \{ a, \tilde{a} \}
+\end{equation}
+Definiere die Grammatik $G = (\Sigma, N, S, P)$ mit den Regeln $P$ gegeben durch
+\begin{align*}
+  \Delta = \{ & a, \tilde{a}, \square,\\
+  & (a, z_{0}), \dots, (a, z_{6}),\\
+  & (\tilde{a}, z_{0}), \dots, (\tilde{a}, z_{6}),\\
+  & (\square, z_{0}), \dots, (\square, z_{6}) \}
+\end{align*}
+\begin{equation}
+  N = \{ S, A \} \cup (\Delta \times \Sigma)
+\end{equation}
+\begin{align*}
+  P = & \{ S \rightarrow A(\tilde{a}, a) \} \cup
+  & \{ A \rightarrow A(a, a) \} \cup
+  & \{ A \rightarrow ((z_{0}, a), a) \} \cup
+  & \{  \} \cup
+  & \{ ((z_{})) \}
+\end{align*}
+
+\subsection{Teil c}
+
+\begin{align*}
+  &\, z_{0}aaa\tilde{a}\\
+  \vdash &\, \tilde{a}z_{1}aa\tilde{a}\\
+  \vdash &\, \tilde{a}az_{1}a\tilde{a}\\
+  \vdash &\, \tilde{a}aaz_{1}\tilde{a}\\
+  \vdash &\, \tilde{a}az_{2}a\tilde{a}\\
+  \vdash &\, \tilde{a}z_{2}aa\tilde{a}\\
+  \vdash &\, z_{2}\tilde{a}aa\tilde{a}\\
+  \vdash &\, \tilde{a}z_{3}aa\tilde{a}\\
+  \vdash &\, \tilde{a}\tilde{a}z_{4}a\tilde{a}\\
+  \vdash &\, \tilde{a}\tilde{a}az_{4}\tilde{a}\\
+  \vdash &\, \tilde{a}\tilde{a}z_{5}a\tilde{a}\\
+  \vdash &\, \tilde{a}z_{2}\tilde{a}\tilde{a}\tilde{a}\\
+  \vdash &\, \tilde{a}\tilde{a}z_{3}\tilde{a}\tilde{a}\\
+  \vdash &\, \tilde{a}\tilde{a}z_{6}\tilde{a}\tilde{a}
+\end{align*}
+
+\subsection{Teil d}
+
+\begin{align*}
+  &\, z_{0}aa\tilde{a}\\
+  \vdash &\, \tilde{a}z_{1}a\tilde{a}\\
+  \vdash &\, \tilde{a}az_{1}\tilde{a}\\
+  \vdash &\, \tilde{a}z_{2}a\tilde{a}\\
+  \vdash &\, z_{2}\tilde{a}a\tilde{a}\\
+  \vdash &\, \tilde{a}z_{3}a\tilde{a}\\
+  \vdash &\, \tilde{a}\tilde{a}z_{4}\tilde{a}\\
+  \vdash &\, \tilde{a}z_{5}\tilde{a}\tilde{a}\\
+\end{align*}
+Es gibt nun keinen weiteren ausführbaren Turingbefehl mehr.
+
+\section{Übung 9.3}
+
+\subsection{Teil a}
+
+Definiere die Turingmaschine $M = (\{ 0, 1 \}, \{ 0, 1 \}, \{ z_{0}, z_{1}, z_{2}, z_{e} \}, \delta, z_{0}, \square, \{ z_{e} \})$ mit $\delta$ gegeben durch
+\begin{align*}
+  (z_{0}, 0) & \rightarrow (z_{0}, 0, R)\\
+  (z_{0}, 1) & \rightarrow (z_{1}, 1, R)\\
+  (z_{0}, \square) & \rightarrow (z_{e}, 1, N)\\
+  (z_{1}, 0) & \rightarrow (z_{2}, 0, R)\\
+  (z_{1}, 1) & \rightarrow (z_{0}, 1, R)\\
+  (z_{1}, \square) & \rightarrow (z_{e}, 0, N)\\
+  (z_{2}, 0) & \rightarrow (z_{1}, 0, R)\\
+  (z_{2}, 1) & \rightarrow (z_{2}, 1, R)\\
+  (z_{2}, \square) & \rightarrow (z_{e}, 0, N)
+\end{align*}
+
+\subsection{Teil b}
+
+Definiere die Turingmaschine $M = (\{ 0, 1 \}, \{ 0, 1, \square \}, \{ z_{0}, z_{1}, z_{2}, z_{3}, z_{4}, z_{5}, z_{6} \}, \delta, z_{0}, \square, \{ z_{6} \})$ mit $\delta$ gegeben durch
+\begin{align*}
+  (z_{0}, 0) & \rightarrow (z_{0}, 0, R)\\
+  (z_{0}, 1) & \rightarrow (z_{0}, 1, R)\\
+  (z_{0}, \square) & \rightarrow (z_{1}, \square, L)\\
+  (z_{1}, 0) & \rightarrow (z_{3}, 1, L)\\
+  (z_{1}, 1) & \rightarrow (z_{2}, 0, L)\\
+  (z_{2}, 0) & \rightarrow (z_{2}, 0, L)\\
+  (z_{2}, 1) & \rightarrow (z_{2}, 1, L)\\
+  (z_{2}, \square) & \rightarrow (z_{6}, \square, R)\\
+  (z_{3}, 0) & \rightarrow (z_{3}, 1, L)\\
+  (z_{3}, 1) & \rightarrow (z_{4}, 0, L)\\
+  (z_{4}, 0) & \rightarrow (z_{2}, 0, L)\\
+  (z_{4}, 1) & \rightarrow (z_{2}, 1, L)\\
+  (z_{4}, \square) & \rightarrow (z_{5}, \square, R)\\
+  (z_{5}, 0) & \rightarrow (z_{6}, \square, R)\\
+\end{align*}
+
+\section{Übung 9.4}
+
+\subsection{Teil a}
+
+\begin{equation}
+  f(n) = n!
+\end{equation}
+
+\subsection{Teil b}
+
+\begin{lstlisting}
+  x0 := 1; x1 := n;
+  WHILE x1 != 0 DO
+    x3 := x0 + 0;
+    x0 := 0;
+    x2 := x1 + 0;
+    WHILE x2 != 0 DO
+      LOOP x3 DO
+        x0 := x0 + 1;
+      END
+
+      x2 := x2 - 1;
+    END
+
+    x1 := x1 - 1;
+  END
+\end{lstlisting}
+
+\subsection{Teil c}
+
+\begin{lstlisting}
+  x0 := 1; x1 := n;
+  M1: IF x1 = 1 THEN GOTO M4;
+    x3 := x0 + 0;
+    x0 := 0;
+    x2 := x1 + 0;
+    M2: IF x2 = 0 THEN GOTO M3;
+      x4 := x3;
+      M6: IF x4 = 0 THEN GOTO M5;
+        x0 := x0 + 1;
+
+        x4 := x4 - 1;
+      GOTO M6;
+
+      M5: x2 := x2 - 1;
+    GOTO M2;
+
+    M3: x1 := x1 - 1;
+  GOTO M1;
+  M4: HALT
+\end{lstlisting}
+
+\end{document}
