@@ -1,0 +1,199 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 30}
+
+\subsection{Teil a}
+
+\begin{equation}
+  L = \begin{pmatrix}
+    1 & 0\\
+    200 & 1\\
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  R = \begin{pmatrix}
+    0.005 & 1\\
+    0 & -190
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  Ly = \begin{pmatrix}
+    0.5\\1
+  \end{pmatrix}
+  \Leftrightarrow
+  y = \begin{pmatrix}
+    0.5\\-99
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  Rx = y \Leftrightarrow
+  x = \begin{pmatrix}
+    -4\\0.52
+  \end{pmatrix}
+\end{equation}
+
+\subsection{Teil b}
+
+\begin{equation}
+  P = \begin{pmatrix}
+    0 & 1\\
+    1 & 0
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  L = \begin{pmatrix}
+    1 & 0\\
+    0.005 & 1\\
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  R = \begin{pmatrix}
+    1 & 1\\
+    0 & 1
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  Ly = \begin{pmatrix}
+    1\\0.5
+  \end{pmatrix}
+  \Leftrightarrow
+  y = \begin{pmatrix}
+    1\\0.5
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  Rx = y
+  \Leftrightarrow
+  x = \begin{pmatrix}
+    0.5\\0.5
+  \end{pmatrix}
+\end{equation}
+
+Nein.
+Betrachte die Lösung von
+\begin{equation}
+  \begin{pmatrix}
+    1 & 200\\
+    1 & 1
+  \end{pmatrix}
+  \cdot x = \begin{pmatrix}
+    100\\1
+  \end{pmatrix}
+\end{equation}
+mit pivotisierter LR-Zerlegung.
+\begin{equation}
+  P = \begin{pmatrix}
+    1 & 0\\
+    0 & 1
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  L = \begin{pmatrix}
+    1 & 0\\
+    1 & 1
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  R = \begin{pmatrix}
+    1 & 200\\
+    0 & -190
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  Ly = \begin{pmatrix}
+    100\\1
+  \end{pmatrix}
+  \Leftrightarrow
+  y = \begin{pmatrix}
+    100\\-99
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  Rx = y
+  \Leftrightarrow
+  x = \begin{pmatrix}
+    0\\0.52
+  \end{pmatrix}
+\end{equation}
+
+\section{Aufgabe 31}
+
+\begin{equation}
+  A_{1} = \begin{pmatrix}
+    1 & 1 & 4\\
+    2 & -3 & 4\\
+    -4 & 8 & -4
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  P_{1} = \begin{pmatrix}
+    0 & 0 & 1\\
+    0 & 1 & 0\\
+    1 & 0 & 0
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  L_{1} = \begin{pmatrix}
+    1 & 0 & 0\\
+    \frac{1}{2} & 1 & 0\\
+    \frac{1}{4} & 0 & 1\\
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  A_{2} = \begin{pmatrix}
+    -4 & 8 & -4\\
+    0 & 1 & 2\\
+    0 & 3 & 3
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  P_{2} = \begin{pmatrix}
+    1 & 0 & 0\\
+    0 & 0 & 1\\
+    0 & 1 & 0
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  L_{2} = \begin{pmatrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & -\frac{1}{3} & 1
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  R = A_{3} = \begin{pmatrix}
+    -4 & 8 & -4\\
+    0 & 3 & 3\\
+    0 & 0 & 1
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  P = P_{2}P_{1} = \begin{pmatrix}
+    0 & 0 & 1\\
+    1 & 0 & 0\\
+    0 & 1 & 0
+  \end{pmatrix}
+\end{equation}
+\begin{equation}
+  L = (P_{2} L_{1}^{-1} P_{2}) L_{2}^{-1} = \begin{pmatrix}
+    1 & 0 & 0\\
+    -\frac{1}{4} & 1 & 0\\
+    -\frac{1}{2} & \frac{1}{3} & 1
+  \end{pmatrix}
+\end{equation}
+
+\section{Aufgabe 32}
+
+
+
+\end{document}
