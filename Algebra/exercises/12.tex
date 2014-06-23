@@ -1,0 +1,113 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\id}{Id}
+
+\begin{document}
+
+\section{Übung 1}
+
+\subsection{Teil 1}
+
+\begin{align*}
+  & x^{4} + 2x^{2} - 2 = 0\\
+  \Leftrightarrow \, & z^{2} + 2z - 2 = 0\\
+  \Leftrightarrow \, & z = -1 \pm \sqrt{1 - (-2)} = -1 \pm \sqrt{3}\\
+  \Leftrightarrow \, & x = \sqrt{z}\\
+  \Leftrightarrow \, & x \in \{ \sqrt{\sqrt{3} - 1}, -\sqrt{\sqrt{3} - 1}, i\sqrt{\sqrt{3} + 1}, -i\sqrt{\sqrt{3} + 1} \}
+\end{align*}
+\begin{equation}
+  \alpha = \pm\sqrt{\sqrt{3} - 1}
+\end{equation}
+\begin{equation}
+  \beta = \pm i\sqrt{\sqrt{3} + 1}
+\end{equation}
+\begin{equation}
+  x = i\sqrt{2}
+\end{equation}
+\begin{equation}
+  y = \sqrt{3}
+\end{equation}
+
+\subsection{Teil 2}
+
+\begin{proof}
+  Da $K = \mathbb{Q}(\alpha, x)$, kann man teilen und
+  \begin{equation}
+    \beta = \frac{x}{\alpha} \in K
+  \end{equation}
+  $K$ ist minimal, weil $i \not\in K(\alpha)$ und somit $\beta \not\in K(\alpha)$.
+  Deshalb ist $K$ der Zerfallungskörper.
+
+  \begin{equation}
+    [K : \mathbb{Q}] = 3
+  \end{equation}
+\end{proof}
+
+\subsection{Teil 3}
+
+\begin{proof}
+  Sei $\sigma$ die komplexe Konjugation.
+  Dann ist $\sigma(a) = a$ für alle $a \in \mathbb{Q}$.
+  Also ist $\sigma \in Gal(K / \mathbb{Q})$.
+
+  Sei $f \in Gal(K / \mathbb{Q})$ mit $f(\alpha) = \beta$.
+  \begin{equation}
+    f(\pm \alpha) = \pm \beta
+  \end{equation}
+  \begin{equation}
+    f(\pm \beta) = \pm \alpha
+  \end{equation}
+  \begin{equation}
+    f \circ \sigma(\pm \alpha) = \pm \beta
+  \end{equation}
+  \begin{equation}
+    f \circ \sigma(\pm \beta) = f(\mp \beta) = \mp \alpha
+  \end{equation}
+\end{proof}
+
+\subsection{Teil 4}
+
+\begin{proof}
+  Man betrachte die Permutation $\alpha, -\alpha, \beta, -\beta$.
+  Sei $f \in Gal(K / \mathbb{Q})$ mit $f(\alpha) = -\alpha$.
+  Dann ist $f(-\alpha) = -f(\alpha) = \alpha$.
+  Somit kann kein $f$ diese Permutation induzieren.
+\end{proof}
+
+\subsection{Teil 5}
+
+\section{Übung 2}
+
+\begin{equation}
+  L = \mathbb{Q}(\sqrt[4]{5}, i)
+\end{equation}
+
+\subsection{Teil 1}
+
+Sei $G = \{ \id, \sigma \}$ wobei $\sigma$ die komplexe Konjugation ist.
+Dann ist $K = L^{G}$.
+
+\begin{proof}
+  Sei $x \in K$.
+  Dann ist $\id(x) = x, \sigma(x) = x$, also $x \in L^{G}$.
+
+  Sei $x = a + b\sqrt[4]{5} + ci \in L^{G}$.
+  Dabei ist $\sigma(x) = x$, also $c = 0$.
+  Daher ist $x \in K$.
+\end{proof}
+
+Somit ist $Gal(L / K) = G$.
+
+\subsection{Teil 2}
+
+\subsection{Teil 3}
+
+\end{document}
