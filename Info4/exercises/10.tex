@@ -1,0 +1,127 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{listings}
+
+\begin{document}
+
+\section{Aufgabe 10.1}
+
+\subsection{Teil a}
+
+\begin{proof}
+  Sei $k = 1$.
+  Dann ist
+  \begin{lstlisting}
+    x0 := 0; x1 := n; x2 := 1;
+    LOOP x1 DO
+      x3 := g(x2);
+
+      LOOP x0 DO
+        x4 := 0;
+
+        LOOP x3 DO
+          x4 := 1;
+        END
+
+        LOOP x4 DO
+          x3 := x3 - 1;
+        END
+      END
+
+      LOOP x3 DO
+        x0 := x0 + 1;
+      END
+
+      x2 = x2 + 1;
+    END
+  \end{lstlisting}
+  Also ist $f$ für $1$-stellige Funktionen LOOP-berechenbar.
+
+  Sei $f$ für $k$-stellige Funktionen LOOP-berechenbar.
+  Man betrachte ein $k + 1$-stelliges $g$.
+  Sei $h_{x}$ die $k$-stellige Funktion $(x_{1}, \dots, x_{k}) \rightarrow g(x, x_{1}, \dots, x_{k})$.
+  Sei $f_{x} = \max \{ h_{x}(n_{1}, \dots, n_{k}) \mid 1 \le n_{1}, dots, n_{k}, \le n \}$.
+  $f_{x}$ ist also LOOP-berechenbar.
+  \begin{lstlisting}
+    x0 := 0; x1 := n; x2 := 1;
+    LOOP x1 DO
+      x3 := f_x2(n);
+
+      LOOP x0 DO
+        x4 := 0;
+
+        LOOP x3 DO
+          x4 := 1;
+        END
+
+        LOOP x4 DO
+          x3 := x3 - 1;
+        END
+      END
+
+      LOOP x3 DO
+        x0 := x0 + 1;
+      END
+
+      x2 = x2 + 1;
+    END
+  \end{lstlisting}
+  Also ist $f$ auch für ein $k + 1$-stelliges $g$ LOOP-berechenbar.
+\end{proof}
+
+\subsection{Teil b}
+
+\begin{lstlisting}
+  x1 := m; x2 := n;
+
+  A: x3 := x1 - x2; // GOTO-berechenbar
+  IF x3 = 0 THEN GOTO H;
+
+  x3 := x1;
+  x4 := x2;
+
+  C: x3 := x3 - 1;
+  x4 := x4 - 1;
+  IF x3 = 0 THEN GOTO B;
+  IF x4 = 0 THEN GOTO D;
+  GOTO C;
+
+  D: x2 := x2 - x1;
+  GOTO A;
+  B: x2 := x2 - x1;
+  GOTO A;
+
+  H: x0 := x1;
+  HALT;
+\end{lstlisting}
+
+\section{Aufgabe 10.2}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\section{Aufgabe 10.3}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\subsection{Teil c}
+
+\section{Aufgabe 10.4}
+
+\subsection{Teil a}
+
+\subsection{Teil b}
+
+\subsection{Teil c}
+
+\end{document}
