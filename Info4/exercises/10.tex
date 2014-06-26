@@ -9,6 +9,8 @@
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{listings}
 
+\DeclareMathOperator{\id}{id}
+
 \begin{document}
 
 \section{Aufgabe 10.1}
@@ -106,22 +108,124 @@
 
 \subsection{Teil a}
 
+\subsubsection{$md(x, y)$}
+
+\begin{equation}
+  md(0, y) = 0(y)
+\end{equation}
+\begin{equation}
+  md(n + 1, y) = h(n, md(n, y), y)
+\end{equation}
+
+\subsubsection{$md1(x, y)$}
+
+\begin{equation}
+  md1(0, y) = id_{1}^{1}(y)
+\end{equation}
+\begin{equation}
+  md1(n + 1, y) = pred(id_{2}^{3}(n, md1(n, y), y))
+\end{equation}
+
+\subsubsection{$S(x)$}
+
+\begin{equation}
+  S(0) = 0
+\end{equation}
+\begin{equation}
+  S(n + 1) = (1 \circ \id_{1}^{2})(n, S(n))
+\end{equation}
+
+\subsubsection{$eq(x, y)$}
+
+\begin{equation}
+  h(0) = 1
+\end{equation}
+\begin{equation}
+  h(n + 1) = (0 \circ \id_{1}^{2})(n, h(n))
+\end{equation}
+\begin{equation}
+  eq(0, y) = h(y)
+\end{equation}
+\begin{equation}
+  eq(n + 1, y) = g(n, eq(n, y), y)
+\end{equation}
+
 \subsection{Teil b}
+
+\begin{equation}
+  div(0, y) = 1
+\end{equation}
+\begin{equation}
+  div(n + 1, y) =
+\end{equation}
 
 \section{Aufgabe 10.3}
 
 \subsection{Teil a}
 
+\begin{equation}
+  \min(x, y) = \begin{cases}
+    x & \textit{wenn $x < y$}\\
+    y & \textit{sonst}
+  \end{cases}
+\end{equation}
+\begin{equation}
+  \max(x, y) = \begin{cases}
+    x & \textit{wenn $x > y$}\\
+    y & \textit{sonst}
+  \end{cases}
+\end{equation}
+
 \subsection{Teil b}
 
+\begin{equation}
+  Göd(\min) =
+\end{equation}
+\begin{equation}
+  Göd(\max) =
+\end{equation}
+
 \subsection{Teil c}
+
+\begin{equation}
+  f(0) = 0
+\end{equation}
+\begin{equation}
+  f(n + 1) = \id^{2}_{1}(n, f(n))
+\end{equation}
+Es ist die modifizierte Vorgängerfunktion.
 
 \section{Aufgabe 10.4}
 
 \subsection{Teil a}
 
+\begin{equation}
+  \mu \, eq (y) = \begin{cases}
+    0 & \textit{wenn $y = 0$}\\
+    undefiniert & \textit{sonst}
+  \end{cases}
+\end{equation}
+
 \subsection{Teil b}
 
+Potenzierung ist primitiv rekursiv.
+\begin{equation}
+  lq(x, y) = eq(2^{x}, y)
+\end{equation}
+\begin{equation}
+  l(y) = (\mu lq)(y)
+\end{equation}
+
 \subsection{Teil c}
+
+\begin{equation}
+  \mu\, lt(y) = \begin{cases}
+    undefiniert & \textit{wenn $y = 0$}\\
+    0 & \textit{sonst}
+  \end{cases}
+\end{equation}
+\begin{equation}
+  \mu\, gt(y) = undefiniert
+\end{equation}
 
 \end{document}
