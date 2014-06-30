@@ -1,0 +1,77 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+
+\section{Aufgabe 2}
+
+\subsection{Teil 1}
+
+\begin{equation}
+  P(0) = 1
+\end{equation}
+\begin{equation}
+  P(1) = 1
+\end{equation}
+Da $P$ keine Nullstelle hat, ist es irreduzibel.
+
+\subsection{Teil 2}
+
+\subsection{Teil 3}
+
+\section{Aufgabe 3}
+
+\subsection{Teil 1.a}
+
+\begin{equation}
+  P(x) = 0 \Leftrightarrow x = \frac{-a \pm \sqrt{a^{2} - 4b}}{2} = \frac{-a \pm \sqrt{\Delta}}{2}
+\end{equation}
+
+\subsection{Teil 1.b}
+
+\begin{proof}
+  Wenn $\sqrt{\Delta} \in \mathbb{Q}$, sind die Nullstellen auch in $\mathbb{Q}$ und der Grad ist $1$ und $K = \mathbb{Q}$.
+
+  Sei $\sqrt{\Delta} \not\in \mathbb{Q}$.
+  Dann ist $K = \mathbb{Q}(\frac{-a + \sqrt{\Delta}}{2}, \frac{-a - \sqrt{\Delta}}{2})$.
+  Betrachte $A := \mathbb{Q}(\sqrt{\Delta})$.
+  Die Enthaltung $K \subset A$ ist offensichtlich richtig.
+  \begin{equation}
+    \frac{-a + \sqrt{\Delta}}{2} - \frac{-a - \sqrt{\Delta}}{2} = \sqrt{\Delta} \in K
+  \end{equation}
+  Somit ist $K = \mathbb{Q}(\sqrt{\Delta})$ und der Grad $2$.
+\end{proof}
+
+\subsection{Teil 2.a}
+
+\begin{proof}
+  \begin{equation}
+    Q(X) = P(X^{2})
+  \end{equation}
+  Also sind die Nullstellen von $Q$ die Wurzeln der Nullstellen von $P$.
+  \begin{equation}
+    \pm \sqrt{\alpha} = \pm \sqrt{\frac{-a + \sqrt{\Delta}}{2}}
+  \end{equation}
+  \begin{equation}
+    \pm \sqrt{\beta} = \pm \sqrt{\frac{-a - \sqrt{\Delta}}{2}}
+  \end{equation}
+  Also ist $L = \mathbb{Q}(\sqrt{\alpha}, -\sqrt{\alpha}, \sqrt{\beta}, -\sqrt{\beta})$.
+  Dann ist ja auch offensichtlich $L = \mathbb{Q}(\sqrt{\alpha}, \sqrt{\beta})$.
+\end{proof}
+
+\subsection{Teil 2.b}
+
+\subsection{Teil 2.c}
+
+\subsection{Teil 2.d}
+
+\end{document}
