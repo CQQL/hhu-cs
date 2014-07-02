@@ -1,0 +1,329 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{listings}
+
+\DeclareMathOperator{\id}{id}
+
+\begin{document}
+
+\section{Aufgabe 2.1}
+
+\subsection{Teil a}
+
+\begin{proof}
+  $G$ ist keine $LL(1)$-Grammatik, weil nach Satz 4.24 alle $LL(k)$-Grammatiken eindeutig sind, aber hier hat das Wort $abc$ offensichtlich zwei verschiedene Ableitungsbäume.
+\end{proof}
+
+\subsection{Teil b}
+
+\begin{equation}
+  L(G) = \{ a(ba)^{n}bcc^{n} \mid n \ge 0 \} = \{ (ab)^{n}c^{n} \mid n \ge 1 \}
+\end{equation}
+
+\subsection{Teil c}
+
+Definiere $G' = (\{ a, b, c \}, \{ S, A \}, S, P)$ mit der Regelmenge $P$ gegeben durch
+\begin{align*}
+  P = \{ \, & S \rightarrow abA\\
+   & A \rightarrow abAc\, |\, c \,\}
+\end{align*}
+\begin{proof}
+  Da $S$ in keiner Produktion vorkommt, kann es auch nicht abgeleitet werden.
+
+  Weiterhin ist $G'$ $LL(1)$ nach Korollar 4.29, weil keine zwei Produktionen für das gleiche Nichtterminal mit dem gleichen Terminal beginnen.
+\end{proof}
+
+\subsection{Teil d}
+
+Definiere $M = (\{ a, b, c \}, \{ A, \# \}, \{ z_{0} \}, \delta, z_{0}, \#, \{ z_{e} \})$ mit der Überführungsfunktion $\delta$ gegeben durch
+\begin{align*}
+  z_{0}a\# & \rightarrow z_{a}\#\\
+  z_{0}aA & \rightarrow z_{a}A\\
+  z_{0}cA & \rightarrow z_{c}\lambda\\
+  z_{a}b\# & \rightarrow z_{0}A\#\\
+  z_{a}bA & \rightarrow z_{0}AA\\
+  z_{c}\lambda\# & \rightarrow z_{e}\#\\
+  z_{c}cA & \rightarrow z_{c}\lambda
+\end{align*}
+
+\section{Aufgabe 2.2}
+
+\subsection{Teil a}
+
+\subsubsection{$w_{1}$}
+
+\begin{align*}
+  & z_{0}abbc\\
+  \vdash & \square z_{1}bbc\\
+  \vdash & \square bz_{1}bc\\
+  \vdash & \square bbz_{1}c\\
+  \vdash & \square bbcz_{1}\square\\
+  \vdash & \square bbz_{2}c\\
+  \vdash & \square bz_{3}b\square\\
+  \vdash & \square z_{3}bb\square\\
+  \vdash & z_{3} \square bb\square\\
+  \vdash & \square z_{0}bb\square\\
+  \vdash & \square bz_{4}b\square\\
+  \vdash & \square bbz_{4}\square\\
+  \vdash & \square bbz_{5}\square
+\end{align*}
+Das Wort wird akzeptiert.
+
+\subsubsection{$w_{2}$}
+
+\begin{align*}
+  & z_{0}abcc\\
+  \vdash & \square z_{1}bcc\\
+  \vdash & \square bz_{1}cc\\
+  \vdash & \square bcz_{1}c\\
+  \vdash & \square bccz_{1}\square\\
+  \vdash & \square bcz_{2}c\\
+  \vdash & \square bz_{3}c\square\\
+  \vdash & \square z_{3}bc\square\\
+  \vdash & z_{3}\square bc\square\\
+  \vdash & \square z_{0}bc\square\\
+  \vdash & \square bz_{4}c\square
+\end{align*}
+Das Wort wird nicht akzeptiert.
+
+\subsubsection{$w_{3}$}
+
+\begin{align*}
+  & z_{0}bbb\\
+  \vdash & bz_{4}bb\\
+  \vdash & bbz_{4}b\\
+  \vdash & bbbz_{4}\square\\
+  \vdash & bbbz_{5}\square
+\end{align*}
+Das Wort wird akzeptiert.
+
+\subsection{Teil b}
+
+\begin{equation}
+  L(M) = \{ a^{n}b^{m}c^{n} \mid n \ge 0, m \ge 1 \}
+\end{equation}
+
+\subsection{Teil c}
+
+Definiere den LBA $N = (\{ a, b, c, \hat{a}, \hat{b}, \hat{c} \}, \{ a, b, c, \square \}, \{ z_{0}, \dots, z_{5} \}, \delta, z_{0}, \square, \{ z_{5} \})$ und den Übergängen $\delta$ gegeben durch
+\begin{align*}
+  (z_{0}, a) \rightarrow (z_{1}, \square, R)\\
+  (z_{0}, b) \rightarrow (z_{4}, \square, R)\\
+  (z_{0}, \hat{b}) \rightarrow (z_{4}, \square, N)\\
+  (z_{1}, a) \rightarrow (z_{1}, a, R)\\
+  (z_{1}, b) \rightarrow (z_{1}, b, R)\\
+  (z_{1}, c) \rightarrow (z_{1}, c, R)\\
+  (z_{1}, \hat{c}) \rightarrow (z_{2}, c, N)\\
+  (z_{1}, \square) \rightarrow (z_{2}, \square, L)\\
+  (z_{2}, c) \rightarrow (z_{3}, \square)\\
+  (z_{3}, a) \rightarrow (z_{3}, a, L)\\
+  (z_{3}, b) \rightarrow (z_{3}, b, L)\\
+  (z_{3}, c) \rightarrow (z_{3}, c, L)\\
+  (z_{3}, \square) \rightarrow (z_{0}, \square, R)\\
+  (z_{4}, b) \rightarrow (z_{4}, b, R)\\
+  (z_{4}, \hat{b}) \rightarrow (z_{5}, b, N)\\
+  (z_{4}, \square) \rightarrow (z_{5}, \square, N)
+\end{align*}
+
+\section{Aufgabe 2.3}
+
+\subsection{Teil a}
+
+Zahlen seien in Binärschreibweise.
+Definiere die Turingmaschine $(\{ 0, 1 \}, \{ 0, 1 \}, \{ z_{0}, z_{1}, z_{2}, z_{3}, z_{4}, z_{l}, z_{e} \}, \delta, z_{0}, \{ z_{e} \})$ mit den Übergängen $\delta$ gegeben durch
+\begin{align*}
+  (z_{0}, 0) \rightarrow (z_{0}, 0, R)\\
+  (z_{0}, 1) \rightarrow (z_{1}, 1, R)\\
+  (z_{0}, \square) \rightarrow (z_{2}, \square, L)\\
+  (z_{1}, 0) \rightarrow (z_{1}, 0, R)\\
+  (z_{1}, 1) \rightarrow (z_{1}, 1, R)\\
+  (z_{1}, \square) \rightarrow (z_{3}, \square, L)\\
+  (z_{2}, 0) \rightarrow (z_{e}, 0, L)\\
+  (z_{3}, 0) \rightarrow (z_{l}, \square, L)\\
+  (z_{3}, 1) \rightarrow (z_{4}, \square, L)\\
+  (z_{4}, 0) \rightarrow (z_{l}, 1, L)\\
+  (z_{4}, 1) \rightarrow (z_{4}, 0, L)\\
+  (z_{4}, \square) \rightarrow (z_{e}, 1, N)\\
+  (z_{l}, 0) \rightarrow (z_{l}, 0, L)\\
+  (z_{l}, 1) \rightarrow (z_{l}, 1, L)\\
+  (z_{l}, \square) \rightarrow (z_{e}, \square, R)
+\end{align*}
+
+\subsection{Teil b}
+
+Definiere die Turingmaschine $(\{ a, b \}, \{ a, b, \hat{a}, \hat{b}, \hat{\hat{a}}, \hat{\hat{b}} \}, \{ z_{0}, z_{s}, z_{a}, z_{a1}, z_{b}, z_{b1}, z_{l}, z_{le}, z_{e} \}, \delta, z_{0}, \{ z_{e} \})$ mit den Übergängen $\delta$ gegeben durch
+\begin{align*}
+  (z_{0}, a) & \rightarrow (z_{a1}, \hat{a}, R)\\
+  (z_{0}, b) & \rightarrow (z_{b1}, \hat{b}, R)\\
+  (z_{0}, \square) & \rightarrow (z_{0}, \square, R)\\
+  (z_{a1}, a) & \rightarrow (z_{a1}, a, R)\\
+  (z_{a1}, b) & \rightarrow (z_{a1}, b, R)\\
+  (z_{a1}, \square) & \rightarrow (z_{l}, \hat{\hat{a}}, L)\\
+  (z_{b1}, a) & \rightarrow (z_{b1}, a, R)\\
+  (z_{b1}, b) & \rightarrow (z_{b1}, b, R)\\
+  (z_{b1}, \square) & \rightarrow (z_{l}, \hat{\hat{b}}, L)\\
+  (z_{l}, a) & \rightarrow (z_{l}, a, L)\\
+  (z_{l}, b) & \rightarrow (z_{l}, b, L)\\
+  (z_{l}, \hat{a}) & \rightarrow (z_{l}, \hat{a}, L)\\
+  (z_{l}, \hat{b}) & \rightarrow (z_{l}, \hat{b}, L)\\
+  (z_{l}, \hat{\hat{a}}) & \rightarrow (z_{l}, \hat{\hat{a}}, L)\\
+  (z_{l}, \hat{\hat{b}}) & \rightarrow (z_{l}, \hat{\hat{b}}, L)\\
+  (z_{l}, \square) & \rightarrow (z_{s}, \square, R)\\
+  (z_{s}, a) & \rightarrow (z_{a}, \hat{a}, R)\\
+  (z_{s}, b) & \rightarrow (z_{b}, \hat{b}, R)\\
+  (z_{s}, \hat{a}) & \rightarrow (z_{s}, \hat{a}, R)\\
+  (z_{s}, \hat{b}) & \rightarrow (z_{s}, \hat{b}, R)\\
+  (z_{s}, \hat{\hat{a}}) & \rightarrow (z_{le}, a, L)\\
+  (z_{s}, \hat{\hat{b}}) & \rightarrow (z_{le}, b, L)\\
+  (z_{a}, a) & \rightarrow (z_{a}, a, R)\\
+  (z_{a}, b) & \rightarrow (z_{a}, b, R)\\
+  (z_{a}, \hat{\hat{a}}) & \rightarrow (z_{a}, \hat{\hat{a}}, R)\\
+  (z_{a}, \hat{\hat{b}}) & \rightarrow (z_{a}, \hat{\hat{b}}, R)\\
+  (z_{a}, \square) & \rightarrow (z_{l}, a, L)\\
+  (z_{b}, a) & \rightarrow (z_{b}, a, R)\\
+  (z_{b}, b) & \rightarrow (z_{b}, b, R)\\
+  (z_{b}, \hat{\hat{a}}) & \rightarrow (z_{b}, \hat{\hat{a}}, R)\\
+  (z_{b}, \hat{\hat{b}}) & \rightarrow (z_{b}, \hat{\hat{b}}, R)\\
+  (z_{b}, \square) & \rightarrow (z_{l}, b, L)\\
+  (z_{le}, \hat{a}) & \rightarrow (z_{le}, a, L)\\
+  (z_{le}, \hat{b}) & \rightarrow (z_{le}, b, L)\\
+  (z_{le}, \square) & \rightarrow (z_{e}, \square, R)
+\end{align*}
+
+\section{Aufgabe 2.4}
+
+\subsection{Teil a}
+
+\begin{lstlisting}
+  x2 := x1 - c; # LOOP-berechenbar
+  x5 := c - x1; # LOOP-berechenbar
+  x3 := 1;
+  x4 := 0;
+
+  # x1 > c
+  LOOP x2 DO
+    x3 := 0;
+    x4 := 1;
+  END
+
+  # x1 < c
+  LOOP x5 DO
+    x3 := 0;
+    x4 := 1;
+  END
+
+  LOOP x3 DO
+    P;
+  END
+
+  LOOP x4 DO
+    P';
+  END
+\end{lstlisting}
+
+\subsection{Teil b}
+
+\subsubsection{Teil i}
+
+\begin{lstlisting}
+  x0 := 1;
+  WHILE y != 0 DO
+    z := x0;
+    x0 := 0;
+
+    LOOP x DO
+      x0 := x0 + z;
+    END
+
+    y := y - 1;
+  END
+\end{lstlisting}
+
+\subsubsection{Teil ii}
+
+\begin{lstlisting}
+  A: IF y = 0 THEN GOTO A;
+
+  B: a := x + 1;
+  b := y;
+  C: IF a = 0 THEN GOTO E; # if x < y
+  IF b = 0 THEN GOTO D; # if x >= y
+  a := a - 1;
+  b := b - 1;
+  GOTO C;
+
+  D: x := x - y; # GOTO-berechenbar
+  GOTO B;
+
+  E: x0 := x;
+  HALT;
+\end{lstlisting}
+
+\section{Aufgabe 2.5}
+
+\subsection{Teil a}
+
+\begin{proof}
+  Sei $s$ die Nachfolgerfunktion und $v$ die Vorgängerfunktion, deren Primitiv-Rekursivität wir schon vielmals in der Vorlesung und in vorherigen Übungen eingesehen haben.
+  \begin{equation}
+    fib(0) = 1
+  \end{equation}
+  \begin{equation}
+    fib(n + 1) = (fi \circ \id_{1}^{2})(n, fib(n))
+  \end{equation}
+  \begin{equation}
+    fi(0) = 1
+  \end{equation}
+  \begin{equation}
+    fi(n + 1) = (f \circ s \circ s \circ \id_{1}^{2})(n, fi(n))
+  \end{equation}
+  \begin{equation}
+    f(n) = add(fib(v(n)), fib(v(v(n))))
+  \end{equation}
+\end{proof}
+
+\subsection{Teil b}
+
+\begin{equation}
+  \mu\, md(y) = \begin{cases}
+    0 & \textit{wenn $y = 0$}\\
+    undefiniert & \textit{sonst}
+  \end{cases}
+\end{equation}
+\begin{equation}
+  \mu\, md1 = \id
+\end{equation}
+
+\section{Aufgabe 2.6}
+
+\subsection{Teil a}
+
+$L_{1}$ ist nicht kontextfrei.
+\begin{proof}
+  Angenommen $L_{1}$ sei kontextfrei.
+  Dann sei $n$ die Grenze aus dem Pumpinglemma für kontextfreie Sprachen.
+
+  Sei $uvwxy$ eine Zerlegung davon, sodass $|vx| \ge 1$ und
+\end{proof}
+
+\subsection{Teil b}
+
+$L_{2}$ ist nicht kontextfrei.
+\begin{proof}
+  Angenommen $L_{2}$ sei kontextfrei.
+  Dann sei $n$ die Grenze aus dem Pumpinglemma für kontextfreie Sprachen.
+  Nun unterscheide an zwei Fälle:
+
+  In Fall 1 ist $n$ gerade.
+  Man betrachte das Wort $a^{\frac{n}{2}}ba^{\frac{n}{2}}$.
+  Sei $uvwxy$ eine Zerlegung davon, sodass $|vx| \ge 1$ und
+\end{proof}
+
+\end{document}
