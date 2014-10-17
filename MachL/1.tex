@@ -1,0 +1,64 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+
+\begin{equation}
+  p(M) = 0.1, p(m) = 0.02, p(e) = 0.88, p(n | M) = 0.99, p(n | m) = 0.3, p(n | e) = 0.1
+\end{equation}
+
+\begin{align*}
+  p(M | n) & = \frac{p(n | M) \cdot p(M)}{p(n)}\\
+  & = \frac{p(n | M) \cdot p(M)}{p(n | M) + p(n | m) + p(n | e)}\\
+  & \simeq 0.071223
+\end{align*}
+
+\section{Aufgabe 2}
+
+\subsection{Teil a}
+
+Das ist direkt gegeben.
+
+\subsection{Teil b}
+
+\begin{align*}
+  p(B | \lnot A) & = \frac{p(\lnot A | B) \cdot p(B)}{p(\lnot A)}\\
+  & = \frac{(1 - p(A | B)) \cdot p(B)}{p(\lnot A)}\\
+  & = \frac{(1 - \frac{p(B | A) \cdot p(A)}{p(B)}) \cdot p(B)}{p(\lnot A)}\\
+  & \le \frac{(1 - \frac{p(B) \cdot p(A)}{p(B)}) \cdot p(B)}{p(\lnot A)}\\
+  & = \frac{(1 - p(A)) \cdot p(B)}{p(\lnot A)}\\
+  & = \frac{p(\lnot A) \cdot p(B)}{p(\lnot A)}\\
+  & = p(B)
+\end{align*}
+
+\subsection{Teil c}
+
+\begin{align*}
+  p(A | B) & = \frac{p(B | A) \cdot p(A)}{p(B)}\\
+  & \ge \frac{p(B) \cdot p(A)}{p(B)} = p(A)
+\end{align*}
+
+\subsection{Teil d}
+
+\begin{align*}
+  p(A | \lnot B) & = \frac{p(\lnot B | A) \cdot p(A)}{p(\lnot B)}\\
+  & = \frac{(1 - p(B | A)) \cdot p(A)}{p(\lnot B)}\\
+  & \le \frac{(1 - p(B)) \cdot p(A)}{p(\lnot B)}\\
+  & = \frac{p(\lnot B) \cdot p(A)}{p(\lnot B)}\\
+  & = p(A)
+\end{align*}
+
+\section{Aufgabe 3}
+
+\section{Aufgabe 4}
+
+\end{document}
