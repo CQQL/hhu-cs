@@ -309,8 +309,15 @@ $L_{1}$ ist nicht kontextfrei.
 \begin{proof}
   Angenommen $L_{1}$ sei kontextfrei.
   Dann sei $n$ die Grenze aus dem Pumpinglemma für kontextfreie Sprachen.
+  Man betrachte das Wort $ab^{n}c^{2 + n}$.
+  Sei $uvwxy$ eine Zerlegung davon, sodass $|vx| \ge 1$, $|vwx| \le n$ und $uv^iwx^iy \in L$ für alle $i \in{\mathbb{N}}$.
+  Dann kann $vwx$ nicht nur $ab^{n}$ überdecken, weil sonst $uwy$ weniger $a$ und/oder $b$ enthalten würde, aber immer noch gleich viele $c$.
+  Aus demselben Grund kann $vwx$ ebenfalls nicht nur $b^{n}$ überdecken und nicht nur $c^{2 + n}$.
+  Also ist $vwx = b^{i}c^{j}$ mit $i, j > 0$.
+  Dabei enthält $v$ mindestens ein $b$ und $x$ mindestens ein $c$, weil sonst entweder gegen die Vorraussetzung $|vx| \ge 1$ verstoßen würde oder wir in einem vorherigen Fall wären.
+  Weiterhin kann $v$ nur $b$s und $x$ nur $c$s enthalten, weil man sonst beim einmaligen Aufpumpen schon ein ungültiges Wort der Form $ab^{d}c^{e}b^{f}c^{g}$ erhalten würde.
+  Wegen des linearen Zusammenhangs mit Koeffizient $1$ zwischen der Anzahl der $b$ und $c$, muss $|v| = |x|$ sein.
 
-  Sei $uvwxy$ eine Zerlegung davon, sodass $|vx| \ge 1$ und
 \end{proof}
 
 \subsection{Teil b}
@@ -319,11 +326,12 @@ $L_{2}$ ist nicht kontextfrei.
 \begin{proof}
   Angenommen $L_{2}$ sei kontextfrei.
   Dann sei $n$ die Grenze aus dem Pumpinglemma für kontextfreie Sprachen.
-  Nun unterscheide an zwei Fälle:
-
-  In Fall 1 ist $n$ gerade.
-  Man betrachte das Wort $a^{\frac{n}{2}}ba^{\frac{n}{2}}$.
-  Sei $uvwxy$ eine Zerlegung davon, sodass $|vx| \ge 1$ und
+  Sei $z = ab^{2}a^{2}\dots b^{n}a^{n}$.
+  Man betrachte das Wort $zz$.
+  Sei $uvwxy$ eine Zerlegung davon, sodass $|vx| \ge 1$, $|vwx| \le n$ und $uv^{i}wx^{i}y \in L_{2}$ für alle $i \ge 0$.
+  Aber es kann keine solche Zerlegung geben, sodass $uwy \in L_{2}$, weil es in $zz$ jede Gruppe $b^{i}a^{i}$ genau zwei mal gibt und diese zusammengehörenden Gruppen weiter als $n$ auseinander liegen.
+  Würde man diese Gruppen verändern, indem man Teile entfernt ($uwy$), so wäre außer Reichweite von $v$ und $x$ weiter vorne bzw. hinten im Wort die dazugehörige Gruppe, die nun nicht mehr gematcht werden kann.
+  Das resultierende Wort kann also unmöglich in $wb^{k}w$ mit $w \in \{ a, b \}^{*}$ aufgeteilt werden und somit ist es nicht in $L_{2}$.
 \end{proof}
 
 \end{document}
