@@ -1,0 +1,279 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{listings}
+
+\begin{document}
+
+\section{Aufgabe 1.1}
+
+\section{Aufgabe 1.2}
+
+\section{Aufgabe 1.3}
+
+\section{Aufgabe 1.4}
+
+\section{Aufgabe 1.5}
+
+\section{Aufgabe 1.6}
+
+\section{Aufgabe 1.7}
+
+\section{Aufgabe 1.8}
+
+\subsection{Requests}
+
+\subsubsection{VERIFY}
+
+\begin{lstlisting}
+  VERIFY <TOKEN> <PIN>
+\end{lstlisting}
+
+\begin{lstlisting}
+  OK
+\end{lstlisting}
+
+\subsubsection{STATUS}
+
+\begin{lstlisting}
+  STATUS <TOKEN> <PIN>
+\end{lstlisting}
+
+\begin{lstlisting}
+  OK BALANCE=<BALANCE>
+\end{lstlisting}
+
+\subsubsection{WITHDRAW}
+
+\begin{lstlisting}
+  WITHDRAW <TOKEN> <PIN> <AMOUNT>
+\end{lstlisting}
+
+Wenn die Abhebung autorisiert und serverseitig gespeichert wurde, sendet der ZC
+\begin{lstlisting}
+  OK
+\end{lstlisting}
+
+Wenn nicht ausreichend Geld vorhanden ist, sendet der ZC
+\begin{lstlisting}
+  ERROR MISSING_BALANCE=<AMOUNT - BALANCE>
+\end{lstlisting}
+
+\subsection{Error Responses}
+
+\subsubsection{INVALID\_CREDENTIALS}
+
+Wenn Kennung oder PIN falsch sind, sendet der ZC
+
+\begin{lstlisting}
+  ERROR INVALID_CREDENTIALS
+\end{lstlisting}
+
+\subsubsection{MALFORMED\_REQUEST}
+
+Wenn die Anfrage nicht formatiert ist wie erwartet, sendet der ZC
+
+\begin{lstlisting}
+  ERROR MALFORMED_REQUEST
+\end{lstlisting}
+
+\subsection{Beispiel}
+
+\begin{lstlisting}
+  BA: VERIFY 1234567 1011
+  ZC: OK
+  BA: STATUS 1234567 1011
+  ZC: OK BALANCE=2000
+  BA: WITHDRAW 1234567 1011 3000
+  ZC: ERROR MISSING_BALANCE=1000
+  BA: WITHDRAW 1234567 1011 1000
+  ZC: OK
+\end{lstlisting}
+
+\section{Aufgabe 1.9}
+
+\subsection{Teil 1}
+
+\begin{equation}
+  n := 8
+\end{equation}
+Die Dauer für eine Mautstation plus Strecke beträgt
+\begin{equation}
+  t_{1} = 14s \cdot n + \frac{80km}{120 \frac{km}{h}} = n \cdot 14s + \frac{2}{3}h = n \cdot 14s + \frac{2}{3}h \cdot 60 \frac{min}{h} \cdot 60 \frac{s}{min} = n \cdot 14s + 2400s = 2512s
+\end{equation}
+Die Gesamtdauer beträgt dann
+\begin{equation}
+  t = 3 \cdot t_{1} = 7536s \simeq 2h
+\end{equation}
+
+\subsection{Teil 2}
+
+\begin{equation}
+  n := 5
+\end{equation}
+\begin{equation}
+  t_{1} = 2470s
+\end{equation}
+\begin{equation}
+  t = 3 \cdot t_{1} = 7410 \simeq 2h1
+\end{equation}
+
+\section{Aufgabe 1.10}
+
+\subsection{Teil 1}
+
+Die Übertragung eines Pakets von einem Link dauert
+\begin{equation}
+  t_{1} = \frac{L + h}{R}
+\end{equation}
+Die Dauer einer Übertragung eines Pakets über die gesamte Strecke ist dann
+\begin{equation}
+  t_{Q} = Q \cdot t_{1} = Q \cdot \frac{L + h}{R}
+\end{equation}
+Um die Gesamtdauer zu berechnen, müssen erst alle Pakete losgeschickt werden und
+dann muss man noch addieren, wie lange das letzte Paket braucht, um anzukommen.
+\begin{equation}
+  t = (M - 1) \cdot t_{1} + t_{Q} = (Q + M - 1) \cdot \frac{L + h}{R}
+\end{equation}
+
+\subsection{Teil 2}
+
+\begin{equation}
+  M := 1
+\end{equation}
+\begin{equation}
+  t = t_{Q}
+\end{equation}
+
+\subsection{Teil 3}
+
+Da die Verbindung direkt von Ende zu Ende geht, ist die Anzahl der Links
+dazwischen irrelevant. Somit ist die Übertragungsdauer
+\begin{equation}
+  t = t_{s} + \frac{F + 2h}{R}
+\end{equation}
+
+\section{Aufgabe 1.11}
+
+\subsection{Teil 1}
+
+\begin{equation}
+  d_{aus} = \frac{l}{v}
+\end{equation}
+
+\subsection{Teil 2}
+
+\begin{equation}
+  d_{ueber} = \frac{L}{R}
+\end{equation}
+
+\subsection{Teil 3}
+
+\begin{equation}
+  \frac{L}{R} + \frac{l}{v}
+\end{equation}
+
+\subsection{Teil 4}
+
+Es wurde gerade versendet und liegt ganz am Anfang auf der Leitung.
+
+\subsection{Teil 5}
+
+Irgendwo auf der Leitung.
+
+\subsection{Teil 6}
+
+Bei dem Zielhost.
+
+\subsection{Teil 7}
+
+\begin{align*}
+  d_{aus} & = d_{ueber}\\
+  \Leftrightarrow \frac{l}{v} & = \frac{L}{R}\\
+  \Leftrightarrow l & = \frac{Lv}{R} = \frac{500 Bit \cdot 2.5 \cdot 10^{8} \frac{m}{s}}{10^{6} \frac{Bit}{s}} = 1.25 \cdot 10^{5}m
+\end{align*}
+
+\section{Aufgabe 1.12}
+
+\subsection{Teil 1}
+
+Die Verzögerung $t_{i}$ des $i$-ten Packets einer Ladung, das versandt wird, ist
+\begin{equation}
+  t_{i} = (i - 1) \cdot \frac{L}{R}
+\end{equation}
+Die durchschnittliche Verzögerung $\bar{t}$ ist dann
+\begin{align*}
+  \bar{t} & = \frac{1}{N} \cdot \sum_{i = 1}^{N} t_{i}\\
+  & = \frac{1}{N} \cdot \frac{L}{R} \cdot \sum_{i = 1}^{N} (i - 1)\\
+  & = \frac{1}{N} \cdot \frac{L}{R} \cdot \sum_{i = 0}^{N - 1} i\\
+  & = \frac{1}{N} \cdot \frac{L}{R} \cdot \frac{N \cdot (N - 1)}{2}\\
+  & = \frac{L(N - 1)}{2R} = \frac{L}{R} \cdot \frac{N - 1}{2}
+\end{align*}
+
+\subsection{Teil 2}
+
+Dann bleibt am Ende jeder Phase immer ein Paket mehr in der Schlange, bis die
+Schlange voll ist und es zu Paketverlust kommt.
+
+\section{Aufgabe 1.13}
+
+\subsection{Teil 1}
+
+\begin{equation}
+  R \cdot d_{aus} = 10^{6} \frac{Bit}{s} \cdot \frac{10^{7}m}{2.5 \cdot 10^{8} \frac{m}{s}} = 0.4 \cdot 10^{5} Bit
+\end{equation}
+
+\subsection{Teil 2}
+
+Das erste Bit benötigt $t = \frac{10^{7}}{2.5 \cdot 10^{8}}s = 4 \cdot
+10^{-2}s$. In dieser Zeit kann man insgesamt $R \cdot t = 4 \cdot 10^{4} =
+40000$ Bits verschicken.
+
+\subsection{Teil 3}
+
+Das bandwidth-delay product sagt aus, wie viele Bits man versenden kann, bevor
+das erste ankommt.
+
+\subsection{Teil 4}
+
+Wenn man $10^{6}$ Bits pro Sekunde verschicken kann und man annimmt, dass zum
+Umschalten der Signale keine Zeit benötigt wird, sondern sie die ganze Zeit
+anliegen, liegt ein Bit $10^{-6}$ Sekunden lang an. Bei einer
+Ausbreitungsgeschwindigkeit von $2.5 \cdot 10^{8} \frac{m}{s}$ ergibt sich eine
+Länge von $2.5 \cdot 10^{2} m = 250m$.
+
+\subsection{Teil 5}
+
+\begin{equation}
+  \frac{v}{R}
+\end{equation}
+
+\subsection{Teil 6}
+
+Es dauert $t_{1} = \frac{450000 Bit}{R} = \frac{450000 Bit}{10^{6}
+  \frac{Bit}{s}} = 0.45s$ um alle Bits zu versenden. Das letzte Bit benötigt
+dann noch weitere $4 \cdot 10^{-2}s$. Insgesamt dauert die Übertragung also
+$0.49s$.
+
+\subsection{Teil 7}
+
+Das Übertragen eines Pakets dauert
+\begin{equation}
+  t_{Packet} = \frac{30000 Bit}{R} + 4 \cdot 10^{-2}s = \frac{30000 Bit}{10^{6} \frac{Bit}{s}} + 4 \cdot 10^{-2}s = 7 \cdot 10^{-2}s
+\end{equation}
+Das Senden einer Bestätigung dauert
+\begin{equation}
+  t_{Ack} = 4 \cdot 10^{-2}s
+\end{equation}
+Die gesamte Übertragung dauert somit
+\begin{equation}
+  15 \cdot (t_{Packet} + t_{Ack}) = 15 \cdot 11 \cdot 10^{-2}s = 1.65s
+\end{equation}
+
+\end{document}
