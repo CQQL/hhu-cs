@@ -1,0 +1,83 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+
+\begin{equation}
+  x \sim \mathcal{N}(\mu, \sigma^{2})
+\end{equation}
+\begin{equation}
+  y(x) = ax + b
+\end{equation}
+Dann ist nach Lemma 4.11
+\begin{equation}
+  p_{y}(y) = \mathcal{N}(y | a\mu + b, a^{2}\sigma^{2})
+\end{equation}
+
+\section{Aufgabe 2}
+
+\begin{equation}
+  L(\theta) = Bin(k | n, \theta) = \binom{n}{k} \cdot \theta^{k} \cdot (1 - \theta)^{n - k}
+\end{equation}
+\begin{align*}
+  L'(\theta) & = \binom{n}{k} \cdot \left( k \cdot \theta^{k - 1} \cdot (1 - \theta)^{n - k} - (n - k) \cdot \theta^{k} \cdot (1 - \theta)^{n - k - 1} \right)\\
+  & = \binom{n}{k} \cdot \theta^{k - 1} \cdot (1 - \theta)^{n - k - 1} \cdot \left( k \cdot (1 - \theta) - (n - k) \cdot \theta \right)\\
+  & = \binom{n}{k} \cdot \theta^{k - 1} \cdot (1 - \theta)^{n - k - 1} \cdot \left( k - k\theta - n\theta + k\theta \right)\\
+  & = \binom{n}{k} \cdot \theta^{k - 1} \cdot (1 - \theta)^{n - k - 1} \cdot \left( k - n\theta \right)\\
+\end{align*}
+\begin{equation}
+  L'(\theta) = 0 \Leftrightarrow \theta = \frac{k}{n}
+\end{equation}
+Die Likelihood-Funktion $L$ wird also von $\frac{k}{n}$, dem
+Maximum-Likelihood-Estimator, maximiert.
+
+\section{Aufgabe 3}
+
+\begin{equation}
+  p(\theta) = Dir(\theta | \alpha)
+\end{equation}
+\begin{equation}
+  p(\mathcal{D} | \theta) = Mu(\mathcal{D} | n, \theta)
+\end{equation}
+\begin{align*}
+  p(\theta | \mathcal{D}) & = \frac{p(\mathcal{D} | \theta) \cdot p(\theta)}{p(\mathcal{D})}\\
+  & = \frac{p(\mathcal{D} | \theta) \cdot p(\theta)}{\int_{0}^{1} \dots \int_{0}^{1} p(\mathcal{D} | \theta') \cdot p(\theta')\ d\theta'_{K} \dots d\theta'_{1}}\\
+  & = \frac{\binom{n}{x_{1}, \dots, x_{K}} \prod_{i = 1}^{K} \theta_{i}^{x_{i}} \cdot \frac{1}{B(\alpha)}\prod_{i = 1}^{K} \theta_{i}^{\alpha_{i} - 1}}{\int_{0}^{1} \dots \int_{0}^{1} p(\mathcal{D} | \theta') \cdot p(\theta')\ d\theta'_{K} \dots d\theta'_{1}}\\
+  & = \frac{\binom{n}{x_{1}, \dots, x_{K}} \cdot \frac{1}{B(\alpha)}}{\int_{0}^{1} \dots \int_{0}^{1} p(\mathcal{D} | \theta') \cdot p(\theta')\ d\theta'_{K} \dots d\theta'_{1}} \prod_{i = 1}^{K} \theta_{i}^{(\alpha_{i} + x_{i}) - 1}\\
+  & = \frac{\binom{n}{x_{1}, \dots, x_{K}} \cdot \frac{1}{B(\alpha)}}{\int_{0}^{1} \dots \int_{0}^{1} \binom{n}{x_{1}, \dots, x_{K}} \prod_{i = 1}^{K} \theta'^{x_{i}}_{i} \cdot \frac{1}{B(\alpha)} \prod_{i = 1}^{K} \theta'^{\alpha_{i} - 1}_{i}\ d\theta'_{K} \dots d\theta'_{1}} \prod_{i = 1}^{K} \theta_{i}^{(\alpha_{i} + x_{i}) - 1}\\
+  & = \frac{\binom{n}{x_{1}, \dots, x_{K}} \cdot \frac{1}{B(\alpha)}}{\binom{n}{x_{1}, \dots, x_{K}} \cdot \frac{1}{B(\alpha)} \int_{0}^{1} \dots \int_{0}^{1}\prod_{i = 1}^{K} \theta'^{(\alpha_{i} + x_{i}) - 1}_{i}\ d\theta'_{K} \dots d\theta'_{1}} \prod_{i = 1}^{K} \theta_{i}^{(\alpha_{i} + x_{i}) - 1}\\
+  & = \frac{1}{\int_{0}^{1} \dots \int_{0}^{1} \prod_{i = 1}^{K} \theta'^{(\alpha_{i} + x_{i}) - 1}_{i}\ d\theta'_{K} \dots d\theta'_{1}} \prod_{i = 1}^{K} \theta_{i}^{(\alpha_{i} + x_{i}) - 1}\\
+  & = \frac{1}{B(\alpha + \mathcal{D})} \prod_{i = 1}^{K} \theta_{i}^{(\alpha_{i} + x_{i}) - 1}\\
+  & = Dir(\theta | \alpha + \mathcal{D})
+\end{align*}
+
+\section{Aufgabe 4}
+
+Ich nehme an, dass die Bewertungen der Verkäufer unabhängig sind, also
+\begin{equation}
+  p(\theta_{1}, \theta_{2} | \mathcal{D}_{1}, \mathcal{D}_{2}) = p(\theta_{1} | \mathcal{D}_{1}, \mathcal{D}_{2}) \cdot  p(\theta_{2} | \mathcal{D}_{1}, \mathcal{D}_{2})
+\end{equation}
+\begin{equation}
+  p(\theta_{1} | \mathcal{D}_{1}) = Beta(\theta_{1} | 91, 11)
+\end{equation}
+\begin{equation}
+  p(\theta_{2} | \mathcal{D}_{2}) = Beta(\theta_{1} | 3, 1)
+\end{equation}
+\begin{align*}
+  p(\theta_{1} > \theta_{2} | \mathcal{D}_{1}, \mathcal{D}_{2}) & = \int_{0}^{1} \int_{\theta_{2}}^{1} p(\theta_{1}, \theta_{2} | \mathcal{D}_{1}, \mathcal{D}_{2})\ d\theta_{1}\ d\theta_{2}\\
+  & = \int_{0}^{1} \int_{\theta_{2}}^{1} p(\theta_{1} | \mathcal{D}_{1}, \mathcal{D}_{2}) \cdot p(\theta_{2} | \mathcal{D}_{1}, \mathcal{D}_{2})\ d\theta_{1}\ d\theta_{2}\\
+  & = \int_{0}^{1} \int_{\theta_{2}}^{1} \frac{1}{B(91, 11)} \theta_{1}^{90}(1 - \theta_{1})^{10} \cdot \frac{1}{B(3, 1)} \theta_{2}^{2}(1 - \theta_{2})^{0}\ d\theta_{1}\ d\theta_{2}\\
+  & = \frac{1}{B(91, 11) \cdot B(3, 1)} \int_{0}^{1} \int_{\theta_{2}}^{1} \theta_{1}^{90}(1 - \theta_{1})^{10} \cdot \theta_{2}^{2}\ d\theta_{1}\ d\theta_{2}\\
+  & \simeq 0.712593
+\end{align*}
+
+\end{document}
