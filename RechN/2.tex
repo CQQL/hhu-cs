@@ -1,0 +1,152 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 2.1}
+
+\section{Aufgabe 2.2}
+
+\section{Aufgabe 2.3}
+
+\section{Aufgabe 2.4}
+
+\section{Aufgabe 2.5}
+
+\section{Aufgabe 2.6}
+
+\section{Aufgabe 2.7}
+
+\section{Aufgabe 2.8}
+
+\subsection{Teil 1}
+
+Falsch, weil bei HTTP jede Resource einzeln angefragt werden muss und der Server
+nicht selbstständig welche senden kann.
+
+\subsection{Teil 2}
+
+Falsch, weil die Anfragen an denselben Host gerichtet sind. Wenn es
+unterschiedliche Hosts wären, wäre es nicht möglich.
+
+\subsection{Teil 3}
+
+Falsch, weil bei non-persistent connections mehrere Verbindungen aufgebaut
+werden und ein Paket zu genau einer Verbindung gehört, da es über den Header
+identifiziert wird, den es nur einmal gibt.
+
+\subsection{Teil 4}
+
+Falsch, wenn beide Optionen die Leitung voll auslasten. 1.1 kann die Objekte
+über dieselbe Leitung herunterladen, während 1.0 drei Verbindungen aufbauen
+muss. Dies könnte nur schneller sein, wenn die drei Verbindungen parallel laufen
+würden. Die Annahme über die Geschwindigkeit schließt dies jedoch aus.
+
+\section{Aufgabe 2.9}
+
+\subsection{Teil 1}
+
+Beide können es signalisieren, indem sie den Connection-Header mit dem Wert
+``close'' senden. Dies bedeutet, dass die Verbindung nicht persistent ist und
+nach dem Abschluss der Anfrage geschlossen werden soll.
+
+\subsection{Teil 2}
+
+Keine. Um HTTP verschlüsselt zu übertragen, muss man auf HTTPS (RFC2818)
+zurückgreifen. Dort wird nur gesagt, dass man doch HTTP über eine TLS-Verbindung
+senden soll.
+
+\section{Aufgabe 2.10}
+
+Unabhängig davon, ob rekursives oder iterative DNS-Auflösung verwendet wird,
+beträgt die zur Namensauflösung benötigte Zeit
+\begin{equation}
+  t_{DNS} = \sum_{i = 1}^{n} RTT_{i}
+\end{equation}
+Es ist nur eine $RTT$ pro Server notwendig, weil DNS über UDP läuft.
+
+Da die Webseite sehr klein ist, zählt dort auch nur die Ausbreitungsverzögerung
+und die Gesamtdauer ist
+\begin{equation}
+  t_{DNS} + 2 \cdot RTT_{0}
+\end{equation}
+Hier sind es 2 $RTT$, weil man erst die TCP-Verbindung aufbauen muss und dann in
+einem zweiten Paket die Daten übertragen werden.
+
+\section{Aufgabe 2.11}
+
+\subsection{Teil 1}
+
+\begin{equation}
+  t_{DNS} + 5 \cdot (2 \cdot RTT_{0})
+\end{equation}
+
+\subsection{Teil 2}
+
+Zuerst baut man eine TCP-Verbindung auf und dann werden nacheinander die 5
+Objekte geladen.
+\begin{equation}
+  t_{DNS} + RTT_{0} + 5 \cdot RTT_{0}
+\end{equation}
+
+\subsection{Teil 3}
+
+Das dauert genausolange wie ein einzelnes Objekt anzufragen, weil die einzelnen
+Pakete keine Übertragungsverzögerung haben und deshalb alle gleichzeitig
+versendet werden.
+\begin{equation}
+  t_{DNS} + RTT_{0} + RTT_{0}
+\end{equation}
+
+\subsection{Teil 4}
+
+Da die 4 Objekte gleichzeitig geladen werden, dauert das Übertragen der 4
+weiteren Dateien nur so lange, wie eine einzelne zu laden.
+\begin{equation}
+  t_{DNS} + (2 \cdot RTT_{0}) + (2 \cdot RTT_{0})
+\end{equation}
+
+\section{Aufgabe 2.12}
+
+Wenn Upload und Download über eine Internetverbindung nicht gleichzeitig möglich
+sind, führt das Herunterladen durch die anderen offensichtlich zu einer
+Verlangsamung.
+
+Wenn das jedoch möglich ist, findet immernoch eine Verlangsamung statt, aber sie
+ist geringer. Die anderen Teilnehmer werden zwischendurch Kontrollinformationen
+wie Statusinformationen oder Anfragen für weitere Dateiteile an uns senden, was
+Empfangskapazität benötigt.
+
+\section{Aufgabe 2.13}
+
+\subsection{Teil 1}
+
+Der Server sendet die Datei mit derselben, maximalen Geschwindigkeit an alle
+Clients. Dann dauert die Übertragung der Datei an einen Client
+\begin{equation}
+  t_{client} = \frac{F}{\frac{d_{S}}{N}} = \frac{NF}{d_{S}}
+\end{equation}
+Da alle Übertragungen parallel stattfinden, ist dies auch die Verteilungszeit.
+
+\subsection{Teil 2}
+
+Der Server sendet die Datei gleichzeitig an alle Clients mit maximal möglicher
+Datenrate, aber mindestens $d_{min}$. Dann dauert die Übertragung der Datei an
+Client $i$
+\begin{equation}
+  t_{i} = \frac{F}{d_{i}}
+\end{equation}
+wobei $d_{i}$ die Datenrate zu Client $i$ ist. Da alle Übertragungen
+gleichzeitig stattfinden, ist die Verteilungszeit das Maximum der Einzelzeiten.
+\begin{equation}
+  \max_{i} t_{i} = \max_{i} \frac{F}{d_{i}} = \frac{F}{d_{min}}
+\end{equation}
+
+\end{document}
