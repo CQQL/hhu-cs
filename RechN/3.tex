@@ -1,0 +1,173 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{listings}
+
+\begin{document}
+
+\section{Aufgabe 3.1}
+
+UDP wobei der Server ein eigenes Mini-ACK sendet. Also so wie TCP nur ohne
+Handshake.
+
+\section{Aufgabe 3.2}
+
+Synchronisation von notwendigen Informationen bevor die eigentliche
+Kommunikation beginnt.
+
+\section{Aufgabe 3.3}
+
+Ja, MX.
+
+\section{Aufgabe 3.4}
+
+Ja, wenn er welche hat, die Alice noch nicht hat und Alice diese
+anfragt. Vielleicht weil er nett ist und sonst um auch weiterhin Daten von Alice
+zu bekommen.
+
+\section{Aufgabe 3.5}
+
+Entweder kriegt er ihn direkt vom Seed, der nur hochlädt, oder er hat Glück beim
+``optimistic unchoking'' eines anderen Peers, der ihm dann einen Datenblock
+schickt.
+
+\section{Aufgabe 3.6}
+
+\section{Aufgabe 3.7}
+
+$n + 1$, $n$ für die $n$ Client-Verbindungen plus einen Serversocket. Das liegt
+daran, dass ein TCP-Socket einer bestimmten Verbindung zugeordnet ist, während
+ein UDP-Socket einfach jedes Datenpaket annimmt ohne weiter zu unterteilen.
+
+\section{Aufgabe 3.8}
+
+{
+  \setlength{\parindent}{0cm}
+
+  Die Konvention scheint zu sein, dass niemand rekursives DNS unterstützt.
+
+  dns-anfrager.hhu.de an dns.hhu.de
+  \begin{lstlisting}
+    www.cs.berkeley.edu. IN A
+  \end{lstlisting}
+
+  dns.hhu.de an dns.global.net (IP bekannt, weil es ein Root-Server ist)
+  \begin{lstlisting}
+    www.cs.berkeley.edu. IN A
+  \end{lstlisting}
+
+  dns.global.net an dns.hhu.de
+  \begin{lstlisting}
+    ;; AUTHORITY
+    edu. IN NS dns.edu.
+
+    ;; ADDITIONAL
+    dns.edu. IN A 155.4.4.4
+  \end{lstlisting}
+
+  dns.hhu.de an dns.edu
+  \begin{lstlisting}
+    www.cs.berkeley.edu. IN A
+  \end{lstlisting}
+
+  dns.edu an dns.hhu.de
+  \begin{lstlisting}
+    ;; AUTHORITY
+    www.cs.berkeley.edu. IN NS dns.berkeley.edu
+
+    ;; ADDITIONAL
+    dns.berkeley.edu IN A 128.32.40.2
+  \end{lstlisting}
+
+  dns.hhu.de an dns.berkeley.edu
+  \begin{lstlisting}
+    www.cs.berkeley.edu. IN A
+  \end{lstlisting}
+
+  dns.berkeley.edu an dns.hhu.de
+  \begin{lstlisting}
+    ;; ANSWER
+    www.cs.berkeley.edu. IN A 128.32.64.42
+  \end{lstlisting}
+
+  dns.hhu.de an dns-anfrager.hhu.de
+  \begin{lstlisting}
+    ;; ANSWER
+    www.cs.berkeley.edu. IN A 128.32.64.42
+  \end{lstlisting}
+}
+
+\section{Aufgabe 3.9}
+
+In der Praxis scheint niemand rekursive DNS-Anfragen zu unterstützten. Die
+Anzahl der verschickten Pakete ändert sich dadurch nicht, aber die Arbeit wird
+auf die Clients verteilt. Es sorgt also für weniger Auslastung der DNS-Server.
+
+\section{Aufgabe 3.10}
+
+``A'' ist eine IPv4-Adresse. ``AAAA'' ist eine IPv6-Adresse. ``NS'' enthält den
+Hostnamen des autoritativen Nameservers.
+
+\section{Aufgabe 3.11}
+
+Der DNS-Server, der Dynamic DNS anbietet, liefert nur Antworten mit kurzen TTLs
+aus, damit Clients immer die aktuelle Adresse erfahren, sobald sie sich
+ändert. Die Seite, die die dynamische IP hat, ist dafür verantwortlich, dem
+Dynamic-DNS-Anbieter immer die aktuelle IP mitzuteilen, wenn sie sich ändert,
+z.B. nach einer Zwangstrennung oder einem Routerneustart.
+
+\section{Aufgabe 3.12}
+
+Da eine Kante in einem Overlaynetzwerk virtuell ist, ist die Anzahl der Kanten
+unabhängig von der Anzahl der Router. Es gibt also $N$ Knoten und
+$\sum_{i = 1}^{N} i = \frac{N \cdot (N + 1)}{2}$ Kanten.
+
+\section{Aufgabe 3.13}
+
+\subsection{Teil 1}
+
+Jeder Peer sendet Anfragen an alle Peers weiter, die er kennt außer dem
+Quellpeer. Dabei ignoriert er aber jede Anfrage, die er schonmal gesehen
+hat. Dazu werden Anfragen wohl entweder eine ID haben oder nur für eine
+bestimmte Zeit ignoriert.
+
+\subsection{Teil 2}
+
+Um die Anzahl der Weiterleitungen zu kontrollieren, beschränkt man die
+Reichweite der Anfragen, also wieviele Kanten im Netzwerk sie nehmen darf, bis
+die Weiterleitung aufhört.
+
+Dies kann umgesetzt werden, indem man jeder Anfrage eine Zahl mitgibt, die
+angibt, wieviele Sprünge die Anfrage noch machen darf. Bei jeder Weiterleitung
+wird diese Zahl dann um 1 reduziert.
+
+\subsection{Teil 3}
+
+Man erreicht die maximale Anzahl an Weiterleitungen, wenn jeder Peer $N$
+Nachbarn hat und die Nachbar-Mengen aller Peers paarweise disjunkt sind.  Dann
+sendet jeder Peer die Anfrage $N$ mal weiter und das passiert $K$ mal. Die
+Anzahl der Anfragenachrichten ist also durch $N^{K}$ beschränkt.
+
+\section{Aufgabe 3.14}
+
+\subsection{Teil 1}
+
+Wenn der Peer immernoch mehr als 4 Verbindungen offen hat, würde er nichts
+machhen. Wenn seine Verbindungszahl allerdings auf $3$ gesunken ist, würde er
+versuchen, neue Verbindungen aufzubauen mittels einer Methode seiner
+Wahl. Z.B. würde er erneut eine Ping-Nachricht verschicken, wie auch beim
+Eintreten in das Netzwerk.
+
+\subsection{Teil 2}
+
+Die Nachbarn werden merken, dass die Verbindung getrennt wurde, wenn sie
+Versuchen Kontakt aufzunehmen und mehrfach Timeouts haben. Dann würden sie wohl
+ihrerseits ebenfalls den Socket schließen und sich verhalten wie in Teil 1.
+
+\end{document}
