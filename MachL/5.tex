@@ -1,0 +1,93 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+
+\subsection{Teil a}
+
+Let $n$ be the number of data points
+
+First we have to rewrite the conditions. The first condition has to be rewritten
+as
+\begin{equation}
+  g_{i}(w) = 1 - \xi_{i} - y_{i}(w^{T}x_{i} + b) \quad \forall i \in \{ 1, \dots, n \}
+\end{equation}
+and the second condition as
+\begin{equation}
+  g_{n + i}(w) = -\xi_{i} \quad \forall i \in \{ 1, \dots, n \}
+\end{equation}
+
+Then the Lagrangian is
+\begin{align*}
+  \mathcal{L}(w, b, \xi, \alpha, \beta) & = \frac{1}{2} ||w||^{2} + C \cdot \sum_{i = 1}^{n} \xi_{i} + \sum_{i = 1}^{2n} \alpha_{i}g_{i}(w)\\
+                                        & = \frac{1}{2} ||w||^{2} + C \cdot \sum_{i = 1}^{n} \xi_{i} + \sum_{i = 1}^{n} \alpha_{i} (1 - \xi_{i} - y_{i}(w^{T}x_{i} + b)) - \sum_{i = 1}^{n} \beta_{i} \xi_{i}\\
+                                        & = \frac{1}{2} ||w||^{2} + \sum_{i = 1}^{n} (C - \alpha_{i} - \beta_{i}) \xi_{i} + \sum_{i = 1}^{n} \alpha_{i} - \sum_{i = 1}^{n} \alpha_{i} y_{i}w^{T}x_{i} - b \sum_{i = 1}^{n} \alpha_{i}y_{i}
+\end{align*}
+There are no $\beta$-terms, because we only have inequality constraints.
+
+\subsection{Teil b + c}
+
+\begin{equation}
+  \frac{d L(w, b, \xi, \alpha, \beta)}{dw} = w - \sum_{i = 1}^{n} \alpha_{i}y_{i}x_{i} = 0 \Leftrightarrow w = \sum_{i = 1}^{n} \alpha_{i}y_{i}x_{i}
+\end{equation}
+\begin{equation}
+  \frac{d L(w, b, \xi, \alpha, \beta)}{db} = -\sum_{i = 1}^{n} \alpha_{i}y_{i} = 0
+\end{equation}
+\begin{equation}
+  \frac{d L(w, b, \xi, \alpha, \beta)}{d \xi_{i}} = C - \alpha_{i} - \beta_{i} = 0 \Leftrightarrow \beta_{i} = C - \alpha_{i}
+\end{equation}
+
+Plugging into the Lagrangian
+\begin{align*}
+  \mathcal{L}(w, b, \alpha) & = \frac{1}{2} ||\sum_{i = 1}^{n} \alpha_{i}y_{i}x_{i}||^{2} + \sum_{i = 1}^{n} \alpha_{i} - \sum_{i = 1}^{n} \alpha_{i} y_{i}\left( \sum_{j = 1}^{n} \alpha_{j}y_{j}x_{j} \right)^{T}x_{i}\\
+                            & = \frac{1}{2} \left\langle \sum_{i = 1}^{n} \alpha_{i}y_{i}x_{i}, \sum_{i = 1}^{n} \alpha_{i}y_{i}x_{i} \right\rangle + \sum_{i = 1}^{n} \alpha_{i} - \sum_{i = 1}^{n} \alpha_{i} y_{i}\left( \sum_{j = 1}^{n} \alpha_{j}y_{j}x_{j}^{T} \right)x_{i}\\
+                            & = \frac{1}{2} \left\langle \sum_{i = 1}^{n} \alpha_{i}y_{i}x_{i}, \sum_{i = 1}^{n} \alpha_{i}y_{i}x_{i} \right\rangle + \sum_{i = 1}^{n} \alpha_{i} - \sum_{i = 1}^{n} \sum_{j = 1}^{n} \alpha_{i}\alpha_{j}y_{i}y_{j}x_{j}^{T}x_{i}\\
+                            & = \frac{1}{2} \sum_{i = 1}^{n} \sum_{j = 1}^{n} \alpha_{i}\alpha_{j}y_{i}y_{j} \langle x_{i}, x_{j} \rangle + \sum_{i = 1}^{n} \alpha_{i} - \sum_{i = 1}^{n} \sum_{j = 1}^{n} \alpha_{i}\alpha_{j}y_{i}y_{j}\langle x_{j}, x_{i} \rangle\\
+                            & = \sum_{i = 1}^{n} \alpha_{i} - \frac{1}{2} \sum_{i = 1}^{n} \sum_{j = 1}^{n} \alpha_{i}\alpha_{j}y_{i}y_{j}\langle x_{j}, x_{i} \rangle\\
+\end{align*}
+
+\subsection{Teil d}
+
+By derivation with respect to $\xi_{i}$ in the last section, we learned that
+$\beta_{i} = C - \alpha_{i}$. Therefore $\alpha_{i} = C - \beta_{i}$. Because
+all $g_{i}$ are inequality constraints, we have the constraints
+$\alpha_{i} \ge 0$ and $\beta_{i} \ge 0$. Thus follows $\alpha_{i} \le C$.
+
+\subsection{Teil e}
+
+The dual problem is
+\begin{align*}
+  \min_{\alpha_{i}} & \quad \sum_{i = 1}^{n} \alpha_{i} - \frac{1}{2} \sum_{i = 1}^{n} \sum_{j = 1}^{n} \alpha_{i}\alpha_{j}y_{i}y_{j}\langle x_{j}, x_{i} \rangle\\
+  \text{s.t.} & \quad 0 \le \alpha_{i} \le C \quad \forall i \in \{ 1, \dots, n \}\\
+  \text{and} & \quad \sum_{i = 1}^{n} \alpha_{i}y_{i} = 0
+\end{align*}
+
+\section{Aufgabe 2}
+
+The range of the squared norm is $\mathbb{R}_{\ge 0}$. Therefore the minimum
+possible value is $0$. Under the $0$-constraint $w = 0, b = 0$ is a solution of
+the primal problem, which makes for quite a bad classifier.
+
+If you replaced the $0$ with a $\kappa > 0$, the term to minimize in the dual
+problem would become
+\begin{equation}
+  \kappa \sum_{i = 1}^{n} \alpha_{i} - \frac{1}{2} \sum_{i = 1}^{n} \sum_{j = 1}^{n} \alpha_{i}\alpha_{j}y_{i}y_{j}\langle x_{j}, x_{i} \rangle
+\end{equation}
+So larger values for $\alpha_{i}$ would be more or less hardly punished,
+depending on whether $\kappa > 1$.
+
+If you look at the primal problem, nothing has changed, except that we enforce a
+minimum margin of $\kappa$ instead of $1$. So from this aspect I would predict,
+that the $\kappa$-constraint would result in a scaled $(w, b)$ compared to the
+$1$-constraint, but it would ultimately be the same line.
+
+\end{document}
