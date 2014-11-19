@@ -1,0 +1,152 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 4.1}
+
+UDP ist geeignet, wenn der Verlust einzelner Datenpakete irrelevant ist, weil
+z.B. immer nur die aktuellsten Daten interessant sind. Ein solcher
+Anwendungsfall könnte ein Thermometer sein, dass seine Messungen per UDP
+versendet. Wenn eine der Messungen verloren geht, wartet man einfach auf die
+nächste, weil die besser ist als die verloren gegangene.
+
+\section{Aufgabe 4.2}
+
+Ja, wenn sie ein individuelles Zuverlässigkeitsprotokoll auf UDP implementiert
+oder über ein eigenes, internes Netzwerk läuft, über dass man volle Kontrolle
+hat, sodass solche Garantien auf einer niedrigeren Schicht gemacht werden
+können.
+
+\section{Aufgabe 4.3}
+
+\subsection{Teil 1}
+
+Nein, für jeden Client wird ein eigener Socket erstellt.
+
+\subsection{Teil 2}
+
+Das IP-Protokoll enthält die Adresse des Senders. Darüber hinaus können auch
+noch höher liegende Protokolle wie TLS zum Einsatz kommen, um sicherzustellen,
+dass niemand im Namen eines anderen mit Host C kommuniziert.
+
+\subsection{Teil 3}
+
+Durch IP und Port von Absender und Empfänger.
+
+\section{Aufgabe 4.4}
+
+\subsection{Teil 1}
+
+Um auf ein bestimmtes Paket zu verweisen und den Paketen eine Reihenfolge zu
+geben.
+
+\subsection{Teil 2}
+
+Um zu bestätigen, dass ein Paket angekommen ist.
+
+\subsection{Teil 3}
+
+Um zu reagieren, falls entweder ein Paket oder ein ACK verloren gegangen ist.
+
+\subsection{Teil 4}
+
+Um zu überprüfen, ob ein Paket beschädigt wurde.
+
+\subsection{Teil 5}
+
+Um die Auslastung der Leitung zu erhöhen.
+
+\section{Aufgabe 4.5}
+
+Nein, denn die Prüfsumme ist stets kürzer als die Daten, die sie prüfen
+soll. Deshalb müssen mehrere Daten auf dieselbe Prüfsumme abgebildet
+werden. Wenn die Bits also besonders unglücklich kippen, wird daraus ein zur
+Prüfsumme passendes, aber falsches Datenpaket entstehen.
+
+\section{Aufgabe 4.6}
+
+\section{Aufgabe 4.7}
+
+Selber Empfänger wie bei RDT 2.2.
+
+\section{Aufgabe 4.8}
+
+\section{Aufgabe 4.9}
+
+Alle Werte in dieser Aufgabe sind modulo $1024$ zu genießen.
+
+\subsection{Teil 1}
+
+Mögliche Werte für $base$ sind $k, k - 1, k - 2, k - 3$. Die möglichen
+Sequenznummernbereiche, sind alle möglichen $base$ bis $base + 3$.
+
+Wenn der Empfänger $k$ erwartet, kann der Sender noch kein ACK für $k$ bekommen
+haben. Dadurch ist $base$ nach oben durch $k$ beschränkt. Durch die Fenstergröße
+von $4$ kann der Sender aber auch nicht mehr als $3$ Pakete vor $k$ verschickt
+haben, auf deren Bestätigung er noch wartet. Die beschränkt $k$ nach unten durch
+$k - 3$.
+
+Die Sequenznummernbereiche errechnen sich direkt aus den möglichen Werten für
+$base$.
+
+\subsection{Teil 2}
+
+Damit der Empfänger $k$ erwarten kann, muss er vorher $k - 1$ empfangen
+haben. Damit aber der Sender $k - 1$ verschickt haben kann, muss er bereits ein
+ACK für $(k - 1) - 4$ empfangen haben. Also für das letzte Paket vor dem
+Fenster, in dem $k - 1$ das letzte Paket ist.
+
+Somit sind die ACKs $k - 4, k - 3, k - 2, k - 1$ möglich.
+
+\section{Aufgabe 4.10}
+
+Die maximale Datenrate wird erreicht, wenn der Sender immer ein Paket lossendet,
+wenn möglich und keine Pakete oder ACKs verloren gehen. Wenn ein ACK schneller
+zurückkommt als der Sender braucht, um ein komplettes Fenster zu senden, kann er
+so ununterbrochen senden.
+
+Die Zeit, um ein Paket mit zu vernachlässigender Größe über die Leitung zu
+versenden, ist
+\begin{equation}
+  t = \frac{s}{v} = \frac{2 \cdot 10^{7} m}{2 \cdot 10^{8} \frac{m}{s}} = 10^{-1}s
+\end{equation}
+
+Ein Paket von Größe $p$ mit Datenrate $d$ zu versenden und ein ACK zu empfangen,
+dauert dann
+\begin{equation}
+  T = (\frac{p}{d} + t) + t = \frac{p}{d} + 2t
+\end{equation}
+Es dauert also $T$, das erste Paket des Fenster zu verschicken und das
+entsprechende ACK zu empfangen.
+
+Wir erhalten die maximale Datenrate $d_{max}$, wenn wir in Zeit $T$ das gesamte
+Fenster verschicken.
+\begin{equation}
+  d_{max} = \frac{N \cdot p}{T} = \frac{N \cdot p}{\frac{p}{d_{max}} + 2 \cdot \frac{s}{v}}
+\end{equation}
+Es folgen ein paar Umformungen
+\begin{align*}
+  d_{max} & = \frac{N \cdot p}{\frac{p}{d_{max}} + 2 \cdot \frac{s}{v}}\\
+  \Leftrightarrow \quad d_{max} \left( \frac{p}{d_{max}} + 2 \cdot \frac{s}{v} \right) & = N \cdot p\\
+  \Leftrightarrow \quad p + 2 d_{max} \cdot \frac{s}{v} & = N \cdot p\\
+  \Leftrightarrow \quad 2 d_{max} \cdot \frac{s}{v} & = (N - 1) \cdot p\\
+  \Leftrightarrow \quad d_{max} & = \frac{1}{2} \frac{v}{s} (N - 1) \cdot p\\
+\end{align*}
+
+In diesem Fall ist dann
+\begin{equation}
+  d_{max} = \frac{1}{2} \frac{2 \cdot 10^{8} \frac{m}{s}}{2 \cdot 10^{7}m} \cdot 19 \cdot 10^{3} bit = \frac{19}{2} \cdot 10^{4} \frac{bit}{s}
+\end{equation}
+
+Man kann die Datenrate erhöhen, indem man an den Variablen entsprechend
+rumschraubt.
+
+\end{document}
