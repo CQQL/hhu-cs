@@ -1,0 +1,11 @@
+(define dice-sides (range 1 6))
+
+(define (number-rolls N)
+  (let ((dice (range 1 N)))
+    (rejection-query
+     (define n (uniform-draw dice))
+     (define sum-faces (sum (repeat n (lambda () (uniform-draw dice-sides)))))
+     n
+     (condition (= sum-faces N)))))
+
+(hist (repeat 100 (lambda () (number-rolls 20))))

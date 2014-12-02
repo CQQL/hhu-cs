@@ -16,3 +16,6 @@ _region_.*
 
 # Executables
 [0-9].[0-9]
+
+# Hidden files
+.*
