@@ -1,0 +1,122 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{minted}
+
+\begin{document}
+
+\section{Aufgabe 7.1}
+
+Dies ist besser, weil im dem wohl wahrscheinlichten Fall für den Ausfall einer,
+nämlich die Zerstörung eines Links oder Absturz des Routers, dieser ja nicht
+mehr melden kann, dass er abgestürzt ist bzw. keine Verbindung mehr hat.
+
+\section{Aufgabe 7.2}
+
+Areas gruppieren das Netzwerk, sodass jeder Router nur die Topologie seiner
+Gruppe im Auge behalten muss. Das hält die Link-State-Datenbank klein und sorgt
+auch dafür, dass Router diese nicht die ganze Zeit updaten müssen, weil sich in
+sehr großen Netzwerken immer irgendwo etwas ändert.
+
+\section{Aufgabe 7.3}
+
+Bei iBGP sendet der Router den original NEXT-HOP und nicht seine eigene IP
+weiter.
+
+\section{Aufgabe 7.4}
+
+Mit der Zeit synchronisieren sich die Router und alle $x$ Sekunden gibt es
+Traffic-Bursts.
+
+\section{Aufgabe 7.5}
+
+\subsection{Teil 1}
+
+Die Tabellen enthalten im Moment ca. 530000 Einträge. Durch Aggregation könnte
+diese Zahl um 44.9\% verringert werden. (Quelle:
+http://www.cidr-report.org/as2.0/\#Gains)
+
+\subsection{Teil 2}
+
+\section{Aufgabe 7.6}
+
+\subsection{Direkt nach dem Ausfall}
+
+\begin{minted}{shell}
+Tabelle A: A(lokal) - 0, B() - u, C(ac) - 1, D(ac) - 3, E(ac) - 2
+Tabelle B: A() - u, B(lokal) - 0, C(be) - 2, D(bd) - 1, E(be) - 1
+\end{minted}
+
+\subsection{Runde 1}
+
+\begin{minted}{shell}
+Von A nach C: A - 0, B - u, C - u, D - u, E - u
+Von B nach D: A - u, B - 0, C - 2, D - u, E - 1
+Von B nach E: A - u, B - 0, C - u, D - 1, E - u
+\end{minted}
+
+\begin{minted}{shell}
+Tabelle C: A(ac) - 1, B(ce) - 2, C(lokal) - 0, D(ce) - 2, E(ce) - 1
+Tabelle D: A(de) - 3, B(bd) - 1, C(de) - 2, D(lokal) - 0, E(de) - 1
+Tabelle E: A(ce) - 2, B(be) - 1, C(ce) - 1, D(de) - 1, E(lokal) - 0
+\end{minted}
+
+\subsection{Runde 2}
+
+\begin{minted}{shell}
+Von C nach A: A - u, B - 2, C - 0, D - 2, E - 1
+Von C nach E: A - 1, B - u, C - 0, D - u, E - u
+Von D nach B: A - 3, B - u, C - 2, D - 0, E - 1
+Von D nach E: A - u, B - 1, C - u, D - 0, E - u
+Von E nach B: A - 2, B - u, C - 1, D - 1, E - 0
+Von E nach C: A - u, B - 1, C - u, D - 1, E - 0
+Von E nach D: A - 2, B - 1, C - 1, D - u, E - 0
+\end{minted}
+
+\begin{minted}{shell}
+Tabelle A: A(lokal) - 0, B(ac) - 3, C(ac) - 1, D(ac) - 3, E(ac) - 2
+Tabelle B: A(be) - 3, B(lokal) - 0, C(be) - 2, D(bd) - 1, E(be) - 1
+\end{minted}
+
+\subsection{Runde 3}
+
+\begin{minted}{shell}
+Von A nach C: A - 0, B - u, C - u, D - u, E - u
+Von B nach D: A - 3, B - 0, C - 2, D - u, E - 1
+Von B nach E: A - u, B - 0, C - u, D - 1, E - u
+\end{minted}
+
+\begin{minted}{shell}
+Keine Updates
+\end{minted}
+
+\section{Aufgabe 7.7}
+
+Ich kann hier kein Beispiel konstruieren, weil das Netzwerk zu klein ist und
+deshalb die Kosten der einzelnen Pfade zu ähnlich.
+
+\section{Aufgabe 7.8}
+
+\subsection{Teil 1}
+
+\begin{tabular}{c|c}
+  An & Annonciert\\\hline
+  AS3320 & AS4711, AS31337\\
+  AS1299 & AS4711, AS31337\\
+  AS15169 & alle\\
+  AS31337 & AS3320, AS1299, AS15169, AS4711
+\end{tabular}
+
+\subsection{Teil 2}
+
+Erstmal nichts, aber wenn sich die Netzwerktopologie innerhalb von AS4711
+ändert, kriegen es die Router nicht mit und routen vielleicht über
+nicht-optimale Routen oder ins Leere.
+
+\end{document}
