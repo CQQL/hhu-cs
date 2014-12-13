@@ -1,0 +1,376 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{minted}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 8.1}
+
+\begin{enumerate}[label={\alph*)}]
+\item Rahmenbildung
+\item Zuverlässigkeit
+\item Flusskontrolle
+\item Fehlererkennung
+\item Fehlerkorrektur
+\item Halb- oder Vollduplex
+\end{enumerate}
+
+Die mittleren 4 findet man auch auf höheren Schichten wieder. Weiter oben werden
+diese Dinge dann über mehrere Links hinweg implementiert.
+
+\section{Aufgabe 8.2}
+
+\subsection{Teil 1}
+
+\begin{enumerate}[label={\alph*)}]
+\item Bei ALOHA sendet jeder Daten sofort und wenn es zu einer Kollision kommt,
+  versucht man es nach einer zufällig gewählten Wartezeit nochmal
+\item Slotted ALOHA ist wie ALOHA, aber man wartet mit dem Senden bis zu Beginn
+  eines Zeitslots. Dadurch können Pakete nur noch ganz oder gar nicht
+  kollidieren (statt auch nur teilweise zu überlappen). Dies verdoppelt die
+  Effizienz. Benötigt jedoch Synchronisation.
+\item Bei CSMA überprüft man zunächst, ob das Medium frei ist, bevor man
+  sendet.
+\item CSMA/CD erweitert CSMA insofern, dass auch während der Übertragung des
+  Medium weiter überwacht wird und eine Kollision zur Übertragungswiederholung
+  führt.
+\item CSMA/CA benutzt ACKs für erfolgreiche Übertragungen, anstatt während des
+  Sendens das Medium zu überwachen, weil dies bei drahtlosen Netzwerken schwer
+  ist, weil das eigene Signal alles andere überschattet
+\item Bei einem Token Ring wird ein reihum ein Token weitergereicht, der immer
+  genau einem Teilnehmer das Senderecht gibt
+\end{enumerate}
+
+\subsection{Teil 2}
+
+Es macht Sinn viele dieser Protokolle zu haben, weil sie alle verschiedene
+Charakteristika aufweisen, die sich teilweise gegenseitig ausschließen. So
+sollte man bei WLAN anders übertragen als bei LAN.
+
+\section{Aufgabe 8.3}
+
+\subsection{Teil 1}
+
+Damit alle Hosts im lokalen Netzwerk merken, wenn nach ihrer Adresse gefragt
+wird.
+
+\subsection{Teil 2}
+
+Weil der Fragende seine eigene MAC-Adresse mitgesandt hat und man dadurch
+übermäßigen Netzwerkverkehr vermeidet, weil die Antwort ja nur den Fragenden
+interessiert.
+
+\section{Aufgabe 8.4}
+
+\subsection{Teil 1}
+
+Nein, weil MAC-Adressen eindeutig sein sollen und ARP immer nur in einem
+Netzwerk läuft.
+
+\subsection{Teil 2}
+
+Ein Rechner müsste in beiden Netzwerken sein. Es gäbe keine Probleme, weil IP
+entscheidet, über welchen Anschluss ein Paket raus geht. Erst danach wird ARP
+konsultiert.
+
+\section{Aufgabe 8.5}
+
+\subsection{Teil 1}
+
+\begin{enumerate}[label={\alph*)}]
+\item Ein Hub verstärkt nur eingehende Signale und leitet sie an alle weiter
+\item Ein Switch merkt sich dazu, welche MAC-Adresse wo sitzt und leitet
+  intelligent weiter
+\item Ein Router
+\end{enumerate}
+
+\subsection{Teil 2}
+
+\begin{enumerate}[label={\alph*)}]
+\item Hubs sind relativ billig und einfach, aber verhindern bei mehreren Sendern
+  keine Konflikte
+\item Switches senden Daten nur an den Empfänger und sind Plug-and-Play, aber
+  können selbst keine Routingpfade bestimmen
+\item Router können alles, aber sind kompliziert und müssen manuell eingerichtet
+  werden
+\end{enumerate}
+
+\section{Aufgabe 8.6}
+
+\subsection{Teil 1}
+
+Eindimensionale Parität ist billig, zweidimensionale kann korrigieren. CRC kann
+besonders viele Fehler erkennen.
+
+\subsection{Teil 2}
+
+\subsubsection{a}
+
+\begin{equation}
+  10111 XOR 10110 = 00001
+\end{equation}
+
+\subsubsection{b}
+
+\begin{equation}
+  10000 XOR 11110 = 01110
+\end{equation}
+
+\subsubsection{c}
+
+\begin{equation}
+  10101 XOR 01110 XOR 10101 = 11011 XOR 10101 = 01110
+\end{equation}
+
+\subsection{Teil 3}
+
+Parität ist die Anzahl der Einsen in einem Bit-String. Diese kann gerade oder
+ungerade sein.
+
+\subsection{Teil 4}
+
+\subsubsection{a}
+
+$10$ Einsen in $D$, also gerade, also ist das gerade Paritätsbit $0$.
+
+\subsubsection{b}
+
+\begin{tabular}{cccc|c}
+  1 & 1 & 1 & 0 & 1\\
+  0 & 1 & 1 & 1 & 1\\
+  1 & 0 & 1 & 0 & 0\\
+  0 & 1 & 0 & 1 & 0\\\hline
+  0 & 1 & 1 & 0 & 0
+\end{tabular}
+
+\subsubsection{c}
+
+\begin{minted}{shell}
+  111001111010010100000000
+  100011001
+  ---------
+   110101100
+   100011001
+   ---------
+    101101011
+    100011001
+    ---------
+      111001000
+      100011001
+      ---------
+       110100011
+       100011001
+       ---------
+        101110100
+        100011001
+        ---------
+          110110110
+          100011001
+          ---------
+           101011110
+           100011001
+           ---------
+             100011100
+             100011001
+             ---------
+                   1010000
+\end{minted}
+
+Redundancy-Bits der Länge $8$ sind $01010000$. Die gesamte Nachricht ist dann
+\begin{equation}
+  111001111010010101010000
+\end{equation}
+
+\subsection{Teil 5}
+
+\subsubsection{a}
+
+\subsubsection{Eindimensionale Parität}
+
+Kann keine Fehler beheben.
+
+\subsubsection{Zweidimensionale Parität}
+
+Man invertiere ein beliebiges Bit, z.B. das erste.
+\\
+\begin{tabular}{cccc|c}
+  0 & 1 & 1 & 0 & \textit{1}\\
+  0 & 1 & 1 & 1 & 1\\
+  1 & 0 & 1 & 0 & 0\\
+  0 & 1 & 0 & 1 & 0\\\hline
+  \textit{0} & 1 & 1 & 0 & 0
+\end{tabular}
+Die kursiven Paritäten sind falsch und identifizieren die Position des
+umgekippten Bits. Die Position in der rechten Spalte identifiziert die Zeile und
+die untere Zeile identifiziert die Spalte.
+
+\subsubsection{CRC}
+
+CRC kann keine Fehler beheben. Bzw. nur 1-Bit-Fehler, aber die Methode ist superaufwendig. Siehe stackoverflow.
+
+\subsubsection{b}
+
+\subsubsection{Eindimensionale Parität}
+
+Man invertiere eine ungerade Anzahl von Bits, z.B. das erste.
+\begin{equation}
+  D = 0110011110100101
+\end{equation}
+
+\subsubsection{Zweidimensionale Parität}
+
+Man invertiere zwei beliebige Bits, z.B. das erste und das zweite.
+\\
+\begin{tabular}{cccc|c}
+  0 & 0 & 1 & 0 & 1\\
+  0 & 1 & 1 & 1 & 1\\
+  1 & 0 & 1 & 0 & 0\\
+  0 & 1 & 0 & 1 & 0\\\hline
+  \textit{0} & \textit{1} & 1 & 0 & 0
+\end{tabular}
+Jetzt wurden nur die fehlerhaften Spalten erkannt, aber nicht die genauen
+Positionen, also kann der Fehler auch nicht erkannt werden.
+
+\subsubsection{CRC}
+
+Man invertiere ein beliegibes Bit, z.B. das letzte. Dann hat man also
+$111001111010010101010001$ empfangen. Wenn man das durch das Polynom teilt, ist
+der Rest $1$, also nicht $0$ und der Fehler wurde erkannt.
+
+\subsubsection{c}
+
+\subsubsection{Eindimensionale Parität}
+
+Man invertiere zwei beliebige Bits, z.B. das erste und das zweite.
+\begin{equation}
+  D = 0010011110100101
+\end{equation}
+
+\subsubsection{Zweidimensionale Parität}
+
+Man invertiere alle Bits in den Ecken.
+\begin{tabular}{cccc|c}
+  0 & 1 & 1 & 0 & 0\\
+  0 & 1 & 1 & 1 & 1\\
+  1 & 0 & 1 & 0 & 0\\
+  0 & 1 & 0 & 1 & 0\\\hline
+  1 & 1 & 1 & 0 & 1
+\end{tabular}
+
+\subsubsection{CRC}
+
+Man addiere das Generatorpolynom auf die Daten ohne Übertrag
+\begin{equation}
+  111001111010010101010000 + 100011001 = 111001111010010001001001
+\end{equation}
+\begin{minted}{shell}
+  111001111010010001001001
+  100011001
+  ---------
+   110101100
+   100011001
+   ---------
+    101101011
+    100011001
+    ---------
+      111001000
+      100011001
+      ---------
+       110100011
+       100011001
+       ---------
+        101110100
+        100011001
+        ---------
+          110110100
+          100011001
+          ---------
+           101011011
+           100011001
+           ---------
+             100001000
+             100011001
+             ---------
+                 100011001
+                 100011001
+                 ---------
+                         0
+\end{minted}
+
+\subsection{Teil 6}
+
+Eindimensionale Parität kann gerade Anzahlen von Fehlern nicht erkennen. CRC
+erkennt eine Menge und die Theorie dazu steht auf Wikipedia.
+
+\section{Aufgabe 8.7}
+
+Wenn es keinen weiteren Empfänger gibt, gibt es auch keine Kollision, weil beide
+den Rahmen des anderen empfangen, nachdem sie ihren schon komplett übertragen
+haben.
+
+Angenommen es gebe einen weiteren Empfänger und seien $d_{1}$ und $d_{2}$ die
+Übertragungsverzögerungen zu Sender 1 und 2. Dann gibt es eine Kollision genau
+dann, wenn $|d_{1} - d_{2}| < \frac{L}{R}$. In Worten bedeutet diese Ungleichung
+nämlich, dass der Rahmen des zweiten Senders ankommt, bevor der des ersten
+Senders komplett angekommen ist.
+
+\section{Aufgabe 8.8}
+
+\subsection{Teil 1}
+
+Wenn Burst-Fehler auftreten, zerstören diese mehrere Bits hintereinander. Ohne
+Interleaving geht so ein großer Teil eines Pakets verloren, dass ein
+fehlerkorrigierender Code dies nicht berichtigen kann und das Paket erneut
+übertragen werden muss. Bei Interleaving würden so jedoch von jedem Paket nur
+wenige Bits verloren gehen, die auch von wenig Redundanz wiederhergestellt
+werden können.
+
+\subsection{Teil 2}
+
+Mit Fastpath werden Rahmen schneller versandt, weil nicht erst $X$ Rahmen
+gepuffert werden müssen, sodass man von jedem $y$ Bit nehmen kann. Andererseits
+müssen Rahmen öfter erneut übertragen werden, weil Burst-Fehler ganze Rahmen
+unwiederbringlich zerstören.
+
+\section{Aufgabe 8.9}
+
+\subsection{Teil 1}
+
+Der maximale Durchsatz innerhalb des Netzwerks wäre erreicht, wenn jeder Host
+mit maximaler Datenrate, also 100 Mbps, senden kann. Maximal erreicht werden,
+kann 1 Gbps, wenn immer 2 der unteren Hosts miteinander kommunizieren und 2 von
+den 3 übrigen mit den 2 Servern.
+
+\subsection{Teil 2}
+
+Wenn das in der Mitte auch ein Hub ist, geht sie auf 100 Mbps runter, weil ein
+Host, der mit 100 Mbps sendet, alles auslastet. Wenn es nur 2 Hosts wären,
+könnten beide mit 100 Mbps senden, aber hier würde das bei den nicht beteiligten
+Hosts zu Kollisionen führen, die dann wiederum die Rahmen der ersten zwei Hosts
+jammen würden.
+
+Wenn das in der Mitte kein Hub ist, sondern ein Switch bleibt, ist die maximale
+Durchsatzrate 800 Mbps, weil in jeder Abteilung zwei Hosts mit insgesamt 200
+Mbps miteinander reden können und die zwei Server ebenfalls.
+
+\section{Aufgabe 8.10}
+
+\subsection{Teil 1}
+
+Man hat zwei Kreise geschaffen und Broadcast-Pakete werden für immer im Netzwerk
+bleiben oder zumindest bis irgendeine Art TTL abgelaufen ist.
+
+\subsection{Teil 2}
+
+Die Switches können sich ähnlich wie Router verhalten und selbst einen Minimal
+Spanning Tree aufbauen.
+
+\end{document}
