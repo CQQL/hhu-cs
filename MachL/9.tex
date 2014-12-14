@@ -1,0 +1,140 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+
+\subsection{Teil a}
+
+By letting $b_{2} = 0$ and $W_{2} = 1_{n}$, the multilayer network reduces to
+the single-layer network and is thus at least as expressive.
+
+On the other hand
+\begin{equation}
+  b_{2} + W_{2}(b_{1} + W_{1}x) = b_{2} + W_{2}b_{1} + W_{2}W_{1}x
+\end{equation}
+So by letting $b = b_{2} + W_{2}b_{1}$ and $W = W_{2}W_{1}$, the multilayer
+network can be expressed as a single-layer network. Consequently both are
+equivalent.
+
+\subsection{Teil b}
+
+Yes, it is. By again letting $b_{2} = 0$, $W_{2} = 1_{n}$ and $g = id$
+(identity) we see, that the multilayer network with non-linear $g$ is at least
+as expressive as the single-layer network.
+
+Now consider that the following 1-dimensional problem. $x = 0$ and $x = 1$
+should be assigned class $a$ and $x = 0.5$ should be assigned class
+$b$. Obviously there is no single layer network without activation function,
+that fits, but the multilayer network $y(x) = cos(2\pi x)$ does.
+\begin{equation}
+  y(0) = y(1) = 1 > 0, y(0.5) = -1 < 0
+\end{equation}
+So these are more expressive.
+
+\section{Aufgabe 2}
+
+\subsection{Teil a}
+
+\begin{align*}
+  tanh'(a) & = \left( \frac{e^{a} - e^{-a}}{e^{a} + e^{-a}} \right)'\\
+           & = \frac{(e^{a} + e^{-a})^{2} - (e^{a} - e^{-a})^{2}}{(e^{a} + e^{-a})^{2}}\\
+           & = 1 - \frac{(e^{a} - e^{-a})^{2}}{(e^{a} + e^{-a})^{2}}\\
+           & = 1 - tanh(a)^{2}
+\end{align*}
+
+\subsection{Teil b}
+
+\begin{align*}
+  \sigma'(a) & = \left( \frac{1}{1 + e^{-a}} \right)'\\
+             & = -\left( 1 + e^{-a} \right)' \cdot \left( \frac{1}{\left( 1 + e^{-a} \right)^{2}} \right)\\
+             & = \frac{e^{-a}}{\left( 1 + e^{-a} \right)^{2}}\\
+             & = e^{-a} \cdot \sigma(a)^{2}\\
+             & = \left( \frac{1}{\sigma(a)} - 1 \right) \cdot \sigma(a)^{2}\\
+             & = \sigma(a) \left( 1 - \sigma(a)^{2} \right)
+\end{align*}
+
+\subsection{Teil c}
+
+\begin{align*}
+  g'(a) = \begin{cases}
+    0 & \text{wenn $a < 0$}\\
+    1 & \text{wenn $a > 0$}
+  \end{cases}
+\end{align*}
+$g'(0)$ existiert nicht.
+
+\section{Aufgabe 3}
+
+\subsection{Teil a}
+
+\begin{align*}
+  tanh(-a) & = \frac{e^{-a} - e^{a}}{e^{-a} + e^{a}}\\
+           & = -\frac{e^{a} - e^{-a}}{e^{a} + e^{-a}}\\
+           & = -tanh(a)
+\end{align*}
+
+\subsection{Teil b}
+
+\begin{align*}
+  f(x, W_{1}, b_{1}, W_{2}, b_{2}) & = b_{2} + W_{2} \tanh(b_{1} + W_{1}x)\\
+                                   & = b_{2} - (-W_{2} \tanh(b_{1} + W_{1}x))\\
+                                   & = b_{2} - W_{2} \tanh(-(b_{1} + W_{1}x))\\
+                                   & = b_{2} - W_{2} \tanh(-b_{1} - W_{1}x)\\
+                                   & = f(x, -W_{1}, -b_{1}, -W_{2}, b_{2})
+\end{align*}
+
+\subsection{Teil c}
+
+It is not explicitly stated, but I think, that applying $\tanh$ to a vector just
+means applying it to every element of the vector, because that would make sense
+as every element is the output of a node.
+
+Then permuting the elements of a vector is the same before applying $\tanh$ as
+after, so
+\begin{equation}
+  \tanh(P \cdot x) = P \cdot \tanh(x)
+\end{equation}
+and thus
+\begin{align*}
+  f(x, PW_{1}, Pb_{1}, W_{2}P^{T}, b_{2}) & = b_{2} + W_{2} \tanh(Pb_{1} + PW_{1}x)\\
+                                     & = b_{2} + W_{2} P^{T} \tanh(P(b_{1} + W_{1}x))\\
+                                     & = b_{2} + W_{2} P^{T} P\tanh(b_{1} + W_{1}x)\\
+                                     & = b_{2} + W_{2} \tanh(b_{1} + W_{1}x)\\
+                                     & = f(x, W_{1}, b_{1}, W_{2}, b_{2})
+\end{align*}
+$WP^{T}$ transposes the columns of $W$ in the same order as $PW$ transposes the
+rows.
+
+\subsection{Teil d}
+
+One has $S^{2} = I$, because $S$ is diagonal and has only $1$ and $-1$ on the
+diagonal. Because of part a one has also
+\begin{equation}
+  \tanh(S \cdot x) = S \cdot \tanh(x)
+\end{equation}
+and thus it follows
+\begin{align*}
+  f(x, SW_{1}, Sb_{1}, W_{2}S, b_{2}) & = b_{2} + W_{2} \tanh(Sb_{1} + SW_{1}x)\\
+                                     & = b_{2} + W_{2} S \tanh(S(b_{1} + W_{1}x))\\
+                                     & = b_{2} + W_{2} SS \tanh(b_{1} + W_{1}x)\\
+                                     & = b_{2} + W_{2} \tanh(b_{1} + W_{1}x)\\
+                                     & = f(x, W_{1}, b_{1}, W_{2}, b_{2})
+\end{align*}
+
+\subsection{Teil e}
+
+Let $n$ be the dimensionality of $x$. There are $n!$ permutation matrices of
+size $n \times n$. There are $2^{n}$ sign changing matrices. So the symmetries
+from part c and d give us $2^{n} \cdot n! - 1$ other parameter settings, that
+generate the same neural network.
+
+\end{document}
