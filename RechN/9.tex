@@ -1,0 +1,200 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 9.1}
+
+Er wird belastet, weil der gesamte Verkehr bei allen angeschlossenen Teilnehmern
+ankommt und zumindest die ersten zwei Schichten/Header müssen immer verarbeitet
+werden, um festzustellen, ob das Paket relevant ist, also ob man selbst das Ziel
+ist oder es ein Broadcasepaket ist.
+
+\section{Aufgabe 9.2}
+
+\subsection{Teil 1}
+
+Nein, weil 100\%tige Fehlerkorrektur unmöglich ist.
+
+\subsection{Teil 2}
+
+Nein, weil die Sicherungsschicht nur einen einzelnen Link sichert. Aber bei
+einer Folge von Links kann z.B. auch einer ausfallen, sodass ein Paket verloren
+geht, was erst von TCP erkannt wird.
+
+Man könnte die Funktionalität auf der Sicherungsschicht theoretisch weglassen,
+aber das würde die Performance von TCP stark verschlechtern, weil jeder kleine
+Fehler von TCP gehandhabt werden muss, was wiederum denkt, dass das Netz
+überlastet ist.
+
+\section{Aufgabe 9.3}
+
+Wenn man bei CSMA/CD eine Kollision bemerkt, legt man dieses Signal auf die
+Leitung, damit alle sofort das Senden einstellen und schneller mit der
+Kollisionsvermeidung begonnen werden kann.
+
+\section{Aufgabe 9.4}
+
+\subsection{Teil 1}
+
+Wenn eine Kollision erkannt wird, wartet man eine zufällige Zeitspanne bis man
+erneut versucht, zu senden. Dabei wächst die Menge der möglichen Zeitspannen
+exponentiell.
+
+Dieses Verfahren wird allerdings für jedes Paket wieder von vorne begonnen, weil
+man davon ausgeht, dass die Auslastung des Netzwerks stark fluktuiert.
+
+\subsection{Teil 2}
+
+Die Wartezeit steigt exponentiell, um sich schon nach wenigen Iterationen an
+starke Auslastung anzupassen.
+
+\section{Aufgabe 9.5}
+
+IP-Adressen braucht man für die globale Adressierung und Domain-Namen, damit
+Menschen sie sich besser merken können.
+
+\section{Aufgabe 9.6}
+
+\subsection{Teil 1}
+
+Die Wahrscheinlichkeit, dass $A$ in einem Schlitz erfolgreich sendet, ist
+\begin{equation}
+  P(A) = p \cdot (1 - p)^{2}
+\end{equation}
+Die Wahrscheinlichkeit für das Gegenteil ist
+\begin{equation}
+  P(\lnot A) = 1 - P(A) = 1 - p(1 - p)^{2}
+\end{equation}
+Die Antwort ist dann
+\begin{equation}
+  P(\lnot A)^{4} \cdot P(A) = \left( 1 - p(1 - p)^{2} \right)^{4} \cdot p (1 - p)^{2}
+\end{equation}
+
+\subsection{Teil 2}
+
+Die Wahrscheinlichkeit, dass irgendein Knoten in irgendeinem Schlitz erfolgreich
+ist, ist
+\begin{equation}
+  P(A) + P(B) + P(C) = 3 \cdot p(1 - p)^{2}
+\end{equation}
+
+\subsection{Teil 3}
+
+Die Wahrscheinlichkeit, dass kein Knoten erfolgreich ist, ist dann
+\begin{equation}
+  1 - (P(A) + P(B) + P(C)) = 1 - 3 \cdot p(1 - p)^{2}
+\end{equation}
+
+Die gesuchte Wahrscheinlichkeit ist also
+\begin{equation}
+  \left( 1 - 3 \cdot p(1 - p)^{2} \right)^{3} \cdot 3 \cdot p(1 - p)^{2}
+\end{equation}
+
+\subsection{Teil 4 + 5}
+
+Wie in Teil 2 bestimmt, ist die Wahrscheinlichkeit, dass irgendein Knoten
+erfolgreich ist, gegeben durch
+\begin{equation}
+  P(X) = 3 \cdot p(1 - p)^{2}
+\end{equation}
+Die Ableitung davon ist
+\begin{equation}
+  P'(X) = 3 \cdot \left( (1 - p)^{2} + p \cdot (-2)(1 - p) \right) = 3 \cdot (1 - p) \cdot (1 - 3p) = 9 \cdot (1 - p) \cdot (\frac{1}{3} - p)
+\end{equation}
+Dies hat die Nullstellen $\frac{1}{3}$ und $1$. Da kein Paket durchkommt, wenn
+jeder immer sendet, kann $1$ schon kein Maximum sein. $0$ ist auch kein Maximum,
+weil dann nie jemand sendet. Also ist das Maximum bei $\frac{1}{3}$. Dann ist
+die optimale Effizienz
+\begin{equation}
+  3 \cdot \frac{1}{3}(1 - \frac{1}{3})^{2} = \left( \frac{2}{3} \right)^{2} = \frac{4}{9} \simeq 44\%
+\end{equation}
+
+\section{Aufgabe 9.7}
+
+\subsection{Teil 1}
+
+\begin{tabular}{l|r}
+Schnittstelle & IP-Adresse\\
+\hline
+A & 111.111.111.1\\
+B & 111.111.111.2\\
+C & 122.122.122.1\\
+D & 122.122.122.2\\
+E & 133.133.133.1\\
+F & 133.133.133.2\\
+Router 1 - links & 111.111.111.3\\
+Router 1 - rechts & 122.122.122.3\\
+Router 2 - links & 122.122.122.4\\
+Router 2 - rechts & 133.133.133.3\\
+\end{tabular}
+
+\subsection{Teil 2}
+
+Die MAC-Adressen der Computer seinen jeweils ihr Buchstabe. Die Adressen der
+Router-Schnittstellen seien von links nach rechts G, H, I, J.
+
+\subsection{Teil 3}
+
+\begin{enumerate}
+\item A sieht, dass F in einem anderen Netzwerk ist und schickt das Paket ans
+  Gateway
+\item A löst die IP-Adresse vom Gateway mit seiner lokalen ARP-Tabelle in eine
+  MAC-Adresse auf
+\item A schickt das Paket in seinem lokalen Paket an die MAC-Adresse von F
+\item Router 1 empfängt das Paket und dekodiert es bis zur Ziel-IP
+\item Router 1 schlägt die Ziel-IP in seiner Routing-Tabelle nach und sieht,
+  dass er über Router 2 weiterleiten muss
+\item Router 1 löst die IP von Router 2 mit seiner ARP-Tabelle in eine
+  MAC-Adresse auf und sendet das Paket an diese
+\item Router 2 empfängt das Paket und dekodiert es bis zur Ziel-IP
+\item Router 2 schlägt die IP in seiner Routing-Tabelle nach und sieht, dass er
+  am richtigen Netz angeschlossen ist
+\item Router 2 löst die Ziel-IP in eine MAC-Adresse auf
+\item Router 2 schickt das Paket an F
+\end{enumerate}
+
+\subsection{Teil 4}
+
+Genauso wie davor nur wird jetzt immer noch ein ARP-Request für die IP-Adresse
+im versandt.
+
+\subsection{Teil 5}
+
+So wie in Teil 4, nur Sendet der Switch erstmal an alle bis seine
+Switching-Tabelle die entsprechenden Einträge enthält.
+
+\section{Aufgabe 9.8}
+
+\subsection{Teil 1}
+
+\begin{equation}
+  \frac{800}{2 \cdot 10^{8}} + 4 \cdot (20 \cdot 10^{-7}) = 4 \cdot 10^{-6} + 80 \cdot 10^{-7} = 12 \cdot 10^{-6}s
+\end{equation}
+
+\subsection{Teil 2}
+
+A wird also nach $t_{1} = 12 \cdot 10^{-6}s$ merken, dass B ebenfalls sendet und
+den exponentiellen Backoff einleiten und dasselbe gilt für B. B wartet daraufhin
+noch $512 \cdot 10^{-6}s$. A braucht dann $150 \cdot 10^{-6}s$, um sein Paket
+komplett zu versenden. B sendet dann nicht mehr, weil ja jeder Sender vorher
+horcht, ob die Leitung bereits belegt ist.
+
+Das Paket wurde also nach $1512 \cdot 10^{-6}s$ komplett an B übertragen.
+
+\subsection{Teil 3}
+
+Die Ausbreitungsverzögerung über die gesamte Strecke bleibt gleich, aber das
+Paket muss jetzt fünf mal übertragen werden. Es dauert somit
+\begin{equation}
+  (12 + 5 \cdot 150) \cdot 10^{-6}s = 762 \cdot 10^{-6}s
+\end{equation}
+
+\end{document}
