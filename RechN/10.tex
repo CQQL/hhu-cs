@@ -1,0 +1,213 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 10.1}
+
+Vertraulichkeit heißt, dass keine dritten mitlesen können. Integrität bedeutet,
+dass niemand die Nachrichten ändern kann.
+
+\subsection{Teil a}
+
+Ja, z.B. wenn die verschlüsselten Bytes sich gegenseitig nicht beeinflussen,
+kann man diese abändern. Man weiß nur nicht, was man da eigentlich tut.
+
+\subsection{Teil b}
+
+Ja, z.B. wenn man mit der Nachricht einen verschlüsselten Hash mitschickt.
+
+\section{Aufgabe 10.2}
+
+Die Worte habe ich in der Vorlesung nicht gehört, aber ich denke, dass bei einem
+passiven Angriff Kommunikation mitgelesen wird und bei einem aktiven Angriff
+Kommunikation manipuliert wird.
+
+\section{Aufgabe 10.3}
+
+CRC erfüllt die Anforderung an eine kryptographische Hashfunktion nicht, dass es
+sehr aufwendig sein muss, ein $y$ zu finden, das denselben Hashwert hat, wie ein
+gegebenes $x$.
+
+\section{Aufgabe 10.4}
+
+Sie sind beide gleichsicher. Es ist nur eine Frage der
+Performance. Asymmetrische Verschlüsselung ist aufwendig und deshalb möchte man
+sie nur auf kleine Datenmengen anwenden.
+
+\section{Aufgabe 10.5}
+
+Ein Zertifikat verknüpft einen öffentlichen Schlüssel mit einer Identität und
+ist wiederum von einer bekannten, hoffentlich vertrauenswürdigen Stelle
+unterzeichnet. Ein Zertifikat kann aber auch eine ganze Kette von Unterschriften
+enthalten, die hierarchisch geordnet sind.
+
+Wenn eine Zertifizierungsstelle wenig vertrauenswürdig ist, kann man auch den
+von ihr ausgestellten Zertifikaten nicht vertrauen.
+
+\section{Aufgabe 10.6}
+
+Dann kann ein Angreifer unter Umständen die Kommunikation des ursprünglichen
+Zertifikatinhabers entschlüsseln. Auf jeden Fall kann er sich als der
+ursprüngliche Zertifikatsinhaber ausgeben.1
+
+\section{Aufgabe 10.7}
+
+Weil MAC mit einem on-the-fly ausgehandelten Schlüssel gebildet wird, der den
+beiden Personen nicht zuordbar ist. Bei einer digitalen Signatur kann man mit
+dem öffentlichen Schlüssel des Autors feststellen, ob er das Dokument
+unterzeichnet hat, und die Authentizität des öffentlichen Schlüssels kann
+wiederum mit Zertifikaten überprüft werden.
+
+\section{Aufgabe 10.8}
+
+\begin{enumerate}[label={\alph*)}]
+\item Persönliches Treffen mit dem Verwalter
+\item Verschlüsselt von einer Person, der man bereits vertraut
+\end{enumerate}
+
+\section{Aufgabe 10.9}
+
+Er kann alles bis auf den ersten und zweiten Block entschlüsseln, weil in diesen
+Blöcken Block 1 zur Entschlüsselung verwendet wird.
+
+Wenn der Initialisierungsvektor nicht korrekt übertragen wird, kann der erste
+Block nicht entschlüsselt werden.
+
+\section{Aufgabe 10.10}
+
+Das Verschlüsseln ist nicht parallelisierbar, weil zum verschlüsseln eines
+Blocks zuerst der Chiffre-Text des vorangehenden Blocks bekannt sein muss. Das
+Entschlüsseln kann jedoch parallel stattfinden, weil man nur den Chiffre-Text
+des vorherigen Blocks benötigt, den man ja empfangen hat, also nicht erst
+berechnet werden muss.
+
+\section{Aufgabe 10.11}
+
+\section{Aufgabe 10.12}
+
+\subsection{Teil a}
+
+Ein Schlüssel reicht aus, den sich alle Teilnehmer teilen, wenn sie nur vor
+weiteren Mithörern geschützt sein wollen. Wenn allerdings alle Teilnehmer
+paarweise verschlüsselt kommunizieren wollen, muss für jedes Paar ein Schlüssel
+erzeugt werden. Insgesamt braucht man also
+$\sum_{i = 1}^{n} i = \frac{n \cdot (n + 1)}{2}$.
+
+\subsection{Teil b}
+
+Jeder Teilnehmer erzeugt ein Schlüsselpaar und teilt den öffentlichen Schlüssel
+mit allen anderen Teilnehmern. Es gibt also $n$ Schlüssel.
+
+\section{Aufgabe 10.13}
+
+\begin{equation}
+  N = p \cdot q = 3 \cdot 17 = 51
+\end{equation}
+\begin{equation}
+  \varphi(N) = 2 \cdot 16 = 32
+\end{equation}
+Wähle das kleinstmögliche, zu $N$ teilerfremde $e$.
+\begin{equation}
+  e = 3
+\end{equation}
+\begin{equation}
+  d = 11
+\end{equation}
+\begin{equation}
+  e \cdot d = 33 \equiv 1 \mod{32}
+\end{equation}
+Codierung der Nachricht in Zahlen
+\begin{equation}
+  HIDEME = [8, 9, 4, 5, 13, 5]
+\end{equation}
+Der Chiffretext ist
+\begin{equation}
+  [8^3, 9^3, 4^3, 5^3, 13^3, 5^3] \pmod{51} = [2, 15, 13, 23, 4, 23]
+\end{equation}
+Der entschlüsselte Klartext ist dann
+\begin{equation}
+  [2^{11}, 15^{11}, 13^{11}, 23^{11}, 4^{11}, 23^{11}] \pmod{51} = [8, 9, 4, 5, 13, 5]
+\end{equation}
+
+\section{Aufgabe 10.14}
+
+\subsection{Teil 1}
+
+Es ist gewährleistet, dass beide mit jemandem kommunizieren, dem jemand anderes
+bestätigt, die gewünscht Person zu sein.
+
+\subsection{Teil 2}
+
+Sie können sich beides in beiden Fällen sicher sein, wenn sie Signaturen verwenden. Sonst
+nicht. Replay-Angriffe sind aber immernoch möglich.
+
+\subsection{Teil 3}
+
+Weil der Angreifer entweder einer der Personen sehr ähnlich sein oder unsichtbar
+dazwischen stehen und in der Luft die Sprache verändern müsste.
+
+\subsection{Teil 4}
+
+Man sollte sich auf eine Sequenznr. einigen, um Replay-Angriffe zu verhindern.
+
+\section{Aufgabe 10.15}
+
+\subsection{Teil 1}
+
+\subsubsection{a)}
+
+Bei AES sind ca. 100 MB pro Sekunde drin.
+
+\subsubsection{b)}
+
+SHA-512 schafft ca. 100 MB pro Sekunde.
+
+\subsubsection{c)}
+
+HMAC mit SHA-512 hasht ca. 100 MB pro Sekunde
+
+\subsubsection{d)}
+
+RSA Verschlüsselung und Signatur dauert ca. 3-6 Millisekunden pro Operation.
+
+\subsection{Teil 2}
+
+Keine Ahnung.
+
+\subsection{Teil 3}
+
+Weil die Ver- und Entschlüsselungsexponenten unterschiedlich groß sind. Dabei
+nutzt man den kleineren zur Verschlüsselung, um einem potentiellen Angreifer
+mehr Kosten aufzubürden.
+
+\subsection{Teil 4}
+
+Bei der angegeben Geschwindigkeit von 1.48 Millisekunden pro Operation, kann man
+also $\frac{1}{1.48 \cdot 10^{-3}} = 675$ Pakete pro Sekunde signieren. Wenn wir
+mit der Standard-MTU von $1500$ Byte senden, macht das
+$675 \cdot 1500 = 1012500$, also knapp 1 MB pro Sekunde. Somit ist die Antwort
+nein.
+
+\section{Aufgabe 10.16}
+
+\subsection{Teil 1}
+
+Ein Algorithmus zur Faktorisierung einer Zahl.
+
+\subsection{Teil 2}
+
+\subsection{Teil 3}
+
+Die Sicherheit von RSA beruht darauf, dass man das Faktorisierungsproblem nicht
+in polynomieller Zeit lösen kann.
+
+\end{document}
