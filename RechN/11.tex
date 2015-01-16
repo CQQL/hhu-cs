@@ -1,0 +1,156 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 11.1}
+
+Ja, mit den beiden Primzahlen kann sie die beiden Schlüssel wiederherstellen und
+es wird auch derselbe Schlüssel sein, der im Zertifikat signiert ist.
+
+\section{Aufgabe 11.2}
+
+Bei einem Playback/Replay-Angriff wird eine korrekt verschlüsselte und signierte
+Nachricht von einem Angreifer aufgezeichnet und dann beliebig oft
+abgespielt. Man kann zwar den Inhalt der Nachricht nicht beeinflussen, aber
+ggf. Aktionen mehrfach auslösen.
+
+Man kann es verhindern, indem man z.B. eine Sequenznummer in die Nachrichten
+einbaut, sodass wiederholte Pakete erkannt werden können.
+
+\section{Aufgabe 11.3}
+
+Es geht so. Man kann als Angreifer ja signierte Nachrichten mit dem öffentlichen
+Schlüssel entschlüsseln. Dann könnte man solange zufällige Bitfolgen mit dem
+öffentlichen Schlüssel entschlüsseln, bis man eine findet, die zu einer Uhrzeit
+in der näheren Zukunft führt. Und dann muss man nur noch zur richtigen Zeit
+zuschlagen, also die Kommunikation beginnen, um die gefundene Zeit als Nonce zu
+erzwingen.
+
+\section{Aufgabe 11.4}
+
+Der symmetrische Schlüssel wird in der Kommunikation zwischen den Mailservern
+verwendet. Sie können z.B. einen mit dem Diffie-Hellman-Schlüsselaustausch
+erzeugen.
+
+\section{Aufgabe 11.5}
+
+Bei einem Man-in-the-middle-Angriff empfängt der Angreifer die Nachrichten und
+leitet sie dann an den jeweils richtigen Empfänger weiter. So kann er den
+kompletten Verkehr mitlesen und manipulieren. Schützen können sich die Aktoren
+davor mit Verschlüsselung und Signaturen, aber nur mit Zertifikaten.
+
+Wenn man keine Zertifikate einsetzt oder Zertifikaten vertraut, die nicht von
+vertrauenswürdigen Stellen ausgestellt worden sind, kann trotzdem ein Angriff
+stattfinden. Der Angreifer C schickt A ein Zertifikat, das seinen Public-Key mit
+der Identität von B verbindet, und B ein Zertifikat, das seinen Public-Key mit
+der Identität von A verbindet.
+
+\section{Aufgabe 11.6}
+
+Vor Replay-Angriffen.
+
+\section{Aufgabe 11.7}
+
+Ein zustandsloser Paketfilter trifft seine Entscheidungen nur auf Basis des
+aktuell betrachteten Pakets. Ein zustandsbasierter Filter kann sich
+darüberhinaus auch Dinge über die Zeit hinweg merken und so etwa Verbindungen
+nachvollziehen.
+
+Z.B. kann ein zustandsbasierter Filter nur UDP-Pakete in sein Netz lassen, wenn
+die Zieladresse auch in letzter Zeit UDP-Pakete an die Quelle gesendet hat.
+
+\section{Aufgabe 11.8}
+
+Wenn Herr Zert integer ist, ist nichts einzuwenden. Aber als Ganove könnte er
+sich die ausgegebenen privaten Schlüssel merken und meine Identität annehmen.
+
+Sicherer wäre es, wenn ich nach erfolgreicher Authentifizierung einen
+selbstgenerierten öffentlichen Schlüssel abgeben könnte. Dieser reicht aus, um
+das Zertifikat zu erstellen und kann nicht benutzt werden, um sich als mich
+auszugeben.
+
+\section{Aufgabe 11.9}
+
+A könnte sein Zertifikat von B signieren lassen und so Alices Certificate Chain
+um einen Schritt verlängern. Bob würde sich dann an der Chain entlanghangeln bis
+zu B und dem Zertifikat dann vertrauen.
+
+\section{Aufgabe 11.10}
+
+\subsection{Teil 1}
+
+Weil ein MAC nur die Integrität des Pakets überprüft und dass es von einem
+bestimmten, bekannten Sender kommt. Man kann damit aber nicht die Identität des
+Senders feststellen. Ein Angreifer könnte also genauso wie ein richtiger Router
+einfach mit den Routern einen Key ausmachen und dann mit MAC mit ihnen
+kommunizieren.
+
+\subsection{Teil 2}
+
+Ihre MAC-Adresse. Die IP-Adresse ist nicht beständig genug.
+
+\subsection{Teil 3}
+
+Indem jeder Host eine eigene Sequenznummer speichert und mitsendet. Man
+akzeptiert Broadcast-Pakete dann nur, wenn die Sequenznummer größer als die
+letzte von diesem Host empfangene ist.
+
+\section{Aufgabe 11.11}
+
+In einem Web of Trust veröffentlichen die Teilnehmer ihre öffentlichen Schlüssel
+und stellen sich dann gegenseitig Zertifikate aus, die auch wiederum
+veröffentlicht werden. Um dann mit jemandem zu kommunizieren, lädt man sich
+seinen öffentlichen Schlüssel runter und guckt dann, ob es eine oder mehrere
+Wege im Web of Trust von sich selbst zu ihm gibt. Wenn dies der Fall ist, hat
+man entweder den Schlüssel selbst signiert oder er würde von jemandem signiert,
+dem man vertraut, bzw. von jemandem dem man vertraut, weil jemand, dem man
+vertraut, ihm vertraut und so weiter.
+
+\section{Aufgabe 11.12}
+
+Nein. Ein NAT-Router ist am ehesten eine Firewall die alle eingehenden
+Verbindungen ablehnt. Eine richtige Firewall kann darüber hinaus auch ausgehende
+Verbindungen kontrollieren, um zum Beispiel Trojanern das nach Hause
+telefonieren unmöglich zu machen.
+
+\section{Aufgabe 11.13}
+
+\subsection{Teil 1}
+
+Der Arbeitsplatzrechner muss eine Verbindung nach Hause offen halten, über die
+der Mitarbeiter dann von zuhause Pakete in die Firma senden kann.
+
+\subsection{Teil 2}
+
+OpenVPN?
+
+\subsection{Teil 3}
+
+Der Administrator könnte nur Pakete von und zu ganz bestimmten Hosts zulassen,
+über die die Mitarbeiter nicht die Kontrolle erlangen können.
+
+\section{Aufgabe 11.14}
+
+\subsection{Teil 1}
+
+Am einfachsten wäre es wohl, einen weiteren Proxy zu entwickeln, der bei
+Verbindungsaufbau hardcodiert die Verbindung über den Uni-Proxy zu dem
+MySQL-Server aufbaut. Diesen lässt man dann lokal laufen und verbindet sich mit
+seinem MySQL-Client dazu.
+
+\subsection{Teil 2}
+
+Es ist eigentlich als Erweiterung für HTTP entwickelt worden. Mit ihr kann man
+Proxies auch für HTTPS-Verkehr benutzen. Da der Proxy nicht in den Traffic
+reinschauen kann, bleibt wohl nur, die Portnummern in den Requests
+einzuschränken, z.B. 80 und 443 für HTTP.
+
+\end{document}
