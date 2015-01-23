@@ -1,0 +1,145 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1}
+
+\subsection{Teil a}
+
+It is a kernel.
+
+\begin{proof}
+  Let $k_{xx}$ be the gram matrix of a set $x$ of cardinality $n$. Let
+  $v \in \mathbb{R}^n$.
+  \begin{align*}
+    v^T k_{xx} v & = \sum_{i = 1}^n v_i \sum_{j = 1}^n C v_j\\
+                 & = C \cdot \sum_{i = 1}^n v_i \sum_{j = 1}^n v_j\\
+                 & = C \cdot \left( \sum_{i = 1}^n v_i \right) \cdot \left( \sum_{j = 1}^n v_j \right)\\
+                 & = C \cdot \left( \sum_{i = 1}^n v_i \right)^2 \ge 0
+  \end{align*}
+\end{proof}
+
+\subsection{Teil b}
+
+$k$ is a kernel, because it is a special case of d multiplied by $\sqrt{5}^2$.
+
+\subsection{Teil c}
+
+Not a kernel.
+
+\begin{proof}
+  Consider the set $x = \{ x_1, x_2 \}$ with $x_1 = 1$ and $x_2 = -1$. The gram
+  matrix is
+  \begin{equation}
+    k_{xx} = \begin{pmatrix}
+      2 & 0\\
+      0 & -2
+    \end{pmatrix}
+  \end{equation}
+  Let $v = \begin{pmatrix}0\\1\end{pmatrix}$.
+  \begin{equation}
+    v^T k_{xx} v = -2 < 0
+  \end{equation}
+  So the gram matrix is not positive semidefinite and $k$ is not a kernel.
+\end{proof}
+
+\subsection{Teil d}
+
+$k$ is a kernel.
+
+\begin{proof}
+  Let $k_{xx}$ be the gram matrix of a set $x$ of cardinality $n$. Let
+  $v \in \mathbb{R}^n$.
+  \begin{align*}
+    v^T k_{xx} v & = \sum_{i = 1}^n v_i \sum_{j = 1}^n 5x_i^T x_j v_j\\
+                 & = 5 \sum_{i = 1}^n v_i \sum_{j = 1}^n x_i^T x_j v_j\\
+                 & = 5 \sum_{i = 1}^n v_ix_i^T \sum_{j = 1}^n v_j x_j\\
+                 & = 5 \left( \sum_{i = 1}^n v_ix_i^T \right) \left( \sum_{j = 1}^n v_j x_j \right)\\
+                 & = 5 \left( \sum_{i = 1}^n v_ix_i \right)^T \left( \sum_{i = 1}^n v_i x_i \right) \ge 0
+  \end{align*}
+  The inequality holds because $\langle v, v \rangle = v^Tv \ge 0$ in
+  $\mathbb{R}^{n}$.  So the gram matrix is positive semidefinite and $k$ is a
+  kernel.
+\end{proof}
+
+\section{Aufgabe 2}
+
+\begin{align*}
+  p(y_{i} = 1 \mid f_{i}) & = \int_{-\infty}^{\infty} p(y_{i} = 1 \mid \tilde{f}_{i}) \cdot p(\tilde{f}_{i} \mid f_{i}) d\tilde{f}_{i}\\
+                          & = \int_{-\infty}^{\infty} p(y_{i} = 1 \mid \tilde{f}_{i}) \cdot \frac{1}{\sqrt{2 \pi \sigma^{2}}} \exp\left( -\frac{1}{2} \frac{(\tilde{f}_{i} - f_{i})^{2}}{\sigma^{2}} \right) d\tilde{f}_{i}\\
+                          & = \frac{1}{\sqrt{2 \pi \sigma^{2}}} \int_{0}^{\infty} \exp\left( -\frac{1}{2} \frac{(\tilde{f}_{i} - f_{i})^{2}}{\sigma^{2}} \right) d\tilde{f}_{i}\\
+                          & \textit{Substitute $t = \tilde{f}_{i} - f_{i}$}\\
+                          & = \frac{1}{\sqrt{2 \pi \sigma^{2}}} \int_{-f_{i}}^{\infty} \exp\left( -\frac{t^{2}}{2\sigma^{2}} \right) dt\\
+                          & \textit{The term under the integral is symmetric with respect to the origin}\\
+                          & = \frac{1}{\sqrt{2 \pi \sigma^{2}}} \int_{-\infty}^{f_{i}} \exp\left( -\frac{t^{2}}{2\sigma^{2}} \right) dt\\
+\end{align*}
+So the two models are equivalent, if $\sigma^{2} = 1$.
+
+\section{Aufgabe 3}
+
+\subsection{Teil a}
+
+The VC dimension of the linear classifier in $\mathbb{R}$ is $2$. For this
+consider the set $Z_2 = \{ -1, 1 \}$.
+\begin{figure}[h]
+  \begin{tabular}{r|r|l}
+    Label $-1$ & Label $1$ & Classifier\\
+    \hline
+    -1 & -1 & $-1$\\
+    -1 & 1 & $x$\\
+    1 & -1 & $-x$\\
+    1 & 1 & $1$\\
+  \end{tabular}
+\end{figure}
+so $|\mathcal{F}_{Z_2}| = 4 = 2^2$.
+
+Let $Z_3 = \{ x_1, x_2, x_3 \}$. Suppose there are $a, b \in Z_3$ such that
+$a = b$. Then a labeling $l$ with $l(a) = l(b)$, cannot be shattered by the
+linear classifier $f$, because it would have to assign $f(a) \ne f(b)$. So the
+members of $Z_3$ have to be pairwise unequal. Without loss of generality we can
+assume $x_1 < x_2 < x_3$ (relabel otherwise). Now consider the label $l$ with
+$l(x_1) = -1$, $l(x_2) = 1$ and $l(x_3) = -1$, so a classifier $f$ has to assign
+$f(x_1) \le 0$, $f(x_2) > 0$ and $f(x_3) le 0$. So it would have to have to at
+least two roots, but a linear function cannot have more than one root unless it
+is zero everywhere.
+
+\subsection{Teil b}
+
+The VC dimension of the linear classifier in $\mathbb{R}^{2}$ is $3$. Consider
+$Z_3 = \{ (-1, -1), (-1, 1), (1, 1) \}$.
+\begin{figure}[h]
+  \begin{tabular}{l|l|l|l}
+    Label $(-1, -1)$ & Label $(-1, 1)$ & Label $(1, 1)$ & Classifier\\
+    \hline
+    $-1$ & $-1$ & $-1$ & $-1$\\
+    $-1$ & $-1$ & $1$ & $(1, 0)x$\\
+    $-1$ & $1$ & $-1$ & $(-1, 1)x - 0.5$\\
+    $-1$ & $1$ & $1$ & $(0, 1)x$\\
+    $1$ & $-1$ & $-1$ & $(0, -1)x$\\
+    $1$ & $-1$ & $1$ & $(1, -1)x + 0.5$\\
+    $1$ & $1$ & $-1$ & $(-1, 0)x$\\
+    $1$ & $1$ & $1$ & $1$\\
+  \end{tabular}
+\end{figure}
+
+Let $Z_4 = \{ z_1, z_2, z_3, z_4 \}$. As in the previous case the linear
+classifier obviously cannot shatter $Z_4$, if any two of the points are
+equal. So all members of $Z_4$ must be pairwise unequal. If any three of the
+points are collinear, it cannot be solved either, because the VC dimension of
+the linear classifier in $\mathbb{R}^{1}$ is $2$. But if no two members in $Z_4$
+are equal and no more than two are collinear, they can be assigned the
+XOR-label, which is not solvable by linear classifiers. For that pick two random
+members $a, b \in Z_4$, until the other two points $c, d \in Z_4$ are on two
+different sides of the line through $a$ and $b$. Then assign $l(a) = l(b) = 1$
+and $l(c) = l(d) = -1$. So there are no four point sets in $\mathbb{R}^{2}$,
+that can be shattered by a linear classifier.
+
+\end{document}
