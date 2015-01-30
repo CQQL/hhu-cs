@@ -1,0 +1,117 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Frage 1}
+
+% BEGIN RECEIVE ORGTBL updates
+\begin{tabular}{ll}
+Komponente & Änderungen \\
+\hline
+Webbrowser & Muss die geupdateten Netzwerkbibliotheken verwenden \\
+Client-DNS-Bibliothek & Muss AAAA-Records verstehen \\
+Client-IP-Stack & Muss IPv6 verwenden \\
+Heimrouter & Muss IPv6-Pakete routen können \\
+ISP-Geräte & Wenn das auch Router sind, müssen die auch IPv6 verstehen \\
+DNS-Server des ISPs & Muss AAAA-Records ausliefern, wenn die DNS-Server des Webseiten-Betreibers per IPv6 erreichbar sind \\
+Internet-Backbone-Router & Muss IPv6-Pakete routen können \\
+DNS-Server des Webseiten-Betreibers & Muss den AAAA-Record der Webseite ausliefern \\
+Server-TCP/IP-Stack & Muss IPv6 verwenden \\
+Webserver & Muss den aktualisierten IP-Stack verwenden \\
+\end{tabular}
+% END RECEIVE ORGTBL updates
+
+\section{Frage 2}
+
+Der Webseitenbetreiber muss die IPv6-Adresse seines Hosts auf seinem DNS-Server
+hinterlegen und den Webserver auf der IPv6-Adresse horchen lassen.
+
+\section{Frage 3}
+
+Ja, wenn man die IPv4-Erreichbarkeit nicht erhält. Dies ist bei Linux jedoch
+kein Problem, weil die neuen Funktionen automatisch IP4 und 6 kompatibel sind.
+
+Dann muss der Client 6in4-Tunneling verwenden.
+
+\section{Frage 4}
+
+Die gesuchten Varianten heißen getaddrinfo, getnameinfo und inet\_pton.
+
+\section{Frage 5}
+
+% BEGIN RECEIVE ORGTBL addresses
+\begin{tabular}{lllll}
+IPv6-Adresse & Gültig? & Generische Schreibweise & Typ & Global? \\
+\hline
+fe80::2512:0121:1 & Ja & fe80::2512:121:1 & Link-Local Unicast & Nein \\
+2001:6f8:1377:abcd:0000:0000:0001:0002 & Ja & 2001:6f8:1377:abcd::1:2 & Global Unicast & Ja \\
+2013:123::56::7 & Nein &  &  &  \\
+::0:1 & Ja & ::1 & Loopback & Nein \\
+ff12::42 & Ja & ff12::42 & Multicast & Nein (Scope 2 ist Link-Local) \\
+ff72::0x3 & Nein &  &  &  \\
+0::0.0.0.0 & Ja & ::0 & Unspecified & ? \\
+200a:a:b:c:d:e:f & Nein &  &  &  \\
+2ac2:::09:3 & Nein &  &  &  \\
+ff15::aaaa & Ja & ff15::aaaa & Multicast & Nein (Scope 5 ist Site-Local) \\
+ff00:180bac::1 & Nein &  &  &  \\
+ff11:1:2:3:4:5:6:7:8 & Nein &  &  &  \\
+\end{tabular}
+% END RECEIVE ORGTBL addresses
+
+\section{Frage 6}
+
+Bei statischer Konfiguration werden alle Einstellungen auf dem Host direkt
+vorgegeben z.B. in einer Konfigurationsdatei.
+
+Bei DHCP werden Adress- und Routingkonfiguration von einem DHCP-Server
+empfangen. Der Client initialisiert die Kommunikation, indem er alle DHCP-Server
+per Multicast anspricht. Diese schicken ihm daraufhin Konfigurationen an seine
+selbsterstellte Link-Local-Address, von denen er eine akzeptiert. Das
+Akzeptieren findet ebenfalls per Multicast statt, damit die abgelehnten
+DHCP-Server Bescheid wissen.
+
+Bei Stateless Address Autoconfiguration mit Router Advertisements bestimmt der
+Host seine Link-Local Address ebenfalls selbst und empfängt dann jedoch alle
+weiteren relevanten Einstellungen in Paketen (Router Advertisements), die die
+Router periodisch versenden. Um den Prozess zu beschleunigen, können Hosts
+jedoch diese Advertisements auch explizit anfragen.
+
+\end{document}
+
+#+ORGTBL: SEND updates orgtbl-to-latex :splice nil :skip 0
+| Komponente                          | Änderungen                                                                                          |
+|-------------------------------------+-----------------------------------------------------------------------------------------------------|
+| Webbrowser                          | Muss die geupdateten Netzwerkbibliotheken verwenden                                                 |
+| Client-DNS-Bibliothek               | Muss AAAA-Records verstehen                                                                         |
+| Client-IP-Stack                     | Muss IPv6 verwenden                                                                                 |
+| Heimrouter                          | Muss IPv6-Pakete routen können                                                                      |
+| ISP-Geräte                          | Wenn das auch Router sind, müssen die auch IPv6 verstehen                                           |
+| DNS-Server des ISPs                 | Muss AAAA-Records ausliefern, wenn die DNS-Server des Webseiten-Betreibers per IPv6 erreichbar sind |
+| Internet-Backbone-Router            | Muss IPv6-Pakete routen können                                                                      |
+| DNS-Server des Webseiten-Betreibers | Muss den AAAA-Record der Webseite ausliefern                                                        |
+| Server-TCP/IP-Stack                 | Muss IPv6 verwenden                                                                                 |
+| Webserver                           | Muss den aktualisierten IP-Stack verwenden                                                          |
+
+#+ORGTBL: SEND addresses orgtbl-to-latex :splice nil :skip 0
+| IPv6-Adresse                           | Gültig? | Generische Schreibweise | Typ                | Global?                       |
+|----------------------------------------+---------+-------------------------+--------------------+-------------------------------|
+| fe80::2512:0121:1                      | Ja      | fe80::2512:121:1        | Link-Local Unicast | Nein                          |
+| 2001:6f8:1377:abcd:0000:0000:0001:0002 | Ja      | 2001:6f8:1377:abcd::1:2 | Global Unicast     | Ja                            |
+| 2013:123::56::7                        | Nein    |                         |                    |                               |
+| ::0:1                                  | Ja      | ::1                     | Loopback           | Nein                          |
+| ff12::42                               | Ja      | ff12::42                | Multicast          | Nein (Scope 2 ist Link-Local) |
+| ff72::0x3                              | Nein    |                         |                    |                               |
+| 0::0.0.0.0                             | Ja      | ::0                     | Unspecified        | ?                             |
+| 200a:a:b:c:d:e:f                       | Nein    |                         |                    |                               |
+| 2ac2:::09:3                            | Nein    |                         |                    |                               |
+| ff15::aaaa                             | Ja      | ff15::aaaa              | Multicast          | Nein (Scope 5 ist Site-Local) |
+| ff00:180bac::1                         | Nein    |                         |                    |                               |
+| ff11:1:2:3:4:5:6:7:8                   | Nein    |                         |                    |                               |

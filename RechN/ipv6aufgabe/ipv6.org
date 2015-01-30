@@ -1,0 +1,169 @@
+* Konfigurationen
+** Router
+*** ip -6 addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+    inet6 2001:6f8:1377:5::1/48 scope global
+       valid_lft forever preferred_lft forever
+    inet6 fe80::2512:121:1/64 scope link
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+    inet6 2001:6f8:1377:3::1/64 scope global
+       valid_lft forever preferred_lft forever
+    inet6 fe80::21b:21ff:fe9d:57bf/64 scope link
+       valid_lft forever preferred_lft forever
+4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+    inet6 2001:6f8:1377:2::1/64 scope global
+       valid_lft forever preferred_lft forever
+    inet6 fe80::21b:21ff:fe9d:4e39/64 scope link
+       valid_lft forever preferred_lft forever
+*** ip -6 route show
+2001:6f8:1377:1::/64 via 2001:6f8:1377:3::2 dev eth1  metric 1024
+2001:6f8:1377:2::/64 dev eth2  proto kernel  metric 256
+2001:6f8:1377:3::/64 dev eth1  metric 1024
+2001:6f8:1377:4::/64 via 2001:6f8:1377:2::2 dev eth2  metric 1024
+2001:6f8:1377::/48 dev eth0  metric 1024
+fe80::/64 dev eth0  proto kernel  metric 256
+fe80::/64 dev eth1  proto kernel  metric 256
+fe80::/64 dev eth2  proto kernel  metric 256
+default via fe80::2512:248:1 dev eth0  metric 1024
+** Abteilungsrouter 1
+*** ip -6 addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+    inet6 2001:6f8:1377:2::2/64 scope global
+       valid_lft forever preferred_lft forever
+    inet6 fe80::e269:95ff:fe35:e2b4/64 scope link
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+    inet6 2001:6f8:1377:4::1/64 scope global
+       valid_lft forever preferred_lft forever
+    inet6 fe80::21b:21ff:fe9d:505f/64 scope link
+       valid_lft forever preferred_lft forever
+*** ip -6 route show
+2001:6f8:1377:2::/64 dev eth0  proto kernel  metric 256
+2001:6f8:1377:4::/64 dev eth1  proto kernel  metric 256
+fe80::/64 dev eth0  proto kernel  metric 256
+fe80::/64 dev eth1  proto kernel  metric 256
+default via 2001:6f8:1377:2::1 dev eth0  metric 1024
+*** cat /etc/radvd.conf
+interface eth1
+{
+AdvSendAdvert on;
+MinRtrAdvInterval 3;
+MaxRtrAdvInterval 5;
+AdvDefaultPreference low;
+AdvHomeAgentFlag off;
+prefix 2001:6f8:1377:4::/64
+{
+AdvOnLink on;
+AdvAutonomous on;
+AdvRouterAddr on;
+};
+
+#
+# RDNSS
+# NOTE: This feature is not very widely implemented.
+#
+RDNSS 2001:4860:4860::8888
+{
+AdvRDNSSLifetime 5;
+};
+
+#
+# DNS Search Lists
+#
+DNSSL example.com
+{
+AdvDNSSLLifetime 5;
+};
+
+
+};
+** Abteilungsrouter 2
+*** ip -6 addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+    inet6 2001:6f8:1377:3::2/64 scope global
+       valid_lft forever preferred_lft forever
+    inet6 fe80::e269:95ff:fe35:e2c3/64 scope link
+       valid_lft forever preferred_lft forever
+4: eth2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+    inet6 2001:6f8:1377:1::1/64 scope global
+       valid_lft forever preferred_lft forever
+    inet6 fe80::aaaa:aaaa:aaaa:aaaa/64 scope link
+       valid_lft forever preferred_lft forever
+*** ip -6 route show
+2001:6f8:1377:1::/64 dev eth2  proto kernel  metric 256
+2001:6f8:1377:3::/64 dev eth0  proto kernel  metric 256
+fe80::/64 dev eth2  proto kernel  metric 256
+fe80::/64 dev eth0  proto kernel  metric 256
+default via 2001:6f8:1377:3::1 dev eth0  metric 1024
+*** cat /etc/radvd.conf
+interface eth2
+{
+AdvSendAdvert on;
+MinRtrAdvInterval 3;
+MaxRtrAdvInterval 5;
+AdvDefaultPreference low;
+AdvHomeAgentFlag off;
+prefix 2001:6f8:1377:1::/64
+{
+AdvOnLink on;
+AdvAutonomous on;
+AdvRouterAddr on;
+};
+
+#
+# RDNSS
+# NOTE: This feature is not very widely implemented.
+#
+RDNSS 2001:4860:4860::8888
+{
+AdvRDNSSLifetime 5;
+};
+
+#
+# DNS Search Lists
+#
+DNSSL example.com
+{
+AdvDNSSLLifetime 5;
+};
+
+
+};
+** Client Abteilung 1
+*** ip -6 addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+    inet6 2001:6f8:1377:4:e269:95ff:fe35:e039/64 scope global dynamic
+       valid_lft 86397sec preferred_lft 14397sec
+    inet6 fe80::e269:95ff:fe35:e039/64 scope link
+       valid_lft forever preferred_lft forever
+*** ip -6 route show
+2001:6f8:1377:4::/64 dev eth0  proto kernel  metric 256  expires 86403sec
+fe80::/64 dev eth0  proto kernel  metric 256
+default via fe80::21b:21ff:fe9d:505f dev eth0  proto kernel  metric 1024  expires 13sec
+** Client Abteilung 2
+*** ip -6 addr show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qlen 1000
+    inet6 2001:6f8:1377:1:e269:95ff:fe35:e039/64 scope global dynamic
+       valid_lft 86400sec preferred_lft 14400sec
+    inet6 fe80::e269:95ff:fe35:e039/64 scope link
+       valid_lft forever preferred_lft forever
+*** ip -6 route show
+2001:6f8:1377:1::/64 dev eth0  proto kernel  metric 256  expires 86403sec
+fe80::/64 dev eth0  proto kernel  metric 256
+default via fe80::aaaa:aaaa:aaaa:aaaa dev eth0  proto kernel  metric 1024  expires 13sec
