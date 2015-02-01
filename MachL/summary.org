@@ -1,0 +1,56 @@
+* Basic Probability
+** Bayesian Networks
+** Graphical Models
+** Distributions
+*** Gaussian
+*** Binomial
+*** Bernoulli
+*** Multinomial
+*** Multinoulli
+*** Poisson
+*** Beta
+*** Dirichlet
+** Transformation of Variables
+* Regression
+** Linear Regression
+** Ridge Regression
+** Bayesian Linear Regression
+* SVM - Support Vector Machine
+** Quadratic Programming
+** Kernel Trick
+* Dimensionality Reduction
+** PCA - Principal Component Analysis
+*** Kernel Trick
+** MDS - Multi Dimensional Scaling
+** ISOMAP
+** LLE
+** MVU - Maximum Variance Unfolding
+*** Semidefinite Programming
+* Clustering
+** k-Means
+** EM - Expectation Maximization
+** Mixture of Gaussians
+* Neural Networks
+** Single Layer Networks
+** Multilayer Networks
+** Training
+*** Back Propagation
+*** Autoencoder
+* Optimization
+** SGD - Stochastic Gradient Descent
+** NAG - Nesterov Acceleration Gradient
+** AdaGrad
+* Gaussian Process Regression
+* Gaussian Process Classification
+* Model Selection
+* Statistical Learning Theory
+* Sampling
+** Monte Carlo Method
+** Quantile Function - Transforming a uniform distribution into any other
+** Box-Muller Method
+** Rejection Sampling
+** Importance Sampling
+** MCMC - Markoc Chain Monte Carlo
+*** Metropolis-Hastings Method
+*** Gibbs-Sampling
+* NFL - No Free Lunch Theorem
