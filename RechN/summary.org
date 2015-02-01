@@ -1,0 +1,173 @@
+* Allgemein
+** Leitungsvermittlung
+** Paketvermittlung
+* Anwendungsschicht
+** HTTP
+** FTP
+** SMTP, POP3, IMAP
+** DNS
+** P2P
+*** Fairness
+**** Choking-Bit
+*** Bencoding
+* Transportschicht
+** UDP
+*** Pruefsumme
+** Go-Back-N
+** Selective Repeat
+** TCP
+*** Verbindungsaufbau
+*** Verbindungsabbau
+*** Sequenznummern
+*** Timeouts
+**** Schaetzen der RTT
+*** Fast Retransmit
+*** Flusskontrolle
+*** Ueberlastkontrolle
+**** Slow Start
+**** Congestion Avoidance
+**** Triple Duplicate ACK
+**** Timeout
+*** Fairness
+*** Exponential Backoff
+* Netzwerkschicht
+** Router
+*** Forwarding
+*** Routing
+*** Alternativen: ATM, Frame Relay, X.25
+*** Longest Prefix Matching
+*** Switching Fabrics
+**** Memory
+**** Bus
+**** Crossbar
+** Routing-Algorithmen
+*** Link State
+**** Dijkstra-Algorithmus
+**** OSPF
+**** Hierarchic OSPF
+*** Distance Vector
+**** Bellman-Ford-Gleichung
+**** Poisoned Reverse
+**** RIP
+*** BGP
+** IPv4
+*** 20 Byte Header
+*** Fragmentierung
+*** Adressierung
+**** Subnetze
+***** CIDR - Classless Inter-Domain Routing
+**** DHCP
+***** DISCOVER
+***** OFFER
+***** REQUEST
+***** ACK
+*** NAT
+*** ICMP
+** IPv6
+*** Path-MTU-Discovery
+*** NDP statt ARP
+*** Kein Anycast
+**** Addresstypen
+***** ::/128 - Unspecified
+***** ::1/128 - Loopback
+***** FF00::/8 - Multicast
+***** FE80::/10 - Link Local
+***** Default - Global Unicast
+*** Stateless Address Autoconfiguration
+**** Pick FE80:0:0:0:<Random 64 Bit> address
+***** Duplicate Address Detection
+**** Send Router-Solicitation-ICMPv6-Message to All-Routers-Multicast
+**** Pick Global Unicast Address from Router-Advertisement
+***** <64 Bit Router Prefix>:<Last 64 Bit of linklocal address>
+***** Duplicate Address Detection
+*** v4-Address-Mapping
+    Map the IPv4 address to ::ffff:<IPv4-Address>. Support from OS.
+*** IPv4-over-IPv6-Tunneling
+*** IPv6-over-IPv4-Tunneling
+** Multicast-Routing
+*** Reverse Path Forwarding
+    Ein Multicast-Paket wird nur dann weitergeleitet, wenn der Router es auf dem
+    kuerzesten Pfad empfangen hat.
+* Sicherungsschicht
+** Flusskontrolle
+** Gerade Paritaet
+   Gerade Partiaet bedeutet, dass die Anzahl der Einsen nach dem Hinzufuegen des
+   Partiaetsbits gerade sind. Entsprechend fuer ungerade.
+** Ein-Bit-Paritaet
+   Erkennt 1-Bit-Fehler
+** Zweidimensionale Paritaet
+   Erkennt und korrigiert 1-Bit-Fehler. Erkennt 2-Bit-Fehler.
+** Internet-Checksum (TCP/UDP)
+** CRC
+** TDMA - Time Division Multiple Access
+** FDMA - Frequency Division Multiple Access
+** Slottet ALOHA
+** ALOHA
+** CSMA - Carrier Sense Multiple Access
+*** /CD
+*** /CA
+** Polling
+** Token Passing
+** ARP
+** Ethernet
+*** Exponential Backoff
+** Switches
+*** Switching-Tabelle
+** PPP - Point-to-Point Protocol
+*** LCP - Link Control Protocol
+*** NCP - Network Control Protocol
+**** DHCP
+*** CRC
+*** Escaping - "Bytestopfen"
+** ATM, MPLS
+* Bituebertragungsschicht
+** Manchester-Codierung
+*** 0 - Steigende Kante
+*** 1 - Fallende Kante
+** Hubs
+* Wireless
+** CDMA - Code Division Multiple Access
+* Netzwerksicherheit
+** Vertraulichkeit
+** Authentifizierung
+** Integritaet
+** Angriffe
+*** Aktiv
+**** DOS - Denial of Service
+**** Nachrichten manipulieren/einspeisen
+**** Replay
+**** Impersonation von Sender oder Empfaenger
+*** Passiv
+**** Mitschneiden
+** CBC - Cipher Block Chaining
+*** Verschluesselung
+    $c_i = encrypt(m_i XOR c_{i - 1})$
+*** Entschluesselung
+    $m_i = decrypt(c_i) XOR c_{i - 1}$
+** CFB - Cipher FeedBack Mode
+*** Verschluesselung
+    $c_i = m_i XOR encrypt(c_{i - 1})$
+*** Entschluesselung
+    $m_i = c_i XOR encrypt(c_{i - 1})$p
+** Symmetrisch
+*** DES - Data Encryption Standard
+*** AES - Advanced Encryption Standard
+** Asymmetrisch
+*** RSA - Rivest-Shamir-Adleman
+**** Schluesselerzeugung
+     - Waehle zwei Primzahlen $p$, $q$
+     - Berechne $n = p * q$ und $\varphi(n) = (p - 1) * (q - 1)$
+     - Waehle $1 <= e < \varphi(n)$ relativ prim zu $\varphi(n)$
+     - Waehle $d$, sodass $(e * d = 1) mod \varphi(n)$
+     - Public Key $(n, e)$, Private Key $(n, d)$
+**** Verschluesselung
+     $c = m^e mod n$
+**** Entschluesselung
+     $m = c^d mod n$
+*** Zertifikate
+*** Signaturen
+*** CA - Certification Authority / Zertifizierungsstelle
+** Diffie-Hellman-Schluesselaustausch
+** Kryptographische Hash-Funktionen
+** MAC - Message Authentication Code
+** SSL/TLS - Secure Socket Layer/Transport Layer Security
