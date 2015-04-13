@@ -1,0 +1,132 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 1.1}
+
+\subsection{Teil a}
+
+Sei $z = a + ib$.
+
+\begin{align*}
+  z + \frac{1}{z} & = a + ib + \frac{1}{a + ib}\\
+                  & = a + ib + \frac{a - ib}{(a + ib)(a - ib)}\\
+                  & = a + ib + \frac{a - ib}{a^{2} + b^{2}}\\
+                  & = a + ib + \frac{a}{a^{2} + b^{2}} - \frac{ib}{a^{2} + b^{2}}\\
+                  & = a + \frac{a}{a^{2} + b^{2}} + i \left( b - \frac{b}{a^{2} + b^{2}} \right)
+\end{align*}
+
+\begin{align*}
+  \bar{z}^{2} + \frac{1}{z^{2}} & = \overline{a + ib}^{2} + \frac{1}{(a + ib)^{2}}\\
+                                & = (a - ib)^{2} + \frac{1}{(a + ib)^{2}}\\
+                                & = a^{2} - 2aib - b^{2} + \frac{1}{a^{2} + 2aib - b^{2}}\\
+                                & = a^{2} - 2aib - b^{2} + \frac{a^{2} - b^{2} - 2abi}{(a^{2} - b^{2} + 2abi)(a^{2} - b^{2} - 2abi)}\\
+                                & = a^{2} - 2aib - b^{2} + \frac{a^{2} - b^{2} - 2abi}{(a^{2} - b^{2})^{2} + (2ab)^{2}}\\
+                                & = a^{2} - b^{2} + \frac{a^{2} - b^{2}}{(a^{2} - b^{2})^{2} + (2ab)^{2}} - i \left( \frac{2ab}{(a^{2} - b^{2})^{2} + (2ab)^{2}} + 2ab \right)\\
+\end{align*}
+
+\subsection{Teil b}
+
+\begin{proof}
+  Seien $z = a + ib, w = c + id \in \mathbb{C}$.
+
+  \begin{align*}
+    \overline{z + w} & = \overline{a + c + i(b + d)}\\
+                     & = a + c - i(b + d)\\
+                     & = a - ib + c - id\\
+                     & = \overline{z} + \overline{w}
+  \end{align*}
+
+  \begin{align*}
+    \overline{z \cdot w} & = \overline{(a + ib)(c + id)}\\
+                         & = \overline{ac - bd + i(ad + bc)}\\
+                         & = ac - bd - i(ad + bc)\\
+                         & = (a - ib)(c - id)\\
+                         & = \overline{z} \cdot \overline{w}
+  \end{align*}
+\end{proof}
+
+\subsection{Teil c}
+
+\begin{proof}
+  Seien $z = a + ib, w = c + id \in \mathbb{C}$.
+
+  \begin{equation}
+    z \cdot \overline{z} = (a + ib)(a - ib) = a^{2} + b^{2} = |z|^{2}
+  \end{equation}
+  \begin{equation}
+    |z| = \sqrt{a^{2} + b^{2}} = \sqrt{a^{2} + (-b)^{2}} = |\overline{z}|
+  \end{equation}
+  \begin{align*}
+    |z + w|^{2} + |z - w|^{2} & = (a + c)^{2} + (b + d)^{2} + (a - c)^{2} + (b - d)^{2}\\
+                              & = 2(a^{2} + b^{2} + c^{2} + d^{2})\\
+                              & = 2(|z|^{2} + |w|^{2})
+  \end{align*}
+\end{proof}
+
+\section{Aufgabe 1.2}
+
+\begin{equation}
+  \arg(z) = \arg(x + iy) = \begin{cases}
+    \arctan \frac{y}{x} & \text{wenn $x > 0$}\\
+    \arctan \frac{y}{x} + \pi & \text{wenn $x < 0 \land y > 0$}\\
+    \arctan \frac{y}{x} - \pi & \text{wenn $x < 0 \land y < 0$}\\
+    \frac{\pi}{2} & \text{wenn $x = 0 \land y > 0$}\\
+    -\frac{\pi}{2} & \text{wenn $x = 0 \land y < 0$}\\
+  \end{cases}
+\end{equation}
+
+Innerhalb der einzelnen Fälle ist $\arg$ stetig, weil alle verwendeten
+Funktionen und Operationen stetig sind. Es bleibt zu prüfen, ob $\arg$ an der
+imaginären Achse stetig ist.
+
+\noindent
+Sei $y > 0$.
+\begin{equation}
+  \lim_{x \to_{>} 0} \arg(x + iy) = \lim_{x \to_{>} 0} \arctan \frac{y}{x} = \lim_{k \to \infty} \arctan k = \frac{\pi}{2}
+\end{equation}
+\begin{equation}
+  \lim_{x \to_{<} 0} \arg(x + iy) = \lim_{x \to_{<} 0} \arctan \frac{y}{x} + \pi = \lim_{k \to -\infty} \arctan k + \pi = \frac{\pi}{2}
+\end{equation}
+
+\noindent
+Sei nun $y < 0$.
+\begin{equation}
+  \lim_{x \to_{>} 0} \arg(x + iy) = \lim_{x \to_{>} 0} \arctan \frac{y}{x} = \lim_{k \to -\infty} \arctan k = -\frac{\pi}{2}
+\end{equation}
+\begin{equation}
+  \lim_{x \to_{<} 0} \arg(x + iy) = \lim_{x \to_{<} 0} \arctan \frac{y}{x} - \pi = \lim_{k \to \infty} \arctan k - \pi = -\frac{\pi}{2}
+\end{equation}
+
+Damit ist $\arg$ in seinem gesamten Definitionsbereich stetig.
+
+\section{Aufgabe 1.3}
+
+\section{Aufgabe 1.4}
+
+Sei $f: \mathbb{C} \mapsto \mathbb{C}$ ein Polynom, sodass $f(0) = 0$ und
+$f((1 + z)^{2}) = (1 + f(z))^{2}$. Für dieses gibt es eine Folge $(z_{j})_{j}$
+mit $f(z_{j}) = z_{j}$.
+
+\begin{proof}
+  Durch Setzen von $z = 0$ in der zweiten Bedigung erhalten wir $f(1) = 1$.
+
+  Angenommen $f(z) = z$ für ein $z$. Dann ist
+  $f((1 + z)^{2}) = (1 + f(z))^{2} = (1 + z)^{2}$.
+\end{proof}
+
+\noindent
+Die Folge ist also $(j^{2})_{j}$. Nun betrachten wir das Polynom
+$g(x) = f(x) - x$. Dieses ist höchstens vom Grad $n = \deg f$. Durch die Folge
+kennen wir jedoch unendlich viele Nullstellen von $g$. Nach Korrollar 6.12 muss
+$g \equiv 0$ sein und $f(x) = x$. $f$ ist also die Identitätsfunktion.
+
+\end{document}
