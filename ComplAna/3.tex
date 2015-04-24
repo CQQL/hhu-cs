@@ -1,0 +1,106 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\begin{document}
+
+\section{Aufgabe 3.1}
+
+\subsection{Teil i}
+
+\begin{align*}
+  \lim_{z \to 0} \frac{f(z) - f(0)}{z - 0} & = \lim_{z \to 0} \frac{f(z)}{z}\\
+                                           & = \lim_{x + iy \to 0} \frac{x^{2}y + ixy^{2}}{x + iy}\\
+                                           & = \lim_{x + iy \to 0} \frac{(x^{2}y + ixy^{2})(x - iy)}{(x + iy)(x - iy)}\\
+                                           & = \lim_{x + iy \to 0} \frac{x^{3}y - ix^{2}y^{2} + ix^{2}y^{2} + xy^{3}}{x^{2} + y^{2}}\\
+                                           & = \lim_{x + iy \to 0} \frac{x^{3}y + xy^{3}}{x^{2} + y^{2}}\\
+                                           & = \lim_{x + iy \to 0} xy = 0
+\end{align*}
+
+Da der Limes existiert, ist $f$ differenzierbar in $0$.
+
+\subsection{Teil ii}
+
+\begin{align*}
+  \lim_{z \to 0} \frac{f(z) - f(0)}{z - 0} & = \lim_{z \to 0} \frac{f(z) + i}{z}\\
+                                           & = \lim_{x + iy \to 0} \frac{\sin(x)\sin(y) - i\cos(x)\cos(y) + i}{x + iy}\\
+                                           & = \lim_{x + iy \to 0} \frac{(\sin(x)\sin(y) - i\cos(x)\cos(y) + i)(x - iy)}{x^{2} + y^{2}}\\
+                                           & = \lim_{x + iy \to 0} \frac{x\sin(x)\sin(y) - iy\sin(x)\sin(y) - ix\cos(x)\cos(y) - y\cos(x)\cos(y) + ix + y}{x^{2} + y^{2}}\\
+                                           & = \lim_{x + iy \to 0} \frac{x\sin(x)\sin(y) - y\cos(x)\cos(y) + y}{x^{2} + y^{2}} - i \cdot \lim_{x + iy \to 0} \frac{y\sin(x)\sin(y) - x\cos(x)\cos(y) - x}{x^{2} + y^{2}}\\
+\end{align*}
+
+Da der Limes existiert, ist $f$ differenzierbar in $0$.
+
+\section{Aufgabe 3.2}
+
+\subsection{Teil a}
+
+\begin{equation}
+  \partial_{x} u(0, 0) = \lim_{x \to 0} \frac{u(x, 0) - u(0, 0)}{x - 0} = 0
+\end{equation}
+\begin{equation}
+  \partial_{y} u(0, 0) = \lim_{y \to 0} \frac{u(0, y) - u(0, 0)}{y - 0} = 0
+\end{equation}
+\begin{equation}
+  \partial_{x} v(0, 0) = \lim_{x \to 0} \frac{v(x, 0) - v(0, 0)}{x - 0} = 0
+\end{equation}
+\begin{equation}
+  \partial_{y} v(0, 0) = \lim_{y \to 0} \frac{v(0, y) - v(0, 0)}{y - 0} = 0
+\end{equation}
+
+\subsection{Teil b}
+
+\subsection{Teil c}
+
+\section{Aufgabe 3.3}
+
+\begin{proof}
+  Sei $\hat{\lambda} = (u, v)$ wie in 1.7. Dann ist
+  \begin{equation}
+    u(x, y) = \log |x + iy| = \log\left( \sqrt{x^{2} + y^{2}} \right) = \frac{1}{2} \log\left( x^{2} + y^{2} \right)
+  \end{equation}
+  und
+  \begin{equation}
+    v(x, y) = \arg(x + iy) = \arctan\left( \frac{y}{x} \right) + c\quad \text{$c \in \mathbb{R}$ in Abhängigkeit vom Quadranten der komplexen Ebene}
+  \end{equation}
+  Die Ableitungen sind
+  \begin{equation}
+    \partial_{x} u(x, y) = \frac{1}{2} \cdot \frac{2x}{x^{2} + y^{2}} = \frac{x}{x^{2} + y^{2}}
+  \end{equation}
+  \begin{equation}
+    \partial_{y} u(x, y) = \frac{1}{2} \cdot \frac{2y}{x^{2} + y^{2}} = \frac{y}{x^{2} + y^{2}}
+  \end{equation}
+  \begin{equation}
+    \partial_{x} v(x, y) = -\frac{1}{\left( \frac{y}{x} \right)^{2} + 1} \cdot \frac{y}{x^{2}} = -\frac{y}{x^{2}(\frac{y^{2}}{x^{2}} + 1)} = -\frac{y}{x^{2} + y^{2}}
+  \end{equation}
+  \begin{equation}
+    \partial_{y} v(x, y) = \frac{1}{\left( \frac{y}{x} \right)^{2} + 1} \cdot \frac{1}{x} = \frac{1}{x(\frac{y^{2}}{x^{2}} + 1)} = \frac{x}{x^{2} + y^{2}}
+  \end{equation}
+  Dann ist $\partial_{x} u(x, y) = \partial_{y} v(x, y)$ und
+  $\partial_{y} u(x, y) = -\partial_{x} v(x, y)$ und somit $\lambda$
+  differenzierbar nach 1.9. Weiterhin gilt nach 1.9
+  \begin{equation}
+    \lambda'(z) = \lambda'(x + iy) = \partial_{x} u(x, y) - i\partial_{y} u(x, y) = \frac{x}{x^{2} + y^{2}} - i\frac{y}{x^{2} + y^{2}} = \frac{x}{|z|^{2}} - i \frac{y}{|z|^{2}} = \frac{\bar{z}}{\bar{z}z} = \frac{1}{z}
+  \end{equation}
+\end{proof}
+
+\section{Aufgabe 3.4}
+
+\begin{proof}
+  \begin{equation}
+    \Delta u = \partial_{x} \partial_{x} u + \partial_{y} \partial_{y} u = \partial_{x} \partial_{y} v - \partial_{y} \partial_{x} v = \partial_{x} \partial_{y} v - \partial_{x} \partial_{y} v = 0
+  \end{equation}
+  \begin{equation}
+    \Delta v = \partial_{x} \partial_{x} v + \partial_{y} \partial_{y} v = -\partial_{x} \partial_{y} u + \partial_{y} \partial_{x} u = \partial_{y} \partial_{x} u - \partial_{y} \partial_{x} u = 0
+  \end{equation}
+  Die Vertauschung der Differentiale ist möglich nach dem Satz von Schwarz und
+  weil $\hat{f} \in C^{2}(\Omega)$.
+\end{proof}
+
+\end{document}
