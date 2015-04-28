@@ -1,0 +1,180 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\DeclareMathOperator{\len}{len}
+
+\begin{document}
+
+\section{Aufgabe 4.1}
+
+Sei die Parametrisierung wie im Hinweis gegeben.
+
+\subsection{Teil i}
+
+\begin{align*}
+  \int_{\partial D_{1}(0)} z\ dz & = \int_{-\pi}^{\pi} (\cos(t) + i \sin(t)) \cdot (-\sin(t) + i \cos(t))\ dt\\
+                                 &  = \int_{-\pi}^{\pi} i\cos(t)^{2} - 2\sin(t)\cos(t) - i\sin(t)^{2}\ dt\\
+                                 &  = -2 \int_{-\pi}^{\pi} \sin(t)\cos(t)\ dt + i \left( \int_{-\pi}^{\pi} \cos(t)^{2}\ dt - \int_{-\pi}^{\pi} \sin(t)^{2}\ dt \right)\\
+                                 &  = i \left( \pi - \pi \right) = 0
+\end{align*}
+
+\subsection{Teil ii}
+
+\begin{align*}
+  \int_{\partial D_{1}(0)} \bar{z}\ dz & = \int_{-\pi}^{\pi} (\cos(t) - i \sin(t)) \cdot (-\sin(t) + i \cos(t))\ dt\\
+                                 &  = \int_{-\pi}^{\pi} i\cos(t)^{2} + i\sin(t)^{2}\ dt\\
+                                 &  = i\int_{-\pi}^{\pi} 1\ dt = 2\pi i
+\end{align*}
+
+\section{Aufgabe 4.2}
+
+\begin{proof}
+  Da $\gamma$ linear ist, ist es linearisierbar, also differenzierbar und die
+  Ableitung ist $(1 + i)$. Konstante Funktionen sind stetig, also ist $\gamma$
+  stetig differenzierbar, also $C^{1}$. Da $\gamma$ auch stetig ist, ist es ein
+  $C^{1}$-Weg.
+
+  Betrachte $\tau : [-1, 1] \to [-1, 1]$ mit $\tau(t) = t^{3}$. $\tau$ ist
+  streng monoton wachsend, stetig und surjektiv, also eine
+  Parametertransformation für $\gamma$ und $\sigma$ und
+  $\gamma = \sigma \circ \tau$. Somit ist $\gamma \equiv \sigma$.
+
+  $\sigma'$ ist jedoch nicht stetig.
+  \begin{equation*}
+    Re(\sigma'(t)) = \frac{1}{3\sqrt[3]{t^{2}}} \Rightarrow \lim_{t \to 0} Re(\sigma'(t)) = \infty
+  \end{equation*}
+  Also ist $\sigma$ nur in $C^{0}$.
+\end{proof}
+
+\section{Aufgabe 4.3}
+
+\subsection{Teil a}
+
+\begin{proof}
+  Sei $(P_{k})_{k \in \mathbb{N}} \subset \Pi(J)$ mit
+  \begin{equation*}
+    P_{k} = \left( a + \frac{0}{k}(b - a), a + \frac{1}{k}(b - a), \dots, a + \frac{k}{k} (b - a) \right)
+  \end{equation*}
+  Für diese Zerlegung gilt $\mu(P_{k}) = \frac{b - a}{k}$, also
+  $\lim_{k} \mu(P_{k}) = 0$.
+  \begin{align*}
+    \len \gamma & = \lim_{k \to \infty} \len_{P_{k}} \gamma\\
+                & = \lim_{k \to \infty} \sum_{j = 1}^{k} \left| \gamma\left( a + \frac{j}{k}(b - a) \right) - \gamma\left( a + \frac{j - 1}{k}(b - a) \right) \right|\\
+                & = \lim_{k \to \infty} \sum_{j = 1}^{k} \left| \gamma\left( a + \frac{k + 1 - j}{k}(b - a) \right) - \gamma\left( a + \frac{k - j}{k}(b - a) \right) \right|\\
+                & = \lim_{k \to \infty} \sum_{j = 1}^{k} \left| \gamma\left( a + \frac{1 - j}{k}(b - a) + b - a \right) - \gamma\left( a - \frac{j}{k}(b - a) + b - a \right) \right|\\
+                & = \lim_{k \to \infty} \sum_{j = 1}^{k} \left| \gamma\left( b - \frac{j - 1}{k}(b - a) \right) - \gamma\left( b - \frac{j}{k}(b - a) \right) \right|\\
+                & = \lim_{k \to \infty} \sum_{j = 1}^{k} \left| \gamma\left( b - \frac{j}{k}(b - a) \right) - \gamma\left( b - \frac{j - 1}{k}(b - a) \right) \right|\\
+                & = \lim_{k \to \infty} \sum_{j = 1}^{k} \left| \gamma\left( b - (a + \frac{j}{k}(b - a) - a) \right) - \gamma\left( b - (a + \frac{j - 1}{k}(b - a) - a) \right) \right|\\
+                & = \lim_{k \to \infty} \sum_{j = 1}^{k} \left| (-\gamma)\left( a + \frac{j}{k}(b - a) \right) - (-\gamma)\left( a + \frac{j - 1}{k}(b - a) \right) \right|\\
+                & = \lim_{k \to \infty} \len_{P_{k}} -\gamma\\
+                & = \len -\gamma
+  \end{align*}
+\end{proof}
+
+\subsection{Teil b}
+
+\begin{proof}
+  Seien $(P_{k}) \subset \Pi(J), (Q_{k}) \subset \Pi(I)$ Folgen von Zerlegungen
+  mit
+  \begin{equation*}
+    P_{k} = \left( a + \frac{0}{k}(b - a), a + \frac{1}{k}(b - a), \dots, a + \frac{k}{k} (b - a) \right)
+  \end{equation*}
+  und
+  \begin{equation*}
+    Q_{k} = \left( \alpha + \frac{0}{k}(\beta - \alpha), \alpha + \frac{1}{k}(\beta - \alpha), \dots, \alpha + \frac{k}{k} (\beta - \alpha) \right)
+  \end{equation*}
+  Dann gilt für diese Zerlegungen $\mu(P_{k}) = \frac{b - a}{k}$ und
+  $\mu(Q_{k}) = \frac{\beta - \alpha}{k}$, also
+  $\lim_{k} P_{k} = \lim_{k} Q_{k} = 0$. Sei $(R_{k})$ eine weitere Folge von
+  Tupeln mit
+  \begin{equation*}
+    R_{k} = \left( -\frac{k}{k}, \dots, -\frac{1}{k}, 0, \frac{1}{k}, \dots, \frac{k}{k} \right)
+  \end{equation*}
+  Dies ist dann eine Zerlegung von $[-1, 1]$ mit Feinheit
+  $\mu(R_{k}) = \frac{1}{k}$, also $\lim_{k} \mu(R_{k}) = 0$.
+  \begin{align*}
+    \len(\sigma + \gamma) & = \len_{R_{k}}(\sigma + \gamma)\\
+                          & = \lim_{k \to \infty} \sum_{j = 1}^{2k} \left| (\sigma + \gamma)(R_{k_{j}}) - (\sigma + \gamma)(R_{k_{j - 1}}) \right|\\
+                          & = \lim_{k \to \infty} \sum_{j = 1}^{k} \left| \sigma\left( \beta - \frac{k - j}{k} (\beta - \alpha) \right) - \sigma\left( \beta - \frac{k - j - 1}{k} (\beta - \alpha) \right) \right| + \lim_{k \to \infty} \sum_{j = 1}^{k} \left| \gamma\left( a + \frac{j}{k}(b - a) \right) - \gamma\left( a + \frac{j - 1}{k}(b - a) \right) \right|\\
+                          & = \len_{Q_{k}}(\sigma) + \len_{P_{k}}(\sigma))\\
+                          & = \len(\sigma) + \len(\gamma)
+  \end{align*}
+\end{proof}
+
+\section{Aufgabe 4.4}
+
+Zerlegungen sind von $0$ und Markierungen von $1$ an indiziert, wie in der
+Vorlesung.
+
+\noindent
+Seien $\Sigma = [\sigma], \Gamma = [\gamma]$ und
+$\sigma : [\alpha, \beta] \to \mathbb{C}, \gamma : [a, b] \to \mathbb{C}$. Ohne
+Beschränkung der Allgemeinheit können wir $\sigma$ und $\gamma$ so
+umparametrisieren, dass $a = \alpha = 0$ und $b = \beta = 1$.
+
+\subsection{Teil a}
+
+\begin{proof}
+  Sei $(P_{k})_{k}$ eine Folge mit
+  \begin{equation}
+    P_{k} = \left( 0, \frac{1}{k}, \dots, \frac{k - 1}{k}, 1 \right)
+  \end{equation}
+  und $(T_{k})_{k}$ eine Folge mit
+  \begin{equation}
+    T_{k} = \left( \frac{1}{2k}, \frac{3}{2k}, \dots, \frac{2k - 3}{2k}, \frac{2k - 1}{2k} \right)
+  \end{equation}
+  Dann ist $(P_{k}, T_{k})_{k}$ eine Folge von markierten Zerlegungen von
+  $[0, 1]$ mit $\mu(P_{k}) = \frac{1}{k}$, also $\lim_{k} \mu(P_{k}) = 0$ und es
+  folgt
+  \begin{align*}
+    \int_{-\Gamma} f\ dz & = \lim_{k \to \infty} \Sigma_{P_{k},T_{k}} f\\
+                         & = \lim_{k \to \infty} \sum_{j = 1}^{k} f\left( -\gamma\left( \frac{2j - 1}{2k} \right) \right) \cdot \left( -\gamma\left( \frac{j}{k} \right) - -\gamma\left( \frac{j - 1}{k} \right) \right)\\
+                         & = \lim_{k \to \infty} \sum_{j = 1}^{k} f\left( \gamma\left( 1 - \frac{2j - 1}{2k} \right) \right) \cdot \left( \gamma\left( 1 - \frac{j}{k} \right) - \gamma\left( 1 - \frac{j - 1}{k} \right) \right)\\
+                         & = \lim_{k \to \infty} \sum_{j = 1}^{k} f\left( \gamma\left( \frac{2k - 2j + 1}{2k} \right) \right) \cdot \left( \gamma\left( \frac{k - j}{k} \right) - \gamma\left( \frac{k - j + 1}{k} \right) \right)\\
+                         & = \lim_{k \to \infty} \sum_{j = 1}^{k} f\left( \gamma\left( \frac{2k - 2\left( k + 1 - j \right) + 1}{2k} \right) \right) \cdot \left( \gamma\left( \frac{k - \left( k + 1 - j \right)}{k} \right) - \gamma\left( \frac{k - \left( k + 1 - j \right) + 1}{k} \right) \right)\\
+                         & = \lim_{k \to \infty} \sum_{j = 1}^{k} f\left( \gamma\left( \frac{2j - 1}{2k} \right) \right) \cdot \left( \gamma\left( \frac{j - 1}{k} \right) - \gamma\left( \frac{j}{k} \right) \right)\\
+                         & = -\lim_{k \to \infty} \sum_{j = 1}^{k} f\left( \gamma\left( \frac{2j - 1}{2k} \right) \right) \cdot \left( \gamma\left( \frac{j}{k} \right) - \gamma\left( \frac{j - 1}{k} \right) \right)\\
+                         & = -\lim_{k \to \infty} \Sigma_{P_{k},T_{k}} f\\
+                         & = -\int_{\Gamma} f\ dz
+  \end{align*}
+\end{proof}
+
+\subsection{Teil b}
+
+\begin{proof}
+  Sei $(P_{k}, T_{k})_{k}$ die Folge von markierten Zerlegungen von $[0, 1]$ mit
+  \begin{equation*}
+    P_{k} = \left( 0, \frac{1}{k}, \dots, \frac{k - 1}{k}, 1 \right)
+  \end{equation*}
+  und
+  \begin{equation*}
+    T_{k} = \left( \frac{1}{2k}, \frac{3}{2k}, \dots, \frac{2k - 3}{2k}, \frac{2k - 1}{2k} \right)
+  \end{equation*}
+  Es gilt $\mu(P_{k}) = \frac{1}{k}$ und somit $\lim_{k} \mu(P_{k}) = 0$. Sei $(A_{k}, B_{k})_{k}$ die Folge von markierten Zerlegungen von $[-1, 1]$ mit
+  \begin{equation}
+    A_{k} = \left( -1, -\frac{k - 1}{k}, \dots, -\frac{1}{k}, 0, \frac{1}{k}, \dots, \frac{k - 1}{k}, 1 \right)
+  \end{equation}
+  und
+  \begin{equation}
+    B_{k} = \left( -\frac{2k - 1}{2k}, -\frac{2k - 3}{2k}, \dots, -\frac{3}{2k}, -\frac{1}{2k}, \frac{1}{2k}, \frac{3}{2k}, \dots, \frac{2k - 3}{2k}, \frac{2k - 1}{2k} \right)
+  \end{equation}
+  \begin{align*}
+    \int_{\Sigma + \Gamma} f\ dz & = \lim_{k \to \infty} \Sigma_{A_{k},B_{k}} f\\
+                                 & = \lim_{k \to \infty} \sum_{j = 1}^{2k} f((\sigma + \gamma)(B_{k_{j}})) \cdot ((\sigma + \gamma)(A_{k_{j}}) - (\sigma + \gamma)(A_{k_{j - 1}}))\\
+                                 & = \lim_{k \to \infty} \sum_{j = 1}^{k} f(\sigma(1 + B_{k_{j}})) \cdot (\sigma(1 + A_{k_{j}}) - \sigma(1 + A_{k_{j - 1}})) + \lim_{k \to \infty} \sum_{j = 1}^{k} f(\gamma(B_{k_{j + k}})) \cdot (\gamma(A_{k_{j + k}}) - \gamma(A_{k_{j + k - 1}}))\\
+                                 & = \lim_{k \to \infty} \sum_{j = 1}^{k} f(\sigma(1 - (1 - \frac{2j - 1}{2k}))) \cdot (\sigma(1 - (1 - \frac{j}{k})) - \sigma(1 - (1 - \frac{j - 1}{k}))) + \lim_{k \to \infty} \sum_{j = 1}^{k} f(\gamma(\frac{2j - 1}{2k})) \cdot (\gamma(\frac{j}{k}) - \gamma(\frac{j - 1}{k}))\\
+                                 & = \lim_{k \to \infty} \sum_{j = 1}^{k} f(\sigma(\frac{2j - 1}{2k})) \cdot (\sigma(\frac{j}{k}) - \sigma(\frac{j - 1}{k})) + \lim_{k \to \infty} \sum_{j = 1}^{k} f(\gamma(\frac{2j - 1}{2k})) \cdot (\gamma(\frac{j}{k}) - \gamma(\frac{j - 1}{k}))\\
+                                 & = \lim_{k \to \infty} \sum_{j = 1}^{k} f(\sigma(T_{j})) \cdot (\sigma(P_{j}) - \sigma(P_{j - 1})) + \lim_{k \to \infty} \sum_{j = 1}^{k} f(\gamma(T_{j})) \cdot (\gamma(P_{j}) - \gamma(P_{j - 1}))\\
+                                 & = \lim_{k \to \infty} \Sigma_{P_{k},T_{k},\sigma} f + \lim_{k \to \infty} \Sigma_{P_{k},T_{k},\gamma} f\\
+                                 & = \int_{\Sigma} f\ dz + \int_{\Gamma} f\ dz
+  \end{align*}
+\end{proof}
+
+\end{document}
