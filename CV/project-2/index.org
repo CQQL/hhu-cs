@@ -1,0 +1,87 @@
+#+STARTUP: showall
+#+TITLE: Project 2
+#+AUTHOR: Marten Lienen
+#+HTML_HEAD: <style>body { width: 800px; margin: auto; } img { max-width: 700px; }</style>
+
+* Plotting 3D Objects
+
+Here we render a shape through a camera. Both can be configured through JSON
+files. The shape is set of points and a set of tuples, that say which points
+have edges between them. The camera then centers on the shape and moves around
+it in a circular motion taking pictures. The rotation is implemented with
+[[http://en.wikipedia.org/wiki/Rodrigues%2527_rotation_formula][Rodrigues' rotation formula]].
+
+#+INCLUDE: "render.py" src python
+
+#+CAPTION: The camera rotates around a cuboid. We are looking at it from below and the marked surface is the bottom.
+[[./shapes/cuboid.gif]]
+
+* Phase vs. Magnitude
+
+This is very straightforward so I will just present source code and results.
+
+#+INCLUDE: "phasemag.py" src python
+
+#+CAPTION: Picture of kangaroo
+[[./animals/kangaroo.jpg]]
+
+#+CAPTION: Kangaroo's log-magnitude
+[[./animals/kangaroo-m.jpg]]
+
+#+CAPTION: Kangaroo's phase
+[[./animals/kangaroo-p.jpg]]
+
+#+CAPTION: Picture of a lion
+[[./animals/lion.jpg]]
+
+#+CAPTION: Lion's log-magnitude
+[[./animals/lion-m.jpg]]
+
+#+CAPTION: Lion's phase
+[[./animals/lion-p.jpg]]
+
+#+CAPTION: Kangaroo's magnitude with lion's phase
+[[./animals/kangaroo-m-lion-p.jpg]]
+
+#+CAPTION: Lion's magnitude with kangaroo's phase
+[[./animals/lion-m-kangaroo-p.jpg]]
+
+As mentioned in the lecture you see, that most of information is captured in the
+phase.
+
+* Hybrid Imaging
+
+The filtering functions from scipy did not work as I expected, so I tried the
+approach, that I intuitively thought of after solving problem 2. Instead of
+filtering the images and adding them, I mangled their FFTs together and then
+took the iFFT of that. It actually worked out.
+
+So we first take the FFT of both pictures and transform them into the center
+form with fftshift. Then we start with the FFT of our desired high pass image as
+our base. In it we clear out the middle, i.e. the low frequencies, and replace
+them with the center of the low-pass image's FFT center. In the end we just
+invert everything and have our hybrid image.
+
+At first I tried to use the piglet as the high-pass image and the chipmunk as
+the low-pass one, but that did not work so well. After a while I realized, that
+the chipmunk has a more finegrained pattern in its fur, so it has more energy in
+the high frequencies compared to the pig. So I switched them around and the
+result was far better.
+
+I actually leave a small gap around the center frequencies, because in the
+SIGGRAPH paper it says, that there should be a gap in the frequency spectrum, so
+that the two images do not blend that much.
+
+#+CAPTION: A piglet
+[[./hybrids/piglet.jpg]]
+
+#+CAPTION: A chipmunk
+[[./hybrids/chipmunk.jpg]]
+
+#+CAPTION: A chipmunk close up and a piglet from afar
+[[./hybrids/piglet-chipmunk.jpg]]
+
+#+CAPTION: log-FFT of the hybrid image.
+[[./hybrids/piglet-chipmunk-fft.jpg]]
+
+#+INCLUDE: "hybrid.py" src python
