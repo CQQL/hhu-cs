@@ -1,0 +1,51 @@
+#+STARTUP: showall
+#+TITLE: Project 3
+#+AUTHOR: Marten Lienen
+#+HTML_HEAD: <style>body { width: 800px; margin: auto; } img { max-width: 700px; } pre.src { background-color: rgb(113, 116, 115) }</style>
+
+* Image Pyramids
+
+#+INCLUDE: "pyramids.py" src python
+
+#+CAPTION: Das Originalbild
+[[./pyramids/austrich.jpg]]
+
+#+CAPTION: Die Gauss-Pyramide
+[[./pyramids/austrich_gaussian.jpg]]
+
+#+CAPTION: Die zugehoerige Laplace-Pyramide
+[[./pyramids/austrich_laplacian.jpg]]
+
+#+CAPTION: Die Rekonstruktion aus der Pyramide
+[[./pyramids/austrich_reconst.jpg]]
+
+#+CAPTION: Die Differenz zwischen der Rekonstruktion und dem Original (komplett schwarz)
+[[./pyramids/austrich_diff.jpg]]
+
+Die Rekonstruktion des Originals hat bei mir fehlerfrei funktioniert, solange
+beim Erstellen der Laplace-Pyramide dieselbe Interpolationsmethode wie beim
+Rekonstruieren verwendet wurde. Ansonsten hat es aber mit beiden Methoden
+geklappt.
+
+* Image Blending
+
+#+INCLUDE: "combine.py" src python
+
+#+CAPTION: Apfel und Orange einfach nebeneinander gesetzt
+[[./combine/apple_orange.jpg]]
+
+#+CAPTION: Apfel und Orange kombiniert mithilfe der Laplace-Pyramide
+[[./combine/apple_orange_laplacian.jpg]]
+
+Das Verschmelzen mit der Laplace-Pyramide hat ein besseres Ergebnis geliefert,
+weil dabei an den Raendern ein Uebergang entsteht.
+
+#+CAPTION: Eine Wolke im Meer
+[[./combine/sea_clouds_laplacian.jpg]]
+
+#+CAPTION: Ein Zebra auf einem Schachbretthintergrund
+[[./combine/chessboard_zebra_laplacian.jpg]]
+
+Wenn das ganze farblich nicht so zusammen passt, entstehen bunte Farbflecken wie
+man am letzten Bild sieht, wo um das Zebra herum noch Stellen vom eigentlichen
+Hintergrund geblieben sind.
